@@ -8,20 +8,22 @@ const config: Config = {
   ],
   theme: {
     extend: {
+ fontFamily: {
+        sans: ["var(--font-dm-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        heading: ["var(--font-outfit)", "var(--font-cal-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        "cal-sans": ["var(--font-cal-sans)", "sans-serif"],
+        "outfit": ["var(--font-outfit)", "sans-serif"],
+      },
       colors: {
-        "white": "#FFFFFF",
-        "black": "#060000",
-        "screamin-green": "#83FF8F",
-        "eerie-black": "#1A1A1A",
-        "dark-gray": "#525252",
-        "orange": "#EB3F2B",
-        "accent-0": "#FABFD3",
-        "accent-1": "#D62D88",
-        "neutral-400": "#D1CDCD",
-        "gray-50": "#F9FAFB",
+        "primary": "#F8E0ED",
+        "secondary": "#D62D88", 
+        "tertiary": "#e463a4",
+        "quaternary": "#e949a3",
+        "orange": "#eb3f2b"
       },
     },
   },
   plugins: [],
 };
+
 export default config;
