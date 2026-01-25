@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
-import { Outfit, DM_Sans, Cal_Sans } from "next/font/google";
+import { Outfit, DM_Sans, Cal_Sans, Inter } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -37,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${outfit.variable} ${dmSans.variable} ${calSans.variable} font-sans antialiased bg-[#F8E0ED] text-gray-900`}
+        className={`${inter.variable} ${outfit.variable} ${dmSans.variable} ${calSans.variable} font-sans antialiased bg-[#F8E0ED] text-gray-900`}
       >
         {children}
       </body>

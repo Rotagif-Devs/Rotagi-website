@@ -12,6 +12,10 @@
   --color-tertiary: #e463a4;
   --color-quaternary: #e949a3;
   --color-orange: #eb3f2b;
+  --color-dark: #060000;
+  --color-gray: #373737;
+  --color-light-mode-test: #1F2937;
+  --color-text-hdd: #667085;
 
   /* Fonts – these become font-sans, font-heading, etc. */
   --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
