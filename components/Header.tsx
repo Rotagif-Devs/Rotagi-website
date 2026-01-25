@@ -1,37 +1,16 @@
 // components/Header.tsx
 "use client";
 
-import { useState, useEffect } from "react";
 import Button from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out",
-        isScrolled
-          ? "bg-white/90 backdrop-blur-md shadow-sm py-3"
-          : "bg-transparent py-5",
-      )}
+      className="mt-6 absolute top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out bg-transparent py-5"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
-        <div
-          className={cn(
-            "text-2xl font-bole tracking-tighter transition-colors duration-300 cursor-pointer",
-            isScrolled ? "text-purple-900" : "text-white",
-          )}
-        >
+        <div className="text-2xl font-bole tracking-tighter transition-colors duration-300 cursor-pointer text-white">
           ROTAGIF
         </div>
 
@@ -40,12 +19,7 @@ export default function Header() {
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
-              className={cn(
-                "text-sm font-medium transition-colors duration-300 hover:opacity-100",
-                isScrolled
-                  ? "text-gray-600 hover:text-pink-600"
-                  : "text-white/80 hover:text-white",
-              )}
+              className="text-sm font-medium transition-colors duration-300 hover:opacity-100 text-white/80 hover:text-white"
             >
               {item}
             </a>
@@ -54,7 +28,7 @@ export default function Header() {
 
         <div className="ml-4">
           <Button
-            variant={isScrolled ? "primary" : "white"}
+            variant="white"
             size="md"
             className=""
           >

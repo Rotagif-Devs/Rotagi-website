@@ -10,12 +10,12 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-primary font-sans antialiased">
+    <div className="min-h-screen bg-[var(--color-primary)] font-sans antialiased">
       <Header />
       <main>
         <Hero />
-        {/* <Mission />
-        <Programs />
+        <Mission />
+        {/* <Programs />
         <Impact />
         <Partners />
         <Updates />

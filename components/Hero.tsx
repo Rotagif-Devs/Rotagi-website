@@ -7,7 +7,7 @@ import { ArrowRightIcon } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex overflow-hidden bg-[#41122B] mx-4 rounded-lg">
+    <section className="relative min-h-screen flex overflow-hidden bg-[#41122B] mx-4 mt-6 rounded-lg">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
