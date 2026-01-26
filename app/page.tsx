@@ -21,6 +21,15 @@ export default function Home() {
         <Impact />
          <Marquee text=". trusted partners . trusted partners  . TRUSTED PARTNERS " />
         <Partners />
+        <Marquee 
+          text={
+            <>
+              What’s New · What’s New · What’s New<img src="/Star 6.png" alt="star" className="w-10 h-10 -ml-4 relative -top-12" />
+            </>
+          }
+          style={{ backgroundColor: 'var(--color-orange)' }}
+          textStyle={{ fontSize: '96px' }}
+        />
         {/* <Updates />
         <CTA /> */}
       </main>
