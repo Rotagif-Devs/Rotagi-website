@@ -1,41 +1,88 @@
-import Button from "@/components/ui/Button";
-
 const partnerLogos = [
-  { name: "Apple Pay", logo: "https://placehold.co/200x80?text=Apple+Pay&font=roboto" },
-  { name: "Skrill", logo: "https://placehold.co/200x80?text=Skrill&font=roboto" },
-  { name: "Paypass", logo: "https://placehold.co/200x80?text=Paypass&font=roboto" },
-  { name: "Google", logo: "https://placehold.co/200x80?text=Google&font=roboto" },
-  { name: "Microsoft", logo: "https://placehold.co/200x80?text=Microsoft&font=roboto" },
-  { name: "Unicef", logo: "https://placehold.co/200x80?text=Unicef&font=roboto" },
+  { name: "Apple Pay", logo: "/ApplePay.png" },
+  { name: "Apple Pay", logo: "/ApplePay.png" },
+  { name: "Skrill", logo: "/Skrill.png" },
 ];
 
 export default function Partners() {
   return (
-    <section className="py-20 md:py-32 bg-pink-50/50 border-t border-pink-100">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-purple-900 mb-6 tracking-tight">
-          Trusted by Purpose-Driven Organizations
-        </h2>
-        <p className="text-lg text-gray-600 mb-16 max-w-3xl mx-auto leading-relaxed">
-          We collaborate with partners who believe in measurable impact, inclusive growth, and empowering the next generation of African women.
-        </p>
+    <section className="py-20 bg-[var(--color-primary)] flex justify-center">
+      <div 
+        className="flex flex-col items-start"
+        style={{
+          width: '1260px',
+          gap: '76px'
+        }}
+      >
+        {/* Top section - Title, Description, and Button */}
+        <div className="flex items-start justify-between w-full">
+          <div className="flex-1">
+            <h2 
+              className="font-[var(--font-cal-sans)] text-[var(--color-dark)] mb-6"
+              style={{
+                fontSize: '46px',
+                fontWeight: 400,
+                lineHeight: '100%',
+                letterSpacing: '0%',
+                width: '486px',
+                height: '120px'
+              }}
+            >
+              Trusted by Purpose-Driven Organizations
+            </h2>
+          </div>
+          
+          <div className="flex flex-col items-start gap-6">
+            <p 
+              className="font-[var(--font-dm-sans)] text-[var(--color-darkgray)]"
+              style={{
+                fontSize: '16px',
+                fontWeight: 400,
+                lineHeight: '160%',
+                width: '580px',
+                height: '63px',
+                textAlign: 'left'
+              }}
+            >
+              We collaborate with partners who believe in measurable impact, inclusive growth, and empowering the next generation of African women.
+            </p>
+            <button
+              className="bg-[var(--color-secondary)] text-white font-[var(--font-dm-sans)] hover:bg-[var(--color-tertiary)] transition-colors"
+              style={{
+                fontSize: '16px',
+                fontWeight: 600,
+                padding: '14px 32px',
+                borderRadius: '100px'
+              }}
+            >
+              Partner With Us
+            </button>
+          </div>
+        </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 items-center justify-items-center opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+        {/* Bottom section - Partner Logos */}
+        <div className="flex gap-6 w-full">
           {partnerLogos.map((partner, i) => (
-            <div key={i} className="w-full relative flex justify-center hover:opacity-100 transition-opacity">
+            <div
+              key={i}
+              className="bg-white flex flex-col items-center justify-center flex-1"
+              style={{
+                height: '270px',
+                gap: '16px',
+                borderRadius: '40px',
+                paddingTop: '56px',
+                paddingRight: '59px',
+                paddingBottom: '56px',
+                paddingLeft: '59px',
+              }}
+            >
               <img
                 src={partner.logo}
                 alt={partner.name}
-                className="max-h-12 object-contain mix-blend-multiply"
+                className="max-h-full max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
               />
             </div>
           ))}
-        </div>
-
-        <div className="mt-16">
-          <Button variant="outline" size="lg" className="border-purple-200 text-purple-700 hover:bg-purple-50">
-            Partner With Us
-          </Button>
         </div>
       </div>
     </section>

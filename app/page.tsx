@@ -20,8 +20,8 @@ export default function Home() {
         <Marquee text="Impact Areas · Impact Areas · Impact Areas · " />
         <Impact />
          <Marquee text=". trusted partners . trusted partners  . TRUSTED PARTNERS " />
-        {/* <Partners />
-        <Updates />
+        <Partners />
+        {/* <Updates />
         <CTA /> */}
       </main>
       {/* <Footer /> */}
