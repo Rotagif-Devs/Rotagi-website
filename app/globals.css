@@ -16,6 +16,9 @@
   --color-gray: #373737;
   --color-light-mode-test: #1F2937;
   --color-text-hdd: #667085;
+  --color-text-brown: #250416;
+  --color-accent0: #FABFD3;
+
 
   /* Fonts – these become font-sans, font-heading, etc. */
   --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
