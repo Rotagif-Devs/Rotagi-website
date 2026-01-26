@@ -30,8 +30,8 @@ export default function Home() {
           style={{ backgroundColor: 'var(--color-orange)' }}
           textStyle={{ fontSize: '96px' }}
         />
-        {/* <Updates />
-        <CTA /> */}
+        <Updates />
+        {/* <CTA /> */}
       </main>
       {/* <Footer /> */}
     </div>
