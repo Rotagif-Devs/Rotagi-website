@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Mission from "@/components/Mission";
 import Programs from "@/components/Programs";
+import Marquee from "@/components/Marquee";
 import Impact from "@/components/Impact";
 import Partners from "@/components/Partners";
 import Updates from "@/components/Updates";
@@ -16,6 +17,7 @@ export default function Home() {
         <Hero />
         <Mission />
         <Programs />
+        <Marquee text="Impact Areas · Impact Areas · Impact Areas · " />
         {/* <Impact />
         <Partners />
         <Updates />

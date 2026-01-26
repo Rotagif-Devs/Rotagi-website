@@ -43,3 +43,28 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
 }
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-container {
+  display: flex;
+  width: 100%;
+}
+
+.marquee-content {
+  display: flex;
+  animation: marquee 20s linear infinite;
+  will-change: transform;
+}
+
+.marquee-text {
+  padding-right: 2rem;
+}
