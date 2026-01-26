@@ -31,7 +31,7 @@ export default function Home() {
           textStyle={{ fontSize: '96px' }}
         />
         <Updates />
-        {/* <CTA /> */}
+        <CTA />
       </main>
       {/* <Footer /> */}
     </div>
