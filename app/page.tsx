@@ -18,8 +18,9 @@ export default function Home() {
         <Mission />
         <Programs />
         <Marquee text="Impact Areas · Impact Areas · Impact Areas · " />
-        {/* <Impact />
-        <Partners />
+        <Impact />
+         <Marquee text=". trusted partners . trusted partners  . TRUSTED PARTNERS " />
+        {/* <Partners />
         <Updates />
         <CTA /> */}
       </main>

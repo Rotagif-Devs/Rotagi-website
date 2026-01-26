@@ -1,41 +1,105 @@
-import Button from "@/components/ui/Button";
-
 export default function Impact() {
   const stats = [
-    { num: "300+", label: "Girls Reached" },
-    { num: "15+", label: "Programs Delivered" },
-    { num: "10+", label: "Communities Served" },
+    { num: "300 +", label: "Girls Reached" },
+    { num: "15 +", label: "Programs" },
+    { num: "10 +", label: "Communities" },
   ];
 
   return (
-    <section className="py-24 bg-purple-900 text-white relative overflow-hidden">
-      {/* Decorative blobs */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
-        <div className="absolute -top-20 -left-20 w-96 h-96 bg-pink-600 rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-600 rounded-full blur-[100px]"></div>
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">
-          Access That Creates Impact
-        </h2>
-        <p className="text-xl md:text-2xl text-purple-100 mb-16 max-w-3xl mx-auto font-light">
-          Since 2020, ROTAGIF has equipped hundreds of girls and women with skills that translate into confidence, careers, and community transformation.
-        </p>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {stats.map((stat, i) => (
-            <div key={i} className="bg-white/5 backdrop-blur-lg border border-white/10 p-12 rounded-3xl hover:bg-white/10 transition-colors duration-300">
-              <div className="text-6xl md:text-7xl font-black mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-white">{stat.num}</div>
-              <div className="text-xl font-medium text-purple-200 uppercase tracking-widest">{stat.label}</div>
-            </div>
-          ))}
+    <section className="py-20 bg-[var(--color-primary)] flex justify-center">
+      <div 
+        className="flex flex-col items-start"
+        style={{
+          width: '1260px',
+          gap: '76px'
+        }}
+      >
+        {/* Top section - Title, Description, and Button */}
+        <div className="flex items-start justify-between w-full">
+          <div className="flex-1">
+            <h2 
+              className="font-[var(--font-cal-sans)] text-[var(--color-dark)] mb-6"
+              style={{
+                fontSize: '46px',
+                fontWeight: 400,
+                lineHeight: '100%',
+                letterSpacing: '0%',
+                width: '486px',
+                height: '120px'
+              }}
+            >
+              Access That Creates Impact
+            </h2>
+          </div>
+          
+          <div className="flex flex-col items-start gap-6">
+            <p 
+              className="font-[var(--font-dm-sans)] text-[var(--color-darkgray)]"
+              style={{
+                fontSize: '16px',
+                fontWeight: 400,
+                lineHeight: '160%',
+                width: '580px',
+                height: '63px',
+                textAlign: 'left'
+              }}
+            >
+              Since 2020, ROTAGIF has equipped hundreds of girls and women with skills that translate into confidence, careers, and community transformation across Africa.
+            </p>
+            <button
+              className="bg-[var(--color-secondary)] text-white font-[var(--font-dm-sans)] hover:bg-[var(--color-tertiary)] transition-colors"
+              style={{
+                fontSize: '16px',
+                fontWeight: 600,
+                padding: '14px 32px',
+                borderRadius: '100px'
+              }}
+            >
+              Learn More
+            </button>
+          </div>
         </div>
 
-        <div className="mt-16">
-          <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white hover:text-purple-900">
-            Read Our Impact Report
-          </Button>
+        {/* Bottom section - Stats Cards */}
+        <div className="flex gap-6 w-full">
+          {stats.map((stat, i) => (
+            <div
+              key={i}
+              className="bg-white flex flex-col items-center justify-center flex-1"
+              style={{
+                height: '270px',
+                gap: '16px',
+                borderRadius: '40px',
+                paddingTop: '56px',
+                paddingRight: '59px',
+                paddingBottom: '56px',
+                paddingLeft: '59px',
+              }}
+            >
+              <div 
+                className="font-[var(--font-cal-sans)] text-[var(--color-gray)]"
+                style={{
+                  fontSize: '96px',
+                  fontWeight: 300,
+                  lineHeight: '100%',
+                  letterSpacing: '0%'
+                }}
+              >
+                {stat.num}
+              </div>
+              <div 
+                className="font-[var(--font-dm-sans)] text-[var(--color-gray)]"
+                style={{
+                  fontSize: '18px',
+                  fontWeight: 400,
+                  lineHeight: '140%',
+                  textAlign: 'center'
+                }}
+              >
+                {stat.label}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
