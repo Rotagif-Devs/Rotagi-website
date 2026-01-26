@@ -18,7 +18,7 @@ export default function Hero() {
       </div>
 
       <div className="absolute bottom-16 w-full">
-        <div className="relative z-10 mx-auto w-7xl px-6 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -26,12 +26,12 @@ export default function Hero() {
           >
             <h1
               className="
-                text-4xl sm:text-4xl md:text-7xl lg:text-7xl 
-              leading-tight tracking-tight font-light
-               text-white drop-shadow-sm max-w-7/12
+                text-4xl sm:text-5xl md:text-7xl lg:text-7xl 
+                leading-[1.1] tracking-tight
+                text-white drop-shadow-sm max-w-[985px]
                 font-cal-sans"
             >
-              Empowering the Next Gen of African Girl Innovators
+             Empowering the Next Generation of African Girl Innovators
             </h1>
           </motion.div>
 
@@ -42,8 +42,8 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="
                 text-base sm:text-base md:text-base 
-                text-gray-200
-                font-light leading-relaxed max-w-7/12
+                text-[#BABABA]
+                font-light leading-relaxed max-w-[610px]
                 font-header
               "
             >
@@ -58,9 +58,12 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
               className="flex flex-col sm:flex-row gap-5 justify-center items-center"
             >
-              <Button variant="white" size="lg" className="min-w-64">
+              <Button 
+                variant="white" 
+                className="min-w-[217.55px] h-[50px] rounded-[34px] px-[34px] py-[15px] gap-[8px] !text-base whitespace-nowrap cursor-pointer"
+              >
                 Explore Programs
-                <ArrowRightIcon className="w-6 h-6 ml-2" />
+                <ArrowRightIcon className="w-6 h-6" />
               </Button>
             </motion.div>
           </div>
