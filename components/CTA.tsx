@@ -1,93 +1,53 @@
 export default function CTA() {
   return (
-    <section className="py-20 bg-[var(--color-primary)] flex justify-center">
-      <div 
-        className="flex flex-col items-start"
-        style={{
-          width: '1260px',
-          gap: '76px'
-        }}
-      >
-        {/* Top section - Title, Description, and Buttons */}
-        <div className="flex items-start justify-between w-full">
-          <div className="flex-1">
-            <h2 
-              className="font-[var(--font-cal-sans)] text-[var(--color-dark)] mb-6"
-              style={{
-                fontSize: '46px',
-                fontWeight: 400,
-                lineHeight: '100%',
-                letterSpacing: '0%',
-                width: '600px', // Increased width for longer title
-                height: 'auto'
-              }}
-            >
-              Join Us in Empowering the Next Generation
-            </h2>
-          </div>
-          
-          <div className="flex flex-col items-start gap-6">
-            <p 
-              className="font-[var(--font-dm-sans)] text-[var(--color-darkgray)]"
-              style={{
-                fontSize: '16px',
-                fontWeight: 400,
-                lineHeight: '160%',
-                width: '580px',
-                height: '63px',
-                textAlign: 'left'
-              }}
-            >
+    <section className="bg-[var(--color-primary)] py-16 md:py-20 flex justify-center">
+      <div className="flex w-full max-w-[1260px] flex-col gap-10 px-5 md:px-0 md:gap-[76px]">
+        {/* Title + description + buttons area */}
+        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-12">
+          <h2 className="font-[var(--font-cal-sans)] text-[var(--color-dark)] text-4xl font-semibold leading-tight tracking-tight md:max-w-[600px] md:text-[46px] md:leading-[110%]">
+            Join Us in Empowering the Next Generation
+          </h2>
+
+          <div className="flex flex-col items-start gap-6 md:max-w-[580px]">
+            <p className="font-[var(--font-dm-sans)] text-[var(--color-darkgray)] text-left text-base leading-relaxed md:text-[16px] md:leading-[160%]">
               Whether through donations, mentorship, or partnerships — your support creates lasting change.
             </p>
-            <div className="flex gap-4">
-              <button
-                className="bg-[var(--color-secondary)] text-white font-[var(--font-dm-sans)] hover:bg-[var(--color-tertiary)] transition-colors"
-                style={{
-                  fontSize: '16px',
-                  fontWeight: 600,
-                  padding: '14px 32px',
-                  borderRadius: '100px'
-                }}
-              >
+
+            {/* Buttons visible only on desktop in top right */}
+            <div className="hidden md:flex gap-4">
+              <button className="rounded-full bg-[var(--color-secondary)] px-8 py-3.5 font-[var(--font-dm-sans)] text-base font-semibold text-white transition hover:bg-[var(--color-tertiary)] whitespace-nowrap">
                 Donate Now
               </button>
-              <button
-                className="bg-white text-[var(--color-dark)] font-[var(--font-dm-sans)] hover:bg-gray-50 transition-colors border border-gray-200"
-                style={{
-                  fontSize: '16px',
-                  fontWeight: 600,
-                  padding: '14px 32px',
-                  borderRadius: '100px'
-                }}
-              >
+              <button className="rounded-full border border-gray-200 bg-white px-8 py-3.5 font-[var(--font-dm-sans)] text-base font-semibold text-[var(--color-dark)] transition hover:bg-gray-50 whitespace-nowrap">
                 Explore Programs
               </button>
             </div>
           </div>
         </div>
 
-        {/* Bottom section - Video Preview */}
-        <div className="w-full flex justify-center">
-          <div 
-            className="relative overflow-hidden group cursor-pointer bg-white"
-            style={{
-              width: '1256px',
-              height: '711px',
-              borderRadius: '64px',
-            }}
-          >
-            {/* Placeholder for video content - using a gradient or image */}
-            <div className="w-full h-full bg-white flex items-center justify-center relative">
-              
-              {/* Play Button Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center bg-black/5 group-hover:bg-black/10 transition-colors">
-                <div className="w-32 h-32 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <div className="w-0 h-0 border-t-[20px] border-t-transparent border-l-[36px] border-l-white border-b-[20px] border-b-transparent ml-2"></div>
+        {/* Video / hero preview */}
+        <div className="flex w-full justify-center">
+          <div className="group relative w-full overflow-hidden rounded-3xl bg-white md:aspect-[1256/711] md:max-w-[1256px] md:rounded-[64px] aspect-[16/9]">
+            {/* Placeholder background (replace with <video> or iframe when ready) */}
+            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+              {/* Play button overlay */}
+              <div className="absolute inset-0 flex items-center justify-center bg-black/5 transition-colors group-hover:bg-black/20">
+                <div className="flex h-20 w-20 items-center justify-center rounded-full border border-white/50 bg-white/30 backdrop-blur-md transition-transform group-hover:scale-110 md:h-32 md:w-32 shadow-xl">
+                  <div className="ml-1 border-l-[28px] border-l-white border-t-[14px] border-t-transparent border-b-[14px] border-b-transparent md:ml-2 md:border-l-[36px] md:border-t-[20px] md:border-b-[20px]"></div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Buttons below video on mobile */}
+        <div className="flex gap-4 justify-center md:hidden sm:flex-row">
+          <button className="w-full rounded-full bg-[var(--color-secondary)] px-8 py-3.5 font-[var(--font-dm-sans)] text-base font-semibold text-white transition hover:bg-[var(--color-tertiary)] sm:w-auto">
+            Donate Now
+          </button>
+          <button className="w-full rounded-full border border-gray-200 bg-white md:px-8 px-4 py-3.5 font-[var(--font-dm-sans)] text-base font-semibold text-[var(--color-dark)] transition hover:bg-gray-50 sm:w-auto">
+            Explore Programs
+          </button>
         </div>
       </div>
     </section>

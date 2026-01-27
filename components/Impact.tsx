@@ -1,105 +1,89 @@
-export default function Impact() {
-  const stats = [
-    { num: "300 +", label: "Girls Reached" },
-    { num: "15 +", label: "Programs" },
-    { num: "10 +", label: "Communities" },
-  ];
+"use client";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+// import "swiper/css/navigation"; // uncomment if you add arrows later
+
+const stats = [
+  { num: "300 +", label: "Girls Reached" },
+  { num: "15 +", label: "Programs" },
+  { num: "10 +", label: "Communities" },
+];
+
+export default function Impact() {
   return (
-    <section className="py-20 bg-[var(--color-primary)] flex justify-center">
-      <div 
-        className="flex flex-col items-start"
-        style={{
-          width: '1260px',
-          gap: '76px'
-        }}
-      >
-        {/* Top section - Title, Description, and Button */}
-        <div className="flex items-start justify-between w-full">
-          <div className="flex-1">
-            <h2 
-              className="font-[var(--font-cal-sans)] text-[var(--color-dark)] mb-6"
-              style={{
-                fontSize: '46px',
-                fontWeight: 400,
-                lineHeight: '100%',
-                letterSpacing: '0%',
-                width: '486px',
-                height: '120px'
-              }}
-            >
-              Access That Creates Impact
-            </h2>
-          </div>
-          
-          <div className="flex flex-col items-start gap-6">
-            <p 
-              className="font-[var(--font-dm-sans)] text-[var(--color-darkgray)]"
-              style={{
-                fontSize: '16px',
-                fontWeight: 400,
-                lineHeight: '160%',
-                width: '580px',
-                height: '63px',
-                textAlign: 'left'
-              }}
-            >
+    <section className="bg-[var(--color-primary)] py-16 md:py-20 flex justify-center">
+      <div className="flex w-full max-w-[1260px] flex-col gap-10 px-5 md:px-0 md:gap-[76px]">
+        {/* Title + text + button area */}
+        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+          <h2 className="font-[var(--font-cal-sans)] text-[var(--color-dark)] text-4xl font-semibold  leading-tight tracking-tight md:max-w-[486px] md:text-[46px]">
+            Access That Creates Impact
+          </h2>
+
+          <div className="flex flex-col items-start gap-6 md:max-w-[580px]">
+            <p className="font-[var(--font-dm-sans)] text-[var(--color-darkgray)] text-left text-base leading-relaxed md:text-[16px] md:leading-[160%]">
               Since 2020, ROTAGIF has equipped hundreds of girls and women with skills that translate into confidence, careers, and community transformation across Africa.
             </p>
-            <button
-              className="bg-[var(--color-secondary)] text-white font-[var(--font-dm-sans)] hover:bg-[var(--color-tertiary)] transition-colors"
-              style={{
-                fontSize: '16px',
-                fontWeight: 600,
-                padding: '14px 32px',
-                borderRadius: '100px'
-              }}
-            >
-              Learn More
-            </button>
+
+            {/* Button only on mobile in top section (hidden on md+) */}
+            <div className="md:hidden w-full sm:w-auto">
+              <button className="w-full rounded-full bg-[var(--color-secondary)] px-8 py-3.5 font-[var(--font-dm-sans)] text-base font-semibold text-white transition hover:bg-[var(--color-tertiary)] sm:w-auto hidden md:block">
+                Learn More
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Bottom section - Stats Cards */}
-        <div className="flex gap-6 w-full">
-          {stats.map((stat, i) => (
-            <div
-              key={i}
-              className="bg-white flex flex-col items-center justify-center flex-1"
-              style={{
-                height: '270px',
-                gap: '16px',
-                borderRadius: '40px',
-                paddingTop: '56px',
-                paddingRight: '59px',
-                paddingBottom: '56px',
-                paddingLeft: '59px',
-              }}
+        {/* Stats content */}
+        <div className="relative">
+          {/* Desktop: 3-column grid */}
+          <div className="hidden md:grid md:grid-cols-3 md:gap-6">
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="flex h-[270px] flex-col items-center justify-center gap-4 rounded-[40px] bg-white px-12 py-14 md:px-[59px] md:py-14"
+              >
+                <div className="font-[var(--font-cal-sans)] text-[5rem] font-light leading-none text-[var(--color-gray)] lg:text-[96px]">
+                  {stat.num}
+                </div>
+                <div className="font-[var(--font-dm-sans)] text-lg text-center text-[var(--color-gray)] md:text-[18px] md:leading-[140%]">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile: Swiper with partial next-card peek */}
+          <div className="md:hidden ">
+            <Swiper
+              slidesPerView={1.25}   
+              spaceBetween={50}
+              centeredSlides={false}
+              initialSlide={0}
+              grabCursor={true}
+              className="!pb-4"
             >
-              <div 
-                className="font-[var(--font-cal-sans)] text-[var(--color-gray)]"
-                style={{
-                  fontSize: '96px',
-                  fontWeight: 300,
-                  lineHeight: '100%',
-                  letterSpacing: '0%'
-                }}
-              >
-                {stat.num}
-              </div>
-              <div 
-                className="font-[var(--font-dm-sans)] text-[var(--color-gray)]"
-                style={{
-                  fontSize: '18px',
-                  fontWeight: 400,
-                  lineHeight: '140%',
-                  textAlign: 'center'
-                }}
-              >
-                {stat.label}
-              </div>
-            </div>
-          ))}
+              {stats.map((stat) => (
+                <SwiperSlide key={stat.label}>
+                  <div className="mx-auto h-[240px] w-[85vw] max-w-[320px] rounded-[32px] bg-white px-8 py-10 flex flex-col items-center justify-center gap-3">
+                    <div className="font-[var(--font-cal-sans)] text-6xl font-light leading-none text-[var(--color-gray)] xs:text-7xl">
+                      {stat.num}
+                    </div>
+                    <div className="font-[var(--font-dm-sans)] text-base leading-[140%] text-center text-[var(--color-gray)]">
+                      {stat.label}
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+
+          {/* Learn More button below slider on mobile */}
+          <div className="mt-10 flex justify-center md:hidden">
+            <button className="rounded-full bg-[var(--color-secondary)] px-10 py-3.5 font-[var(--font-dm-sans)] text-base font-semibold text-white transition hover:bg-[var(--color-tertiary)]">
+              Learn More
+            </button>
+          </div>
         </div>
       </div>
     </section>

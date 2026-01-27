@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[var(--color-primary)] font-sans antialiased">
+    <div className="min-h-screen bg-[var(--color-primary)] font-sans antialiased overflow-hidden">
       <Header />
       <main>
         <Hero />
@@ -28,7 +28,6 @@ export default function Home() {
             </>
           }
           style={{ backgroundColor: 'var(--color-orange)' }}
-          textStyle={{ fontSize: '96px' }}
         />
         <Updates />
         <CTA />

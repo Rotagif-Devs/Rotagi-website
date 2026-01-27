@@ -7,7 +7,7 @@ import { ArrowRightIcon } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex overflow-hidden bg-[#41122B] mx-4 mt-6 rounded-lg">
+    <section className="relative min-h-screen flex overflow-hidden bg-[#41122B] md:mx-4 md:mt-6 rounded-lg">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
@@ -26,8 +26,8 @@ export default function Hero() {
           >
             <h1
               className="
-                text-4xl sm:text-5xl md:text-7xl lg:text-7xl 
-                leading-[1.1] tracking-tight
+                text-6xl md:text-7xl lg:text-7xl 
+                leading-[1.1] tracking-tight font-normal
                 text-white drop-shadow-sm max-w-[985px]
                 font-cal-sans"
             >
@@ -35,14 +35,14 @@ export default function Hero() {
             </h1>
           </motion.div>
 
-          <div className="flex justify-between align-center w-full">
+          <div className="flex md:flex-row flex-col justify-between align-center w-full md:gap-0 gap-10 mt-4">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="
-                text-base sm:text-base md:text-base 
-                text-[#BABABA]
+                text-lg sm:text-base md:text-lg 
+                text-[rgb(186,186,186)]
                 font-light leading-relaxed max-w-[610px]
                 font-header
               "
@@ -56,7 +56,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-              className="flex flex-col sm:flex-row gap-5 justify-center items-center"
+              className="flex flex-col sm:flex-row gap-5 justify-center md:items-center w-fit"
             >
               <Button 
                 variant="white" 

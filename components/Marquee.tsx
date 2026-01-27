@@ -9,34 +9,34 @@ interface MarqueeProps {
 export default function Marquee({ text, style, textStyle }: MarqueeProps) {
   return (
     <div 
-      className="w-full overflow-hidden bg-[var(--color-dark)] py-8"
+      className="w-full overflow-hidden bg-[var(--color-dark)] py-6 md:py-8"
       style={style}
     >
       <div className="marquee-container">
-        <div className="marquee-content">
+        <div className="marquee-content flex animate-marquee">
           <span 
-            className="marquee-text font-[var(--font-cal-sans)] text-white uppercase whitespace-nowrap flex items-center gap-8"
-            style={{
-              fontWeight: 600,
-              fontSize: '128px',
-              lineHeight: '113%',
-              letterSpacing: '-1.5%',
-              ...textStyle
-            }}
+            className="
+              marquee-text font-[var(--font-cal-sans)] text-white uppercase 
+              whitespace-nowrap flex items-center gap-6 md:gap-8
+              text-5xl sm:text-6xl md:text-5xl
+              font-semibold leading-none tracking-[-0.015em]
+            "
+            style={textStyle} // still allows override if needed
           >
-            {text}
+            {text} • {text} {/* optional separator for better loop feel */}
           </span>
+
+          {/* Duplicate for seamless loop */}
           <span 
-            className="marquee-text font-[var(--font-cal-sans)] text-white uppercase whitespace-nowrap flex items-center gap-8"
-            style={{
-              fontWeight: 600,
-              fontSize: '128px',
-              lineHeight: '113%',
-              letterSpacing: '-1.5%',
-              ...textStyle
-            }}
+            className="
+              marquee-text font-[var(--font-cal-sans)] text-white uppercase 
+              whitespace-nowrap flex items-center gap-6 md:gap-8
+              text-5xl sm:text-6xl md:text-5xl 
+              font-semibold leading-none tracking-[-0.015em]
+            "
+            style={textStyle}
           >
-            {text}
+            {text} • {text}
           </span>
         </div>
       </div>
