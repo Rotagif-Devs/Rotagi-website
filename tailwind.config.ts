@@ -9,19 +9,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "white": "#FFFFFF",
-        "black": "#060000",
-        "screamin-green": "#83FF8F",
-        "eerie-black": "#1A1A1A",
-        "dark-gray": "#525252",
-        "orange": "#EB3F2B",
-        "accent-0": "#FABFD3",
-        "accent-1": "#D62D88",
-        "neutral-400": "#D1CDCD",
-        "gray-50": "#F9FAFB",
+        "orange": "#eb3f2b",
+        "primary": "var(--color-primary)",
+      },
+      fontFamily: {
+        "cal-sans": ["var(--font-cal-sans)", "sans-serif"],
+        "outfit": ["var(--font-outfit)", "sans-serif"],
+        "dm-sans": ["var(--font-dm-sans)", "sans-serif"],
+        "inter": ["var(--font-inter)", "sans-serif"],
       },
     },
   },
   plugins: [],
 };
+
 export default config;

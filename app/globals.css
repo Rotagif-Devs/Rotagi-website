@@ -1,20 +1,41 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #F8E0ED;
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  @theme {
+  /* Your colors – single color gets bg-primary, etc. */
+  --color-primary: #F8E0ED;
+  --color-secondary: #D62D88;
+  --color-tertiary: #e463a4;
+  --color-quaternary: #e949a3;
+  --color-orange: #eb3f2b;
+  --color-dark: #060000;
+  --color-gray: #373737;
+  --gray-color: #BABABA;
+  --color-light-mode-test: #1F2937;
+  --color-text-hdd: #667085;
+  --color-text-brown: #250416;
+  --color-accent0: #FABFD3;
+  --color-darkgray: #525252;
+
+
+  /* Fonts – these become font-sans, font-heading, etc. */
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-outfit), var(--font-cal-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-cal-sans: var(--font-cal-sans), sans-serif;
+  --font-outfit: var(--font-outfit), sans-serif;
+
+  /* Optional extras you had before */
+  --background-image-hero-gradient: linear-gradient(to bottom right, #4C1D95, #7C3AED, #DB2777);
 }
+
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: var(--color-primary);
     --foreground: #ededed;
   }
 }
@@ -22,5 +43,30 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-container {
+  display: flex;
+  width: 100%;
+}
+
+.marquee-content {
+  display: flex;
+  animation: marquee 20s linear infinite;
+  will-change: transform;
+}
+
+.marquee-text {
+  padding-right: 2rem;
 }
