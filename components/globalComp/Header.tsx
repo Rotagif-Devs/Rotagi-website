@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Button from "@/components/ui/Button";
+import Link from "next/link";
 
 const navItems = ["About", "Programs", "Contact"];
 
@@ -13,39 +14,41 @@ export default function Header() {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <header className="absolute left-1/2 md:top-[60px] z-50 mx-auto w-full max-w-[1274px] -translate-x-1/2 px-4 md:px-10 py-5 md:py-0">
-      <div className="flex items-center justify-between">
+    <header className="fixed cursor-default left-0 bg-white top-0 z-50 mx-auto w-full max-w-8xl px-4 md:px-10 py-2">
+      <div className="flex bg-white items-center justify-between">
         {/* Logo */}
-        <div className="text-white font-inter font-bold uppercase tracking-[-0.67px] text-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
-          ROTAGI
+        <div className="">
+          <Link
+            href="/"
+            className="inline-block font-cal-sans font-bold uppercase text-secondary text-2xl "
+          >
+            ROTAGI
+          </Link>
         </div>
 
         {/* Desktop Navigation + Donate Button */}
-        <div className="hidden items-center gap-10 md:flex">
-          <nav className="flex items-center gap-10">
-            {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="font-dm-sans font-medium text-white/90 transition hover:text-white text-base"
-              >
-                {item}
-              </a>
-            ))}
-          </nav>
 
-          <Button
-            variant="white"
-            size="md"
-            className="font-dm-sans font-semibold text-sm md:text-base whitespace-nowrap"
-          >
+        <nav className="hidden md:flex items-center gap-10">
+          {navItems.map((item) => (
+            <Link
+              key={item}
+              href={`/${item.toLowerCase()}`}
+              className="  text-gray-700 transition font-medium hover:text-gray-900 text-base"
+            >
+              {item}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="hidden md:block">
+          <Button variant="primary" size="md">
             Donate Now
           </Button>
         </div>
 
         {/* Mobile Hamburger Button */}
         <button
-          className="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-white/50 rounded-full p-1"
+          className="md:hidden text-black focus:outline-none focus:ring-2 focus:ring-white/50 rounded-full p-1"
           onClick={toggleMenu}
           aria-label="Toggle navigation menu"
           aria-expanded={isOpen}
@@ -72,7 +75,9 @@ export default function Header() {
         <div className="flex h-full flex-col p-6">
           {/* Header with logo and close button */}
           <div className="mb-10 flex items-center justify-between">
-            <div className="text-3xl font-bold text-[var(--color-accent0)]">ROTAGI</div>
+            <Link href="/" className="text-3xl font-bold text-secondary ">
+              ROTAGI
+            </Link>
             <button
               onClick={closeMenu}
               className="rounded-full p-2 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300"
@@ -85,26 +90,28 @@ export default function Header() {
           {/* Navigation Items */}
           <nav className="mb-auto flex flex-col gap-8">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-xl font-medium text-gray-900 transition hover:text-[var(--color-accent0)]"
+                className="text-base font-medium text-gray-900 transition"
                 onClick={closeMenu}
               >
                 {item}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* Donate Button in mobile menu */}
-          <Button
-            variant="primary" // or whatever variant matches your "white" style
-            size="lg"
-            className="mt-8 w-full justify-center font-dm-sans font-semibold text-base"
-            onClick={closeMenu}
-          >
-            Donate Now
-          </Button>
+          <Link href="/donate-now">
+            <Button
+              variant="primary" // or whatever variant matches your "white" style
+              size="lg"
+              className="mt-8 w-full justify-center font-dm-sans font-semibold text-base"
+              onClick={closeMenu}
+            >
+              Donate Now
+            </Button>
+          </Link>
         </div>
       </div>
     </header>

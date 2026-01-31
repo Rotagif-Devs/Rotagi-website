@@ -1,18 +1,12 @@
 import type { Metadata } from "next";
 import { Outfit, DM_Sans, Cal_Sans, Inter } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/globalComp/Header";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
-});
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-  display: "swap",
-  weight: ["400", "500", "600", "700"], // add more weights if needed
 });
 
 const dmSans = DM_Sans({
@@ -43,9 +37,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${outfit.variable} ${dmSans.variable} ${calSans.variable} font-sans antialiased bg-[#F8E0ED] text-gray-900`}
+        className={`${inter.variable} ${dmSans.variable} ${calSans.variable} antialiased bg-primary text-gray-900`}
       >
-        {children}
+        <Header />
+        <div className="mt-14">{children}</div>
       </body>
     </html>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Footer() {
   return (
-    <footer className="flex justify-center pb-8 bg-[var(--color-primary)]">
+    <footer className="flex justify-center pb-8 bg-primary">
       <div 
         className="bg-black text-white flex flex-col justify-between w-full md:mx-4 md:mt-6 md:rounded-lg px-8 py-10 md:px-16 md:py-12"
        
@@ -10,16 +10,16 @@ export default function Footer() {
         <div className="flex flex-col lg:flex-row justify-between gap-8 pt-4 w-full">
           {/* Brand & Description */}
           <div className="max-w-[300px]">
-            <h2 className="text-5xl font-bold mb-6 font-[var(--font-cal-sans)]">ROTAGI</h2>
-            <p className="text-gray-300 leading-relaxed font-[var(--font-dm-sans)] text-sm">
+            <h2 className="text-5xl  mb-6 ">ROTAGI</h2>
+            <p className="text-gray-300 text-sm">
               Empowering young African girls and women with AI literacy, digital confidence, and leadership skills.
             </p>
           </div>
 
           {/* Quick Navigation */}
           <div>
-            <h4 className="text-white font-bold mb-6 font-[var(--font-dm-sans)]">Quick Navigation</h4>
-            <ul className="space-y-4 text-gray-300 font-[var(--font-dm-sans)] text-sm">
+            <h4 className="text-white mb-6">Quick Navigation</h4>
+            <ul className="space-y-4 text-gray-300  text-sm">
               <li><a href="#" className="hover:text-white transition-colors">Programs</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Impact</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Events</a></li>
@@ -29,8 +29,8 @@ export default function Footer() {
 
           {/* Get Involved */}
           <div>
-            <h4 className="text-white font-bold mb-6 font-[var(--font-dm-sans)]">Get Involved</h4>
-            <ul className="space-y-4 text-gray-300 font-[var(--font-dm-sans)] text-sm">
+            <h4 className="text-white mb-6 ">Get Involved</h4>
+            <ul className="space-y-4 text-gray-300 text-sm">
               <li><a href="#" className="hover:text-white transition-colors">Donate</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Become A Mentor</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Partner with Us</a></li>
@@ -40,8 +40,8 @@ export default function Footer() {
 
           {/* Our Office */}
           <div className="max-w-[200px]">
-            <h4 className="text-white font-bold mb-6 font-[var(--font-dm-sans)]">Our Office</h4>
-            <div className="text-gray-300 font-[var(--font-dm-sans)] text-sm space-y-2 leading-relaxed">
+            <h4 className="text-white">Our Office</h4>
+            <div className="text-gray-300 text-sm space-y-2 leading-relaxed">
               <p>No. 1 Magazar Close,</p>
               <p>Eagle Billed Estate</p>
               <p>Off Vio Mabuschi.</p>
@@ -52,7 +52,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-white font-bold mb-6 font-[var(--font-dm-sans)]">Contact</h4>
+            <h4 className="text-white ">Contact</h4>
             
             {/* Social Icons */}
             <div className="flex gap-4 mb-6">
@@ -78,7 +78,7 @@ export default function Footer() {
               </a>
             </div>
 
-            <div className="space-y-4 text-gray-300 font-[var(--font-dm-sans)] text-sm">
+            <div className="space-y-4 text-gray-300 font-(--font-dm-sans) text-sm">
               <div className="flex items-center gap-3">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -103,7 +103,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Copyright */}
-        <div className="mt-16 pt-8 border-t border-gray-800 flex md:flex-row justify-center items-center gap-4 text-gray-300 text-sm font-[var(--font-dm-sans)]">
+        <div className="mt-16 pt-8 border-t border-gray-800 flex md:flex-row justify-center items-center gap-4 text-gray-300 text-sm font-(--font-dm-sans)">
           <p>© 2026 All rights reserved ROTAGIF</p>
           <span className="hidden md:inline">|</span>
           <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>

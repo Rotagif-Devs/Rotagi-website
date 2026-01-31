@@ -1,37 +1,42 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F8E0ED;
+  --background: #f8e0ed;
   --foreground: #171717;
 }
 
-  @theme {
+@theme {
   /* Your colors – single color gets bg-primary, etc. */
-  --color-primary: #F8E0ED;
-  --color-secondary: #D62D88;
+  --color-primary: #f8e0ed;
+  --color-secondary: #d62d88;
   --color-tertiary: #e463a4;
   --color-quaternary: #e949a3;
   --color-orange: #eb3f2b;
   --color-dark: #060000;
   --color-gray: #373737;
-  --gray-color: #BABABA;
-  --color-light-mode-test: #1F2937;
+  --gray-color: #bababa;
+  --color-light-mode-test: #1f2937;
   --color-text-hdd: #667085;
   --color-text-brown: #250416;
-  --color-accent0: #FABFD3;
+  --color-accent0: #fabfd3;
   --color-darkgray: #525252;
-
 
   /* Fonts – these become font-sans, font-heading, etc. */
   --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-outfit), var(--font-cal-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading:
+    var(--font-outfit), var(--font-cal-sans), ui-sans-serif, system-ui,
+    sans-serif;
   --font-cal-sans: var(--font-cal-sans), sans-serif;
   --font-outfit: var(--font-outfit), sans-serif;
 
   /* Optional extras you had before */
-  --background-image-hero-gradient: linear-gradient(to bottom right, #4C1D95, #7C3AED, #DB2777);
+  --background-image-hero-gradient: linear-gradient(
+    to bottom right,
+    #4c1d95,
+    #7c3aed,
+    #db2777
+  );
 }
-
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -43,7 +48,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-dm-sans);
 }
 
 /* Marquee Animation */
@@ -69,4 +74,36 @@ body {
 
 .marquee-text {
   padding-right: 2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-cal-sans), sans-serif;
+}
+h1,
+h2,
+h3 {
+  letter-spacing: -0.07em;
+}
+
+h1 {
+  @apply text-6xl lg:text-7xl font-bold uppercase;
+}
+h2 {
+  @apply text-4xl lg:text-5xl font-bold capitalize;
+}
+h3 {
+  @apply text-2xl font-bold capitalize;
+}
+h4 {
+  @apply text-base  font-medium capitalize;
+}
+h5 {
+  @apply text-sm font-normal capitalize;
+}
+p {
+  @apply text-base lg:text-lg font-normal;
 }

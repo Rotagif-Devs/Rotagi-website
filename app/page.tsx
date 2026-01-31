@@ -1,18 +1,16 @@
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Mission from "@/components/Mission";
-import Programs from "@/components/Programs";
-import Marquee from "@/components/Marquee";
-import Impact from "@/components/Impact";
-import Partners from "@/components/Partners";
-import Updates from "@/components/Updates";
-import CTA from "@/components/CTA";
-import Footer from "@/components/Footer";
+import Hero from "@/components/landingpage/Hero";
+import Mission from "@/components/landingpage/Mission";
+import Programs from "@/components/landingpage/Programs";
+import Marquee from "@/components/landingpage/Marquee";
+import Impact from "@/components/landingpage/Impact";
+import Partners from "@/components/landingpage/Partners";
+import Updates from "@/components/landingpage/Updates";
+import CTA from "@/components/landingpage/CTA";
+import Footer from "@/components/globalComp/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[var(--color-primary)] font-sans antialiased overflow-hidden">
-      <Header />
+    <div className="min-h-screen bg-primary antialiased overflow-hidden">
       <main>
         <Hero />
         <Mission />
