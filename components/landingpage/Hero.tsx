@@ -1,14 +1,12 @@
 // components/Hero.tsx
 "use client";
 import Image from "next/image";
-
 import Button from "@/components/ui/Button";
 import { motion } from "framer-motion";
-import { ArrowRightIcon } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex overflow-hidden bg-[#41122B] md:mx-4 md:mt-6 rounded-lg">
+    <section className="relative min-h-screen flex overflow-hidden bg-[#41122B] lg:mx-4 lg:rounded-lg">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -29,9 +27,7 @@ export default function Hero() {
             className="max-w-5xl"
           >
             <h1
-              className="
-                
-                text-white "
+              className="text-white "
             >
              Empowering the Next Generation of African Girl Innovators
             </h1>
@@ -43,10 +39,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="
-                text-lg sm:text-base md:text-lg 
-                text-[rgb(186,186,186)]
-                font-light leading-relaxed max-w-[610px]
-                font-header
+                text-white max-w-3xl
               "
             >
               The next breakthrough could come from her. We are making sure
@@ -63,7 +56,8 @@ export default function Hero() {
               <Button 
                 variant="secondary" 
                 href="/programs"
-                className="min-w-[217.55px] h-[50px] rounded-[34px] px-[34px] py-[15px] gap-[8px] text-base whitespace-nowrap cursor-pointer"
+                withArrow
+                className=" cursor-pointer"
               >
                 Explore Programs
               </Button>

@@ -1,8 +1,6 @@
 "use client";
 
 import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -11,6 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import Image from "next/image";
 
 const programs = [
   {
@@ -41,17 +40,17 @@ const programs = [
 
 export default function Programs() {
   return (
-    <section className="bg-[var(--color-primary)] md:py-20 flex justify-center">
-      <div className="relative mx-4 w-full max-w-7xl md:rounded-[19px] bg-[var(--color-secondary)] px-4 pb-[55px] pt-[55px]">
+    <section className="md:py-20 bg-secondary flex justify-center">
+      <div className="relative mx-4 w-full max-w-7xl  px-4 ">
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <h2 className="text-white">Our Programs</h2>
-          <p className="mx-auto mt-6 max-w-[590px] font-dm-sans text-lg leading-[35px] tracking-[-0.01em] text-white">
+          <p className="mx-auto mt-6 max-w-xl text-white">
             Age-appropriate learning pathways designed to build skills,
             confidence, and leadership at every stage.
           </p>
         </div>
 
-        <div className="mx-auto rounded-[14px] bg-[var(--color-text-brown)] px-6 py-5 md:px-[27px] md:pt-[19px] md:pb-[31px]">
+        <div className="mx-auto rounded-[14px] bg-brown px-6 py-5 md:px-[27px] md:pt-[19px] md:pb-[31px]">
           {/* Desktop grid */}
           <div className="hidden lg:grid lg:grid-cols-4 lg:gap-8">
             {programs.map((prog, i) => (
@@ -60,12 +59,14 @@ export default function Programs() {
                 className={`group flex flex-col ${i < programs.length - 1 ? "lg:border-r lg:border-white/20 lg:pr-8" : ""} ${i > 0 ? "lg:pl-8" : ""}`}
               >
                 <div className="relative mb-6 h-64 overflow-hidden rounded-2xl">
-                  <img
+                  <Image
+                    width={500}
+                    height={500}
                     src={prog.img}
                     alt={prog.name}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <span className="absolute right-4 top-4 inline-flex h-6 w-[95px] items-center justify-center rounded-br-[8px] rounded-tl-[8px] bg-[var(--color-accent0)] text-xs font-bold text-[var(--color-text-brown)]">
+                  <span className="absolute right-4 top-4 inline-flex h-6 w-[95px] items-center justify-center rounded-br-[8px] rounded-tl-[8px] bg-accent0 text-xs font-bold text-brown">
                     {prog.age}
                   </span>
                 </div>
@@ -100,21 +101,23 @@ export default function Programs() {
                 <SwiperSlide key={prog.name}>
                   <div className="group flex flex-col">
                     <div className="relative mb-6 h-64 overflow-hidden rounded-2xl">
-                      <img
+                      <Image
+                        width={500}
+                        height={500}
                         src={prog.img}
                         alt={prog.name}
                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
-                      <span className="absolute right-4 top-4 inline-flex h-6 w-[95px] items-center justify-center rounded-br-[8px] rounded-tl-[8px] bg-[var(--color-accent0)] text-xs font-bold text-[var(--color-text-brown)]">
+                      <span className="absolute right-4 top-4 inline-flex h-6 w-[95px] items-center justify-center rounded-br-[8px] rounded-tl-[8px] bg-accent0 text-xs font-bold text-brown">
                         {prog.age}
                       </span>
                     </div>
 
                     <div className="flex flex-1 flex-col items-center px-4 text-center">
-                      <h3 className="mb-3 font-cal-sans text-[22px] font-normal leading-[22px] tracking-[-0.2px] text-white capitalize">
+                      <h3 className="mb-3  text-white capitalize">
                         {prog.name}
                       </h3>
-                      <p className="mb-6 font-dm-sans text-[15px] leading-[25px] tracking-[-0.2px] text-white/80">
+                      <p className="mb-6  text-white/80">
                         {prog.desc}
                       </p>
                       <Button

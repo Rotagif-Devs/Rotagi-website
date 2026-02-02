@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, DM_Sans, Cal_Sans, Inter } from "next/font/google";
+import { DM_Sans, Cal_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/globalComp/Header";
 
@@ -40,7 +40,7 @@ export default function RootLayout({
         className={`${inter.variable} ${dmSans.variable} ${calSans.variable} antialiased bg-primary text-gray-900`}
       >
         <Header />
-        <div className="mt-14">{children}</div>
+        <div className="mt-14 lg:mt-20">{children}</div>
       </body>
     </html>
   );

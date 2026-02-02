@@ -17,7 +17,7 @@
   --gray-color: #bababa;
   --color-light-mode-test: #1f2937;
   --color-text-hdd: #667085;
-  --color-text-brown: #250416;
+  --color-brown: #250416;
   --color-accent0: #fabfd3;
   --color-darkgray: #525252;
 
@@ -83,26 +83,22 @@ h4,
 h5 {
   font-family: var(--font-cal-sans), sans-serif;
 }
-h1,
-h2,
-h3 {
-  letter-spacing: -0.07em;
-}
+
 
 h1 {
-  @apply text-6xl lg:text-7xl font-bold uppercase;
+  @apply text-6xl lg:text-7xl ;
 }
 h2 {
-  @apply text-4xl lg:text-5xl font-bold capitalize;
+  @apply text-4xl lg:text-5xl capitalize;
 }
 h3 {
-  @apply text-2xl font-bold capitalize;
+  @apply text-2xl capitalize;
 }
 h4 {
-  @apply text-base  font-medium capitalize;
+  @apply text-base capitalize;
 }
 h5 {
-  @apply text-sm font-normal capitalize;
+  @apply text-sm capitalize;
 }
 p {
   @apply text-base lg:text-lg font-normal;
