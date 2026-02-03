@@ -1,44 +1,18 @@
 "use client";
 
-import {
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
-
-const programs = [
-  {
-    age: "Ages 10-12",
-    name: "She Ignite",
-    desc: "Building foundational AI awareness and digital literacy for young girls through interactive learning and hands-on projects.",
-    img: "/img-1.png",
-  },
-  {
-    age: "Ages 13-15",
-    name: "She Blossom",
-    desc: "Developing deeper technical skills and critical thinking through AI applications, coding basics, and problem-solving.",
-    img: "/img-2.png",
-  },
-  {
-    age: "Ages 16-18",
-    name: "She Blaze",
-    desc: "Advanced AI learning, leadership development, and career preparation for young women ready to lead in technology.",
-    img: "/img-3.png",
-  },
-  {
-    age: "Ages 18-40",
-    name: "She Ascend",
-    desc: "Professional AI skills training, entrepreneurship support, and career advancement for African women in tech.",
-    img: "/img-4.png",
-  },
-];
+import Link from "next/link";
+import { getAllPrograms } from "@/lib/programs";
 
 export default function Programs() {
+  const programs = getAllPrograms();
+
   return (
     <section className="md:py-20 bg-secondary flex justify-center">
       <div className="relative mx-4 w-full max-w-7xl  px-4 ">
@@ -62,24 +36,28 @@ export default function Programs() {
                   <Image
                     width={500}
                     height={500}
-                    src={prog.img}
+                    src={prog.image}
                     alt={prog.name}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <span className="absolute right-4 top-4 inline-flex h-6 w-[95px] items-center justify-center rounded-br-[8px] rounded-tl-[8px] bg-accent0 text-xs font-bold text-brown">
-                    {prog.age}
+                    {prog.ageRange}
                   </span>
                 </div>
 
                 <div className="flex flex-1 flex-col items-center text-center">
                   <h3 className="mb-3  text-white capitalize">{prog.name}</h3>
-                  <p className="mb-6  text-white/80">{prog.desc}</p>
-                  <Button
-                    variant="ghost"
-                    className="mt-auto inline-flex items-center gap-2 font-semibold text-white transition hover:text-pink-200"
-                  >
-                    Learn More
-                  </Button>
+                  <p className="mb-6  text-white/80 line-clamp-3">
+                    {prog.tagline}
+                  </p>
+                  <Link href={`/programs/${prog.slug}`} className="mt-auto">
+                    <Button
+                      variant="ghost"
+                      className="inline-flex items-center gap-2 font-semibold text-white transition hover:text-pink-200"
+                    >
+                      Learn More
+                    </Button>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -104,12 +82,12 @@ export default function Programs() {
                       <Image
                         width={500}
                         height={500}
-                        src={prog.img}
+                        src={prog.image}
                         alt={prog.name}
                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                       <span className="absolute right-4 top-4 inline-flex h-6 w-[95px] items-center justify-center rounded-br-[8px] rounded-tl-[8px] bg-accent0 text-xs font-bold text-brown">
-                        {prog.age}
+                        {prog.ageRange}
                       </span>
                     </div>
 
@@ -117,16 +95,16 @@ export default function Programs() {
                       <h3 className="mb-3  text-white capitalize">
                         {prog.name}
                       </h3>
-                      <p className="mb-6  text-white/80">
-                        {prog.desc}
-                      </p>
-                      <Button
-                        variant="ghost"
-                        className="mt-auto inline-flex items-center gap-2 font-semibold text-white transition hover:text-pink-200"
-                        style={{ fontSize: "18px" }}
-                      >
-                        Learn More
-                      </Button>
+                      <p className="mb-6  text-white/80">{prog.tagline}</p>
+                      <Link href={`/programs/${prog.slug}`} className="mt-auto">
+                        <Button
+                          variant="ghost"
+                          className="inline-flex items-center gap-2 font-semibold text-white transition hover:text-pink-200"
+                          style={{ fontSize: "18px" }}
+                        >
+                          Learn More
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </SwiperSlide>
