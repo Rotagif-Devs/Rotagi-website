@@ -1,8 +1,9 @@
 export interface Program {
   id: string;
   name: string;
-  slug: string;
+  slug: string; 
   ageRange: string;
+  level: string;
   tagline: string;
   description: string;
   duration: string;
@@ -28,6 +29,7 @@ export const programs: Program[] = [
     id: "she-ignite",
     name: "She Ignite",
     slug: "she-ignite",
+    level: "Beginner",
     ageRange: "Ages 10-12",
     tagline:
       "An introductory program designed to spark curiosity and build foundational digital literacy in young girls.",
@@ -71,7 +73,8 @@ export const programs: Program[] = [
     id: "she-blossom",
     name: "She Blossom",
     slug: "she-blossom",
-    ageRange: "Ages 13-15",
+    ageRange: "Ages 13-15", 
+    level: "Intermediate",
     tagline:
       "An intermediate program that builds practical AI and programming skills through hands-on projects.",
     description:
@@ -116,6 +119,7 @@ export const programs: Program[] = [
     name: "She Blaze",
     slug: "she-blaze",
     ageRange: "Ages 16-18",
+    level: "Advanced",
     tagline:
       "An advanced program preparing young women for tech careers through industry-standard tools and mentorship.",
     description:
@@ -161,6 +165,7 @@ export const programs: Program[] = [
     name: "She Ascend",
     slug: "she-ascend",
     ageRange: "Ages 18-40",
+    level: "Intermediate",
     tagline:
       "A professional program supporting women entering or transitioning into AI and technology careers.",
     description:

@@ -22,7 +22,7 @@ export default function Header() {
             href="/"
             className="inline-block font-cal-sans font-bold uppercase text-secondary text-2xl "
           >
-            ROTAGI
+            ROTAGIF
           </Link>
         </div>
 

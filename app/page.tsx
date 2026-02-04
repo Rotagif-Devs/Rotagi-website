@@ -5,8 +5,7 @@ import Marquee from "@/components/landingpage/Marquee";
 import Impact from "@/components/landingpage/Impact";
 import Partners from "@/components/landingpage/Partners";
 import Updates from "@/components/landingpage/Updates";
-import CTA from "@/components/landingpage/CTA";
-import Footer from "@/components/globalComp/Footer";
+import CTA from "@/components/globalComp/CTA";
 import Image from "next/image";
 
 export default function Home() {
@@ -31,7 +30,6 @@ export default function Home() {
         <Updates />
         <CTA />
       </main>
-      <Footer />
     </div>
   );
 }
