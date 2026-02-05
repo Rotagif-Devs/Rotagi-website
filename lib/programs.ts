@@ -10,9 +10,6 @@ export interface Program {
   format: string;
   schedule: string;
   image: string;
-  // title: string;
-  // mode?: string;
-  // outcomes?: string[];
   prerequisites: {
     title: string;
     items: string[];

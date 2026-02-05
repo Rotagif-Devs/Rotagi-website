@@ -41,7 +41,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: var(--color-primary);
-    --foreground: #ededed;
+    /* --foreground: #ededed; */
   }
 }
 
