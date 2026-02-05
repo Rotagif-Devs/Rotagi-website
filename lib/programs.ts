@@ -10,6 +10,9 @@ export interface Program {
   format: string;
   schedule: string;
   image: string;
+  // title: string;
+  // mode?: string;
+  // outcomes?: string[];
   prerequisites: {
     title: string;
     items: string[];
@@ -133,7 +136,7 @@ export const programs: Program[] = [
       items: [
         "Completion of She Blossom or demonstrated intermediate programming skills",
         "Portfolio of previous tech projects",
-        "Age 16-18 years",
+        "16-18 years",
         "Strong commitment (15-20 hours per week)",
       ],
     },

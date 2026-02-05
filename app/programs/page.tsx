@@ -4,6 +4,7 @@ import ProgramCard from "@/components/programs/ProgramCard";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+<<<<<<< Updated upstream
 import CTA from "@/components/globalComp/CTA";
 import { useState } from "react";
 
@@ -14,6 +15,10 @@ const FILTERS = [
   { label: "16-18", value: "Ages 16-18" },
   { label: "18-40", value: "Ages 18-40" },
 ];
+=======
+import ProgramHero from "@/components/programs/ProgramHero";
+import { Programselection } from "@/components/programs/Programselection";
+>>>>>>> Stashed changes
 
 export default function ProgramsPage() {
   const programs = getAllPrograms();
@@ -25,6 +30,7 @@ export default function ProgramsPage() {
       : programs.filter((program) => program.ageRange === selectedFilter);
 
   return (
+<<<<<<< Updated upstream
     <main className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-screen flex overflow-hidden bg-[#41122B] lg:mx-4 lg:rounded-lg">
@@ -109,5 +115,25 @@ export default function ProgramsPage() {
 
       <CTA />
     </main>
+=======
+    <div className="programs-page">
+       <ProgramHero/>
+       <Programselection/>
+       
+      {/* <h1>Program Pathways</h1> */}
+
+      {/* <div className="programs-grid">
+        {programs.map((program) => (
+          <div key={program.id} className="program-card">
+            <span className="age-badge">{program.ageRange}</span>
+            <Image width={500} height={500} src={program.image} alt={program.name} />
+            <h2>{program.name}</h2>
+            <p>{program.tagline}</p>
+            <Link href={`/programs/${program.slug}`}>Learn More →</Link>
+          </div>
+        ))}
+      </div> */}
+    </div>
+>>>>>>> Stashed changes
   );
 }

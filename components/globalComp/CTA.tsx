@@ -4,14 +4,13 @@ import Button from "../ui/Button";
 export default function CTA() {
   return (
     <section className="bg-primary py-16 md:py-20 flex justify-center">
-      <div className="flex w-full max-w-[1260px] flex-col gap-10 px-5 md:px-0 md:gap-[76px]">
+      <div className="flex w-full max-w-315 flex-col gap-10 px-5 md:px-0 md:gap-19">
         {/* Title + description + buttons area */}
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-12">
-          <h2 className="md:max-w-[600px] ]">
+          <h2 className="md:max-w-150">
             Join Us in Empowering the Next Generation
           </h2>
-
-          <div className="flex flex-col items-start gap-6 md:max-w-[580px]">
+          <div className="flex flex-col items-start gap-6 md:max-w-145">
             <p className="text-darkgray text-left ">
               Whether through donations, mentorship, or partnerships — your support creates lasting change.
             </p>
@@ -30,7 +29,7 @@ export default function CTA() {
 
         {/* Video / hero preview */}
         <div className="flex w-full justify-center">
-          <div className="group relative w-full overflow-hidden rounded-3xl bg-white md:aspect-1256/711 md:max-w-[1256px] md:rounded-[64px] aspect- ">
+          <div className="group relative w-full overflow-hidden rounded-3xl bg-white md:aspect-1256/711 md:max-w-314 md:rounded-[64px] aspect- ">
             {/* Placeholder background (replace with <video> or iframe when ready) */}
             <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-gray-100 to-gray-200">
               {/* Play button overlay */}
@@ -42,7 +41,6 @@ export default function CTA() {
             </div>
           </div>
         </div>
-
         {/* Buttons below video on mobile */}
         <div className="flex gap-4 justify-center md:hidden sm:flex-row">
           <Button href="/donate" variant="primary" className="">
