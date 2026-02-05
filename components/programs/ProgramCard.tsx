@@ -12,7 +12,7 @@ export default function ProgramCard({ program }: Props) {
   return (
     <div className="flex flex-col overflow-hidden rounded-3xl bg-[#FDF2F8]">
       {/* Image Container */}
-      <div className="relative aspect-4/3 w-full overflow-hidden">
+      <div className="relative aspect-4/3 md: w-full overflow-hidden">
         <Image
           src={program.image || "/placeholder.svg"}
           alt={program.name}
@@ -44,7 +44,7 @@ export default function ProgramCard({ program }: Props) {
         </p>
 
         <ul className="mb-6 space-y-2">
-          {program.prerequisites.items.slice(0, 3).map((item, index) => (
+          {program.prerequisites.items.map((item, index) => (
             <li
               key={index}
               className="flex items-start gap-2 text-sm text-gray-600"
