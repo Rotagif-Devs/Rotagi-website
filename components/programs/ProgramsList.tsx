@@ -45,7 +45,7 @@ export default function ProgramsList({ programs, filters }: Props) {
         <div className="container mx-auto">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:gap-12 max-w-6xl mx-auto">
             {filteredPrograms.map((program) => (
-              <ProgramCard key={program.id} program={program} />
+              <ProgramCard key={program.id} program={program} index={0} />
             ))}
           </div>
           {filteredPrograms.length === 0 && (
