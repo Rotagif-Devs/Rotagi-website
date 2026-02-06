@@ -8,20 +8,17 @@ export default function CTA() {
         {/* Title + description + buttons area */}
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-12">
           <h2 className="md:max-w-150">
-            Join Us in Empowering the Next Generation
+             Ready to Get Started
           </h2>
           <div className="flex flex-col items-start gap-6 md:max-w-145">
             <p className="text-darkgray text-left ">
-              Whether through donations, mentorship, or partnerships — your support creates lasting change.
+              Join She Ignite and take the next step in your technology journey.
             </p>
 
             {/* Buttons visible only on desktop in top right */}
             <div className="hidden md:flex gap-4">
-              <Button href="/donate" variant="primary" className="">
-                Donate Now
-              </Button>
-              <Button href="/programs" variant="secondary" className="">
-                Explore Programs
+              <Button href="/programs" variant="primary" className="">
+                Get Started Now
               </Button>
             </div>
           </div>

@@ -2,6 +2,7 @@ export interface Program {
   slug: string;
   title: string;
   ageRange: string;
+  curiosity: string;
   description: string;
   duration: string;
   mode: string;

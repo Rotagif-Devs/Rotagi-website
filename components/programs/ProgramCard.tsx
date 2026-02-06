@@ -4,11 +4,12 @@ import type { Program } from "@/lib/programs";
 import Image from "next/image";
 import Button from "../ui/Button";
 
+// import { Program } from "@/types/program";
 interface Props {
   program: Program;
+  index: number;
 }
-
-export default function ProgramCard({ program }: Props) {
+export default function ProgramCard({ program, index }: Props) {
   return (
     <div className="flex flex-col  overflow-hidden rounded-3xl bg-[#FDF2F8]">
       {/* Image Container */}
@@ -30,7 +31,7 @@ export default function ProgramCard({ program }: Props) {
       {/* Content */}
       <div className="flex flex-1 flex-col p-6">
         <div className="mb-4">
-          <span className="inline-block rounded-full bg-[#FCE7F3] px-3 py-1 text-sm font-semibold text-[#DB2777]">
+          <span className="inline-block rounded-full bg-[#FABFD380] px-3 py-1.5 text-sm font-semibold text-[#D62D88]">
             {program.ageRange}
           </span>
         </div>

@@ -2,16 +2,14 @@
 import { getProgramBySlug, getAllPrograms } from "@/lib/programs";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import PTA from "@/components/globalComp/PTA";
 import Image from "next/image";
-
-
 export async function generateStaticParams() {
   const programs = getAllPrograms();
   return programs.map((program) => ({
     slug: program.slug,
   }));
 }
-
 export default async function ProgramDetailPage({
   params,
 }: {
@@ -25,53 +23,87 @@ export default async function ProgramDetailPage({
   }
 
   return (
-    <div className="program-detail">
-      <Link href="/programs">← Back to programs</Link>
-
-      <span className="age-badge">{program.ageRange}</span>
-      <h1>{program.name}</h1>
-      <p className="tagline">{program.tagline}</p>
-
-      <Image width={500} height={500} src={program.image} alt={program.name} />
-
-      <p className="description">{program.description}</p>
-
-      <div className="program-info">
-        <div>{program.duration}</div>
-        <div>{program.format}</div>
-        <div>{program.schedule}</div>
+    <section className="">
+      <div className="px-15">
+      <span className="flex items-center gap-3">←<Link href="/programs" className="flex items-center text-sm">Back to programs</Link></span>
+      <div className="">
+        <div className="flex justify-center items-center flex-col">
+          <span className="inline-block rounded-full bg-[#FABFD380] px-3 py-1 text-sm font-medium text-[#DB2777]">
+            {program.ageRange}
+          </span>
+          <h1 className="text-black font-medium my-6">{program.name}</h1>
+          <p className="tagline text-[#121212] font-medium">{program.tagline}</p>
+        </div>
+        <div>
+          <div className="w-full h-full md:h-[50vh] lg:h-[70vh] my-4">
+            <img
+              src={program.image}
+              alt={program.name}
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <div className="text-[#121212] text-sm md:text-base lg:text-lg my-4">{program.description}</div>
+          <div className="flex gap-6 my-4 text-[#49594C] text-sm md:text-sm lg:text-base">
+            <div>{program.duration}</div>
+            <div>{program.format}</div>
+            <div>{program.schedule}</div>
+          </div>
+        </div>
+      </div>
       </div>
 
-      <div className="two-column">
-        <section>
-          <h2>{program.achievements.title}</h2>
-          <ul>
+      <div className="grid grid-cols-2 md:grid-cols-2 items-center gap-10 bg-white py-20 px-15">
+        <div>
+          <div className="text-base md:text-lg lg:text-xl font-semibold text-[#DB2777] mb-3 md:mb-5">
+            {program.achievements.title}{" "}
+          </div>
+
+          <ul className="list-disc pl-5">
             {program.achievements.items.map((item, index) => (
-              <li key={index}>{item}</li>
+              <li
+                className="  my-1 text-[#49594C] text-sm  md:text-base lg:text-lg"
+                key={index}
+              >
+                {item}
+              </li>
             ))}
           </ul>
-        </section>
-
-        <section>
-          <h2>{program.prerequisites.title}</h2>
-          <ul>
+        </div>
+        <div>
+          <div className="text-base md:text-lg lg:text-xl font-semibold text-[#DB2777] mb-3 md:mb-5">
+            {program.prerequisites.title}{" "}
+          </div>
+          <ul className="list-disc pl-5">
             {program.prerequisites.items.map((item, index) => (
-              <li key={index}>{item}</li>
+              <li
+                className="  my-1 text-[#49594C] text-sm  md:text-base lg:text-lg"
+                key={index}
+              >
+                {item}
+              </li>
             ))}
           </ul>
-        </section>
+        </div>
+        <div>
+          <div className="text-base md:text-lg lg:text-xl font-semibold text-[#DB2777] mb-3 md:mb-5">
+            {program.benefits.title}{" "}
+          </div>
+          <ul className="list-disc pl-5">
+            {program.benefits.items.map((item, index) => (
+              <li
+                className="  my-1 text-[#49594C] text-sm  md:text-base lg:text-lg"
+                key={index}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
-      <section>
-        <h2>{program.benefits.title}</h2>
-        <ul>
-          {program.benefits.items.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-      </section>
-
-      <button>Get Started Now</button>
-    </div>
+      {/* <CTA /> */}
+      {/* </div> */}
+      <PTA />
+    </section>
   );
 }
