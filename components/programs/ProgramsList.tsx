@@ -4,19 +4,12 @@ import { useState } from "react";
 import ProgramCard from "@/components/programs/ProgramCard";
 import type { Program } from "@/lib/programs";
 
-const FILTERS = [
-  { label: "All", value: "All" },
-  { label: "10-12 Years", value: "Ages 10-12" },
-  { label: "13-15 Years", value: "Ages 13-15" },
-  { label: "16-18 Years", value: "Ages 16-18" },
-  { label: "18-40 Years", value: "Ages 18-40" },
-];
-
 interface Props {
   programs: Program[];
+  filters: { label: string; value: string }[];
 }
 
-export default function ProgramsList({ programs }: Props) {
+export default function ProgramsList({ programs, filters }: Props) {
   const [selectedFilter, setSelectedFilter] = useState("All");
 
   const filteredPrograms =
@@ -28,9 +21,9 @@ export default function ProgramsList({ programs }: Props) {
     <>
       {/* Filter Section */}
       <div className="py-8 px-4 sm:px-12">
-        <div className="flex justify-center">
+        <div className="flex justify-left">
           <div className="bg-white inline-flex gap-2 rounded-full px-1 py-1 text-sm font-medium text-gray-600 overflow-x-auto max-w-full scrollbar-hide">
-            {FILTERS.map((filter) => (
+            {filters.map((filter) => (
               <button
                 key={filter.label}
                 onClick={() => setSelectedFilter(filter.value)}

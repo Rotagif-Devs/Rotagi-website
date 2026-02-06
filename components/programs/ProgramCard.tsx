@@ -10,9 +10,9 @@ interface Props {
 
 export default function ProgramCard({ program }: Props) {
   return (
-    <div className="flex flex-col overflow-hidden rounded-3xl bg-[#FDF2F8]">
+    <div className="flex flex-col  overflow-hidden rounded-3xl bg-[#FDF2F8]">
       {/* Image Container */}
-      <div className="relative aspect-4/3 md: w-full overflow-hidden">
+      <div className="relative aspect-4/3 md:aspect-video w-full overflow-hidden">
         <Image
           src={program.image || "/placeholder.svg"}
           alt={program.name}
@@ -21,7 +21,7 @@ export default function ProgramCard({ program }: Props) {
           height={500}
         />
         <div className="absolute left-4 top-4">
-          <span className="inline-flex rounded-full bg-black/80 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
+          <span className="inline-flex rounded-full text-black/80 px-3 py-1 text-xs font-medium bg-white/60 backdrop-blur-sm">
             {program.level}
           </span>
         </div>
@@ -55,14 +55,16 @@ export default function ProgramCard({ program }: Props) {
           ))}
         </ul>
 
-        <Button
-          variant="ghost"
-          withArrow
-          href={`/programs/${program.slug}`}
-          className=""
-        >
-          Learn more
-        </Button>
+        <div>
+          <Button
+            variant="ghost"
+            withArrow
+            href={`/programs/${program.slug}`}
+            className=""
+          >
+            Learn more
+          </Button>
+        </div>
       </div>
     </div>
   );

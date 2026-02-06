@@ -2,7 +2,12 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-export default function ProgramsHero() {
+interface Props {
+  title: string;
+  description: string;
+}
+
+export default function ProgramsHero({ title, description }: Props) {
   return (
     <section className="relative min-h-[600px] flex overflow-hidden bg-[#41122B] lg:mx-4 lg:rounded-lg">
       {/* Background Image with Overlay */}
@@ -28,7 +33,7 @@ export default function ProgramsHero() {
             className="max-w-5xl mx-auto"
           >
             <h1 className="text-white text-4xl sm:text-6xl font-bold tracking-tight mb-6">
-              Program Pathways
+              {title}
             </h1>
           </motion.div>
 
@@ -39,8 +44,7 @@ export default function ProgramsHero() {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="text-lg sm:text-xl text-gray-100"
             >
-              Empowering the next generation of women in technology through
-              specialized training, mentorship, and real-world experience.
+              {description}
             </motion.p>
           </div>
         </div>
