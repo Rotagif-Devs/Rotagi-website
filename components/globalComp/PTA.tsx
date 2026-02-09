@@ -16,7 +16,7 @@ export default function CTA() {
             </p>
 
             {/* Buttons visible only on desktop in top right */}
-            <div className="hidden md:flex gap-4">
+            <div className="flex gap-4">
               <Button href="/programs" variant="primary" className="">
                 Get Started Now
               </Button>
@@ -37,15 +37,6 @@ export default function CTA() {
               </div>
             </div>
           </div>
-        </div>
-        {/* Buttons below video on mobile */}
-        <div className="flex gap-4 justify-center md:hidden sm:flex-row">
-          <Button href="/donate" variant="primary" className="">
-            Donate Now
-          </Button>
-          <Button href="/programs" variant="secondary" className="">
-            Explore Programs
-          </Button>
         </div>
       </div>
     </section>
