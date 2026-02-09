@@ -1,6 +1,5 @@
 "use client";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+
 import Button from "../ui/Button";
 
 export default function ProgramsCTA() {
@@ -10,12 +9,12 @@ export default function ProgramsCTA() {
         <div className="">
           <div className="lg:flex justify-between ">
             <div className="max-w-xl">
-              <h2 className="mb-6 text-3xl font-bold text-gray-900 sm:text-4xl">
+              <h2 className="mb-6 text-gray-900">
                 Looking for Flexible Learning?
               </h2>
             </div>
             <div className="max-w-xl">
-              <p className="mb-8 text-lg text-gray-600">
+              <p className="mb-8 text-gray-600">
                 We offer self-paced modules and weekend workshops for those who
                 need a more adaptable schedule.
               </p>

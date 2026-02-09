@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="flex flex-col lg:flex-row justify-between gap-8 pt-4 w-full">
           {/* Brand & Description */}
           <div className="max-w-[300px]">
-            <h2 className="  mb-6 ">ROTAGI</h2>
+            <h2 className="  mb-6 ">ROTAGIF</h2>
             <p className="text-gray-300 text-sm">
               Empowering young African girls and women with AI literacy, digital
               confidence, and leadership skills.
@@ -87,7 +87,7 @@ export default function Footer() {
 
             {/* Social Icons */}
             <div className="flex gap-4 mb-6">
-              <a
+              <Link
                 href="#"
                 className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition-colors"
               >
@@ -103,7 +103,7 @@ export default function Footer() {
                     clipRule="evenodd"
                   />
                 </svg>
-              </a>
+              </Link>
               <a
                 href="#"
                 className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition-colors"

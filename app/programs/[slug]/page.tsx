@@ -4,12 +4,16 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import PTA from "@/components/globalComp/PTA";
 import Image from "next/image";
+import { CalendarRange, Clock, Group, User } from "lucide-react";
+
 export async function generateStaticParams() {
   const programs = getAllPrograms();
   return programs.map((program) => ({
     slug: program.slug,
   }));
 }
+
+
 export default async function ProgramDetailPage({
   params,
 }: {
@@ -36,17 +40,25 @@ export default async function ProgramDetailPage({
         </div>
         <div>
           <div className="w-full h-full md:h-[50vh] lg:h-[70vh] my-4">
-            <img
-              src={program.image}
+            <Image
+              width={500}
+              height={500}
+              src={program.detailImage}
               alt={program.name}
               className="w-full h-full object-contain"
             />
           </div>
           <div className="text-[#121212] text-sm md:text-base lg:text-lg my-4">{program.description}</div>
           <div className="flex gap-6 my-4 text-[#49594C] text-sm md:text-sm lg:text-base">
-            <div>{program.duration}</div>
-            <div>{program.format}</div>
-            <div>{program.schedule}</div>
+            <div className="flex items-center gap-2">
+              <Clock width={20} height={20} />
+              {program.duration}</div>
+            <div className="flex items-center gap-2">
+              <User width={20} height={20} />
+              {program.format}</div>
+            <div className="flex items-center gap-2">
+              <CalendarRange width={20} height={20} />
+              {program.schedule}</div>
           </div>
         </div>
       </div>

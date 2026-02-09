@@ -33,7 +33,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
       secondary: "bg-white text-black hover:bg-gray-50 ",
       outline:
         "bg-transparent border-2 border-white text-white hover:bg-white/10",
-      ghost: "bg-transparent text-secondary hover:bg-secondary/10",
+      ghost: "p-0 bg-transparent text-secondary hover:bg-secondary/10",
     };
 
     const sizes = {
