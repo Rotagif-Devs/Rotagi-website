@@ -13,22 +13,27 @@ const stats = [
 
 export default function Impact() {
   return (
-    <section className="bg-primary py-16 md:py-20 flex justify-center">
-      <div className="flex w-full max-w-[1260px] flex-col gap-10 px-5 md:px-0 md:gap-[76px]">
+    <section className="bg-primary py-24 px-6 lg:px-8 flex justify-center">
+      <div className="flex w-full max-w-7xl flex-col gap-12 md:gap-20">
         {/* Title + text + button area */}
-        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
-          <h2 className="text-black md:max-w-[486px] ">
+        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+          <h2 className="text-black max-w-lg font-cal-sans lowercase leading-tight">
             Access That Creates Impact
           </h2>
 
-          <div className="flex flex-col items-start gap-6 md:max-w-[580px]">
-            <p className=" text-black">
-              Since 2020, ROTAGIF has equipped hundreds of girls and women with skills that translate into confidence, careers, and community transformation across Africa.
+          <div className="flex flex-col items-start gap-8 max-w-2xl">
+            <p className="text-gray-700 text-lg md:text-xl font-dm-sans leading-relaxed">
+              Since 2020, ROTAGIF has equipped hundreds of girls and women with
+              skills that translate into confidence, careers, and community
+              transformation across Africa.
             </p>
 
-            {/* Button only on mobile in top section (hidden on md+) */}
-            <div className="md:hidden w-full sm:w-auto">
-              <Button variant="secondary" href="/programs" className="">
+            <div className="hidden md:block">
+              <Button
+                variant="secondary"
+                href="/programs"
+                className="px-10 py-4"
+              >
                 Learn More
               </Button>
             </div>
@@ -38,16 +43,16 @@ export default function Impact() {
         {/* Stats content */}
         <div className="relative">
           {/* Desktop: 3-column grid */}
-          <div className="hidden md:grid md:grid-cols-3 md:gap-6">
+          <div className="hidden md:grid md:grid-cols-3 md:gap-8">
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="flex h-[270px] flex-col items-center justify-center gap-4 rounded-[40px] bg-white px-12 py-14 md:px-[59px] md:py-14"
+                className="flex h-[400px] flex-col items-center justify-center gap-6 rounded-[48px] bg-white px-10 py-16 shadow-sm border border-black/5 hover:shadow-md transition-shadow"
               >
-                <div className="font-cal-sans text-[5rem] font-light leading-none text-gray-500 lg:text-[96px]">
+                <div className="font-cal-sans text-8xl lg:text-8xl font-thin leading-none text-black/40">
                   {stat.num}
                 </div>
-                <div className="font-dm-sans text-lg text-center text-gray-500 md:text-[18px] md:leading-[140%]">
+                <div className="font-dm-sans text-xl text-gray-400 text-center font-thin capitalize tracking-wide">
                   {stat.label}
                 </div>
               </div>
@@ -55,22 +60,20 @@ export default function Impact() {
           </div>
 
           {/* Mobile: Swiper with partial next-card peek */}
-          <div className="md:hidden ">
+          <div className="md:hidden">
             <Swiper
-              slidesPerView={1.25}   
-              spaceBetween={50}
-              centeredSlides={false}
-              initialSlide={0}
+              slidesPerView={1.2}
+              spaceBetween={24}
               grabCursor={true}
-              className="pb-4"
+              className="pb-10"
             >
               {stats.map((stat) => (
                 <SwiperSlide key={stat.label}>
-                  <div className="mx-auto h-[240px] w-[85vw] max-w-[320px] rounded-[32px] bg-white px-8 py-10 flex flex-col items-center justify-center gap-3">
-                    <div className="font-cal-sans text-6xl font-light leading-none text-gray-500 xs:text-7xl">
+                  <div className="h-[320px] rounded-[40px] bg-white px-8 py-12 flex flex-col items-center justify-center gap-6 shadow-sm border border-black/5">
+                    <div className="font-cal-sans text-7xl font-thin leading-none text-black/60">
                       {stat.num}
                     </div>
-                    <div className="font-dm-sans text-base leading-[140%] text-center text-gray-500">
+                    <div className="font-dm-sans text-xl text-gray-400 text-center font-thin capitalize">
                       {stat.label}
                     </div>
                   </div>
@@ -80,8 +83,8 @@ export default function Impact() {
           </div>
 
           {/* Learn More button below slider on mobile */}
-          <div className="mt-10 flex justify-center md:hidden">
-            <Button href="/programs" variant="secondary" className="">
+          <div className="mt-6 flex justify-center md:hidden">
+            <Button href="/programs" variant="secondary" className="px-10 py-4">
               Learn More
             </Button>
           </div>

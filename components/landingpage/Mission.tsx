@@ -23,31 +23,41 @@ const pillars = [
 
 export default function Mission() {
   return (
-    <section className="py-24 ">
-      <div className="mx-auto px-6 lg:px-8 flex flex-col items-center text-center max-w-6xl">
-        <h2 className="mb-6">
+    <section className="py-24 bg-primary px-6 lg:px-8">
+      <div className="mx-auto flex flex-col items-center text-center max-w-6xl">
+        <h2 className="mb-6 text-black font-cal-sans lowercase">
           Our Integrated Mission
         </h2>
-        <p className=" max-w-2xl mb-20">
-          ROTAGI equips African girls and women across Africa with AI literacy and digital confidence to build solutions and lead the global economy.
+        <p className="max-w-3xl text-gray-700 mb-20 text-lg md:text-xl font-dm-sans leading-relaxed">
+          ROTAGI equips African girls and women across Africa with AI literacy
+          and digital confidence to build solutions and lead the global economy.
         </p>
-        <div className="grid md:grid-cols-3 gap-14 w-full">
+        <div className="grid md:grid-cols-3 gap-12 lg:gap-20 w-full">
           {pillars.map((item, i) => (
-            <div key={i} className="flex flex-col items-center text-center">
-              <div className="mb-6 bg-white w-16 h-16 rounded-full flex items-center justify-center shadow-sm">
-                <Image 
-                  src={item.icon} 
-                  alt={item.title} 
-                  width={400} 
-                  height={400} 
-                  className={`${i === 0 ? "w-20 h-20" : "w-10 h-10"} object-contain`}
+            <div
+              key={i}
+              className="flex flex-col items-center text-center group"
+            >
+              <div className="mb-8 bg-white w-20 h-20 rounded-full flex items-center justify-center shadow-lg transition-transform group-hover:scale-110">
+                <Image
+                  src={item.icon}
+                  alt={item.title}
+                  width={40}
+                  height={40}
+                  className="w-16 h-16 object-contain"
                 />
-              </div>              
-              <div className="mb-4">
-                <h4 className="font-inter text-center">{item.title}</h4>
-                <h4 className="text-center">{item.subtitle}</h4>
               </div>
-              <p className="text-center">{item.desc}</p>
+              <div className="mb-4">
+                <h3 className="font-cal-sans text-black mb-2 lowercase">
+                  {item.title}
+                </h3>
+                <h4 className="text-gray-600 font-dm-sans text-sm md:text-base tracking-wide uppercase">
+                  {item.subtitle}
+                </h4>
+              </div>
+              <p className="text-gray-600 leading-relaxed font-dm-sans">
+                {item.desc}
+              </p>
             </div>
           ))}
         </div>

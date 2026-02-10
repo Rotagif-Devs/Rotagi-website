@@ -15,17 +15,33 @@ export default function Home() {
         <Hero />
         <Mission />
         <Programs />
-        <Marquee text="Impact Areas · Impact Areas · Impact Areas · " />
+        <Marquee
+          text="Impact Areas · Impact Areas · Impact Areas · "
+          style={{ backgroundColor: "black", border: "none" }}
+          textStyle={{ color: "white" }}
+        />
         <Impact />
-         <Marquee text=". trusted partners . trusted partners  . TRUSTED PARTNERS " />
+        <Marquee
+          text=". trusted partners . trusted partners  . TRUSTED PARTNERS "
+          style={{ backgroundColor: "black", border: "none" }}
+          textStyle={{ color: "white" }}
+        />
         <Partners />
-        <Marquee 
+        <Marquee
           text={
             <>
-              What’s New · What’s New · What’s New<Image src="/Star 6.png" alt="star" width={1080} height={1080} className="w-10 h-10 -ml-4 relative -top-12" />
+              What’s New · What’s New · What’s New
+              <Image
+                src="/Star 6.png"
+                alt="star"
+                width={1080}
+                height={1080}
+                className="w-10 h-10 -ml-4 relative -top-12"
+              />
             </>
           }
-          style={{ backgroundColor: 'var(--color-orange)' }}
+          style={{ backgroundColor: "var(--color-orange)", border: "none" }}
+          textStyle={{ color: "white" }}
         />
         <Updates />
         <CTA />

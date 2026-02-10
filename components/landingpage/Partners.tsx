@@ -9,29 +9,34 @@ const partnerLogos = [
   { name: "Apple Pay", logo: "/ApplePay.png" },
   { name: "Skrill", logo: "/Skrill.png" },
   // Add more real partners here when ready:
-  // { name: "Paystack", logo: "/paystack.png" },
+  { name: "Paystack", logo: "/PayPass.svg" },
   // { name: "Flutterwave", logo: "/flutterwave.png" },
   // { name: "Visa", logo: "/visa.png" },
 ];
 
 export default function Partners() {
   return (
-    <section className="bg-primary py-16 md:py-20 flex justify-center">
-      <div className="flex w-full max-w-[1260px] flex-col gap-10 px-5 md:px-0 md:gap-[76px]">
+    <section className="bg-primary py-24 px-6 lg:px-8 flex justify-center border-t border-black/5">
+      <div className="flex w-full max-w-7xl flex-col gap-12 md:gap-20">
         {/* Title + description + button area */}
-        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
-          <h2 className="text-black ">
+        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+          <h2 className="text-black max-w-lg font-cal-sans lowercase leading-tight">
             Trusted by Purpose-Driven Organizations
           </h2>
 
-          <div className="flex flex-col items-start gap-6 md:max-w-[580px]">
-            <p className="text-black text-left">
-              We collaborate with partners who believe in measurable impact, inclusive growth, and empowering the next generation of African women.
+          <div className="flex flex-col items-start gap-8 max-w-2xl">
+            <p className="text-gray-700 text-lg md:text-xl font-dm-sans leading-relaxed">
+              We collaborate with partners who believe in measurable impact,
+              inclusive growth, and empowering the next generation of African
+              women.
             </p>
 
-            {/* Button visible only on mobile here (hidden on md+) */}
-            <div className="md:hidden w-full sm:w-auto">
-              <Button variant="secondary" href="/partners" className="">
+            <div className="hidden md:block">
+              <Button
+                variant="secondary"
+                href="/partners"
+                className="px-10 py-4"
+              >
                 Partner With Us
               </Button>
             </div>
@@ -41,41 +46,40 @@ export default function Partners() {
         {/* Logos section */}
         <div className="relative">
           {/* Desktop layout – equal width cards */}
-          <div className="hidden md:grid md:grid-cols-3 md:gap-6">
+          <div className="hidden md:grid md:grid-cols-3 md:gap-8">
             {partnerLogos.map((partner) => (
               <div
                 key={partner.name}
-                className="flex h-[270px] items-center justify-center rounded-[40px] bg-white px-10 py-8 md:px-[50px] md:py-10"
+                className="flex h-[320px] items-center justify-center rounded-[48px] bg-white px-12 shadow-sm border border-black/5 hover:shadow-md transition-shadow group"
               >
                 <Image
-                  width={1080}
-                  height={1080}
+                  width={400}
+                  height={400}
                   src={partner.logo}
                   alt={`${partner.name} logo`}
-                  className="max-h-[140px] w-auto object-contain opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+                  className="max-h-[160px] w-auto object-contain opacity-40 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
                 />
               </div>
             ))}
           </div>
 
           {/* Mobile Swiper with peek effect */}
-          <div className="md:hidden ">
+          <div className="md:hidden">
             <Swiper
-              slidesPerView={1.4}
-              spaceBetween={50}
+              slidesPerView={1.2}
+              spaceBetween={24}
               grabCursor={true}
-              centeredSlides={false}
-              className="pb-6"
+              className="pb-10"
             >
               {partnerLogos.map((partner) => (
                 <SwiperSlide key={partner.name}>
-                  <div className="mx-auto h-[220px] w-[80vw] max-w-[280px] rounded-[32px] bg-white px-8 py-10 flex items-center justify-center">
+                  <div className="h-[280px] rounded-[40px] bg-white px-8 py-12 flex items-center justify-center shadow-sm border border-black/5">
                     <Image
-                      width={1080}
-                      height={1080}
+                      width={300}
+                      height={300}
                       src={partner.logo}
                       alt={`${partner.name} logo`}
-                      className="max-h-[120px] w-auto object-contain opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+                      className="max-h-[140px] w-auto object-contain opacity-40 grayscale"
                     />
                   </div>
                 </SwiperSlide>
@@ -84,8 +88,8 @@ export default function Partners() {
           </div>
 
           {/* Button below slider on mobile */}
-          <div className="mt-10 flex justify-center md:hidden">
-            <Button variant="secondary" href="/partners" className="">
+          <div className="mt-6 flex justify-center md:hidden">
+            <Button variant="secondary" href="/partners" className="px-10 py-4">
               Partner With Us
             </Button>
           </div>
