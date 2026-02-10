@@ -26,6 +26,7 @@ export default function Header() {
           </Link>
         </div>
 
+
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => (
@@ -41,6 +42,9 @@ export default function Header() {
 
         {/* Desktop Action */}
         <div className="hidden md:block">
+          <Button variant="secondary" size="md" className="mr-2 border border-gray-400">
+            Get Started
+          </Button>
           <Button variant="primary" size="md">
             Donate Now
           </Button>

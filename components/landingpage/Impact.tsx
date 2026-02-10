@@ -44,10 +44,10 @@ export default function Impact() {
                 key={stat.label}
                 className="flex h-[270px] flex-col items-center justify-center gap-4 rounded-[40px] bg-white px-12 py-14 md:px-[59px] md:py-14"
               >
-                <div className="font-cal-sans text-[5rem] font-light leading-none text-gray-500 lg:text-[96px]">
+                <div className=" text-3xl font-light leading-none text-gray-900 lg:text-4xl">
                   {stat.num}
                 </div>
-                <div className="font-dm-sans text-lg text-center text-gray-500 md:text-[18px] md:leading-[140%]">
+                <div className="font-dm-sans text-lg text-center text-gray-900 md:text-[18px] md:leading-[140%]">
                   {stat.label}
                 </div>
               </div>

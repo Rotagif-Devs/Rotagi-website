@@ -48,9 +48,6 @@ export default function ProgramsList({ programs, filters }: Props) {
             {filteredPrograms.map((program) => (
               <ProgramCard key={program.id} program={program} index={0} />
 
-            {filteredPrograms.map((program, index) => (
-              <ProgramCard key={program.id} program={program} index={index} />
-
             ))}
           </div>
           {filteredPrograms.length === 0 && (

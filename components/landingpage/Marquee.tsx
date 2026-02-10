@@ -18,9 +18,7 @@ export default function Marquee({ text, style, textStyle }: MarqueeProps) {
             className="
               marquee-text font-cal-sans text-white uppercase 
               whitespace-nowrap flex items-center gap-6 md:gap-8
-              text-5xl sm:text-6xl md:text-5xl
-              font-semibold leading-none tracking-[-0.015em]
-            "
+              text-5xl sm:text-6xl md:text-5xl leading-none tracking-[-0.015em]"
             style={textStyle} // still allows override if needed
           >
             {text} • {text} {/* optional separator for better loop feel */}
@@ -28,14 +26,8 @@ export default function Marquee({ text, style, textStyle }: MarqueeProps) {
 
           {/* Duplicate for seamless loop */}
           <span 
-            className="
-              marquee-text font-cal-sans text-white uppercase 
-              whitespace-nowrap flex items-center gap-6 md:gap-8
-              text-5xl sm:text-6xl md:text-5xl 
-              font-semibold leading-none tracking-[-0.015em]
-            "
-            style={textStyle}
-          >
+            className="marquee-text font-cal-sans text-white uppercase whitespace-nowrap flex items-center gap-6 md:gap-8 text-5xl sm:text-6xl md:text-5xl leading-none tracking-[-0.015em]"
+            style={textStyle}>
             {text} • {text}
           </span>
         </div>
