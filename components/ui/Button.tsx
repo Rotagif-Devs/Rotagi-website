@@ -1,20 +1,24 @@
-// components/ui/Button.tsx
 import { ButtonHTMLAttributes, forwardRef } from "react";
-import { cn } from "@/lib/utils"; // Assuming you have this, otherwise we can inline helper or stick to template literals
+import { MoveRight } from "lucide-react";
+import Link from "next/link";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline" | "ghost" | "white";
+  variant?: "primary" | "secondary" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   fullWidth?: boolean;
+  withArrow?: boolean;
+  href?: string;
 }
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
   (
     {
       className,
       variant = "primary",
       size = "md",
       fullWidth = false,
+      withArrow = false,
+      href,
       children,
       ...props
     },
@@ -25,13 +29,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variants = {
       primary:
-        "bg-pink-600 text-white hover:bg-pink-500 shadow-lg shadow-pink-600/30 hover:shadow-pink-600/50 border border-transparent",
-      secondary:
-        "bg-purple-900 text-white hover:bg-purple-800 shadow-md shadow-purple-900/20",
+        "bg-secondary text-white hover:bg-secondary/90 ",
+      secondary: "bg-white text-black hover:bg-gray-50 ",
       outline:
-        "bg-transparent border-2 border-white text-white hover:bg-white/10", // Modified for hero context usually
-      ghost: "text-accent-3 hover:bg-purple-50",
-      white: "bg-white text-black hover:bg-gray-50 shadow-lg",
+        "bg-transparent border-2 border-white text-white hover:bg-white/10",
+      ghost: "p-0 bg-transparent text-secondary hover:bg-secondary/10",
     };
 
     const sizes = {
@@ -40,10 +42,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       lg: "px-10 py-4 text-lg",
     };
 
-    // If using clsx/tailwind-merge
-    // const classes = cn(baseStyles, variants[variant], sizes[size], fullWidth && "w-full", className);
-
-    // Using standard template literals for now to be safe
     const combinedClassName = `
       ${baseStyles} 
       ${variants[variant]} 
@@ -52,9 +50,31 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       ${className || ""}
     `.trim();
 
+    if (href) {
+      return (
+        <Link
+          href={href}
+          className={combinedClassName}
+          ref={ref as React.Ref<HTMLAnchorElement>}
+        >
+          {children}
+          {withArrow && (
+            <MoveRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+          )}
+        </Link>
+      );
+    }
+
     return (
-      <button ref={ref} className={combinedClassName} {...props}>
+      <button
+        ref={ref as React.Ref<HTMLButtonElement>}
+        className={combinedClassName}
+        {...props}
+      >
         {children}
+        {withArrow && (
+          <MoveRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+        )}
       </button>
     );
   },

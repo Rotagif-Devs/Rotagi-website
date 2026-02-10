@@ -1,18 +1,16 @@
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Mission from "@/components/Mission";
-import Programs from "@/components/Programs";
-import Marquee from "@/components/Marquee";
-import Impact from "@/components/Impact";
-import Partners from "@/components/Partners";
-import Updates from "@/components/Updates";
-import CTA from "@/components/CTA";
-import Footer from "@/components/Footer";
+import Hero from "@/components/landingpage/Hero";
+import Mission from "@/components/landingpage/Mission";
+import Programs from "@/components/landingpage/Programs";
+import Marquee from "@/components/landingpage/Marquee";
+import Impact from "@/components/landingpage/Impact";
+import Partners from "@/components/landingpage/Partners";
+import Updates from "@/components/landingpage/Updates";
+import CTA from "@/components/globalComp/CTA";
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[var(--color-primary)] font-sans antialiased overflow-hidden">
-      <Header />
+    <div className="min-h-screen bg-primary antialiased overflow-hidden">
       <main>
         <Hero />
         <Mission />
@@ -24,7 +22,7 @@ export default function Home() {
         <Marquee 
           text={
             <>
-              What’s New · What’s New · What’s New<img src="/Star 6.png" alt="star" className="w-10 h-10 -ml-4 relative -top-12" />
+              What’s New · What’s New · What’s New<Image src="/Star 6.png" alt="star" width={1080} height={1080} className="w-10 h-10 -ml-4 relative -top-12" />
             </>
           }
           style={{ backgroundColor: 'var(--color-orange)' }}
@@ -32,7 +30,6 @@ export default function Home() {
         <Updates />
         <CTA />
       </main>
-      <Footer />
     </div>
   );
 }

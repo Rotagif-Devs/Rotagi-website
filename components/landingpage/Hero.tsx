@@ -1,17 +1,18 @@
 // components/Hero.tsx
 "use client";
-
+import Image from "next/image";
 import Button from "@/components/ui/Button";
 import { motion } from "framer-motion";
-import { ArrowRightIcon } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex overflow-hidden bg-[#41122B] md:mx-4 md:mt-6 rounded-lg">
+    <section className="relative min-h-screen flex overflow-hidden bg-[#41122B] lg:mx-4 lg:rounded-lg">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           src="/hero.png"
+          width={1080}
+          height={1080}
           alt="African Girl Innovator"
           className="w-full h-full object-cover"
         />
@@ -23,13 +24,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-5xl"
           >
             <h1
-              className="
-                text-6xl md:text-7xl lg:text-7xl 
-                leading-[1.1] tracking-tight font-normal
-                text-white drop-shadow-sm max-w-[985px]
-                font-cal-sans"
+              className="text-white "
             >
              Empowering the Next Generation of African Girl Innovators
             </h1>
@@ -41,14 +39,11 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="
-                text-lg sm:text-base md:text-lg 
-                text-[rgb(186,186,186)]
-                font-light leading-relaxed max-w-[610px]
-                font-header
+                text-white max-w-3xl
               "
             >
               The next breakthrough could come from her. We are making sure
-              she's ready with AI literacy, digital skills, and leadership
+              she&apos;s ready with AI literacy, digital skills, and leadership
               confidence.
             </motion.p>
 
@@ -59,11 +54,12 @@ export default function Hero() {
               className="flex flex-col sm:flex-row gap-5 justify-center md:items-center w-fit"
             >
               <Button 
-                variant="white" 
-                className="min-w-[217.55px] h-[50px] rounded-[34px] px-[34px] py-[15px] gap-[8px] !text-base whitespace-nowrap cursor-pointer"
+                variant="secondary" 
+                href="/programs"
+                withArrow
+                className=" cursor-pointer"
               >
                 Explore Programs
-                <ArrowRightIcon className="w-6 h-6" />
               </Button>
             </motion.div>
           </div>
