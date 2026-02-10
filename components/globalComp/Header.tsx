@@ -14,32 +14,32 @@ export default function Header() {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <header className="fixed cursor-default left-0 bg-white top-0 z-50 mx-auto w-full max-w-8xl px-4 md:px-10 py-2">
-      <div className="flex bg-white items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-white/70 backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-10">
         {/* Logo */}
-        <div className="">
+        <div className="shrink-0">
           <Link
             href="/"
-            className="inline-block font-cal-sans font-bold uppercase text-secondary text-2xl "
+            className="text-2xl font-bold uppercase tracking-wider text-secondary transition-opacity hover:opacity-80 font-cal-sans"
           >
             ROTAGIF
           </Link>
         </div>
 
-        {/* Desktop Navigation + Donate Button */}
-
-        <nav className="hidden md:flex items-center gap-10">
+        {/* Desktop Navigation */}
+        <nav className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => (
             <Link
               key={item}
               href={`/${item.toLowerCase()}`}
-              className="  text-gray-700 transition font-medium hover:text-gray-900 text-base"
+              className="text-sm font-medium text-gray-700 transition-colors hover:text-secondary"
             >
               {item}
             </Link>
           ))}
         </nav>
 
+        {/* Desktop Action */}
         <div className="hidden md:block">
           <Button variant="primary" size="md">
             Donate Now
@@ -48,52 +48,30 @@ export default function Header() {
 
         {/* Mobile Hamburger Button */}
         <button
-          className="md:hidden text-black focus:outline-none focus:ring-2 focus:ring-white/50 rounded-full p-1"
+          className="rounded-full p-2 text-gray-900 transition-colors hover:bg-gray-100 md:hidden"
           onClick={toggleMenu}
           aria-label="Toggle navigation menu"
           aria-expanded={isOpen}
         >
-          <Menu className="h-8 w-8" />
+          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
-      {/* Mobile Menu Overlay (closes on click outside) */}
+      {/* Mobile Menu Panel */}
       <div
-        className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-        onClick={closeMenu}
-        aria-hidden={!isOpen}
-      />
-
-      {/* Mobile Menu Panel – slides in from right */}
-      <div
-        className={`fixed top-0 right-0 z-50 h-fit w-full bg-white shadow-2xl transition-transform duration-300 ease-in-out md:hidden ${
-          isOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed inset-x-0 top-[60px] z-50 overflow-hidden bg-white shadow-xl transition-all duration-300 ease-in-out md:hidden ${
+          isOpen
+            ? "max-h-[400px] border-b border-gray-100 opacity-100"
+            : "max-h-0 opacity-0"
         }`}
       >
-        <div className="flex h-full flex-col p-6">
-          {/* Header with logo and close button */}
-          <div className="mb-10 flex items-center justify-between">
-            <Link href="/" className="text-3xl font-bold text-secondary ">
-              ROTAGI
-            </Link>
-            <button
-              onClick={closeMenu}
-              className="rounded-full p-2 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300"
-              aria-label="Close menu"
-            >
-              <X className="h-8 w-8" />
-            </button>
-          </div>
-
-          {/* Navigation Items */}
-          <nav className="mb-auto flex flex-col gap-8">
+        <div className="flex flex-col gap-4 p-6">
+          <nav className="flex flex-col gap-4">
             {navItems.map((item) => (
               <Link
                 key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-base font-medium text-gray-900 transition"
+                href={`/${item.toLowerCase()}`}
+                className="text-lg font-medium text-gray-900 transition-colors hover:text-secondary"
                 onClick={closeMenu}
               >
                 {item}
@@ -101,19 +79,25 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Donate Button in mobile menu */}
-          <Link href="/donate-now">
+          <Link href="/donate" className="mt-2 w-full" onClick={closeMenu}>
             <Button
-              variant="primary" // or whatever variant matches your "white" style
+              variant="primary"
               size="lg"
-              className="mt-8 w-full justify-center font-dm-sans font-semibold text-base"
-              onClick={closeMenu}
+              className="w-full justify-center text-base"
             >
               Donate Now
             </Button>
           </Link>
         </div>
       </div>
+
+      {/* Mobile Overlay */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 top-[60px] z-40 bg-black/10 backdrop-blur-[2px] md:hidden"
+          onClick={closeMenu}
+        />
+      )}
     </header>
   );
 }

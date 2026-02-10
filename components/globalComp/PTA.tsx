@@ -4,19 +4,19 @@ import Button from "../ui/Button";
 export default function CTA() {
   return (
     <section className="bg-primary py-16 md:py-20 flex justify-center">
-      <div className="flex w-full max-w-315 flex-col gap-10 px-5 md:px-0 md:gap-19">
+      <div className="flex w-full flex-col gap-10 px-8 md:px-15 md:gap-19">
         {/* Title + description + buttons area */}
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-12">
-          <h2 className="md:max-w-150">
-             Ready to Get Started
+          <h2 className="md:max-w-md ">
+             Ready to Get Started?
           </h2>
-          <div className="flex flex-col items-start gap-6 md:max-w-145">
+          <div className="flex flex-col items-start gap-6 md:max-w-lg">
             <p className="text-darkgray text-left ">
               Join She Ignite and take the next step in your technology journey.
             </p>
 
             {/* Buttons visible only on desktop in top right */}
-            <div className="hidden md:flex gap-4">
+            <div className="flex gap-4">
               <Button href="/programs" variant="primary" className="">
                 Get Started Now
               </Button>
@@ -37,15 +37,6 @@ export default function CTA() {
               </div>
             </div>
           </div>
-        </div>
-        {/* Buttons below video on mobile */}
-        <div className="flex gap-4 justify-center md:hidden sm:flex-row">
-          <Button href="/donate" variant="primary" className="">
-            Donate Now
-          </Button>
-          <Button href="/programs" variant="secondary" className="">
-            Explore Programs
-          </Button>
         </div>
       </div>
     </section>

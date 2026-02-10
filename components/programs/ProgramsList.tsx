@@ -18,7 +18,7 @@ export default function ProgramsList({ programs, filters }: Props) {
       : programs.filter((program) => program.ageRange === selectedFilter);
 
   return (
-    <>
+    <section className="max-w-6xl mx-auto">
       {/* Filter Section */}
       <div className="py-8 px-4 sm:px-12">
         <div className="flex justify-left">
@@ -41,12 +41,16 @@ export default function ProgramsList({ programs, filters }: Props) {
       </div>
 
       {/* Programs Grid */}
-      <section className="px-4 sm:px-12 mb-16">
-        <div className="container mx-auto">
+      <section className=" sm:px-12 mb-16">
+        <div className="">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:gap-12 max-w-6xl mx-auto">
-            {filteredPrograms.map((program, index) => (
-              <ProgramCard key={program.id} program={program} index={index} />
+            {filteredPrograms.map((program) => (
+              <ProgramCard key={program.id} program={program} index={0} />
+
+            // {filteredPrograms.map((program, index) => (
+            //   <ProgramCard key={program.id} program={program} index={index} />
             ))}
+          
           </div>
           {filteredPrograms.length === 0 && (
             <div className="text-center py-20 text-gray-500">
@@ -55,6 +59,6 @@ export default function ProgramsList({ programs, filters }: Props) {
           )}
         </div>
       </section>
-    </>
+    </section>
   );
 }
