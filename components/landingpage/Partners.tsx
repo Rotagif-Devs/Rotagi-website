@@ -8,8 +8,6 @@ import Button from "@/components/ui/Button";
 const partnerLogos = [
   { name: "Apple Pay", logo: "/ApplePay.png" },
   { name: "Skrill", logo: "/Skrill.png" },
-  {name: "Pay Pass", logo: "/PayPass.svg"}
-  // Add more real partners here when ready:
   { name: "Paystack", logo: "/PayPass.svg" },
   // { name: "Flutterwave", logo: "/flutterwave.png" },
   // { name: "Visa", logo: "/visa.png" },
