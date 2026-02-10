@@ -8,27 +8,34 @@ interface MarqueeProps {
 
 export default function Marquee({ text, style, textStyle }: MarqueeProps) {
   return (
-    <div 
-      className="w-full overflow-hidden bg-dark py-6 md:py-8"
+    <div
+      className="w-full overflow-hidden bg-primary py-4 md:py-6 border-y border-black/5"
       style={style}
     >
       <div className="marquee-container">
-        <div className="marquee-content flex animate-marquee">
-          <span 
+        <div className="marquee-content flex animate-marquee items-center">
+          <span
             className="
-              marquee-text font-cal-sans text-white uppercase 
-              whitespace-nowrap flex items-center gap-6 md:gap-8
-              text-5xl sm:text-6xl md:text-5xl leading-none tracking-[-0.015em]"
-            style={textStyle} // still allows override if needed
+              marquee-text font-cal-sans text-black lowercase 
+              whitespace-nowrap flex items-center gap-10 md:gap-16
+              text-5xl sm:text-7xl md:text-[128px]
+             leading-none tracking-tighter
+            "
+            style={textStyle}
           >
-            {text} • {text} {/* optional separator for better loop feel */}
+            {text} • {text} • {text} • {text}
           </span>
 
-          {/* Duplicate for seamless loop */}
-          <span 
-            className="marquee-text font-cal-sans text-white uppercase whitespace-nowrap flex items-center gap-6 md:gap-8 text-5xl sm:text-6xl md:text-5xl leading-none tracking-[-0.015em]"
-            style={textStyle}>
-            {text} • {text}
+          <span
+            className="
+              marquee-text font-cal-sans text-black lowercase 
+              whitespace-nowrap flex items-center gap-10 md:gap-16
+              text-5xl sm:text-7xl md:text-[128px]
+              leading-none tracking-tighter
+            "
+            style={textStyle}
+          >
+            {text} • {text} • {text} • {text}
           </span>
         </div>
       </div>
