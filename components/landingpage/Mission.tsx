@@ -2,19 +2,19 @@ import Image from "next/image";
 
 const pillars = [
   {
-    icon: "/ic-1.png",
+    icon: "/mission-icon-1.svg",
     title: "Mindset",
     subtitle: "Confidence & Leadership",
     desc: "Building self-belief and leadership skills through mentorship and workshops.",
   },
   {
-    icon: "/ic-2.png",
+    icon: "/mission-icon-2.svg",
     title: "Skillset",
     subtitle: "Practical Digital Tech Training",
     desc: "Hands-on programs in digital design, entrepreneurship, and real-world problem-solving.",
   },
   {
-    icon: "/ic-3.png",
+    icon: "/mission-icon-3.svg",
     title: "Future-Set",
     subtitle: "Essential AI Literacy",
     desc: "Equipping African girls with AI skills to innovate, lead, and thrive globally.",
@@ -44,7 +44,7 @@ export default function Mission() {
                   alt={item.title}
                   width={40}
                   height={40}
-                  className="w-16 h-16 object-contain"
+                  className="w-12 h-12 object-contain"
                 />
               </div>
               <div className="mb-4">

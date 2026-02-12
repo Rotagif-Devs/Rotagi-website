@@ -104,3 +104,25 @@ h5 {
 p {
   @apply text-base lg:text-lg font-normal;
 }
+
+@media (max-width: 768px) {
+  h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-3xl;
+  }
+  h3 {
+    @apply text-xl;
+  }
+  h4 {
+    @apply text-sm;
+  }
+  h5 {
+    @apply text-xs;
+  }
+  p {
+    @apply text-sm;
+  }
+}
+
