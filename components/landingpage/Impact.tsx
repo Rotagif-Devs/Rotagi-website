@@ -49,10 +49,10 @@ export default function Impact() {
                 key={stat.label}
                 className="flex h-[400px] flex-col items-center justify-center gap-6 rounded-[48px] bg-white px-10 py-16 shadow-sm border border-black/5 hover:shadow-md transition-shadow"
               >
-                <div className="font-cal-sans text-8xl lg:text-8xl font-thin leading-none text-black/40">
+                <div className="font-cal-sans text-[5rem] font-light leading-none text-gray-500 lg:text-[96px]">
                   {stat.num}
                 </div>
-                <div className="font-dm-sans text-xl text-gray-400 text-center font-thin capitalize tracking-wide">
+                <div className="font-dm-sans text-lg text-center text-gray-500 md:text-[18px] md:leading-[140%]">
                   {stat.label}
                 </div>
               </div>
