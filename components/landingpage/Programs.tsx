@@ -14,48 +14,54 @@ export default function Programs() {
   const programs = getAllPrograms();
 
   return (
-    <section className="md:py-20 bg-secondary flex justify-center">
-      <div className="relative mx-4 w-full max-w-7xl  px-4 ">
+    <section className="py-20 bg-secondary flex justify-center px-6 lg:px-16">
+      <div className="relative w-full max-w-8xl">
         <div className="mx-auto mb-16 max-w-3xl text-center">
-          <h2 className="text-white">Our Programs</h2>
-          <p className="mx-auto mt-6 max-w-xl text-white">
+          <h2 className="text-white font-cal-sans lowercase">Our Programs</h2>
+          <p className="mx-auto mt-6 max-w-2xl text-white/70 text-lg md:text-xl font-dm-sans">
             Age-appropriate learning pathways designed to build skills,
             confidence, and leadership at every stage.
           </p>
         </div>
 
-        <div className="mx-auto rounded-[14px] bg-brown px-6 py-5 md:px-[27px] md:pt-[19px] md:pb-[31px]">
+        <div className="mx-auto rounded-[48px] bg-white px-8 py-12 md:px-12 md:py-16">
           {/* Desktop grid */}
-          <div className="hidden lg:grid lg:grid-cols-4 lg:gap-8">
+          <div className="hidden lg:grid lg:grid-cols-4 lg:gap-12">
             {programs.map((prog, i) => (
               <div
                 key={prog.name}
-                className={`group flex flex-col ${i < programs.length - 1 ? "lg:border-r lg:border-white/20 lg:pr-8" : ""} ${i > 0 ? "lg:pl-8" : ""}`}
+                className="group relative flex flex-col pl-10 pr-2"
               >
-                <div className="relative mb-6 h-64 overflow-hidden rounded-2xl">
+                {i > 0 && (
+                  <div className="absolute left-0 top-[15%] h-[70%] w-[1px] bg-black/20" />
+                )}
+
+                <div className="relative mb-8 h-72 overflow-hidden rounded-[24px]">
                   <Image
                     width={500}
                     height={500}
                     src={prog.image}
                     alt={prog.name}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 lg:mt-8"
                   />
-                  <span className="absolute right-4 top-4 inline-flex h-6 w-[95px] items-center justify-center rounded-br-[8px] rounded-tl-[8px] bg-accent0 text-xs font-bold text-brown">
+                  <span className="absolute right-2 top-0 inline-flex h-8 items-center justify-center rounded-tl-2xl rounded-br-2xl bg-[#F8BBD0] text-[14px] font-bold uppercase tracking-wider text-[#3B0D25] px-4">
                     {prog.ageRange}
                   </span>
                 </div>
 
                 <div className="flex flex-1 flex-col items-center text-center">
-                  <h3 className="mb-3  text-white capitalize">{prog.name}</h3>
-                  <p className="mb-6  text-white/80 line-clamp-3">
+                  <h3 className="mb-4 text-black font-cal-sans text-2xl lowercase leading-tight">
+                    {prog.name}
+                  </h3>
+                  <p className="mb-8 text-black/70 font-dm-sans font-light leading-relaxed line-clamp-3">
                     {prog.tagline}
                   </p>
                   <Link href={`/programs/${prog.slug}`} className="mt-auto">
                     <Button
                       variant="ghost"
-                      className="inline-flex items-center gap-2 font-semibold text-white transition hover:text-pink-200"
+                      className="inline-flex items-center gap-2 font-bold text-secondary transition-all hover:gap-4 hover:bg-secondary/10 px-6 py-2 rounded-full border-none hover:bg-secondary/10"
                     >
-                      Learn More
+                      Learn More <span>→</span>
                     </Button>
                   </Link>
                 </div>
@@ -68,41 +74,42 @@ export default function Programs() {
             <Swiper
               modules={[Navigation]}
               navigation={{
-                prevEl: ".swiper-prev",
-                nextEl: ".swiper-next",
+                prevEl: ".prog-prev",
+                nextEl: ".prog-next",
               }}
               slidesPerView={1}
-              spaceBetween={16}
+              spaceBetween={24}
               className="pb-12"
             >
               {programs.map((prog) => (
                 <SwiperSlide key={prog.name}>
                   <div className="group flex flex-col">
-                    <div className="relative mb-6 h-64 overflow-hidden rounded-2xl">
+                    <div className="relative mb-8 h-64 overflow-hidden rounded-[24px]">
                       <Image
                         width={500}
                         height={500}
                         src={prog.image}
                         alt={prog.name}
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        className="h-full w-full object-cover"
                       />
-                      <span className="absolute right-4 top-4 inline-flex h-6 w-[95px] items-center justify-center rounded-br-[8px] rounded-tl-[8px] bg-accent0 text-xs font-bold text-brown">
+                      <span className="absolute right-2 top-2 inline-flex h-8 w-[100px] items-center justify-center rounded-tl-2xl rounded-br-2xl bg-[#F8BBD0] text-[10px] font-bold uppercase tracking-wider text-[#3B0D25]">
                         {prog.ageRange}
                       </span>
                     </div>
 
                     <div className="flex flex-1 flex-col items-center px-4 text-center">
-                      <h3 className="mb-3  text-white capitalize">
+                      <h3 className="mb-4 text-black font-cal-sans text-2xl lowercase leading-tight">
                         {prog.name}
                       </h3>
-                      <p className="mb-6  text-white/80">{prog.tagline}</p>
+                      <p className="mb-8 text-black/70 font-dm-sans font-light leading-relaxed">
+                        {prog.tagline}
+                      </p>
                       <Link href={`/programs/${prog.slug}`} className="mt-auto">
                         <Button
                           variant="ghost"
-                          className="inline-flex items-center gap-2 font-semibold text-white transition hover:text-pink-200"
-                          style={{ fontSize: "18px" }}
+                          className="inline-flex items-center gap-2 font-bold text-secondary transition-all px-8 py-3 rounded-full border-none hover:bg-secondary/10"
                         >
-                          Learn More
+                          Learn More <span>→</span>
                         </Button>
                       </Link>
                     </div>
@@ -110,22 +117,22 @@ export default function Programs() {
                 </SwiperSlide>
               ))}
             </Swiper>
-          </div>
-        </div>
 
-        <div className="mt-6 flex justify-end gap-6 lg:hidden">
-          <button
-            className="swiper-prev rounded-full bg-white/10 p-4 text-white transition hover:text-pink-200 backdrop-blur-sm border-2 border-white"
-            aria-label="Previous slide"
-          >
-            <ChevronLeft className="h-8 w-8" />
-          </button>
-          <button
-            className="swiper-next rounded-full bg-white/10 p-4 text-white transition hover:text-pink-200 backdrop-blur-sm  border-2 border-white"
-            aria-label="Next slide"
-          >
-            <ChevronRight className="h-8 w-8" />
-          </button>
+            <div className="mt-8 flex justify-end gap-3">
+              <button
+                className="prog-prev flex h-10 w-10 items-center justify-center rounded-full bg-black/5 text-black transition hover:bg-black/10 border border-black/10"
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                className="prog-next flex h-10 w-10 items-center justify-center rounded-full bg-black/5 text-black transition hover:bg-black/10 border border-black/10"
+                aria-label="Next slide"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
