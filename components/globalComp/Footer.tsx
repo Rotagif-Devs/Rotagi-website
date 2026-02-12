@@ -4,7 +4,7 @@ import React from "react";
 export default function Footer() {
   return (
     <footer className="flex justify-center bg-primary">
-      <div className="bg-black text-white flex flex-col justify-between w-full mx-6 mb-8 mt-6 rounded-[48px] px-8 py-16 md:px-16 md:py-20 shadow-2xl">
+      <div className="bg-black text-white flex flex-col justify-between w-full lg:mx-6 mb-8 mt-6 lg:rounded-[48px] px-8 py-16 md:px-16 md:py-20 shadow-2xl">
         <div className="flex flex-col lg:flex-row justify-between gap-16 pt-4 w-full">
           {/* Brand & Description */}
           <div className="max-w-[300px]">

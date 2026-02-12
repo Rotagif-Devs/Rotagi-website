@@ -1,10 +1,10 @@
 import { ButtonHTMLAttributes, forwardRef } from "react";
-import { MoveRight } from "lucide-react";
+import { ArrowRight, MoveRight } from "lucide-react";
 import Link from "next/link";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "ghost";
-  size?: "sm" | "md" | "lg";
+  size?: "none" | "sm" | "md" | "lg";
   fullWidth?: boolean;
   withArrow?: boolean;
   href?: string;
@@ -28,8 +28,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
       "inline-flex items-center justify-center rounded-full font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-95";
 
     const variants = {
-      primary:
-        "bg-secondary text-white hover:bg-secondary/90 ",
+      primary: "bg-secondary text-white hover:bg-secondary/90 ",
       secondary: "bg-white text-black hover:bg-gray-50 ",
       outline:
         "bg-transparent border-2 border-white text-white hover:bg-white/10",
@@ -37,6 +36,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
     };
 
     const sizes = {
+      none: "p-0",
       sm: "px-5 py-2 text-sm",
       md: "px-8 py-3 text-base",
       lg: "px-10 py-4 text-lg",
@@ -59,7 +59,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
         >
           {children}
           {withArrow && (
-            <MoveRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
           )}
         </Link>
       );
@@ -73,7 +73,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
       >
         {children}
         {withArrow && (
-          <MoveRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+          <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
         )}
       </button>
     );

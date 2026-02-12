@@ -38,7 +38,7 @@ export const programs: Program[] = [
     level: "Beginner",
     ageRange: "Ages 10-12",
     tagline:
-      "Sparking curiosity in technology and AI fundamentals for young girls through fun, interactive activities.",
+      "Building foundational AI awareness and digital literacy for young girls through interactive learning and hands-on projects.",
     headline:
       "An introductory program designed to spark curiosity and build foundational digital literacy in young girls.",
     description:
@@ -47,7 +47,7 @@ export const programs: Program[] = [
     format: "Virtual",
     schedule: "Rolling admissions - Next cohort starts March 2026",
     detailImage: "/program-detail-image.png",
-    image: "/program-1.png",
+    image: "/program-3.png",
     outcomes: {
       title: "Key Outcomes",
       items: [
@@ -93,7 +93,7 @@ export const programs: Program[] = [
     ageRange: "Ages 13-15",
     level: "Intermediate",
     tagline:
-      "Developing intermediate AI skills and digital creativity to build real projects and explore tech careers.",
+      "Developing deeper technical skills and critical thinking through AI applications, coding basics, and problem-solving.",
     headline:
       "An intermediate program that builds practical AI and programming skills through hands-on projects.",
     description:
@@ -151,14 +151,14 @@ export const programs: Program[] = [
     headline:
       "An advanced program preparing young women for tech careers through industry-standard tools and mentorship.",
     tagline:
-      "Advanced AI development and leadership training to prepare for tech careers and university STEM programs.",
+      "Advanced AI learning, leadership development, and career preparation for young women ready to lead in technology.",
     description:
       "She Blaze prepares young women for careers in technology and AI through advanced training, mentorship, and real-world project experience. Participants work on complex AI solutions, learn industry-standard tools, and develop leadership skills essential for success in the tech sector.",
     duration: "16 weeks",
     format: "Hybrid",
     schedule: "Cohorts start February and August",
     detailImage: "/program-detail-image.png",
-    image: "/program-3.png",
+    image: "/program-1.png",
     outcomes: {
       title: "Outcomes",
       items: [
@@ -206,7 +206,7 @@ export const programs: Program[] = [
     ageRange: "Ages 18-40",
     level: "Intermediate",
     headline:
-      "A professional program supporting women entering or transitioning into AI and technology careers.",
+      "Professional AI skills training, entrepreneurship support, and career advancement for African women in tech.",
     tagline:
       "A professional program supporting women entering or transitioning into AI and technology careers.",
     description:

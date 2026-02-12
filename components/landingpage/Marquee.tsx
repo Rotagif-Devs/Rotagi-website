@@ -9,7 +9,7 @@ interface MarqueeProps {
 export default function Marquee({ text, style, textStyle }: MarqueeProps) {
   return (
     <div
-      className="w-full overflow-hidden bg-primary py-4 md:py-6 border-y border-black/5"
+      className="w-full overflow-hidden bg-primary py-6 md:py-10 border-y border-black/5"
       style={style}
     >
       <div className="marquee-container">
@@ -19,7 +19,7 @@ export default function Marquee({ text, style, textStyle }: MarqueeProps) {
               marquee-text font-cal-sans text-black lowercase 
               whitespace-nowrap flex items-center gap-10 md:gap-16
               text-5xl sm:text-7xl md:text-[128px]
-             leading-none tracking-tighter
+             leading-none tracking-tighter uppercase
             "
             style={textStyle}
           >
@@ -31,7 +31,7 @@ export default function Marquee({ text, style, textStyle }: MarqueeProps) {
               marquee-text font-cal-sans text-black lowercase 
               whitespace-nowrap flex items-center gap-10 md:gap-16
               text-5xl sm:text-7xl md:text-[128px]
-              leading-none tracking-tighter
+              leading-none tracking-tighter uppercase
             "
             style={textStyle}
           >
