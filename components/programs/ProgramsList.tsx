@@ -44,8 +44,13 @@ export default function ProgramsList({ programs, filters }: Props) {
       <section className="px-4 sm:px-12 mb-16">
         <div className="container mx-auto">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:gap-12 max-w-6xl mx-auto">
+
             {filteredPrograms.map((program) => (
               <ProgramCard key={program.id} program={program} index={0} />
+
+            {filteredPrograms.map((program, index) => (
+              <ProgramCard key={program.id} program={program} index={index} />
+
             ))}
           </div>
           {filteredPrograms.length === 0 && (

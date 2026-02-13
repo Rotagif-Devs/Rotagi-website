@@ -19,6 +19,16 @@ export default function ProgramsCTA() {
                 We offer self-paced modules and weekend workshops for those who
                 need a more adaptable schedule.
               </p>
+              <div className="">
+                <Button
+                  variant="primary"
+                  withArrow
+                  href="/contact"
+                  className=""
+                >
+                  Get in Touch
+                </Button>
+              </div>
             </div>
           </div>
 
@@ -31,11 +41,6 @@ export default function ProgramsCTA() {
                 </span>
               </div>
             </div>
-          </div>
-          <div className="flex justify-center">
-            <Button variant="primary" withArrow href="/contact" className="">
-              Get in Touch
-            </Button>
           </div>
         </div>
       </div>
