@@ -14,7 +14,10 @@ export default function Programs() {
   const programs = getAllPrograms();
 
   return (
-    <section className="py-14 lg:rounded-3xl lg:mx-6 lg:mb-20 bg-secondary flex justify-center pl-6 lg:px-16">
+    <section
+      id="programs"
+      className="py-14 lg:rounded-3xl lg:mx-6 lg:mb-20 bg-secondary flex justify-center pl-6 lg:px-16"
+    >
       <div className="relative w-full max-w-8xl">
         <div className="hidden md:block mx-auto my-10 lg:mb-20 max-w-3xl text-center">
           <h2 className="text-white font-cal-sans lowercase">Our Programs</h2>

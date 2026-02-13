@@ -28,22 +28,34 @@ export default function Footer() {
             <h4 className="text-white mb-6">Quick Navigation</h4>
             <ul className="space-y-4 text-gray-300 text-sm">
               <li>
-                <Link href="#" className="hover:text-white transition-colors">
+                <Link
+                  href="/programs"
+                  className="hover:text-white transition-colors"
+                >
                   Programs
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-white transition-colors">
+                <Link
+                  href="/#impact"
+                  className="hover:text-white transition-colors"
+                >
                   Impact
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-white transition-colors">
+                <Link
+                  href="/#updates"
+                  className="hover:text-white transition-colors"
+                >
                   Events
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-white transition-colors">
+                <Link
+                  href="/#updates"
+                  className="hover:text-white transition-colors"
+                >
                   Resources
                 </Link>
               </li>
@@ -55,27 +67,42 @@ export default function Footer() {
             <h4 className="text-white mb-6">Get Involved</h4>
             <ul className="space-y-4 text-gray-300 text-sm">
               <li>
-                <Link href="#" className="hover:text-white transition-colors">
+                <Link
+                  href="/donate"
+                  className="hover:text-white transition-colors"
+                >
                   Donate
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-white transition-colors">
+                <Link
+                  href="/contact"
+                  className="hover:text-white transition-colors"
+                >
                   Become A Mentor
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-white transition-colors">
+                <Link
+                  href="/contact"
+                  className="hover:text-white transition-colors"
+                >
                   Partner with Us
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-white transition-colors">
+                <Link
+                  href="/about"
+                  className="hover:text-white transition-colors"
+                >
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-white transition-colors">
+                <Link
+                  href="/#updates"
+                  className="hover:text-white transition-colors"
+                >
                   Media & Press
                 </Link>
               </li>
@@ -101,13 +128,17 @@ export default function Footer() {
             {/* Social Icons */}
             <div className="flex gap-4 mb-8">
               <Link
-                href="#"
+                href="https://facebook.com/rotagi"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white hover:opacity-80 transition-opacity"
               >
                 <Facebook size={24} />
               </Link>
               <Link
-                href="#"
+                href="https://x.com/rotagi"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white hover:opacity-80 transition-opacity"
               >
                 <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
@@ -115,13 +146,17 @@ export default function Footer() {
                 </svg>
               </Link>
               <Link
-                href="#"
+                href="https://instagram.com/rotagi"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white hover:opacity-80 transition-opacity"
               >
                 <Instagram size={24} />
               </Link>
               <Link
-                href="#"
+                href="https://linkedin.com/company/rotagi"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white hover:opacity-80 transition-opacity"
               >
                 <Linkedin size={24} />
@@ -148,7 +183,8 @@ export default function Footer() {
                 <span>
                   Phone (WhatsApp){" "}
                   <Link
-                    href="tel:+2348032368560"
+                    href="https://wa.me/2348032368560"
+                    target="_blank"
                     className="hover:text-white transition-colors inline-block"
                   >
                     +2348032368560

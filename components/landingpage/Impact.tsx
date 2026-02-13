@@ -13,7 +13,10 @@ const stats = [
 
 export default function Impact() {
   return (
-    <section className="bg-primary py-16 lg:py-24 px-6 lg:px-8 flex justify-center">
+    <section
+      id="impact"
+      className="bg-primary py-16 lg:py-24 px-6 lg:px-8 flex justify-center"
+    >
       <div className="flex w-full max-w-7xl flex-col gap-12 md:gap-20">
         {/* Title + text + button area */}
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">

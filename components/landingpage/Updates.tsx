@@ -99,7 +99,7 @@ export default function Updates() {
                         size="none"
                         className="py-2"
                         variant="ghost"
-                        href="/updates"
+                        href="/programs"
                       >
                         {update.linkText}
                       </Button>
@@ -156,7 +156,7 @@ export default function Updates() {
                             size="none"
                             className="py-2"
                             variant="ghost"
-                            href="/updates"
+                            href="/programs"
                           >
                             {update.linkText}
                           </Button>
@@ -180,7 +180,7 @@ export default function Updates() {
 
           {/* Button below on mobile */}
           <div className="mt-10 flex justify-center md:hidden">
-            <Button href="/updates" variant="primary" className="px-10 py-4">
+            <Button href="/programs" variant="primary" className="px-10 py-4">
               View All
             </Button>
           </div>
