@@ -8,7 +8,7 @@ const OurMission = () => {
       <div className="mx-auto max-w-6xl px-4">
         <div className="grid items-center gap-10 md:grid-cols-2">
           <div className="relative">
-            <div className="pointer-events-none absolute -inset-6 rounded-[28px] bg-pink-200/40 blur-2xl" />
+            <div className="pointer-events-none absolute -inset-6 rounded-[28px] bg-pink-50/40 blur-2xl" />
 
             <div className="relative w-full lg:w-2xl rounded-[28px] bg-white p-6 md:p-8 shadow-[0_18px_50px_rgba(236,72,153,0.18)] ring-1 ring-pink-100">
               <div className="space-y-6 md:space-y-8">
@@ -23,7 +23,7 @@ const OurMission = () => {
                   </span>
 
                   <div>
-                    <h3 className="text-lg font700 font-semibold text-gray-900">
+                    <h3 className="text-4xl font700 font-semibold text-gray-900">
                       Our Mission
                     </h3>
                     <p className="mt-2 text-sm leading-6 text-gray-600">
@@ -41,7 +41,7 @@ const OurMission = () => {
                   </span>
 
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900">
+                    <h3 className="text-4xl font-semibold text-gray-900">
                       Vision
                     </h3>
                     <p className="mt-2 text-sm leading-6 text-gray-600">
@@ -56,7 +56,7 @@ const OurMission = () => {
           </div>
 
           <div className="flex md:justify-end">
-            <div className="relative h-64 w-full sm:h-80 sm:w-80 md:h-100 md:w-100 overflow-hidden rounded-[28px] bg-gray-100 shadow-lg ring-1 ring-gray-200 mx-auto md:mx-0">
+            <div className="relative h-64 w-full lg:block hidden sm:h-80 sm:w-80 md:h-100 md:w-100 overflow-hidden rounded-[28px] bg-gray-100 shadow-lg ring-1 ring-gray-200 mx-auto md:mx-0">
               <Image
                 src="/Team-member.png"
                 alt="Women collaborating on a laptop"

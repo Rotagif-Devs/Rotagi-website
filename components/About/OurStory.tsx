@@ -21,11 +21,11 @@ const OurStory = () => {
       titleTop: "The Evolution",
       titleMid: "ROTAGI",
       body: "In 2025, ROTAGI evolved to respond to the realities of the digital age. We expanded our mission to include Artificial Intelligence education, digital safety, and essential life skills—preparing African girls not just to succeed, but to lead the future.",
-      Icon: "/Pin.svg",
+      Icon: "/pin.svg",
     },
   ];
   return (
- <div className="mt-20 text-center px-4">
+ <div id="OurStory" className="mt-20 text-center px-4">
         <h2 className="text-4xl md:text-sm ">Our Story</h2>
         <div className="flex justify-center mb-8">
            <div className="mt-5 h-1.5 w-24 bg-[#d6448d] mx-auto rounded-full"></div>
@@ -53,10 +53,10 @@ const OurStory = () => {
                         />
                       </div>
         
-                      <h4 className="mt-6 text-[13px] font-extrabold text-zinc-900">
+                      <h4 className="mt-6 text-[13px]  text-zinc-900">
                         {titleTop}
                       </h4>
-                      <h3 className="mt-2 text-sm font-extrabold text-pink-600">
+                      <h3 className="mt-2 text-sm  text-pink-600">
                         {titleMid}
                       </h3>
                       <p className="mx-auto mt-2 max-w-sm text-[12.5px] leading-7 text-zinc-700 px-2 md:px-0">
