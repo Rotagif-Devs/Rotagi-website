@@ -12,7 +12,7 @@ import {
 export default function Footer() {
   return (
     <footer className="flex justify-center bg-primary">
-      <div className="bg-black text-white flex flex-col justify-between w-full lg:mx-6 mb-8 mt-6 lg:rounded-4xl px-8 py-16 md:px-8 md:py-10 shadow-2xl">
+      <div className="bg-black text-white flex flex-col justify-between w-full lg:mx-6 mt-6 lg:rounded-4xl px-8 py-16 md:px-8 md:py-10 shadow-2xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-4 pt-4 w-full">
           {/* Brand & Description */}
           <div className="lg:col-span-2">
