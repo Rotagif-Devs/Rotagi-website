@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { Play, Pause } from "lucide-react"; // ← Import both icons from lucide-react
+import Button from "../ui/Button";
 
 export default function CTA() {
   const [isPlaying, setIsPlaying] = useState(true); // Start with autoPlay → playing
@@ -35,12 +36,12 @@ export default function CTA() {
             </p>
 
             <div className="hidden md:flex gap-4">
-              <button className="rounded-full bg-[var(--color-secondary)] px-8 py-3.5 font-[var(--font-dm-sans)] text-base font-semibold text-white transition hover:bg-[var(--color-tertiary)] whitespace-nowrap">
+              <Button href="/donate" variant="primary" className="">
                 Donate Now
-              </button>
-              <button className="rounded-full border border-gray-200 bg-white px-8 py-3.5 font-[var(--font-dm-sans)] text-base font-semibold text-[var(--color-dark)] transition hover:bg-gray-50 whitespace-nowrap">
+              </Button>
+              <Button href="/programs" variant="secondary" className="">
                 Explore Programs
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -89,12 +90,12 @@ export default function CTA() {
 
         {/* Mobile buttons */}
         <div className="flex gap-4 justify-center md:hidden sm:flex-row">
-          <button className="w-full rounded-full bg-[var(--color-secondary)] px-8 py-3.5 font-[var(--font-dm-sans)] text-base font-semibold text-white transition hover:bg-[var(--color-tertiary)] sm:w-auto">
+          <Button href="/donate" variant="primary" className="">
             Donate Now
-          </button>
-          <button className="w-full rounded-full border border-gray-200 bg-white px-4 py-3.5 font-[var(--font-dm-sans)] text-base font-semibold text-[var(--color-dark)] transition hover:bg-gray-50 sm:w-auto">
+          </Button>
+          <Button href="/programs" variant="secondary" className="">
             Explore Programs
-          </button>
+          </Button>
         </div>
       </div>
     </section>

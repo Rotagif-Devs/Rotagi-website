@@ -24,7 +24,7 @@ export default function Partners() {
           </h2>
 
           <div className="flex flex-col items-start gap-8 max-w-2xl">
-            <p className="text-gray-700 text-lg md:text-xl font-dm-sans leading-relaxed">
+            <p className="text-gray-700 text-lg md:text-xl font-dm-sans leading-loose lg:w-full w-11/12">
               We collaborate with partners who believe in measurable impact,
               inclusive growth, and empowering the next generation of African
               women.
@@ -68,13 +68,13 @@ export default function Partners() {
             >
               {partnerLogos.map((partner) => (
                 <SwiperSlide key={partner.name}>
-                  <div className="h-[280px] rounded-[40px] bg-white px-8 py-12 flex items-center justify-center mb-6">
+                  <div className="h-[230px] rounded-[40px] bg-white px-8 py-12 flex items-center justify-center mb-6">
                     <Image
                       width={300}
                       height={300}
                       src={partner.logo}
                       alt={`${partner.name} logo`}
-                      className="max-h-[140px] w-auto object-contain opacity-40 grayscale"
+                      className="max-h-[150px] w-auto object-contain opacity-40 grayscale"
                     />
                   </div>
                 </SwiperSlide>

@@ -37,7 +37,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="text-white text-lg md:text-xl max-w-2xl opacity-90 leading-relaxed"
+              className="text-white text-lg md:text-xl max-w-2xl opacity-90 leading-loose"
             >
               The next breakthrough could come from her. We are making sure
               she&apos;s ready with AI literacy, digital skills, and leadership

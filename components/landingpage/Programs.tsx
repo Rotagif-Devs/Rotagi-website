@@ -27,7 +27,7 @@ export default function Programs() {
         {/* mobile header */}
         <div className="md:hidden flex flex-col text-center justify-center items-center mb-6 mr-6">
           <h2 className="text-white font-cal-sans lowercase">Our Programs</h2>
-          <p className="mx-auto mt-6 max-w-2xl text-white/70 text-lg md:text-xl font-dm-sans leading-relaxed text-center">
+          <p className="mx-auto mt-6 max-w-2xl text-white/90 text-lg md:text-xl font-dm-sans leading-loose text-center">
             Age-appropriate learning pathways designed to build skills,
             confidence, and leadership at every stage.
           </p>
@@ -105,7 +105,7 @@ export default function Programs() {
                         alt={prog.name}
                         className="h-full w-full object-cover"
                       />
-                      <span className="absolute right-4 top-0 inline-flex h-8 w-[100px] items-center justify-center rounded-tl-2xl rounded-br-2xl bg-[#F8BBD0] text-[12px] font-bold tracking-wider text-[#3B0D25]">
+                      <span className="absolute right-4 top-0 inline-flex h-8 w-[100px] items-center justify-center rounded-tl-2xl font-dm-sans rounded-br-2xl bg-[#F8BBD0] text-[12px] font-bold tracking-wider text-[#3B0D25]">
                         {prog.ageRange}
                       </span>
                     </div>
@@ -135,16 +135,16 @@ export default function Programs() {
         </div>
         <div className="mt-8 flex md:hidden justify-end gap-3 px-6">
           <button
-            className="prog-prev flex h-16 w-16 items-center justify-center rounded-full bg-white/20 border border-white text-black transition hover:bg-black/10 border border-black/10"
+            className="prog-prev flex h-14 w-14 items-center justify-center rounded-full bg-white/20 border-2 border-white text-black transition hover:bg-black/10 border border-black/10"
             aria-label="Previous slide"
           >
-            <ChevronLeft className="h-10 w-10 text-white" />
+            <ChevronLeft className="h-8 w-8 text-white" />
           </button>
           <button
-            className="prog-next flex h-16 w-16 items-center justify-center rounded-full bg-white/20 border border-white text-black transition hover:bg-black/10 border border-black/10"
+            className="prog-next flex h-14 w-14 items-center justify-center rounded-full bg-white/20 border-2 border-white text-black transition hover:bg-black/10 border border-black/10"
             aria-label="Next slide"
           >
-            <ChevronRight className="h-10 w-10 text-white" />
+            <ChevronRight className="h-8 w-8 text-white" />
           </button>
         </div>
       </div>
