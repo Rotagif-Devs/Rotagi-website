@@ -47,12 +47,12 @@ const Empower = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             >
           
-          <h1 className="text-2xl md:text-4xl  w-full md:w-220">
+          <h1 className="w-full md:w-220">
             Empowering <span className="text-pink-400">African Girls</span> to
             lead in the Digital World
           </h1>
 
-          <p className="mt-3 text-sm md:text-base text-gray-100 w-full md:w-200">
+          <p className="mt-3 text-gray-100 w-full md:w-200">
             Through AI technology, and life skills, we equip young African girls
             with the confidence, knowledge, and leadership to shape a just and
             equitable digital future.

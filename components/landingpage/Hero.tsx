@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[80vh] flex flex-col items-center justify-end overflow-hidden bg-[#41122B] lg:mx-4 lg:rounded-[32px] mt-4 py-20">
+    <section className="relative flex flex-col items-center justify-end overflow-hidden bg-[#41122B] lg:mx-4 lg:rounded-[32px] mt-4 py-20">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -16,7 +16,7 @@ export default function Hero() {
           alt="African Girl Innovator"
           className="w-full h-full object-cover opacity-60"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#41122B] to-transparent opacity-80" />
+        <div className="absolute inset-0 bg-linear-to-r from-[#41122B] to-transparent opacity-80" />
       </div>
 
       <div className="relative z-10 flex flex-col justify-center w-full">
@@ -27,7 +27,7 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="max-w-4xl"
           >
-            <h1 className="text-white text-5xl md:text-7xl lg:text-8xl leading-[1.1] mb-8 font-cal-sans">
+            <h1 className="text-white mb-8 font-cal-sans">
               Empowering the Next Generation of African Girl Innovators
             </h1>
           </motion.div>

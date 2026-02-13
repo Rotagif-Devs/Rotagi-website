@@ -89,10 +89,10 @@ export default function CTA() {
 
         {/* Mobile buttons */}
         <div className="flex gap-4 justify-center md:hidden sm:flex-row">
-          <button className="w-full rounded-full bg-[var(--color-secondary)] px-8 py-3.5 font-[var(--font-dm-sans)] text-base font-semibold text-white transition hover:bg-[var(--color-tertiary)] sm:w-auto">
+          <button className="w-full rounded-full bg-secondary px-8 py-3.5 text-base font-semibold text-white transition hover:bg-tertiary sm:w-auto">
             Donate Now
           </button>
-          <button className="w-full rounded-full border border-gray-200 bg-white px-4 py-3.5 font-[var(--font-dm-sans)] text-base font-semibold text-[var(--color-dark)] transition hover:bg-gray-50 sm:w-auto">
+          <button className="w-full rounded-full border border-gray-200 bg-white px-4 py-3.5 text-base font-semibold text-dark transition hover:bg-gray-50 sm:w-auto">
             Explore Programs
           </button>
         </div>

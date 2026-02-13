@@ -11,7 +11,7 @@ export default function ProgramCard({ program, index }: Props) {
   return (
     <div
       key={index}
-      className="flex flex-col p-4 overflow-hidden rounded-3xl bg-white"
+      className="flex flex-col text-darkgray p-4 overflow-hidden rounded-3xl bg-white"
     >
       {/* Image Container */}
       <div className="relative aspect-4/3 rounded-2xl md:aspect-video w-full bg-brown overflow-hidden">
@@ -30,37 +30,34 @@ export default function ProgramCard({ program, index }: Props) {
       </div>
 
       {/* Content */}
-      <div className="flex flex-1 flex-col py-6">
+      <div className="flex flex-1 flex-col px-2 pt-6">
         <div className="mb-4">
-          <span className="inline-block rounded-full bg-[#FABFD380] px-3 py-1.5 text-sm font-semibold text-[#D62D88]">
+          <span className="inline-block rounded-full bg-[#FABFD380] px-6 py-1.5 text-sm font-semibold text-[#D62D88]">
             {program.ageRange}
           </span>
         </div>
-
-        <h3 className="mb-2 text-gray-900">{program.name}</h3>
-
-        <p className="mb-6 flex-1 text-gray-600 leading-relaxed">
+        <h3 className="mb-2 text-dark">{program.name}</h3>
+        <p className="mb-2 flex-1 ">
           {program.tagline || program.description}
         </p>
-        <p className="text-gray-950 font-semibold">Key Outcomes:</p>
-        <ul className="mb-6 space-y-2 pl-4">
+        <p className="text-darkgray font-semibold mb-2">Key Outcomes:</p>
+        <ul className="mb-6 space-y-2">
           {program.outcomes.items.map((item, index) => (
             <li
               key={index}
-              className="flex items-start gap-2 text-sm text-gray-600"
+              className="flex items-start gap-2 text-sm text-darkgray"
             >
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-900" />
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-darkgray" />
               {item}
             </li>
           ))}
         </ul>
-
         <div>
           <Button
             variant="ghost"
             withArrow
             href={`/programs/${program.slug}`}
-            className=""
+            className="mb-4"
           >
             Learn more
           </Button>

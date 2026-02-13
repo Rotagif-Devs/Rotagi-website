@@ -1,10 +1,11 @@
 import React from 'react'
 import Image from "next/image";
+
+
 const OurStory = () => {
 
 
-
-      const items = [
+const items = [
     {
       titleTop: "The Beginning",
       titleMid: "Awesome Girls Club",
@@ -53,13 +54,13 @@ const OurStory = () => {
                         />
                       </div>
         
-                      <h4 className="mt-6 text-[13px] font-extrabold text-zinc-900">
+                      <h4 className="mt-6 text-zinc-900">
                         {titleTop}
                       </h4>
-                      <h3 className="mt-2 text-sm font-extrabold text-pink-600">
+                      <h3 className="mt-2 text-pink-600">
                         {titleMid}
                       </h3>
-                      <p className="mx-auto mt-2 max-w-sm text-[12.5px] leading-7 text-zinc-700 px-2 md:px-0">
+                      <p className="mx-auto mt-2 max-w-sm leading-7 text-zinc-700 px-2 md:px-0">
                         {body}
                       </p>
                     </article>
