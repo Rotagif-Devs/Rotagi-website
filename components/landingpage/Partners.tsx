@@ -15,7 +15,10 @@ const partnerLogos = [
 
 export default function Partners() {
   return (
-    <section className="bg-primary py-16 lg:py-24 px-6 lg:px-8 flex justify-center border-t border-black/5">
+    <section
+      id="partners"
+      className="bg-primary py-16 lg:py-24 px-6 lg:px-8 flex justify-center border-t border-black/5"
+    >
       <div className="flex w-full max-w-7xl flex-col gap-12 md:gap-20">
         {/* Title + description + button area */}
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
@@ -31,7 +34,7 @@ export default function Partners() {
             </p>
 
             <div className="hidden md:block">
-              <Button variant="primary" href="/partners" className="px-10 py-4">
+              <Button variant="primary" href="/about" className="px-10 py-4">
                 Partner With Us
               </Button>
             </div>
@@ -84,7 +87,7 @@ export default function Partners() {
 
           {/* Button below slider on mobile */}
           <div className="mt-6 flex justify-center md:hidden">
-            <Button variant="primary" href="/partners" className="px-10 py-4">
+            <Button variant="primary" href="/about" className="px-10 py-4">
               Partner With Us
             </Button>
           </div>

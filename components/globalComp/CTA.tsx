@@ -90,10 +90,18 @@ export default function CTA() {
 
         {/* Mobile buttons */}
         <div className="flex gap-4 justify-center md:hidden sm:flex-row">
-          <Button href="/donate" variant="primary" className="">
+          <Button
+            href="/donate"
+            variant="primary"
+            className="text-center text-sm"
+          >
             Donate Now
           </Button>
-          <Button href="/programs" variant="secondary" className="">
+          <Button
+            href="/programs"
+            variant="secondary"
+            className="text-center text-sm"
+          >
             Explore Programs
           </Button>
         </div>
