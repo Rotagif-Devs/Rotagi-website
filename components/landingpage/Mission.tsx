@@ -23,12 +23,12 @@ const pillars = [
 
 export default function Mission() {
   return (
-    <section className="py-24 bg-primary px-6 lg:px-8">
-      <div className="mx-auto flex flex-col items-center text-center max-w-6xl">
+    <section className="py-24 bg-primary px-10 lg:px-8">
+      <div className="mx-auto flex flex-col items-center text-center lg:max-w-6xl">
         <h2 className="mb-6 text-black font-cal-sans lowercase">
           Our Integrated Mission
         </h2>
-        <p className="max-w-3xl text-gray-700 mb-20 text-lg md:text-xl font-dm-sans leading-relaxed">
+        <p className="max-w-3xl text-gray-700 mb-20 text-lg md:text-xl font-dm-sans leading-loose text-center">
           ROTAGI equips African girls and women across Africa with AI literacy
           and digital confidence to build solutions and lead the global economy.
         </p>
@@ -55,7 +55,7 @@ export default function Mission() {
                   {item.subtitle}
                 </h4>
               </div>
-              <p className="text-gray-600 leading-relaxed font-dm-sans">
+              <p className="text-gray-600 leading-loose font-dm-sans lg:p-0 px-8">
                 {item.desc}
               </p>
             </div>
