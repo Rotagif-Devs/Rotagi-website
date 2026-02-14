@@ -20,6 +20,25 @@ export default function PTA() {
     }
   };
 
+"use client"
+import Button from "../ui/Button"; 
+import { useState, useRef } from "react";
+import { Play, Pause } from "lucide-react"; 
+export default function CTA() {
+  const [isPlaying, setIsPlaying] = useState(true); // Start with autoPlay → playing
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+        setIsPlaying(true);
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
+    }
+  };
   return (
     <section className="bg-primary py-16 md:py-20 flex justify-center">
       <div className="flex w-full max-w-[1260px] flex-col gap-10 px-5 md:px-0 md:gap-[76px]">
@@ -43,9 +62,9 @@ export default function PTA() {
         </div>
 
         {/* Video / hero preview */}
-        <div className="flex w-full justify-center">
+         <div className="flex w-full justify-center">
           <div
-            className="group relative w-full overflow-hidden rounded-3xl bg-white md:aspect-1256/711 md:max-w-[1256px] md:rounded-[64px] aspect-video cursor-pointer"
+            className="group relative w-full overflow-hidden rounded-3xl bg-white md:aspect-[1256/711] md:max-w-[1256px] md:rounded-[64px] aspect-[16/9] cursor-pointer"
             onClick={togglePlay}
           >
             <video
@@ -81,19 +100,16 @@ export default function PTA() {
                 display: none;
               }
             `}</style>
+
+            {/* Optional: hide native controls completely or show on hover */}
+            <style jsx>{`
+              video::-webkit-media-controls {
+                display: none;
+              }
+            `}</style>
           </div>
         </div>
-
-        {/* Mobile buttons */}
-        <div className="flex gap-4 justify-center md:hidden sm:flex-row">
-          <Button
-            href="/donate"
-            variant="primary"
-            className="text-center text-sm"
-          >
-            Donate Now
-          </Button>
-        </div>
+        
       </div>
     </section>
   );
