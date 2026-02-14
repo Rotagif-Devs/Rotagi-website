@@ -47,14 +47,13 @@ const About = () => {
       <OurValue />
       <OurSdg />
 
-      <section className="bg-[#d6448d] py-20 px-4">
+      <div className="bg-[#d6448d] py-20 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-12">
             <h2 className="text-2xl text-white mb-3">The Visionaries</h2>
             <div className="h-1.5 w-24 bg-white mx-auto rounded-full"></div>
           </div>
 
-          
           <div className="md:hidden">
             <Swiper
               modules={[Navigation]}
@@ -79,7 +78,6 @@ const About = () => {
                           className="object-contain rounded-2xl"
                         />
                       </div>
-                  
                     </div>
 
                     <div className="mt-6 text-center">
@@ -93,7 +91,6 @@ const About = () => {
               ))}
             </Swiper>
 
-           
             <div className="mt-6 flex justify-end gap-4">
               <button
                 className="vision-swiper-prev flex h-9 w-9 items-center justify-center rounded-full border border-white/80 text-white"
@@ -110,7 +107,6 @@ const About = () => {
             </div>
           </div>
 
-     
           <div className="hidden md:block">
             <div className="bg-white rounded-3xl py-10 px-6 shadow-xl">
               <div className="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-pink-300">
@@ -127,17 +123,15 @@ const About = () => {
                     </div>
 
                     <h4 className="font-bold text-gray-900">{member.name}</h4>
-                    <p className="text-gray-500 text-sm mt-1">
-                      {member.role}
-                    </p>
+                    <p className="text-gray-500 text-sm mt-1">{member.role}</p>
                   </div>
                 ))}
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 
