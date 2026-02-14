@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Link } from "lucide-react";
 import Image from "next/image";
 import Button from "../ui/Button";
 
@@ -36,7 +36,7 @@ const updates = [
 export default function Updates() {
   return (
     <section
-      className="bg-primary py-24 px-6 lg:px-8 flex justify-center border-t border-black/5"
+      className="bg-primary py-16 lg:py-24 px-4 lg:px-8 flex justify-center border-t border-black/5"
       id="updates"
     >
       <div className="flex w-full max-w-7xl flex-col gap-12 md:gap-20">
@@ -53,9 +53,9 @@ export default function Updates() {
             </p>
 
             <div className="hidden md:block">
-              <button className="rounded-full bg-secondary px-10 py-4 text-base font-bold text-white transition-all hover:bg-opacity-90 shadow-sm">
-                View All Updates
-              </button>
+              <Button href="/updates" variant="primary" className="px-10 py-4">
+                View All
+              </Button>
             </div>
           </div>
         </div>
@@ -67,9 +67,9 @@ export default function Updates() {
             {updates.map((update) => (
               <div
                 key={update.title}
-                className="group flex w-full max-w-[414px] flex-col overflow-hidden rounded-[32px] border border-black/5 bg-white shadow-sm hover:shadow-md transition-shadow"
+                className="group flex w-full max-w-[414px] flex-col overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm hover:shadow-md transition-shadow px-6 pb-6"
               >
-                <div className="h-[240px] w-full overflow-hidden">
+                <div className="h-[240px] w-full overflow-hidden mb-4">
                   <Image
                     width={414}
                     height={240}
@@ -79,8 +79,8 @@ export default function Updates() {
                   />
                 </div>
 
-                <div className="flex flex-1 flex-col gap-4 px-6 py-8">
-                  <span className="text-xs font-bold uppercase tracking-[0.1em] text-secondary">
+                <div className="flex flex-1 flex-col gap-4">
+                  <span className="text-xs font-bold uppercase tracking-[0.1em] text-orange">
                     {update.category}
                   </span>
 
@@ -94,7 +94,15 @@ export default function Updates() {
 
                   <div className="mt-auto pt-4">
                     <span className="flex items-center gap-2 text-base font-bold text-secondary group-hover:gap-4 transition-all">
-                      {update.linkText} <span className="text-xl">→</span>
+                      <Button
+                        withArrow
+                        size="none"
+                        className="py-2"
+                        variant="ghost"
+                        href="/updates"
+                      >
+                        {update.linkText}
+                      </Button>
                     </span>
                   </div>
                 </div>
@@ -106,8 +114,8 @@ export default function Updates() {
           <div className="md:hidden">
             <Swiper
               modules={[Navigation]}
-              slidesPerView={1.15}
-              spaceBetween={24}
+              slidesPerView={1.1}
+              spaceBetween={16}
               grabCursor={true}
               className="pb-10"
               navigation={{
@@ -117,8 +125,8 @@ export default function Updates() {
             >
               {updates.map((update) => (
                 <SwiperSlide key={update.title}>
-                  <div className="overflow-hidden rounded-[32px] border border-black/5 bg-white shadow-sm h-full flex flex-col">
-                    <div className="h-[220px] w-full overflow-hidden">
+                  <div className="overflow-hidden rounded-2xl bg-white shadow-sm h-full flex flex-col  px-4 pb-2">
+                    <div className="h-[200px] w-full overflow-hidden mb-4">
                       <Image
                         width={400}
                         height={220}
@@ -128,7 +136,7 @@ export default function Updates() {
                       />
                     </div>
 
-                    <div className="flex flex-1 flex-col gap-3 px-6 py-6">
+                    <div className="flex flex-1 flex-col gap-3">
                       <span className="text-xs font-bold uppercase tracking-wider text-secondary">
                         {update.category}
                       </span>
@@ -142,8 +150,16 @@ export default function Updates() {
                       </p>
 
                       <div className="mt-auto">
-                        <span className="flex items-center gap-2 text-base font-bold text-secondary">
-                          {update.linkText} <span>→</span>
+                        <span className="flex items-center gap-2 text-base font-bold text-secondary mb-3">
+                          <Button
+                            withArrow
+                            size="none"
+                            className="py-2"
+                            variant="ghost"
+                            href="/updates"
+                          >
+                            {update.linkText}
+                          </Button>
                         </span>
                       </div>
                     </div>
@@ -153,19 +169,19 @@ export default function Updates() {
             </Swiper>
 
             <div className="mt-8 flex justify-end gap-3">
-              <button className="upd-prev flex h-10 w-10 items-center justify-center rounded-full bg-black/5 text-black transition hover:bg-black/10 border border-black/10">
-                <ChevronLeft className="h-5 w-5" />
+              <button className="upd-prev flex h-16 w-16 items-center justify-center rounded-full bg-secondary/60 border border-white text-black transition hover:bg-black/10 border border-black/10">
+                <ChevronLeft className="h-10 w-10 text-white" />
               </button>
-              <button className="upd-next flex h-10 w-10 items-center justify-center rounded-full bg-black/5 text-black transition hover:bg-black/10 border border-black/10">
-                <ChevronRight className="h-5 w-5" />
+              <button className="upd-next flex h-16 w-16 items-center justify-center rounded-full bg-secondary/60 border border-white text-black transition hover:bg-black/10 border border-black/10">
+                <ChevronRight className="h-10 w-10 text-white" />
               </button>
             </div>
           </div>
 
           {/* Button below on mobile */}
           <div className="mt-10 flex justify-center md:hidden">
-            <Button href="/updates" variant="secondary" className="px-10 py-4">
-              View All Updates
+            <Button href="/updates" variant="primary" className="px-10 py-4">
+              View All
             </Button>
           </div>
         </div>

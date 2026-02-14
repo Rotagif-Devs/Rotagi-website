@@ -26,7 +26,6 @@ export default function Header() {
           </Link>
         </div>
 
-
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => (
@@ -42,7 +41,11 @@ export default function Header() {
 
         {/* Desktop Action */}
         <div className="hidden md:block">
-          <Button variant="secondary" size="md" className="mr-2 border border-gray-400">
+          <Button
+            variant="secondary"
+            size="md"
+            className="mr-2 border border-gray-400"
+          >
             Get Started
           </Button>
           <Button variant="primary" size="md">
@@ -83,15 +86,22 @@ export default function Header() {
             ))}
           </nav>
 
-          <Link href="/donate" className="mt-2 w-full" onClick={closeMenu}>
-            <Button
-              variant="primary"
-              size="lg"
-              className="w-full justify-center text-base"
-            >
-              Donate Now
-            </Button>
-          </Link>
+          <Button
+            variant="secondary"
+            size="md"
+            className="mr-2 border border-gray-400"
+          >
+            Get Started
+          </Button>
+          <Button
+            variant="primary"
+            size="lg"
+            onClick={closeMenu}
+            href="/donate"
+            className="w-full justify-center text-base"
+          >
+            Donate Now
+          </Button>
         </div>
       </div>
 

@@ -15,7 +15,7 @@ const partnerLogos = [
 
 export default function Partners() {
   return (
-    <section className="bg-primary py-24 px-6 lg:px-8 flex justify-center border-t border-black/5">
+    <section className="bg-primary py-16 lg:py-24 px-6 lg:px-8 flex justify-center border-t border-black/5">
       <div className="flex w-full max-w-7xl flex-col gap-12 md:gap-20">
         {/* Title + description + button area */}
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
@@ -31,11 +31,7 @@ export default function Partners() {
             </p>
 
             <div className="hidden md:block">
-              <Button
-                variant="secondary"
-                href="/partners"
-                className="px-10 py-4"
-              >
+              <Button variant="primary" href="/partners" className="px-10 py-4">
                 Partner With Us
               </Button>
             </div>
@@ -49,7 +45,7 @@ export default function Partners() {
             {partnerLogos.map((partner) => (
               <div
                 key={partner.name}
-                className="flex h-[320px] items-center justify-center rounded-[48px] bg-white px-12 shadow-sm border border-black/5 hover:shadow-md transition-shadow group"
+                className="flex h-[320px] items-center justify-center rounded-[48px] bg-white px-12 hover:shadow-md transition-shadow group"
               >
                 <Image
                   width={400}
@@ -72,7 +68,7 @@ export default function Partners() {
             >
               {partnerLogos.map((partner) => (
                 <SwiperSlide key={partner.name}>
-                  <div className="h-[280px] rounded-[40px] bg-white px-8 py-12 flex items-center justify-center shadow-sm border border-black/5">
+                  <div className="h-[280px] rounded-[40px] bg-white px-8 py-12 flex items-center justify-center mb-6">
                     <Image
                       width={300}
                       height={300}
@@ -88,7 +84,7 @@ export default function Partners() {
 
           {/* Button below slider on mobile */}
           <div className="mt-6 flex justify-center md:hidden">
-            <Button variant="secondary" href="/partners" className="px-10 py-4">
+            <Button variant="primary" href="/partners" className="px-10 py-4">
               Partner With Us
             </Button>
           </div>

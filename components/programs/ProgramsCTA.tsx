@@ -20,7 +20,7 @@ export default function ProgramsCTA() {
     }
   };
   return (
-    <section className="bg-pink-50 py-16 sm:py-24 mx-4 rounded-xl mb-12">
+    <section className="bg-pink-50 ">
       <div className="container mx-auto px-4">
         <div className="">
           <div className="lg:flex justify-between ">
