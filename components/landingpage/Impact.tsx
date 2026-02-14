@@ -32,7 +32,7 @@ export default function Impact() {
             </p>
 
             <div className="hidden md:block">
-              <Button variant="primary" href="/programs" className="px-10 py-4">
+              <Button variant="primary" href="/about" className="px-10 py-4">
                 Learn More
               </Button>
             </div>
@@ -83,7 +83,7 @@ export default function Impact() {
 
           {/* Learn More button below slider on mobile */}
           <div className="mt-12 flex justify-center md:hidden">
-            <Button href="/programs" variant="primary" className="px-10 py-4">
+            <Button href="/about" variant="primary" className="px-10 py-4">
               Learn More
             </Button>
           </div>

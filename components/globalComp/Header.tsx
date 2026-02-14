@@ -44,11 +44,12 @@ export default function Header() {
           <Button
             variant="secondary"
             size="md"
+            href="/programs"
             className="mr-2 border border-gray-400"
           >
             Get Started
           </Button>
-          <Button variant="primary" size="md">
+          <Button variant="primary" size="md" href="/donate">
             Donate Now
           </Button>
         </div>
@@ -89,6 +90,8 @@ export default function Header() {
           <Button
             variant="secondary"
             size="md"
+            href="/programs"
+            onClick={closeMenu}
             className="mr-2 border border-gray-400"
           >
             Get Started
