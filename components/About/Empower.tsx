@@ -9,7 +9,7 @@ import React from "react";
 
 const Empower = () => {
   return (
-    <div className="relative lg:mx-5 h-[520px] md:h-170 rounded-3xl overflow-hidden">
+    <div className="relative mt-16  lg:mx-5 h-[520px] md:h-170 lg:rounded-2xl overflow-hidden">
       <Image
         src="/Threegirls.jpg"
         alt="Empowering African girls to lead in the digital world"
@@ -47,12 +47,12 @@ const Empower = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             >
           
-          <h1 className="text-2xl md:text-4xl  w-full md:w-220">
+          <h1 className="w-full md:w-220">
             Empowering <span className="text-pink-400">African Girls</span> to
             lead in the Digital World
           </h1>
 
-          <p className="mt-3 text-sm md:text-base text-gray-100 w-full md:w-200">
+          <p className="mt-3 text-gray-100 w-full md:w-200">
             Through AI technology, and life skills, we equip young African girls
             with the confidence, knowledge, and leadership to shape a just and
             equitable digital future.

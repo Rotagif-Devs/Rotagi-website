@@ -125,7 +125,7 @@ export default function Updates() {
             >
               {updates.map((update) => (
                 <SwiperSlide key={update.title}>
-                  <div className="overflow-hidden rounded-2xl bg-white shadow-sm h-full flex flex-col  px-4 pb-2">
+                  <div className="overflow-hidden rounded-2xl bg-white shadow-sm h-120 flex flex-col  px-4 pb-2">
                     <div className="h-[200px] w-full overflow-hidden mb-4">
                       <Image
                         width={400}

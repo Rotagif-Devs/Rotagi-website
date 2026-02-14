@@ -20,7 +20,7 @@ export default function Impact() {
       <div className="flex w-full max-w-7xl flex-col gap-12 md:gap-20">
         {/* Title + text + button area */}
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-          <h2 className="text-black max-w-lg font-cal-sans leading-tight lg:w-full w-10/12">
+          <h2 className="text-black max-w-lg lg:w-full w-10/12">
             Access That Creates Impact
           </h2>
 

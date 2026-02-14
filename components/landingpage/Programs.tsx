@@ -16,7 +16,7 @@ export default function Programs() {
   return (
     <section
       id="programs"
-      className="py-14 lg:rounded-3xl lg:mx-6 lg:mb-20 bg-secondary flex justify-center pl-6 lg:px-16"
+      className="py-14 lg:rounded-2xl lg:mx-6 lg:mb-20 bg-secondary flex justify-center pl-6 lg:px-8"
     >
       <div className="relative w-full max-w-8xl">
         <div className="hidden md:block mx-auto my-10 lg:mb-20 max-w-3xl text-center">
@@ -36,7 +36,7 @@ export default function Programs() {
           </p>
         </div>
 
-        <div className="mx-auto rounded-tl-3xl rounded-bl-3xl lg:rounded-3xl bg-white pl-4 py-8 md:px-6 md:py-16">
+        <div className="mx-auto rounded-tl-2xl rounded-bl-2xl lg:rounded-2xl bg-white pl-4 py-8 md:px-6">
           {/* Desktop grid */}
           <div className="hidden lg:grid lg:grid-cols-4 lg:gap-4">
             {programs.map((prog, i) => (
@@ -45,7 +45,7 @@ export default function Programs() {
                 className="group relative flex flex-col pl-4"
               >
                 {i > 0 && (
-                  <div className="absolute left-0 top-[18%] h-[60%] w-[1px] bg-black/20" />
+                  <div className="absolute left-0 top-[18%] h-[60%] w-px bg-black/20" />
                 )}
 
                 <div className="relative mb-8 h-80 overflow-hidden lg:rounded-[24px]">
@@ -72,7 +72,7 @@ export default function Programs() {
                     <Button
                       variant="ghost"
                       withArrow
-                      className="inline-flex items-center gap-2 font-bold  text-2xl text-secondary transition-all hover:gap-4 hover:bg-secondary/10 px-6 py-2 rounded-full border-none hover:bg-secondary/10"
+                      className=""
                     >
                       Learn More
                     </Button>
@@ -97,7 +97,7 @@ export default function Programs() {
               {programs.map((prog, i) => (
                 <SwiperSlide key={prog.name}>
                   {i > 0 && (
-                    <div className="absolute -left-[4%] top-[18%] h-[60%] w-[1px] bg-black/20" />
+                    <div className="absolute -left-[4%] top-[18%] h-[60%] w-px bg-black/20" />
                   )}
                   <div className="group flex flex-col pl-2">
                     <div className="relative mb-8 h-64 overflow-hidden rounded-[24px]">

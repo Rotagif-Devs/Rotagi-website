@@ -31,7 +31,7 @@ const About = () => {
   ];
 
   return (
-    <section className="w-full mx-auto py-8">
+    <div className="w-full mx-auto ">
       <Empower />
       <OurStory />
       <OurMission />
@@ -73,7 +73,7 @@ const About = () => {
           </div>
         </div>
       </section>
-    </section>
+    </div>
   );
 };
 
