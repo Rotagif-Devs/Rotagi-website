@@ -1,8 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8e0ed;
-  --foreground: #171717;
+  
 }
 
 @theme {
@@ -20,6 +19,8 @@
   --color-brown: #250416;
   --color-accent0: #fabfd3;
   --color-darkgray: #525252;
+  --background: #f8e0ed;
+  --foreground: #171717;
 
   /* Fonts – these become font-sans, font-heading, etc. */
   --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
@@ -103,3 +104,4 @@ h5 {
 p {
   @apply text-base lg:text-lg font-normal;
 }
+

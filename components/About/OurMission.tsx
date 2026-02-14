@@ -26,7 +26,7 @@ const OurMission = () => {
                     <h3 className="text-4xl font700 font-semibold text-gray-900">
                       Our Mission
                     </h3>
-                    <p className="mt-2 text-sm leading-6 text-gray-600">
+                    <p className="mt-2 leading-6 text-gray-600">
                       We prioritize AI literacy, digital fluency, and leadership
                       for girls and women across Africa. Our goal is to bridge
                       the tech gap through sustainable, community-driven
@@ -44,7 +44,7 @@ const OurMission = () => {
                     <h3 className="text-4xl font-semibold text-gray-900">
                       Vision
                     </h3>
-                    <p className="mt-2 text-sm leading-6 text-gray-600">
+                    <p className="mt-2 leading-6 text-gray-600">
                       To foster a future where every African girl and woman
                       possesses the skills and confidence to lead the next
                       frontier of technological and social advancement.

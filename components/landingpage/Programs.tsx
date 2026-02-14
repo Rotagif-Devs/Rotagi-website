@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -14,46 +14,65 @@ export default function Programs() {
   const programs = getAllPrograms();
 
   return (
-    <section className="md:py-20 bg-secondary flex justify-center">
-      <div className="relative mx-4 w-full max-w-7xl  px-4 ">
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <h2 className="text-white">Our Programs</h2>
-          <p className="mx-auto mt-6 max-w-xl text-white">
+    <section
+      id="programs"
+      className="py-14 lg:rounded-2xl lg:mx-6 lg:mb-20 bg-secondary flex justify-center pl-6 lg:px-8"
+    >
+      <div className="relative w-full max-w-8xl">
+        <div className="hidden md:block mx-auto my-10 lg:mb-20 max-w-3xl text-center">
+          <h2 className="text-white font-cal-sans lowercase">Our Programs</h2>
+          <p className="mx-auto mt-6 max-w-2xl text-white/70 text-lg md:text-xl font-dm-sans leading-relaxed">
             Age-appropriate learning pathways designed to build skills,
             confidence, and leadership at every stage.
           </p>
         </div>
 
-        <div className="mx-auto rounded-[14px] bg-brown px-6 py-5 md:px-[27px] md:pt-[19px] md:pb-[31px]">
+        {/* mobile header */}
+        <div className="md:hidden flex flex-col text-center justify-center items-center mb-6 mr-6">
+          <h2 className="text-white font-cal-sans lowercase">Our Programs</h2>
+          <p className="mx-auto mt-6 max-w-2xl text-white/90 text-lg md:text-xl font-dm-sans leading-loose text-center">
+            Age-appropriate learning pathways designed to build skills,
+            confidence, and leadership at every stage.
+          </p>
+        </div>
+
+        <div className="mx-auto rounded-tl-2xl rounded-bl-2xl lg:rounded-2xl bg-white pl-4 py-8 md:px-6">
           {/* Desktop grid */}
-          <div className="hidden lg:grid lg:grid-cols-4 lg:gap-8">
+          <div className="hidden lg:grid lg:grid-cols-4 lg:gap-4">
             {programs.map((prog, i) => (
               <div
                 key={prog.name}
-                className={`group flex flex-col ${i < programs.length - 1 ? "lg:border-r lg:border-white/20 lg:pr-8" : ""} ${i > 0 ? "lg:pl-8" : ""}`}
+                className="group relative flex flex-col pl-4"
               >
-                <div className="relative mb-6 h-64 overflow-hidden rounded-2xl">
+                {i > 0 && (
+                  <div className="absolute left-0 top-[18%] h-[60%] w-px bg-black/20" />
+                )}
+
+                <div className="relative mb-8 h-80 overflow-hidden lg:rounded-[24px]">
                   <Image
                     width={500}
                     height={500}
                     src={prog.image}
                     alt={prog.name}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 lg:mt-8"
                   />
-                  <span className="absolute right-4 top-4 inline-flex h-6 w-[95px] items-center justify-center rounded-br-[8px] rounded-tl-[8px] bg-accent0 text-xs font-bold text-brown">
+                  <span className="absolute right-2 top-4 inline-flex h-8 items-center justify-center rounded-tl-2xl rounded-br-2xl bg-[#F8BBD0] text-[14px] font-bold uppercase tracking-wider text-[#3B0D25] px-4">
                     {prog.ageRange}
                   </span>
                 </div>
 
                 <div className="flex flex-1 flex-col items-center text-center">
-                  <h3 className="mb-3  text-white capitalize">{prog.name}</h3>
-                  <p className="mb-6  text-white/80 line-clamp-3">
+                  <h3 className="mb-4 text-black font-cal-sans text-2xl lowercase leading-tight">
+                    {prog.name}
+                  </h3>
+                  <p className="mb-8 text-black/70 font-dm-sans font-light leading-relaxed line-clamp-3">
                     {prog.tagline}
                   </p>
                   <Link href={`/programs/${prog.slug}`} className="mt-auto">
                     <Button
                       variant="ghost"
-                      className="inline-flex items-center gap-2 font-semibold text-white transition hover:text-pink-200"
+                      withArrow
+                      className=""
                     >
                       Learn More
                     </Button>
@@ -68,39 +87,44 @@ export default function Programs() {
             <Swiper
               modules={[Navigation]}
               navigation={{
-                prevEl: ".swiper-prev",
-                nextEl: ".swiper-next",
+                prevEl: ".prog-prev",
+                nextEl: ".prog-next",
               }}
-              slidesPerView={1}
-              spaceBetween={16}
+              slidesPerView={1.3}
+              spaceBetween={26}
               className="pb-12"
             >
-              {programs.map((prog) => (
+              {programs.map((prog, i) => (
                 <SwiperSlide key={prog.name}>
-                  <div className="group flex flex-col">
-                    <div className="relative mb-6 h-64 overflow-hidden rounded-2xl">
+                  {i > 0 && (
+                    <div className="absolute -left-[4%] top-[18%] h-[60%] w-px bg-black/20" />
+                  )}
+                  <div className="group flex flex-col pl-2">
+                    <div className="relative mb-8 h-64 overflow-hidden rounded-[24px]">
                       <Image
                         width={500}
                         height={500}
                         src={prog.image}
                         alt={prog.name}
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        className="h-full w-full object-cover"
                       />
-                      <span className="absolute right-4 top-4 inline-flex h-6 w-[95px] items-center justify-center rounded-br-[8px] rounded-tl-[8px] bg-accent0 text-xs font-bold text-brown">
+                      <span className="absolute right-4 top-0 inline-flex h-8 w-[100px] items-center justify-center rounded-tl-2xl font-dm-sans rounded-br-2xl bg-[#F8BBD0] text-[12px] font-bold tracking-wider text-[#3B0D25]">
                         {prog.ageRange}
                       </span>
                     </div>
 
-                    <div className="flex flex-1 flex-col items-center px-4 text-center">
-                      <h3 className="mb-3  text-white capitalize">
+                    <div className="flex flex-1 flex-col items-center text-center">
+                      <h3 className="mb-4 text-black font-cal-sans text-2xl lowercase leading-tight">
                         {prog.name}
                       </h3>
-                      <p className="mb-6  text-white/80">{prog.tagline}</p>
+                      <p className="mb-2 text-black/80 font-dm-sans font-light leading-relaxed">
+                        {prog.tagline}
+                      </p>
                       <Link href={`/programs/${prog.slug}`} className="mt-auto">
                         <Button
                           variant="ghost"
-                          className="inline-flex items-center gap-2 font-semibold text-white transition hover:text-pink-200"
-                          style={{ fontSize: "18px" }}
+                          withArrow
+                          className="inline-flex items-center gap-2 text-xl font-bold text-secondary transition-all px-8 py-3 rounded-full border-none hover:bg-secondary/10"
                         >
                           Learn More
                         </Button>
@@ -112,19 +136,18 @@ export default function Programs() {
             </Swiper>
           </div>
         </div>
-
-        <div className="mt-6 flex justify-end gap-6 lg:hidden">
+        <div className="mt-8 flex md:hidden justify-end gap-3 px-6">
           <button
-            className="swiper-prev rounded-full bg-white/10 p-4 text-white transition hover:text-pink-200 backdrop-blur-sm border-2 border-white"
+            className="prog-prev flex h-14 w-14 items-center justify-center rounded-full bg-white/20 border-2 border-white text-black transition hover:bg-black/10 border border-black/10"
             aria-label="Previous slide"
           >
-            <ChevronLeft className="h-8 w-8" />
+            <ChevronLeft className="h-8 w-8 text-white" />
           </button>
           <button
-            className="swiper-next rounded-full bg-white/10 p-4 text-white transition hover:text-pink-200 backdrop-blur-sm  border-2 border-white"
+            className="prog-next flex h-14 w-14 items-center justify-center rounded-full bg-white/20 border-2 border-white text-black transition hover:bg-black/10 border border-black/10"
             aria-label="Next slide"
           >
-            <ChevronRight className="h-8 w-8" />
+            <ChevronRight className="h-8 w-8 text-white" />
           </button>
         </div>
       </div>

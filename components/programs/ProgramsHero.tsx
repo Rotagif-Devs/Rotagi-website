@@ -13,7 +13,7 @@ export default function ProgramsHero({ title, description }: Props) {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/hero.png"
+          src="/programs-hero.jpg"
           width={1080}
           height={1080}
           alt="African Girl Innovator"
@@ -21,7 +21,7 @@ export default function ProgramsHero({ title, description }: Props) {
           priority
         />
         {/* Overlay gradient for better text readability */}
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-[#41122B]/70" />
       </div>
 
       <div className="absolute inset-0 flex flex-col justify-center items-center text-white w-full">
@@ -32,7 +32,7 @@ export default function ProgramsHero({ title, description }: Props) {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="max-w-5xl mx-auto"
           >
-            <h1 className="text-white text-4xl sm:text-6xl font-bold tracking-tight mb-6">
+            <h1 className="text-white mb-6">
               {title}
             </h1>
           </motion.div>
@@ -42,7 +42,7 @@ export default function ProgramsHero({ title, description }: Props) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="text-lg sm:text-xl text-gray-100"
+              className="text-gray-100"
             >
               {description}
             </motion.p>

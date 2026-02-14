@@ -15,6 +15,7 @@ const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   weight: ["400", "500", "700"],
   display: "swap",
+  
 });
 
 const calSans = Cal_Sans({
@@ -22,6 +23,7 @@ const calSans = Cal_Sans({
   variable: "--font-cal-sans",
   weight: "400",
   display: "swap",
+  fallback: ["Inter", "sans-serif"],
 });
 
 export const metadata: Metadata = {
@@ -41,7 +43,7 @@ export default function RootLayout({
         className={`${inter.variable} ${dmSans.variable} ${calSans.variable} antialiased bg-primary text-gray-900`}
       >
         <Header />
-        <div className="mt-14 lg:mt-20">{children}</div>
+        <div className="mt-1 lg:mt-24">{children}</div>
         <Footer />
       </body>
     </html>

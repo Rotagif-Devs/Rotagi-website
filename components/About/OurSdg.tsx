@@ -30,7 +30,7 @@ const OurSdg = () => {
     <section className="bg-white py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl  text-black mb-2">Our SDG Impact</h2>
+          <h2 className="text-black mb-2">Our SDG Impact</h2>
 
           <div className="h-1.5 w-24 bg-[#d6448d] mx-auto rounded-full"></div>
         </div>
@@ -49,11 +49,11 @@ const OurSdg = () => {
                 </div>
               </div>
 
-              <h3 className="text-lg font-bold text-gray-900 mb-3">
+              <h3 className="text-gray-900 mb-3">
                 {item.title}
               </h3>
 
-              <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
+              <p className="text-gray-500 leading-relaxed max-w-xs">
                 {item.description}
               </p>
             </div>
