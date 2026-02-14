@@ -13,11 +13,14 @@ const stats = [
 
 export default function Impact() {
   return (
-    <section className="bg-primary py-16 lg:py-24 px-6 lg:px-8 flex justify-center">
+    <section
+      id="impact"
+      className="bg-primary py-16 lg:py-24 px-6 lg:px-8 flex justify-center"
+    >
       <div className="flex w-full max-w-7xl flex-col gap-12 md:gap-20">
         {/* Title + text + button area */}
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-          <h2 className="text-black max-w-lg font-cal-sans lowercase leading-tight">
+          <h2 className="text-black max-w-lg lg:w-full w-10/12">
             Access That Creates Impact
           </h2>
 
@@ -45,7 +48,7 @@ export default function Impact() {
                 key={stat.label}
                 className="flex h-[300px] flex-col items-center justify-center gap-6 rounded-[48px] bg-white px-10 py-16 hover:shadow-md transition-shadow"
               >
-                <span className="font-thin leading-none text-black/30 lg:text-[96px]">
+                <span className="font-thin leading-none text-black/40 lg:text-[96px]">
                   {stat.num}
                 </span>
                 <span className="font-dm-sans text-lg text-center text-black/30 md:text-[18px] md:leading-[140%] font-thin">
@@ -65,11 +68,11 @@ export default function Impact() {
             >
               {stats.map((stat) => (
                 <SwiperSlide key={stat.label}>
-                  <div className="h-[300px] rounded-[40px] bg-white px-8 py-12 flex flex-col items-center justify-center gap-6">
-                    <span className="text-6xl font-thin leading-none text-black/30">
+                  <div className="h-[220px] rounded-[40px] bg-white px-8 py-12 flex flex-col items-center justify-center gap-6">
+                    <span className="text-[55.3px] font-thin leading-none text-black/40">
                       {stat.num}
                     </span>
-                    <span className="font-dm-sans text-xl text-black/30 text-center font-thin capitalize">
+                    <span className="font-dm-sans text-xl text-black/40 text-center font-thin capitalize">
                       {stat.label}
                     </span>
                   </div>

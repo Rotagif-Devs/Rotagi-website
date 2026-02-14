@@ -9,7 +9,7 @@ import React from "react";
 
 const Empower = () => {
   return (
-    <div className="relative lg:mx-5 h-[520px] md:h-170 rounded-3xl overflow-hidden">
+    <div className="relative mt-16  lg:mx-5 h-[520px] md:h-170 lg:rounded-2xl overflow-hidden">
       <Image
         src="/Threegirls.jpg"
         alt="Empowering African girls to lead in the digital world"

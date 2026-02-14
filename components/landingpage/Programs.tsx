@@ -14,7 +14,10 @@ export default function Programs() {
   const programs = getAllPrograms();
 
   return (
-    <section className="py-14 lg:rounded-3xl lg:mx-6 lg:mb-20 bg-secondary flex justify-center pl-6 lg:px-16">
+    <section
+      id="programs"
+      className="py-14 lg:rounded-2xl lg:mx-6 lg:mb-20 bg-secondary flex justify-center pl-6 lg:px-8"
+    >
       <div className="relative w-full max-w-8xl">
         <div className="hidden md:block mx-auto my-10 lg:mb-20 max-w-3xl text-center">
           <h2 className="text-white font-cal-sans lowercase">Our Programs</h2>
@@ -27,13 +30,13 @@ export default function Programs() {
         {/* mobile header */}
         <div className="md:hidden flex flex-col text-center justify-center items-center mb-6 mr-6">
           <h2 className="text-white font-cal-sans lowercase">Our Programs</h2>
-          <p className="mx-auto mt-6 max-w-2xl text-white/70 text-lg md:text-xl font-dm-sans leading-relaxed text-center">
+          <p className="mx-auto mt-6 max-w-2xl text-white/90 text-lg md:text-xl font-dm-sans leading-loose text-center">
             Age-appropriate learning pathways designed to build skills,
             confidence, and leadership at every stage.
           </p>
         </div>
 
-        <div className="mx-auto rounded-tl-3xl rounded-bl-3xl lg:rounded-3xl bg-white pl-4 py-8 md:px-6 md:py-16">
+        <div className="mx-auto rounded-tl-2xl rounded-bl-2xl lg:rounded-2xl bg-white pl-4 py-8 md:px-6">
           {/* Desktop grid */}
           <div className="hidden lg:grid lg:grid-cols-4 lg:gap-4">
             {programs.map((prog, i) => (
@@ -42,7 +45,7 @@ export default function Programs() {
                 className="group relative flex flex-col pl-4"
               >
                 {i > 0 && (
-                  <div className="absolute left-0 top-[18%] h-[60%] w-[1px] bg-black/20" />
+                  <div className="absolute left-0 top-[18%] h-[60%] w-px bg-black/20" />
                 )}
 
                 <div className="relative mb-8 h-80 overflow-hidden lg:rounded-[24px]">
@@ -69,7 +72,7 @@ export default function Programs() {
                     <Button
                       variant="ghost"
                       withArrow
-                      className="inline-flex items-center gap-2 font-bold  text-2xl text-secondary transition-all hover:gap-4 hover:bg-secondary/10 px-6 py-2 rounded-full border-none hover:bg-secondary/10"
+                      className=""
                     >
                       Learn More
                     </Button>
@@ -94,7 +97,7 @@ export default function Programs() {
               {programs.map((prog, i) => (
                 <SwiperSlide key={prog.name}>
                   {i > 0 && (
-                    <div className="absolute -left-[4%] top-[18%] h-[60%] w-[1px] bg-black/20" />
+                    <div className="absolute -left-[4%] top-[18%] h-[60%] w-px bg-black/20" />
                   )}
                   <div className="group flex flex-col pl-2">
                     <div className="relative mb-8 h-64 overflow-hidden rounded-[24px]">
@@ -105,7 +108,7 @@ export default function Programs() {
                         alt={prog.name}
                         className="h-full w-full object-cover"
                       />
-                      <span className="absolute right-4 top-0 inline-flex h-8 w-[100px] items-center justify-center rounded-tl-2xl rounded-br-2xl bg-[#F8BBD0] text-[12px] font-bold tracking-wider text-[#3B0D25]">
+                      <span className="absolute right-4 top-0 inline-flex h-8 w-[100px] items-center justify-center rounded-tl-2xl font-dm-sans rounded-br-2xl bg-[#F8BBD0] text-[12px] font-bold tracking-wider text-[#3B0D25]">
                         {prog.ageRange}
                       </span>
                     </div>
@@ -135,16 +138,16 @@ export default function Programs() {
         </div>
         <div className="mt-8 flex md:hidden justify-end gap-3 px-6">
           <button
-            className="prog-prev flex h-16 w-16 items-center justify-center rounded-full bg-white/20 border border-white text-black transition hover:bg-black/10 border border-black/10"
+            className="prog-prev flex h-14 w-14 items-center justify-center rounded-full bg-white/20 border-2 border-white text-black transition hover:bg-black/10 border border-black/10"
             aria-label="Previous slide"
           >
-            <ChevronLeft className="h-10 w-10 text-white" />
+            <ChevronLeft className="h-8 w-8 text-white" />
           </button>
           <button
-            className="prog-next flex h-16 w-16 items-center justify-center rounded-full bg-white/20 border border-white text-black transition hover:bg-black/10 border border-black/10"
+            className="prog-next flex h-14 w-14 items-center justify-center rounded-full bg-white/20 border-2 border-white text-black transition hover:bg-black/10 border border-black/10"
             aria-label="Next slide"
           >
-            <ChevronRight className="h-10 w-10 text-white" />
+            <ChevronRight className="h-8 w-8 text-white" />
           </button>
         </div>
       </div>

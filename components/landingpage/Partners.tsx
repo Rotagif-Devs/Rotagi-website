@@ -15,7 +15,10 @@ const partnerLogos = [
 
 export default function Partners() {
   return (
-    <section className="bg-primary py-16 lg:py-24 px-6 lg:px-8 flex justify-center border-t border-black/5">
+    <section
+      id="partners"
+      className="bg-primary py-16 lg:py-24 px-6 lg:px-8 flex justify-center border-t border-black/5"
+    >
       <div className="flex w-full max-w-7xl flex-col gap-12 md:gap-20">
         {/* Title + description + button area */}
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
@@ -24,14 +27,14 @@ export default function Partners() {
           </h2>
 
           <div className="flex flex-col items-start gap-8 max-w-2xl">
-            <p className="text-gray-700 text-lg md:text-xl font-dm-sans leading-relaxed">
+            <p className="text-gray-700 text-lg md:text-xl font-dm-sans leading-loose lg:w-full w-11/12">
               We collaborate with partners who believe in measurable impact,
               inclusive growth, and empowering the next generation of African
               women.
             </p>
 
             <div className="hidden md:block">
-              <Button variant="primary" href="/partners" className="px-10 py-4">
+              <Button variant="primary" href="/about" className="px-10 py-4">
                 Partner With Us
               </Button>
             </div>
@@ -68,13 +71,13 @@ export default function Partners() {
             >
               {partnerLogos.map((partner) => (
                 <SwiperSlide key={partner.name}>
-                  <div className="h-[280px] rounded-[40px] bg-white px-8 py-12 flex items-center justify-center mb-6">
+                  <div className="h-[230px] rounded-[40px] bg-white px-8 py-12 flex items-center justify-center mb-6">
                     <Image
                       width={300}
                       height={300}
                       src={partner.logo}
                       alt={`${partner.name} logo`}
-                      className="max-h-[140px] w-auto object-contain opacity-40 grayscale"
+                      className="max-h-[150px] w-auto object-contain opacity-40 grayscale"
                     />
                   </div>
                 </SwiperSlide>
@@ -84,7 +87,7 @@ export default function Partners() {
 
           {/* Button below slider on mobile */}
           <div className="mt-6 flex justify-center md:hidden">
-            <Button variant="primary" href="/partners" className="px-10 py-4">
+            <Button variant="primary" href="/about" className="px-10 py-4">
               Partner With Us
             </Button>
           </div>

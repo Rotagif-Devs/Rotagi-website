@@ -36,7 +36,7 @@ const updates = [
 export default function Updates() {
   return (
     <section
-      className="bg-primary py-16 lg:py-24 px-4 lg:px-8 flex justify-center border-t border-black/5"
+      className="bg-primary pt-16 lg:py-24 px-4 lg:px-8 flex justify-center border-t border-black/5"
       id="updates"
     >
       <div className="flex w-full max-w-7xl flex-col gap-12 md:gap-20">
@@ -47,7 +47,7 @@ export default function Updates() {
           </h2>
 
           <div className="flex flex-col items-start gap-8 max-w-2xl">
-            <p className="text-gray-700 text-lg md:text-xl font-dm-sans leading-relaxed">
+            <p className="text-gray-700 text-lg md:text-xl font-dm-sans leading-loose lg:w-full w-11/12">
               Program highlights, impact milestones, and how we’re advancing
               opportunity and digital empowerment.
             </p>
@@ -99,7 +99,7 @@ export default function Updates() {
                         size="none"
                         className="py-2"
                         variant="ghost"
-                        href="/updates"
+                        href="/programs"
                       >
                         {update.linkText}
                       </Button>
@@ -125,7 +125,7 @@ export default function Updates() {
             >
               {updates.map((update) => (
                 <SwiperSlide key={update.title}>
-                  <div className="overflow-hidden rounded-2xl bg-white shadow-sm h-full flex flex-col  px-4 pb-2">
+                  <div className="overflow-hidden rounded-2xl bg-white shadow-sm h-120 flex flex-col  px-4 pb-2">
                     <div className="h-[200px] w-full overflow-hidden mb-4">
                       <Image
                         width={400}
@@ -137,11 +137,11 @@ export default function Updates() {
                     </div>
 
                     <div className="flex flex-1 flex-col gap-3">
-                      <span className="text-xs font-bold uppercase tracking-wider text-secondary">
+                      <span className="text-xs font-bold uppercase tracking-wider text-orange">
                         {update.category}
                       </span>
 
-                      <h3 className="text-black font-cal-sans text-xl lowercase leading-snug">
+                      <h3 className="font-cal-sans text-xl lowercase leading-snug lg:w-full w-11/12">
                         {update.title}
                       </h3>
 
@@ -156,7 +156,7 @@ export default function Updates() {
                             size="none"
                             className="py-2"
                             variant="ghost"
-                            href="/updates"
+                            href="/programs"
                           >
                             {update.linkText}
                           </Button>
@@ -169,18 +169,18 @@ export default function Updates() {
             </Swiper>
 
             <div className="mt-8 flex justify-end gap-3">
-              <button className="upd-prev flex h-16 w-16 items-center justify-center rounded-full bg-secondary/60 border border-white text-black transition hover:bg-black/10 border border-black/10">
-                <ChevronLeft className="h-10 w-10 text-white" />
+              <button className="upd-prev flex h-14 w-14 items-center justify-center rounded-full bg-secondary/30 border-2 border-white text-black transition hover:bg-black/90 border border-black/10">
+                <ChevronLeft className="h-8 w-8 text-white" />
               </button>
-              <button className="upd-next flex h-16 w-16 items-center justify-center rounded-full bg-secondary/60 border border-white text-black transition hover:bg-black/10 border border-black/10">
-                <ChevronRight className="h-10 w-10 text-white" />
+              <button className="upd-next flex h-14 w-14 items-center justify-center rounded-full bg-secondary/30 border-2 border-white text-black transition hover:bg-black/90 border border-black/10">
+                <ChevronRight className="h-8 w-8 text-white" />
               </button>
             </div>
           </div>
 
           {/* Button below on mobile */}
           <div className="mt-10 flex justify-center md:hidden">
-            <Button href="/updates" variant="primary" className="px-10 py-4">
+            <Button href="/programs" variant="primary" className="px-10 py-4">
               View All
             </Button>
           </div>

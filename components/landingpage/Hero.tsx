@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[80vh] lg:min-h-[80vh] flex flex-col items-center justify-end overflow-hidden bg-[#41122B] lg:mx-4 lg:rounded-[32px] mt-4 py-20">
+    <section className="relative flex flex-col items-center justify-end bg-[#41122B] lg:mx-4 lg:rounded-2xl  py-20">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -19,7 +19,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-linear-to-r from-[#41122B] to-transparent opacity-10" />
       </div>
 
-      <div className="relative z-10 flex flex-col justify-center w-full">
+      <div className="relative z-10 flex lg:mt-24 flex-col justify-center w-full">
         <div className="mx-auto bottom-10 max-w-7xl px-6 lg:px-8 w-full pt-16 lg:pt-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -27,7 +27,7 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="max-w-4xl"
           >
-            <h1 className="text-white text-2xl md:text-5xl lg:text-7 leading-[1.1] mb-8 font-cal-sans">
+            <h1 className="text-white mb-8 ">
               Empowering the Next Generation of African Girl Innovators
             </h1>
           </motion.div>
@@ -37,7 +37,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="text-white text-lg md:text-xl max-w-2xl opacity-90 leading-relaxed"
+              className="text-white max-w-2xl opacity-90"
             >
               The next breakthrough could come from her. We are making sure
               she&apos;s ready with AI literacy, digital skills, and leadership
@@ -54,7 +54,7 @@ export default function Hero() {
                 variant="secondary"
                 href="/programs"
                 withArrow
-                className="px-8 py-4 lg:text-lg"
+                className=""
               >
                 Explore Programs
               </Button>

@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { Play, Pause } from "lucide-react"; // ← Import both icons from lucide-react
+import Button from "../ui/Button";
 
 export default function CTA() {
   const [isPlaying, setIsPlaying] = useState(true); // Start with autoPlay → playing
@@ -20,27 +21,27 @@ export default function CTA() {
   };
 
   return (
-    <section className="bg-[var(--color-primary)] py-16 md:py-20 flex justify-center">
+    <section className="bg-primary py-16 md:py-16 flex justify-center">
       <div className="flex w-full max-w-[1260px] flex-col gap-10 px-5 md:px-0 md:gap-[76px]">
         {/* Title + description + buttons area */}
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-12">
-          <h2 className="font-cal-sans text-[var(--color-dark)] text-4xl leading-tight tracking-tight md:max-w-[600px] md:text-[46px] md:leading-[110%]">
+          <h2 className="font-cal-sans text-dark text-4xl leading-tight tracking-tight md:max-w-[600px] md:text-[46px] md:leading-[110%]">
             Join Us in Empowering the Next Generation
           </h2>
 
           <div className="flex flex-col items-start gap-6 md:max-w-[580px]">
-            <p className="font-dm-sans text-[var(--color-darkgray)] text-left text-base leading-relaxed md:text-[16px] md:leading-[160%]">
+            <p className="font-dm-sans text-darkgray text-left text-base leading-relaxed md:text-[16px] md:leading-[160%]">
               Whether through donations, mentorship, or partnerships — your
               support creates lasting change.
             </p>
 
             <div className="hidden md:flex gap-4">
-              <button className="rounded-full bg-[var(--color-secondary)] px-8 py-3.5 font-[var(--font-dm-sans)] text-base font-semibold text-white transition hover:bg-[var(--color-tertiary)] whitespace-nowrap">
+              <Button href="/donate" variant="primary" className="">
                 Donate Now
-              </button>
-              <button className="rounded-full border border-gray-200 bg-white px-8 py-3.5 font-[var(--font-dm-sans)] text-base font-semibold text-[var(--color-dark)] transition hover:bg-gray-50 whitespace-nowrap">
+              </Button>
+              <Button href="/programs" variant="secondary" className="">
                 Explore Programs
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -48,7 +49,7 @@ export default function CTA() {
         {/* Video / hero preview */}
         <div className="flex w-full justify-center">
           <div
-            className="group relative w-full overflow-hidden rounded-3xl bg-white md:aspect-[1256/711] md:max-w-[1256px] md:rounded-[64px] aspect-[16/9] cursor-pointer"
+            className="group relative w-full overflow-hidden rounded-3xl bg-white md:aspect-1256/711 md:max-w-[1256px] md:rounded-[64px] aspect-video cursor-pointer"
             onClick={togglePlay}
           >
             <video
@@ -89,12 +90,20 @@ export default function CTA() {
 
         {/* Mobile buttons */}
         <div className="flex gap-4 justify-center md:hidden sm:flex-row">
-          <button className="w-full rounded-full bg-secondary px-8 py-3.5 text-base font-semibold text-white transition hover:bg-tertiary sm:w-auto">
+          <Button
+            href="/donate"
+            variant="primary"
+            className="text-center text-sm"
+          >
             Donate Now
-          </button>
-          <button className="w-full rounded-full border border-gray-200 bg-white px-4 py-3.5 text-base font-semibold text-dark transition hover:bg-gray-50 sm:w-auto">
+          </Button>
+          <Button
+            href="/programs"
+            variant="secondary"
+            className="text-center text-sm"
+          >
             Explore Programs
-          </button>
+          </Button>
         </div>
       </div>
     </section>
