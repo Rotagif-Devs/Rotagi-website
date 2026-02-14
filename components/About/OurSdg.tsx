@@ -39,7 +39,7 @@ const OurSdg = () => {
           {sdgData.map((item, index) => (
             <div key={index} className="flex flex-col items-center text-center">
               <div className={`mb-6 `}>
-                <div className="rounded-full overflow-hidden w-24 h-24 relative">
+                <div className="rounded-full overflow-hidden lg:w-24 lg:h-24 w-20 h-20 relative">
                   <Image
                     src={item.icon}
                     alt={item.title}
