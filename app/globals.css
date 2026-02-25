@@ -101,5 +101,5 @@ h5 {
   @apply text-sm capitalize;
 }
 p {
-  @apply text-base lg:text-lg font-normal;
+  @apply text-base lg:text-5xl  font-normal;
 }
