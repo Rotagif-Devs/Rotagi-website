@@ -6,7 +6,7 @@ import ProgramsCTA from "@/components/programs/ProgramsCTA";
 const HERO_DATA = {
   title: "Program Pathways",
   description:
-    "Empowering the next generation of women in technology through specialized training, mentorship, and real-world experience.",
+    "Discover age-appropriate pathways from curiosity to career. Each program is designed to meet you where you are and guide you toward your goals.",
 };
 
 const FILTERS = [
