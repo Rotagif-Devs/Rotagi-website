@@ -40,7 +40,7 @@ export default function SignUpForm() {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Program selector */}
+   
           <div>
             <label className="block text-xs font-semibold text-gray-600 mb-1">Select Program</label>
             <select
@@ -56,7 +56,7 @@ export default function SignUpForm() {
             </select>
           </div>
 
-          {/* Name row */}
+        
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-semibold text-gray-600 mb-1">
@@ -86,7 +86,6 @@ export default function SignUpForm() {
             </div>
           </div>
 
-          {/* Email + Phone */}
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-semibold text-gray-600 mb-1">
@@ -118,7 +117,7 @@ export default function SignUpForm() {
             </div>
           </div>
 
-          {/* DOB + Country */}
+        
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-semibold text-gray-600 mb-1">
@@ -155,7 +154,7 @@ export default function SignUpForm() {
             </div>
           </div>
 
-          {/* Password */}
+       
           <div>
             <label className="block text-xs font-semibold text-gray-600 mb-1">Password</label>
             <div className="relative">
@@ -187,7 +186,7 @@ export default function SignUpForm() {
             </div>
           </div>
 
-          {/* Terms */}
+          
           <label className="flex items-start gap-2 cursor-pointer">
             <input
               name="agreed"
