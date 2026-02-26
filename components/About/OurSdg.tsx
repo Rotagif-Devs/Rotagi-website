@@ -34,7 +34,6 @@ const OurSdg = () => {
 
           <div className="h-1.5 w-24 bg-[#d6448d] mx-auto rounded-full"></div>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {sdgData.map((item, index) => (
             <div key={index} className="flex flex-col items-center text-center">

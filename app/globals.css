@@ -85,7 +85,6 @@ h5 {
   font-family: var(--font-cal-sans), sans-serif;
 }
 
-
 h1 {
   @apply text-6xl lg:text-7xl ;
 }
