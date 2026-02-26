@@ -1,16 +1,24 @@
-
 import React from "react";
 import Button from "../ui/Button";
 import Image from "next/image";
-// import { FaLock, FaArrowLeft, FaCreditCard } from "react-icons/fa";
 
-const DonateComplete = () => {
+type Props = {
+  data: {
+    email: string;
+    fullName: string;
+    phone: string;
+    message?: string;
+    amount: string;
+  };
+   onBack: () => void;
+};
+
+const DonateComplete = ({ data, onBack }: Props) => {
   return (
     <section className="min-h-screen bg-[#f8e0ed] flex justify-center items-center px-4 pb-4">
       <div className="w-full max-w-xl bg-white rounded-2xl border border-[#D3D3D3] p-6 sm:p-8">
-
         {/* Back Button */}
-        <button className="flex items-center gap-1 text-sm mb-6 px-3 py-2 rounded-md cursor-pointer">
+        <button className="flex items-center gap-1 text-sm mb-6 px-3 py-2 rounded-md cursor-pointer" onClick={onBack}>
           {/* <FaArrowLeft className="text-xs" /> */}
           <Image src="/arrowba.png" width={20} height={20} className="object-contain" alt="Back Arrow Icon" />   
           Back
@@ -33,7 +41,7 @@ const DonateComplete = () => {
         <div className="space-y-4 border border-[#D3D3D3] py-5 px-5 rounded-xl my-10 flex flex-col gap-5">
           <div className="flex justify-between items-center">
             <span className="text-black text-sm">Donation Amount</span>
-            <span className="text-[#D62D88] font-medium">₦10,000.00</span>
+            <span className="text-[#D62D88] font-medium">₦{data.amount}</span>
           </div>
 
           <div className="flex justify-between items-center">
@@ -43,7 +51,7 @@ const DonateComplete = () => {
 
           <div className="flex justify-between items-center">
             <span className="text-black text-sm">Email Address</span>
-            <span className="text-sm">john.doe@example.com</span>
+            <span className="text-sm">{data.email}</span>
           </div>
 
         </div>
