@@ -32,7 +32,6 @@ const OurMission = () => {
                     </p>
                   </div>
                 </div>
-
                 <div className="flex gap-3">
                   <span className="lg:mt-1 lg:w-20 w-30">
                     <Image src="/eye.svg" alt="icon" width={60} height={30} />

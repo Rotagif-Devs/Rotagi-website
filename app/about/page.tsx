@@ -31,7 +31,7 @@ const About = () => {
       <OurValue />
       <OurSdg />
 
-      <section className="bg-[#d6448d] py-20 px-4">
+      <div className="bg-[#d6448d] py-20 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-12">
             <h2 className="text-white">The Visionaries</h2>
@@ -114,7 +114,6 @@ const About = () => {
           </div>
         </div>
       </section>
-    </section>
   );
 };
 
