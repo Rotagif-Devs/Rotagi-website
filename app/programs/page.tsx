@@ -8,7 +8,6 @@ const HERO_DATA = {
   description:
     "Discover age-appropriate pathways from curiosity to career. Each program is designed to meet you where you are and guide you toward your goals.",
 };
-
 const FILTERS = [
   { label: "All", value: "All" },
   { label: "10-12", value: "Ages 10-12" },

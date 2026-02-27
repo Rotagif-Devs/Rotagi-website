@@ -15,10 +15,7 @@ const Empower = () => {
         sizes="(max-width: 768px) 100vw, 1400px"
         className="object-cover"
       />
-
-   
       <div className="absolute inset-0 bg-[#2a0036]/70" />
-
       <div
         className="
           absolute inset-0
