@@ -21,11 +21,11 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="flex-1 flex items-center justify-center p-5 lg:p-12 bg-pink-50/40">
-      <div className="w-full max-w-[554px]">
+    <div className="flex-1 flex items-center justify-center p-5 lg:p-12">
+      <div className="w-full max-w-138.5">
        
         <div className="mb-8">
-          <h2>Welcome Back!</h2>
+          <h3>Welcome Back!</h3>
           <p className="text-gray-500 mt-1">
             Sign in to continue your learning journey
           </p>
@@ -44,7 +44,7 @@ export default function LoginForm() {
                   programs.find((p) => p.id === e.target.value)!
                 )
               }
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white"
+              className="w-full border border-gray-200 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white"
             >
               {programs.map((p) => (
                 <option key={p.id} value={p.id}>
@@ -66,7 +66,7 @@ export default function LoginForm() {
               onChange={handleChange}
               placeholder="sg-email@gmail.com"
               required
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 pr-4 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white placeholder-gray-300"
+              className="w-full border border-gray-200 rounded-md px-4 py-3 pr-4 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white placeholder-gray-300"
             />
           </div>
 
@@ -76,7 +76,7 @@ export default function LoginForm() {
                 Password <span className="text-pink-500">*</span>
               </label>
               <Link
-                href="/forgot-password"
+                href="/forgotpassword"
                 className="text-pink-500 hover:underline"
               >
                 Forgot password?
@@ -90,7 +90,7 @@ export default function LoginForm() {
                 onChange={handleChange}
                 placeholder="Enter password"
                 required
-                className="w-full border border-gray-200 rounded-xl px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white placeholder-gray-300"
+                className="w-full border border-gray-200 rounded-md px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white placeholder-gray-300"
               />
               <button
                 type="button"
