@@ -17,26 +17,10 @@ import "swiper/css/navigation";
 
 const About = () => {
   const teamData = [
-    {
-      name: "Amara K.",
-      role: "Founder",
-      image: "/Amara.png",
-    },
-    {
-      name: "Fatima D.",
-      role: "Co. Founder",
-      image: "/Fatima.png",
-    },
-    {
-      name: "Lola Jay",
-      role: "Outreach",
-      image: "/Lola.png",
-    },
-    {
-      name: "Zara David",
-      role: "Outreach",
-      image: "/zara.png",
-    },
+    { name: "Amara K.", role: "Founder", image: "/Amara.png" },
+    { name: "Fatima D.", role: "Co. Founder", image: "/Fatima.png" },
+    { name: "Lola Jay", role: "Outreach", image: "/Lola.png" },
+    { name: "Zara David", role: "Outreach", image: "/zara.png" },
   ];
 
   return (
@@ -50,7 +34,7 @@ const About = () => {
       <div className="bg-[#d6448d] py-20 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-12">
-            <h2 className="text-2xl text-white mb-3">The Visionaries</h2>
+            <h2 className="text-white">The Visionaries</h2>
             <div className="h-1.5 w-24 bg-white mx-auto rounded-full"></div>
           </div>
 
@@ -80,11 +64,9 @@ const About = () => {
                       </div>
                     </div>
 
-                    <div className="mt-6 text-center">
-                      <h4 className="font-bold text-white">{member.name}</h4>
-                      <p className="text-sm text-white/80 mt-1">
-                        {member.role}
-                      </p>
+                    <div className="mt-6 text-center text-white">
+                      <h4>{member.name}</h4>
+                      <p className="mt-1">{member.role}</p>
                     </div>
                   </div>
                 </SwiperSlide>
@@ -107,6 +89,7 @@ const About = () => {
             </div>
           </div>
 
+        
           <div className="hidden md:block">
             <div className="bg-white rounded-3xl py-10 px-6 shadow-xl">
               <div className="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-pink-300">
@@ -122,15 +105,15 @@ const About = () => {
                       />
                     </div>
 
-                    <h4 className="font-bold text-gray-900">{member.name}</h4>
-                    <p className="text-gray-500 text-sm mt-1">{member.role}</p>
+                    <h4>{member.name}</h4>
+                    <p className="mt-1">{member.role}</p>
                   </div>
                 ))}
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </section>
   );
 };

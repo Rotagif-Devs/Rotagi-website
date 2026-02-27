@@ -1,5 +1,5 @@
+"use client";
 import Image from "next/image";
-
 import React from "react";
 
 const OurMission = () => {
@@ -23,9 +23,7 @@ const OurMission = () => {
                   </span>
 
                   <div>
-                    <h3 className="text-4xl font700 font-semibold text-gray-900">
-                      Our Mission
-                    </h3>
+                    <h3>Our Mission</h3>
                     <p className="mt-2 leading-6 text-gray-600">
                       We prioritize AI literacy, digital fluency, and leadership
                       for girls and women across Africa. Our goal is to bridge
@@ -34,16 +32,13 @@ const OurMission = () => {
                     </p>
                   </div>
                 </div>
-
                 <div className="flex gap-3">
-                  <span className="lg:mt-1 lg:w-20 w-30 ">
+                  <span className="lg:mt-1 lg:w-20 w-30">
                     <Image src="/eye.svg" alt="icon" width={60} height={30} />
                   </span>
 
                   <div>
-                    <h3 className="text-4xl font-semibold text-gray-900">
-                      Vision
-                    </h3>
+                    <h3>Vision</h3>
                     <p className="mt-2 leading-6 text-gray-600">
                       To foster a future where every African girl and woman
                       possesses the skills and confidence to lead the next

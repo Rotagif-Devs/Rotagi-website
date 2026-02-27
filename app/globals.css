@@ -1,11 +1,10 @@
 @import "tailwindcss";
 
-:root {
-  
-}
+:root {}
+
 
 @theme {
-  /* Your colors – single color gets bg-primary, etc. */
+  /* Colors */
   --color-primary: #f8e0ed;
   --color-secondary: #d62d88;
   --color-tertiary: #e463a4;
@@ -22,15 +21,14 @@
   --background: #f8e0ed;
   --foreground: #171717;
 
-  /* Fonts – these become font-sans, font-heading, etc. */
+  /* Fonts */
   --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
   --font-heading:
-    var(--font-outfit), var(--font-cal-sans), ui-sans-serif, system-ui,
-    sans-serif;
+    var(--font-outfit), var(--font-cal-sans), ui-sans-serif, system-ui, sans-serif;
   --font-cal-sans: var(--font-cal-sans), sans-serif;
   --font-outfit: var(--font-outfit), sans-serif;
 
-  /* Optional extras you had before */
+  /* Extras */
   --background-image-hero-gradient: linear-gradient(
     to bottom right,
     #4c1d95,
@@ -42,9 +40,9 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: var(--color-primary);
-    /* --foreground: #ededed; */
   }
 }
+
 
 body {
   background: var(--color-primary);
@@ -77,6 +75,7 @@ body {
   padding-right: 2rem;
 }
 
+
 h1,
 h2,
 h3,
@@ -85,23 +84,59 @@ h5 {
   font-family: var(--font-cal-sans), sans-serif;
 }
 
-
 h1 {
-  @apply text-6xl lg:text-7xl ;
-}
-h2 {
-  @apply text-4xl lg:text-5xl capitalize;
-}
-h3 {
-  @apply text-2xl capitalize;
-}
-h4 {
-  @apply text-base capitalize;
-}
-h5 {
-  @apply text-sm capitalize;
-}
-p {
-  @apply text-base lg:text-lg font-normal;
+  @apply text-4xl lg:text-6xl font-bold leading-tight;
 }
 
+h2 {
+  @apply text-3xl lg:text-5xl font-semibold capitalize leading-tight;
+}
+
+h3 {
+  @apply text-2xl lg:text-3xl font-semibold capitalize;
+}
+
+h4 {
+  @apply text-xl font-semibold capitalize;
+}
+
+h5 {
+  @apply text-lg font-medium capitalize;
+}
+
+/* Body text */
+p {
+  @apply text-base lg:text-lg font-normal leading-relaxed;
+}
+
+/* Small text */
+small {
+  @apply text-sm;
+}
+
+
+@layer components {
+  .heading-hero {
+    @apply text-4xl lg:text-6xl font-bold leading-tight;
+  }
+
+  .heading-section {
+    @apply text-3xl lg:text-5xl font-semibold leading-tight;
+  }
+
+  .heading-card {
+    @apply text-base font-bold;
+  }
+
+  .body-text {
+    @apply text-base lg:text-lg leading-relaxed;
+  }
+
+  .text-link {
+    @apply text-sm font-semibold;
+  }
+
+  .brand-logo {
+    @apply text-xl font-black tracking-widest uppercase;
+  }
+}
