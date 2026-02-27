@@ -13,19 +13,19 @@ type Inputs = {
 };
 
 type Props = {
-  onNext: () => void;
+  onNext: (data: Inputs) => void;
 };
 
 const DonateDetails = ({ onNext }: Props) => {
   const {
-    register,
     handleSubmit,
+    register,
     formState: { errors },
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log(data);
-    onNext();
+    onNext(data);
   };
   return (
     <main className="flex justify-center items-center py-4">

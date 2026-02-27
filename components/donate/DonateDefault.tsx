@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
-  onNext: () => void;
+  onNext: (data: any) => void;
 };
 const DonateDefault = ({ onNext }: Props) => {
     const donateTransformData = [
@@ -27,8 +27,9 @@ const DonateDefault = ({ onNext }: Props) => {
     },
   ];
   return (
-    <div className="flex flex-col justify-center items-center text-center">
-
+    <div className="mb-20">
+    <div className="flex flex-col justify-center items-center text-center bg-white py-15">
+      
         <h2 className="text-3xl font-medium">
           How Your Donation Transforms Lives
         </h2>
@@ -48,7 +49,7 @@ const DonateDefault = ({ onNext }: Props) => {
                 className="object-contain"
               />
 
-              <h4 className="font-medium">{data.title}</h4>
+              <h4 className="font-medium ">{data.title}</h4>
               <p className="text-gray-600 max-w-sm">
                 {data.description}
               </p>
@@ -61,6 +62,8 @@ const DonateDefault = ({ onNext }: Props) => {
         <div className="mb-5 flex flex-col md:flex-row  items-center text-base">
           Looking to collaborate at large scale? <span className="text-[#D62D88] text-base flex items-center"><Image src="/fwdArrow.png" alt="forward-arrow" width={25} height={25} className="object-contain"/><Link href="/">Partner with us</Link></span>
         </div>
+        
+      </div>
       </div>
   )
 }

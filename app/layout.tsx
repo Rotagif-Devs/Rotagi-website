@@ -3,6 +3,7 @@ import { DM_Sans, Cal_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/globalComp/Header";
 import Footer from "@/components/globalComp/Footer";
+import Providers from "./Provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -42,9 +43,11 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${dmSans.variable} ${calSans.variable} antialiased bg-primary text-gray-900`}
       >
+         <Providers>
         <Header />
-        <div className="mt-1 lg:mt-24">{children}</div>
+        <div className="mt-1 lg:mt-15 ">{children}</div>
         <Footer />
+        </Providers>
       </body>
     </html>
   );

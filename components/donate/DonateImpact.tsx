@@ -2,10 +2,10 @@ import Image from "next/image";
 
 const DonateImpact = () => {
   return (
-    <section className="py-10">
-      <div className="grid grid-col-1 md:grid-cols-2 m-10 my-10 gap-10">
+    <section className="md:py-10 py-5">
+      <div className="grid grid-col-1 md:grid-cols-2 mx-10 md:my-10 my-5 md:gap-10 gap-1">
         <div className="flex flex-col justify-center">
-          <h2 className="font-light text-black leading-tight text-4xl" style={{fontFamily: "var(--font-cal-sans)"}}>
+          <h2 className="font-light md:!text-4xl !text-3xl text-black leading-tight" style={{fontFamily: "var(--font-cal-sans)"}}>
             Make a Lasting Impact on African Girls and Women Digital Future
           </h2>
           <p className="text-black my-8 font-thin">
