@@ -1,16 +1,4 @@
-import { ReactNode } from "react";
-
-export interface Program {
-  learnMoreUrl: string;
-  extendedDescription: ReactNode;
-  id: string;
-  name: string;
-  ages: string;
-  description: string;
-  color: string;
-  accent: string;
-  image: string;
-}
+import { Program } from "@/types/program";
 
 export const programs: Program[] = [
   {
@@ -18,43 +6,47 @@ export const programs: Program[] = [
     name: "She Ignite",
     ages: "Ages 10–12",
     description: "She Ignite introduces young girls to the exciting world of technology and artificial intelligence through interactive, age-appropriate activities. Participants explore basic coding concepts, learn about AI in everyday life, and develop critical thinking skills that will serve them throughout their educational journey.",
-    color: "from-pink-400 to-rose-500",
+   
     accent: "#f43f5e",
     image: "/img-1.png",
-    learnMoreUrl: "",
-    extendedDescription: undefined
+    learnMoreUrl: "/programs/she-ignite",
+    extendedDescription: undefined,
+    slug: "she-ignite"
   },
   {
     id: "blossom",
     name: "She Blossom",
     ages: "Ages 13–15",
-    description: "She Ignite introduces young girls to the exciting world of technology and artificial intelligence through interactive, age-appropriate activities. Participants explore basic coding concepts, learn about AI in everyday life, and develop critical thinking skills that will serve them throughout their educational journey.",
-    color: "from-fuchsia-500 to-pink-500",
+    description: "She Blossom builds on foundational skills, helping teens explore AI, coding, and problem-solving with more complex projects and teamwork exercises.",
+    
     accent: "#d946ef",
     image: "/img-2.png",
-    learnMoreUrl: "",
-    extendedDescription: undefined
+    learnMoreUrl: "/programs/she-blossom",
+    extendedDescription: undefined,
+    slug: "she-blossom"
   },
   {
     id: "blaze",
     name: "She Blaze",
     ages: "Ages 16–18",
-    description: "She Ignite introduces young girls to the exciting world of technology and artificial intelligence through interactive, age-appropriate activities. Participants explore basic coding concepts, learn about AI in everyday life, and develop critical thinking skills that will serve them throughout their educational journey.",
-    color: "from-rose-500 to-pink-600",
+    description: "She Blaze focuses on advanced AI, coding, and leadership skills for older teens, preparing them for tech careers and higher education opportunities.",
+  
     accent: "#e11d48",
     image: "/img-3.png",
-    learnMoreUrl: "",
-    extendedDescription: undefined
+    learnMoreUrl: "/programs/she-blaze",
+    extendedDescription: undefined,
+    slug: "she-blaze"
   },
   {
     id: "ascend",
     name: "She Ascend",
     ages: "Ages 18–40",
-    description: "She Ignite introduces young girls to the exciting world of technology and artificial intelligence through interactive, age-appropriate activities. Participants explore basic coding concepts, learn about AI in everyday life, and develop critical thinking skills that will serve them throughout their educational journey.",
-    color: "from-pink-600 to-fuchsia-700",
+    description: "She Ascend is for young adults and women, combining AI, tech, and leadership training to advance careers and entrepreneurial ventures.",
+ 
     accent: "#be185d",
     image: "/img-4.png",
-    learnMoreUrl: "",
-    extendedDescription: undefined
+    learnMoreUrl: "/programs/she-ascend",
+    extendedDescription: undefined,
+    slug: "she-ascend"
   },
 ];
