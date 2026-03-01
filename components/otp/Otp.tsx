@@ -97,7 +97,7 @@ export default function ConfirmOtpCode({
 
   return (
     <div className="min-h-screen bg-primary">
-      <div className="mx-auto flex min-h-screen max-w-3xl items-start justify-center px-6 pt-28">
+      <div className="mx-auto flex min-h-screen max-w-3xl items-start justify-center px-6 lg:pt-28">
         <div className="w-full max-w-md">
           <div className=" bg-primary/40 p-6">
             <h4 className="text-dark">Confirm OTP Code</h4>
@@ -122,7 +122,7 @@ export default function ConfirmOtpCode({
                     onKeyDown={(e) => handleKeyDown(i, e)}
                     onPaste={(e) => handlePaste(i, e)}
                     className="
-                      h-10 w-22 text-center font-semibold text-dark
+                      h-15 w-22 text-center font-semibold text-dark
                       bg-white outline-none
                       border border-accent0
                       focus:border-secondary focus:ring-2 focus:ring-secondary/20

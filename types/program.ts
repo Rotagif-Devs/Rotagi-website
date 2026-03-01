@@ -1,12 +1,13 @@
+import { ReactNode } from "react";
+
 export interface Program {
-  slug: string;
-  title: string;
-  ageRange: string;
-  curiosity: string;
+  id: string;
+  name: string;
+  ages: string;
   description: string;
-  duration: string;
-  mode: string;
   image: string;
-  outcomes: string[];
-  prerequisites: string[];
+  accent: string;
+  learnMoreUrl: string;
+  extendedDescription?: ReactNode; // optional
+  slug?: string;                   // optional
 }
