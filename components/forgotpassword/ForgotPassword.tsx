@@ -29,13 +29,13 @@ export default function ForgotPassword({
 
   return (
     <div className="min-h-screen">
-      <div className="mx-auto flex min-h-screen items-start justify-center px-6 pt-28">
+      <div className="mx-auto flex min-h-screen items-start justify-center px-6 lg:pt-28 pt-10">
         <div className="w-full ">
          
           <h4 className="text-dark">Forgot Password?</h4>
 
          
-          <p className="mt-2  leading-5 text-text-hdd">
+          <p className="mt-2 leading-5 text-text-hdd">
             Please enter your email address below to receive a one-time password
             (OTP).
           </p>
