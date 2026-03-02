@@ -1,7 +1,8 @@
 "use client";
 
 import { createContext, useContext, useState } from "react";
-import { Program, programs } from "@/data/programs";
+import { programs } from "@/data/programs";
+import { Program } from "@/types/program";
 
 interface ProgramContextType {
   selectedProgram: Program;
@@ -14,7 +15,7 @@ const ProgramContext = createContext<ProgramContextType>({
 });
 
 export function ProgramProvider({ children }: { children: React.ReactNode }) {
-  const [selectedProgram, setSelectedProgram] = useState(programs[0]);
+  const [selectedProgram, setSelectedProgram] = useState<Program>(programs[0]);
   return (
     <ProgramContext.Provider value={{ selectedProgram, setSelectedProgram }}>
       {children}

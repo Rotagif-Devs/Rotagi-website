@@ -2,7 +2,6 @@ import type { Program } from "@/lib/programs";
 import Image from "next/image";
 import Button from "../ui/Button";
 
-// import { Program } from "@/types/program";
 interface Props {
   program: Program;
   index: number;
@@ -13,7 +12,7 @@ export default function ProgramCard({ program, index }: Props) {
       key={index}
       className="flex flex-col text-darkgray p-4 overflow-hidden rounded-3xl bg-white"
     >
-      {/* Image Container */}
+    
       <div className="relative aspect-4/3 rounded-2xl md:aspect-video w-full bg-brown overflow-hidden">
         <Image
           src={program.image || "/placeholder.svg"}
@@ -29,7 +28,7 @@ export default function ProgramCard({ program, index }: Props) {
         </div>
       </div>
 
-      {/* Content */}
+     
       <div className="flex flex-1 flex-col px-2 pt-6">
         <div className="mb-4">
           <span className="inline-block rounded-full bg-[#FABFD380] px-6 py-1.5 text-sm font-semibold text-[#D62D88]">
