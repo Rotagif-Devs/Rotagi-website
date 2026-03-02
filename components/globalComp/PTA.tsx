@@ -4,7 +4,7 @@ import VideoPlayer from "./Videoplayer";
 export default function PTA() {
 
   return (
-    <section className="bg-primary py-16 md:py-20 flex justify-center">
+    <section className="bg-primary py-16 md:py-20 px-6 md:px-15 flex justify-center">
       <div className="flex w-full max-w-[1260px] flex-col gap-10 px-5 md:px-0 md:gap-[76px]">
         {/* Title + description + buttons area */}
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-12">
