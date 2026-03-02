@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
 
-const navItems = ["About", "Programs", "Contact"];
+const navItems = ["About", "Programs", "Blog", "Contact"];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
