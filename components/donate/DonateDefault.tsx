@@ -49,7 +49,7 @@ const DonateDefault = ({ onNext }: Props) => {
                 className="object-contain"
               />
 
-              <h4 className="font-medium ">{data.title}</h4>
+              <h4 className="!font-medium ">{data.title}</h4>
               <p className="text-gray-600 max-w-sm">
                 {data.description}
               </p>
