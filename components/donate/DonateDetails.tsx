@@ -45,8 +45,7 @@ const DonateDetails = ({ onNext }: Props) => {
             flex
             flex-col
             justify-center
-            mx-auto
-  "
+            mx-auto"
       >
         <div className="text-center flex justify-center flex-col pb-5">
           <div
@@ -97,6 +96,7 @@ const DonateDetails = ({ onNext }: Props) => {
           </label>
           <input
             id="phone"
+            type="tel"
             {...register("phone", { required: "Phone is required" })}
             placeholder="+234 809 567 6669"
             className="w-full border-2 border-[#D3D3D3] outline-0 rounded-lg px-4 py-2"
@@ -106,7 +106,6 @@ const DonateDetails = ({ onNext }: Props) => {
             <p className="text-red-500 text-sm">{errors.phone.message}</p>
           )}
         </div>
-
         {/* Message */}
         <div className="mb-8">
           <label htmlFor="message" className="block mb-1 font-medium">
@@ -120,22 +119,48 @@ const DonateDetails = ({ onNext }: Props) => {
             style={{ fontFamily: "var(--font-dm-sans)" }}
           />
         </div>
-        <div className="mb-8">
+        <div className="mb-8 relative">
           <label htmlFor="amount" className="block mb-1 font-medium">
             Amount
           </label>
-          <input
-            id="amount"
-            {...register("amount", { required: "Amount is required" })}
-            placeholder="$"
-            className="w-full border-2 outline-0 border-[#D3D3D3] rounded-lg px-4 py-2"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          />
+          <div className="flex items-center gap-2">
+            <span className="absolute left-3  text-gray-500">₦</span>
+            <input
+              id="amount"
+              type="number"
+              {...register("amount", {
+                required: "Amount is required",
+              //   onChange: (e) => {
+              //     let value = e.target.value;
+
+              //     // Remove everything except numbers and dot
+              //     value = value.replace(/[^0-9.]/g, "");
+
+              //     if (!value) {
+              //       e.target.value = "";
+              //       return;
+              //     }
+
+              //     const numberValue = parseFloat(value);
+
+              //     if (!isNaN(numberValue)) {
+              //       e.target.value = numberValue.toLocaleString("en-NG", {
+              //         minimumFractionDigits: 2,
+              //         maximumFractionDigits: 2,
+              //       });
+              //     }
+              //   },
+              // })}
+              })}
+              placeholder="0.00"
+              className="w-full border-2 outline-0 border-[#D3D3D3] rounded-lg px-4 py-2 pr-4 pl-8"
+              style={{ fontFamily: "var(--font-dm-sans)" }}
+            />
+          </div>
           {errors.amount && (
             <p className="text-red-500 text-sm">{errors.amount.message}</p>
           )}
         </div>
-
         <Button type="submit">Proceed with payment</Button>
       </form>
     </main>

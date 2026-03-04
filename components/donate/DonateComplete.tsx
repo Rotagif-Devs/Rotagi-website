@@ -70,7 +70,6 @@ const DonateComplete = ({ data, onBack }: Props) => {
             </div>
           </div>
         </div>
-
         {/* SSL Info */}
         <div className="my-10 bg-[#FABFD3] rounded-lg p-4 flex gap-4 items-center">
           <div className="">
@@ -85,9 +84,8 @@ const DonateComplete = ({ data, onBack }: Props) => {
             </p>
           </div>
         </div>
-
         {/* Pay Button */}
-        <Button className="my-2 w-full bg-pink-600 hover:bg-pink-700 transition text-white py-3 rounded-full font-medium"> Pay ₦10,000</Button>
+        <Button className="my-2 w-full bg-pink-600 hover:bg-pink-700 transition text-white py-3 rounded-full font-medium"> Pay ₦{data.amount}</Button>
         {/* Terms */}
         <p className="text-center text-xs text-gray-500 mt-4">
           By proceeding, you agree to our terms and conditions
