@@ -1,13 +1,11 @@
-import CreatePassword from '@/components/createpassword/CreatePassword'
-import CreateNewPasswordForm from '@/components/createpassword/CreatePassword'
-import React from 'react'
+import CreatePassword from "@/components/createpassword/CreatePassword";
+import { Suspense } from "react";
 
-const page = () => {
+
+export default function Page() {
   return (
-    <div>
-        <CreatePassword/>
-    </div>
-  )
+    <Suspense fallback={<div>Loading...</div>}>
+      <CreatePassword />
+    </Suspense>
+  );
 }
-
-export default page

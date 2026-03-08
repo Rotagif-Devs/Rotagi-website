@@ -2,7 +2,7 @@ import { Program } from "@/types/program";
 
 export const programs: Program[] = [
   {
-    id: "ignite",
+    id: "she-ignite",
     name: "She Ignite",
     ages: "Ages 10–12",
     description: "She Ignite introduces young girls to the exciting world of technology and artificial intelligence through interactive, age-appropriate activities. Participants explore basic coding concepts, learn about AI in everyday life, and develop critical thinking skills that will serve them throughout their educational journey.",
@@ -14,7 +14,7 @@ export const programs: Program[] = [
     slug: "she-ignite"
   },
   {
-    id: "blossom",
+    id: "she-blossom",
     name: "She Blossom",
     ages: "Ages 13–15",
     description: "She Blossom builds on foundational skills, helping teens explore AI, coding, and problem-solving with more complex projects and teamwork exercises.",
@@ -26,7 +26,7 @@ export const programs: Program[] = [
     slug: "she-blossom"
   },
   {
-    id: "blaze",
+    id: "she-blaze",
     name: "She Blaze",
     ages: "Ages 16–18",
     description: "She Blaze focuses on advanced AI, coding, and leadership skills for older teens, preparing them for tech careers and higher education opportunities.",
@@ -38,7 +38,7 @@ export const programs: Program[] = [
     slug: "she-blaze"
   },
   {
-    id: "ascend",
+    id: "she-ascend",
     name: "She Ascend",
     ages: "Ages 18–40",
     description: "She Ascend is for young adults and women, combining AI, tech, and leadership training to advance careers and entrepreneurial ventures.",
