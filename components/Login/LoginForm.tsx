@@ -1,26 +1,96 @@
 "use client";
-
+ 
 import { useState } from "react";
 import Link from "next/link";
 import { programs } from "@/data/programs";
 import { useProgram } from "@/context/ProgramContext";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import { login } from "@/lib/services/auth.service";
 
+ 
 export default function LoginForm() {
   const { selectedProgram, setSelectedProgram } = useProgram();
   const [form, setForm] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
-
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+ 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    setErrorMessage(null);
   };
-
-  const handleSubmit = (e: React.FormEvent) => {
+ 
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert(`Logging in as ${form.email} for ${selectedProgram.name}`);
+    setSubmitting(true);
+    setErrorMessage(null);
+    
+    try {
+      console.log("Attempting login with:", { email: form.email }); // Don't log password
+      
+      const response: any = await login({ email: form.email, password: form.password });
+      console.log("Login response:", response); // For debugging - check the structure
+      
+      // Check for token in different possible response structures
+      let accessToken = null;
+      
+      // Direct accessToken property
+      if (response?.accessToken) {
+        accessToken = response.accessToken;
+      } 
+      // Nested in data object (your original code)
+      else if (response?.data?.accessToken) {
+        accessToken = response.data.accessToken;
+      }
+      // Token is the entire response string
+      else if (typeof response === 'string' && response.length > 0) {
+        accessToken = response;
+      }
+      // Token in token property
+      else if (response?.token) {
+        accessToken = response.token;
+      }
+      
+      if (accessToken) {
+        localStorage.setItem("accessToken", accessToken);
+        alert("Logged in successfully!");
+        // You might want to redirect here
+        // window.location.href = "/dashboard"; // Uncomment to redirect
+      } else {
+        setErrorMessage("No access token received from server. Please check the response structure.");
+        console.error("Response structure:", response);
+      }
+      
+    } catch (err) {
+      console.error("Full error object:", err);
+      
+      // Extract meaningful error message
+      let message = "Login failed";
+      
+      if (err instanceof Error) {
+        message = err.message;
+        
+        // Try to parse any additional error details
+        if ('response' in err) {
+          const errorWithResponse = err as any;
+          if (errorWithResponse.response?.data) {
+            console.error("Error response data:", errorWithResponse.response.data);
+            // If the error response has a message, use it
+            if (errorWithResponse.response.data.message) {
+              message = errorWithResponse.response.data.message;
+            }
+          }
+        }
+      }
+      
+      setErrorMessage(message);
+    } finally {
+      setSubmitting(false);
+    }
   };
-
+ 
   return (
     <div className="flex-1 flex items-center justify-center p-5 lg:p-12">
       <div className="w-full max-w-138.5">
@@ -30,9 +100,9 @@ export default function LoginForm() {
             Sign in to continue your learning journey
           </p>
         </div>
-
+ 
         <form onSubmit={handleSubmit} className="space-y-4">
-       
+ 
           <div>
             <label className="block font-semibold text-gray-600 mb-1">
               Select Program
@@ -53,7 +123,7 @@ export default function LoginForm() {
               ))}
             </select>
           </div>
-
+ 
           <div>
             <label className="block font-semibold text-gray-600 mb-1">
               Email Address <span className="text-pink-500">*</span>
@@ -68,8 +138,8 @@ export default function LoginForm() {
               className="w-full border border-gray-200 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white placeholder-gray-300"
             />
           </div>
-
-         
+ 
+ 
           <div>
             <div className="flex items-center justify-between mb-1">
               <label className="font-semibold text-gray-600">
@@ -82,7 +152,7 @@ export default function LoginForm() {
                 Forgot password?
               </Link>
             </div>
-
+ 
             <div className="relative">
               <input
                 name="password"
@@ -93,7 +163,7 @@ export default function LoginForm() {
                 required
                 className="w-full border border-gray-200 rounded-md px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white placeholder-gray-300"
               />
-
+ 
               <button
                 type="button"
                 onClick={() => setShowPassword((prev) => !prev)}
@@ -104,15 +174,23 @@ export default function LoginForm() {
               </button>
             </div>
           </div>
-
+ 
+          {/* Display error message if any */}
+          {errorMessage && (
+            <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md">
+              {errorMessage}
+            </div>
+          )}
+ 
           <button
             type="submit"
-            className="w-full py-3.5 rounded-2xl text-white font-bold transition-all duration-200 hover:opacity-90 active:scale-[0.98] shadow-lg shadow-pink-200"
+            disabled={submitting}
+            className="w-full py-3.5 rounded-2xl text-white font-bold transition-all duration-200 hover:opacity-90 active:scale-[0.98] shadow-lg shadow-pink-200 disabled:opacity-50 disabled:cursor-not-allowed"
             style={{ background: "linear-gradient(135deg, #e91e8c, #c2185b)" }}
           >
-            Sign In
+            {submitting ? "Signing in..." : "Sign In"}
           </button>
-
+ 
           <p className="text-center text-gray-500">
             Don&apos;t have an account?{" "}
             <Link

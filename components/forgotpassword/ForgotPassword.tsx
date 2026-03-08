@@ -1,6 +1,9 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { forgotPassword } from "@/lib/services/auth.service";
+import SuccessModal from "../SuccessModal";
 
 type ForgotPasswordProps = {
   onSendCode?: (email: string) => Promise<void> | void;
@@ -12,22 +15,29 @@ export default function ForgotPassword({
   onSignInClick,
 }: ForgotPasswordProps) {
   const [email, setEmail] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [modalConfig, setModalConfig] = useState({ isOpen: false, message: "" });
+  
+  const { mutate: handleSendCode, isPending: loading } = useMutation({
+    mutationFn: forgotPassword,
+    onSuccess: (data) => {
+      setModalConfig({ isOpen: true, message: data?.message || "OTP sent successfully. Please check your email." });
+    },
+    onError: (err) => {
+      const message = err instanceof Error ? err.message : "Failed to send code.";
+      alert(message);
+    },
+  });
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const value = email.trim();
     if (!value) return;
 
-    try {
-      setLoading(true);
-      await onSendCode?.(value);
-    } finally {
-      setLoading(false);
-    }
+    handleSendCode({ email: value });
   }
 
   return (
+    <>
     <div className="min-h-screen">
       <div className="mx-auto flex min-h-screen items-start justify-center px-6 lg:pt-28 pt-10">
         <div className="w-full ">
@@ -87,5 +97,16 @@ export default function ForgotPassword({
         </div>
       </div>
     </div>
+
+    <SuccessModal
+      isOpen={modalConfig.isOpen}
+      onClose={() => {
+        setModalConfig({ isOpen: false, message: "" });
+        if (onSendCode) onSendCode(email);
+      }}
+      message={modalConfig.message}
+      title="OTP Sent!"
+    />
+    </>
   );
 }

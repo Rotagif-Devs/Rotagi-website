@@ -15,7 +15,9 @@ const ProgramContext = createContext<ProgramContextType>({
 });
 
 export function ProgramProvider({ children }: { children: React.ReactNode }) {
-  const [selectedProgram, setSelectedProgram] = useState<Program>(programs[0]);
+ const [selectedProgram, setSelectedProgram] = useState<Program>(
+  programs.find(p => p.id === "she-blossom") || programs[1] // Find by id or use index 1
+);  
   return (
     <ProgramContext.Provider value={{ selectedProgram, setSelectedProgram }}>
       {children}

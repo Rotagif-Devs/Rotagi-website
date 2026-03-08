@@ -2,22 +2,38 @@
 
 import React, { useMemo, useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import { useMutation } from "@tanstack/react-query";
+import { createPassword } from "@/lib/services/auth.service";
+import SuccessModal from "../SuccessModal";
 
 type Props = {
+  email?: string;
+  otp?: string;
+  token?: string;
   onSave?: (password: string) => Promise<void> | void;
 };
 
-export default function CreateNewPasswordForm({ onSave }: Props) {
+export default function CreateNewPasswordForm({ email, otp, token, onSave }: Props) {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [showPass, setShowPass] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [modalConfig, setModalConfig] = useState({ isOpen: false, message: "" });
 
   const mismatch = useMemo(
     () => confirm.length > 0 && password !== confirm,
     [password, confirm]
   );
+
+  const { mutate: handleCreatePassword, isPending: loading } = useMutation({
+    mutationFn: createPassword,
+    onSuccess: (data) => {
+      setModalConfig({ isOpen: true, message: data?.message || "Password created successfully." });
+    },
+    onError: (err) => {
+      alert(err instanceof Error ? err.message : "Failed to create password.");
+    },
+  });
 
   const canSubmit = useMemo(
     () => password.length >= 6 && confirm.length >= 6 && !mismatch && !loading,
@@ -27,16 +43,13 @@ export default function CreateNewPasswordForm({ onSave }: Props) {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!canSubmit) return;
+    if (!email) return alert("Email is missing. Please restart the flow.");
 
-    try {
-      setLoading(true);
-      await onSave?.(password);
-    } finally {
-      setLoading(false);
-    }
+    handleCreatePassword({ email, password, otp, token });
   }
 
   return (
+    <>
     <div className="min-h-screen bg-primary">
       <div className="mx-auto flex min-h-screen max-w-md items-start justify-center px-6 pt-10 lg:pt-24">
         <div className="w-full">
@@ -127,5 +140,16 @@ export default function CreateNewPasswordForm({ onSave }: Props) {
         </div>
       </div>
     </div>
+
+    <SuccessModal
+      isOpen={modalConfig.isOpen}
+      onClose={() => {
+        setModalConfig({ isOpen: false, message: "" });
+        if (onSave) onSave(password);
+      }}
+      message={modalConfig.message}
+      title="Success!"
+    />
+    </>
   );
 }
