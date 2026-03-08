@@ -6,7 +6,6 @@ import Button from "../ui/Button";
 interface Props {
   description: string;
 }
-
 export default function DonateHero({ description }: Props) {
   return (
     <section className="relative min-h-[600px] flex overflow-hidden bg-[#41122B] lg:mx-4 lg:rounded-lg">

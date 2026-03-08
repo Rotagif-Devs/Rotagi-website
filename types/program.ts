@@ -8,6 +8,6 @@ export interface Program {
   image: string;
   accent: string;
   learnMoreUrl: string;
-  extendedDescription?: ReactNode; // optional
-  slug?: string;                   // optional
+  extendedDescription?: ReactNode; 
+  slug?: string;               
 }

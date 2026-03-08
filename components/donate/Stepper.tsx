@@ -1,11 +1,9 @@
 "use client";
-import React from "react";
 
 type Props = {
   currentStep: number;
   totalSteps: number;
 };
-
 const Stepper = ({ currentStep, totalSteps }: Props) => {
   return (
     <div className="flex flex-col items-center rounded-lg mb-6">

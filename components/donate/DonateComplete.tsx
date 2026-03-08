@@ -1,19 +1,15 @@
 import React from "react";
 import Button from "../ui/Button";
 import Image from "next/image";
+import { DonationData } from "@/types/donation";
 
 type Props = {
-  data: {
-    email: string;
-    fullName: string;
-    phone: string;
-    message?: string;
-    amount: string;
-  };
-   onBack: () => void;
+  data: DonationData;
+  onBack: () => void;
+  onNext: () => void;
 };
 
-const DonateComplete = ({ data, onBack }: Props) => {
+const DonateComplete = ({ data, onBack, onNext }: Props) => {
   return (
     <section className="min-h-screen bg-[#f8e0ed] flex justify-center items-center px-4 pb-4">
       <div className="w-full max-w-xl bg-white rounded-2xl border border-[#D3D3D3] p-6 sm:p-8">
@@ -70,22 +66,23 @@ const DonateComplete = ({ data, onBack }: Props) => {
             </div>
           </div>
         </div>
+
         {/* SSL Info */}
         <div className="my-10 bg-[#FABFD3] rounded-lg p-4 flex gap-4 items-center">
           <div className="">
             <Image src="/cardlock.png" width={24} height={24} alt="Secure Lock Icon" />
           </div>
           <div>
-            <h3 className="!font-thin !text-xl text-black">
+            <div className="font-light text-xl lg:text-[1.2rem] my-1 text-black">
               Secure SSL Encrypted Payment
-            </h3>
+            </div>
             <p className=" font-medium !text-base text-black">
               Your payment information is encrypted and secure
             </p>
           </div>
         </div>
         {/* Pay Button */}
-        <Button className="my-2 w-full bg-pink-600 hover:bg-pink-700 transition text-white py-3 rounded-full font-medium"> Pay ₦{data.amount}</Button>
+        <Button className="my-2 w-full bg-pink-600 hover:bg-pink-700 transition text-white py-3 rounded-full font-medium cursor-pointer"  onClick={onNext}>Continue</Button>
         {/* Terms */}
         <p className="text-center text-xs text-gray-500 mt-4">
           By proceeding, you agree to our terms and conditions
