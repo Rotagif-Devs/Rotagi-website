@@ -1,19 +1,10 @@
 "use client";
-
-import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "../ui/Button";
-
-type Inputs = {
-  email: string;
-  fullName: string;
-  phone: string;
-  message?: string;
-  amount: string;
-};
+import { DonationDetailsInputs } from "@/types/donation";
 
 type Props = {
-  onNext: (data: Inputs) => void;
+  onNext: (data: DonationDetailsInputs) => void;
 };
 
 const DonateDetails = ({ onNext }: Props) => {
@@ -21,9 +12,9 @@ const DonateDetails = ({ onNext }: Props) => {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<Inputs>();
+  } = useForm<DonationDetailsInputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit: SubmitHandler<DonationDetailsInputs> = (data) => {
     console.log(data);
     onNext(data);
   };
@@ -127,32 +118,41 @@ const DonateDetails = ({ onNext }: Props) => {
             <span className="absolute left-3  text-gray-500">₦</span>
             <input
               id="amount"
-              type="number"
+              type="text"
+              inputMode="decimal"
               {...register("amount", {
                 required: "Amount is required",
-              //   onChange: (e) => {
-              //     let value = e.target.value;
+                onChange: (e) => {
+                  let value = e.target.value
+                    .replace(/,/g, "")
+                    .replace(/\s/g, "");
 
-              //     // Remove everything except numbers and dot
-              //     value = value.replace(/[^0-9.]/g, "");
+                  if (!value) {
+                    e.target.value = "";
+                    return;
+                  }
 
-              //     if (!value) {
-              //       e.target.value = "";
-              //       return;
-              //     }
+                  if (!/^\d*\.?\d*$/.test(value)) return;
 
-              //     const numberValue = parseFloat(value);
+                  const parts = value.split(".");
+                  parts[0] = Number(parts[0]).toLocaleString("en-NG");
 
-              //     if (!isNaN(numberValue)) {
-              //       e.target.value = numberValue.toLocaleString("en-NG", {
-              //         minimumFractionDigits: 2,
-              //         maximumFractionDigits: 2,
-              //       });
-              //     }
-              //   },
-              // })}
+                  e.target.value = parts.join(".");
+                },
+
+                onBlur: (e) => {
+                  const raw = e.target.value.replace(/,/g, "");
+                  if (!raw) return;
+
+                  const number = Number(raw);
+
+                  e.target.value = number.toLocaleString("en-NG", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  });
+                },
               })}
-              placeholder="0.00"
+              // placeholder="0.00"
               className="w-full border-2 outline-0 border-[#D3D3D3] rounded-lg px-4 py-2 pr-4 pl-8"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             />

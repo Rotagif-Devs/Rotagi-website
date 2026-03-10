@@ -122,9 +122,6 @@ export default async function ProgramDetailPage({
           </ul>
         </div>
       </div>
-
-      {/* <CTA /> */}
-      {/* </div> */}
       <PTA />
     </section>
   );

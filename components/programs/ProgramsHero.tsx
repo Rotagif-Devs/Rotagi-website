@@ -9,7 +9,7 @@ interface Props {
 
 export default function ProgramsHero({ title, description }: Props) {
   return (
-    <section className="relative min-h-[600px] flex overflow-hidden bg-[#41122B] lg:mx-4 lg:rounded-lg">
+    <section className="relative min-h-[400px] md:min-h-[500px] flex overflow-hidden bg-[#41122B] lg:mx-4 lg:rounded-lg">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image

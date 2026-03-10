@@ -21,7 +21,7 @@ export default function BlogCard({ post }: Props) {
         />
       </div>
       
-      <div className=" flex flex-col flex-grow">
+      <div className=" flex flex-col grow">
         <div className="mb-3">
           <span className="bg-[#FABFD3]/40 text-[#DB2777] text-[10px] md:text-[11px] font-bold px-2 py-1 rounded uppercase tracking-wider">
             {post.category}

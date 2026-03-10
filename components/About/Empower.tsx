@@ -6,7 +6,7 @@ import React from "react";
 
 const Empower = () => {
   return (
-    <div className="relative lg:mx-5 h-[815px] md:h-170 lg:rounded-3xl overflow-hidden">
+    <div className="relative lg:mx-4 min-h-[400px] md:min-h-[500px] lg:rounded-2xl overflow-hidden">
       <Image
         src="/Threegirls.jpg"
         alt="Empowering African girls to lead in the digital world"
@@ -24,8 +24,7 @@ const Empower = () => {
           justify-end          
           gap-4                
           px-5
-          pb-10                
-          pt-24                
+          pb-10               
           text-white
           md:top-96
           md:flex-row
@@ -42,7 +41,7 @@ const Empower = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h1 className="text-2xl md:text-4xl lg:mt-0 mt-0 md:w-220 ">
+            <h1 className="lg:mt-0 mt-0 md:w-220 ">
               Empowering{" "}
               <span className="text-pink-400">African Girls</span> to lead in
               the Digital World
@@ -64,7 +63,7 @@ const Empower = () => {
           <Button
             variant="secondary"
             href="#OurStory"
-            className="mt-6 cursor-pointer md:mt-40 lg:mr-0"
+            className="cursor-pointer  lg:mr-0"
           >
             Learn our history
           </Button>

@@ -48,12 +48,9 @@ export default function ProgramsList({ programs, filters }: Props) {
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:gap-12 max-w-6xl mx-auto">
             {filteredPrograms.map((program) => (
               <ProgramCard key={program.id} program={program} index={0} />
-
-          
             ))}
           
           </div>
-
           {filteredPrograms.length === 0 && (
             <div className="text-center py-20 text-gray-500">
               No programs found for this age range.

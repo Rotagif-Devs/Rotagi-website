@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative flex flex-col items-center justify-end bg-[#41122B] lg:mx-4 lg:rounded-2xl  py-20">
+    <section className="relative min-h-[400px] md:min-h-[500px] flex flex-col items-center justify-end bg-[#41122B] lg:mx-4 lg:rounded-2xl  py-20">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image

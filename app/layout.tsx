@@ -45,7 +45,7 @@ export default function RootLayout({
       >
          <Providers>
         <Header />
-        <div className="mt-1 lg:mt-15 ">{children}</div>
+        <div className="mt-1 lg:mt-24 ">{children}</div>
         <Footer />
         </Providers>
       </body>
