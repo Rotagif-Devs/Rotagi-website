@@ -10,9 +10,10 @@ type Props = {
   };
   amount: string;
   onNext: (data: CardInputs) => void;
+  onReturn: () => void;
 };
 
-const CardDetails = ({ data, amount, onNext }: Props) => {
+const CardDetails = ({ data, amount, onNext, onReturn }: Props) => {
   const {
     handleSubmit,
     register,
@@ -51,7 +52,7 @@ const CardDetails = ({ data, amount, onNext }: Props) => {
           >
             Card Details
           </div>
-          <span className="cursor-pointer">close</span>
+          <span className="cursor-pointer" onClick={onReturn}>close</span>
         </div>
 
         <div className="mb-8">
