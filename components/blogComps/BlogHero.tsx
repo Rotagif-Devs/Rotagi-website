@@ -9,7 +9,7 @@ interface Props {
 
 export default function BlogHero({ title, category }: Props) {
   return (
-    <section className="relative min-h-[400px] md:min-h-[500px] flex overflow-hidden bg-[#41122B] lg:mx-4 lg:rounded-lg">
+    <section className="relative min-h-[400px] md:min-h-[500px] flex overflow-hidden bg-[#41122B] lg:mx-4 lg:rounded-2xl">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -40,7 +40,7 @@ export default function BlogHero({ title, category }: Props) {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="max-w-4xl"
           >
-            <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            <h1 className="text-white">
               {title}
             </h1>
           </motion.div>

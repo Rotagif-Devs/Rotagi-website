@@ -24,7 +24,7 @@ const About = () => {
   ];
 
   return (
-    <section className="w-full mx-auto lg:py-8">
+    <section className="w-full mx-auto ">
       <Empower />
       <OurStory />
       <OurMission />
