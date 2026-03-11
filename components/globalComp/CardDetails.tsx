@@ -104,7 +104,7 @@ const CardDetails = ({ data, amount, onNext, onReturn }: Props) => {
               required: "cardholder name is required",
             })}
             placeholder="Enter your full name"
-            className="w-full  outline-0 border-2 border-[#D3D3D3] rounded-lg px-4 py-2"
+            className="w-full placeholder:normal-case uppercase outline-0 border-2 border-[#D3D3D3] rounded-lg px-4 py-2"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           />
           {errors.cardholderName && (
@@ -162,7 +162,7 @@ const CardDetails = ({ data, amount, onNext, onReturn }: Props) => {
               type="password"
               inputMode="numeric"
               placeholder="CVV"
-              maxLength={4}
+              maxLength={3}
               {...register("CVV", {
                 required: "CVV is required",
                 pattern: {
