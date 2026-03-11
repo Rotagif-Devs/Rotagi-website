@@ -2,7 +2,7 @@
 import React, { useMemo, useRef, useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
-import { verifyOtp, forgotPassword } from "@/lib/services/auth.service";
+import { verifyResetCode, forgotPassword } from "@/lib/services/auth.service";
 import SuccessModal from "../SuccessModal";
 
 type ConfirmOtpProps = {
@@ -126,8 +126,14 @@ export default function ConfirmOtpCode({
   };
 
   const { mutate: handleVerifyOtp, isPending: verifying } = useMutation({
-    mutationFn: verifyOtp,
+    mutationFn: verifyResetCode,
     onSuccess: (data) => {
+      const token = (data as any)?.token;
+      if (typeof token === "string" && token.length > 0) {
+        localStorage.setItem("resetEmail", email);
+        localStorage.setItem("resetToken", token);
+      }
+
       setModalConfig({
         isOpen: true,
         message: data?.message || "OTP verified successfully.",
@@ -170,7 +176,7 @@ export default function ConfirmOtpCode({
     }
     
     // Otherwise use the default mutation
-    handleVerifyOtp({ email, otp });
+    handleVerifyOtp({ email, code: otp });
   };
 
   const handleResend = async () => {
@@ -271,6 +277,8 @@ export default function ConfirmOtpCode({
         if (action === "VERIFY") {
           if (onVerify) {
             await onVerify(otp);
+          } else {
+            router.push("/resetpassword");
           }
         } else if (action === "RESEND") {
           if (onResend) {
@@ -298,7 +306,7 @@ export function OtpPage() {
     }
 
     try {
-      const json: any = await verifyOtp({ email, otp: code });
+      const json: any = await verifyResetCode({ email, code });
       const token = json?.token ?? json?.data?.token;
       
       if (typeof token === "string" && token.length > 0) {

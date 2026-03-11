@@ -29,6 +29,8 @@ export async function apiFetch<T = unknown>(
     headers?: Record<string, string>;
     body?: unknown;
     accessToken?: string;
+    credentials?: RequestCredentials;
+    cache?: RequestCache;
   },
 ): Promise<T> {
   const url = `${API_BASE_URL}${path.startsWith('/') ? '' : '/'}${path}`;
@@ -53,7 +55,8 @@ export async function apiFetch<T = unknown>(
     method: options?.method || (options?.body !== undefined ? 'POST' : 'GET'),
     headers,
     body,
-    credentials: 'include',
+    credentials: options?.credentials ?? 'include',
+    cache: options?.cache ?? 'no-store',
   });
 
   const data = await parseJsonSafe(res);

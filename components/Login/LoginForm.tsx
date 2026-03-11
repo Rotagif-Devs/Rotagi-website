@@ -1,96 +1,115 @@
 "use client";
- 
+
 import { useState } from "react";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
 import { programs } from "@/data/programs";
 import { useProgram } from "@/context/ProgramContext";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { login } from "@/lib/services/auth.service";
+import { login, resendVerification } from "@/lib/services/auth.service";
 
- 
+type FormData = {
+  email: string;
+  password: string;
+};
+
 export default function LoginForm() {
   const { selectedProgram, setSelectedProgram } = useProgram();
-  const [form, setForm] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [resending, setResending] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
- 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-    // Clear error when user starts typing
-    setErrorMessage(null);
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<FormData>();
+
+  const emailValue = watch("email");
+
+  const handleResendVerification = async () => {
+    if (!emailValue) {
+      setErrorMessage("Please enter your email address first.");
+      return;
+    }
+
+    setResending(true);
+    try {
+      const resp: any = await resendVerification({ email: emailValue });
+      alert(resp?.message || "Verification email sent. Please check your inbox.");
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Failed to resend verification email";
+      setErrorMessage(msg);
+    } finally {
+      setResending(false);
+    }
   };
- 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+
+  const onSubmit = async (data: FormData) => {
+    if (!selectedProgram?.slug) {
+      setErrorMessage("Please select a program before signing in.");
+      return;
+    }
+    
     setSubmitting(true);
     setErrorMessage(null);
     
     try {
-      console.log("Attempting login with:", { email: form.email }); // Don't log password
-      
-      const response: any = await login({ email: form.email, password: form.password });
-      console.log("Login response:", response); // For debugging - check the structure
-      
-      // Check for token in different possible response structures
+      console.log("Attempting login with:", { email: data.email });
+
+      const response: any = await login({
+        email: data.email,
+        password: data.password,
+        programSlug: selectedProgram.slug,
+      });
+      console.log("Login response:", response);
+
       let accessToken = null;
-      
-      // Direct accessToken property
+
       if (response?.accessToken) {
         accessToken = response.accessToken;
-      } 
-      // Nested in data object (your original code)
-      else if (response?.data?.accessToken) {
+      } else if (response?.data?.accessToken) {
         accessToken = response.data.accessToken;
-      }
-      // Token is the entire response string
-      else if (typeof response === 'string' && response.length > 0) {
+      } else if (typeof response === 'string' && response.length > 0) {
         accessToken = response;
-      }
-      // Token in token property
-      else if (response?.token) {
+      } else if (response?.token) {
         accessToken = response.token;
       }
-      
+
       if (accessToken) {
         localStorage.setItem("accessToken", accessToken);
         alert("Logged in successfully!");
-        // You might want to redirect here
-        // window.location.href = "/dashboard"; // Uncomment to redirect
       } else {
         setErrorMessage("No access token received from server. Please check the response structure.");
         console.error("Response structure:", response);
       }
-      
+
     } catch (err) {
       console.error("Full error object:", err);
-      
-      // Extract meaningful error message
+
       let message = "Login failed";
-      
+
       if (err instanceof Error) {
         message = err.message;
-        
-        // Try to parse any additional error details
         if ('response' in err) {
           const errorWithResponse = err as any;
           if (errorWithResponse.response?.data) {
             console.error("Error response data:", errorWithResponse.response.data);
-            // If the error response has a message, use it
             if (errorWithResponse.response.data.message) {
               message = errorWithResponse.response.data.message;
             }
           }
         }
       }
-      
+
       setErrorMessage(message);
     } finally {
       setSubmitting(false);
     }
   };
- 
+
   return (
     <div className="flex-1 flex items-center justify-center p-5 lg:p-12">
       <div className="w-full max-w-138.5">
@@ -100,9 +119,8 @@ export default function LoginForm() {
             Sign in to continue your learning journey
           </p>
         </div>
- 
-        <form onSubmit={handleSubmit} className="space-y-4">
- 
+
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
             <label className="block font-semibold text-gray-600 mb-1">
               Select Program
@@ -123,23 +141,30 @@ export default function LoginForm() {
               ))}
             </select>
           </div>
- 
+
           <div>
             <label className="block font-semibold text-gray-600 mb-1">
               Email Address <span className="text-pink-500">*</span>
             </label>
             <input
-              name="email"
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Invalid email address"
+                }
+              })}
               type="email"
-              value={form.email}
-              onChange={handleChange}
               placeholder="sg-email@gmail.com"
-              required
-              className="w-full border border-gray-200 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white placeholder-gray-300"
+              className={`w-full border rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white placeholder-gray-300 ${
+                errors.email ? "border-red-500" : "border-gray-200"
+              }`}
             />
+            {errors.email && (
+              <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+            )}
           </div>
- 
- 
+
           <div>
             <div className="flex items-center justify-between mb-1">
               <label className="font-semibold text-gray-600">
@@ -152,18 +177,22 @@ export default function LoginForm() {
                 Forgot password?
               </Link>
             </div>
- 
+
             <div className="relative">
               <input
-                name="password"
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: {
+                    value: 6,
+                    message: "Password must be at least 6 characters"
+                  }
+                })}
                 type={showPassword ? "text" : "password"}
-                value={form.password}
-                onChange={handleChange}
                 placeholder="Enter password"
-                required
-                className="w-full border border-gray-200 rounded-md px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white placeholder-gray-300"
+                className={`w-full border rounded-md px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white placeholder-gray-300 ${
+                  errors.password ? "border-red-500" : "border-gray-200"
+                }`}
               />
- 
               <button
                 type="button"
                 onClick={() => setShowPassword((prev) => !prev)}
@@ -173,15 +202,30 @@ export default function LoginForm() {
                 {showPassword ? <FiEyeOff size={20} /> : <FiEye size={20} />}
               </button>
             </div>
+            {errors.password && (
+              <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
+            )}
           </div>
- 
+
           {/* Display error message if any */}
           {errorMessage && (
             <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md">
-              {errorMessage}
+              <div>{errorMessage}</div>
+              {errorMessage.includes("verify your email") && (
+                <div className="mt-2">
+                  <button
+                    type="button"
+                    onClick={handleResendVerification}
+                    disabled={resending}
+                    className="text-sm underline hover:no-underline disabled:opacity-50"
+                  >
+                    {resending ? "Sending..." : "Resend verification email"}
+                  </button>
+                </div>
+              )}
             </div>
           )}
- 
+
           <button
             type="submit"
             disabled={submitting}
@@ -190,7 +234,7 @@ export default function LoginForm() {
           >
             {submitting ? "Signing in..." : "Sign In"}
           </button>
- 
+
           <p className="text-center text-gray-500">
             Don&apos;t have an account?{" "}
             <Link
