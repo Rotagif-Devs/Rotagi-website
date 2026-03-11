@@ -1,18 +1,21 @@
 import Link from "next/link";
 import Button from "../ui/Button";
 import Image from "next/image";
-const DonateFailed = () => {
+type Props = {
+  onReturn: () => void;
+};
+const DonateFailed = ({ onReturn }: Props) => {
   return (
     <section className="bg-[#F8E0ED] flex justify-center items-center">
       <div className="px-8 md:px-15 sm:py-10 md:py-10 py-10 md:w-[55%] w-full flex flex-col justify-center">
         <div className="flex justify-center items-center">
-        <Image
-          src="/failed.png"
-          width={200}
-          height={200}
-          alt=""
-          className="object-contain relative"
-        />
+          <Image
+            src="/failed.png"
+            width={200}
+            height={200}
+            alt=""
+            className="object-contain relative"
+          />
         </div>
         <h2 className="!font-medium text-center !leading-none !normal-case ">
           We couldn’t process your payment
@@ -34,7 +37,7 @@ const DonateFailed = () => {
         </div>
 
         <Button
-          href="/donate"
+          onClick={onReturn}
           variant="primary"
           className="text-center !text-sm !font-light mb-6"
         >

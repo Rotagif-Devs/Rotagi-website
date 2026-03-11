@@ -1,7 +1,7 @@
 "use client";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "../ui/Button";
-import Image from "next/image";
+import { X, Lock } from "lucide-react";
 import { CardInputs } from "@/types/donation";
 
 type Props = {
@@ -10,9 +10,10 @@ type Props = {
   };
   amount: string;
   onNext: (data: CardInputs) => void;
+  onReturn: () => void;
 };
 
-const CardDetails = ({ data, amount, onNext }: Props) => {
+const CardDetails = ({ data, amount, onNext, onReturn }: Props) => {
   const {
     handleSubmit,
     register,
@@ -31,10 +32,9 @@ const CardDetails = ({ data, amount, onNext }: Props) => {
         className="
             space-y-4
             w-full
-            sm:w-[90%]
-            md:w-[70%]
-            lg:w-[50%]
-            xl:w-[40%]
+            md:w-[500px]
+            lg:w-[600px]
+            xl:w-[700px]
             px-5 sm:px-7
             py-7 sm:py-8
             bg-white
@@ -44,19 +44,25 @@ const CardDetails = ({ data, amount, onNext }: Props) => {
             justify-center
             mx-auto"
       >
-        <div className="flex justify-between pb-5">
-          <div
-            className=" font-medium text-2xl "
-            style={{ fontFamily: "var(--font-cal-sans)" }}
-          >
+        <div className="flex justify-between items-center pb-6">
+          <div className="font-bold text-2xl font-cal-sans text-black">
             Card Details
           </div>
-          <span className="cursor-pointer">close</span>
+          <button
+            type="button"
+            onClick={onReturn}
+            className="text-gray-500 hover:text-black"
+          >
+            <X className="w-6 h-6" strokeWidth={1.5} />
+          </button>
         </div>
 
-        <div className="mb-8">
-          <label htmlFor="cardNumber" className="block mb-1 font-medium">
-            Card Number
+        <div className="mb-6">
+          <label
+            htmlFor="cardNumber"
+            className="block mb-2 font-dm-sans text-sm text-black"
+          >
+            Card Number <span className="text-[#D62D88]">*</span>
           </label>
           <input
             id="cardNumber"
@@ -85,7 +91,7 @@ const CardDetails = ({ data, amount, onNext }: Props) => {
 
               e.target.value = value;
             }}
-            className="w-full outline-0 border-2 border-[#D3D3D3] placeholder:text-[#D3D3D3] text-black rounded-lg px-4 py-2"
+            className="w-full outline-0 border border-[#D3D3D3] placeholder:text-[#D3D3D3] text-black rounded-lg px-4 py-3 text-sm"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           />
           {errors.cardNumber && (
@@ -93,9 +99,12 @@ const CardDetails = ({ data, amount, onNext }: Props) => {
           )}
         </div>
 
-        <div className="mb-8">
-          <label htmlFor="cardholderName" className="block mb-1 font-medium">
-            Cardholder Name
+        <div className="mb-6">
+          <label
+            htmlFor="cardholderName"
+            className="block mb-2 font-dm-sans text-sm text-black"
+          >
+            Cardholder name <span className="text-[#D62D88]">*</span>
           </label>
           <input
             id="cardholderName"
@@ -103,7 +112,7 @@ const CardDetails = ({ data, amount, onNext }: Props) => {
               required: "cardholder name is required",
             })}
             placeholder="Enter your full name"
-            className="w-full  outline-0 border-2 border-[#D3D3D3] rounded-lg px-4 py-2"
+            className="w-full placeholder:normal-case uppercase outline-0 border-2 border-[#D3D3D3] rounded-lg px-4 py-2"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           />
           {errors.cardholderName && (
@@ -113,10 +122,13 @@ const CardDetails = ({ data, amount, onNext }: Props) => {
           )}
         </div>
 
-        <div className="mb-8 flex gap-8">
+        <div className="mb-6 flex gap-6">
           <div className="w-full">
-            <label htmlFor="expiryDate" className="block mb-1 font-medium">
-              Expiry Date
+            <label
+              htmlFor="expiryDate"
+              className="block mb-2 font-dm-sans text-sm text-black"
+            >
+              Expiry Date <span className="text-[#D62D88]">*</span>
             </label>
             <input
               type="text"
@@ -140,8 +152,8 @@ const CardDetails = ({ data, amount, onNext }: Props) => {
                 e.target.value = value;
               }}
               className="
-                w-full border-2 border-[#D3D3D3] outline-none 
-                rounded-lg px-4 py-2 
+                w-full border border-[#D3D3D3] outline-none 
+                rounded-lg px-4 py-3 text-sm
                 text-black
                 placeholder:text-[#D3D3D3]
             "
@@ -154,14 +166,17 @@ const CardDetails = ({ data, amount, onNext }: Props) => {
           </div>
 
           <div className="w-full">
-            <label htmlFor="CVV" className="block mb-1 font-medium">
-              CVV
+            <label
+              htmlFor="CVV"
+              className="block mb-2 font-dm-sans text-sm text-black"
+            >
+              CVV <span className="text-[#D62D88]">*</span>
             </label>
             <input
               type="password"
               inputMode="numeric"
               placeholder="CVV"
-              maxLength={4}
+              maxLength={3}
               {...register("CVV", {
                 required: "CVV is required",
                 pattern: {
@@ -170,8 +185,8 @@ const CardDetails = ({ data, amount, onNext }: Props) => {
                 },
               })}
               className="
-                w-full border-2 border-[#D3D3D3] outline-none 
-                rounded-lg px-4 py-2 
+                w-full border border-[#D3D3D3] outline-none 
+                rounded-lg px-4 py-3 text-sm
                 text-black
                 placeholder:text-[#D3D3D3]
             "
@@ -182,24 +197,24 @@ const CardDetails = ({ data, amount, onNext }: Props) => {
           </div>
         </div>
 
-        <div className=" mb-8 flex gap-4 items-center">
-          <div>
-            <Image
-              src="/cardlock.png"
-              width={24}
-              height={24}
-              alt="Secure Lock Icon"
-            />
+        <div className="mb-8 flex gap-3 items-start justify-center text-center px-4">
+          <div className="mt-1">
+            <Lock className="w-4 h-4 text-[#D62D88]" strokeWidth={2} />
           </div>
-          <div>
-            <p className=" font-light !text-[1.1rem] text-[#373737]">
+          <div className="text-left">
+            <p className="font-dm-sans text-sm text-[#373737] leading-relaxed">
               Your card details are encrypted and secure. We never store your
               full card information.
             </p>
           </div>
         </div>
 
-        <Button type="submit" className="cursor-pointer">Pay {amount}</Button>
+        <Button
+          type="submit"
+          className="w-full bg-[#D62D88] text-white hover:bg-[#D62D88]/90 font-bold py-4 rounded-[32px] mt-2"
+        >
+          Pay {amount}
+        </Button>
       </form>
     </main>
   );

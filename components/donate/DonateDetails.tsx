@@ -54,7 +54,7 @@ const DonateDetails = ({ onNext }: Props) => {
           <input
             id="fullName"
             {...register("fullName", { required: "Full name is required" })}
-            placeholder="John Doe"
+            placeholder="Enter your full name"
             className="w-full  outline-0 border-2 border-[#D3D3D3] rounded-lg px-4 py-2"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           />
