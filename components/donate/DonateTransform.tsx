@@ -1,15 +1,12 @@
 "use client";
-
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Stepper from "./Stepper";
 import DonateDefault from "./DonateDefault";
 import DonateDetails from "./DonateDetails";
 import DonateComplete from "./DonateComplete";
 import CardDetails from "../globalComp/CardDetails";
-
 import Loader from "../globalComp/Loader";
-import DonateSuccessful from "./DonateSuccessful";
-import DonateFailed from "./DonateFailed";
 
 import {
   DonationData,
@@ -18,13 +15,13 @@ import {
 } from "@/types/donation";
 
 const DonateTransform = () => {
+  const router = useRouter();
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState<DonationData | null>(null);
   const [showModal, setShowModal] = useState(false);
-
-  const [paymentStatus, setPaymentStatus] = useState<
-    "idle" | "loading" | "success" | "failed"
-  >("idle");
+  const [paymentStatus, setPaymentStatus] = useState<"idle" | "loading">(
+    "idle",
+  );
 
   /* Prevent page scroll when modal opens */
   useEffect(() => {
@@ -49,47 +46,36 @@ const DonateTransform = () => {
   const handleConfirm = () => setShowModal(true);
 
   const handleCardSubmit = async (cardData: CardInputs) => {
-    setFormData((prev) => ({
-      ...prev!,
+    const updatedData = {
+      ...formData!,
       ...cardData,
-    }));
+    };
 
+    setFormData(updatedData);
     setShowModal(false);
-
     setPaymentStatus("loading");
 
     try {
-      /* simulate API */
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
-      setPaymentStatus("success");
+      router.push(
+        `/donate/success?amount=${updatedData.amount}&email=${updatedData.email}`,
+      );
     } catch {
-      setPaymentStatus("failed");
+      router.push(
+        `/donate/failed?amount=${updatedData.amount}&email=${updatedData.email}`,
+      );
     }
   };
 
   const handleCloseModal = () => setShowModal(false);
-
-  /* RESET PAGE BACK TO NORMAL DONATE FLOW */
-  const handleReturnToDonate = () => {
-    setPaymentStatus("idle");
-    setStep(0);
-    setFormData(null);
-  };
-
   return (
     <section className="w-full">
       {/* LOADING */}
-      {paymentStatus === "loading" && <Loader />}
-
-      {/* SUCCESS HERO */}
-      {paymentStatus === "success" && (
-        <DonateSuccessful onReturn={handleReturnToDonate} />
-      )}
-
-      {/* FAILED HERO */}
-      {paymentStatus === "failed" && (
-        <DonateFailed onReturn={handleReturnToDonate} />
+      {paymentStatus === "loading" && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm pointer-events-auto">
+          <Loader />
+        </div>
       )}
 
       {/* NORMAL DONATE FLOW */}
