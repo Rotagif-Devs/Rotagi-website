@@ -6,9 +6,9 @@ import Button from "@/components/ui/Button";
 // import "swiper/css/navigation"; // uncomment if you add arrows later
 
 const stats = [
-  { num: "300+", label: "Girls Reached" },
-  { num: "15+", label: "Programs" },
-  { num: "10+", label: "Communities" },
+  { num: "300 +", label: "Girls Reached" },
+  { num: "15 +", label: "Programs" },
+  { num: "10 +", label: "Communities" },
 ];
 
 export default function Impact() {
@@ -19,14 +19,14 @@ export default function Impact() {
     >
       <div className="flex w-full max-w-7xl flex-col gap-12 md:gap-20">
         {/* Title + text + button area */}
-        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-          <h2 className="text-black max-w-lg lg:w-full w-10/12">
+        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between mt-8">
+          <h2 className="text-black max-w-lg lg:w-[45%] w-10/12 font-cal-sans font-normal text-3xl md:text-[46px] leading-[100%] tracking-normal">
             Access That Creates Impact
           </h2>
 
           <div className="flex flex-col items-start gap-8 max-w-2xl">
-            <p className="text-gray-700 text-lg md:text-xl font-dm-sans leading-relaxed">
-              Since 2020, ROTAGIF has equipped hundreds of girls and women with
+            <p className="text-gray-700 font-dm-sans font-normal text-[16px] leading-[133%] tracking-normal text-justify md:text-left lg:text-justify lg:pr-8">
+              Since 2020, ROTAGI has equipped hundreds of girls and women with
               skills that translate into confidence, careers, and community
               transformation across Africa.
             </p>

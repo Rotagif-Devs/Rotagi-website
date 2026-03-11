@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
 
-const navItems = ["About", "Programs", "Blog", "Contact"];
+const navItems = ["About Us", "Programs", "Contact"];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +45,7 @@ export default function Header() {
             variant="secondary"
             size="md"
             href="/programs"
-            className="mr-2 border border-gray-400"
+            className="mr-2 border-2 border-gray-400 rounded-full font-medium"
           >
             Get Started
           </Button>

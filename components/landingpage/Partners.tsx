@@ -22,19 +22,19 @@ export default function Partners() {
       <div className="flex w-full max-w-7xl flex-col gap-12 md:gap-20">
         {/* Title + description + button area */}
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-          <h2 className="text-black max-w-lg font-cal-sans lowercase leading-tight">
+          <h2 className="text-black max-w-lg lg:w-[45%] font-cal-sans font-normal text-3xl md:text-[46px] leading-[100%] tracking-normal">
             Trusted by Purpose-Driven Organizations
           </h2>
 
           <div className="flex flex-col items-start gap-8 max-w-2xl">
-            <p className="text-gray-700 text-lg md:text-xl font-dm-sans leading-loose lg:w-full w-11/12">
+            <p className="text-gray-700 font-dm-sans font-normal text-[16px] leading-[133%] tracking-normal text-justify md:text-left lg:text-justify lg:pr-8 w-full md:w-11/12 lg:w-full">
               We collaborate with partners who believe in measurable impact,
               inclusive growth, and empowering the next generation of African
               women.
             </p>
 
             <div className="hidden md:block">
-              <Button variant="primary" href="/about" className="px-10 py-4">
+              <Button variant="primary" href="/partner" className="px-10 py-4">
                 Partner With Us
               </Button>
             </div>
@@ -87,7 +87,7 @@ export default function Partners() {
 
           {/* Button below slider on mobile */}
           <div className="mt-6 flex justify-center md:hidden">
-            <Button variant="primary" href="/about" className="px-10 py-4">
+            <Button variant="primary" href="/partner" className="px-10 py-4">
               Partner With Us
             </Button>
           </div>

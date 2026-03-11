@@ -79,7 +79,6 @@ const DonateTransform = () => {
 
   return (
     <section className="w-full">
-
       {/* LOADING */}
       {paymentStatus === "loading" && <Loader />}
 
@@ -114,21 +113,13 @@ const DonateTransform = () => {
 
       {/* PAYMENT MODAL */}
       {showModal && formData && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="relative w-full bg-white rounded-xl shadow-2xl p-6">
-            <CardDetails
-              data={{ amount: formData.amount }}
-              amount={formData.amount}
-              onNext={handleCardSubmit}
-            />
-
-            <button
-              className="absolute top-3 right-4 text-gray-600 text-xl font-bold hover:text-black"
-              onClick={handleCloseModal}
-            >
-              &times;
-            </button>
-          </div>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm px-4">
+          <CardDetails
+            data={{ amount: formData.amount }}
+            amount={formData.amount}
+            onNext={handleCardSubmit}
+            onReturn={handleCloseModal}
+          />
         </div>
       )}
     </section>
