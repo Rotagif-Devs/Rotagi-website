@@ -7,7 +7,7 @@ import Button from "@/components/ui/Button";
 
 const PartnerHero = () => {
   return (
-    <div className="relative w-full h-[400px] md:h-[500px]">
+    <section className="relative w-full h-[400px] md:h-[500px] lg:mx-4 lg:rounded-2xl overflow-hidden mt-4 lg:mt-0 lg:w-[calc(100%-2rem)]">
       <Image
         src="/Threegirls.jpg"
         alt="Partner with ROTAGI"
@@ -23,7 +23,7 @@ const PartnerHero = () => {
           transition={{ duration: 0.8 }}
           className="max-w-4xl flex flex-col items-center"
         >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-wide">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal font-cal-sans mb-8 tracking-wide">
             Partner with <span className="text-[#D62D88]">ROTAGI</span>
           </h1>
           <Button
@@ -35,7 +35,7 @@ const PartnerHero = () => {
           </Button>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

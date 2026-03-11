@@ -32,10 +32,9 @@ const CardDetails = ({ data, amount, onNext, onReturn }: Props) => {
         className="
             space-y-4
             w-full
-            sm:w-[90%]
-            md:w-[70%]
-            lg:w-[50%]
-            xl:w-[40%]
+            md:w-[500px]
+            lg:w-[600px]
+            xl:w-[700px]
             px-5 sm:px-7
             py-7 sm:py-8
             bg-white

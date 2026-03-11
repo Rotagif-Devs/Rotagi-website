@@ -30,23 +30,24 @@ const PartnerForm = ({
   return (
     <div className="bg-white p-8 md:p-14 rounded-3xl w-full max-w-3xl mx-auto shadow-sm">
       <div className="text-center mb-10">
-        <h2 className="text-2xl md:text-3xl font-bold text-black mb-3 text-[1.6rem]">
+        <h2 className="text-2xl md:text-3xl font-normal font-cal-sans text-black mb-3 text-[1.6rem]">
           Partnership Inquiry Form
         </h2>
-        <p className="text-gray-500 text-sm">
-          Please fill out our enquiry form to get started
+        <p className="text-gray-800 mb-10 max-w-xl mx-auto text-[0.95rem] leading-relaxed font-normal">
+          {" "}
+          fill out our enquiry form to get started
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-8">
         {/* Contact Information */}
         <div>
-          <h3 className="font-bold text-black text-sm mb-4">
+          <h3 className="font-normal font-cal-sans text-black text-lg mb-4">
             Contact Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-xs font-medium mb-2 text-black">
+              <label className="block text-xs font-normal mb-2 text-black">
                 First Name *
               </label>
               <input
@@ -57,7 +58,7 @@ const PartnerForm = ({
               />
             </div>
             <div>
-              <label className="block text-xs font-medium mb-2 text-black">
+              <label className="block text-xs font-normal mb-2 text-black">
                 Last Name *
               </label>
               <input
@@ -68,7 +69,7 @@ const PartnerForm = ({
               />
             </div>
             <div>
-              <label className="block text-xs font-medium mb-2 text-black">
+              <label className="block text-xs font-normal mb-2 text-black">
                 Email Address *
               </label>
               <input
@@ -79,7 +80,7 @@ const PartnerForm = ({
               />
             </div>
             <div>
-              <label className="block text-xs font-medium mb-2 text-black">
+              <label className="block text-xs font-normal mb-2 text-black">
                 Phone Number *
               </label>
               <input
@@ -94,12 +95,12 @@ const PartnerForm = ({
 
         {/* Organization Details */}
         <div>
-          <h3 className="font-bold text-black text-sm mb-4">
+          <h3 className="font-normal font-cal-sans text-black text-lg mb-4">
             Organization Details
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-xs font-medium mb-2 text-black">
+              <label className="block text-xs font-normal mb-2 text-black">
                 Organization/Company Name *
               </label>
               <input
@@ -110,7 +111,7 @@ const PartnerForm = ({
               />
             </div>
             <div>
-              <label className="block text-xs font-medium mb-2 text-black">
+              <label className="block text-xs font-normal mb-2 text-black">
                 Website URL
               </label>
               <input
@@ -124,7 +125,7 @@ const PartnerForm = ({
 
         {/* Partnership Interest */}
         <div>
-          <h3 className="font-bold text-black text-sm mb-4">
+          <h3 className="font-normal font-cal-sans text-black text-lg mb-4">
             Partnership Interest
           </h3>
           <label className="block text-xs font-medium mb-4 text-black">
@@ -147,7 +148,7 @@ const PartnerForm = ({
                   type="checkbox"
                   className="w-5 h-5 accent-[#D62D88] border-[#E5E7EB] rounded"
                 />
-                <span className="text-xs font-medium text-black">
+                <span className="text-xs font-normal text-black">
                   {interest}
                 </span>
               </label>

@@ -32,7 +32,7 @@ const PartnerInquiry = () => {
   return (
     <div className="flex flex-col bg-[#FDE7F3] min-h-screen pb-24">
       {/* Partnership Inquiry Hero */}
-      <div className="relative w-full h-[250px] md:h-[300px]">
+      <div className="relative w-full h-[250px] md:h-[300px] lg:h-[400px] lg:mx-4 lg:rounded-2xl overflow-hidden mt-4 lg:mt-0 lg:w-[calc(100%-2rem)]">
         <Image
           src="/Threegirls.jpg"
           alt="Partnership Inquiry Hero"
@@ -42,7 +42,7 @@ const PartnerInquiry = () => {
         />
         <div className="absolute inset-0 bg-[#2a0036]/60 flex items-center justify-center text-center text-white px-5">
           <div className="mt-10">
-            <h1 className="text-3xl md:text-5xl font-bold">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal font-cal-sans tracking-wide">
               Partnership Inquiry
             </h1>
             <p className="mt-4 text-sm md:text-base text-gray-200">

@@ -16,7 +16,7 @@ const PartnerInfo = () => {
       {/* Why Partner Section */}
       <div className="bg-[#FCE8F3] py-20 md:py-28 px-5 w-full">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-[2.5rem] font-bold mb-16 text-black">
+          <h2 className="text-3xl md:text-[2.5rem] font-normal font-cal-sans mb-16 text-black">
             Why Partner with ROTAGI?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
@@ -25,7 +25,7 @@ const PartnerInfo = () => {
               <div className="w-16 h-16 bg-[#F8D0E3] rounded-full flex items-center justify-center mb-6">
                 <Users className="w-8 h-8 text-[#D62D88]" />
               </div>
-              <h3 className="text-[1.1rem] font-bold mb-4 text-black">
+              <h3 className="text-[1.1rem] font-normal font-cal-sans mb-4 text-black">
                 Align with our Mission
               </h3>
               <p className="text-gray-700 text-sm leading-relaxed">
@@ -38,7 +38,7 @@ const PartnerInfo = () => {
               <div className="w-16 h-16 bg-[#F8D0E3] rounded-full flex items-center justify-center mb-6">
                 <Handshake className="w-8 h-8 text-[#D62D88]" />
               </div>
-              <h3 className="text-[1.1rem] font-bold mb-4 text-black">
+              <h3 className="text-[1.1rem] font-normal font-cal-sans mb-4 text-black">
                 Collaborate on Impacts
               </h3>
               <p className="text-gray-700 text-sm leading-relaxed">
@@ -52,7 +52,7 @@ const PartnerInfo = () => {
               <div className="w-16 h-16 bg-[#F8D0E3] rounded-full flex items-center justify-center mb-6">
                 <TrendingUp className="w-8 h-8 text-[#D62D88]" />
               </div>
-              <h3 className="text-[1.1rem] font-bold mb-4 text-black">
+              <h3 className="text-[1.1rem] font-normal font-cal-sans mb-4 text-black">
                 Access Diverse Talent
               </h3>
               <p className="text-gray-700 text-sm leading-relaxed">
@@ -67,7 +67,7 @@ const PartnerInfo = () => {
       {/* Ways we Collaborate Section */}
       <div className="bg-white py-20 md:py-28 px-5 w-full">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-[2.5rem] font-bold mb-16 text-black">
+          <h2 className="text-3xl md:text-[2.5rem] font-normal font-cal-sans mb-16 text-black">
             Ways we Collaborate
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -76,7 +76,7 @@ const PartnerInfo = () => {
               <div className="w-12 h-12 bg-[#D62D88] rounded-full flex items-center justify-center mb-6">
                 <Presentation className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-[1.15rem] font-bold mb-4 text-black">
+              <h3 className="text-[1.15rem] font-normal font-cal-sans mb-4 text-black">
                 Financial Sponsorship
               </h3>
               <ul className="text-sm text-gray-700 space-y-3 list-none pl-0">
@@ -112,7 +112,7 @@ const PartnerInfo = () => {
               <div className="w-12 h-12 bg-[#D62D88] rounded-full flex items-center justify-center mb-6">
                 <Briefcase className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-[1.15rem] font-bold mb-4 text-black">
+              <h3 className="text-[1.15rem] font-normal font-cal-sans mb-4 text-black">
                 Technical Partnership
               </h3>
               <ul className="text-sm text-gray-700 space-y-3 list-none pl-0">
@@ -148,7 +148,7 @@ const PartnerInfo = () => {
               <div className="w-12 h-12 bg-[#D62D88] rounded-full flex items-center justify-center mb-6">
                 <GraduationCap className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-[1.15rem] font-bold mb-4 text-black">
+              <h3 className="text-[1.15rem] font-normal font-cal-sans mb-4 text-black">
                 Mentorship & Placement
               </h3>
               <ul className="text-sm text-gray-700 space-y-3 list-none pl-0">
@@ -184,10 +184,10 @@ const PartnerInfo = () => {
 
       {/* Let's Build Section */}
       <div className="bg-[#FCE8F3] py-20 px-5 w-full text-center flex flex-col items-center">
-        <h2 className="text-3xl md:text-[2.2rem] font-bold mb-6 text-black tracking-tight">
+        <h2 className="text-3xl md:text-[2.2rem] font-normal font-cal-sans mb-6 text-black tracking-tight">
           Let's Build the Future Together
         </h2>
-        <p className="text-gray-800 mb-10 max-w-xl mx-auto text-[0.95rem] leading-relaxed">
+        <p className="text-gray-800 font-normal mb-10 max-w-xl mx-auto text-[0.95rem] leading-relaxed">
           We believe that when girls grow, communities thrive. Partner with us
           to scale our impact and reach more young innovators across Africa.
         </p>

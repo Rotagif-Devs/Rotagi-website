@@ -55,7 +55,7 @@ export default function Hero() {
                 variant="secondary"
                 href="/programs"
                 withArrow
-                className="bg-white text-secondary hover:bg-gray-100 rounded-full px-8 py-4 font-bold md:px-12 object-contain"
+                className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-4 font-bold md:px-12 object-contain"
               >
                 Explore Programs
               </Button>

@@ -7,6 +7,7 @@ import DonateDetails from "./DonateDetails";
 import DonateComplete from "./DonateComplete";
 import CardDetails from "../globalComp/CardDetails";
 import Loader from "../globalComp/Loader";
+import DonateImpact from "./DonateImpact";
 
 import {
   DonationData,
@@ -80,7 +81,8 @@ const DonateTransform = () => {
 
       {/* NORMAL DONATE FLOW */}
       {paymentStatus === "idle" && (
-        <>
+        <div className="py-10 md:py-20">
+          {step === 0 && <DonateImpact />}
           {step > 0 && <Stepper currentStep={step} totalSteps={2} />}
 
           {step === 0 && <DonateDefault onNext={handleDefaultNext} />}
@@ -94,7 +96,7 @@ const DonateTransform = () => {
               onNext={handleConfirm}
             />
           )}
-        </>
+        </div>
       )}
 
       {/* PAYMENT MODAL */}

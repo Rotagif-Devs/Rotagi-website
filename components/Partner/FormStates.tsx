@@ -13,7 +13,7 @@ export const SubmittingState = () => (
         <Lock className="w-3 h-3 text-[#D62D88] absolute" strokeWidth={2.5} />
       </div>
 
-      <h2 className="text-[1.35rem] font-bold text-black mb-3">
+      <h2 className="text-[1.35rem] font-normal font-cal-sans text-black mb-3">
         Submitting...
       </h2>
       <p className="text-[#D62D88] text-[0.95rem]">
@@ -32,8 +32,9 @@ export const SuccessState = ({ onReset }: { onReset: () => void }) => (
       <div className="absolute top-10 right-0 w-6 h-6 bg-[#D62D88] rounded-full translate-x-3 -translate-y-6"></div>
     </div>
 
-    <h2 className="text-3xl md:text-[2.75rem] font-bold text-black mb-6 max-w-[35rem] leading-[1.2]">
+    <h2 className="text-3xl md:text-[2.75rem] font-normal font-cal-sans text-black mb-6 max-w-[35rem] leading-[1.2]">
       Thank You for Your Interest in Partnering With{" "}
+      <br className="hidden md:block" />
       <span className="text-[#D62D88]">ROTAGI</span>
     </h2>
     <p className="text-gray-800 font-medium max-w-sm mb-12 text-sm leading-relaxed">
@@ -57,7 +58,7 @@ export const ErrorState = ({ onReset }: { onReset: () => void }) => (
       </div>
     </div>
 
-    <h2 className="text-3xl md:text-[2.2rem] font-bold text-black mb-3">
+    <h2 className="text-3xl md:text-[2.2rem] font-normal font-cal-sans text-black mb-3">
       We couldn't submit your request.
     </h2>
     <p className="text-gray-800 text-sm mb-10 font-medium">
@@ -65,7 +66,9 @@ export const ErrorState = ({ onReset }: { onReset: () => void }) => (
     </p>
 
     <div className="bg-[#FACBE1] rounded-2xl p-6 text-left w-full max-w-[340px] mb-8">
-      <h4 className="font-bold text-black text-[0.8rem] mb-3">Common issues</h4>
+      <h4 className="font-normal font-cal-sans text-black text-[0.9rem] mb-3">
+        Common issues
+      </h4>
       <ul className="text-[0.75rem] border-0 border-transparent m-0 list-disc pl-5 text-black font-medium space-y-2">
         <li>Unstable network connection</li>
         <li>Temporary system error</li>
