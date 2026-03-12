@@ -36,7 +36,7 @@ export default function Programs() {
           </p>
         </div>
 
-        <div className="mx-auto rounded-tl-2xl rounded-bl-2xl lg:rounded-2xl bg-white pl-4 py-8 md:px-6">
+        <div className="mx-auto rounded-tl-2xl rounded-bl-2xl lg:rounded-2xl bg-white p-8 md:p-12 lg:p-8 xl:p-12">
           {/* Desktop grid */}
           <div className="hidden lg:grid lg:grid-cols-4 lg:gap-4">
             {programs.map((prog, i) => (
@@ -48,32 +48,28 @@ export default function Programs() {
                   <div className="absolute left-0 top-[18%] h-[60%] w-px bg-black/20" />
                 )}
 
-                <div className="relative mb-8 h-80 overflow-hidden lg:rounded-[24px]">
+                <div className="relative mb-8 h-[22rem] overflow-hidden lg:rounded-[24px]">
                   <Image
                     width={500}
                     height={500}
                     src={prog.image}
                     alt={prog.name}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 lg:mt-8"
+                    className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-110 lg:mt-6"
                   />
-                  <span className="absolute right-2 top-4 inline-flex h-8 items-center justify-center rounded-tl-2xl rounded-br-2xl bg-[#F8BBD0] text-[14px] font-bold uppercase tracking-wider text-[#3B0D25] px-4">
+                  <span className="absolute right-3 top-5 inline-flex h-8 items-center justify-center rounded-tl-2xl rounded-br-2xl rounded-tr-sm rounded-bl-sm bg-[#FCE8F3] font-['Inter'] font-bold text-[12px] leading-[20px] tracking-normal text-black px-5 py-1">
                     {prog.ageRange}
                   </span>
                 </div>
 
                 <div className="flex flex-1 flex-col items-center text-center">
-                  <h3 className="mb-4 text-black font-cal-sans text-2xl lowercase leading-tight">
+                  <h3 className="mb-4 text-black font-cal-sans font-normal text-[22px] leading-[18px] tracking-[-0.2px] capitalize">
                     {prog.name}
                   </h3>
-                  <p className="mb-8 text-black/70 font-dm-sans font-light leading-relaxed line-clamp-3">
+                  <p className="mb-8 text-black/70 font-dm-sans font-normal text-[15px] leading-[25px] tracking-[-0.2px] text-center">
                     {prog.tagline}
                   </p>
                   <Link href={`/programs/${prog.slug}`} className="mt-auto">
-                    <Button
-                      variant="ghost"
-                      withArrow
-                      className=""
-                    >
+                    <Button variant="ghost" withArrow className="">
                       Learn More
                     </Button>
                   </Link>
@@ -106,18 +102,18 @@ export default function Programs() {
                         height={500}
                         src={prog.image}
                         alt={prog.name}
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-cover object-top"
                       />
-                      <span className="absolute right-4 top-0 inline-flex h-8 w-[100px] items-center justify-center rounded-tl-2xl font-dm-sans rounded-br-2xl bg-[#F8BBD0] text-[12px] font-bold tracking-wider text-[#3B0D25]">
+                      <span className="absolute right-3 top-4 inline-flex h-8 items-center justify-center rounded-tl-2xl rounded-br-2xl rounded-tr-sm rounded-bl-sm bg-[#FCE8F3] font-['Inter'] font-bold text-[12px] leading-[20px] tracking-normal text-black px-5 py-1">
                         {prog.ageRange}
                       </span>
                     </div>
 
                     <div className="flex flex-1 flex-col items-center text-center">
-                      <h3 className="mb-4 text-black font-cal-sans text-2xl lowercase leading-tight">
+                      <h3 className="mb-4 text-black font-cal-sans font-normal text-[22px] leading-[18px] tracking-[-0.2px] capitalize">
                         {prog.name}
                       </h3>
-                      <p className="mb-2 text-black/80 font-dm-sans font-light leading-relaxed">
+                      <p className="mb-2 text-black/70 font-dm-sans font-normal text-[15px] leading-[25px] tracking-[-0.2px] text-center">
                         {prog.tagline}
                       </p>
                       <Link href={`/programs/${prog.slug}`} className="mt-auto">

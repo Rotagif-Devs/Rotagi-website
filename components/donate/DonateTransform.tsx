@@ -7,6 +7,7 @@ import DonateDetails from "./DonateDetails";
 import DonateComplete from "./DonateComplete";
 import CardDetails from "../globalComp/CardDetails";
 import Loader from "../globalComp/Loader";
+import DonateImpact from "./DonateImpact";
 
 import {
   DonationData,
@@ -19,7 +20,9 @@ const DonateTransform = () => {
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState<DonationData | null>(null);
   const [showModal, setShowModal] = useState(false);
-  const [paymentStatus, setPaymentStatus] = useState<"idle" | "loading">("idle");
+  const [paymentStatus, setPaymentStatus] = useState<"idle" | "loading">(
+    "idle",
+  );
 
   /* Prevent page scroll when modal opens */
   useEffect(() => {
@@ -44,41 +47,41 @@ const DonateTransform = () => {
   const handleConfirm = () => setShowModal(true);
 
   const handleCardSubmit = async (cardData: CardInputs) => {
-  const updatedData = {
-    ...formData!,
-    ...cardData,
+    const updatedData = {
+      ...formData!,
+      ...cardData,
+    };
+
+    setFormData(updatedData);
+    setShowModal(false);
+    setPaymentStatus("loading");
+
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+
+      router.push(
+        `/donate/success?amount=${updatedData.amount}&email=${updatedData.email}`,
+      );
+    } catch {
+      router.push(
+        `/donate/failed?amount=${updatedData.amount}&email=${updatedData.email}`,
+      );
+    }
   };
-
-  setFormData(updatedData);
-  setShowModal(false);
-  setPaymentStatus("loading");
-
-  try {
-    await new Promise((resolve) => setTimeout(resolve, 3000));
-
-    router.push(
-      `/donate/success?amount=${updatedData.amount}&email=${updatedData.email}`
-    );
-  } catch {
-    router.push(
-      `/donate/failed?amount=${updatedData.amount}&email=${updatedData.email}`
-    );
-  }
-};
 
   const handleCloseModal = () => setShowModal(false);
   return (
     <section className="w-full">
-
       {/* LOADING */}
-       {paymentStatus === "loading" && (
+      {paymentStatus === "loading" && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm pointer-events-auto">
           <Loader />
         </div>
       )}
       {/* NORMAL DONATE FLOW */}
       {paymentStatus === "idle" && (
-        <>
+        <div className="py-10 md:py-20">
+          {step === 0 && <DonateImpact />}
           {step > 0 && <Stepper currentStep={step} totalSteps={2} />}
 
           {step === 0 && <DonateDefault onNext={handleDefaultNext} />}
@@ -92,27 +95,18 @@ const DonateTransform = () => {
               onNext={handleConfirm}
             />
           )}
-        </>
+        </div>
       )}
 
       {/* PAYMENT MODAL */}
       {showModal && formData && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="relative w-full bg-white rounded-xl shadow-2xl p-6">
-            <CardDetails
-              data={{ amount: formData.amount }}
-              amount={formData.amount}
-              onNext={handleCardSubmit}
-              onReturn={handleCloseModal}
-            />
-
-            <button
-              className="absolute top-3 right-4 text-gray-600 text-xl font-bold hover:text-black"
-              onClick={handleCloseModal}
-            >
-              &times;
-            </button>
-          </div>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm px-4">
+          <CardDetails
+            data={{ amount: formData.amount }}
+            amount={formData.amount}
+            onNext={handleCardSubmit}
+            onReturn={handleCloseModal}
+          />
         </div>
       )}
     </section>

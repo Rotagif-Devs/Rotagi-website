@@ -1,4 +1,4 @@
-import DonateHero from "@/components/donate/DonateHero";  
+import DonateHero from "@/components/donate/DonateHero";
 import DonateImpact from "@/components/donate/DonateImpact";
 import DonateTransform from "@/components/donate/DonateTransform";
 const HERO_DATA = {
@@ -9,9 +9,8 @@ const HERO_DATA = {
 export default function DonatePage() {
   return (
     <main className="min-h-screen">
-       <DonateHero description={HERO_DATA.description} />
-       <DonateImpact/>
-       <DonateTransform/>
+      <DonateHero description={HERO_DATA.description} />
+      <DonateTransform />
     </main>
   );
 }

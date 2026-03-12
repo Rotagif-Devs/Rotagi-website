@@ -1,9 +1,10 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import DonateSuccessful from "@/components/donate/DonateSuccessful";
 
-export default function SuccessPage() {
+function SuccessContent() {
   const router = useRouter();
   const params = useSearchParams();
 
@@ -15,10 +16,20 @@ export default function SuccessPage() {
   };
 
   return (
-    <DonateSuccessful
-      amount={amount}
-      email={email}
-      onReturn={handleReturn}
-    />
+    <DonateSuccessful amount={amount} email={email} onReturn={handleReturn} />
+  );
+}
+
+export default function SuccessPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          Loading...
+        </div>
+      }
+    >
+      <SuccessContent />
+    </Suspense>
   );
 }

@@ -23,12 +23,12 @@ const pillars = [
 
 export default function Mission() {
   return (
-    <section className="py-24 bg-primary px-10 lg:px-8">
+    <section className="py-32 bg-primary px-10 lg:px-8">
       <div className="mx-auto flex flex-col items-center text-center lg:max-w-6xl">
-        <h2 className="mb-6 text-black font-cal-sans lowercase">
+        <h2 className="mb-6 text-black font-cal-sans font-normal text-[46px] leading-[100%] tracking-normal text-center">
           Our Integrated Mission
         </h2>
-        <p className="max-w-3xl text-gray-700 mb-20 text-lg md:text-xl font-dm-sans leading-loose text-center">
+        <p className="max-w-3xl text-gray-700 mb-20 font-dm-sans font-normal text-[18px] leading-[35px] tracking-[-0.01em] text-center">
           ROTAGI equips African girls and women across Africa with AI literacy
           and digital confidence to build solutions and lead the global economy.
         </p>
@@ -47,15 +47,15 @@ export default function Mission() {
                   className="w-12 h-12 object-contain"
                 />
               </div>
-              <div className="mb-4">
-                <h3 className="font-cal-sans text-black mb-2 lowercase">
+              <div className="mb-4 text-center w-full">
+                <h3 className="font-cal-sans font-normal text-[22px] leading-[32px] tracking-normal text-black mb-1 text-center">
                   {item.title}
                 </h3>
-                <h4 className="text-gray-600 font-dm-sans text-sm md:text-base tracking-wide uppercase">
+                <h4 className="font-cal-sans font-normal text-[22px] leading-[32px] tracking-normal text-black text-center m-0">
                   {item.subtitle}
                 </h4>
               </div>
-              <p className="text-gray-600 leading-loose font-dm-sans lg:p-0 px-8">
+              <p className="text-gray-600 font-['Inter'] font-normal text-[16px] leading-[30px] tracking-normal lg:p-0 px-8 text-center mt-2">
                 {item.desc}
               </p>
             </div>

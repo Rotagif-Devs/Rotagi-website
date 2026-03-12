@@ -42,18 +42,18 @@ export default function Updates() {
       <div className="flex w-full max-w-7xl flex-col gap-12 md:gap-20">
         {/* Title + description + button area */}
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-          <h2 className="text-black max-w-lg font-cal-sans lowercase leading-tight">
+          <h2 className="text-black max-w-lg lg:w-[45%] font-cal-sans font-normal text-3xl md:text-[46px] leading-[100%] tracking-normal">
             Updates from the Work That Matters
           </h2>
 
           <div className="flex flex-col items-start gap-8 max-w-2xl">
-            <p className="text-gray-700 text-lg md:text-xl font-dm-sans leading-loose lg:w-full w-11/12">
+            <p className="text-gray-700 font-dm-sans font-normal text-[16px] leading-[133%] tracking-normal text-justify md:text-left lg:text-justify lg:pr-8 w-full md:w-11/12 lg:w-full">
               Program highlights, impact milestones, and how we’re advancing
               opportunity and digital empowerment.
             </p>
 
             <div className="hidden md:block">
-              <Button href="/events" variant="primary" className="px-10 py-4">
+              <Button href="/updates" variant="primary" className="px-10 py-4">
                 View All
               </Button>
             </div>
@@ -69,7 +69,7 @@ export default function Updates() {
                 key={update.title}
                 className="group flex w-full max-w-[414px] flex-col overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm hover:shadow-md transition-shadow px-6 pb-6"
               >
-                <div className="h-[240px] w-full overflow-hidden mb-4">
+                <div className="h-[200px] aspect-video w-full overflow-hidden mb-4">
                   <Image
                     width={414}
                     height={240}
@@ -99,7 +99,7 @@ export default function Updates() {
                         size="none"
                         className="py-2"
                         variant="ghost"
-                        href="/programs"
+                        href="/blog"
                       >
                         {update.linkText}
                       </Button>
@@ -156,7 +156,7 @@ export default function Updates() {
                             size="none"
                             className="py-2"
                             variant="ghost"
-                            href="/programs"
+                            href="/blog"
                           >
                             {update.linkText}
                           </Button>
@@ -180,7 +180,7 @@ export default function Updates() {
 
           {/* Button below on mobile */}
           <div className="mt-10 flex justify-center md:hidden">
-            <Button href="/programs" variant="primary" className="px-10 py-4">
+            <Button href="/blog" variant="primary" className="px-10 py-4">
               View All
             </Button>
           </div>
