@@ -1,18 +1,15 @@
-// app/programs/[slug]/page.tsx
 import { getProgramBySlug, getAllPrograms } from "@/lib/programs";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import PTA from "@/components/globalComp/PTA";
 import Image from "next/image";
 import { CalendarRange, Clock, Group, User } from "lucide-react";
-
 export async function generateStaticParams() {
   const programs = getAllPrograms();
   return programs.map((program) => ({
     slug: program.slug,
   }));
 }
-
 export default async function ProgramDetailPage({
   params,
 }: {

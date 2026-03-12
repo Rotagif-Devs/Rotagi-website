@@ -76,7 +76,6 @@ const DonateTransform = () => {
           <Loader />
         </div>
       )}
-
       {/* NORMAL DONATE FLOW */}
       {paymentStatus === "idle" && (
         <>
