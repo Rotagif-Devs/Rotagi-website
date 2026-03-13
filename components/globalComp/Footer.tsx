@@ -53,7 +53,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/#updates"
+                  href="/events"
                   className="hover:text-white transition-colors"
                 >
                   Events
@@ -61,7 +61,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/#updates"
+                  href="/events"
                   className="hover:text-white transition-colors"
                 >
                   Resources

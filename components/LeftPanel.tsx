@@ -17,7 +17,7 @@ export default function LeftPanel() {
 
   return (
     <div
-      className="lg:flex flex-col lg:w-[47%] h-157 w-full mt-10 lg:mt-0 p-10 relative overflow-x-hidden lg:overflow-y-scroll overflow-hidden [&::-webkit-scrollbar]:hidden"
+      className="lg:flex flex-col lg:w-[47%] min-h-screen w-full mt-10 lg:mt-0 p-10 relative overflow-x-hidden lg:overflow-y-scroll overflow-hidden [&::-webkit-scrollbar]:hidden"
       style={{
         background:
           "linear-gradient(135deg, #e91e8c 0%, #c2185b 60%, #ad1457 100%)",
@@ -29,7 +29,14 @@ export default function LeftPanel() {
 
 
       <div className="relative z-10 shrink-0">
-        <h3 className="text-white tracking-widest uppercase">ROTAGI</h3>
+        <Link
+          href="/"
+          className="inline-block hover:opacity-80"
+        >
+          <h3 className="text-white tracking-widest uppercase text-2xl">
+            ROTAGI
+          </h3>
+        </Link>
       </div>
 
       <div className="relative z-10 mt-5 shrink-0">

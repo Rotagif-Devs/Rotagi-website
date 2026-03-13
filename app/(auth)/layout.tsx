@@ -7,7 +7,7 @@ import LeftPanel from "@/components/LeftPanel";
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
     <ProgramProvider>
-      <div className="lg:h-screen w-full lg:flex-row  flex flex-col overflow-hidden">
+      <div className="min-h-screen w-full lg:flex-row  flex flex-col overflow-hidden">
        
         <LeftPanel />
 
