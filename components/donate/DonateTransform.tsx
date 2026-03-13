@@ -78,7 +78,6 @@ const DonateTransform = () => {
           <Loader />
         </div>
       )}
-
       {/* NORMAL DONATE FLOW */}
       {paymentStatus === "idle" && (
         <div className="py-10 md:py-20">

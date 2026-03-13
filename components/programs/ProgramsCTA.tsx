@@ -7,7 +7,6 @@ import Button from "../ui/Button";
 export default function ProgramsCTA() {
   const [isPlaying, setIsPlaying] = useState(true); // Start with autoPlay → playing
   const videoRef = useRef<HTMLVideoElement>(null);
-
   const togglePlay = () => {
     if (videoRef.current) {
       if (videoRef.current.paused) {
@@ -19,7 +18,6 @@ export default function ProgramsCTA() {
       }
     }
   };
-
   return (
     <section className="bg-primary py-16 md:py-20 px-6 md:px-15 flex justify-center">
       <div className="flex w-full max-w-[1260px] flex-col gap-10 px-5 md:px-0 md:gap-[76px]">

@@ -41,8 +41,6 @@ export default function ProgramsList({ programs, filters }: Props) {
           </div>
         </div>
       </div>
-
-   
       <section className=" sm:px-12 mb-16">
         <div className="">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:gap-12 max-w-6xl mx-auto">

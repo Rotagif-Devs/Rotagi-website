@@ -11,7 +11,7 @@ type Props = {
 
 const DonateComplete = ({ data, onBack, onNext }: Props) => {
   return (
-    <section className="min-h-screen bg-[#f8e0ed] flex justify-center items-center px-4 pb-4">
+    <section className="min-h-screen bg-primary flex justify-center items-center px-4 pb-4">
       <div className="w-full max-w-xl bg-white rounded-2xl border border-[#D3D3D3] p-6 sm:p-8">
         {/* Back Button */}
         <button className="flex items-center gap-1 text-sm mb-6 px-3 py-2 rounded-md cursor-pointer" onClick={onBack}>
