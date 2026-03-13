@@ -9,13 +9,13 @@ import Image from "next/image";
 import Button from "../ui/Button";
 
 const updates = [
-  // ... (omitting for brevity in this chunk, but this is a replacement starting from line 3)
   {
     category: "SUCCESS STORY",
     title: "How AI Changed My Career Path",
     desc: "Meet Amina, a She Ascend graduate who transitioned from teaching to AI product management.",
     image: "/img-5.png",
     linkText: "Read Story",
+    href: "/blog",
   },
   {
     category: "COMMUNITY IMPACT",
@@ -23,6 +23,7 @@ const updates = [
     desc: "A comprehensive guide for educators introducing AI concepts to parents and young learners.",
     image: "/img-5.png",
     linkText: "Download Guide",
+    href: "/blog",
   },
   {
     category: "EVENT RECAP",
@@ -30,6 +31,7 @@ const updates = [
     desc: "Recap of our annual conference featuring workshops, mentorship sessions, and inspiring talks.",
     image: "/img-5.png",
     linkText: "Watch Recap",
+    href: "/events",
   },
 ];
 
@@ -99,7 +101,7 @@ export default function Updates() {
                         size="none"
                         className="py-2"
                         variant="ghost"
-                        href="/blog"
+                        href={update.href ?? "/blog"}
                       >
                         {update.linkText}
                       </Button>
@@ -156,7 +158,7 @@ export default function Updates() {
                             size="none"
                             className="py-2"
                             variant="ghost"
-                            href="/blog"
+                            href={update.href ?? "/blog"}
                           >
                             {update.linkText}
                           </Button>

@@ -4,14 +4,30 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React from "react";
 
-const navItems = ["About Us", "Programs", "Contact"];
+const navItems = [
+  { label: "About Us", href: "/about" },
+  { label: "Programs", href: "/programs" },
+  { label: "Contact", href: "/contact" },
+];
 
 export default function Header() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
+
+  React.useEffect(() => {
+    const token = typeof window !== "undefined" ? localStorage.getItem("accessToken") : null;
+    setIsLoggedIn(Boolean(token));
+  }, []);
+
+  const getStartedHref = isLoggedIn ? "/programs" : pathname?.startsWith("/programs") ? "/login" : "/programs";
+  const getStartedText = isLoggedIn ? "Dashboard" : "Get Started";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-white/90 backdrop-blur-md">
@@ -30,11 +46,11 @@ export default function Header() {
         <nav className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => (
             <Link
-              key={item}
-              href={`/${item.toLowerCase()}`}
+              key={item.label}
+              href={item.href}
               className="text-sm font-medium text-gray-700 transition-colors hover:text-secondary"
             >
-              {item}
+              {item.label}
             </Link>
           ))}
         </nav>
@@ -44,10 +60,10 @@ export default function Header() {
           <Button
             variant="secondary"
             size="md"
-            href="/programs"
+            href={getStartedHref}
             className="mr-2 border-2 border-gray-400 rounded-full font-medium"
           >
-            Get Started
+            {getStartedText}
           </Button>
           <Button variant="primary" size="md" href="/donate">
             Donate Now
@@ -77,12 +93,12 @@ export default function Header() {
           <nav className="flex flex-col gap-4">
             {navItems.map((item) => (
               <Link
-                key={item}
-                href={`/${item.toLowerCase()}`}
+                key={item.label}
+                href={item.href}
                 className="text-lg font-medium text-gray-900 transition-colors hover:text-secondary"
                 onClick={closeMenu}
               >
-                {item}
+                {item.label}
               </Link>
             ))}
           </nav>
@@ -90,11 +106,11 @@ export default function Header() {
           <Button
             variant="secondary"
             size="md"
-            href="/programs"
+            href={getStartedHref}
             onClick={closeMenu}
             className="mr-2 border border-gray-400"
           >
-            Get Started
+            {getStartedText}
           </Button>
           <Button
             variant="primary"

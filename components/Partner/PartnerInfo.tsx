@@ -9,6 +9,7 @@ import {
   GraduationCap,
 } from "lucide-react";
 import Button from "@/components/ui/Button";
+import Image from "next/image";
 
 const PartnerInfo = () => {
   return (
@@ -19,11 +20,13 @@ const PartnerInfo = () => {
           <h2 className="text-3xl md:text-[2.5rem] font-normal font-cal-sans mb-16 text-black">
             Why Partner with ROTAGI?
           </h2>
+          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
             {/* Item 1 */}
             <div className="flex flex-col items-center text-center px-4">
-              <div className="w-16 h-16 bg-[#F8D0E3] rounded-full flex items-center justify-center mb-6">
-                <Users className="w-8 h-8 text-[#D62D88]" />
+              <div className=" h-16  flex items-center justify-center mb-6">
+               <Image src="/circle.svg"alt="Partner with ROTAGI" width={32}
+                        height={32} className="w-50 h-40 text-[#D62D88]" />
               </div>
               <h3 className="text-[1.1rem] font-normal font-cal-sans mb-4 text-black">
                 Align with our Mission
@@ -35,8 +38,9 @@ const PartnerInfo = () => {
             </div>
             {/* Item 2 */}
             <div className="flex flex-col items-center text-center px-4">
-              <div className="w-16 h-16 bg-[#F8D0E3] rounded-full flex items-center justify-center mb-6">
-                <Handshake className="w-8 h-8 text-[#D62D88]" />
+              <div className=" h-16  flex items-center justify-center mb-6">
+                 <Image src="/people.svg" alt="Partner with ROTAGI" width={32}
+                        height={32} className="w-50 h-40 text-[#D62D88]" />
               </div>
               <h3 className="text-[1.1rem] font-normal font-cal-sans mb-4 text-black">
                 Collaborate on Impacts
@@ -49,8 +53,9 @@ const PartnerInfo = () => {
             </div>
             {/* Item 3 */}
             <div className="flex flex-col items-center text-center px-4">
-              <div className="w-16 h-16 bg-[#F8D0E3] rounded-full flex items-center justify-center mb-6">
-                <TrendingUp className="w-8 h-8 text-[#D62D88]" />
+              <div className=" h-16  flex items-center justify-center mb-6">
+                 <Image src="/Arrow-2.svg" alt="Partner with ROTAGI" width={50}
+                        height={50} className="w-50 h-40 text-[#D62D88]" />
               </div>
               <h3 className="text-[1.1rem] font-normal font-cal-sans mb-4 text-black">
                 Access Diverse Talent
@@ -72,110 +77,95 @@ const PartnerInfo = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card 1 */}
-            <div className="bg-white p-8 rounded-[1.5rem] border border-[#FACBE1] text-left">
-              <div className="w-12 h-12 bg-[#D62D88] rounded-full flex items-center justify-center mb-6">
-                <Presentation className="w-6 h-6 text-white" />
+            <div className="bg-white p-5 rounded-[1.5rem] border border-[#FACBE1] text-left">
+              <div className="w-25 h-12 flex items-center justify-center mb-6">
+              <Image src="/love.svg" alt="Partner with ROTAGI" width={50}
+                        height={50} className="w-70 h-70 mr-6 text-[#D62D88]" />
               </div>
               <h3 className="text-[1.15rem] font-normal font-cal-sans mb-4 text-black">
-                Financial Sponsorship
+                Strategic Sponsorship
               </h3>
               <ul className="text-sm text-gray-700 space-y-3 list-none pl-0">
                 <li className="flex items-start">
-                  <span className="text-[#D62D88] mr-2 text-lg leading-none">
-                    •
-                  </span>{" "}
-                  Support our core programs
+                  
+                 Support our programs through financial contributions and receive recognition across our platforms.
                 </li>
                 <li className="flex items-start">
-                  <span className="text-[#D62D88] mr-2 text-lg leading-none">
+                  <span className="text-[#667085] mr-2 text-lg leading-none">
                     •
                   </span>{" "}
-                  Fund scholarships and grants
+                  Brand visibility at events 
                 </li>
                 <li className="flex items-start">
-                  <span className="text-[#D62D88] mr-2 text-lg leading-none">
+                  <span className="text-[#667085] mr-2 text-lg leading-none">
                     •
                   </span>{" "}
-                  Sponsor tech bootcamps
+                  Recognition in annual impact reports
                 </li>
-                <li className="flex items-start">
-                  <span className="text-[#D62D88] mr-2 text-lg leading-none">
-                    •
-                  </span>{" "}
-                  Invest in our infrastructure
-                </li>
+               
               </ul>
             </div>
 
             {/* Card 2 */}
             <div className="bg-white p-8 rounded-[1.5rem] border border-[#FACBE1] text-left">
-              <div className="w-12 h-12 bg-[#D62D88] rounded-full flex items-center justify-center mb-6">
-                <Briefcase className="w-6 h-6 text-white" />
+              <div className="w-25 h-12  flex items-center justify-center mb-6">
+            <Image src="/people-2.svg" alt="Partner with ROTAGI" width={50}
+                        height={50} className="w-70 h-70 mr-6 text-[#D62D88]" />
               </div>
               <h3 className="text-[1.15rem] font-normal font-cal-sans mb-4 text-black">
-                Technical Partnership
+                Technology Partnerships
               </h3>
               <ul className="text-sm text-gray-700 space-y-3 list-none pl-0">
                 <li className="flex items-start">
-                  <span className="text-[#D62D88] mr-2 text-lg leading-none">
-                    •
-                  </span>{" "}
-                  Provide essential digital tools
+               
+                 Provide technology resources, tools, and platforms to enhance our program delivery
                 </li>
                 <li className="flex items-start">
-                  <span className="text-[#D62D88] mr-2 text-lg leading-none">
+                  <span className="text-[#667085] mr-2 text-lg leading-none">
                     •
                   </span>{" "}
-                  Co-design curriculum content
+                Learning platform access
+
                 </li>
                 <li className="flex items-start">
-                  <span className="text-[#D62D88] mr-2 text-lg leading-none">
+                  <span className="text-[#667085] mr-2 text-lg leading-none">
                     •
                   </span>{" "}
-                  Host coding workshops
+                 
+Hardware and equipment donations
                 </li>
-                <li className="flex items-start">
-                  <span className="text-[#D62D88] mr-2 text-lg leading-none">
-                    •
-                  </span>{" "}
-                  Offer cloud resources
-                </li>
+                
               </ul>
             </div>
 
             {/* Card 3 */}
             <div className="bg-white p-8 rounded-[1.5rem] border border-[#FACBE1] text-left">
-              <div className="w-12 h-12 bg-[#D62D88] rounded-full flex items-center justify-center mb-6">
-                <GraduationCap className="w-6 h-6 text-white" />
+              <div className="w-25 h-12  flex items-center justify-center mb-6">
+              <Image src="/Arrow-3.svg" alt="Partner with ROTAGI" width={50}
+                        height={50} className="w-60 h-40 mr-6 text-[#D62D88]" />
               </div>
               <h3 className="text-[1.15rem] font-normal font-cal-sans mb-4 text-black">
-                Mentorship & Placement
+                Talent Pipeline Development
               </h3>
               <ul className="text-sm text-gray-700 space-y-3 list-none pl-0">
                 <li className="flex items-start">
-                  <span className="text-[#D62D88] mr-2 text-lg leading-none">
-                    •
-                  </span>{" "}
-                  Provide 1-on-1 mentorship
+                 
+                 Connect with our graduates for internships, jobs, and career development opportunities
                 </li>
                 <li className="flex items-start">
-                  <span className="text-[#D62D88] mr-2 text-lg leading-none">
+                  <span className="text-[#667085] mr-2 text-lg leading-none">
                     •
                   </span>{" "}
-                  Offer internship opportunities
+                Early access to talented candidates
+
                 </li>
                 <li className="flex items-start">
-                  <span className="text-[#D62D88] mr-2 text-lg leading-none">
+                  <span className="text-[#667085] mr-2 text-lg leading-none">
                     •
                   </span>{" "}
-                  Facilitate career pathways
+               Custom training programs
                 </li>
-                <li className="flex items-start">
-                  <span className="text-[#D62D88] mr-2 text-lg leading-none">
-                    •
-                  </span>{" "}
-                  Hire our top graduates
-                </li>
+               
               </ul>
             </div>
           </div>

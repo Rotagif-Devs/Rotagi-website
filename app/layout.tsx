@@ -43,11 +43,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${dmSans.variable} ${calSans.variable} antialiased bg-primary text-gray-900`}
       >
-         <Providers>
-        <Header />
-        <div className="mt-1 lg:mt-24 ">{children}</div>
-        <Footer />
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
