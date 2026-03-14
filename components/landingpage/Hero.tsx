@@ -10,16 +10,16 @@ export default function Hero() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/hero.png"
+          src="/hero-new.jpg"
           width={1920}
           height={1080}
           alt="African Girl Innovator"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#41122B] to-[#41122B]/30 opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#41122B]/70 to-[#41122B]/70 opacity-90" />
       </div>
 
-      <div className="relative z-10 flex flex-col justify-end w-full h-full pb-12 md:pb-24 overflow-hidden">
+      <div className="relative z-10 flex flex-col justify-end w-full h-full pb-12 md:pb-10 overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 w-full flex flex-col justify-end h-full relative">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -27,9 +27,8 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="w-full mb-8 relative"
           >
-            <h1 className="text-white font-cal-sans font-normal text-4xl sm:text-5xl md:text-[72px] leading-[1.05] tracking-[-0.02em] opacity-95 mb-2 md:mb-2">
-              Empowering <br className="hidden md:block" /> the Next Generation{" "}
-              <br className="hidden md:block" /> of African Girl Innovators
+            <h1 className="text-white max-w-4xl font-cal-sans font-normal text-4xl sm:text-5xl md:text-[72px] leading-[1.05] tracking-[-0.02em] opacity-95 mb-2 md:mb-0">
+              Empowering the Next Generation of African Girl Innovators
             </h1>
           </motion.div>
 

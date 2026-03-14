@@ -22,12 +22,39 @@ export default function Header() {
   const closeMenu = () => setIsOpen(false);
 
   React.useEffect(() => {
-    const token = typeof window !== "undefined" ? localStorage.getItem("accessToken") : null;
-    setIsLoggedIn(Boolean(token));
+    const checkAuth = () => {
+      const token =
+        typeof window !== "undefined"
+          ? localStorage.getItem("accessToken")
+          : null;
+      setIsLoggedIn(Boolean(token));
+    };
+
+    checkAuth();
+
+    // Listen for storage changes (e.g., logout in another tab or manual clear)
+    window.addEventListener("storage", checkAuth);
+    
+    // Also check on focus to be sure
+    window.addEventListener("focus", checkAuth);
+
+    return () => {
+      window.removeEventListener("storage", checkAuth);
+      window.removeEventListener("focus", checkAuth);
+    };
   }, []);
 
-  const getStartedHref = isLoggedIn ? "/programs" : pathname?.startsWith("/programs") ? "/login" : "/programs";
-  const getStartedText = isLoggedIn ? "Dashboard" : "Get Started";
+  const isProgramsPage = pathname === "/programs";
+  const getStartedText = isProgramsPage
+    ? isLoggedIn
+      ? "Dashboard"
+      : "Login"
+    : "Get Started";
+  const getStartedHref = isProgramsPage
+    ? isLoggedIn
+      ? "/dashboard"
+      : "/login"
+    : "/programs";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-white/90 backdrop-blur-md">

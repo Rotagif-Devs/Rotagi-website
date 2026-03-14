@@ -7,6 +7,7 @@ import { programs } from "@/data/programs";
 import { useProgram } from "@/context/ProgramContext";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { login, resendVerification } from "@/lib/services/auth.service";
+import SuccessModal from "@/components/SuccessModal";
 
 type FormData = {
   email: string;
@@ -19,6 +20,7 @@ export default function LoginForm() {
   const [submitting, setSubmitting] = useState(false);
   const [resending, setResending] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
   const {
     register,
@@ -38,9 +40,14 @@ export default function LoginForm() {
     setResending(true);
     try {
       const resp: any = await resendVerification({ email: emailValue });
-      alert(resp?.message || "Verification email sent. Please check your inbox.");
+      alert(
+        resp?.message || "Verification email sent. Please check your inbox.",
+      );
     } catch (err) {
-      const msg = err instanceof Error ? err.message : "Failed to resend verification email";
+      const msg =
+        err instanceof Error
+          ? err.message
+          : "Failed to resend verification email";
       setErrorMessage(msg);
     } finally {
       setResending(false);
@@ -52,10 +59,10 @@ export default function LoginForm() {
       setErrorMessage("Please select a program before signing in.");
       return;
     }
-    
+
     setSubmitting(true);
     setErrorMessage(null);
-    
+
     try {
       console.log("Attempting login with:", { email: data.email });
 
@@ -72,7 +79,7 @@ export default function LoginForm() {
         accessToken = response.accessToken;
       } else if (response?.data?.accessToken) {
         accessToken = response.data.accessToken;
-      } else if (typeof response === 'string' && response.length > 0) {
+      } else if (typeof response === "string" && response.length > 0) {
         accessToken = response;
       } else if (response?.token) {
         accessToken = response.token;
@@ -80,12 +87,30 @@ export default function LoginForm() {
 
       if (accessToken) {
         localStorage.setItem("accessToken", accessToken);
-        alert("Logged in successfully!");
+        
+        // Store user info if available in response
+        const user = response?.user || response?.data?.user;
+        if (user) {
+          if (user.email) localStorage.setItem("userEmail", user.email);
+          if (user.firstName && user.lastName) {
+            localStorage.setItem("userFullName", `${user.firstName} ${user.lastName}`);
+          } else if (user.name) {
+            localStorage.setItem("userFullName", user.name);
+          }
+        } else {
+          // Fallback to form data if response doesn't have user info
+          localStorage.setItem("userEmail", data.email);
+          // We don't have the name from login form, so we'll leave it or set a placeholder
+          localStorage.setItem("userFullName", "User");
+        }
+
+        setIsSuccessModalOpen(true);
       } else {
-        setErrorMessage("No access token received from server. Please check the response structure.");
+        setErrorMessage(
+          "No access token received from server. Please check the response structure.",
+        );
         console.error("Response structure:", response);
       }
-
     } catch (err) {
       console.error("Full error object:", err);
 
@@ -93,10 +118,13 @@ export default function LoginForm() {
 
       if (err instanceof Error) {
         message = err.message;
-        if ('response' in err) {
+        if ("response" in err) {
           const errorWithResponse = err as any;
           if (errorWithResponse.response?.data) {
-            console.error("Error response data:", errorWithResponse.response.data);
+            console.error(
+              "Error response data:",
+              errorWithResponse.response.data,
+            );
             if (errorWithResponse.response.data.message) {
               message = errorWithResponse.response.data.message;
             }
@@ -129,7 +157,7 @@ export default function LoginForm() {
               value={selectedProgram.id}
               onChange={(e) =>
                 setSelectedProgram(
-                  programs.find((p) => p.id === e.target.value)!
+                  programs.find((p) => p.id === e.target.value)!,
                 )
               }
               className="w-full border border-gray-200 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white"
@@ -151,8 +179,8 @@ export default function LoginForm() {
                 required: "Email is required",
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "Invalid email address"
-                }
+                  message: "Invalid email address",
+                },
               })}
               type="email"
               placeholder="sg-email@gmail.com"
@@ -161,7 +189,9 @@ export default function LoginForm() {
               }`}
             />
             {errors.email && (
-              <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+              <p className="mt-1 text-sm text-red-600">
+                {errors.email.message}
+              </p>
             )}
           </div>
 
@@ -184,8 +214,8 @@ export default function LoginForm() {
                   required: "Password is required",
                   minLength: {
                     value: 6,
-                    message: "Password must be at least 6 characters"
-                  }
+                    message: "Password must be at least 6 characters",
+                  },
                 })}
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter password"
@@ -203,7 +233,9 @@ export default function LoginForm() {
               </button>
             </div>
             {errors.password && (
-              <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
+              <p className="mt-1 text-sm text-red-600">
+                {errors.password.message}
+              </p>
             )}
           </div>
 
@@ -246,6 +278,16 @@ export default function LoginForm() {
           </p>
         </form>
       </div>
+
+      <SuccessModal
+        isOpen={isSuccessModalOpen}
+        onClose={() => {
+          setIsSuccessModalOpen(false);
+          window.location.href = "/dashboard";
+        }}
+        title="Welcome Back!"
+        message="You have successfully logged in. Redirecting to your programs..."
+      />
     </div>
   );
 }
