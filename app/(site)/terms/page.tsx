@@ -58,9 +58,9 @@ export default function TermsPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FDF2F8]">
-      {/* Hero Section - Matching site standard */}
-      <section className="relative w-full h-[400px] md:h-[500px] lg:mx-4 lg:rounded-2xl overflow-hidden mt-4 lg:mt-0 lg:w-[calc(100%-2rem)]">
+    <div className="min-h-screen bg-[#FDF2F8] pb-20">
+      {/* Hero Section - Matching PartnerHero standard */}
+      <section className="relative w-full h-[400px] md:h-[550px] lg:mx-4 lg:rounded-2xl overflow-hidden mt-20 lg:mt-0 lg:w-[calc(100%-2rem)]">
         <Image
           src="/hero.png"
           alt="Terms & Conditions"
@@ -68,40 +68,59 @@ export default function TermsPage() {
           priority
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-[#35022e]/70" />
+        <div className="absolute inset-0 bg-[#3D1A2A]/70" />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-5">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal font-cal-sans tracking-wide">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-normal font-cal-sans tracking-tight">
               Terms & Conditions
             </h1>
           </motion.div>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-6 py-12 md:py-20 flex flex-col md:flex-row gap-16">
-        {/* Sidebar / Contents */}
-        <div className="md:w-1/4">
-          <div className="sticky top-28 bg-white/50 backdrop-blur-sm p-6 rounded-3xl border border-pink-100 shadow-sm">
-            <h2 className="text-xl font-bold text-[#3D1A2A] mb-6 font-cal-sans">
+      {/* Mobile Dropdown Menu */}
+      <div className="md:hidden sticky top-[60px] z-30 bg-white/80 backdrop-blur-md border-b border-pink-100 px-4 py-3">
+        <select
+          className="w-full bg-[#FDF2F8] border border-pink-200 rounded-xl px-4 py-3 text-[#3D1A2A] font-bold text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
+          value={activeSection}
+          onChange={(e) => scrollToSection(e.target.value)}
+        >
+          <option value="" disabled>Contents</option>
+          {sections.map((section) => (
+            <option key={section.id} value={section.id}>
+              {section.title}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 md:px-10 flex flex-col md:flex-row gap-12 lg:gap-24 pt-16 md:pt-24">
+        {/* Sidebar / Contents (Desktop only) */}
+        <div className="hidden md:block md:w-1/4">
+          <div className="sticky top-32">
+            <h2 className="text-xl font-bold text-[#3D1A2A] mb-8 font-cal-sans">
               Contents
             </h2>
-            <ul className="space-y-4">
+            <ul className="space-y-5">
               {sections.map((section) => (
                 <li key={section.id}>
                   <button
                     onClick={() => scrollToSection(section.id)}
-                    className={`text-left transition-all duration-200 text-sm font-medium ${
+                    className={`text-left transition-all duration-200 text-sm font-medium block w-full ${
                       activeSection === section.id
-                        ? "text-pink-600 scale-105 ml-1"
+                        ? "text-pink-600 font-bold"
                         : "text-gray-500 hover:text-[#3D1A2A]"
                     }`}
                   >
-                    {section.title}
+                    <span className={`inline-block transition-all duration-200 ${
+                      activeSection === section.id ? "translate-x-1" : ""
+                    }`}>
+                      {section.title}
+                    </span>
                   </button>
                 </li>
               ))}
@@ -110,7 +129,7 @@ export default function TermsPage() {
         </div>
 
         {/* Content Area */}
-        <div className="md:w-3/4 space-y-16 text-gray-700 leading-[1.8]">
+        <div className="md:w-3/4 space-y-20 text-gray-800 leading-[1.8] font-dm-sans">
           <section id="introduction" className="scroll-mt-32">
             <h2 className="text-3xl font-bold text-[#3D1A2A] mb-6 font-cal-sans">
               Introduction

@@ -87,6 +87,23 @@ export default function LoginForm() {
 
       if (accessToken) {
         localStorage.setItem("accessToken", accessToken);
+        
+        // Store user info if available in response
+        const user = response?.user || response?.data?.user;
+        if (user) {
+          if (user.email) localStorage.setItem("userEmail", user.email);
+          if (user.firstName && user.lastName) {
+            localStorage.setItem("userFullName", `${user.firstName} ${user.lastName}`);
+          } else if (user.name) {
+            localStorage.setItem("userFullName", user.name);
+          }
+        } else {
+          // Fallback to form data if response doesn't have user info
+          localStorage.setItem("userEmail", data.email);
+          // We don't have the name from login form, so we'll leave it or set a placeholder
+          localStorage.setItem("userFullName", "User");
+        }
+
         setIsSuccessModalOpen(true);
       } else {
         setErrorMessage(
@@ -266,7 +283,7 @@ export default function LoginForm() {
         isOpen={isSuccessModalOpen}
         onClose={() => {
           setIsSuccessModalOpen(false);
-          window.location.href = "/programs";
+          window.location.href = "/dashboard";
         }}
         title="Welcome Back!"
         message="You have successfully logged in. Redirecting to your programs..."
