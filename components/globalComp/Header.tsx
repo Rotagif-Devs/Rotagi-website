@@ -22,11 +22,18 @@ export default function Header() {
   const closeMenu = () => setIsOpen(false);
 
   React.useEffect(() => {
-    const token = typeof window !== "undefined" ? localStorage.getItem("accessToken") : null;
+    const token =
+      typeof window !== "undefined"
+        ? localStorage.getItem("accessToken")
+        : null;
     setIsLoggedIn(Boolean(token));
   }, []);
 
-  const getStartedHref = isLoggedIn ? "/programs" : pathname?.startsWith("/programs") ? "/login" : "/programs";
+  const getStartedHref = isLoggedIn
+    ? "/programs"
+    : pathname?.startsWith("/programs")
+      ? "/login"
+      : "/programs";
   const getStartedText = isLoggedIn ? "Dashboard" : "Get Started";
 
   return (
