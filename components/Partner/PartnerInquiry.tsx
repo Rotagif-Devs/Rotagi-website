@@ -31,14 +31,15 @@ const PartnerInquiry = () => {
 
   return (
     <div className="flex flex-col bg-[#FDE7F3] min-h-screen pb-24">
-      {/* Partnership Inquiry Hero */}
-      <div className="relative w-full h-[250px] md:h-[300px] lg:h-[400px] lg:mx-4 lg:rounded-2xl overflow-hidden mt-4 lg:mt-0 lg:w-[calc(100%-2rem)]">
+      
+      <div className="relative w-full h-[400px]   lg:mx-4 lg:rounded-2xl overflow-hidden mt-4 lg:mt-0 lg:w-[calc(100%-2rem)]">
         <Image
-          src="/Threegirls.jpg"
+          src="/partner-ladies.jpg"
           alt="Partnership Inquiry Hero"
-          fill
+          width={1500}
+          height={1000}
           priority
-          className="object-cover"
+          className="h-[600px] object-cover "
         />
         <div className="absolute inset-0 bg-[#2a0036]/60 flex items-center justify-center text-center text-white px-5">
           <div className="mt-10">
