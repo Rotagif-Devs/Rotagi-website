@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ROTAGIF - Empowering African Girl Innovators
 
-## Getting Started
+ROTAGIF is a dedicated platform designed to equip African girls and women with AI literacy, digital skills, and leadership confidence. This web application serves as the primary hub for program discovery, community events, and an integrated Learning Management System (LMS) for registered students.
 
-First, run the development server:
+## 🚀 Technical Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Framework**: [Next.js 16+](https://nextjs.org/) (App Router)
+- **Library**: [React 19](https://react.dev/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **State Management**: [TanStack React Query](https://tanstack.com/query/latest) & React Context API
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Forms**: [React Hook Form](https://react-hook-form.com/) with Zod/HookForm resolvers
+- **Networking**: Axios & Native Fetch API
+- **Icons**: [Lucide React](https://lucide.dev/) & [React Icons](https://react-icons.github.io/react-icons/)
+- **Components**: Headless UI, Swiper (for carousels)
+
+## 📂 Project Structure
+
+```text
+├── app/                  # Next.js App Router (Layouts, Pages, Groups)
+│   ├── (auth)/           # Authentication routes (Login, Signup, Reset)
+│   ├── (lms)/            # Student dashboard and private routes
+│   └── (site)/           # Public marketing and info pages
+├── components/           # UI Components organized by feature/domain
+│   ├── globalComp/       # Site-wide components (Header, Footer, CTA)
+│   ├── ui/               # Core atomic components (Button, Modal)
+│   └── [feature]/        # Feature-specific components (blog, programs)
+├── context/              # React Context providers (ProgramContext, Auth)
+├── lib/                  # Core services, API layer, and static data
+│   ├── api.ts            # Centralized Fetch/API utility
+│   ├── programs.ts       # Program data and helpers
+│   └── token.service.ts  # JWT and session management
+├── public/               # Static assets (images, icons, fonts)
+├── styles/               # Global CSS and Tailwind configurations
+└── types/                # TypeScript interfaces and type definitions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
+- Node.js 18.x or higher
+- npm, yarn, or pnpm
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Installation
+```bash
+git clone https://github.com/ROTAGIF/Rotagif-Website.git
+cd Rotagif-Website
+npm install
+```
 
-## Learn More
+### Environment Setup
+Create a `.env.local` file in the root directory:
+```env
+NEXT_PUBLIC_API_URL=https://your-api-endpoint.com
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Development
+```bash
+npm run dev
+```
+Navigate to [http://localhost:3000](http://localhost:3000) to view the application.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Build
+```bash
+npm run build
+npm run start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔐 Core Features
 
-## Deploy on Vercel
+- **Program Discovery**: Tiered learning pathways based on age and skill level.
+- **Dynamic Events**: Keep track of workshops and summits with detailed agendas and speakers.
+- **Secure Dashboard**: Private area for students to track progress and chose programs.
+- **Authentication Flow**: Full identity management with secure token handling and OTP support.
+- **Digital Donations**: Integrated support for mission funding.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 Documentation for Developers
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If you are a developer looking to contribute or understand the internals, please refer to the **[DEVELOPER_GUIDE.md](./DEVELOPER_GUIDE.md)** for:
+- Coding standards
+- API integration patterns
+- Styling guidelines
+- Component architecture
