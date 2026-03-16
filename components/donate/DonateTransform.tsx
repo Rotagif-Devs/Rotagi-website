@@ -8,6 +8,7 @@ import DonateComplete from "./DonateComplete";
 import CardDetails from "../globalComp/CardDetails";
 import Loader from "../globalComp/Loader";
 import DonateImpact from "./DonateImpact";
+import { initDonation, verifyDonation } from "@/services/donate.service";
 
 import {
   DonationData,
@@ -20,9 +21,10 @@ const DonateTransform = () => {
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState<DonationData | null>(null);
   const [showModal, setShowModal] = useState(false);
-  const [paymentStatus, setPaymentStatus] = useState<"idle" | "loading">(
+  const [paymentStatus, setPaymentStatus] = useState<"idle" | "loading" | "error">(
     "idle",
   );
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   /* Prevent page scroll when modal opens */
   useEffect(() => {
@@ -55,21 +57,59 @@ const DonateTransform = () => {
     setFormData(updatedData);
     setShowModal(false);
     setPaymentStatus("loading");
+    setErrorMessage(null);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 3000));
+      // Initialize donation with backend
+      const initResponse = await initDonation({
+        email: updatedData.email,
+        amount: updatedData.amount,
+        currency: updatedData.currency || "NGN",
+        name: updatedData.name,
+        metadata: {
+          cardData: cardData,
+        },
+      });
 
-      router.push(
-        `/donate/success?amount=${updatedData.amount}&email=${updatedData.email}`,
-      );
-    } catch {
-      router.push(
-        `/donate/failed?amount=${updatedData.amount}&email=${updatedData.email}`,
-      );
+      if (!initResponse.success) {
+        throw new Error(initResponse.message || "Failed to initialize donation");
+      }
+
+      const { reference, authorizationUrl } = initResponse.data;
+
+      // Optional: Verify donation after redirect or handle payment verification
+      // You can redirect to authorizationUrl for payment gateway or handle locally
+      
+      // If using local payment processing:
+      const verifyResponse = await verifyDonation(reference);
+
+      if (verifyResponse.success && verifyResponse.data.status === "completed") {
+        setPaymentStatus("idle");
+        router.push(
+          `/donate/success?amount=${updatedData.amount}&email=${updatedData.email}&reference=${reference}`,
+        );
+      } else {
+        throw new Error("Payment verification failed");
+      }
+    } catch (error) {
+      const errorMsg = error instanceof Error ? error.message : "Payment processing failed";
+      setErrorMessage(errorMsg);
+      setPaymentStatus("error");
+      
+      // Redirect to failed page after a delay
+      setTimeout(() => {
+        router.push(
+          `/donate/failed?amount=${formData?.amount || ""}&email=${formData?.email || ""}`,
+        );
+      }, 2000);
     }
   };
 
-  const handleCloseModal = () => setShowModal(false);
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setErrorMessage(null);
+  };
+
   return (
     <section className="w-full">
       {/* LOADING */}
@@ -78,6 +118,26 @@ const DonateTransform = () => {
           <Loader />
         </div>
       )}
+
+      {/* ERROR STATE */}
+      {paymentStatus === "error" && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm pointer-events-auto">
+          <div className="bg-white rounded-lg p-6 max-w-sm text-center">
+            <h3 className="text-lg font-semibold text-red-600 mb-2">Payment Failed</h3>
+            <p className="text-gray-600 mb-4">{errorMessage || "An error occurred during payment processing"}</p>
+            <button
+              onClick={() => {
+                setPaymentStatus("idle");
+                setErrorMessage(null);
+              }}
+              className="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700"
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* NORMAL DONATE FLOW */}
       {paymentStatus === "idle" && (
         <div className="py-10 md:py-20">
