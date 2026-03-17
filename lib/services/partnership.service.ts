@@ -12,7 +12,8 @@ export type PartnershipInterestPayload = {
 
 export type PartnershipInterestResponse = {
   success: boolean;
-  data: {
+  message?: string;
+  data?: {
     message: string;
     interestId: string;
   };
