@@ -8,7 +8,7 @@ import DonateComplete from "./DonateComplete";
 import CardDetails from "../globalComp/CardDetails";
 import Loader from "../globalComp/Loader";
 import DonateImpact from "./DonateImpact";
-import { initDonation, verifyDonation } from "@/lib/services/donate.service";
+import { initDonation, verifyDonation } from "@/lib/services/donation.service";
 
 import {
   DonationData,
@@ -60,18 +60,21 @@ const DonateTransform = () => {
     setErrorMessage(null);
 
     try {
+      // Parse amount string to number, removing commas if present
+      const amountValue = parseFloat(updatedData.amount.replace(/,/g, ""));
+
       // Initialize donation with backend
       const initResponse = await initDonation({
         email: updatedData.email,
-        amount: updatedData.amount,
-        currency: updatedData.currency || "NGN",
-        name: updatedData.name,
+        amount: amountValue,
+        currency: "NGN", // DonationData doesn't have currency, defaulting to NGN
+        name: updatedData.fullName,
         metadata: {
           cardData: cardData,
         },
       });
 
-      if (!initResponse.success) {
+      if (!initResponse.success || !initResponse.data) {
         throw new Error(initResponse.message || "Failed to initialize donation");
       }
 
@@ -83,13 +86,13 @@ const DonateTransform = () => {
       // If using local payment processing:
       const verifyResponse = await verifyDonation(reference);
 
-      if (verifyResponse.success && verifyResponse.data.status === "completed") {
+      if (verifyResponse.success && verifyResponse.data && verifyResponse.data.status === "completed") {
         setPaymentStatus("idle");
         router.push(
           `/donate/success?amount=${updatedData.amount}&email=${updatedData.email}&reference=${reference}`,
         );
       } else {
-        throw new Error("Payment verification failed");
+        throw new Error(verifyResponse.message || "Payment verification failed");
       }
     } catch (error) {
       const errorMsg = error instanceof Error ? error.message : "Payment processing failed";
