@@ -67,8 +67,9 @@ const DonateTransform = () => {
       const initResponse = await initDonation({
         email: updatedData.email,
         amount: amountValue,
-        currency: "NGN", // DonationData doesn't have currency, defaulting to NGN
+        currency: "NGN", 
         name: updatedData.fullName,
+        // callback_url: `${window.location.origin}/donate/success`, // Removing to ensure backend compatibility
         metadata: {
           cardData: cardData,
         },
@@ -80,40 +81,22 @@ const DonateTransform = () => {
         );
       }
 
-      const { reference, authorizationUrl } = initResponse.data;
+      const { authorizationUrl } = initResponse.data;
 
-      // Optional: Verify donation after redirect or handle payment verification
-      // You can redirect to authorizationUrl for payment gateway or handle locally
-
-      // If using local payment processing:
-      const verifyResponse = await verifyDonation(reference);
-
-      if (
-        verifyResponse.success &&
-        verifyResponse.data &&
-        verifyResponse.data.status === "completed"
-      ) {
-        setPaymentStatus("idle");
-        router.push(
-          `/donate/success?amount=${updatedData.amount}&email=${updatedData.email}&reference=${reference}`,
-        );
-      } else {
-        throw new Error(
-          verifyResponse.message || "Payment verification failed",
-        );
+      if (!authorizationUrl) {
+        throw new Error("No authorization URL returned from payment gateway");
       }
+
+      console.log("Redirecting to:", authorizationUrl);
+      // Use location.assign for a more standard redirect
+      window.location.assign(authorizationUrl);
+
     } catch (error) {
+      console.error("Payment error:", error);
       const errorMsg =
         error instanceof Error ? error.message : "Payment processing failed";
       setErrorMessage(errorMsg);
       setPaymentStatus("error");
-
-      // Redirect to failed page after a delay
-      setTimeout(() => {
-        router.push(
-          `/donate/failed?amount=${formData?.amount || ""}&email=${formData?.email || ""}`,
-        );
-      }, 2000);
     }
   };
 
