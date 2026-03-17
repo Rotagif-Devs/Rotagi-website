@@ -5,12 +5,13 @@ import Stepper from "./Stepper";
 import DonateDefault from "./DonateDefault";
 import DonateDetails from "./DonateDetails";
 import DonateComplete from "./DonateComplete";
+import CardDetails from "../globalComp/CardDetails";
 import Loader from "../globalComp/Loader";
 import DonateImpact from "./DonateImpact";
-import { initDonation, DonationInitPayload } from "@/lib/services/donation.service";
 
 import {
   DonationData,
+  CardInputs,
   DonationDetailsInputs,
 } from "@/types/donation";
 
@@ -18,9 +19,23 @@ const DonateTransform = () => {
   const router = useRouter();
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState<DonationData | null>(null);
+  const [showModal, setShowModal] = useState(false);
   const [paymentStatus, setPaymentStatus] = useState<"idle" | "loading">(
     "idle",
   );
+
+  /* Prevent page scroll when modal opens */
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [showModal]);
 
   const handleDefaultNext = () => setStep(1);
 
@@ -29,40 +44,32 @@ const DonateTransform = () => {
     setStep(2);
   };
 
-  const handleConfirm = async () => {
-    if (!formData) return;
-    
-    setPaymentStatus("loading");
-    
-    try {
-      const payload: DonationInitPayload = {
-        email: formData.email,
-        amount: Number(formData.amount.replace(/,/g, "")),
-        name: formData.fullName,
-        metadata: {
-          phone: formData.phone,
-          message: formData.message,
-        }
-      };
+  const handleConfirm = () => setShowModal(true);
 
-      const response = await initDonation(payload);
-      
-      if (response.success && response.data.authorizationUrl) {
-        // Use window.location.href for external redirect
-        window.location.href = response.data.authorizationUrl;
-      } else {
-        router.push(
-          `/donate/failed?amount=${formData.amount}&email=${formData.email}`,
-        );
-      }
-    } catch (error) {
-      console.error("Donation initialization error:", error);
+  const handleCardSubmit = async (cardData: CardInputs) => {
+    const updatedData = {
+      ...formData!,
+      ...cardData,
+    };
+
+    setFormData(updatedData);
+    setShowModal(false);
+    setPaymentStatus("loading");
+
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+
       router.push(
-        `/donate/failed?amount=${formData.amount}&email=${formData.email}`,
+        `/donate/success?amount=${updatedData.amount}&email=${updatedData.email}`,
+      );
+    } catch {
+      router.push(
+        `/donate/failed?amount=${updatedData.amount}&email=${updatedData.email}`,
       );
     }
   };
 
+  const handleCloseModal = () => setShowModal(false);
   return (
     <section className="w-full">
       {/* LOADING */}
@@ -88,6 +95,18 @@ const DonateTransform = () => {
               onNext={handleConfirm}
             />
           )}
+        </div>
+      )}
+
+      {/* PAYMENT MODAL */}
+      {showModal && formData && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm px-4">
+          <CardDetails
+            data={{ amount: formData.amount }}
+            amount={formData.amount}
+            onNext={handleCardSubmit}
+            onReturn={handleCloseModal}
+          />
         </div>
       )}
     </section>
