@@ -21,9 +21,9 @@ const DonateTransform = () => {
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState<DonationData | null>(null);
   const [showModal, setShowModal] = useState(false);
-  const [paymentStatus, setPaymentStatus] = useState<"idle" | "loading" | "error">(
-    "idle",
-  );
+  const [paymentStatus, setPaymentStatus] = useState<
+    "idle" | "loading" | "error"
+  >("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   /* Prevent page scroll when modal opens */
@@ -75,30 +75,39 @@ const DonateTransform = () => {
       });
 
       if (!initResponse.success || !initResponse.data) {
-        throw new Error(initResponse.message || "Failed to initialize donation");
+        throw new Error(
+          initResponse.message || "Failed to initialize donation",
+        );
       }
 
       const { reference, authorizationUrl } = initResponse.data;
 
       // Optional: Verify donation after redirect or handle payment verification
       // You can redirect to authorizationUrl for payment gateway or handle locally
-      
+
       // If using local payment processing:
       const verifyResponse = await verifyDonation(reference);
 
-      if (verifyResponse.success && verifyResponse.data && verifyResponse.data.status === "completed") {
+      if (
+        verifyResponse.success &&
+        verifyResponse.data &&
+        verifyResponse.data.status === "completed"
+      ) {
         setPaymentStatus("idle");
         router.push(
           `/donate/success?amount=${updatedData.amount}&email=${updatedData.email}&reference=${reference}`,
         );
       } else {
-        throw new Error(verifyResponse.message || "Payment verification failed");
+        throw new Error(
+          verifyResponse.message || "Payment verification failed",
+        );
       }
     } catch (error) {
-      const errorMsg = error instanceof Error ? error.message : "Payment processing failed";
+      const errorMsg =
+        error instanceof Error ? error.message : "Payment processing failed";
       setErrorMessage(errorMsg);
       setPaymentStatus("error");
-      
+
       // Redirect to failed page after a delay
       setTimeout(() => {
         router.push(
@@ -126,8 +135,12 @@ const DonateTransform = () => {
       {paymentStatus === "error" && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm pointer-events-auto">
           <div className="bg-white rounded-lg p-6 max-w-sm text-center">
-            <h3 className="text-lg font-semibold text-red-600 mb-2">Payment Failed</h3>
-            <p className="text-gray-600 mb-4">{errorMessage || "An error occurred during payment processing"}</p>
+            <h3 className="text-lg font-semibold text-red-600 mb-2">
+              Payment Failed
+            </h3>
+            <p className="text-gray-600 mb-4">
+              {errorMessage || "An error occurred during payment processing"}
+            </p>
             <button
               onClick={() => {
                 setPaymentStatus("idle");
