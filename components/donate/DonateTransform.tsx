@@ -8,7 +8,7 @@ import DonateComplete from "./DonateComplete";
 import CardDetails from "../globalComp/CardDetails";
 import Loader from "../globalComp/Loader";
 import DonateImpact from "./DonateImpact";
-import { initDonation, verifyDonation } from "@/services/donate.service";
+import { initDonation, verifyDonation } from "@/lib/services/donate.service";
 
 import {
   DonationData,
