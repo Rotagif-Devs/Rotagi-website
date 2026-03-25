@@ -70,7 +70,14 @@ const DonateDetails = ({ onNext }: Props) => {
           </label>
           <input
             id="email"
-            {...register("email", { required: "Email is required" })}
+            type="email"
+            {...register("email", { 
+              required: "Email is required",
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: "Invalid email address"
+              }
+            })}
             placeholder="youremail@example.com"
             className="w-full  outline-0 border-2 border-[#D3D3D3] rounded-lg px-4 py-2"
             style={{ fontFamily: "var(--font-dm-sans)" }}

@@ -26,10 +26,10 @@ const DonateComplete = ({ data, onBack, onNext }: Props) => {
             className="font-medium !text-3xl mb-2"
             style={{ fontFamily: "var(--font-cal-sans)" }}
           >
-            Complete Your Donation
+            Review Your Donation
           </h2>
           <p className="text-[#373737] !text-sm">
-            Enter your card details to securely complete your donation
+            Please review your donation details before proceeding to secure payment.
           </p>
         </div>
 
@@ -54,14 +54,14 @@ const DonateComplete = ({ data, onBack, onNext }: Props) => {
 
         {/* Payment Method */}
         <div className="my-10">
-          <p className="text-sm mb-3">Secure Card Payment</p>
+          <p className="text-sm mb-3">Secure Payment Gateway</p>
 
           <div className="border border-[#D3D3D3] rounded-lg p-4 flex flex-col gap-3">
               <Image src="/creditcard.png" width={24} height={24} alt="Secure Lock Icon" />
             <div className="flex flex-col gap-1">
-              <p className="text-base! !font-medium text-black">Debit/Credit Card</p>
+              <p className="text-base! !font-medium text-black">Paystack Checkout</p>
               <p className="text-sm! text-black">
-                Visa, Mastercard, Verve
+                Securely pay with Card, Bank Transfer, or USSD
               </p>
             </div>
           </div>
@@ -82,7 +82,7 @@ const DonateComplete = ({ data, onBack, onNext }: Props) => {
           </div>
         </div>
         {/* Pay Button */}
-        <Button className="my-2 w-full bg-pink-600 hover:bg-pink-700 transition text-white py-3 rounded-full font-medium cursor-pointer"  onClick={onNext}>Continue</Button>
+        <Button className="my-2 w-full bg-pink-600 hover:bg-pink-700 transition text-white py-3 rounded-full font-medium cursor-pointer"  onClick={onNext}>Proceed to Payment</Button>
         {/* Terms */}
         <p className="text-center text-xs text-gray-500 mt-4">
           By proceeding, you agree to our terms and conditions

@@ -1,8 +1,7 @@
-"use client"
-import Button from "../ui/Button"; 
+"use client";
+import Button from "../ui/Button";
 import VideoPlayer from "./Videoplayer";
 export default function PTA() {
-
   return (
     <section className="bg-primary py-16 md:py-20 px-6 md:px-15 flex justify-center">
       <div className="flex w-full max-w-[1260px] flex-col gap-10 px-5 md:px-0 md:gap-[76px]">
@@ -18,7 +17,7 @@ export default function PTA() {
             </p>
 
             <div className="hidden md:flex gap-4">
-              <Button href="/donate" variant="primary" className="">
+              <Button href="/login" variant="primary" className="">
                 Get Started Now
               </Button>
             </div>
@@ -29,8 +28,6 @@ export default function PTA() {
         <div className="w-full">
           <VideoPlayer />
         </div>
-
-        
       </div>
     </section>
   );

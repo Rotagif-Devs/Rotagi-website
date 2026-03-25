@@ -55,7 +55,7 @@ export default function Updates() {
             </p>
 
             <div className="hidden md:block">
-              <Button href="/updates" variant="primary" className="px-10 py-4">
+              <Button href="/events" variant="primary" className="px-10 py-4">
                 View All
               </Button>
             </div>

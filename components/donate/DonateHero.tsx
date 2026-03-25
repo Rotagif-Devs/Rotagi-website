@@ -58,7 +58,11 @@ export default function DonateHero({ description }: Props) {
               >
                 <Button
                   variant="secondary"
-                  href="#DonateNow"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.dispatchEvent(new CustomEvent('openDonateStepper'));
+                    document.getElementById('donate-section')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
                   className="cursor-pointer px-6 py-2 whitespace-nowrap"
                 >
                   Donate Now
