@@ -34,7 +34,7 @@ export default function ProgramsCTA() {
             </p>
 
             <div className="hidden md:flex gap-4">
-              <Button href="/donate" variant="primary" className="">
+              <Button href="/events" variant="primary" className="">
                 Explore Events & Workshops
               </Button>
             </div>

@@ -34,7 +34,7 @@ const PartnerInquiry = () => {
       
       <div className="relative w-full h-[400px]   lg:mx-4 lg:rounded-2xl overflow-hidden mt-4 lg:mt-0 lg:w-[calc(100%-2rem)]">
         <Image
-          src="/partner-ladies.jpg"
+          src="/partner-hero.jpg"
           alt="Partnership Inquiry Hero"
           width={1500}
           height={1000}

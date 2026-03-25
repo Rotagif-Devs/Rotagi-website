@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative h-[650px] md:h-[800px] lg:h-[900px] flex flex-col items-center justify-end bg-[#41122B] lg:mx-4 lg:rounded-2xl pt-20 overflow-hidden">
+    <section className="relative min-h-[600px] flex flex-col items-center justify-end bg-[#41122B] lg:mx-4 lg:rounded-xl overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -16,7 +16,7 @@ export default function Hero() {
           alt="African Girl Innovator"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#41122B]/70 to-[#41122B]/70 opacity-90" />
+        <div className="absolute inset-0 bg-[#41122B]/70" />
       </div>
 
       <div className="relative z-10 flex flex-col justify-end w-full h-full pb-12 md:pb-10 overflow-hidden">
