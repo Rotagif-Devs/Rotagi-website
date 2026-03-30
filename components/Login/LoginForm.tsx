@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { useSearchParams } from "next/navigation";
 import { programs } from "@/data/programs";
 import { useProgram } from "@/context/ProgramContext";
 import { FiEye, FiEyeOff } from "react-icons/fi";
@@ -16,6 +17,17 @@ type FormData = {
 
 export default function LoginForm() {
   const { selectedProgram, setSelectedProgram } = useProgram();
+  const searchParams = useSearchParams();
+  const programSlug = searchParams.get("program");
+
+  useEffect(() => {
+    if (programSlug) {
+      const foundProgram = programs.find((p) => p.slug === programSlug);
+      if (foundProgram) {
+        setSelectedProgram(foundProgram);
+      }
+    }
+  }, [programSlug, setSelectedProgram]);
   const [showPassword, setShowPassword] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [resending, setResending] = useState(false);
