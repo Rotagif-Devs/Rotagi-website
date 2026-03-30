@@ -39,6 +39,13 @@ function SuccessContent() {
         const response = await verifyDonation(reference);
         
         if (response.success && response.data) {
+          if (response.data.status !== "success") {
+            const amountParam = response.data.donation?.amount || initialAmount;
+            const emailParam = response.data.donation?.email || initialEmail;
+            router.push(`/donate/failed?amount=${amountParam}&email=${emailParam}`);
+            return;
+          }
+
           setVerifiedData({
             amount: response.data.donation.amount.toString(),
             email: response.data.donation.email

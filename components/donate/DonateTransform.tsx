@@ -52,6 +52,7 @@ const DonateTransform = () => {
         amount: amountValue,
         currency: "NGN",
         name: formData.fullName,
+        callback_url: `${window.location.origin}/donate/success`,
       });
 
       if (!initResponse.success || !initResponse.data) {

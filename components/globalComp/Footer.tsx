@@ -92,7 +92,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/contact"
+                  href="/partner"
                   className="hover:text-white transition-colors"
                 >
                   Partner with Us
