@@ -45,15 +45,19 @@ export default function Header() {
   }, []);
 
   const isProgramsPage = pathname === "/programs";
-  const getStartedText = isProgramsPage
+  const isProgramDetailPage = pathname.startsWith("/programs/") && pathname !== "/programs";
+  const programSlug = isProgramDetailPage ? pathname.split("/").pop() : null;
+
+  const getStartedText = (isProgramsPage || isProgramDetailPage)
     ? isLoggedIn
       ? "Dashboard"
       : "Login"
     : "Get Started";
-  const getStartedHref = isProgramsPage
+
+  const getStartedHref = (isProgramsPage || isProgramDetailPage)
     ? isLoggedIn
       ? "/dashboard"
-      : "/login"
+      : isProgramDetailPage ? `/login?program=${programSlug}` : "/login"
     : "/programs";
 
   return (
