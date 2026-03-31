@@ -15,7 +15,6 @@ const DonateDetails = ({ onNext }: Props) => {
   } = useForm<DonationDetailsInputs>();
 
   const onSubmit: SubmitHandler<DonationDetailsInputs> = (data) => {
-    console.log(data);
     onNext(data);
   };
   return (

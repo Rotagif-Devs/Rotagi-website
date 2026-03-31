@@ -76,14 +76,12 @@ export default function LoginForm() {
     setErrorMessage(null);
 
     try {
-      console.log("Attempting login with:", { email: data.email });
 
       const response: any = await login({
         email: data.email,
         password: data.password,
         programSlug: selectedProgram.slug,
       });
-      console.log("Login response:", response);
 
       let accessToken = null;
 

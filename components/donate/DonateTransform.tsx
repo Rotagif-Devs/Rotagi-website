@@ -67,7 +67,6 @@ const DonateTransform = () => {
         throw new Error("No authorization URL returned from payment gateway");
       }
 
-      console.log("Redirecting to:", authorizationUrl);
       // Use location.assign for a more standard redirect
       window.location.assign(authorizationUrl);
     } catch (error) {
