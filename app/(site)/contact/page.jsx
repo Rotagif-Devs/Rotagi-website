@@ -1,5 +1,6 @@
 import CTA from "@/components/globalComp/CTA";
 import ContactHero from "@/components/contact/ContactHero";
+import ContactMessage from "@/components/contact/ContactMessage";
 
 const HERO_DATA = {
   title: "Have inquiries? Reach out to us.",
@@ -13,7 +14,12 @@ export default function ContactPage() {
         title={HERO_DATA.title}
         btn={HERO_DATA.btn}
       />
+      <div className="px-10 py-10">
+          <ContactMessage />
+      </div>
+      
       <CTA />
+      
     </main>
   );
 }
