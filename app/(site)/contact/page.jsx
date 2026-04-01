@@ -1,11 +1,19 @@
-import React from 'react'
+import CTA from "@/components/globalComp/CTA";
+import ContactHero from "@/components/contact/ContactHero";
 
-const Contact = () => {
+const HERO_DATA = {
+  title: "Have inquiries? Reach out to us.",
+  btn: "CONTACT US",
+};
+
+export default function ContactPage() {
   return (
-    <div className='flex justify-center items-center h-screen'>
-        <h1 className=''>Contact page in progress</h1>
-    </div>
-  )
+    <main className="min-h-screen">
+      <ContactHero
+        title={HERO_DATA.title}
+        btn={HERO_DATA.btn}
+      />
+      <CTA />
+    </main>
+  );
 }
-
-export default Contact
