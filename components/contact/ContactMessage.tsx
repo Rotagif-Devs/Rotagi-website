@@ -1,7 +1,10 @@
 "use client";
 import { Mail, Headphones, MapPin, ArrowRight } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { ContactFormValues } from "@/types/contact";
+import { submitContactMessage } from "@/lib/services/contact.service";
+import SuccessModal from "@/components/SuccessModal";
 
 const contactItems = [
     {
@@ -23,6 +26,8 @@ const contactItems = [
 ];
 
 export default function ContactMessage() {
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
+
     const {
         register,
         handleSubmit,
@@ -38,10 +43,13 @@ export default function ContactMessage() {
 
     const onSubmit = async (data: ContactFormValues) => {
         try {
-            console.log(data);
+            await submitContactMessage(data);
+            setShowSuccessModal(true);
             reset();
         } catch (error) {
             console.error(error);
+            // Fallback error handling if no toast library is present
+            alert("Failed to send message. Please try again later.");
         }
     };
 
@@ -191,6 +199,13 @@ export default function ContactMessage() {
                     </form>
                 </div>
             </div>
+
+            <SuccessModal
+                isOpen={showSuccessModal}
+                onClose={() => setShowSuccessModal(false)}
+                title="Message Sent!"
+                message="Thank you for reaching out to ROTAGI. Our team will review your message and get back to you shortly."
+            />
         </section>
     );
 }
