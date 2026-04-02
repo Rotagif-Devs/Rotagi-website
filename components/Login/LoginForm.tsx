@@ -9,6 +9,7 @@ import { useProgram } from "@/context/ProgramContext";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { login, resendVerification } from "@/lib/services/auth.service";
 import SuccessModal from "@/components/SuccessModal";
+import Loader from "@/components/globalComp/Loader";
 
 type FormData = {
   email: string;
@@ -295,11 +296,20 @@ export default function LoginForm() {
         isOpen={isSuccessModalOpen}
         onClose={() => {
           setIsSuccessModalOpen(false);
-          window.location.href = "/dashboard";
+          if (selectedProgram?.slug) {
+            window.location.href = `/program/${selectedProgram.slug}/dashboard`;
+          }
         }}
         title="Welcome Back!"
         message="You have successfully logged in. Redirecting to your programs..."
       />
+
+      {submitting && (
+        <Loader 
+          title="Signing In" 
+          message="Please wait while we verify your credentials." 
+        />
+      )}
     </div>
   );
 }

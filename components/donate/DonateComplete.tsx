@@ -37,7 +37,7 @@ const DonateComplete = ({ data, onBack, onNext }: Props) => {
         <div className="space-y-4 border border-[#D3D3D3] py-5 px-5 rounded-xl my-10 flex flex-col gap-5">
           <div className="flex justify-between items-center">
             <span className="text-black text-sm">Donation Amount</span>
-            <span className="text-[#D62D88] font-medium">₦{data.amount}</span>
+            <span className="text-[#D62D88] font-medium">{data.currencySymbol || "₦"}{data.amount}</span>
           </div>
 
           <div className="flex justify-between items-center">

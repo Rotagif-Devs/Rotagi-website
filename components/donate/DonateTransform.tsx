@@ -50,7 +50,7 @@ const DonateTransform = () => {
       const initResponse = await initDonation({
         email: formData.email,
         amount: amountValue,
-        currency: "NGN",
+        currency: formData.currency || "NGN",
         name: formData.fullName,
         callback_url: `${window.location.origin}/donate/success`,
       });

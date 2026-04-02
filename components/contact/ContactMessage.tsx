@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { ContactFormValues } from "@/types/contact";
 import { submitContactMessage } from "@/lib/services/contact.service";
-import SuccessModal from "@/components/SuccessModal";
+import { SubmittingState, SuccessState, ErrorState } from "./ContactStates";
 
 const contactItems = [
     {
@@ -26,13 +26,14 @@ const contactItems = [
 ];
 
 export default function ContactMessage() {
-    const [showSuccessModal, setShowSuccessModal] = useState(false);
+    const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+    const [submittedData, setSubmittedData] = useState<{ name: string; email: string } | null>(null);
 
     const {
         register,
         handleSubmit,
         reset,
-        formState: { errors, isSubmitting },
+        formState: { errors },
     } = useForm<ContactFormValues>({
         defaultValues: {
             fullName: "",
@@ -42,19 +43,42 @@ export default function ContactMessage() {
     });
 
     const onSubmit = async (data: ContactFormValues) => {
+        setFormStatus("submitting");
+        setSubmittedData({ name: data.fullName, email: data.email });
+        
         try {
             await submitContactMessage(data);
-            setShowSuccessModal(true);
+            setFormStatus("success");
             reset();
         } catch (error) {
             console.error(error);
-            // Fallback error handling if no toast library is present
-            alert("Failed to send message. Please try again later.");
+            setFormStatus("error");
         }
     };
 
+    const handleReset = () => {
+        setFormStatus("idle");
+        setSubmittedData(null);
+    };
+
+    if (formStatus === "success" && submittedData) {
+        return (
+            <SuccessState 
+                name={submittedData.name} 
+                email={submittedData.email} 
+                onReset={handleReset} 
+            />
+        );
+    }
+
+    if (formStatus === "error") {
+        return <ErrorState onReset={handleReset} />;
+    }
+
     return (
-        <section className="w-full rounded-[20px] bg-white py-6 sm:rounded-[24px] sm:px-6 sm:py-8 md:px-8 lg:rounded-[28px] lg:px-16 lg:py-14">
+        <section className="w-full rounded-[20px] bg-white py-6 sm:rounded-[24px] sm:px-6 sm:py-8 md:px-8 lg:rounded-[28px] lg:px-16 lg:py-14 relative">
+            {formStatus === "submitting" && <SubmittingState />}
+            
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
                 {/* Left */}
                 <div>
@@ -189,23 +213,17 @@ export default function ContactMessage() {
                         </div>
                         <button
                             type="submit"
-                            disabled={isSubmitting}
+                            disabled={formStatus === "submitting"}
                             className="flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-[#e61e8a] px-5 text-base font-semibold text-white transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70 sm:h-16 sm:gap-3 sm:rounded-2xl sm:px-6 sm:text-lg lg:text-xl"
                         >
-                            {isSubmitting ? "Sending..." : "Send message"}
+                            {formStatus === "submitting" ? "Sending..." : "Send message"}
                             <span></span>
                             <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center" />
                         </button>
                     </form>
                 </div>
             </div>
-
-            <SuccessModal
-                isOpen={showSuccessModal}
-                onClose={() => setShowSuccessModal(false)}
-                title="Message Sent!"
-                message="Thank you for reaching out to ROTAGI. Our team will review your message and get back to you shortly."
-            />
         </section>
     );
 }
+
