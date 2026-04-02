@@ -8,6 +8,7 @@ import {
   Instagram,
   Linkedin,
 } from "lucide-react";
+import Button from "../ui/Button";
 
 export default function Footer() {
   return (
@@ -16,11 +17,27 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-4 pt-4 w-full">
           {/* Brand & Description */}
           <div className="lg:col-span-2">
-            <h2 className="text-4xl mb-6">ROTAGI</h2>
-            <p className="text-gray-300 text-sm leading-relaxed">
+            <h2 className="text-4xl mb-6 font-cal-sans">ROTAGI</h2>
+            <p className="text-gray-300 text-sm leading-relaxed mb-8 max-w-md">
               Empowering young African girls and women with AI literacy, digital
               confidence, and leadership skills.
             </p>
+
+            {/* Newsletter */}
+            <div className="bg-white rounded-xl px-2 py-2 flex items-center shadow-md max-w-sm lg:max-w-md">
+              <input
+                type="email"
+                placeholder="Join our newsletter"
+                className="bg-transparent border-none focus:outline-none focus:ring-0 px-4 py-2 text-gray-800 text-sm w-full"
+              />
+              <Button
+                variant="primary"
+                size="sm"
+                className="w-fit justify-center text-base rounded-md px-4 cursor-pointer"
+              >
+                Subscribe
+              </Button>
+            </div>
           </div>
 
           {/* Quick Navigation */}
@@ -33,14 +50,6 @@ export default function Footer() {
                   className="hover:text-white transition-colors"
                 >
                   Programs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="hover:text-white transition-colors"
-                >
-                  Blog
                 </Link>
               </li>
               <li>

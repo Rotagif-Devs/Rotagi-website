@@ -4,6 +4,8 @@ export type DonationData = {
   phone: string;
   message?: string;
   amount: string;
+  currency?: string;
+    currencySymbol?: string;
   cardNumber?: string;
   cardholderName?: string;
   CVV?: string;

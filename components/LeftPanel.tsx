@@ -23,16 +23,11 @@ export default function LeftPanel() {
           "linear-gradient(135deg, #e91e8c 0%, #c2185b 60%, #ad1457 100%)",
       }}
     >
-     
       <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full opacity-20 bg-white pointer-events-none" />
       <div className="absolute top-20 -right-16 w-64 h-64 rounded-full opacity-10 bg-white pointer-events-none" />
 
-
       <div className="relative z-10 shrink-0">
-        <Link
-          href="/"
-          className="inline-block hover:opacity-80"
-        >
+        <Link href="/" className="inline-block hover:opacity-80">
           <h3 className="text-white tracking-widest uppercase text-2xl">
             ROTAGI
           </h3>
@@ -44,7 +39,8 @@ export default function LeftPanel() {
           Your Journey Starts with the Right Pathway
         </h3>
         <p className="text-pink-100 mt-4">
-          Guiding African girls and women from curiosity to confidence through AI skills and leadership.
+          Guiding African girls and women from curiosity to confidence through
+          AI skills and leadership.
         </p>
       </div>
 
@@ -62,35 +58,40 @@ export default function LeftPanel() {
         >
           {programs.map((p) => (
             <SwiperSlide key={p.id}>
-          <div className="bg-white rounded-2xl shadow-md p-4 flex flex-col gap-3 h-64"> {/* fixed height */}
-  {/* Header */}
-  <div className="flex items-center gap-3">
-    <Image
-      src={p.image}
-      alt={p.name}
-      width={50}
-      height={50}
-      className="rounded-full w-20 h-20"
-    />
-    <div>
-      <h4 className="font-bold text-gray-900 text-sm">{p.name}</h4>
-      <p className="text-gray-500 text-xs">{p.ages}</p>
-    </div>
-  </div>
-
-  {/* Half description */}
-  <p className="text-gray-500 text-sm line-clamp-3"> {/* limits text to 3 lines */}
-    {p.description.slice(0, Math.ceil(p.description.length / 2))}...
-  </p>
-
-  {/* Learn More button */}
-  <Link
-    href={`/programs/${p.slug}`}
-    className="mt-2 self-start text-secondary px-4 py-2 text-sm font-semibold hover:bg-pink-600 transition"
-  >
-    Learn More &rarr;
-  </Link>
-</div>
+              <div className="bg-white rounded-2xl shadow-md p-4 flex flex-col gap-3 h-64">
+                {" "}
+                {/* fixed height */}
+                {/* Header */}
+                <div className="flex items-center gap-3">
+                  <Image
+                    src={p.image}
+                    alt={p.name}
+                    width={50}
+                    height={50}
+                    className="rounded-full w-20 h-20"
+                  />
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-sm">
+                      {p.name}
+                    </h4>
+                    <p className="text-gray-500 text-xs">{p.ages}</p>
+                  </div>
+                </div>
+                {/* Half description */}
+                <p className="text-gray-500 text-sm line-clamp-3">
+                  {" "}
+                  {/* limits text to 3 lines */}
+                  {p.description.slice(0, Math.ceil(p.description.length / 2))}
+                  ...
+                </p>
+                {/* Learn More button */}
+                <Link
+                  href={`/programs/${p.slug}`}
+                  className="mt-2 self-start text-secondary px-4 py-2 text-sm font-semibold hover:bg-pink-600 transition"
+                >
+                  Learn More &rarr;
+                </Link>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
@@ -142,7 +143,8 @@ export default function LeftPanel() {
             >
               <div className="min-w-0">
                 <h4 className="font-bold text-gray-900 leading-snug">
-                  {p.name} <span className="font-bold text-black">({p.ages})</span>
+                  {p.name}{" "}
+                  <span className="font-bold text-black">({p.ages})</span>
                 </h4>
                 <p className="text-gray-500 truncate mt-0.5">{p.description}</p>
               </div>
@@ -156,7 +158,8 @@ export default function LeftPanel() {
             >
               <div className="w-full">
                 <h4 className="font-bold text-gray-900 mb-2">
-                  {p.name} <span className="font-bold text-black">({p.ages})</span>
+                  {p.name}{" "}
+                  <span className="font-bold text-black">({p.ages})</span>
                 </h4>
                 <p className="text-gray-600 leading-relaxed">{p.description}</p>
                 <div className="mt-4 flex items-center gap-2 font-semibold text-pink-600 group-hover:text-pink-700">
