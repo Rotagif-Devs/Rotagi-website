@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Calendar, MapPin, Clock, ChevronLeft } from "lucide-react";
 import CTA from "@/components/globalComp/CTA";
 import Footer from "@/components/globalComp/Footer";
+import AdminEditButton from "@/components/admin/AdminEditButton";
 
 const agenda = [
   { time: "9:00 - 10:00 AM", title: "Registration & Welcome Coffee" },
@@ -51,6 +52,7 @@ const speakers = [
 ];
 
 export default function EventPage({ params }: { params: { slug: string } }) {
+  const { slug } = params;
   const eventTitle = "AI Futures Summit 2026";
 
   return (
@@ -191,6 +193,9 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
         {/* Global CTA Section */}
         <CTA />
+
+        {/* Admin Quick Edit */}
+        <AdminEditButton editUrl={`/admin/dashboard/events/${slug}/edit`} />
 
         {/* Footer */}
         <Footer />

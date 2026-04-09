@@ -1,32 +1,11 @@
 import { BlogPost } from "@/types/blog";
 import { events as EventType } from "@/types/event";
+import { blogPosts } from "@/lib/blog";
+import { events as initialEventsData } from "@/lib/event";
 
 // Initial mock data from existing files or defaults
-const initialBlogs: BlogPost[] = [
-  {
-    id: "1",
-    slug: "empowering-girls-in-tech",
-    title: "Empowering Girls in Tech",
-    description: "How we are changing the landscape of tech in Africa.",
-    content: "<p>This is the full content of the blog post...</p>",
-    image: "/blog1.jpg",
-    date: "2026-03-01",
-    category: "Success Story",
-    author: { name: "Jane Doe", role: "Program Director" }
-  }
-];
-
-const initialEvents: EventType[] = [
-  {
-    slug: "ai-futures-summit-2026",
-    title: "AI Futures Summit 2026",
-    description: "A full-day conference exploring the future of AI in Africa.",
-    date: "March 15, 2026",
-    time: "9:00 AM - 5:00 PM",
-    location: "Abuja Convention Center, Nigeria",
-    image: "/wh.jpg",
-  }
-];
+const initialBlogs: BlogPost[] = blogPosts;
+const initialEvents: EventType[] = initialEventsData as unknown as EventType[];
 
 // Helper for local storage persistence in prototype
 const getStorageItem = <T>(key: string, defaultValue: T): T => {

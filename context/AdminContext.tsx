@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 interface AdminUser {
   email: string;
   role: string;
+  lastLogin?: string;
+  token?: string;
 }
 
 interface AdminContextType {
@@ -25,17 +27,36 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     // Check local storage for session
-    const savedUser = localStorage.getItem("adminUser");
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
-    }
-    setIsLoading(false);
+    const checkAuth = async () => {
+      try {
+        const savedUser = localStorage.getItem("adminUser");
+        if (savedUser) {
+          const parsedUser = JSON.parse(savedUser);
+          // Simple session expiry check (mock: 24h)
+          setUser(parsedUser);
+        }
+      } catch (error) {
+        console.error("Failed to parse admin session:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    checkAuth();
   }, []);
 
   const login = async (email: string, password: string): Promise<boolean> => {
+    // Simulate network delay for premium feel
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
     // Mock authentication
     if (email === "admin@rotagi.com" && password === "admin123") {
-      const adminUser = { email, role: "admin" };
+      const adminUser: AdminUser = { 
+        email, 
+        role: "admin",
+        lastLogin: new Date().toISOString(),
+        token: `mock_jwt_${Math.random().toString(36).substr(2)}`
+      };
       setUser(adminUser);
       localStorage.setItem("adminUser", JSON.stringify(adminUser));
       return true;

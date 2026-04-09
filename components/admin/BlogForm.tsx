@@ -145,17 +145,29 @@ export default function BlogForm({ initialData, onSubmit, onCancel, isLoading }:
 
         {/* Right Column: Meta & Author */}
         <div className="space-y-6">
-          <div className="space-y-2">
-            <label className="text-sm font-semibold text-gray-700">Cover Image URL</label>
-            <div className="relative">
-              <ImageIcon size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+          <div className="space-y-4">
+            <label className="text-sm font-semibold text-gray-700">Cover Image</label>
+            <div className="relative group">
+              <div className="aspect-video w-full rounded-2xl bg-gray-100 overflow-hidden border-2 border-dashed border-gray-200 flex items-center justify-center transition-all group-hover:border-secondary">
+                {formData.image ? (
+                  <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />
+                ) : (
+                  <div className="text-center p-6">
+                    <ImageIcon size={32} className="mx-auto text-gray-300 mb-2" />
+                    <p className="text-xs text-gray-500">No image selected</p>
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                   <p className="text-white text-xs font-bold uppercase tracking-widest">Change Image</p>
+                </div>
+              </div>
               <input
                 type="text"
                 name="image"
                 value={formData.image}
                 onChange={handleChange}
-                placeholder="/blog/cover.jpg"
-                className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black/5 focus:border-black transition-all"
+                placeholder="Paste image URL here..."
+                className="mt-4 w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black/5 focus:border-black transition-all text-xs font-mono"
                 required
               />
             </div>
