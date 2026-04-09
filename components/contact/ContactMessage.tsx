@@ -76,16 +76,16 @@ export default function ContactMessage() {
     }
 
     return (
-        <section className="w-full rounded-[20px] bg-white py-6 sm:rounded-[24px] sm:px-6 sm:py-8 md:px-8 lg:rounded-[28px] lg:px-16 lg:py-14 relative">
+        <section className="w-full rounded-[20px] bg-white py-8 px-4 sm:rounded-[24px] sm:px-6 sm:py-10 md:px-8 lg:rounded-[28px] lg:px-16 lg:py-14 relative">
             {formStatus === "submitting" && <SubmittingState />}
             
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14 leading-relaxed">
                 {/* Left */}
                 <div>
-                    <h2 className=" !normal-case font-medium tracking-tight text-slate-900">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl !normal-case font-bold tracking-tight text-slate-900 font-cal-sans">
                         Send us a message!
                     </h2>
-                    <p className="my-3 max-w-xl text-base leading-7 text-slate-500 sm:leading-8  lg:leading-9">
+                    <p className="my-4 max-w-xl text-base leading-relaxed text-slate-500 sm:text-lg sm:leading-8 lg:leading-9">
                         For inquiries, partnerships, or general information, please send us
                         a message and our team will respond promptly.
                     </p>

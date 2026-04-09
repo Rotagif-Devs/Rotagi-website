@@ -42,7 +42,7 @@ export default function ContactHero({ title, btn }: Props) {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="max-w-5xl mx-auto"
           >
-            <h1 className="text-white mb-6">{title}</h1>
+            <h1 className="text-white mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-7xl leading-tight font-cal-sans">{title}</h1>
           </motion.div>
         </div>
       </div>
