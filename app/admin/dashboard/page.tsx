@@ -58,33 +58,33 @@ export default function AdminDashboardPage() {
   ];
 
   return (
-    <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="space-y-6 sm:space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700 pb-10">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
-          <h1 className="text-4xl font-cal-sans text-black tracking-tight">Intelligence Overview</h1>
-          <p className="text-gray-500 mt-2 font-medium tracking-wide">Syncing your digital ecosystem in real-time.</p>
+          <h1 className="text-3xl sm:text-4xl font-cal-sans text-black tracking-tight leading-tight">Intelligence Overview</h1>
+          <p className="text-gray-500 mt-1 sm:mt-2 font-medium tracking-wide text-sm sm:text-base">Syncing your digital ecosystem in real-time.</p>
         </div>
-        <div className="flex gap-3">
-          <Link href="/admin/dashboard/blog/new">
-            <Button variant="outline" className="rounded-2xl border-gray-200 bg-white text-black hover:bg-gray-50 px-6 py-6 font-bold text-sm">
-              <Plus size={18} className="mr-2" />
+        <div className="flex flex-wrap gap-3">
+          <Link href="/admin/dashboard/blog/new" className="flex-1 sm:flex-none">
+            <Button variant="outline" className="w-full sm:w-auto rounded-2xl border-gray-200 bg-white text-black hover:bg-gray-50 px-4 sm:px-6 py-4 sm:py-6 font-bold text-xs sm:text-sm">
+              <Plus size={18} className="mr-2 shrink-0" />
               Manifest Blog
             </Button>
           </Link>
-          <Link href="/admin/dashboard/events/new">
-            <Button variant="primary" className="rounded-2xl bg-black text-white hover:bg-gray-900 border-none px-6 py-6 font-bold text-sm shadow-xl shadow-black/10">
-              <Calendar size={18} className="mr-2" />
+          <Link href="/admin/dashboard/events/new" className="flex-1 sm:flex-none">
+            <Button variant="primary" className="w-full sm:w-auto rounded-2xl bg-black text-white hover:bg-gray-900 border-none px-4 sm:px-6 py-4 sm:py-6 font-bold text-xs sm:text-sm shadow-xl shadow-black/10">
+              <Calendar size={18} className="mr-2 shrink-0" />
               Schedule Event
             </Button>
           </Link>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {cards.map((card, idx) => (
           <div 
             key={card.name} 
-            className="bg-white p-8 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.02)] border border-gray-100 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:-translate-y-1 transition-all duration-500 group relative overflow-hidden"
+            className="bg-white p-6 sm:p-8 rounded-[2rem] sm:rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.02)] border border-gray-100 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:-translate-y-1 transition-all duration-500 group relative overflow-hidden"
           >
 
             <div className="flex items-start justify-between relative z-10">
@@ -118,16 +118,16 @@ export default function AdminDashboardPage() {
               <table className="w-full text-left">
                 <thead>
                   <tr className="bg-gray-50/50 border-b border-gray-100 text-[10px] font-black text-gray-400 uppercase tracking-widest">
-                    <th className="px-8 py-5">Content Entity</th>
-                    <th className="px-8 py-5">Category</th>
-                    <th className="px-8 py-5">Status</th>
-                    <th className="px-8 py-5 text-right">Actions</th>
+                    <th className="px-6 sm:px-8 py-5">Content Entity</th>
+                    <th className="px-6 sm:px-8 py-5">Category</th>
+                    <th className="px-6 sm:px-8 py-5">Status</th>
+                    <th className="px-6 sm:px-8 py-5 text-right">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-50">
                   {recentBlogs.map((blog) => (
                     <tr key={blog.id} className="hover:bg-gray-50/30 transition-colors group">
-                      <td className="px-8 py-5">
+                      <td className="px-6 sm:px-8 py-5">
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 rounded-2xl bg-gray-100 overflow-hidden shrink-0 border border-gray-100 group-hover:scale-105 transition-transform">
                             <img src={blog.image} alt="" className="w-full h-full object-cover" />

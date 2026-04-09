@@ -10,7 +10,7 @@ export type ContactMessageResponse = {
 export async function submitContactMessage(
   payload: ContactFormValues
 ): Promise<ContactMessageResponse> {
-  return apiFetch<ContactMessageResponse>("/contact/message", {
+  return apiFetch<ContactMessageResponse>("/contact", {
     method: "POST",
     body: payload,
   });

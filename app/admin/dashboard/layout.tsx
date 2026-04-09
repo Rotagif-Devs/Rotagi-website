@@ -25,12 +25,33 @@ export default function AdminDashboardLayout({
   const router = useRouter();
   const pathname = usePathname();
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(true);
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 1024;
+      setIsMobile(mobile);
+      if (mobile) setIsSidebarOpen(false);
+      else setIsSidebarOpen(true);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
       router.push("/admin/login");
     }
   }, [isAuthenticated, isLoading, router]);
+
+  // Close sidebar on mobile when navigating
+  useEffect(() => {
+    if (isMobile) {
+      setIsSidebarOpen(false);
+    }
+  }, [pathname, isMobile]);
 
   if (isLoading) {
     return (
@@ -49,21 +70,31 @@ export default function AdminDashboardLayout({
   ];
 
   return (
-    <div className="min-h-screen bg-[#fafafa] flex font-outfit">
+    <div className="min-h-screen bg-[#fafafa] flex font-outfit relative">
+      {/* Mobile Backdrop */}
+      {isMobile && isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 transition-opacity duration-300"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
       {/* Glass Sidebar */}
       <aside 
         className={`${
-          isSidebarOpen ? "w-72" : "w-24"
-        } bg-[#0a0a0a] text-white transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] flex flex-col fixed inset-y-0 z-50 border-r border-white/5`}
+          isSidebarOpen 
+            ? (isMobile ? "translate-x-0 w-72" : "translate-x-0 w-72") 
+            : (isMobile ? "-translate-x-full w-72" : "translate-x-0 w-24")
+        } bg-[#0a0a0a] text-white transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] flex flex-col fixed inset-y-0 z-50 border-r border-white/5 shadow-2xl lg:shadow-none`}
       >
         <div className="p-8 flex items-center justify-between">
-          <Link href="/admin/dashboard" className={`flex items-center gap-3 group ${!isSidebarOpen && "hidden"}`}>
+          <Link href="/admin/dashboard" className={`flex items-center gap-3 group ${(isMobile ? false : !isSidebarOpen) && "hidden"}`}>
             <div className="w-8 h-8 bg-secondary rounded-lg flex items-center justify-center font-bold text-black rotate-3 group-hover:rotate-0 transition-transform">R</div>
             <span className="font-cal-sans text-xl tracking-tight">ROTAGIF <span className="text-secondary">CMS</span></span>
           </Link>
           <button 
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className={`p-2 hover:bg-white/10 rounded-xl transition-all ${!isSidebarOpen && "mx-auto"}`}
+            className={`p-2 hover:bg-white/10 rounded-xl transition-all ${(isMobile ? false : !isSidebarOpen) && "mx-auto"}`}
           >
             {isSidebarOpen ? <X size={20} className="text-gray-400" /> : <Menu size={20} className="text-gray-400" />}
           </button>
@@ -134,10 +165,20 @@ export default function AdminDashboardLayout({
         </div>
       </aside>
 
-      <main className={`flex-1 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${isSidebarOpen ? "ml-72" : "ml-24"}`}>
-        <header className="h-20 bg-white border-b border-gray-100 flex items-center justify-between px-10 sticky top-0 z-40">
+      <main className={`flex-1 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+        isMobile ? "ml-0" : (isSidebarOpen ? "ml-72" : "ml-24")
+      }`}>
+        <header className="h-20 bg-white border-b border-gray-100 flex items-center justify-between px-6 lg:px-10 sticky top-0 z-30">
            <div className="flex items-center gap-4">
-              <h2 className="text-sm font-bold text-gray-400 uppercase tracking-widest">
+              {isMobile && (
+                <button 
+                  onClick={() => setIsSidebarOpen(true)}
+                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                >
+                  <Menu size={20} className="text-gray-600" />
+                </button>
+              )}
+              <h2 className="text-xs font-bold text-gray-400 uppercase tracking-widest truncate">
                 {pathname === "/admin/dashboard" ? "Overview" : pathname.split('/').pop()?.replace('-', ' ')}
               </h2>
            </div>
@@ -156,7 +197,7 @@ export default function AdminDashboardLayout({
            </div>
         </header>
 
-        <div className="p-10 max-w-7xl mx-auto">
+        <div className="p-6 lg:p-10 max-w-7xl mx-auto">
           {children}
         </div>
       </main>
