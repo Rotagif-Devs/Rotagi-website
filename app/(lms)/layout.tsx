@@ -1,8 +1,18 @@
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import DashboardProvider from "@/components/dashboard/DashboardProvider";
 
-export default function LmsLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <main className="min-h-screen">{children}</main>
-    </>
-  );
+export const metadata: Metadata = {
+  title: "Dashboard",
+  description: "Learning dashboard",
+};
+
+interface DashboardLayoutProps {
+  children: ReactNode;
+}
+
+export default function DashboardLayout({
+  children,
+}: DashboardLayoutProps) {
+  return <DashboardProvider>{children}</DashboardProvider>;
 }
