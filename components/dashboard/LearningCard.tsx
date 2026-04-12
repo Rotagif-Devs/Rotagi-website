@@ -19,7 +19,7 @@ export default function LearningCard({
   image,
 }: LearningCardProps) {
   const Icon = title.includes("Artificial") ? Brain : Monitor;
-
+  
   return (
     <motion.article
       whileHover={{ y: -6 }}
