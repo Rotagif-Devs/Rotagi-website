@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import React from "react";
 import {
@@ -8,19 +10,93 @@ import {
   Instagram,
   Linkedin,
 } from "lucide-react";
+import Button from "../ui/Button";
+import { useState } from "react";
+import { subscribeNewsletter } from "@/lib/services/newsletter.service";
+import { Loader2, CheckCircle, AlertCircle } from "lucide-react";
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setStatus("loading");
+    try {
+      const res = await subscribeNewsletter(email);
+      if (res.success) {
+        setStatus("success");
+        setMessage(res.data?.message || "Successfully subscribed!");
+        setEmail("");
+      } else {
+        setStatus("error");
+        setMessage(res.message || "Failed to subscribe. Please try again.");
+      }
+    } catch (err: any) {
+      setStatus("error");
+      setMessage(err.message || "An error occurred. Please try again.");
+    }
+
+    // Reset status after 5 seconds
+    setTimeout(() => {
+      setStatus("idle");
+      setMessage("");
+    }, 5000);
+  };
+
   return (
     <footer className="flex justify-center bg-primary">
       <div className="bg-black text-white flex flex-col justify-between w-full lg:mx-6 mt-6 lg:rounded-4xl px-8 py-16 md:px-8 md:py-10 shadow-2xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-4 pt-4 w-full">
           {/* Brand & Description */}
           <div className="lg:col-span-2">
-            <h2 className="text-4xl mb-6">ROTAGI</h2>
-            <p className="text-gray-300 text-sm leading-relaxed">
+            <h2 className="text-4xl mb-6 font-cal-sans">ROTAGI</h2>
+            <p className="text-gray-300 text-sm leading-relaxed mb-8 max-w-md">
               Empowering young African girls and women with AI literacy, digital
               confidence, and leadership skills.
             </p>
+
+            {/* Newsletter */}
+            <form onSubmit={handleSubscribe} className="space-y-3 max-w-sm lg:max-w-md">
+              <div className="bg-white rounded-xl px-2 py-2 flex items-center shadow-md">
+                <input
+                  type="email"
+                  placeholder="Join our newsletter"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={status === "loading"}
+                  className="bg-transparent border-none focus:outline-none focus:ring-0 px-4 py-2 text-gray-800 text-sm w-full"
+                  required
+                />
+                <Button
+                  variant="primary"
+                  size="sm"
+                  type="submit"
+                  disabled={status === "loading" || status === "success"}
+                  className="w-fit justify-center text-base rounded-md px-4 cursor-pointer disabled:opacity-70"
+                >
+                  {status === "loading" ? <Loader2 className="animate-spin" size={18} /> : 
+                   status === "success" ? "Subscribed" : "Subscribe"}
+                </Button>
+              </div>
+              
+              {status === "success" && (
+                <div className="flex items-center gap-2 text-green-400 text-xs font-medium animate-in fade-in slide-in-from-top-1">
+                  <CheckCircle size={14} />
+                  <span>{message}</span>
+                </div>
+              )}
+              
+              {status === "error" && (
+                <div className="flex items-center gap-2 text-red-400 text-xs font-medium animate-in fade-in slide-in-from-top-1">
+                  <AlertCircle size={14} />
+                  <span>{message}</span>
+                </div>
+              )}
+            </form>
           </div>
 
           {/* Quick Navigation */}
@@ -33,14 +109,6 @@ export default function Footer() {
                   className="hover:text-white transition-colors"
                 >
                   Programs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="hover:text-white transition-colors"
-                >
-                  Blog
                 </Link>
               </li>
               <li>

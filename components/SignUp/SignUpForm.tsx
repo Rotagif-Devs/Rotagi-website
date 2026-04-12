@@ -9,6 +9,7 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import { getPrograms } from "@/lib/services/program.service";
 import { register as registerAccount } from "@/lib/services/auth.service";
 import SuccessModal from "../SuccessModal";
+import Loader from "@/components/globalComp/Loader";
 
 type FormData = {
   firstName: string;
@@ -462,13 +463,19 @@ export default function SignUpForm() {
           </form>
         </div>
       </div>
-
       <SuccessModal
         isOpen={showSuccessModal}
         onClose={() => setShowSuccessModal(false)}
         message={successMessage}
         title="Registration Successful!"
       />
+
+      {submitting && (
+        <Loader 
+          title="Creating Account" 
+          message="Please wait while we set up your learning journey." 
+        />
+      )}
     </>
   );
 }

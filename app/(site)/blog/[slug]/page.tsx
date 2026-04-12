@@ -4,6 +4,7 @@ import Link from "next/link";
 import PTA from "@/components/globalComp/PTA";
 import Image from "next/image";
 import { MoveLeft } from "lucide-react";
+import AdminEditButton from "@/components/admin/AdminEditButton";
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -72,6 +73,9 @@ export default async function BlogPostPage({
             </div>
         </div>
       </section>
+
+      {/* Admin Quick Edit */}
+      <AdminEditButton editUrl={`/admin/dashboard/blog/${post.id}/edit`} />
 
       {/* CTA Section */}
       <section className="">
