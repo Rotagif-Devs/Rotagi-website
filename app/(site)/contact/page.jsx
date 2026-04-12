@@ -14,7 +14,7 @@ export default function ContactPage() {
         title={HERO_DATA.title}
         btn={HERO_DATA.btn}
       />
-      <div className="px-10 py-10">
+      <div className="px-6 py-10 md:px-10 md:py-10">
           <ContactMessage />
       </div>
       
