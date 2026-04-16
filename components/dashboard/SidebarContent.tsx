@@ -1,15 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { LayoutGrid, BookOpen, Settings, X } from "lucide-react";
 
-const navItems = [
-  { label: "Dashboard", href: "/dashboard", icon: LayoutGrid },
 //   { label: "Courses", href: "/courses", icon: BookOpen },
 //   { label: "Settings", href: "/settings", icon: Settings },
-];
 
 interface SidebarProps {
   isMobileOpen?: boolean;
@@ -18,6 +15,17 @@ interface SidebarProps {
 
 export function SidebarContent({ onClose }: { onClose?: () => void }) {
   const pathname = usePathname();
+  const params = useParams();
+  const slug = params?.slug as string;
+
+  const dynamicNavItems = [
+    {
+      label: "Dashboard",
+      href: `/program/${slug}/dashboard`,
+      icon: LayoutGrid,
+    },
+    // { label: "Courses", href: `/program/${slug}/courses`, icon: BookOpen },
+  ];
 
   return (
     <div className="flex h-full flex-col border-r border-gray-200 bg-white w-[300px]">
@@ -29,7 +37,7 @@ export function SidebarContent({ onClose }: { onClose?: () => void }) {
           >
             ROTAGI
           </Link>
-          </div>
+        </div>
 
         <button
           type="button"
@@ -41,7 +49,7 @@ export function SidebarContent({ onClose }: { onClose?: () => void }) {
       </div>
 
       <nav className="space-y-2 p-4">
-        {navItems.map((item) => {
+        {dynamicNavItems.map((item) => {
           const isActive = pathname === item.href;
           const Icon = item.icon;
 

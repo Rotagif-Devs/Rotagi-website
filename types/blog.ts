@@ -7,6 +7,7 @@ export interface BlogPost {
   image: string;
   date: string;
   category: "Success Story" | "Resource" | "Event" | "News";
+  status: "draft" | "published";
   author: {
     name: string;
     role: string;

@@ -12,12 +12,13 @@ interface Props {
 export default function BlogCard({ post }: Props) {
   return (
     <div className="bg-white rounded-2xl p-4 overflow-hidden duration-300 flex flex-col h-full border border-[#FABFD3]/30">
-      <div className="relative h-64 w-full mb-6">
+      <div className="relative h-64 w-full mb-6 group-hover:after:opacity-20 after:absolute after:inset-0 after:bg-black after:opacity-0 after:transition-opacity">
         <Image
-          src={post.image}
+          src={post.image?.startsWith('http') ? post.image : (post.image ? post.image : "/logo.png")}
           alt={post.title}
           fill
-          className="object-cover rounded-sm"
+          className="object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, 50vw"
         />
       </div>
       

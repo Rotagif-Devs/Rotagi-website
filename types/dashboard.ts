@@ -16,7 +16,7 @@ export const learningCards: LearningCardItem[] = [
     bg: "bg-[#fff0e9]",
     panel: "bg-[#cc6534]",
     image:
-      "r1.png",
+      "/r1.png",
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ export const learningCards: LearningCardItem[] = [
     bg: "bg-[#f7ebff]",
     panel: "bg-[#A03AF6]",
     image:
-      "r2.png",
+      "/r2.png",
   },
   {
     id: 3,
@@ -36,6 +36,6 @@ export const learningCards: LearningCardItem[] = [
     bg: "bg-[#ffe9f4]",
     panel: "bg-[#ea2388]",
     image:
-      "r3.png",
+      "/r3.png",
   },
 ];

@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Plus, Edit2, Trash2, Search, MapPin, Calendar as CalendarIcon } from "lucide-react";
+import { Plus, Search, MapPin, Calendar as CalendarIcon } from "lucide-react";
+import ActionMenu from "@/components/admin/ActionMenu";
 import Link from "next/link";
 import { adminService } from "@/lib/services/admin.service";
 import { events as EventType } from "@/types/event";
@@ -37,27 +38,26 @@ export default function EventListPage() {
 
   return (
     <div className="space-y-8">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
-          <h1 className="text-3xl font-cal-sans text-black">Manage Events</h1>
-          <p className="text-gray-500 mt-1">Schedule and manage your organization's events.</p>
+          <h1 className="text-4xl font-black text-black font-outfit tracking-tight">Manage Events</h1>
+          <p className="text-gray-500 mt-2 font-medium">Schedule and manage your organization's events.</p>
         </div>
         <Link href="/admin/dashboard/events/new">
-          <Button variant="primary" className="bg-black hover:bg-gray-900 px-6 py-6 rounded-xl">
-            <Plus size={20} className="mr-2" />
-            New Event
+          <Button variant="primary" className="bg-secondary text-white hover:bg-secondary/90 px-8 py-7 rounded-2xl font-bold shadow-2xl shadow-secondary/30 transition-all active:scale-95">
+            + New Event
           </Button>
         </Link>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-        <div className="p-6 border-b border-gray-100 bg-gray-50/50">
-          <div className="relative max-w-md">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+      <div className="bg-white rounded-[3rem] border border-gray-50 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.03)] overflow-hidden">
+        <div className="p-10 border-b border-gray-50">
+          <div className="relative w-full">
+            <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-300 font-bold" size={24} />
             <input 
               type="text" 
               placeholder="Search by title or location..."
-              className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-black/5 focus:border-black transition-all"
+              className="w-full pl-14 pr-8 py-5 bg-gray-50/50 border border-gray-100 rounded-[2rem] focus:ring-8 focus:ring-secondary/5 focus:border-secondary/20 focus:bg-white transition-all font-medium text-gray-700 outline-none text-lg"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
@@ -67,11 +67,12 @@ export default function EventListPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-left">
             <thead>
-              <tr className="bg-gray-50 text-gray-500 text-sm uppercase tracking-wider">
-                <th className="px-6 py-4 font-semibold">Event</th>
-                <th className="px-6 py-4 font-semibold">Date & Time</th>
-                <th className="px-6 py-4 font-semibold">Location</th>
-                <th className="px-6 py-4 font-semibold text-right">Actions</th>
+              <tr className="border-b border-gray-50 text-[11px] font-black text-gray-400 uppercase tracking-[0.15em]">
+                <th className="px-8 py-6 font-black">EVENT</th>
+                <th className="px-8 py-6 font-black">DATE</th>
+                <th className="px-8 py-6 font-black">TIME</th>
+                <th className="px-8 py-6 font-black">LOCATION</th>
+                <th className="px-8 py-6 font-black text-right">ACTIONS</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
@@ -87,47 +88,33 @@ export default function EventListPage() {
               ) : filteredEvents.length > 0 ? (
                 filteredEvents.map((event) => (
                   <tr key={event.slug} className="hover:bg-gray-50/50 transition-colors group">
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-lg bg-gray-100 flex-shrink-0 overflow-hidden">
+                    <td className="px-10 py-8">
+                      <div className="flex items-center gap-5">
+                        <div className="w-12 h-12 rounded-full bg-gray-100 flex-shrink-0 overflow-hidden border-4 border-white shadow-xl shadow-black/5 group-hover:scale-110 transition-transform">
                           <img src={event.image} alt="" className="w-full h-full object-cover" />
                         </div>
-                        <div>
-                          <p className="font-semibold text-black leading-snug">{event.title}</p>
-                          <p className="text-xs text-gray-400 mt-0.5">/{event.slug}</p>
-                        </div>
+                        <p className="font-bold text-gray-900 tracking-tight text-[15px]">{event.title}</p>
                       </div>
                     </td>
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-2 text-sm text-gray-700">
-                        <CalendarIcon size={14} className="text-gray-400" />
-                        <span>{event.date}</span>
-                      </div>
-                      <p className="text-xs text-gray-500 ml-5 mt-0.5">{event.time}</p>
+                    <td className="px-10 py-8">
+                      <span className="text-sm font-semibold text-gray-600 font-outfit">
+                        {event.date}
+                      </span>
                     </td>
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-2 text-sm text-gray-700">
-                        <MapPin size={14} className="text-gray-400" />
-                        <span>{event.location}</span>
+                    <td className="px-10 py-8 text-sm font-semibold text-gray-600 font-outfit uppercase">
+                      {event.time}
+                    </td>
+                    <td className="px-10 py-8">
+                       <div className="flex items-center gap-2 bg-gray-100/50 w-fit px-4 py-1.5 rounded-full border border-gray-200/50">
+                        <div className="w-1.5 h-1.5 rounded-full bg-gray-400" />
+                        <span className="text-[11px] font-black text-gray-500 uppercase tracking-widest">{event.location}</span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-right">
-                      <div className="flex items-center justify-end gap-2">
-                        <Link 
-                          href={`/admin/dashboard/events/${event.slug}/edit`}
-                          className="p-2 text-gray-400 hover:text-black transition-colors"
-                          title="Edit"
-                        >
-                          <Edit2 size={18} />
-                        </Link>
-                        <button 
-                          onClick={() => handleDelete(event.slug)}
-                          className="p-2 text-gray-400 hover:text-red-600 transition-colors"
-                          title="Delete"
-                        >
-                          <Trash2 size={18} />
-                        </button>
-                      </div>
+                    <td className="px-10 py-8 text-right">
+                       <ActionMenu 
+                          editUrl={`/admin/dashboard/events/${event.id}/edit`}
+                          onDelete={() => handleDelete(event.id)}
+                       />
                     </td>
                   </tr>
                 ))

@@ -9,10 +9,15 @@ export const metadata: Metadata = {
 
 interface DashboardLayoutProps {
   children: ReactNode;
+  params: Promise<{ slug: string }>;
 }
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
+  params
 }: DashboardLayoutProps) {
+  // We can pass the slug to the provider if needed in the future
+  const { slug } = await params;
+  
   return <DashboardProvider>{children}</DashboardProvider>;
 }
