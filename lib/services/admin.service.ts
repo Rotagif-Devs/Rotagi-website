@@ -104,6 +104,19 @@ export const adminService = {
     return data.map(normalizeEvent);
   },
 
+  getEventBySlug: async (slug: string): Promise<EventType | undefined> => {
+    try {
+      const res = await apiFetch<ApiResponse<any>>(`/admin/events/${slug}`);
+      const event = res.data || res;
+      return event ? normalizeEvent(event) : undefined;
+    } catch (error) {
+      const events = await adminService.getEvents();
+      return events.find(
+        (e: any) => e.slug === slug || e.id === slug || e._id === slug,
+      );
+    }
+  },
+
   saveEvent: async (event: Partial<EventType> & { id?: string }): Promise<EventType> => {
     const id = event.id;
     if (id) {
