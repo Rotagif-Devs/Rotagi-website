@@ -4,7 +4,8 @@ import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { BlogPost } from "@/types/blog";
 import Button from "@/components/ui/Button";
-import { Save, X, Image as ImageIcon, User, Tag } from "lucide-react";
+import { Save, X, Image as ImageIcon, User, Tag, Upload, Link as LinkIcon } from "lucide-react";
+import { adminService } from "@/lib/services/admin.service";
 import "react-quill-new/dist/quill.snow.css";
 
 // Dynamic import for React Quill to avoid SSR issues
@@ -31,6 +32,7 @@ export default function BlogForm({ initialData, onSubmit, onCancel, isLoading }:
       image: "",
       date: new Date().toISOString().split("T")[0],
       category: "News",
+      status: "draft",
       author: { name: "", role: "", image: "" },
     }
   );
@@ -52,8 +54,32 @@ export default function BlogForm({ initialData, onSubmit, onCancel, isLoading }:
     setFormData((prev) => ({ ...prev, content }));
   };
 
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file || !formData.id) {
+       if(!formData.id) alert("Please save the blog first before uploading an image.");
+       return;
+    }
+    
+    try {
+      const updatedPost = await adminService.uploadBlogImage(formData.id, file);
+      setFormData(updatedPost);
+      alert("Image uploaded successfully");
+    } catch (err) {
+      console.error("Upload failed", err);
+      alert("Failed to upload image");
+    }
+  };
+
+  const handleSave = (status: "draft" | "published") => {
+    const updatedData = { ...formData, status };
+    setFormData(updatedData);
+    onSubmit(updatedData);
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Default to current status if triggered by Enter key
     onSubmit(formData);
   };
 
@@ -68,8 +94,15 @@ export default function BlogForm({ initialData, onSubmit, onCancel, isLoading }:
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8 bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <form onSubmit={handleSubmit} className="space-y-8 bg-white p-8 rounded-2xl border border-gray-100 shadow-sm relative overflow-hidden">
+      {/* Status indicator pill overlay */}
+      <div className={`absolute top-0 right-0 px-6 py-2 text-[10px] font-black uppercase tracking-[0.2em] rounded-bl-2xl ${
+        formData.status === 'published' ? 'bg-green-100 text-green-600' : 'bg-amber-100 text-amber-600'
+      }`}>
+        {formData.status}
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
         {/* Left Column: Basic Info */}
         <div className="space-y-6">
           <div className="space-y-2">
@@ -147,28 +180,44 @@ export default function BlogForm({ initialData, onSubmit, onCancel, isLoading }:
         <div className="space-y-6">
           <div className="space-y-4">
             <label className="text-sm font-semibold text-gray-700">Cover Image</label>
-            <div className="relative group">
-              <div className="aspect-video w-full rounded-2xl bg-gray-100 overflow-hidden border-2 border-dashed border-gray-200 flex items-center justify-center transition-all group-hover:border-secondary">
+            <div className="space-y-4">
+              {/* Clickable Image Preview */}
+              <div 
+                onClick={() => document.getElementById('blog-image-upload')?.click()}
+                className="relative aspect-video w-full rounded-2xl bg-gray-50 overflow-hidden border-2 border-dashed border-gray-100 flex items-center justify-center cursor-pointer transition-all hover:bg-gray-100 group shadow-inner"
+              >
                 {formData.image ? (
                   <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />
                 ) : (
                   <div className="text-center p-6">
-                    <ImageIcon size={32} className="mx-auto text-gray-300 mb-2" />
-                    <p className="text-xs text-gray-500">No image selected</p>
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+                      <Upload size={24} className="text-secondary" />
+                    </div>
+                    <p className="text-sm font-bold text-gray-900">Click to upload image</p>
+                    <p className="text-xs text-gray-500 mt-1">PNG, JPG, or SVG up to 10MB</p>
                   </div>
                 )}
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                   <p className="text-white text-xs font-bold uppercase tracking-widest">Change Image</p>
-                </div>
               </div>
+
+              {/* URL Input with Icon */}
+              <div className="relative">
+                <LinkIcon size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                <input
+                  type="text"
+                  name="image"
+                  value={formData.image}
+                  onChange={handleChange}
+                  placeholder="...or paste image URL link"
+                  className="w-full pl-11 pr-4 py-4 bg-gray-50 border border-gray-100 rounded-xl focus:ring-2 focus:ring-secondary/5 focus:border-secondary transition-all text-xs font-medium"
+                />
+              </div>
+
               <input
-                type="text"
-                name="image"
-                value={formData.image}
-                onChange={handleChange}
-                placeholder="Paste image URL here..."
-                className="mt-4 w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black/5 focus:border-black transition-all text-xs font-mono"
-                required
+                id="blog-image-upload"
+                type="file"
+                className="hidden"
+                accept="image/*"
+                onChange={handleImageUpload}
               />
             </div>
           </div>
@@ -215,25 +264,39 @@ export default function BlogForm({ initialData, onSubmit, onCancel, isLoading }:
         </div>
       </div>
 
-      <div className="flex justify-end gap-4 pt-8 border-t">
+      <div className="flex flex-col md:flex-row justify-end gap-4 pt-8 border-t">
         <Button
           type="button"
           variant="outline"
           onClick={onCancel}
-          className="px-8 border-gray-200 hover:bg-gray-50 bg-white text-black"
+          className="px-8 border-gray-200 hover:bg-gray-50 bg-white text-black order-3 md:order-1"
         >
           <X size={18} className="mr-2" />
           Cancel
         </Button>
-        <Button
-          type="submit"
-          variant="primary"
-          disabled={isLoading}
-          className="px-8 bg-black hover:bg-gray-900"
-        >
-          <Save size={18} className="mr-2" />
-          {isLoading ? "Saving..." : "Save Blog Post"}
-        </Button>
+        
+        <div className="flex gap-4 order-1 md:order-2 grow md:grow-0">
+          <Button
+            type="button"
+            variant="outline"
+            disabled={isLoading}
+            onClick={() => handleSave("draft")}
+            className={`flex-1 md:flex-none px-6 border-amber-200 text-amber-700 hover:bg-amber-50 bg-white ${formData.status === 'draft' ? 'ring-2 ring-amber-500/20' : ''}`}
+          >
+            <Save size={18} className="mr-2" />
+            {formData.status === 'published' ? 'Revert to Draft' : 'Save as Draft'}
+          </Button>
+          
+          <Button
+            type="button"
+            variant="primary"
+            disabled={isLoading}
+            onClick={() => handleSave("published")}
+            className="flex-1 md:flex-none px-10 bg-secondary text-white hover:bg-secondary/90 shadow-xl shadow-secondary/20"
+          >
+            {formData.status === 'published' ? "Update Post" : "Publish Now"}
+          </Button>
+        </div>
       </div>
     </form>
   );

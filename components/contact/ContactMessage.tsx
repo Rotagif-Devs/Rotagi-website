@@ -76,12 +76,12 @@ export default function ContactMessage() {
     }
 
     return (
-        <section className="w-full rounded-[20px] bg-white py-8 px-4 sm:rounded-[24px] sm:px-6 sm:py-10 md:px-8 lg:rounded-[28px] lg:px-16 lg:py-14 relative">
+        <section className="w-full rounded-[20px] bg-white py-8 px-4 sm:rounded-[24px]  md:px-8 lg:rounded-[28px] lg:px-16 lg:py-14 relative">
             {formStatus === "submitting" && <SubmittingState />}
             
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14 leading-relaxed">
                 {/* Left */}
-                <div>
+                <div className="">
                     <h2 className="text-3xl sm:text-4xl md:text-5xl !normal-case font-bold tracking-tight text-slate-900 font-cal-sans">
                         Send us a message!
                     </h2>

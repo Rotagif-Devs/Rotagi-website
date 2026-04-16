@@ -3,12 +3,18 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAdmin } from "@/context/AdminContext";
-import Button from "@/components/ui/Button";
-import { Lock, Mail, AlertCircle, Loader2 } from "lucide-react";
+import { programs } from "@/data/programs";
+import { ProgramProvider, useProgram } from "@/context/ProgramContext";
+import LeftPanel from "@/components/LeftPanel";
+import { FiEye, FiEyeOff } from "react-icons/fi";
+import { AlertCircle, Loader2 } from "lucide-react";
+import Loader from "@/components/globalComp/Loader";
 
-export default function AdminLoginPage() {
+function AdminLoginForm() {
+  const { selectedProgram, setSelectedProgram } = useProgram();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { login, isAuthenticated } = useAdmin();
@@ -24,135 +30,142 @@ export default function AdminLoginPage() {
     e.preventDefault();
     setError("");
     setLoading(true);
-  
+
     try {
-      const success = await login(email, password);
+      const success = await login(email, password, selectedProgram.slug);
       if (success) {
         router.push("/admin/dashboard");
       } else {
-        setError("Invalid credentials. Please check your email and password.");
+        setError("Invalid credentials. Please check your email, password, and selected program.");
       }
-    } catch (err) {
-      setError("An unexpected error occurred. Please try again later.");
+    } catch (err: any) {
+      setError(err?.message || "An unexpected error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#FDFDFD] flex items-center justify-center p-4 relative overflow-hidden font-outfit">
-      {/* Subtle Background Elements for Premium Feel */}
-      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-secondary/5 blur-[120px] rounded-full animate-pulse transition-all duration-7000" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-tertiary/5 blur-[120px] rounded-full animate-pulse transition-all duration-10000 delay-1000" />
-      
-      <div className="max-w-md w-full relative z-10 transition-all duration-500 ease-out">
-        <div className="text-center mb-10 space-y-2">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-white border border-gray-100 rounded-[2rem] mb-6 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] relative group overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-            <Lock className="text-secondary relative z-10" size={36} />
+    <div className="flex-1 flex items-center justify-center p-5 lg:p-12 h-screen overflow-y-auto bg-primary">
+      <div className="w-full max-w-138.5">
+        <div className="mb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-pink-50 text-pink-600 rounded-full text-xs font-bold uppercase tracking-widest mb-4 border border-pink-100 italic">
+            Admin Access
           </div>
-          <h1 className="text-5xl font-cal-sans text-black tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-black to-gray-600">
-            Secure Entry
-          </h1>
-          <p className="text-gray-500 font-medium tracking-wide">
-            Rotagif Administrative Portal
+          <h3 className="text-3xl font-bold text-gray-900 leading-tight">Admin Login</h3>
+          <p className="text-gray-500 mt-2">
+            Secure gateway for platform administrators
           </p>
         </div>
 
-        <div className="bg-white border border-gray-100 rounded-[3rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] overflow-hidden p-10 relative">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary/30 to-transparent opacity-30" />
-          
-          {error && (
-            <div className="bg-red-50 text-red-600 border border-red-100 px-5 py-4 rounded-2xl flex items-center gap-3 mb-8 animate-in fade-in slide-in-from-top-4 duration-500">
-              <AlertCircle size={20} className="flex-shrink-0" />
-              <p className="text-sm font-semibold leading-relaxed">{error}</p>
-            </div>
-          )}
+        {error && (
+          <div className="bg-red-50 text-red-600 border border-red-100 px-5 py-4 rounded-xl flex items-center gap-3 mb-6 animate-in fade-in slide-in-from-top-4 duration-500">
+            <AlertCircle size={20} className="flex-shrink-0" />
+            <p className="text-sm font-semibold">{error}</p>
+          </div>
+        )}
 
-          <form onSubmit={handleSubmit} className="space-y-8">
-            <div className="space-y-3">
-              <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">
-                Identity Identifier
-              </label>
-              <div className="relative group">
-                <Mail
-                  className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-secondary transition-colors duration-300"
-                  size={20}
-                />
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@rotagi.com"
-                  className="w-full pl-14 pr-6 py-4.5 bg-gray-50 border border-gray-100 rounded-[1.25rem] text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary/30 focus:bg-white transition-all duration-300"
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="space-y-3">
-              <div className="flex justify-between items-center ml-1">
-                <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">
-                  Access Key
-                </label>
-                <button type="button" className="text-[10px] font-bold text-secondary uppercase tracking-widest hover:text-tertiary transition-colors">
-                  Lost Access?
-                </button>
-              </div>
-              <div className="relative group">
-                <Lock
-                  className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-secondary transition-colors duration-300"
-                  size={20}
-                />
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••"
-                  className="w-full pl-14 pr-6 py-4.5 bg-gray-50 border border-gray-100 rounded-[1.25rem] text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary/30 focus:bg-white transition-all duration-300"
-                  required
-                />
-              </div>
-            </div>
-
-            <Button
-              type="submit"
-              variant="primary"
-              className="w-full justify-center py-6 text-base font-bold bg-secondary hover:bg-tertiary text-white border-none shadow-[0_20px_40px_-12px_rgba(255,107,0,0.3)] transition-all duration-300 active:scale-[0.97] rounded-[1.25rem]"
-              disabled={loading}
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div>
+            <label className="block font-semibold text-gray-700 mb-1.5">
+              Select Security Domain
+            </label>
+            <select
+              value={selectedProgram.id}
+              onChange={(e) =>
+                setSelectedProgram(
+                  programs.find((p) => p.id === e.target.value)!
+                )
+              }
+              className="w-full border border-gray-200 rounded-md px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white shadow-sm transition-all"
             >
-              {loading ? (
-                <Loader2 className="animate-spin" size={24} />
-              ) : (
-                "Establish Connection"
-              )}
-            </Button>
-
-            <div className="pt-4">
-              <div className="px-6 py-4 bg-gray-50 rounded-2xl border border-gray-100 group hover:border-gray-200 transition-colors">
-                <p className="text-[10px] text-gray-400 uppercase tracking-[0.2em] font-black mb-2 text-center">
-                  Sandbox Credentials
-                </p>
-                <div className="flex justify-center gap-4 text-xs font-mono">
-                  <span className="text-gray-500">USR: <code className="text-secondary/80 font-bold">admin@rotagi.com</code></span>
-                  <span className="text-gray-200">|</span>
-                  <span className="text-gray-500">PWD: <code className="text-secondary/80 font-bold">admin123</code></span>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-        
-        <div className="flex flex-col items-center gap-4 mt-12">
-          <div className="flex gap-8">
-            <button className="text-xs text-gray-400 hover:text-black transition-colors font-medium underline underline-offset-4 decoration-current/10">Privacy Protocol</button>
-            <button className="text-xs text-gray-400 hover:text-black transition-colors font-medium underline underline-offset-4 decoration-current/10">Security Policy</button>
+              {programs.map((p) => (
+                <option key={p.id} value={p.id}>
+                  {p.name} Context
+                </option>
+              ))}
+            </select>
           </div>
-          <p className="text-gray-400 text-[10px] uppercase tracking-widest font-bold">
-            &copy; 2026 Rotagif Organization &bull; Nexus V2.0
-          </p>
+
+          <div>
+            <label className="block font-semibold text-gray-700 mb-1.5">
+              Admin Email Address <span className="text-pink-500">*</span>
+            </label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="admin@rotagif.com"
+              required
+              className="w-full border border-gray-200 rounded-md px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white shadow-sm transition-all"
+            />
+          </div>
+
+          <div>
+            <div className="flex items-center justify-between mb-1.5">
+              <label className="font-semibold text-gray-700">
+                Security Passphrase <span className="text-pink-500">*</span>
+              </label>
+            </div>
+
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter password"
+                required
+                className="w-full border border-gray-200 rounded-md px-4 py-3.5 pr-12 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white shadow-sm transition-all"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((prev) => !prev)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                {showPassword ? <FiEyeOff size={20} /> : <FiEye size={20} />}
+              </button>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-4 rounded-xl text-white font-bold text-lg transition-all duration-200 hover:opacity-95 active:scale-[0.98] shadow-lg shadow-pink-100 disabled:opacity-50 disabled:cursor-not-allowed mt-2"
+            style={{ background: "linear-gradient(135deg, #e91e8c, #c2185b)" }}
+          >
+            {loading ? (
+              <div className="flex items-center justify-center gap-2">
+                 <Loader2 className="animate-spin" size={20} />
+                 <span>Verifying Access...</span>
+              </div>
+            ) : "Establish Secure Connection"}
+          </button>
+        </form>
+
+        <div className="mt-12 pt-8 border-t border-gray-100 text-center">
+            <p className="text-gray-400 text-xs font-bold uppercase tracking-widest">
+              Restricted Area &bull; Rotagif Organization
+            </p>
         </div>
       </div>
+
+      {loading && (
+        <Loader 
+          title="Authenticating" 
+          message="Establishing secure connection to the administrative node." 
+        />
+      )}
     </div>
+  );
+}
+
+export default function AdminLoginPage() {
+  return (
+    <ProgramProvider>
+      <div className="min-h-screen w-full lg:flex-row flex flex-col overflow-hidden">
+        <LeftPanel />
+        <AdminLoginForm />
+      </div>
+    </ProgramProvider>
   );
 }

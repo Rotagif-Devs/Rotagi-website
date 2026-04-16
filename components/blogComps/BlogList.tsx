@@ -19,7 +19,7 @@ export default function BlogList({ posts }: Props) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {posts.map((post, index) => (
             <motion.div
-              key={post.id}
+              key={post.id || index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
