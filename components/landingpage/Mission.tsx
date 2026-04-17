@@ -5,7 +5,7 @@ const pillars = [
     icon: "/mission-icon-1.svg",
     title: "Mindset",
     subtitle: "Confidence & Leadership",
-    desc: "Building self-belief and leadership skills through mentorship and workshops.",
+    desc: "Building confidence, leadership, and life skills through mentorship and workshops.",
   },
   {
     icon: "/mission-icon-2.svg",
@@ -17,10 +17,9 @@ const pillars = [
     icon: "/mission-icon-3.svg",
     title: "Future-Set",
     subtitle: "Essential AI Literacy",
-    desc: "Equipping African girls with AI skills to innovate, lead, and thrive globally.",
+    desc: "Equipping African girls and women with AI skills to innovate, lead, and thrive.",
   },
 ];
-
 export default function Mission() {
   return (
     <section className="py-32 bg-primary px-10 lg:px-8">
@@ -29,8 +28,7 @@ export default function Mission() {
           Our Integrated Mission
         </h2>
         <p className="max-w-3xl text-gray-700 mb-20 font-dm-sans font-normal text-[18px] leading-[35px] tracking-[-0.01em] text-center">
-          ROTAGI equips African girls and women across Africa with AI literacy
-          and digital confidence to build solutions and lead the global economy.
+           ROTAGI equips African girls and women across Africa with AI literacy and digital skills to build solutions and lead the global economy. 
         </p>
         <div className="grid md:grid-cols-3 gap-12 lg:gap-20 w-full">
           {pillars.map((item, i) => (
