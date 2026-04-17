@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useEffect, useState } from "react";
 import { Plus, Search, MapPin, Calendar as CalendarIcon } from "lucide-react";
@@ -112,8 +112,8 @@ export default function EventListPage() {
                     </td>
                     <td className="px-10 py-8 text-right">
                        <ActionMenu 
-                          editUrl={`/admin/dashboard/events/${event.id}/edit`}
-                          onDelete={() => handleDelete(event.id)}
+                          editUrl={`/admin/dashboard/events/${event.id ?? event.slug}/edit`}
+                          onDelete={() => handleDelete(event.id ?? event.slug)}
                        />
                     </td>
                   </tr>
@@ -140,3 +140,4 @@ export default function EventListPage() {
     </div>
   );
 }
+
