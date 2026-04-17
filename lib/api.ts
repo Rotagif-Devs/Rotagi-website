@@ -49,8 +49,14 @@ export async function apiFetch<T = unknown>(
 
   let body: BodyInit | undefined;
   if (options?.body !== undefined) {
-    headers['Content-Type'] = headers['Content-Type'] || 'application/json';
-    body = JSON.stringify(options.body);
+    if (options.body instanceof FormData) {
+      body = options.body;
+      // Do not set Content-Type header for FormData, 
+      // the browser will set it with the correct boundary
+    } else {
+      headers['Content-Type'] = headers['Content-Type'] || 'application/json';
+      body = JSON.stringify(options.body);
+    }
   }
 
   const res = await fetch(url, {
@@ -65,7 +71,17 @@ export async function apiFetch<T = unknown>(
 
   if (!res.ok) {
     const err = (data && typeof data === 'object' ? (data as ApiError) : null);
-    const msg = err?.message || `Request failed (${res.status})`;
+    let msg = err?.message || `Request failed (${res.status})`;
+    
+    // Diagnostic info for common issues
+    if (res.status === 401) {
+      const hasToken = !!token;
+      msg = `Unauthorized: ${hasToken ? 'Token was sent but rejected' : 'No token was found'} - ${msg}`;
+      console.warn(`[apiFetch] 401 Unauthorized for ${path}. Token present: ${hasToken}`);
+    } else if (res.status === 404) {
+      console.warn(`[apiFetch] 404 Not Found for ${path}`);
+    }
+    
     throw new Error(msg);
   }
 

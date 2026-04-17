@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Button from "@/components/ui/Button";
+import { submitPartnershipInterest, PartnershipInterestPayload } from "@/lib/services/partnership.service";
 
 type Props = {
   onSubmitStart: () => void;
@@ -14,18 +15,72 @@ const PartnerForm = ({
   onSubmitSuccess,
   onSubmitError,
 }: Props) => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    organizationName: "",
+    website: "",
+    goals: "",
+  });
+  const [interestAreas, setInterestAreas] = useState<string[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleCheckboxChange = (interest: string) => {
+    setInterestAreas((prev) =>
+      prev.includes(interest)
+        ? prev.filter((i) => i !== interest)
+        : [...prev, interest]
+    );
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (loading) return;
+
+    setLoading(true);
     onSubmitStart();
 
-    // Simulate API call
-    setTimeout(() => {
-      // Since the user wants to see the success/error states, let's randomly fail 20% of the time,
-      // or just always succeed to be safe? I'll always succeed to simulate successful flow,
-      // but the components are there for error testing if needed.
-      onSubmitSuccess();
-    }, 2000);
+    try {
+      const payload: PartnershipInterestPayload = {
+        organizationName: formData.organizationName,
+        contactName: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        phone: formData.phone,
+        website: formData.website,
+        interestAreas: interestAreas,
+        message: formData.goals,
+      };
+
+      const response = await submitPartnershipInterest(payload);
+
+      if (response.success) {
+        onSubmitSuccess();
+      } else {
+        console.error("Partnership submission failed:", response.message);
+        onSubmitError();
+      }
+    } catch (error) {
+      console.error("Error submitting partnership inquiry:", error);
+      onSubmitError();
+    } finally {
+      setLoading(false);
+    }
   };
+
+  const interests = [
+    "Financial Sponsorship",
+    "Mentorship & Internships",
+    "Technical Training",
+    "Events Partnership",
+    "Other",
+  ];
 
   return (
     <div className="bg-white p-8 md:p-14 rounded-3xl w-full max-w-3xl mx-auto shadow-sm">
@@ -53,6 +108,9 @@ const PartnerForm = ({
               <input
                 required
                 type="text"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleInputChange}
                 placeholder="e.g. Jane"
                 className="w-full text-sm outline-none border border-[#E5E7EB] rounded-lg px-4 py-3 placeholder-[#9CA3AF] text-black"
               />
@@ -64,6 +122,9 @@ const PartnerForm = ({
               <input
                 required
                 type="text"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleInputChange}
                 placeholder="e.g. Doe"
                 className="w-full text-sm outline-none border border-[#E5E7EB] rounded-lg px-4 py-3 placeholder-[#9CA3AF] text-black"
               />
@@ -75,6 +136,9 @@ const PartnerForm = ({
               <input
                 required
                 type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
                 placeholder="youremail@example.com"
                 className="w-full text-sm outline-none border border-[#E5E7EB] rounded-lg px-4 py-3 placeholder-[#9CA3AF] text-black"
               />
@@ -86,6 +150,9 @@ const PartnerForm = ({
               <input
                 required
                 type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
                 placeholder="+234 809 387 6868"
                 className="w-full text-sm outline-none border border-[#E5E7EB] rounded-lg px-4 py-3 placeholder-[#9CA3AF] text-black"
               />
@@ -106,6 +173,9 @@ const PartnerForm = ({
               <input
                 required
                 type="text"
+                name="organizationName"
+                value={formData.organizationName}
+                onChange={handleInputChange}
                 placeholder="e.g. Acme Corp"
                 className="w-full text-sm outline-none border border-[#E5E7EB] rounded-lg px-4 py-3 placeholder-[#9CA3AF] text-black"
               />
@@ -116,6 +186,9 @@ const PartnerForm = ({
               </label>
               <input
                 type="url"
+                name="website"
+                value={formData.website}
+                onChange={handleInputChange}
                 placeholder="www.yourcompany.com"
                 className="w-full text-sm outline-none border border-[#E5E7EB] rounded-lg px-4 py-3 placeholder-[#9CA3AF] text-black"
               />
@@ -133,19 +206,15 @@ const PartnerForm = ({
           </label>
 
           <div className="space-y-3 mb-6">
-            {[
-              "Financial Sponsorship",
-              "Mentorship & Internships",
-              "Technical Training",
-              "Events Partnership",
-              "Other",
-            ].map((interest) => (
+            {interests.map((interest) => (
               <label
                 key={interest}
                 className="flex items-center gap-3 cursor-pointer"
               >
                 <input
                   type="checkbox"
+                  checked={interestAreas.includes(interest)}
+                  onChange={() => handleCheckboxChange(interest)}
                   className="w-5 h-5 accent-[#D62D88] border-[#E5E7EB] rounded"
                 />
                 <span className="text-xs font-normal text-black">
@@ -162,6 +231,9 @@ const PartnerForm = ({
             <textarea
               required
               rows={4}
+              name="goals"
+              value={formData.goals}
+              onChange={handleInputChange}
               placeholder="Tell us how we can build the future together..."
               className="w-full text-sm outline-none border border-[#E5E7EB] rounded-lg px-4 py-3 placeholder-[#9CA3AF] resize-none text-black"
             ></textarea>
@@ -170,9 +242,10 @@ const PartnerForm = ({
 
         <Button
           type="submit"
-          className="w-full bg-[#D62D88] hover:bg-pink-700 text-white rounded-full py-4 text-sm font-bold"
+          disabled={loading}
+          className="w-full bg-[#D62D88] hover:bg-pink-700 text-white rounded-full py-4 text-sm font-bold disabled:opacity-50"
         >
-          Submit Inquiry
+          {loading ? "Submitting..." : "Submit Inquiry"}
         </Button>
       </form>
     </div>

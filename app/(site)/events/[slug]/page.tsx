@@ -1,4 +1,3 @@
-"use client";
 
 import React from "react";
 import Image from "next/image";
@@ -6,8 +5,10 @@ import Link from "next/link";
 import { Calendar, MapPin, Clock, ChevronLeft } from "lucide-react";
 import CTA from "@/components/globalComp/CTA";
 import Footer from "@/components/globalComp/Footer";
+import { publicService } from "@/lib/services/public.service";
+import { notFound } from "next/navigation";
 
-const agenda = [
+const fallbackAgenda = [
   { time: "9:00 - 10:00 AM", title: "Registration & Welcome Coffee" },
   { time: "10:00 - 11:30 AM", title: "Interactive Workshop: AI for Social Impact" },
   { time: "11:30 - 1:00 PM", title: "Keynote: The Future of AI in Africa" },
@@ -23,7 +24,7 @@ const agenda = [
   { time: "4:30 - 6:00 PM", title: "Networking Lunch" },
 ];
 
-const speakers = [
+const fallbackSpeakers = [
   {
     name: "Dr. Amina Okoye",
     role: "AI Ethics Specialist",
@@ -50,8 +51,15 @@ const speakers = [
   },
 ];
 
-export default function EventPage({ params }: { params: { slug: string } }) {
-  const eventTitle = "AI Futures Summit 2026";
+export const dynamic = "force-dynamic";
+
+export default async function EventPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const event = await publicService.getEventBySlug(slug);
+
+  if (!event) {
+    notFound();
+  }
 
   return (
     <div className="min-h-screen bg-[#FDF2F8] font-dm-sans overflow-x-hidden">
@@ -73,14 +81,10 @@ export default function EventPage({ params }: { params: { slug: string } }) {
           <div className="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-24 items-start">
             <div className="max-w-3xl">
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-normal text-[#1A1A1A] mb-8 font-cal-sans leading-[1.05] tracking-tight">
-                {eventTitle}
+                {event.title}
               </h1>
               <p className="text-[#3D1A2A] text-lg md:text-xl leading-relaxed opacity-80 max-w-2xl">
-                Join us for our annual summit in West Africa. The AI Futures
-                Summit brings together industry leaders, practitioners, and
-                students to explore the latest advances in AI and their impact on
-                our world. Experience hands-on workshops, keynote speakers, and
-                networking opportunities.
+                {event.description}
               </p>
             </div>
             
@@ -91,7 +95,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
                   <Calendar size={20} />
                 </div>
                 <div>
-                  <p className="font-bold text-base">June 15 - 20, 2026</p>
+                  <p className="font-bold text-base">{event.date || "Date TBA"}</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 text-[#1A1A1A]">
@@ -99,7 +103,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
                   <MapPin size={20} />
                 </div>
                 <div>
-                  <p className="font-bold text-base">Lagos, Nigeria (Hybrid)</p>
+                  <p className="font-bold text-base">{event.location || "Location TBA"}</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 text-[#1A1A1A]">
@@ -107,7 +111,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
                   <Clock size={20} />
                 </div>
                 <div>
-                  <p className="font-bold text-base">9:00 AM - 6:00 PM</p>
+                  <p className="font-bold text-base">{event.time || "Time TBA"}</p>
                 </div>
               </div>
             </div>
@@ -118,8 +122,8 @@ export default function EventPage({ params }: { params: { slug: string } }) {
         <section className="max-w-[1260px] mx-auto px-5 md:px-10 mb-32">
           <div className="relative aspect-[21/9] rounded-[40px] md:rounded-[60px] overflow-hidden border-[12px] border-white shadow-[0_20px_50px_rgba(255,182,193,0.2)]">
             <Image
-              src="/Threegirls.jpg"
-              alt="Event banner"
+              src={event.image || "/wh.jpg"}
+              alt={event.title}
               fill
               className="object-cover"
               priority
@@ -134,7 +138,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
               Agenda
             </h2>
             <div className="grid md:grid-cols-2 gap-x-8 gap-y-6">
-              {agenda.map((item, index) => (
+              {fallbackAgenda.map((item, index) => (
                 <div
                   key={index}
                   className="bg-[#FDF2F8] p-8 md:p-10 rounded-[32px] flex items-center justify-between transition-all hover:shadow-lg hover:shadow-pink-100/50"
@@ -158,7 +162,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
               Featured Speakers
             </h2>
             <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-              {speakers.map((speaker, index) => (
+              {fallbackSpeakers.map((speaker, index) => (
                 <div
                   key={index}
                   className="bg-white rounded-[32px] overflow-hidden flex flex-col transition-all hover:shadow-xl hover:shadow-pink-200/30"

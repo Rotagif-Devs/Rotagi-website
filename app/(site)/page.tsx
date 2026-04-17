@@ -7,7 +7,6 @@ import Partners from "@/components/landingpage/Partners";
 import Updates from "@/components/landingpage/Updates";
 import CTA from "@/components/globalComp/CTA";
 import Image from "next/image";
-
 export default function Home() {
   return (
     <div className="min-h-screen bg-primary antialiased overflow-hidden">

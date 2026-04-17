@@ -6,11 +6,13 @@ export type DonationInitPayload = {
   currency?: string;
   name?: string;
   metadata?: Record<string, unknown>;
+  callback_url?: string;
 };
 
 export type DonationInitResponse = {
   success: boolean;
-  data: {
+  message?: string;
+  data?: {
     reference: string;
     authorizationUrl: string;
     currency: string;
@@ -19,7 +21,8 @@ export type DonationInitResponse = {
 
 export type DonationVerifyResponse = {
   success: boolean;
-  data: {
+  message?: string;
+  data?: {
     reference: string;
     status: string;
     donation: {

@@ -1,5 +1,4 @@
 "use client";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
@@ -9,6 +8,7 @@ import Image from "next/image";
 import Button from "../ui/Button";
 
 const updates = [
+  // ... (omitting for brevity in this chunk, but this is a replacement starting from line 3)
   {
     category: "SUCCESS STORY",
     title: "How AI Changed My Career Path",
@@ -55,7 +55,7 @@ export default function Updates() {
             </p>
 
             <div className="hidden md:block">
-              <Button href="/updates" variant="primary" className="px-10 py-4">
+              <Button href="/events" variant="primary" className="px-10 py-4">
                 View All
               </Button>
             </div>

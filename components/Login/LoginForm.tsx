@@ -1,13 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { useSearchParams } from "next/navigation";
 import { programs } from "@/data/programs";
 import { useProgram } from "@/context/ProgramContext";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { login, resendVerification } from "@/lib/services/auth.service";
 import SuccessModal from "@/components/SuccessModal";
+import Loader from "@/components/globalComp/Loader";
 
 type FormData = {
   email: string;
@@ -16,6 +18,17 @@ type FormData = {
 
 export default function LoginForm() {
   const { selectedProgram, setSelectedProgram } = useProgram();
+  const searchParams = useSearchParams();
+  const programSlug = searchParams.get("program");
+
+  useEffect(() => {
+    if (programSlug) {
+      const foundProgram = programs.find((p) => p.slug === programSlug);
+      if (foundProgram) {
+        setSelectedProgram(foundProgram);
+      }
+    }
+  }, [programSlug, setSelectedProgram]);
   const [showPassword, setShowPassword] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [resending, setResending] = useState(false);
@@ -91,7 +104,9 @@ export default function LoginForm() {
         // Store user info if available in response
         const user = response?.user || response?.data?.user;
         if (user) {
-          if (user.email) localStorage.setItem("userEmail", user.email);
+          if (user.email) {
+            localStorage.setItem("userEmail", user.email);
+          }
           if (user.firstName && user.lastName) {
             localStorage.setItem("userFullName", `${user.firstName} ${user.lastName}`);
           } else if (user.name) {
@@ -100,9 +115,11 @@ export default function LoginForm() {
         } else {
           // Fallback to form data if response doesn't have user info
           localStorage.setItem("userEmail", data.email);
-          // We don't have the name from login form, so we'll leave it or set a placeholder
           localStorage.setItem("userFullName", "User");
         }
+
+        // Store the program slug to help global navigation find the dashboard later
+        localStorage.setItem("lastProgramSlug", selectedProgram.slug);
 
         setIsSuccessModalOpen(true);
       } else {
@@ -182,14 +199,17 @@ export default function LoginForm() {
                   message: "Invalid email address",
                 },
               })}
+              id="email"
               type="email"
               placeholder="sg-email@gmail.com"
+              aria-invalid={errors.email ? "true" : "false"}
+              aria-describedby={errors.email ? "email-error" : undefined}
               className={`w-full border rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white placeholder-gray-300 ${
                 errors.email ? "border-red-500" : "border-gray-200"
               }`}
             />
             {errors.email && (
-              <p className="mt-1 text-sm text-red-600">
+              <p id="email-error" className="mt-1 text-sm text-red-600" role="alert">
                 {errors.email.message}
               </p>
             )}
@@ -217,8 +237,11 @@ export default function LoginForm() {
                     message: "Password must be at least 6 characters",
                   },
                 })}
+                id="password"
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter password"
+                aria-invalid={errors.password ? "true" : "false"}
+                aria-describedby={errors.password ? "password-error" : undefined}
                 className={`w-full border rounded-md px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white placeholder-gray-300 ${
                   errors.password ? "border-red-500" : "border-gray-200"
                 }`}
@@ -233,7 +256,7 @@ export default function LoginForm() {
               </button>
             </div>
             {errors.password && (
-              <p className="mt-1 text-sm text-red-600">
+              <p id="password-error" className="mt-1 text-sm text-red-600" role="alert">
                 {errors.password.message}
               </p>
             )}
@@ -283,11 +306,20 @@ export default function LoginForm() {
         isOpen={isSuccessModalOpen}
         onClose={() => {
           setIsSuccessModalOpen(false);
-          window.location.href = "/dashboard";
+          if (selectedProgram?.slug) {
+            window.location.href = `/program/${selectedProgram.slug}/dashboard`;
+          }
         }}
         title="Welcome Back!"
         message="You have successfully logged in. Redirecting to your programs..."
       />
+
+      {submitting && (
+        <Loader 
+          title="Signing In" 
+          message="Please wait while we verify your credentials." 
+        />
+      )}
     </div>
   );
 }

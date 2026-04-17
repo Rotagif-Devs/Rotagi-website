@@ -9,7 +9,7 @@ const PartnerHero = () => {
   return (
     <section className="relative w-full h-[400px] md:h-[550px] lg:mx-4 lg:rounded-2xl overflow-hidden mt-5 lg:mt-0 lg:w-[calc(100%-2rem)]">
       <Image
-        src="/partner-ladies.jpg"
+        src="/partner-hero.jpg"
         alt="Partner with ROTAGI"
         width={1800}
         height={1800}

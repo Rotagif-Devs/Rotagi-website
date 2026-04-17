@@ -17,6 +17,7 @@ export default function Header() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [lastProgramSlug, setLastProgramSlug] = useState<string | null>(null);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
@@ -28,6 +29,12 @@ export default function Header() {
           ? localStorage.getItem("accessToken")
           : null;
       setIsLoggedIn(Boolean(token));
+
+      const slug =
+        typeof window !== "undefined"
+          ? localStorage.getItem("lastProgramSlug")
+          : null;
+      setLastProgramSlug(slug);
     };
 
     checkAuth();
@@ -45,16 +52,18 @@ export default function Header() {
   }, []);
 
   const isProgramsPage = pathname === "/programs";
-  const getStartedText = isProgramsPage
-    ? isLoggedIn
-      ? "Dashboard"
-      : "Login"
-    : "Get Started";
-  const getStartedHref = isProgramsPage
-    ? isLoggedIn
-      ? "/dashboard"
-      : "/login"
-    : "/programs";
+  const isProgramDetailPage = pathname.startsWith("/programs/") && pathname !== "/programs";
+  const programSlug = isProgramDetailPage ? pathname.split("/").pop() : null;
+
+  const getStartedText = isLoggedIn
+    ? "Dashboard"
+    : (isProgramsPage || isProgramDetailPage) ? "Login" : "Get Started";
+
+  const getStartedHref = isLoggedIn
+    ? lastProgramSlug ? `/program/${lastProgramSlug}/dashboard` : "/dashboard"
+    : (isProgramsPage || isProgramDetailPage)
+      ? isProgramDetailPage ? `/login?program=${programSlug}` : "/login"
+      : "/programs";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-white/90 backdrop-blur-md">
@@ -63,6 +72,7 @@ export default function Header() {
         <div className="shrink-0">
           <Link
             href="/"
+            aria-label="ROTAGI Home"
             className="text-2xl uppercase tracking-wider text-secondary transition-opacity hover:opacity-80 font-cal-sans"
           >
             ROTAGI
@@ -70,12 +80,12 @@ export default function Header() {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-8 md:flex" aria-label="Desktop navigation">
           {navItems.map((item) => (
             <Link
               key={item.label}
               href={item.href}
-              className="text-sm font-medium text-gray-700 transition-colors hover:text-secondary"
+              className="text-sm font-medium text-gray-700 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-secondary focus-visible:outline-offset-4 rounded-sm"
             >
               {item.label}
             </Link>
@@ -99,10 +109,11 @@ export default function Header() {
 
         {/* Mobile Hamburger Button */}
         <button
-          className="rounded-full p-2 text-gray-900 transition-colors hover:bg-gray-100 md:hidden"
+          className="rounded-full p-2 text-gray-900 transition-colors hover:bg-gray-100 md:hidden focus-visible:ring-2 focus-visible:ring-secondary outline-none"
           onClick={toggleMenu}
-          aria-label="Toggle navigation menu"
+          aria-label={isOpen ? "Close main menu" : "Open main menu"}
           aria-expanded={isOpen}
+          aria-controls="mobile-menu"
         >
           {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
@@ -110,6 +121,7 @@ export default function Header() {
 
       {/* Mobile Menu Panel */}
       <div
+        id="mobile-menu"
         className={`fixed inset-x-0 top-[60px] z-50 overflow-hidden bg-white shadow-xl transition-all duration-300 ease-in-out md:hidden ${
           isOpen
             ? "max-h-[400px] border-b border-gray-100 opacity-100"
@@ -117,7 +129,7 @@ export default function Header() {
         }`}
       >
         <div className="flex flex-col gap-4 p-6">
-          <nav className="flex flex-col gap-4">
+          <nav className="flex flex-col gap-4" aria-label="Mobile navigation">
             {navItems.map((item) => (
               <Link
                 key={item.label}

@@ -13,7 +13,7 @@ const EventReady = () => {
         </p>
 
         <div className="hidden md:flex gap-4">
-          <Button href="/donate" variant="primary" className="">
+          <Button href="/programs" variant="primary" className="">
             Get Started Now
           </Button>
         </div>

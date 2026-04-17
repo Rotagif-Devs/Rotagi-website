@@ -31,6 +31,32 @@ export const metadata: Metadata = {
   title: "ROTAGIF - Empowering African Girl Innovators",
   description:
     "Equipping African girls and women with AI literacy, digital skills, and leadership confidence.",
+  openGraph: {
+    title: "ROTAGIF - Empowering African Girl Innovators",
+    description: "Equipping African girls and women with AI literacy, digital skills, and leadership confidence.",
+    url: "https://rotagif.org",
+    siteName: "ROTAGIF",
+    images: [
+      {
+        url: "/hero-new.jpg",
+        width: 1200,
+        height: 630,
+        alt: "ROTAGIF Empowering African Girl Innovators",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ROTAGIF - Empowering African Girl Innovators",
+    description: "Equipping African girls and women with AI literacy, digital skills, and leadership confidence.",
+    images: ["/hero-new.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -39,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${dmSans.variable} ${calSans.variable} antialiased bg-primary text-gray-900`}
       >

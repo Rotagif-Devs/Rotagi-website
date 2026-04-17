@@ -119,7 +119,7 @@ export default async function ProgramDetailPage({
           </ul>
         </div>
       </div>
-      <PTA />
+      <PTA slug={slug} />
     </section>
   );
 }
