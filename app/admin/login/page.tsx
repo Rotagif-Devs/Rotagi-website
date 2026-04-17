@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -32,7 +32,7 @@ function AdminLoginForm() {
     setLoading(true);
 
     try {
-      const success = await login(email, password, selectedProgram.slug);
+      const success = await login(email, password, selectedProgram.slug!);
       if (success) {
         router.push("/admin/dashboard");
       } else {
@@ -169,3 +169,4 @@ export default function AdminLoginPage() {
     </ProgramProvider>
   );
 }
+
