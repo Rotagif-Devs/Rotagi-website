@@ -1,39 +1,18 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import { publicService } from "@/lib/services/public.service";
-import { BlogPost } from "@/types/blog";
 import BlogHero from "@/components/blogComps/BlogHero";
 import BlogList from "@/components/blogComps/BlogList";
 import PTA from "@/components/globalComp/PTA";
 
-export default function BlogPage() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+import { BlogPost } from "@/types/blog";
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        console.log("Fetching blog posts...");
-        const data = await publicService.getBlogPosts({ limit: 50 });
-        console.log("Fetched blogs count:", data.length);
-        console.log("Blogs data:", data);
-        setPosts(data);
-      } catch (error) {
-        console.error("Failed to fetch blog posts:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchPosts();
-  }, []);
-
-  if (loading) {
-    return (
-      <main className="min-h-screen bg-[#FFF1F5] flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#D62D88]"></div>
-      </main>
-    );
+export default async function BlogPage() {
+  let posts: BlogPost[] = [];
+  try {
+    console.log("Fetching blog posts on server...");
+    posts = await publicService.getBlogPosts({ limit: 50 });
+    console.log("Fetched blogs count:", posts.length);
+  } catch (error) {
+    console.error("Failed to fetch blog posts:", error);
   }
 
   // Handle empty state
