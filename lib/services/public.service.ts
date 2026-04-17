@@ -4,7 +4,7 @@ import { events as EventType } from "@/types/event";
 import { ApiResponse } from "./auth.service";
 
 const ensureImageUrl = (url: string | undefined): string => {
-  if (!url) return "/logo.png";
+  if (!url) return "/wh.jpg";
   if (url.startsWith("http") || url.startsWith("data:") || url.startsWith("/")) return url;
   return `${API_BASE_URL}/${url}`;
 };
@@ -48,22 +48,48 @@ const parseContent = (content: any): string => {
   return "";
 };
 
+const formatDate = (dateStr: string) => {
+  if (!dateStr) return "March 15, 2026";
+  try {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  } catch {
+    return dateStr;
+  }
+};
+
 const normalizeBlog = (post: any): BlogPost | undefined => {
   if (!post) return undefined;
   
-  const title = post.title || post.name || post.heading;
-  const slug = post.slug || post.id || post._id;
+  const title = post.title || post.name || post.heading || "Untitled Post";
+  const slug = post.slug || post.id || post._id || "";
   
   if (!title && !slug) return undefined;
+
+  // Extract category from tags if available
+  let category: any = "News";
+  if (post.category) {
+    category = post.category;
+  } else if (Array.isArray(post.tags) && post.tags.length > 0) {
+    category = post.tags[0];
+  }
 
   return {
     ...post,
     id: post._id || post.id,
-    title: title || "Untitled Post",
-    slug: slug || "",
+    title,
+    slug,
     image: ensureImageUrl(post.coverImageUrl || post.imageUrl || post.image || post.thumbnail || post.cover),
     description: post.excerpt || post.description || "",
     content: parseContent(post.content),
+    date: formatDate(post.publishedAt || post.createdAt || post.date),
+    category: category,
+    status: post.status || "published",
+    author: {
+      name: post.author?.name || post.authorName || "ROTAGIF Team",
+      role: post.author?.role || post.authorRole || "Editorial",
+      image: ensureImageUrl(post.author?.image || post.authorImage)
+    }
   };
 };
 

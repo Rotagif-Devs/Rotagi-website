@@ -1,7 +1,7 @@
 "use client";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactNode, useState } from "react";
+import { ReactNode, Suspense, useState } from "react";
 import { AdminProvider } from "@/context/AdminContext";
 import { ProgramProvider } from "@/context/ProgramContext";
 import { useAnalytics } from "@/hooks/useAnalytics";
@@ -16,7 +16,9 @@ export default function Providers({ children }: { children: ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AnalyticsTracker />
+      <Suspense fallback={null}>
+        <AnalyticsTracker />
+      </Suspense>
       <AdminProvider>
         <ProgramProvider>{children}</ProgramProvider>
       </AdminProvider>
