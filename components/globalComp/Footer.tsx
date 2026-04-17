@@ -133,6 +133,14 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  href="/mentors/apply"
+                  className="hover:text-white transition-colors"
+                >
+                  Mentors
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/events"
                   className="hover:text-white transition-colors"
                 >
@@ -156,7 +164,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/contact"
+                  href="/mentors/apply"
                   className="hover:text-white transition-colors"
                 >
                   Become A Mentor
