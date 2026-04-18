@@ -79,7 +79,7 @@ export default function PrivacyPolicy() {
 </div>
 
 <div className="pt-8">
-  <h2 className="text-2xl font-bold text-gray-900 mb-4">Contact Us</h2>
+  <h2 className="text-2xl font-bold text-gray-800 mb-4">Contact Us</h2>
   <p className="text-gray-700 leading-relaxed">
     If you have questions about this Privacy Policy, please contact us at:{" "}
     <a 
