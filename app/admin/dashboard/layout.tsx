@@ -85,18 +85,18 @@ export default function AdminDashboardLayout({
           isSidebarOpen 
             ? (isMobile ? "translate-x-0 w-72" : "translate-x-0 w-72") 
             : (isMobile ? "-translate-x-full w-72" : "translate-x-0 w-24")
-        } bg-[#0a0a0a] text-white transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] flex flex-col fixed inset-y-0 z-50 border-r border-white/5 shadow-2xl lg:shadow-none`}
+        } bg-[#050505] text-white transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] flex flex-col fixed inset-y-0 z-50 border-r border-white/5 lg:shadow-none`}
       >
         <div className="p-8 flex items-center justify-between">
           <Link href="/admin/dashboard" className={`flex items-center gap-3 group ${(isMobile ? false : !isSidebarOpen) && "hidden"}`}>
-            <div className="w-8 h-8 bg-secondary rounded-lg flex items-center justify-center font-bold text-black rotate-3 group-hover:rotate-0 transition-transform">R</div>
-            <span className="font-cal-sans text-xl tracking-tight">ROTAGIF <span className="text-secondary">CMS</span></span>
+            <div className="w-9 h-9 bg-secondary rounded-xl flex items-center justify-center font-black text-white shadow-lg shadow-secondary/20 transition-transform hover:rotate-6">R</div>
+            <span className="font-cal-sans text-xl tracking-tight text-white">ROTAGIF <span className="text-secondary opacity-80">CMS</span></span>
           </Link>
           <button 
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             className={`p-2 hover:bg-white/10 rounded-xl transition-all ${(isMobile ? false : !isSidebarOpen) && "mx-auto"}`}
           >
-            {isSidebarOpen ? <X size={20} className="text-gray-400" /> : <Menu size={20} className="text-gray-400" />}
+            {isSidebarOpen ? <X size={20} className="text-gray-500" /> : <Menu size={20} className="text-gray-500" />}
           </button>
         </div>
 
@@ -105,25 +105,25 @@ export default function AdminDashboardLayout({
             <p className={`px-4 mb-4 text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] ${!isSidebarOpen && "text-center px-0 shrink-0"}`}>
               Main Navigation
             </p>
-            <nav className="space-y-1.5">
+            <nav className="space-y-2">
               {navItems.map((item) => {
-                const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
+                const isActive = pathname === item.href || (item.href !== "/admin/dashboard" && pathname.startsWith(`${item.href}/`)) || (item.href === "/admin/dashboard" && pathname === "/admin/dashboard");
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group ${
+                    className={`flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-500 group relative overflow-hidden ${
                       isActive 
-                        ? "bg-secondary text-black font-bold shadow-lg shadow-secondary/20" 
-                        : "text-gray-400 hover:text-white hover:bg-white/[0.03]"
+                        ? "bg-secondary text-white font-bold shadow-2xl shadow-secondary/40" 
+                        : "text-gray-500 hover:text-white hover:bg-white/[0.04]"
                     }`}
                   >
-                    <item.icon size={20} className={`${isActive ? "text-black" : "group-hover:text-secondary transition-colors"}`} />
-                    <span className={`${!isSidebarOpen && "hidden"} whitespace-nowrap text-sm tracking-wide`}>
+                    <item.icon size={20} className={`${isActive ? "text-white scale-110" : "group-hover:scale-110 transition-transform"}`} />
+                    <span className={`${!isSidebarOpen && "hidden"} whitespace-nowrap text-sm font-outfit tracking-wide`}>
                       {item.name}
                     </span>
                     {isActive && isSidebarOpen && (
-                      <div className="ml-auto w-1.5 h-1.5 rounded-full bg-black/40" />
+                        <div className="ml-auto w-2 h-2 rounded-full bg-white opacity-40" />
                     )}
                   </Link>
                 );
@@ -140,26 +140,29 @@ export default function AdminDashboardLayout({
         </div>
 
         <div className="p-6 mt-auto">
-          <div className="bg-white/[0.03] rounded-[2rem] p-4 border border-white/5">
+          <div className="bg-white/[0.04] rounded-[2rem] p-5 border border-white/10 shadow-inner">
             <div className={`flex items-center gap-4 ${!isSidebarOpen && "justify-center"}`}>
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 border border-white/10 flex items-center justify-center shrink-0 shadow-inner">
-                <User size={24} className="text-gray-400" />
+              <div className="w-11 h-11 rounded-full bg-secondary/10 border border-secondary/20 flex items-center justify-center shrink-0 overflow-hidden">
+                {user?.role === 'admin' ? (
+                  <img src="https://i.pravatar.cc/150?u=admin" alt="Admin" className="w-full h-full object-cover" />
+                ) : (
+                  <User size={20} className="text-secondary" />
+                )}
               </div>
               {isSidebarOpen && (
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs font-bold text-white truncate uppercase tracking-tighter">{user?.email?.split('@')[0]}</p>
-                  <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest mt-0.5">{user?.role}</p>
+                  <p className="text-sm font-bold text-white truncate font-outfit">ADMIN</p>
+                  <p className="text-[11px] text-gray-500 truncate lowercase font-medium">{user?.email}</p>
                 </div>
               )}
             </div>
             
             <button
               onClick={logout}
-              className={`mt-4 w-full flex items-center gap-4 px-4 py-3.5 rounded-xl text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all group ${!isSidebarOpen && "justify-center p-0 h-10 w-10 mx-auto bg-transparent border-none"}`}
-              title="Terminate Session"
+              className={`mt-5 w-full flex items-center gap-4 px-4 py-3.5 rounded-xl text-gray-400 hover:bg-red-500/10 hover:text-red-500 transition-all group font-bold tracking-wide ${!isSidebarOpen && "justify-center p-0 h-10 w-10 mx-auto bg-transparent border-none"}`}
             >
-              <LogOut size={20} className="group-hover:rotate-12 transition-transform" />
-              {isSidebarOpen && <span className="text-sm font-bold tracking-wide">Sign Out</span>}
+              <LogOut size={18} className="group-hover:-translate-x-1 transition-transform" />
+              {isSidebarOpen && <span className="text-sm">Sign Out</span>}
             </button>
           </div>
         </div>

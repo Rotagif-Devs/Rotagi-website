@@ -7,6 +7,7 @@ export const blogPosts: BlogPost[] = [
     title: "How AI Changed My Career Path",
     description: "Meet Amina, a She Ascend graduate who transitioned from teaching to AI product management.",
     category: "Success Story",
+    status: "published",
     date: "March 2026",
     image: "/blog-1.jpg",
     author: {
@@ -25,6 +26,7 @@ export const blogPosts: BlogPost[] = [
     title: "Beginner's Guide To AI Literacy",
     description: "A free downloadable toolkit for parents and educators introducing AI concepts to young learners.",
     category: "Resource",
+    status: "published",
     date: "February 2026",
     image: "/blog-2.jpg",
     author: {
@@ -43,6 +45,7 @@ export const blogPosts: BlogPost[] = [
     title: "SHE Empower 2026 Highlights",
     description: "Recap of our annual conference featuring workshops, mentorship sessions, and inspiring talks.",
     category: "Event",
+    status: "published",
     date: "January 2026",
     image: "/blog-2.jpg",
     author: {
@@ -61,6 +64,7 @@ export const blogPosts: BlogPost[] = [
     title: "How Inclusive Digital Futures Are Reshaping Education",
     description: "Exploring how technology is breaking down barriers and creating new opportunities for learners across Africa.",
     category: "News",
+    status: "published",
     date: "April 2026",
     image: "/blog-1.jpg",
     author: {

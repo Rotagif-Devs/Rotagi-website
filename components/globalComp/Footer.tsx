@@ -53,7 +53,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-4 pt-4 w-full">
           {/* Brand & Description */}
           <div className="lg:col-span-2">
-            <h2 className="text-4xl mb-6 font-cal-sans">ROTAGI</h2>
+            <Link href="/" aria-label="ROTAGI Home">
+              <h2 className="text-4xl mb-6 font-cal-sans">ROTAGI</h2>
+            </Link>
             <p className="text-gray-300 text-sm leading-relaxed mb-8 max-w-md">
               Empowering young African girls and women with AI literacy, digital
               confidence, and leadership skills.
@@ -62,7 +64,9 @@ export default function Footer() {
             {/* Newsletter */}
             <form onSubmit={handleSubscribe} className="space-y-3 max-w-sm lg:max-w-md">
               <div className="bg-white rounded-xl px-2 py-2 flex items-center shadow-md">
+                <label htmlFor="newsletter-email" className="sr-only">Join our newsletter</label>
                 <input
+                  id="newsletter-email"
                   type="email"
                   placeholder="Join our newsletter"
                   value={email}
@@ -129,6 +133,14 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  href="/mentors/apply"
+                  className="hover:text-white transition-colors"
+                >
+                  Mentors
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/events"
                   className="hover:text-white transition-colors"
                 >
@@ -152,7 +164,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/contact"
+                  href="/mentors/apply"
                   className="hover:text-white transition-colors"
                 >
                   Become A Mentor
@@ -208,6 +220,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:opacity-80 transition-opacity"
+                aria-label="Follow us on Facebook"
               >
                 <Facebook size={24} />
               </Link>
@@ -216,8 +229,9 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:opacity-80 transition-opacity"
+                aria-label="Follow us on X (Twitter)"
               >
-                <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
               </Link>
@@ -226,6 +240,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:opacity-80 transition-opacity"
+                aria-label="Follow us on Instagram"
               >
                 <Instagram size={24} />
               </Link>
@@ -234,6 +249,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:opacity-80 transition-opacity"
+                aria-label="Follow us on LinkedIn"
               >
                 <Linkedin size={24} />
               </Link>

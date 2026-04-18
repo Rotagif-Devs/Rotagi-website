@@ -3,7 +3,8 @@
 import React, { useState } from "react";
 import { events as EventType } from "@/types/event";
 import Button from "@/components/ui/Button";
-import { Save, X, Calendar, MapPin, Clock, Image as ImageIcon, Link as LinkIcon } from "lucide-react";
+import { Save, X, Calendar, MapPin, Clock, Image as ImageIcon, Link as LinkIcon, Upload } from "lucide-react";
+import { adminService } from "@/lib/services/admin.service";
 
 interface EventFormProps {
   initialData?: EventType;
@@ -29,6 +30,23 @@ export default function EventForm({ initialData, onSubmit, onCancel, isLoading }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file || !formData.id) {
+       if(!formData.id) alert("Please save the event first before uploading an image.");
+       return;
+    }
+    
+    try {
+      const updatedEvent = await adminService.uploadEventImage(formData.id, file);
+      setFormData(updatedEvent);
+      alert("Image uploaded successfully");
+    } catch (err) {
+      console.error("Upload failed", err);
+      alert("Failed to upload image");
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -157,28 +175,44 @@ export default function EventForm({ initialData, onSubmit, onCancel, isLoading }
 
           <div className="space-y-4">
             <label className="text-sm font-semibold text-gray-700">Event Image</label>
-            <div className="relative group">
-              <div className="aspect-video w-full rounded-2xl bg-gray-50 overflow-hidden border-2 border-dashed border-gray-100 flex items-center justify-center transition-all group-hover:border-secondary shadow-inner">
+            <div className="space-y-4">
+              {/* Clickable Image Preview */}
+              <div 
+                onClick={() => document.getElementById('event-image-upload')?.click()}
+                className="relative aspect-video w-full rounded-2xl bg-gray-50 overflow-hidden border-2 border-dashed border-gray-100 flex items-center justify-center cursor-pointer transition-all hover:bg-gray-100 group shadow-inner"
+              >
                 {formData.image ? (
                   <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />
                 ) : (
                   <div className="text-center p-6">
-                    <ImageIcon size={32} className="mx-auto text-gray-300 mb-2" />
-                    <p className="text-xs text-gray-500">No image selected</p>
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+                      <Upload size={24} className="text-secondary" />
+                    </div>
+                    <p className="text-sm font-bold text-gray-900">Click to upload image</p>
+                    <p className="text-xs text-gray-500 mt-1">PNG, JPG, or SVG up to 10MB</p>
                   </div>
                 )}
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                   <p className="text-white text-xs font-bold uppercase tracking-widest">Change URL</p>
-                </div>
               </div>
+
+              {/* URL Input with Icon */}
+              <div className="relative">
+                <LinkIcon size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                <input
+                  type="text"
+                  name="image"
+                  value={formData.image}
+                  onChange={handleChange}
+                  placeholder="...or paste image URL link"
+                  className="w-full pl-11 pr-4 py-4 bg-gray-50 border border-gray-100 rounded-xl focus:ring-2 focus:ring-secondary/5 focus:border-secondary transition-all text-xs font-medium"
+                />
+              </div>
+
               <input
-                type="text"
-                name="image"
-                value={formData.image}
-                onChange={handleChange}
-                placeholder="Paste event image URL..."
-                className="mt-4 w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl focus:ring-2 focus:ring-black/5 focus:border-black transition-all text-xs font-mono"
-                required
+                id="event-image-upload"
+                type="file"
+                className="hidden"
+                accept="image/*"
+                onChange={handleImageUpload}
               />
             </div>
           </div>
