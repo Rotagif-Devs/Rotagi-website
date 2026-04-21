@@ -86,7 +86,7 @@ export default function PrivacyPolicy() {
       href="mailto:info@rotagi.org" 
       className="text-[#D81B7E] italic font-medium hover:underline transition-all"
     >
-      info@rotagi.org
+      privacy@rotagif.com
     </a>
   </p>
 </div>
