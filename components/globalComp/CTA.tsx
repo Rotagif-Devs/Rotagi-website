@@ -18,8 +18,7 @@ export default function CTA() {
 
           <div className="flex flex-col items-start gap-6 md:max-w-[580px]">
             <p className="font-dm-sans text-darkgray text-left text-base leading-relaxed md:text-[16px] md:leading-[160%]">
-              Whether through donations, mentorship, or partnerships — your
-              support creates lasting change.
+             Support African girls and women to build skills, confidence, and leadership through AI. 
             </p>
 
             <div className="hidden md:flex gap-4">
