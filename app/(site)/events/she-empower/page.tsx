@@ -1,7 +1,16 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, MapPin, Clock, ChevronLeft, Users, Trophy, Coffee, Sparkles } from "lucide-react";
+import {
+  Calendar,
+  MapPin,
+  Clock,
+  ChevronLeft,
+  Users,
+  Trophy,
+  Coffee,
+  Sparkles,
+} from "lucide-react";
 import Button from "@/components/ui/Button";
 import Footer from "@/components/globalComp/Footer";
 
@@ -16,7 +25,10 @@ export default function SheEmpowerPage() {
             href="/events"
             className="text-pink-600 flex items-center gap-1 font-medium group transition-colors hover:text-pink-700"
           >
-            <ChevronLeft size={20} className="transition-transform group-hover:-translate-x-1" />
+            <ChevronLeft
+              size={20}
+              className="transition-transform group-hover:-translate-x-1"
+            />
             <span className="text-sm">Back to events</span>
           </Link>
         </div>
@@ -32,11 +44,12 @@ export default function SheEmpowerPage() {
                 SHE Empower Conference
               </h1>
               <p className="text-[#3D1A2A] text-lg md:text-xl leading-relaxed opacity-80 max-w-2xl">
-                A one-day annual inclusive conference for African girls and women. 
-                Bringing together successful women from diverse careers to speak, mentor, and inspire 
-                the next generation of leaders in AI, tech, and life skills.
+                A one-day annual inclusive conference for African girls and
+                women. Bringing together successful women from diverse careers
+                to speak, mentor, and inspire the next generation of leaders in
+                AI, tech, and life skills.
               </p>
-              
+
               <div className="mt-10 flex flex-wrap gap-4">
                 <Button variant="primary" className="px-8 py-4">
                   Register Now
@@ -46,7 +59,7 @@ export default function SheEmpowerPage() {
                 </Button>
               </div>
             </div>
-            
+
             {/* Event Meta Details */}
             <div className="flex flex-col gap-6 pt-2">
               <div className="flex items-center gap-4 text-[#1A1A1A]">
@@ -89,7 +102,6 @@ export default function SheEmpowerPage() {
               fill
               className="object-cover"
               priority
-              fallback="/wh.jpg"
             />
           </div>
         </section>
@@ -102,39 +114,47 @@ export default function SheEmpowerPage() {
                 What to Expect
               </h2>
               <p className="text-gray-600 text-lg">
-                Join us for an unforgettable day of learning, inspiration, and community building.
+                Join us for an unforgettable day of learning, inspiration, and
+                community building.
               </p>
             </div>
-            
+
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 {
                   icon: <Users className="w-6 h-6" />,
                   title: "Mentorship",
-                  desc: "Connect with successful women from various career paths."
+                  desc: "Connect with successful women from various career paths.",
                 },
                 {
                   icon: <Trophy className="w-6 h-6" />,
                   title: "Scholarships",
-                  desc: "Opportunity to win scholarships and educational grants."
+                  desc: "Opportunity to win scholarships and educational grants.",
                 },
                 {
                   icon: <Coffee className="w-6 h-6" />,
                   title: "Food & Games",
-                  desc: "Enjoy great food, interactive games, and fun activities."
+                  desc: "Enjoy great food, interactive games, and fun activities.",
                 },
                 {
                   icon: <Sparkles className="w-6 h-6" />,
                   title: "AI Workshops",
-                  desc: "Hands-on sessions covering AI, tech, and essential life skills."
-                }
+                  desc: "Hands-on sessions covering AI, tech, and essential life skills.",
+                },
               ].map((item, i) => (
-                <div key={i} className="p-8 rounded-[32px] bg-[#FDF2F8] border border-pink-50 transition-all hover:shadow-xl hover:shadow-pink-100/50">
+                <div
+                  key={i}
+                  className="p-8 rounded-[32px] bg-[#FDF2F8] border border-pink-50 transition-all hover:shadow-xl hover:shadow-pink-100/50"
+                >
                   <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-pink-600 mb-6 shadow-sm">
                     {item.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
               ))}
             </div>
@@ -149,10 +169,18 @@ export default function SheEmpowerPage() {
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
               {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                <div key={i} className="aspect-square rounded-2xl md:rounded-3xl bg-white overflow-hidden shadow-sm group">
+                <div
+                  key={i}
+                  className="aspect-square rounded-2xl md:rounded-3xl bg-white overflow-hidden shadow-sm group"
+                >
                   <div className="w-full h-full bg-pink-100 flex items-center justify-center text-pink-300 group-hover:scale-110 transition-transform duration-500">
                     {/* In a real app, this would be actual photos */}
-                    <Image src={`/archive-${i}.jpg`} alt={`Archive ${i}`} fill className="object-cover opacity-0" />
+                    <Image
+                      src={`/archive-${i}.jpg`}
+                      alt={`Archive ${i}`}
+                      fill
+                      className="object-cover opacity-0"
+                    />
                     <Sparkles className="w-8 h-8 opacity-20" />
                   </div>
                 </div>
