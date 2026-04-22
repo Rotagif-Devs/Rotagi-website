@@ -9,6 +9,7 @@ import {
   Facebook,
   Instagram,
   Linkedin,
+  Youtube,
 } from "lucide-react";
 import Button from "../ui/Button";
 import { useState } from "react";
@@ -57,8 +58,7 @@ export default function Footer() {
               <h2 className="text-4xl mb-6 font-cal-sans">ROTAGI</h2>
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed mb-8 max-w-md">
-              Empowering young African girls and women with AI literacy, digital
-              confidence, and leadership skills.
+              Where African Girls Discover, Learn and Lead
             </p>
 
             {/* Newsletter */}
@@ -117,35 +117,22 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/#impact"
-                  className="hover:text-white transition-colors"
-                >
-                  Impact
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/events"
                   className="hover:text-white transition-colors"
                 >
-                  Events
+                  SHE EMPOWER CONFERENCE
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/mentors/apply"
+                  href="/blog"
                   className="hover:text-white transition-colors"
                 >
-                  Mentors
+                  Blog
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/events"
-                  className="hover:text-white transition-colors"
-                >
-                  Resources
-                </Link>
+              <li className="text-gray-500">
+                Resources — COMING SOON
               </li>
             </ul>
           </div>
@@ -188,26 +175,24 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/#updates"
+                  href="/blog"
                   className="hover:text-white transition-colors"
                 >
                   Media & Press
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/code-of-conduct"
+                  className="hover:text-white transition-colors"
+                >
+                  Code of Conduct
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Our Office */}
-          <div>
-            <h4 className="text-white mb-6">Our Office</h4>
-            <div className="text-gray-300 text-sm space-y-2 leading-relaxed">
-              <p>No. 1 Magazar Close,</p>
-              <p>Eagle Billed Estate</p>
-              <p>Off Vio Mabuschi.</p>
-              <p>Federal Capital Territory (Abuja).</p>
-              <p>Nigeria.</p>
-            </div>
-          </div>
+
 
           {/* Contact */}
           <div>
@@ -216,7 +201,7 @@ export default function Footer() {
             {/* Social Icons */}
             <div className="flex gap-4 mb-8">
               <Link
-                href="https://facebook.com/rotagi"
+                href="https://www.facebook.com/officialrotagi"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:opacity-80 transition-opacity"
@@ -225,7 +210,7 @@ export default function Footer() {
                 <Facebook size={24} />
               </Link>
               <Link
-                href="https://x.com/rotagi"
+                href="https://x.com/officialrotagi"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:opacity-80 transition-opacity"
@@ -236,7 +221,7 @@ export default function Footer() {
                 </svg>
               </Link>
               <Link
-                href="https://instagram.com/rotagi"
+                href="https://www.instagram.com/officialrotagi/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:opacity-80 transition-opacity"
@@ -245,13 +230,22 @@ export default function Footer() {
                 <Instagram size={24} />
               </Link>
               <Link
-                href="https://linkedin.com/company/rotagi"
+                href="https://www.linkedin.com/company/officialrotagi"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:opacity-80 transition-opacity"
                 aria-label="Follow us on LinkedIn"
               >
                 <Linkedin size={24} />
+              </Link>
+              <Link
+                href="https://www.youtube.com/channel/UCq1Y6zDnFVdMrLClgyiz4AQ/reachinouttoafricangirlsinitiatve"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:opacity-80 transition-opacity"
+                aria-label="Follow us on YouTube"
+              >
+                <Youtube size={24} />
               </Link>
             </div>
 
@@ -264,22 +258,22 @@ export default function Footer() {
               <div className="flex items-center gap-3">
                 <Mail size={20} className="shrink-0" />
                 <Link
-                  href="mailto:info@rotagi.org"
+                  href="mailto:info@rotagif.com"
                   className="hover:text-white transition-colors"
                 >
-                  info@rotagi.org
+                  info@rotagif.com
                 </Link>
               </div>
               <div className="flex items-start gap-3">
                 <Phone size={20} className="shrink-0" />
                 <span>
-                  Phone (WhatsApp){" "}
+                  Phone (WhatsApp Only):{" "}
                   <Link
                     href="https://wa.me/2348032368560"
                     target="_blank"
                     className="hover:text-white transition-colors inline-block"
                   >
-                    +2348032368560
+                    +234 803 236 8560
                   </Link>
                 </span>
               </div>
@@ -288,8 +282,14 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-20  pt-8 border-t border-white/10 flex flex-col md:flex-row lg:mx-auto lg:w-fit items-center gap-4 text-gray-300 text-sm">
-          <p>© 2026 Reaching Out to African Girls Initiative (ROTAGI)  |  RC: 68666 </p>
+        <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row lg:mx-auto lg:w-fit items-center gap-4 text-gray-300 text-sm">
+          <div className="flex flex-col items-center gap-2">
+            <p>© 2026 ROTAGI. All rights reserved</p>
+            <div className="flex gap-4 text-xs text-gray-500">
+              <span>#AIinAfrica</span>
+              <span>#GirlsInTechnology</span>
+            </div>
+          </div>
           <div className="flex items-center gap-4">
             <span className="hidden md:inline text-gray-600">|</span>
             <Link

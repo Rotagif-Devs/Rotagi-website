@@ -23,7 +23,10 @@ export default function Marquee({ text, style, textStyle }: MarqueeProps) {
             "
             style={textStyle}
           >
-            {text} • {text} • {text} • {text}
+            <span>{text} ·</span>
+            <span>{text} ·</span>
+            <span>{text} ·</span>
+            <span>{text} ·</span>
           </span>
 
           <span
@@ -35,7 +38,10 @@ export default function Marquee({ text, style, textStyle }: MarqueeProps) {
             "
             style={textStyle}
           >
-            {text} • {text} • {text} • {text}
+            <span>{text} ·</span>
+            <span>{text} ·</span>
+            <span>{text} ·</span>
+            <span>{text} ·</span>
           </span>
         </div>
       </div>

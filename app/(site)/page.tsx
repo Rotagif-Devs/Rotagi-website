@@ -16,13 +16,13 @@ export default function Home() {
         <Mission />
         <Programs />
         <Marquee
-          text="Impact Areas · Impact Areas · Impact Areas · "
+          text="Impact Areas"
           style={{ backgroundColor: "black", border: "none" }}
           textStyle={{ color: "white" }}
         />
         <Impact />
         <Marquee
-          text=". trusted partners . trusted partners  . TRUSTED PARTNERS "
+          text="Trusted by Purpose Driven Organizations"
           style={{ backgroundColor: "black", border: "none" }}
           textStyle={{ color: "white" }}
         />
@@ -30,7 +30,7 @@ export default function Home() {
         <Marquee
           text={
             <>
-              What’s New · What’s New · What’s New
+              What’s New
               <Image
                 src="/Star 6.png"
                 alt="star"

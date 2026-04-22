@@ -23,14 +23,14 @@ export default function Partners() {
         {/* Title + description + button area */}
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <h2 className="text-black max-w-lg lg:w-[45%] font-cal-sans font-normal text-3xl md:text-[46px] leading-[100%] tracking-normal">
-            Trusted by Purpose-Driven Organizations
+            Trusted by Purpose Driven Organizations
           </h2>
 
           <div className="flex flex-col items-start gap-8 max-w-2xl">
             <p className="text-gray-700 font-dm-sans font-normal text-[16px] leading-[133%] tracking-normal text-justify md:text-left lg:text-justify lg:pr-8 w-full md:w-11/12 lg:w-full">
               We collaborate with partners who believe in measurable impact,
-              inclusive growth, and empowering the next generation of African
-              women.
+              inclusive growth and empowering the next generation of African
+              women
             </p>
 
             <div className="hidden md:block">
