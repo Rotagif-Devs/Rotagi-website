@@ -33,7 +33,7 @@ const PartnerInfo = () => {
               </h3>
               <p className="text-gray-700 text-sm leading-relaxed">
                 Directly support the empowerment of young African girls through
-                AI and tech education. Help us shape the innovators of tomorrow.
+                AI and tech education Help us shape the innovators of tomorrow
               </p>
             </div>
             {/* Item 2 */}
@@ -47,8 +47,8 @@ const PartnerInfo = () => {
               </h3>
               <p className="text-gray-700 text-sm leading-relaxed">
                 Develop joint initiatives that create lasting change in local
-                communities. Partner with us on transformative outreach
-                programs.
+                communities Partner with us on transformative outreach
+                programs
               </p>
             </div>
             {/* Item 3 */}
@@ -62,7 +62,7 @@ const PartnerInfo = () => {
               </h3>
               <p className="text-gray-700 text-sm leading-relaxed">
                 Connect with a growing network of skilled and motivated young
-                women leaders ready to thrive in the digital economy.
+                women leaders ready to thrive in the digital economy
               </p>
             </div>
           </div>
@@ -88,7 +88,7 @@ const PartnerInfo = () => {
               <ul className="text-sm text-gray-700 space-y-3 list-none pl-0">
                 <li className="flex items-start">
                   
-                 Support our programs through financial contributions and receive recognition across our platforms.
+                 Support our programs through financial contributions and receive recognition across our platforms
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#667085] mr-2 text-lg leading-none">
@@ -118,7 +118,7 @@ const PartnerInfo = () => {
               <ul className="text-sm text-gray-700 space-y-3 list-none pl-0">
                 <li className="flex items-start">
                
-                 Provide technology resources, tools, and platforms to enhance our program delivery
+                 Provide technology resources tools and platforms to enhance our program delivery
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#667085] mr-2 text-lg leading-none">
@@ -150,7 +150,7 @@ Hardware and equipment donations
               <ul className="text-sm text-gray-700 space-y-3 list-none pl-0">
                 <li className="flex items-start">
                  
-                 Connect with our graduates for internships, jobs, and career development opportunities
+                 Connect with our graduates for internships jobs and career development opportunities
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#667085] mr-2 text-lg leading-none">
@@ -178,8 +178,8 @@ Hardware and equipment donations
           Let's Build the Future Together
         </h2>
         <p className="text-gray-800 font-normal mb-10 max-w-xl mx-auto text-[0.95rem] leading-relaxed">
-          We believe that when girls grow, communities thrive. Partner with us
-          to scale our impact and reach more young innovators across Africa.
+          We believe that when girls grow communities thrive Partner with us
+          to scale our impact and reach more young innovators across Africa
         </p>
         <Button
           variant="primary"

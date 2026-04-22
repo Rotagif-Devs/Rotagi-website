@@ -48,9 +48,9 @@ const Empower = () => {
             </h1>
 
             <p className="mt-4 text-sm md:text-base text-gray-100 md:w-200">
-              Through AI technology, and life skills, we equip young African
-              girls with the confidence, knowledge, and leadership to shape a
-              just and equitable digital future.
+              Through AI technology and life skills we equip young African
+              girls with the confidence knowledge and leadership to shape a
+              just and equitable digital future
             </p>
           </motion.div>
         </div>

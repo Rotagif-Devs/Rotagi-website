@@ -5,19 +5,19 @@ const pillars = [
     icon: "/mission-icon-1.svg",
     title: "Mindset",
     subtitle: "Confidence & Leadership",
-    desc: "Building confidence, leadership and life skills through mentorship and workshops",
+    desc: "Building confidence leadership and life skills through mentorship and workshops",
   },
   {
     icon: "/mission-icon-2.svg",
     title: "Skillset",
     subtitle: "Practical Digital Tech Training",
-    desc: "Hands on programs in digital design, entrepreneurship and real world problem solving",
+    desc: "Hands on programs in digital design entrepreneurship and real world problem solving",
   },
   {
     icon: "/mission-icon-3.svg",
     title: "Future Set",
     subtitle: "Artificial Intelligence Literacy",
-    desc: "Equipping African girls and women with AI skills to innovate, lead and thrive",
+    desc: "Equipping African girls and women with AI skills to innovate lead and thrive",
   },
 ];
 export default function Mission() {

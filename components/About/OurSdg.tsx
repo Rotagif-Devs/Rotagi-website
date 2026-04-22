@@ -7,21 +7,21 @@ const OurSdg = () => {
     {
       title: "Quality Education",
       description:
-        "Ensuring inclusive and equitable quality education and promoting lifelong learning opportunities.",
+        "Ensuring inclusive and equitable quality education and promoting lifelong learning opportunities",
       icon: "/SDG4.svg",
       ringColor: "border-pink-200",
     },
     {
       title: "Gender Equality",
       description:
-        "Achieving gender equality and empowering all women and girls in the technology sector.",
+        "Achieving gender equality and empowering all women and girls in the technology sector",
       icon: "/SDG5.svg",
       ringColor: "border-orange-200",
     },
     {
       title: "Decent Work & Growth",
       description:
-        "Promoting sustained, inclusive economic growth and productive employment for young women.",
+        "Promoting sustained inclusive economic growth and productive employment for young women",
       icon: "/SDG8.svg",
       ringColor: "border-gray-200",
     },

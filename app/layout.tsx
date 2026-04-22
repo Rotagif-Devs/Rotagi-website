@@ -29,12 +29,12 @@ const calSans = Cal_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "ROTAGIF - Empowering African Girl Innovators",
+  title: "ROTAGIF Empowering African Girl Innovators",
   description:
-    "Equipping African girls and women with AI literacy, digital skills, and leadership confidence.",
+    "Equipping African girls and women with AI literacy digital skills and leadership confidence",
   openGraph: {
-    title: "ROTAGIF - Empowering African Girl Innovators",
-    description: "Equipping African girls and women with AI literacy, digital skills, and leadership confidence.",
+    title: "ROTAGIF Empowering African Girl Innovators",
+    description: "Equipping African girls and women with AI literacy digital skills and leadership confidence",
     url: "https://rotagif.org",
     siteName: "ROTAGIF",
     images: [
@@ -50,8 +50,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ROTAGIF - Empowering African Girl Innovators",
-    description: "Equipping African girls and women with AI literacy, digital skills, and leadership confidence.",
+    title: "ROTAGIF Empowering African Girl Innovators",
+    description: "Equipping African girls and women with AI literacy digital skills and leadership confidence",
     images: ["/hero-new.jpg"],
   },
   robots: {

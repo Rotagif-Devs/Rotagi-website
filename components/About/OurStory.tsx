@@ -6,19 +6,19 @@ const OurStory = () => {
     {
       titleTop: "The Beginning",
       titleMid: "Awesome Girls Club",
-      body: "ROTAGI began as Awesome Girls Club — a safe haven where young African girls could discover their strength, raise their voices, and unlock their true potential. Through mentorship, training, and meaningful conversations, we help girls recognize their worth and grow into confident young leaders.",
+      body: "ROTAGI began as Awesome Girls Club — a safe haven where young African girls could discover their strength raise their voices and unlock their true potential Through mentorship training and meaningful conversations we help girls recognize their worth and grow into confident young leaders",
       Icon: "/celebration-icon.svg",
     },
     {
       titleTop: "The Growth",
       titleMid: "Expanding Our Reach",
-      body: "As the movement grew, we reached over 300 girls, partnering with non-profit organizations across communities to deliver transformative programs focused on confidence-building and personal development.",
+      body: "As the movement grew we reached over 300 girls partnering with non profit organizations across communities to deliver transformative programs focused on confidence building and personal development",
       Icon: "/arrow.svg",
     },
     {
       titleTop: "The Evolution",
       titleMid: "ROTAGI",
-      body: "In 2025, ROTAGI evolved to respond to the realities of the digital age. We expanded our mission to include Artificial Intelligence education, digital safety, and essential life skills—preparing African girls not just to succeed, but to lead the future.",
+      body: "In 2025 ROTAGI evolved to respond to the realities of the digital age We expanded our mission to include Artificial Intelligence education digital safety and essential life skills preparing African girls not just to succeed but to lead the future",
       Icon: "/pin.svg",
     },
   ];
