@@ -12,19 +12,19 @@ const DonateDefault = ({ onNext }: Props) => {
   {
     title: "AI & Digital Skills Training",
     description:
-      "Your support funds both on-site and virtual hands on training that equips girls with practical AI and digital skills for real world problem solving",
+      "Your support funds both on-site and virtual hands-on training that equips girls with practical AI and digital skills for real-world problem solving.",
     img: "/icons2.png",
   },
   {
     title: "Mentorship & Leadership Development",
     description:
-      "Connects African girls and women with mentors and role models who support their personal growth, career direction and leadership confidence",
+      "Connects African girls and women with mentors and role models who support their personal growth, career direction, and leadership confidence.",
     img: "/icons4.png",
   },
   {
     title: "Access to Tools & Resources",
     description:
-      "Provides learning resources such as laptops, internet access and digital tools needed to participate and succeed",
+      "Provides learning resources such as laptops, internet access, and digital tools needed to participate and succeed.",
     img: "/icons3.png",
   },
 ];
@@ -58,7 +58,7 @@ const DonateDefault = ({ onNext }: Props) => {
         </div>
 
         <div className="mb-8 max-w-lg text-center font-dm-sans text-gray-700">
-          Unlocking opportunities for African girls through AI and innovation
+          Unlocking opportunities for African girls through AI and innovation.
         </div>
 
         <button

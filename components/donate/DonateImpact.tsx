@@ -13,11 +13,11 @@ const DonateImpact = () => {
           </h2>
           <p className="text-black my-8 font-thin">
             Too many African girls face limited access to technology, digital
-            education and career opportunities. Your donation helps close this
-            gap by providing practical training in AI, digital skills and
-            leadership equipping girls to build confidence, earn income and
+            education, and career opportunities. Your donation helps close this
+            gap by providing practical training in AI, digital skills, and
+            leadership, equipping girls to build confidence, earn income, and
             shape their future. Every contribution creates real opportunities
-            and long term impact
+            and long-term impact.
           </p>
         </div>
         <div className="relative  w-full h-full">

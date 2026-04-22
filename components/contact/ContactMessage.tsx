@@ -1,7 +1,9 @@
 "use client";
-import { Mail, Headphones, MapPin, ArrowRight } from "lucide-react";
-import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import Modal from "@/components/ui/Modal";
+import { termsData } from "@/lib/terms";
+import { Mail, Headphones, MapPin, ArrowRight } from "lucide-react";
 import { ContactFormValues } from "@/types/contact";
 import { submitContactMessage } from "@/lib/services/contact.service";
 import { SubmittingState, SuccessState, ErrorState } from "./ContactStates";
@@ -10,18 +12,12 @@ const contactItems = [
   {
     icon: Mail,
     title: "Email",
-    content: " info@rotagif.com ",
+    content: "info@rotagif.com",
   },
   {
     icon: Headphones,
-    title: "Phone",
-    content: "Phone (WhatsApp): +234 803 236 8560",
-  },
-  {
-    icon: MapPin,
-    title: "Address",
-    content:
-      "No. 1 Magazar Close, Eagle Billed Estate Off Vio Mabuchi Federal Capital Territory (Abuja) Nigeria",
+    title: "Phone (WhatsApp)",
+    content: "+234 803 236 8560",
   },
 ];
 
@@ -33,6 +29,9 @@ export default function ContactMessage() {
     name: string;
     email: string;
   } | null>(null);
+  
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
+  const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
 
   const {
     register,
@@ -90,12 +89,12 @@ export default function ContactMessage() {
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14 leading-relaxed">
         {/* Left */}
         <div className="">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl !normal-case font-bold tracking-tight text-slate-900 font-cal-sans">
-            Send us a message!
+          <h2 className="text-3xl sm:text-4xl md:text-5xl !normal-case font-cal-sans font-medium text-slate-900 mb-6">
+            Send Us a Message
           </h2>
           <p className="my-4 max-w-xl text-base leading-relaxed text-slate-500 sm:text-lg sm:leading-8 lg:leading-9">
-            For enquiries partnerships or programme information please
-            complete the form and our team will respond as soon as possible
+            For enquiries, partnerships, or programme information, please complete
+            the form and our team will respond as soon as possible.
           </p>
 
           <div className="mt-6 space-y-4 sm:mt-8 sm:space-y-5 lg:mt-10">
@@ -135,7 +134,7 @@ export default function ContactMessage() {
                 htmlFor="fullName"
                 className="mb-2 block text-base font-medium text-slate-500 sm:mb-3 sm:text-lg"
               >
-                Full name
+                Full Name
               </label>
               <input
                 id="fullName"
@@ -165,12 +164,12 @@ export default function ContactMessage() {
                 htmlFor="email"
                 className="mb-2 block text-base font-medium text-slate-500 sm:mb-3 sm:text-lg"
               >
-                Email
+                Email Address
               </label>
               <input
                 id="email"
                 type="email"
-                placeholder="your@email.com"
+                placeholder="jane@example.com"
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
@@ -246,18 +245,78 @@ export default function ContactMessage() {
               )}
             </div>
 
+            <p className="text-xs text-slate-500 text-center leading-relaxed">
+              By submitting this form, you agree to our{" "}
+              <button 
+                type="button"
+                onClick={() => setIsPrivacyModalOpen(true)}
+                className="text-[#e61e8a] hover:underline"
+              >
+                Privacy Policy
+              </button> and{" "}
+              <button 
+                type="button"
+                onClick={() => setIsTermsModalOpen(true)}
+                className="text-[#e61e8a] hover:underline"
+              >
+                Terms & Conditions
+              </button>.
+            </p>
+
             <button
               type="submit"
               disabled={formStatus === "submitting"}
               className="flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-[#e61e8a] px-5 text-base font-semibold text-white transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70 sm:h-16 sm:gap-3 sm:rounded-2xl sm:px-6 sm:text-lg lg:text-xl"
             >
-              {formStatus === "submitting" ? "Sending..." : "Send message"}
+              {formStatus === "submitting" ? "Sending..." : "Send Message"}
               <span></span>
               <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center" />
             </button>
           </form>
         </div>
       </div>
+
+      <Modal 
+        isOpen={isTermsModalOpen} 
+        onClose={() => setIsTermsModalOpen(false)} 
+        title="Terms & Conditions"
+      >
+        <div className="space-y-8">
+          {termsData.map((section) => (
+            <div key={section.id}>
+              <h4 className="text-xl font-cal-sans font-medium text-gray-900 mb-3">{section.title}</h4>
+              <div className="space-y-3">
+                {section.content.map((p, idx) => (
+                  <p key={idx} className="text-gray-600 text-sm leading-relaxed">{p}</p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </Modal>
+
+      <Modal 
+        isOpen={isPrivacyModalOpen} 
+        onClose={() => setIsPrivacyModalOpen(false)} 
+        title="Privacy Policy"
+      >
+        <div className="space-y-8">
+          <div>
+            <h4 className="text-xl font-cal-sans font-medium text-gray-900 mb-3">Privacy Policy</h4>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              ROTAGI is committed to protecting your privacy. We collect information to process program applications, communicate with you, and improve our services. We do not sell or share your personal information with third parties, except as required to deliver our programs or as mandated by Nigerian law.
+            </p>
+          </div>
+          <div>
+            <h4 className="text-xl font-cal-sans font-medium text-gray-900 mb-3">Information We Collect</h4>
+            <ul className="list-disc ml-5 space-y-2 text-gray-600 text-sm">
+              <li>Name, email address, and phone number.</li>
+              <li>Program application details.</li>
+              <li>Donation and payment records.</li>
+            </ul>
+          </div>
+        </div>
+      </Modal>
     </section>
   );
 }

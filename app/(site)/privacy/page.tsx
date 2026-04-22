@@ -24,7 +24,7 @@ export default function PrivacyPolicy() {
           <div>
             <h2 className="text-3xl font-cal-sans font-medium text-gray-900 mb-4">Introduction</h2>
             <p className="text-gray-700 leading-relaxed">
-              ROTAGI ("we" "our" or "us") is committed to protecting your privacy This Privacy Policy explains how we collect use disclose and safeguard your information when you visit our website or participate in our programs
+              ROTAGI ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or participate in our programs.
             </p>
           </div>
 
@@ -33,7 +33,7 @@ export default function PrivacyPolicy() {
             <h2 className="text-3xl font-cal-sans font-medium text-gray-900 mb-4">Information We Collect</h2>
             <p className="text-gray-700 mb-4">We collect information that you provide directly to us, including:</p>
             <ul className="list-disc ml-6 space-y-2 text-gray-700">
-              <li>Name email address and phone number</li>
+              <li>Name, email address, and phone number</li>
               <li>Program application information</li>
               <li>Payment and donation information</li>
               <li>Communication preferences</li>
@@ -56,7 +56,7 @@ export default function PrivacyPolicy() {
           <div>
             <h2 className="text-3xl font-cal-sans font-medium text-gray-900 mb-4">Information Sharing</h2>
             <p className="text-gray-700 leading-relaxed">
-              We do not sell trade or rent your personal information to third parties We may share your information with trusted service providers who assist us in operating our programs subject to confidentiality agreements
+              We do not sell, trade, or rent your personal information to third parties. We may share your information with trusted service providers who assist us in operating our programs, subject to confidentiality agreements.
             </p>
           </div>
 
@@ -64,7 +64,7 @@ export default function PrivacyPolicy() {
           <div>
             <h2 className="text-3xl font-cal-sans font-medium text-gray-900 mb-4">Data Security</h2>
             <p className="text-gray-700 leading-relaxed">
-              We implement appropriate technical and organizational measures to protect your personal information against unauthorized access alteration disclosure or destruction
+              We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.
             </p>
           </div>
 <div>
@@ -81,7 +81,7 @@ export default function PrivacyPolicy() {
 <div className="pt-8">
   <h2 className="text-3xl font-cal-sans font-medium text-gray-800 mb-4">Contact Us</h2>
   <p className="text-gray-700 leading-relaxed">
-    If you have questions about this Privacy Policy please contact us at{" "}
+    If you have questions about this Privacy Policy, please contact us at{" "}
     <a 
       href="mailto:info@rotagi.org" 
       className="text-[#D81B7E] italic font-medium hover:underline transition-all"

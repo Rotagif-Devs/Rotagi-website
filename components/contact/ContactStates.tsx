@@ -44,22 +44,16 @@ export const SuccessState = ({ name, email, onReset }: SuccessProps) => (
     </div>
 
     <h2 className="text-4xl md:text-5xl font-bold font-cal-sans text-gray-900 mb-6 max-w-2xl leading-tight">
-      Message <span className="text-[#D62D88]">Received!</span>
+      Thank you for your message
     </h2>
     
     <div className="bg-white/80 backdrop-blur-sm border border-pink-100 rounded-2xl p-6 mb-10 max-w-md shadow-sm">
       <p className="text-gray-600 font-medium mb-3">
-        Thank you <span className="text-gray-900 font-bold">{name}</span>, your message has been sent successfully.
+        Our team will be in touch as soon as possible.
       </p>
-      <div className="inline-flex items-center gap-2 px-4 py-2 bg-pink-50 rounded-full text-[#D62D88] text-xs font-bold uppercase tracking-wider">
-        <Mail className="w-3 h-3" />
-        Message sent by {name} ({email})
-      </div>
     </div>
 
-    <p className="text-gray-500 max-w-sm mb-12 text-sm leading-relaxed">
-      Our team will review your inquiry and get back to you at <span className="font-semibold text-gray-700">{email}</span> within 24-48 hours.
-    </p>
+
 
     <div className="flex flex-col sm:flex-row gap-4">
       <button
