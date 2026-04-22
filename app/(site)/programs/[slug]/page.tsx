@@ -54,17 +54,26 @@ export default async function ProgramDetailPage({
               {program.description}
             </div>
             <div className="flex flex-col md:flex-row md:gap-6 md:my-4 my-0 text-[#49594C] text-sm lg:text-base">
-              <div className="flex items-center gap-2 md:py-0 py-2">
-                <Clock width={20} height={20} />
-                {program.duration}
-              </div>
+              {program.duration === "Self-paced" ? (
+                <div className="flex items-center gap-2 md:py-0 py-2 italic font-medium text-pink-600">
+                  <Clock width={20} height={20} />
+                  Self-paced available when the ROTAGI learning platform launches.
+                </div>
+              ) : (
+                <>
+                  <div className="flex items-center gap-2 md:py-0 py-2">
+                    <Clock width={20} height={20} />
+                    {program.duration}
+                  </div>
+                  <div className="flex items-center gap-2 md:py-0 py-2">
+                    <CalendarRange width={20} height={20} />
+                    {program.schedule}
+                  </div>
+                </>
+              )}
               <div className="flex items-center gap-2 md:py-0 py-2">
                 <User width={20} height={20} />
                 {program.format}
-              </div>
-              <div className="flex items-center gap-2 md:py-0 py-2">
-                <CalendarRange width={20} height={20} />
-                {program.schedule}
               </div>
             </div>
           </div>

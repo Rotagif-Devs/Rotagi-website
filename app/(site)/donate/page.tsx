@@ -4,7 +4,7 @@ import DonateTransform from "@/components/donate/DonateTransform";
 const HERO_DATA = {
   title: "Empower Her Future Through AI",
   description:
-    "Your support equips African girls and young women with the skills and opportunities to thrive in the digital economy",
+    "Your support equips African girls and young women with the skills and opportunities to thrive in the digital economy.",
 };
 export default function DonatePage() {
   return (

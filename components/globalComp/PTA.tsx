@@ -2,23 +2,35 @@
 import Button from "../ui/Button";
 import VideoPlayer from "./Videoplayer";
 export default function PTA({ slug }: { slug?: string }) {
+  const getProgramName = (slug?: string) => {
+    switch (slug) {
+      case "she-ignite": return "She Ignite";
+      case "she-blossom": return "She Blossom";
+      case "she-blaze": return "She Blaze";
+      case "she-ascend": return "She Ascend";
+      default: return "our";
+    }
+  };
+
+  const programName = getProgramName(slug);
+
   return (
     <section className="bg-primary py-16 md:py-20 px-6 md:px-15 flex justify-center">
       <div className="flex w-full max-w-[1260px] flex-col gap-10 px-5 md:px-0 md:gap-[76px]">
         {/* Title + description + buttons area */}
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-12">
           <h2 className="max-w-lg text-dark text-4xl leading-tight tracking-tight md:max-w-[600px] md:text-[46px] md:leading-[110%]">
-            Ready to Get Started?
+            Be the First to Know
           </h2>
 
           <div className="flex flex-col items-start gap-6 md:max-w-[580px]">
             <p className="font-dm-sans text-darkgray text-left text-base leading-relaxed md:text-[16px] md:leading-[160%]">
-              Join She Ignite and take the next step in your technology journey.
+              {programName} free courses are coming soon. Sign up to be notified.
             </p>
 
             <div className="hidden md:flex gap-4">
-              <Button href={slug ? `/login?program=${slug}` : "/login"} variant="primary" className="">
-                Get Started Now
+              <Button href={slug ? `/waitlist?program=${slug}` : "/waitlist"} variant="primary" className="">
+                Join the Waitlist
               </Button>
             </div>
           </div>

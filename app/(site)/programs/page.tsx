@@ -6,14 +6,14 @@ import ProgramsCTA from "@/components/programs/ProgramsCTA";
 const HERO_DATA = {
   title: "Program Pathways",
   description:
-    "Discover age-appropriate pathways from curiosity to career. Each program is designed to meet you where you are and guide you toward your goals.",
+    "Discover your free learning pathway from your first spark of curiosity to confident leadership in AI, Digital Skills, and Life Skills. Every programme is built around you, at every stage of life.",
 };
 const FILTERS = [
-  { label: "All", value: "All" },
-  { label: "10-12", value: "Ages 10-12" },
-  { label: "13-15", value: "Ages 13-15" },
-  { label: "16-18", value: "Ages 16-18" },
-  { label: "18-40", value: "Ages 18-40" },
+  { label: "All Ages", value: "All" },
+  { label: "10-12 years", value: "10-12 years" },
+  { label: "13-15 years", value: "13-15 years" },
+  { label: "16-18 years", value: "16-18 years" },
+  { label: "18-40 years", value: "18-40 years" },
 ];
 
 export default function ProgramsPage() {
