@@ -39,8 +39,8 @@ export default function Footer() {
         setMessage(res.message || "Failed to subscribe. Please try again.");
       }
     } catch (err: any) {
-      setStatus("error")
-      setMessage(err.message || "An error occurred. Please try again.")
+      setStatus("error");
+      setMessage(err.message || "An error occurred. Please try again.");
     }
 
     // Reset status after 5 seconds
@@ -132,7 +132,7 @@ export default function Footer() {
                   href="/events"
                   className="hover:text-white transition-colors"
                 >
-                  SHE EMPOWER CONFERENCE
+                  SHE empower Conference
                 </Link>
               </li>
               <li>
@@ -143,7 +143,22 @@ export default function Footer() {
                   Blog
                 </Link>
               </li>
-              <li className="text-gray-500">Resources COMING SOON</li>
+              <li>
+                <Link
+                  href="/code-of-conduct"
+                  className="hover:text-white transition-colors"
+                >
+                  Code of Conduct
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/child-protection"
+                  className="hover:text-white transition-colors"
+                >
+                  Child Protection Policy
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -189,14 +204,6 @@ export default function Footer() {
                   className="hover:text-white transition-colors"
                 >
                   Media & Press
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/code-of-conduct"
-                  className="hover:text-white transition-colors"
-                >
-                  Code of Conduct
                 </Link>
               </li>
             </ul>
@@ -306,9 +313,15 @@ export default function Footer() {
             >
               Privacy Policy
             </Link>
-            <span className="hidden md:inline text-gray-600">|</span>
             <Link href="/terms" className="hover:text-white transition-colors">
               Terms & Conditions
+            </Link>
+            <span className="hidden md:inline text-gray-600">|</span>
+            <Link
+              href="/child-protection"
+              className="hover:text-white transition-colors"
+            >
+              Child Protection
             </Link>
           </div>
         </div>

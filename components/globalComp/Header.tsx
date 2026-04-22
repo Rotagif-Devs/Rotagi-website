@@ -1,16 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import WaitlistModal from "./WaitlistModal";
 
 const navItems = [
   { label: "About Us", href: "/about" },
   { label: "Programs", href: "/programs" },
-   { label: "Blog", href: "/blog" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -19,11 +20,12 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [lastProgramSlug, setLastProgramSlug] = useState<string | null>(null);
+  const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const checkAuth = () => {
       const token =
         typeof window !== "undefined"
@@ -56,121 +58,151 @@ export default function Header() {
   const isProgramDetailPage = pathname.startsWith("/programs/") && pathname !== "/programs";
   const programSlug = isProgramDetailPage ? pathname.split("/").pop() : null;
 
+  const getProgramName = (slug: string | null) => {
+    switch (slug) {
+      case "she-ignite": return "She Ignite";
+      case "she-blossom": return "She Blossom";
+      case "she-blaze": return "She Blaze";
+      case "she-ascend": return "She Ascend";
+      default: return "";
+    }
+  };
+
+  const programName = getProgramName(programSlug);
+
   const getStartedText = isLoggedIn
     ? "Dashboard"
-    : (isProgramsPage || isProgramDetailPage) ? "Login" : "Get Started";
+    : "Join Waitlist";
 
   const getStartedHref = isLoggedIn
     ? lastProgramSlug ? `/program/${lastProgramSlug}/dashboard` : "/dashboard"
-    : (isProgramsPage || isProgramDetailPage)
-      ? isProgramDetailPage ? `/login?program=${programSlug}` : "/login"
-      : "/programs";
+    : undefined;
+
+  const handleGetStartedClick = (e: React.MouseEvent) => {
+    if (!isLoggedIn) {
+      e.preventDefault();
+      setIsWaitlistModalOpen(true);
+      closeMenu();
+    }
+  };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-white/90 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-10">
-        {/* Logo */}
-        <div className="shrink-0">
-          <Link
-            href="/"
-            aria-label="ROTAGI Home"
-            className="text-2xl uppercase tracking-wider text-secondary transition-opacity hover:opacity-80 font-cal-sans"
-          >
-            ROTAGI
-          </Link>
-        </div>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Desktop navigation">
-          {navItems.map((item) => (
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-white/90 backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-10">
+          {/* Logo */}
+          <div className="shrink-0">
             <Link
-              key={item.label}
-              href={item.href}
-              className="text-sm font-medium text-gray-700 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-secondary focus-visible:outline-offset-4 rounded-sm"
+              href="/"
+              aria-label="ROTAGI Home"
+              className="text-2xl uppercase tracking-wider text-secondary transition-opacity hover:opacity-80 font-cal-sans"
             >
-              {item.label}
+              ROTAGI
             </Link>
-          ))}
-        </nav>
+          </div>
 
-        {/* Desktop Action */}
-        <div className="hidden md:block">
-          <Button
-            variant="secondary"
-            size="md"
-            href={getStartedHref}
-            className="mr-2 border-2 border-gray-400 rounded-full font-medium"
-          >
-            {getStartedText}
-          </Button>
-          <Button variant="primary" size="md" href="/donate">
-            Donate Now
-          </Button>
-        </div>
-
-        {/* Mobile Hamburger Button */}
-        <button
-          className="rounded-full p-2 text-gray-900 transition-colors hover:bg-gray-100 md:hidden focus-visible:ring-2 focus-visible:ring-secondary outline-none"
-          onClick={toggleMenu}
-          aria-label={isOpen ? "Close main menu" : "Open main menu"}
-          aria-expanded={isOpen}
-          aria-controls="mobile-menu"
-        >
-          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
-      </div>
-
-      {/* Mobile Menu Panel */}
-      <div
-        id="mobile-menu"
-        className={`fixed inset-x-0 top-[60px] z-50 overflow-hidden bg-white shadow-xl transition-all duration-300 ease-in-out md:hidden ${
-          isOpen
-            ? "max-h-[400px] border-b border-gray-100 opacity-100"
-            : "max-h-0 opacity-0"
-        }`}
-      >
-        <div className="flex flex-col gap-4 p-6">
-          <nav className="flex flex-col gap-4" aria-label="Mobile navigation">
+          {/* Desktop Navigation */}
+          <nav className="hidden items-center gap-8 md:flex" aria-label="Desktop navigation">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-lg font-medium text-gray-900 transition-colors hover:text-secondary"
-                onClick={closeMenu}
+                className="text-sm font-medium text-gray-700 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-secondary focus-visible:outline-offset-4 rounded-sm"
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          <Button
-            variant="secondary"
-            size="md"
-            href={getStartedHref}
-            onClick={closeMenu}
-            className="mr-2 border border-gray-400"
-          >
-            {getStartedText}
-          </Button>
-          <Button
-            variant="primary"
-            size="lg"
-            onClick={closeMenu}
-            href="/donate"
-            className="w-full justify-center text-base"
-          >
-            Donate Now
-          </Button>
-        </div>
-      </div>
+          {/* Desktop Action */}
+          <div className="hidden md:block">
+            <Button
+              variant="secondary"
+              size="md"
+              href={getStartedHref}
+              onClick={handleGetStartedClick}
+              className="mr-2 border-2 border-gray-400 rounded-full font-medium"
+            >
+              {getStartedText}
+            </Button>
+            <Button variant="primary" size="md" href="/donate">
+              Donate Now
+            </Button>
+          </div>
 
-      {/* Mobile Overlay */}
-      {isOpen && (
+          {/* Mobile Hamburger Button */}
+          <button
+            className="rounded-full p-2 text-gray-900 transition-colors hover:bg-gray-100 md:hidden focus-visible:ring-2 focus-visible:ring-secondary outline-none"
+            onClick={toggleMenu}
+            aria-label={isOpen ? "Close main menu" : "Open main menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+          >
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
+
+        {/* Mobile Menu Panel */}
         <div
-          className="fixed inset-0 top-[60px] z-40 bg-black/10 backdrop-blur-[2px] md:hidden"
-          onClick={closeMenu}
-        />
-      )}
-    </header>
+          id="mobile-menu"
+          className={`fixed inset-x-0 top-[60px] z-50 overflow-hidden bg-white shadow-xl transition-all duration-300 ease-in-out md:hidden ${
+            isOpen
+              ? "max-h-[400px] border-b border-gray-100 opacity-100"
+              : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="flex flex-col gap-4 p-6">
+            <nav className="flex flex-col gap-4" aria-label="Mobile navigation">
+              {navItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="text-lg font-medium text-gray-900 transition-colors hover:text-secondary"
+                  onClick={closeMenu}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
+            <Button
+              variant="secondary"
+              size="md"
+              href={getStartedHref}
+              onClick={(e) => {
+                handleGetStartedClick(e);
+                closeMenu();
+              }}
+              className="mr-2 border border-gray-400"
+            >
+              {getStartedText}
+            </Button>
+            <Button
+              variant="primary"
+              size="lg"
+              onClick={closeMenu}
+              href="/donate"
+              className="w-full justify-center text-base"
+            >
+              Donate Now
+            </Button>
+          </div>
+        </div>
+
+        {/* Mobile Overlay */}
+        {isOpen && (
+          <div
+            className="fixed inset-0 top-[60px] z-40 bg-black/10 backdrop-blur-[2px] md:hidden"
+            onClick={closeMenu}
+          />
+        )}
+      </header>
+
+      <WaitlistModal 
+        isOpen={isWaitlistModalOpen} 
+        onClose={() => setIsWaitlistModalOpen(false)} 
+        programName={programName}
+      />
+    </>
   );
 }
