@@ -31,9 +31,9 @@ export default function ContactHero({ title, btn }: Props) {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="max-w-5xl mx-auto"
           >
-            <h1 className="text-white mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-7xl leading-tight font-cal-sans">{title}</h1>
+            <h1 className="text-white !normal-case text-3xl sm:text-4xl md:text-5xl lg:text-7xl leading-tight font-cal-sans">{title}</h1>
           </motion.div>
-          <div className="mx-auto mb-4 flex justify-center">
+          <div className="mx-auto mb-0 flex justify-center">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
