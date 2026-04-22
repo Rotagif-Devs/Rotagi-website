@@ -4,7 +4,7 @@ import ContactMessage from "@/components/contact/ContactMessage";
 
 const HERO_DATA = {
   title: "Get in Touch",
-  btn: "Empowering African Girls to Lead the Digital Future We would love to hear from you",
+  btn: "CONTACT US",
 };
 
 export default function ContactPage() {
