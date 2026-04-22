@@ -12,7 +12,7 @@ const updates = [
   {
     category: "SUCCESS STORY",
     title: "How AI Changed My Career Path",
-    desc: "Meet Amina, a She Ascend graduate who transitioned from teaching to AI product management",
+    desc: "Meet Amina, a She Ascend graduate who transitioned from teaching to AI product management.",
     image: "/img-5.png",
     linkText: "Read Story",
     href: "/blog",
@@ -20,7 +20,7 @@ const updates = [
   {
     category: "COMMUNITY IMPACT",
     title: "Beginner's Guide To AI Literacy",
-    desc: "A comprehensive guide for educators introducing AI concepts to parents and young learners",
+    desc: "A comprehensive guide for educators introducing AI concepts to parents and young learners.",
     image: "/img-5.png",
     linkText: "Download Guide",
     href: "/blog",
@@ -28,7 +28,7 @@ const updates = [
   {
     category: "EVENT RECAP",
     title: "SHE Empower 2026 Highlights",
-    desc: "Recap of our annual conference featuring workshops, mentorship sessions and inspiring talks",
+    desc: "Recap of our annual conference featuring workshops, mentorship sessions, and inspiring talks.",
     image: "/img-5.png",
     linkText: "Watch Recap",
     href: "/events",
@@ -50,8 +50,8 @@ export default function Updates() {
 
           <div className="flex flex-col items-start gap-8 max-w-2xl">
             <p className="text-gray-700 font-dm-sans font-normal text-[16px] leading-[133%] tracking-normal text-justify md:text-left lg:text-justify lg:pr-8 w-full md:w-11/12 lg:w-full">
-              Support African girls and women to develop skills, confidence, and
-              leadership through Artificial Intelligence
+              Explore our latest programs, events, and stories, including
+              highlights, impact, and milestones.
             </p>
 
             <div className="hidden md:block">

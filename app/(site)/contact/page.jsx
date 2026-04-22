@@ -3,7 +3,7 @@ import ContactHero from "@/components/contact/ContactHero";
 import ContactMessage from "@/components/contact/ContactMessage";
 
 const HERO_DATA = {
-  title: "Get In Touch",
+  title: "Get in Touch",
   btn: "Empowering African Girls to Lead the Digital Future We would love to hear from you",
 };
 

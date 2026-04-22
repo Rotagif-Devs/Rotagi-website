@@ -39,8 +39,8 @@ export default function Footer() {
         setMessage(res.message || "Failed to subscribe. Please try again.");
       }
     } catch (err: any) {
-      setStatus("error");
-      setMessage(err.message || "An error occurred. Please try again.");
+      setStatus("error")
+      setMessage(err.message || "An error occurred. Please try again.")
     }
 
     // Reset status after 5 seconds
@@ -60,7 +60,7 @@ export default function Footer() {
               <h2 className="text-4xl mb-6 font-cal-sans">ROTAGI</h2>
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed mb-8 max-w-md">
-              Where African Girls Discover, Learn and Lead
+              Where African Girls Discover, Learn, and Lead.
             </p>
 
             {/* Newsletter */}

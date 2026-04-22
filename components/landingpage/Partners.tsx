@@ -30,7 +30,7 @@ export default function Partners() {
             <p className="text-gray-700 font-dm-sans font-normal text-[16px] leading-[133%] tracking-normal text-justify md:text-left lg:text-justify lg:pr-8 w-full md:w-11/12 lg:w-full">
               ROTAGI leverages trusted technology platforms and collaborates
               with organizations to deliver impactful programs that expand
-              access to opportunities for African girls
+              access to opportunities for African girls.
             </p>
 
             <div className="hidden md:block">
