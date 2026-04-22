@@ -2,9 +2,9 @@ import DonateHero from "@/components/donate/DonateHero";
 import DonateImpact from "@/components/donate/DonateImpact";
 import DonateTransform from "@/components/donate/DonateTransform";
 const HERO_DATA = {
-  title: "Empower Her Future Today With Your Support",
+  title: "Empower Her Future Today Through AI",
   description:
-    "Your donation helps young African girls and women with AI literacy, digital skills and leadership training.Every contribution creates access, confidence and lasting impact.",
+    "Your support equips African girls and young women with the skills and opportunities to thrive in the digital economy.",
 };
 export default function DonatePage() {
   return (

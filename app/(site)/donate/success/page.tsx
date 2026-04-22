@@ -35,7 +35,6 @@ function SuccessContent() {
       verificationStarted.current = true;
 
       try {
-        console.log("Verifying reference:", reference);
         const response = await verifyDonation(reference);
         
         if (response.success && response.data) {

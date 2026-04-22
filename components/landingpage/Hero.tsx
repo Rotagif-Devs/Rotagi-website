@@ -39,6 +39,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="text-white max-w-xl opacity-90 font-dm-sans font-normal text-[16px] leading-[160%] m-0 tracking-normal"
             >
+              The next breakthrough could come from her. We are making sure she's ready with AI literacy, digital skills, and leadership confidence. 
             </motion.p>
 
             <motion.div
