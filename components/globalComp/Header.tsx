@@ -56,7 +56,7 @@ export default function Header() {
 
   const isProgramsPage = pathname === "/programs";
   const isProgramDetailPage = pathname.startsWith("/programs/") && pathname !== "/programs";
-  const programSlug = isProgramDetailPage ? pathname.split("/").pop() : null;
+  const programSlug = isProgramDetailPage ? (pathname.split("/").pop() || null) : null;
 
   const getProgramName = (slug: string | null) => {
     switch (slug) {
