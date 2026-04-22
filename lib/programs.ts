@@ -36,16 +36,16 @@ export const programs: Program[] = [
     name: "She Ignite",
     slug: "she-ignite",
     level: "Beginner",
-    ageRange: "Ages 10-12",
+    ageRange: "Ages 10 to 12",
     tagline:
-      "Building foundational AI awareness and digital literacy for young girls through interactive learning and hands-on projects.",
+      "Building foundational AI awareness, digital literacy and life skills for young girls through interactive, hands on projects",
     headline:
-      "An introductory program designed to spark curiosity and build foundational digital literacy in young girls.",
+      "An introductory program designed to spark curiosity and build foundational digital literacy in young girls",
     description:
-      "She Ignite introduces young girls to the exciting world of technology and artificial intelligence through interactive, age-appropriate activities. Participants explore basic coding concepts, learn about AI in everyday life, and develop critical thinking skills that will serve them throughout their educational journey.",
+      "She Ignite introduces young girls to the exciting world of technology and artificial intelligence through interactive, age appropriate activities. Participants explore basic coding concepts, learn about AI in everyday life and develop critical thinking skills that will serve them throughout their educational journey",
     duration: "8 weeks",
     format: "Virtual",
-    schedule: "Rolling admissions - Next cohort starts March 2026",
+    schedule: "Rolling admissions | Next cohort starts March 2026",
     detailImage: "/program-detail-image.png",
     image: "/program-3.png",
     outcomes: {
@@ -71,7 +71,7 @@ export const programs: Program[] = [
         "Understand basic coding concepts and computational thinking",
         "Recognize AI in everyday life and how it works",
         "Develop confidence using digital tools safely",
-        "Build creative problem-solving skills",
+        "Build creative problem solving skills",
         "Create first technology projects with peers",
       ],
     },
@@ -90,25 +90,25 @@ export const programs: Program[] = [
     id: "she-blossom",
     name: "She Blossom",
     slug: "she-blossom",
-    ageRange: "Ages 13-15",
+    ageRange: "Ages 13 to 15",
     level: "Intermediate",
     tagline:
-      "Developing deeper technical skills and critical thinking through AI applications, coding basics, and problem-solving.",
+      "Developing deeper technical skills, life skills and critical thinking through AI applications and problem solving",
     headline:
-      "An intermediate program that builds practical AI and programming skills through hands-on projects.",
+      "An intermediate program that builds practical AI and programming skills through hands on projects",
     description:
-      "She Blossom builds on foundational knowledge to help teenage girls develop practical AI and programming skills. Through hands-on projects, participants learn to create AI applications, design digital solutions, and understand the ethical implications of technology in society.",
+      "She Blossom builds on foundational knowledge to help teenage girls develop practical AI and programming skills. Through hands on projects, participants learn to create AI applications, design digital solutions and understand the ethical implications of technology in society",
     duration: "12 weeks",
     format: "Hybrid",
-    schedule: "Cohorts start January, May, and September",
+    schedule: "Cohorts start January, May and September",
     detailImage: "/program-detail-image.png",
     image: "/program-2.png",
     outcomes: {
       title: "Outcomes",
       items: [
-        "Build AI-powered applications and web projects",
+        "Build AI powered applications and web projects",
         "Understand machine learning fundamentals",
-        "Design user-friendly digital solutions",
+        "Design user friendly digital solutions",
       ],
     },
     prerequisites: {
@@ -123,9 +123,9 @@ export const programs: Program[] = [
     achievements: {
       title: "What You'll Achieve",
       items: [
-        "Build AI-powered applications and web projects",
+        "Build AI powered applications and web projects",
         "Understand machine learning fundamentals",
-        "Design user-friendly digital solutions",
+        "Design user friendly digital solutions",
         "Work confidently with data and visualizations",
         "Lead collaborative technology projects",
       ],
@@ -136,7 +136,7 @@ export const programs: Program[] = [
         "Certificate of completion with portfolio showcase",
         "AI development toolkit and resources",
         "Personal mentorship from tech professionals",
-        "Portfolio of 3-5 completed projects",
+        "Portfolio of 3 to 5 completed projects",
         "Pathway to the Blaze advanced program",
         "Access to alumni network and events",
       ],
@@ -146,14 +146,14 @@ export const programs: Program[] = [
     id: "she-blaze",
     name: "She Blaze",
     slug: "she-blaze",
-    ageRange: "Ages 16-18",
+    ageRange: "Ages 16 to 18",
     level: "Advanced",
     headline:
-      "An advanced program preparing young women for tech careers through industry-standard tools and mentorship.",
+      "An advanced program preparing young women for tech careers through industry standard tools and mentorship",
     tagline:
-      "Advanced AI learning, leadership development, and career preparation for young women ready to lead in technology.",
+      "Advanced AI learning, leadership and life skills and career preparation for young women ready to lead in technology",
     description:
-      "She Blaze prepares young women for careers in technology and AI through advanced training, mentorship, and real-world project experience. Participants work on complex AI solutions, learn industry-standard tools, and develop leadership skills essential for success in the tech sector.",
+      "She Blaze prepares young women for careers in technology and AI through advanced training, mentorship and real world project experience. Participants work on complex AI solutions, learn industry standard tools and develop leadership skills essential for success in the tech sector",
     duration: "16 weeks",
     format: "Hybrid",
     schedule: "Cohorts start February and August",
@@ -162,8 +162,8 @@ export const programs: Program[] = [
     outcomes: {
       title: "Outcomes",
       items: [
-        "Build professional-grade AI applications",
-        "Master full-stack development and cloud deployment",
+        "Build professional grade AI applications",
+        "Master full stack development and cloud deployment",
         "Lead technical teams and manage complex projects",
       ],
     },
@@ -179,10 +179,10 @@ export const programs: Program[] = [
     achievements: {
       title: "What You'll Achieve",
       items: [
-        "Build professional-grade AI applications",
-        "Master full-stack development and cloud deployment",
+        "Build professional grade AI applications",
+        "Master full stack development and cloud deployment",
         "Lead technical teams and manage projects",
-        "Understand AI ethics, bias, and responsible innovation",
+        "Understand AI ethics, bias and responsible innovation",
         "Present technical work to industry professionals",
       ],
     },
@@ -190,8 +190,8 @@ export const programs: Program[] = [
       title: "What You'll Get",
       items: [
         "Professional certificate recognized by tech companies",
-        "Industry-standard portfolio with 5+ advanced projects",
-        "One-on-one mentorship from senior engineers",
+        "Industry standard portfolio with 5+ advanced projects",
+        "One on one mentorship from senior engineers",
         "Letter of recommendation for university applications",
         "Access to scholarship opportunities",
         "Job shadowing and internship connections",
@@ -203,24 +203,24 @@ export const programs: Program[] = [
     id: "she-ascend",
     name: "She Ascend",
     slug: "she-ascend",
-    ageRange: "Ages 18-40",
+    ageRange: "Ages 18 to 40",
     level: "Intermediate",
     headline:
-      "Professional AI skills training, entrepreneurship support, and career advancement for African women in tech.",
+      "Professional AI skills training, entrepreneurship support and career advancement for African women in tech",
     tagline:
-      "A professional program supporting women entering or transitioning into AI and technology careers.",
+      "A professional program supporting women entering or transitioning into AI and technology careers",
     description:
-      "She Ascend supports women entering or transitioning into AI and technology careers. Through intensive training, mentorship, and industry connections, participants gain the tech-related job needed to succeed in the rapidly evolving tech landscape while building a supportive professional network.",
-    duration: "20 weeks (part-time) or 12 weeks (intensive)",
+      "She Ascend supports women entering or transitioning into AI and technology careers. Through intensive training, mentorship and industry connections, participants gain the tech related job needed to succeed in the rapidly evolving tech landscape while building a supportive professional network",
+    duration: "20 weeks (part time) or 12 weeks (intensive)",
     format: "Hybrid",
-    schedule: "Rolling admissions - New cohorts monthly",
+    schedule: "Rolling admissions | New cohorts monthly",
     detailImage: "/program-detail-image.png",
     image: "/program-4.png",
     outcomes: {
       title: "Key Outcomes",
       items: [
-        "Master industry-standard AI development tools and practices",
-        "Build a professional portfolio of production-ready projects",
+        "Master industry standard AI development tools and practices",
+        "Build a professional portfolio of production ready projects",
         "Network with hiring managers and tech recruiters",
       ],
     },
@@ -236,8 +236,8 @@ export const programs: Program[] = [
     achievements: {
       title: "What You'll Achieve",
       items: [
-        "Master industry-standard AI development tools and practices",
-        "Build a professional portfolio of production-ready projects",
+        "Master industry standard AI development tools and practices",
+        "Build a professional portfolio of production ready projects",
         "Network with hiring managers and tech recruiters",
         "Develop job search strategies and interview skills",
         "Join a supportive community of women in tech",
@@ -247,7 +247,7 @@ export const programs: Program[] = [
       title: "What You'll Get",
       items: [
         "Professional certificate in AI Development",
-        "Portfolio of 7+ production-ready projects",
+        "Portfolio of 7+ production ready projects",
         "Personal career coach and technical mentor",
         "Access to job placement support",
         "Introduction to hiring partners",

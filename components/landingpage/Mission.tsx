@@ -5,19 +5,19 @@ const pillars = [
     icon: "/mission-icon-1.svg",
     title: "Mindset",
     subtitle: "Confidence & Leadership",
-    desc: "Building confidence, leadership, and life skills through mentorship and workshops.",
+    desc: "Building confidence, leadership and life skills through mentorship and workshops",
   },
   {
     icon: "/mission-icon-2.svg",
     title: "Skillset",
     subtitle: "Practical Digital Tech Training",
-    desc: "Hands-on programs in digital design, entrepreneurship, and real-world problem-solving.",
+    desc: "Hands on programs in digital design, entrepreneurship and real world problem solving",
   },
   {
     icon: "/mission-icon-3.svg",
-    title: "Future-Set",
-    subtitle: "Essential AI Literacy",
-    desc: "Equipping African girls and women with AI skills to innovate, lead, and thrive.",
+    title: "Future Set",
+    subtitle: "Artificial Intelligence Literacy",
+    desc: "Equipping African girls and women with AI skills to innovate, lead and thrive",
   },
 ];
 export default function Mission() {
@@ -28,7 +28,8 @@ export default function Mission() {
           Our Integrated Mission
         </h2>
         <p className="max-w-3xl text-gray-700 mb-20 font-dm-sans font-normal text-[18px] leading-[35px] tracking-[-0.01em] text-center">
-           ROTAGI equips African girls and women across Africa with AI literacy and digital skills to build solutions and lead the global economy. 
+          ROTAGI equips African girls and women across Africa with AI literacy
+          and digital skills to build solutions and lead the global economy
         </p>
         <div className="grid md:grid-cols-3 gap-12 lg:gap-20 w-full">
           {pillars.map((item, i) => (
