@@ -3,7 +3,7 @@ import ContactHero from "@/components/contact/ContactHero";
 import ContactMessage from "@/components/contact/ContactMessage";
 
 const HERO_DATA = {
-  title: "Get in Touch",
+  title: "Get Involved",
   btn: "CONTACT US",
 };
 
