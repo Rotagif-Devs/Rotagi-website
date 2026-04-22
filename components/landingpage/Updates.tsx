@@ -45,13 +45,13 @@ export default function Updates() {
         {/* Title + description + button area */}
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <h2 className="text-black max-w-lg lg:w-[45%] font-cal-sans font-normal text-3xl md:text-[46px] leading-[100%] tracking-normal">
-            Updates from the Work That Matters
+            Updates from Our Work & Impact
           </h2>
 
           <div className="flex flex-col items-start gap-8 max-w-2xl">
             <p className="text-gray-700 font-dm-sans font-normal text-[16px] leading-[133%] tracking-normal text-justify md:text-left lg:text-justify lg:pr-8 w-full md:w-11/12 lg:w-full">
-              Program highlights, impact milestones and how we’re advancing
-              opportunity and digital empowerment
+              Support African girls and women to develop skills, confidence, and
+              leadership through Artificial Intelligence
             </p>
 
             <div className="hidden md:block">

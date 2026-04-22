@@ -36,7 +36,7 @@ const ExploreEvent = () => {
       <section className="lg:px-8 pb-10 pt-0 px-4">
         <h4 className="py-4">Explore Events</h4>
         <div className="bg-white p-12 rounded-3xl text-center shadow-sm border border-pink-50">
-          <p className="text-gray-500">No upcoming events found. Check back later!</p>
+          <p className="text-gray-500">No upcoming events found Check back later</p>
         </div>
       </section>
     );

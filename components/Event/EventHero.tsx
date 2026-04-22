@@ -11,8 +11,8 @@ const EventsHero = () => {
             Upcoming Workshops
           </h3>
           <p className="text-[#46455F] font-medium text-sm leading-relaxed py-4 w-full">
-            Join us for workshops, conferences, networking events, and community gatherings.
-            Connect with fellow tech enthusiasts and expand your skills.
+            Join us for workshops conferences networking events and community gatherings
+            Connect with fellow tech enthusiasts and expand your skills
           </p>
         </div>
 

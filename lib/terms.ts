@@ -4,16 +4,16 @@ export const termsData: TermsSection[] = [
     id: "introduction",
     title: "Introduction",
     content: [
-      "Welcome to ROTAGI. These Terms and Conditions govern your use of the ROTAGI website and all services, programmes, and resources provided through it. By using this website, you agree to these terms. If you do not agree, please do not use this website.",
-      "ROTAGI may update these terms at any time. Updated terms will be posted on this page. Continued use of the website means you accept any changes",
+      "Welcome to ROTAGI These Terms and Conditions govern your use of the ROTAGI website and all services programmes and resources provided through it By using this website you agree to these terms If you do not agree please do not use this website",
+      "ROTAGI may update these terms at any time Updated terms will be posted on this page Continued use of the website means you accept any changes",
     ],
   },
   {
     id: "about",
     title: "About ROTAGI",
     content: [
-      "Reaching Out to African Girls Initiative (ROTAGI) (RC: 68666) is a registered Nigerian nonprofit organisation dedicated to equipping African girls and women with AI literacy, digital skills, life skills, and leadership confidence to lead in the digital economy.",
-      "ROTAGI delivers programmes both online and in person (hybrid), as well as community events, mentorship, and partnerships. ",
+      "Reaching Out to African Girls Initiative (ROTAGI) (RC: 68666) is a registered Nigerian nonprofit organisation dedicated to equipping African girls and women with AI literacy digital skills life skills and leadership confidence to lead in the digital economy",
+      "ROTAGI delivers programmes both online and in person (hybrid) as well as community events mentorship and partnerships ",
     ],
   },
   {

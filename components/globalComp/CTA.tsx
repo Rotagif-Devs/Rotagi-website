@@ -12,13 +12,13 @@ export default function CTA() {
         {/* Title + description + buttons area */}
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-12">
           <h2 className="font-cal-sans text-dark text-3xl leading-tight tracking-tight md:max-w-[600px] md:text-[38px] md:leading-[110%]">
-            Join Us in Empowering <br className="hidden md:block" /> the Next
-            Generation
+            Join Us in Empowering <br className="hidden md:block" /> African
+            girls today
           </h2>
 
           <div className="flex flex-col items-start gap-6 md:max-w-[580px]">
             <p className="font-dm-sans text-darkgray text-left text-base leading-relaxed md:text-[16px] md:leading-[160%]">
-              Support African girls and women to build skills, confidence and
+              Support African girls and women to build skills confidence and
               leadership through AI
             </p>
 

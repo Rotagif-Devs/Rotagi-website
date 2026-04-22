@@ -47,8 +47,8 @@ const page = () => {
         Become a Mentor
       </h1>
       <p className="mb-8 max-w-2xl text-lg font-light leading-relaxed">
-        Share your knowledge, experience, and passion for technology with the next generation of 
-        African women in tech. Make a lasting impact through mentorship.
+        Share your knowledge experience and passion for technology with the next generation of 
+        African women in tech Make a lasting impact through mentorship
       </p>
       <Button className="rounded-full">
         Apply to Mentor
@@ -62,8 +62,8 @@ const page = () => {
         Why Mentorship Matters
       </h2>
       <p className="text-xl leading-relaxed text-gray-600">
-        Mentors play a crucial role in building confidence, providing guidance, and 
-        opening doors for aspiring tech professionals.
+        Mentors play a crucial role in building confidence providing guidance and 
+        opening doors for aspiring tech professionals
       </p>
     </div>
   </section>

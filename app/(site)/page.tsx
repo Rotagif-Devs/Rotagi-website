@@ -22,24 +22,13 @@ export default function Home() {
         />
         <Impact />
         <Marquee
-          text="Trusted by Purpose Driven Organizations"
+          text="Powered by Trusted Platforms & Supporters"
           style={{ backgroundColor: "black", border: "none" }}
           textStyle={{ color: "white" }}
         />
         <Partners />
         <Marquee
-          text={
-            <>
-              What’s New
-              <Image
-                src="/Star 6.png"
-                alt="star"
-                width={1080}
-                height={1080}
-                className="w-10 h-10 -ml-4 relative -top-12"
-              />
-            </>
-          }
+          text="latest updates & impact"
           style={{ backgroundColor: "var(--color-orange)", border: "none" }}
           textStyle={{ color: "white" }}
         />

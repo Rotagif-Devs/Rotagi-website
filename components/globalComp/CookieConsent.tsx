@@ -65,8 +65,8 @@ const CookieConsent = () => {
                 </div>
                 
                 <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
-                  We use cookies to improve your experience and analyze site traffic. 
-                  Read our <Link href="/privacy" className="text-secondary hover:underline font-medium">Privacy Policy</Link> for more details.
+                  We use cookies to improve your experience and analyze site traffic
+                  Read our <Link href="/privacy" className="text-secondary hover:underline font-medium">Privacy Policy</Link> for more details
                 </p>
                 
                 <div className="flex gap-3">

@@ -22,7 +22,7 @@ export default function Programs() {
         <div className="hidden md:block mx-auto my-10 lg:mb-20 max-w-3xl text-center">
           <h2 className="text-white font-cal-sans capitalize">Our Programs</h2>
           <p className="mx-auto mt-6 max-w-2xl text-white/70 text-lg md:text-xl font-dm-sans leading-relaxed">
-            Age appropriate learning pathways designed to build skills,
+            Age appropriate learning pathways designed to build skills
             confidence and leadership at every stage
           </p>
         </div>
@@ -31,7 +31,7 @@ export default function Programs() {
         <div className="md:hidden flex flex-col text-center justify-center items-center mb-6 mr-6">
           <h2 className="text-white font-cal-sans lowercase">Our Programs</h2>
           <p className="mx-auto mt-6 max-w-2xl text-white/90 text-lg md:text-xl font-dm-sans leading-loose text-center">
-            Age appropriate learning pathways designed to build skills,
+            Age appropriate learning pathways designed to build skills
             confidence and leadership at every stage
           </p>
         </div>

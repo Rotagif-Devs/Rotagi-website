@@ -74,7 +74,7 @@ export default function MentorApplyPage() {
           </div>
           <h1 className="text-3xl font-cal-sans text-[#1A1A1A] mb-4">Application Submitted!</h1>
           <p className="text-gray-600 mb-10 leading-relaxed">
-            Thank you for applying to be a mentor at ROTAGIF. Our team will review your profile and get back to you shortly.
+            Thank you for applying to be a mentor at ROTAGIF Our team will review your profile and get back to you shortly
           </p>
           <Link href="/">
             <Button className="bg-[#D62D88] hover:bg-pink-700 text-white rounded-full px-10 py-4">
@@ -101,7 +101,7 @@ export default function MentorApplyPage() {
           <div className="mb-12">
             <h1 className="text-4xl md:text-5xl font-cal-sans text-[#1A1A1A] mb-4">Become a Mentor</h1>
             <p className="text-gray-600 text-lg">
-              Help us empower the next generation of African girl innovators with your expertise.
+              Help us empower the next generation of African girl innovators with your expertise
             </p>
           </div>
 
@@ -183,7 +183,7 @@ export default function MentorApplyPage() {
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700 ml-1">Expertise (e.g. AI, Product, UX)</label>
+                <label className="text-sm font-medium text-gray-700 ml-1">Expertise (e.g. AI Product UX)</label>
                 <input
                   required
                   name="expertise"

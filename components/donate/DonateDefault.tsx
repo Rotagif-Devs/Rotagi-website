@@ -12,19 +12,19 @@ const DonateDefault = ({ onNext }: Props) => {
   {
     title: "AI & Digital Skills Training",
     description:
-      "Your support funds both on-site and virtual hands-on training that equips girls with practical AI and digital skills for real-world problem solving. ",
+      "Your support funds both on-site and virtual hands on training that equips girls with practical AI and digital skills for real world problem solving",
     img: "/icons2.png",
   },
   {
     title: "Mentorship & Leadership Development",
     description:
-      "Connects African girls and women with mentors and role models who support their personal growth, career direction, and leadership confidence.",
+      "Connects African girls and women with mentors and role models who support their personal growth, career direction and leadership confidence",
     img: "/icons4.png",
   },
   {
     title: "Access to Tools & Resources",
     description:
-      "Provides to learning resources such as laptops, internet access, and digital tools needed to participate and succeed. ",
+      "Provides learning resources such as laptops, internet access and digital tools needed to participate and succeed",
     img: "/icons3.png",
   },
 ];
@@ -57,15 +57,19 @@ const DonateDefault = ({ onNext }: Props) => {
           ))}
         </div>
 
+        <div className="mb-8 max-w-lg text-center font-dm-sans text-gray-700">
+          Unlocking opportunities for African girls through AI and innovation
+        </div>
+
         <button
-          className="w-[50%] px-6 py-3 my-10 bg-[#D62D88] text-white rounded-full hover:bg-pink-600 transition cursor-pointer"
+          className="w-[50%] px-6 py-3 mb-10 bg-[#D62D88] text-white rounded-full hover:bg-pink-600 transition cursor-pointer"
           onClick={onNext}
         >
           Donate Now
         </button>
 
-        <div className="mb-5 flex flex-col md:flex-row items-center text-base">
-          Looking to collaborate at large scale?
+        <div className="mb-5 flex flex-col md:flex-row items-center text-base gap-2">
+          Looking to partner or sponsor at scale?
           <span className="text-[#D62D88] text-base flex items-center">
             <Image
               src="/fwdArrow.png"
@@ -74,7 +78,7 @@ const DonateDefault = ({ onNext }: Props) => {
               height={25}
               className="object-contain"
             />
-            <Link href="/">Partner with us</Link>
+            <Link href="/partner">Partner with us</Link>
           </span>
         </div>
       </div>

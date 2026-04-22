@@ -14,25 +14,25 @@ const OurValue = () => {
     {
       title: "Equitable Access",
       description:
-        "Breaking down barriers to ensure high-quality tech education reaches even the most remote communities.",
+        "Breaking down barriers to ensure high quality tech education reaches even the most remote communities",
       icon: "/Team.svg",
     },
     {
       title: "Gender Equality",
       description:
-        "Actively working to close the digital divide and elevate female voices in male-dominated tech sectors.",
+        "Actively working to close the digital divide and elevate female voices in male dominated tech sectors",
       icon: "/Gender-equal.svg",
     },
     {
       title: "Responsible Innovation",
       description:
-        "Teaching ethical AI development that considers cultural context and social responsibility.",
+        "Teaching ethical AI development that considers cultural context and social responsibility",
       icon: "/innovation.svg",
     },
     {
       title: "Social Impact",
       description:
-        "Measuring our success by the growth, employment, and local influence of our graduates.",
+        "Measuring our success by the growth employment and local influence of our graduates",
       icon: "/social-impact.svg",
     },
   ];

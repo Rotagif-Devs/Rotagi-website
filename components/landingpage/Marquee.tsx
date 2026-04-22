@@ -4,9 +4,10 @@ interface MarqueeProps {
   text: React.ReactNode;
   style?: React.CSSProperties;
   textStyle?: React.CSSProperties;
+  hideDot?: boolean;
 }
 
-export default function Marquee({ text, style, textStyle }: MarqueeProps) {
+export default function Marquee({ text, style, textStyle, hideDot }: MarqueeProps) {
   return (
     <div
       className="w-full overflow-hidden bg-primary py-6 md:py-10 border-y border-black/5"
@@ -23,10 +24,10 @@ export default function Marquee({ text, style, textStyle }: MarqueeProps) {
             "
             style={textStyle}
           >
-            <span>{text} ·</span>
-            <span>{text} ·</span>
-            <span>{text} ·</span>
-            <span>{text} ·</span>
+            <span>{text} {!hideDot && "·"}</span>
+            <span>{text} {!hideDot && "·"}</span>
+            <span>{text} {!hideDot && "·"}</span>
+            <span>{text} {!hideDot && "·"}</span>
           </span>
 
           <span
@@ -38,10 +39,10 @@ export default function Marquee({ text, style, textStyle }: MarqueeProps) {
             "
             style={textStyle}
           >
-            <span>{text} ·</span>
-            <span>{text} ·</span>
-            <span>{text} ·</span>
-            <span>{text} ·</span>
+            <span>{text} {!hideDot && "·"}</span>
+            <span>{text} {!hideDot && "·"}</span>
+            <span>{text} {!hideDot && "·"}</span>
+            <span>{text} {!hideDot && "·"}</span>
           </span>
         </div>
       </div>

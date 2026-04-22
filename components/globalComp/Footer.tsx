@@ -18,7 +18,9 @@ import { Loader2, CheckCircle, AlertCircle } from "lucide-react";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
   const [message, setMessage] = useState("");
 
   const handleSubscribe = async (e: React.FormEvent) => {
@@ -62,9 +64,14 @@ export default function Footer() {
             </p>
 
             {/* Newsletter */}
-            <form onSubmit={handleSubscribe} className="space-y-3 max-w-sm lg:max-w-md">
+            <form
+              onSubmit={handleSubscribe}
+              className="space-y-3 max-w-sm lg:max-w-md"
+            >
               <div className="bg-white rounded-xl px-2 py-2 flex items-center shadow-md">
-                <label htmlFor="newsletter-email" className="sr-only">Join our newsletter</label>
+                <label htmlFor="newsletter-email" className="sr-only">
+                  Join our newsletter
+                </label>
                 <input
                   id="newsletter-email"
                   type="email"
@@ -82,18 +89,23 @@ export default function Footer() {
                   disabled={status === "loading" || status === "success"}
                   className="w-fit justify-center text-base rounded-md px-4 cursor-pointer disabled:opacity-70"
                 >
-                  {status === "loading" ? <Loader2 className="animate-spin" size={18} /> : 
-                   status === "success" ? "Subscribed" : "Subscribe"}
+                  {status === "loading" ? (
+                    <Loader2 className="animate-spin" size={18} />
+                  ) : status === "success" ? (
+                    "Subscribed"
+                  ) : (
+                    "Subscribe"
+                  )}
                 </Button>
               </div>
-              
+
               {status === "success" && (
                 <div className="flex items-center gap-2 text-green-400 text-xs font-medium animate-in fade-in slide-in-from-top-1">
                   <CheckCircle size={14} />
                   <span>{message}</span>
                 </div>
               )}
-              
+
               {status === "error" && (
                 <div className="flex items-center gap-2 text-red-400 text-xs font-medium animate-in fade-in slide-in-from-top-1">
                   <AlertCircle size={14} />
@@ -131,9 +143,7 @@ export default function Footer() {
                   Blog
                 </Link>
               </li>
-              <li className="text-gray-500">
-                Resources — COMING SOON
-              </li>
+              <li className="text-gray-500">Resources COMING SOON</li>
             </ul>
           </div>
 
@@ -192,8 +202,6 @@ export default function Footer() {
             </ul>
           </div>
 
-
-
           {/* Contact */}
           <div>
             <h4 className="text-white mb-6">Contact</h4>
@@ -216,7 +224,11 @@ export default function Footer() {
                 className="text-white hover:opacity-80 transition-opacity"
                 aria-label="Follow us on X (Twitter)"
               >
-                <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <svg
+                  className="w-6 h-6 fill-current"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
               </Link>
@@ -284,11 +296,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row lg:mx-auto lg:w-fit items-center gap-4 text-gray-300 text-sm">
           <div className="flex flex-col items-center gap-2">
-            <p>© 2026 ROTAGI. All rights reserved</p>
-            <div className="flex gap-4 text-xs text-gray-500">
-              <span>#AIinAfrica</span>
-              <span>#GirlsInTechnology</span>
-            </div>
+            <p>© 2026 ROTAGI All rights reserved</p>
           </div>
           <div className="flex items-center gap-4">
             <span className="hidden md:inline text-gray-600">|</span>

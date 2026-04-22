@@ -38,11 +38,11 @@ export const programs: Program[] = [
     level: "Beginner",
     ageRange: "Ages 10 to 12",
     tagline:
-      "Building foundational AI awareness, digital literacy and life skills for young girls through interactive, hands on projects",
+      "Building foundational AI awareness digital literacy and life skills for young girls through interactive hands on projects",
     headline:
       "An introductory program designed to spark curiosity and build foundational digital literacy in young girls",
     description:
-      "She Ignite introduces young girls to the exciting world of technology and artificial intelligence through interactive, age appropriate activities. Participants explore basic coding concepts, learn about AI in everyday life and develop critical thinking skills that will serve them throughout their educational journey",
+      "She Ignite introduces young girls to the exciting world of technology and artificial intelligence through interactive age appropriate activities Participants explore basic coding concepts learn about AI in everyday life and develop critical thinking skills that will serve them throughout their educational journey",
     duration: "8 weeks",
     format: "Virtual",
     schedule: "Rolling admissions | Next cohort starts March 2026",
@@ -93,11 +93,11 @@ export const programs: Program[] = [
     ageRange: "Ages 13 to 15",
     level: "Intermediate",
     tagline:
-      "Developing deeper technical skills, life skills and critical thinking through AI applications and problem solving",
+      "Developing deeper technical skills life skills and critical thinking through AI applications and problem solving",
     headline:
       "An intermediate program that builds practical AI and programming skills through hands on projects",
     description:
-      "She Blossom builds on foundational knowledge to help teenage girls develop practical AI and programming skills. Through hands on projects, participants learn to create AI applications, design digital solutions and understand the ethical implications of technology in society",
+      "She Blossom builds on foundational knowledge to help teenage girls develop practical AI and programming skills Through hands on projects participants learn to create AI applications design digital solutions and understand the ethical implications of technology in society",
     duration: "12 weeks",
     format: "Hybrid",
     schedule: "Cohorts start January, May and September",
@@ -116,7 +116,7 @@ export const programs: Program[] = [
       items: [
         "Completion of She Ignite or equivalent basic tech exposure",
         "Basic computer skills and digital literacy",
-        "Age 13-15 years",
+        "Age 13 to 15 years",
         "Commitment to attend all sessions",
       ],
     },
@@ -151,9 +151,9 @@ export const programs: Program[] = [
     headline:
       "An advanced program preparing young women for tech careers through industry standard tools and mentorship",
     tagline:
-      "Advanced AI learning, leadership and life skills and career preparation for young women ready to lead in technology",
+      "Advanced AI learning leadership and life skills and career preparation for young women ready to lead in technology",
     description:
-      "She Blaze prepares young women for careers in technology and AI through advanced training, mentorship and real world project experience. Participants work on complex AI solutions, learn industry standard tools and develop leadership skills essential for success in the tech sector",
+      "She Blaze prepares young women for careers in technology and AI through advanced training mentorship and real world project experience Participants work on complex AI solutions learn industry standard tools and develop leadership skills essential for success in the tech sector",
     duration: "16 weeks",
     format: "Hybrid",
     schedule: "Cohorts start February and August",
@@ -172,7 +172,7 @@ export const programs: Program[] = [
       items: [
         "Completion of She Blossom or demonstrated intermediate programming skills",
         "Portfolio of previous tech projects",
-        "16-18 years",
+        "16 to 18 years",
         "Strong commitment (15-20 hours per week)",
       ],
     },
@@ -206,11 +206,11 @@ export const programs: Program[] = [
     ageRange: "Ages 18 to 40",
     level: "Intermediate",
     headline:
-      "Professional AI skills training, entrepreneurship support and career advancement for African women in tech",
+      "Professional AI skills training entrepreneurship support and career advancement for African women in tech",
     tagline:
       "A professional program supporting women entering or transitioning into AI and technology careers",
     description:
-      "She Ascend supports women entering or transitioning into AI and technology careers. Through intensive training, mentorship and industry connections, participants gain the tech related job needed to succeed in the rapidly evolving tech landscape while building a supportive professional network",
+      "She Ascend supports women entering or transitioning into AI and technology careers Through intensive training mentorship and industry connections participants gain the tech related job needed to succeed in the rapidly evolving tech landscape while building a supportive professional network",
     duration: "20 weeks (part time) or 12 weeks (intensive)",
     format: "Hybrid",
     schedule: "Rolling admissions | New cohorts monthly",
@@ -230,7 +230,7 @@ export const programs: Program[] = [
         "Basic computer literacy and digital skills",
         "Bachelor's degree or equivalent work experience (preferred)",
         "Commitment to career transition or advancement",
-        "Age 18-40 years",
+        "Age 18 to 40 years",
       ],
     },
     achievements: {
