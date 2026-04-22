@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/globalComp/Header";
 import Footer from "@/components/globalComp/Footer";
 import Providers from "./Provider";
+import CookieConsent from "@/components/globalComp/CookieConsent";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -69,7 +70,10 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${dmSans.variable} ${calSans.variable} antialiased bg-primary text-gray-900`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+          <CookieConsent />
+        </Providers>
       </body>
     </html>
   );
