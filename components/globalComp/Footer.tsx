@@ -289,7 +289,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-20  pt-8 border-t border-white/10 flex flex-col md:flex-row lg:mx-auto lg:w-fit items-center gap-4 text-gray-300 text-sm">
-          <p>© 2026 All rights reserved ROTAGI</p>
+          <p>© 2026 Reaching Out to African Girls Initiative (ROTAGI)  |  RC: 68666 </p>
           <div className="flex items-center gap-4">
             <span className="hidden md:inline text-gray-600">|</span>
             <Link

@@ -4,34 +4,29 @@ export const termsData: TermsSection[] = [
     id: "introduction",
     title: "Introduction",
     content: [
-      "Welcome to ROTAGI.",
-      "These Terms and Conditions govern your use of the ROTAGI website and any services, programs, resources, or information provided through the platform. By accessing or using this website, you agree to comply with and be bound by these Terms and Conditions.",
-      "If you do not agree with any part of these terms, please do not use this website.",
+      "Welcome to ROTAGI. These Terms and Conditions govern your use of the ROTAGI website and all services, programmes, and resources provided through it. By using this website, you agree to these terms. If you do not agree, please do not use this website.",
+      "ROTAGI may update these terms at any time. Updated terms will be posted on this page. Continued use of the website means you accept any changes",
     ],
   },
   {
     id: "about",
     title: "About ROTAGI",
     content: [
-      "ROTAGI is an initiative dedicated to equipping young African girls and women with AI literacy, digital confidence, and leadership skills. Through educational programs, mentorship opportunities, partnerships, and community initiatives, ROTAGI aims to empower women to build solutions and lead in the digital economy.",
-      "This website provides information about ROTAGI’s mission, programs, events, and opportunities for engagement including donations, partnerships, mentorship, and volunteering.",
+      "Reaching Out to African Girls Initiative (ROTAGI) (RC: 68666) is a registered Nigerian nonprofit organisation dedicated to equipping African girls and women with AI literacy, digital skills, life skills, and leadership confidence to lead in the digital economy.",
+      "ROTAGI delivers programmes both online and in person (hybrid), as well as community events, mentorship, and partnerships. ",
     ],
   },
   {
     id: "use",
-    title: "Use of the Website",
+    title: "who may use the website",
     content: [
-      "By using this website, you agree to use it responsibly and in accordance with applicable laws.",
-      "You agree that you will not:",
-      "ROTAGI reserves the right to restrict or terminate access to users who violate these terms.",
+      " African girls and young women aged 10 and above who wish to learn about or join ROTAGI programmes .",
+      "Parents and guardians acting on behalf of African girls under 18 years of age ",
+      " Adults aged 18 and above seeking to join, partner with, donate to, or support ROTAGI ",
+      " Organisations interested in partnering or collaborating with ROTAGI  ",
+      " African girls under the age of 18 may only participate in ROTAGI programmes and submit personal information on this website with the knowledge and consent of a parent or legal guardian. By submitting a registration on behalf of a girl under 18, the parent or guardian confirms they consent to that participation and to ROTAGI processing the girl's information as described in our Privacy Policy. ROTAGI may request verification of parental consent at any time. "
     ],
-    list: [
-      "Use the website for unlawful purposes",
-      "Attempt to gain unauthorized access to the website or its systems",
-      "Interfere with the website’s functionality or security",
-      "Misrepresent your identity when submitting forms or inquiries",
-      "Use the website to distribute harmful or malicious content",
-    ],
+   
   },
   {
     id: "programs",
@@ -46,8 +41,8 @@ export const termsData: TermsSection[] = [
     id: "donations",
     title: "Donations",
     content: [
-      "Donations made through the ROTAGI website support educational programs, community initiatives, and organizational operations.",
-      "By making a donation, you agree that:",
+      "Donations to ROTAGI support our free programmes, community events, and organisational operations. All payments are processed securely by PayStack. ROTAGI does not store your payment card details. ",
+      "Donations are voluntary and non-refundable, except where required by Nigerian law or where ROTAGI determines a genuine error has occurred. To report a donation error, email privacy@rotagi.org within 14 days. ",
     ],
     list: [
       "The information you provide is accurate and complete",
@@ -60,36 +55,32 @@ export const termsData: TermsSection[] = [
  
   },
   {
+      id: "mentorship",
+      title: "Mentorship",
+      content: [
+        "Individuals may apply to become ROTAGI mentors through the website. Applications are subject to review and acceptance is not guaranteed. Accepted mentors must uphold ROTAGI's values. ROTAGI reserves the right to remove any mentor whose conduct is inconsistent with these values. "
+      ]
+  },
+
+  {
     id: "partnerships",
-    title: "Partnerships and Collaboration",
+    title: "Partnerships",
     content: [
-      "Organizations or individuals may express interest in partnering with ROTAGI through the partnership inquiry form or other communication channels.",
-      "Submission of a partnership request does not guarantee a formal partnership. All partnership opportunities are subject to review, evaluation, and agreement between ROTAGI and the interested party.",
+      "Submitting a partnership enquiry does not guarantee a formal partnership. All opportunities are subject to review and mutual written agreement between ROTAGI and the interested party.",
     ],
   },
   {
     id: "ip",
     title: "Intellectual Property",
     content: [
-      "All content on this website including text, graphics, logos, images, program materials, and other resources is the property of ROTAGI unless otherwise stated.",
-      "This content is protected by intellectual property laws and may not be copied, reproduced, distributed, or used for commercial purposes without prior written permission from ROTAGI.",
-      "Users may share ROTAGI content for educational or awareness purposes provided that proper attribution is given.",
+      "All ROTAGI content  text, graphics, logos, images, course materials, and video  is the property of ROTAGI and protected by Nigerian and international intellectual property law. It may not be copied, sold, or distributed without prior written permission. You may share ROTAGI content for educational or non-commercial purposes with proper attribution",
     ],
   },
   {
     id: "external-links",
     title: "External Link",
     content: [
-      "The ROTAGI website may contain links to external websites or resources for informational purposes.",
-      "ROTAGI is not responsible for the content, policies, or practices of these third-party websites. Users should review the terms and privacy policies of any external sites they visit.",
-    ],
-  },
-  {
-    id: "liability",
-    title: "Limitation of Liability",
-    content: [
-      "ROTAGI makes reasonable efforts to ensure the accuracy and reliability of information on this website. However, the website and its content are provided “as is” without warranties of any kind.",
-      "ROTAGI shall not be liable for any direct, indirect, incidental, or consequential damages arising from the use of this website or reliance on its content.",
+      "This website may link to third-party websites for information purposes. ROTAGI is not responsible for the content or practices of those sites. Please review their own terms and privacy policies.",
     ],
   },
   {
@@ -100,4 +91,43 @@ export const termsData: TermsSection[] = [
       "Updated terms will be posted on this page with a revised effective date. Continued use of the website after changes are made constitutes acceptance of the updated terms.",
     ],
   },
+  {
+    id: "cookies",
+    title: "Cookies and Tracking",
+    content: [
+      "This website uses ecookies (required for the site to work), analytics cookies (Google Analytics), and newsletter cookies. By continuing to use this website you consent to these. You can manage cookies through your browser settings. See our Privacy Policy for full details. "
+    ]
+  },
+  {
+    id: "liability",
+    title: "Limitation of Liability",
+    content: [
+      "ROTAGI's website and content are provided on an 'as is' basis. ROTAGI shall not be liable for any damages arising from your use of this website, reliance on its content, or any interruption of services  except where liability cannot be excluded under Nigerian law.",
+    ],
+  },
+  {
+    id: "safeguarding",
+    title: "Safeguarding",
+    content: [
+      "ROTAGI is committed to the safety and wellbeing of all participants, particularly African girls and young women under 18. If you have any concerns about the safety of a child connected to ROTAGI, please contact us immediately at privacy@rotagif.com"
+    ]
+  },
+  {
+    id: "law",
+    title: "Governing law",
+    content: [
+      "These Terms are governed by the laws of the Federal Republic of Nigeria, including the Nigeria Data Protection Act 2023 (NDPA) and the Companies and Allied Matters Act (CAMA). Any disputes are subject to the exclusive jurisdiction of Nigerian courts."
+    ]
+  },
+  {
+    id: "contact",
+    title: "Contact",
+    content: [   
+          "Organisation: Reaching Out to African Girls Initiative (ROTAGI)",
+          "General enquiries: info@rotagif.com "
+            
+      
+        ]
+  }
+
 ];

@@ -24,19 +24,8 @@ export default function ContactHero({ title, btn }: Props) {
       </div>
 
       <div className="absolute inset-0 flex flex-col justify-center items-center text-white w-full">
-        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center">
-          <div className="mx-auto mb-4 flex justify-center">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="text-gray-100 border px-4 py-1 text-white bg-secondary rounded-[0.4rem] !text-[1rem] !font-bold"
-            >
-              {btn}
-            </motion.p>
-          </div>
-
-          <motion.div
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center flex flex-col">
+           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -44,6 +33,18 @@ export default function ContactHero({ title, btn }: Props) {
           >
             <h1 className="text-white mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-7xl leading-tight font-cal-sans">{title}</h1>
           </motion.div>
+          <div className="mx-auto mb-4 flex justify-center">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="text-gray-100  py-1 text-white  !text-[1rem] !text-smaill"
+            >
+              {btn}
+            </motion.p>
+          </div>
+
+          
         </div>
       </div>
     </section>

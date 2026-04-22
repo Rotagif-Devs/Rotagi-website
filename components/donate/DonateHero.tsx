@@ -33,7 +33,8 @@ export default function DonateHero({ description }: Props) {
           >
             <h1 className="text-2xl md:text-4xl lg:mt-0 mt-0 md:w-220 ">
               Empower <span className="text-pink-400">Her</span> Future Today
-              With Your Support
+             Through AI
+               
             </h1>
           </motion.div>
 

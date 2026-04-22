@@ -1,9 +1,3 @@
-// export type TermData= {
-//   id: string;
-//   title: string;
-// };
-
-
 export type TermsSection = {
   id: string;
   title: string;
