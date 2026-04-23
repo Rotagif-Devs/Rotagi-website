@@ -7,7 +7,12 @@ interface MarqueeProps {
   hideDot?: boolean;
 }
 
-export default function Marquee({ text, style, textStyle, hideDot }: MarqueeProps) {
+export default function Marquee({
+  text,
+  style,
+  textStyle,
+  hideDot,
+}: MarqueeProps) {
   return (
     <div
       className="w-full overflow-hidden bg-primary py-6 md:py-10 border-y border-black/5"
@@ -24,10 +29,18 @@ export default function Marquee({ text, style, textStyle, hideDot }: MarqueeProp
             "
             style={textStyle}
           >
-            <span>{text} {!hideDot && "·"}</span>
-            <span>{text} {!hideDot && "·"}</span>
-            <span>{text} {!hideDot && "·"}</span>
-            <span>{text} {!hideDot && "·"}</span>
+            <span>
+              {text} {!hideDot && "·"}
+            </span>
+            <span>
+              {text} {!hideDot && "·"}
+            </span>
+            <span>
+              {text} {!hideDot && "·"}
+            </span>
+            <span>
+              {text} {!hideDot && "·"}
+            </span>
           </span>
 
           <span
@@ -39,10 +52,18 @@ export default function Marquee({ text, style, textStyle, hideDot }: MarqueeProp
             "
             style={textStyle}
           >
-            <span>{text} {!hideDot && "·"}</span>
-            <span>{text} {!hideDot && "·"}</span>
-            <span>{text} {!hideDot && "·"}</span>
-            <span>{text} {!hideDot && "·"}</span>
+            <span>
+              {text} {!hideDot && "·"}
+            </span>
+            <span>
+              {text} {!hideDot && "·"}
+            </span>
+            <span>
+              {text} {!hideDot && "·"}
+            </span>
+            <span>
+              {text} {!hideDot && "·"}
+            </span>
           </span>
         </div>
       </div>
