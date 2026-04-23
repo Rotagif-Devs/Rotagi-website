@@ -10,7 +10,9 @@ interface Props {
 
 export default function ContactHero({ title, btn }: Props) {
   return (
-    <section className="relative min-h-[400px] md:min-h-[500px] flex overflow-hidden bg-[#41122B] lg:mx-4 lg:rounded-lg">
+    <section className="relative min-h-[400px] md:min-h-[500px] flex items-center justify-center overflow-hidden bg-[#41122B] lg:mx-4 lg:rounded-lg">
+      
+      {/* Background */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/programs-hero.jpg"
@@ -23,29 +25,30 @@ export default function ContactHero({ title, btn }: Props) {
         <div className="absolute inset-0 bg-[#41122B]/70" />
       </div>
 
-      <div className="absolute inset-0 flex flex-col justify-center items-center text-white w-full">
-        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center flex flex-col">
-           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-5xl mx-auto"
-          >
-            <h1 className="text-white !normal-case text-3xl sm:text-4xl md:text-5xl lg:text-7xl leading-tight font-cal-sans">{title}</h1>
-          </motion.div>
-          <div className="mx-auto mb-0 flex justify-center">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="text-gray-100  py-1 text-white  !text-[1rem] !text-smaill"
-            >
-              {btn}
-            </motion.p>
-          </div>
+      {/* Content */}
+      <div className="relative z-10 w-full flex flex-col items-center justify-center text-center px-6 lg:px-8">
+        
+        {/* Button */}
+        <motion.span
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="bg-[#DB2777] text-white text-[10px] md:text-xs font-semibold px-4 py-1.5 rounded-md mb-6 uppercase tracking-widest border-2 border-white"
+        >
+          {btn}
+        </motion.span>
 
-          
-        </div>
+        {/* Title */}
+        <motion.h1
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="text-white !normal-case font-cal-sans 
+                     text-3xl sm:text-4xl md:text-5xl lg:text-7xl 
+                     leading-[1.1] tracking-tight max-w-5xl"
+        >
+          {title}
+        </motion.h1>
       </div>
     </section>
   );
