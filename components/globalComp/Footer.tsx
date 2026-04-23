@@ -132,7 +132,7 @@ export default function Footer() {
                   href="/events"
                   className="hover:text-white transition-colors"
                 >
-                  SHE empower Conference
+                  SHE Empower Conference
                 </Link>
               </li>
               <li>
@@ -270,10 +270,6 @@ export default function Footer() {
 
             {/* Contact Details */}
             <div className="space-y-4 text-gray-300 text-sm">
-              <div className="flex items-start gap-3">
-                <MapPin size={20} className="shrink-0" />
-                <span>Abuja, Nigeria</span>
-              </div>
               <div className="flex items-center gap-3">
                 <Mail size={20} className="shrink-0" />
                 <Link
@@ -293,6 +289,15 @@ export default function Footer() {
                     className="hover:text-white transition-colors inline-block"
                   >
                     +234 803 236 8560
+                  </Link>
+                </span>
+                <span>
+                  <Link
+                    href="https://wa.me/447624403102"
+                    target="_blank"
+                    className="hover:text-white transition-colors inline-block"
+                  >
+                    +447624403102
                   </Link>
                 </span>
               </div>
@@ -315,13 +320,6 @@ export default function Footer() {
             </Link>
             <Link href="/terms" className="hover:text-white transition-colors">
               Terms & Conditions
-            </Link>
-            <span className="hidden md:inline text-gray-600">|</span>
-            <Link
-              href="/child-protection"
-              className="hover:text-white transition-colors"
-            >
-              Child Protection
             </Link>
           </div>
         </div>
