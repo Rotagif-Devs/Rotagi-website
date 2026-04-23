@@ -6,7 +6,7 @@ import ProgramsCTA from "@/components/programs/ProgramsCTA";
 const HERO_DATA = {
   title: "Program Pathways",
   description:
-    "Discover your free learning pathway from your first spark of curiosity to confident leadership in AI, Digital Skills, and Life Skills. Every programme is built around you, at every stage of life.",
+    "Discover your free learning pathway from your first spark of curiosity to confident leadership in Artificial Intelligence, Digital Skills, and Life Skills.",
 };
 const FILTERS = [
   { label: "All Ages", value: "All" },

@@ -19,6 +19,11 @@ const contactItems = [
     title: "Phone (WhatsApp)",
     content: "+234 803 236 8560",
   },
+  {
+    icon: MapPin,
+    title: "Address",
+    content: "No. 1 Magazar Close, Eagle Billed Estate Off Vio Mabuschi.Federal Capital Territory (Abuja).Nigeria.",
+  },
 ];
 
 export default function ContactMessage() {
