@@ -93,9 +93,6 @@ export default function BlogListPage() {
                     {/* Title with Thumbnail */}
                     <td className="px-6 py-5">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-gray-100">
-                          <img src={blog.image} alt="" className="w-full h-full object-cover" />
-                        </div>
                         <span className="font-semibold text-gray-700 text-sm">{blog.title}</span>
                       </div>
                     </td>
@@ -134,9 +131,10 @@ export default function BlogListPage() {
 
                     {/* Actions Column */}
                     <td className="px-6 py-5 text-right">
-                      <button className="text-gray-400 hover:text-gray-600 transition-colors">
-                        <MoreHorizontal size={20} />
-                      </button>
+                       <ActionMenu 
+                          editUrl={`/admin/dashboard/blog/${blog.id}/edit`}
+                          onDelete={() => handleDelete(blog.id)}
+                       />
                     </td>
                   </tr>
                 ))
