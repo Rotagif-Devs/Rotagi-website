@@ -8,6 +8,7 @@ import { BlogPost } from "@/types/blog";
 import { events as EventType } from "@/types/event";
 import Button from "@/components/ui/Button";
 import { ChevronRight } from "lucide-react";
+import ActionMenu from "@/components/admin/ActionMenu";
 export default function AdminDashboardPage() {
   const [analytics, setAnalytics] = useState<{
     contentVelocity: { count: number; deltaWeek: number };
@@ -18,27 +19,35 @@ export default function AdminDashboardPage() {
   const [recentEvents, setRecentEvents] = useState<EventType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const loadDashboardData = async () => {
-      setIsLoading(true);
-      try {
-        const [blogs, events, stats] = await Promise.all([
-          adminService.getBlogs({ limit: 5 }),
-          adminService.getEvents({ limit: 5 }),
-          adminService.getStats(),
-        ]);
+  const loadDashboardData = async () => {
+    setIsLoading(true);
+    try {
+      const [blogs, events, stats] = await Promise.all([
+        adminService.getBlogs({ limit: 5 }),
+        adminService.getEvents({ limit: 5 }),
+        adminService.getStats(),
+      ]);
 
-        setRecentBlogs(blogs);
-        setRecentEvents(events);
-        setAnalytics(stats);
-      } catch (error) {
-        console.error("Failed to load dashboard data:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+      setRecentBlogs(blogs);
+      setRecentEvents(events);
+      setAnalytics(stats);
+    } catch (error) {
+      console.error("Failed to load dashboard data:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
     loadDashboardData();
   }, []);
+
+  const handleDelete = async (id: string) => {
+    if (confirm("Are you sure you want to delete this content?")) {
+      await adminService.deleteBlog(id);
+      loadDashboardData();
+    }
+  };
 
   const cards = [
     {
@@ -150,7 +159,7 @@ export default function AdminDashboardPage() {
           </div>
 
           {/* Table Section */}
-          <div className="overflow-x-auto px-4 pb-4">
+          <div className="overflow-x-auto px-4 pb-4 min-h-[400px]">
             <table className="w-full text-left border-separate border-spacing-y-0">
               <thead>
                 <tr className="bg-gray-50/50">
@@ -163,8 +172,11 @@ export default function AdminDashboardPage() {
                   <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">
                     Category
                   </th>
-                  <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider rounded-r-lg">
+                  <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">
                     Status
+                  </th>
+                  <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider rounded-r-lg text-right">
+                    Actions
                   </th>
                 </tr>
               </thead>
@@ -177,17 +189,6 @@ export default function AdminDashboardPage() {
                     >
                       <td className="px-6 py-5">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full overflow-hidden bg-purple-100 flex-shrink-0">
-                            <img
-                              src={item.image}
-                              alt={item.title}
-                              className="w-full h-full object-cover"
-                              onError={(e) => {
-                                (e.target as HTMLImageElement).src =
-                                  "/logo.png";
-                              }}
-                            />
-                          </div>
                           <span className="font-medium text-gray-700 line-clamp-1">
                             {item.title}
                           </span>
@@ -220,6 +221,12 @@ export default function AdminDashboardPage() {
                           {item.status.charAt(0).toUpperCase() +
                             item.status.slice(1)}
                         </span>
+                      </td>
+                      <td className="px-6 py-5 text-right">
+                        <ActionMenu 
+                          editUrl={`/admin/dashboard/blog/${item.id}/edit`}
+                          onDelete={() => handleDelete(item.id)}
+                        />
                       </td>
                     </tr>
                   ))

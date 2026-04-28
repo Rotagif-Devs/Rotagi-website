@@ -51,7 +51,7 @@ export default function EventListPage() {
       </div>
 
       <div className="bg-[#F8F9FA] p-6 min-h-screen">
-      <div className="max-w-7xl mx-auto bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+      <div className="max-w-7xl mx-auto bg-white rounded-xl border border-gray-100 shadow-sm">
         
         {/* Search Bar Section */}
         <div className="p-6 border-b border-gray-50">
@@ -68,7 +68,7 @@ export default function EventListPage() {
         </div>
 
         {/* Table Section */}
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto min-h-[450px]">
           <table className="w-full text-left">
             <thead>
               <tr className="bg-gray-50/50 text-[11px] font-bold text-gray-500 uppercase tracking-wider">
