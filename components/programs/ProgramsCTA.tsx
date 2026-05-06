@@ -29,8 +29,7 @@ export default function ProgramsCTA() {
 
           <div className="flex flex-col items-start gap-6 md:max-w-[580px]">
             <p className="font-dm-sans text-darkgray text-left text-base leading-relaxed md:text-[16px] md:leading-[160%]">
-              Learn at your own pace through free online courses in AI, Digital
-              Skills, and Life Skills.
+              The SHE Empower Experience offers workshops, bootcamps, and community events for continuous learning at all ages.
             </p>
 
             <div className="hidden md:flex gap-4">

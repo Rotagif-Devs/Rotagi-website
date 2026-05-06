@@ -1,7 +1,7 @@
 export interface Program {
   id: string;
   name: string;
-  slug: string; 
+  slug: string;
   ageRange: string;
   level: string;
   headline: string;
@@ -38,7 +38,7 @@ export const programs: Program[] = [
     level: "Beginner",
     ageRange: "10-12 years",
     tagline:
-      "Building foundational AI awareness, digital literacy, and life skills for African girls through free, hands-on projects.",
+      " Sparking curiosity in technology and AI fundamentals for young girls through fun, interactive activities.",
     headline: "Where Curiosity Begins",
     description:
       "She Ignite introduces young African girls to the exciting world of AI, digital, and life skills through free courses. Participants discover how AI works in everyday life, develop digital confidence, and build life skills that will serve them throughout their educational journey.",
@@ -50,9 +50,9 @@ export const programs: Program[] = [
     outcomes: {
       title: "Key Outcomes",
       items: [
-        "Discover AI awareness, digital safety, and confidence",
-        "Explore how AI shows up in everyday digital life",
-        "Build life skills and digital confidence",
+        "Understand basic coding concepts and computational thinking",
+        "Recognize AI in everyday life and how it works",
+        "Develop confidence using digital tools safely",
       ],
     },
     prerequisites: {
@@ -92,7 +92,7 @@ export const programs: Program[] = [
     ageRange: "13-15 years",
     level: "Intermediate",
     tagline:
-      "Developing digital, AI, and life skills through critical thinking, responsible technology use, and problem-solving.",
+      "Developing intermediate AI skills and digital creativity to build real projects and explore tech careers.",
     headline: "Growing into Responsibility",
     description:
       "She Blossom builds on foundational knowledge to help teenage girls grow through practical AI, digital, and life skills courses. Through free, hands-on projects, participants explore responsible technology use, design digital solutions, and develop the confidence to lead.",
@@ -102,11 +102,11 @@ export const programs: Program[] = [
     detailImage: "/program-detail-image.png",
     image: "/program-2.png",
     outcomes: {
-      title: "Outcomes",
+      title: "Key Outcomes",
       items: [
-        "Build digital and AI skills confidently",
-        "Develop responsible digital habits",
-        "Build life skills and confidence",
+        "Build AI-powered applications and web projects",
+        "Understand machine learning fundamentals",
+        "Design user-friendly digital solutions",
       ],
     },
     prerequisites: {
@@ -148,7 +148,7 @@ export const programs: Program[] = [
     level: "Advanced",
     headline: "From Skills to Independence",
     tagline:
-      "Advanced AI learning, digital skills, and life skills for young women ready to lead in technology.",
+      "Advanced AI development and leadership training to prepare for tech careers and university STEM programs.",
     description:
       "She Blaze prepares young women for technology and AI careers through free, advanced training in AI, digital, and life skills. Participants build job ready solutions, explore income pathways, and develop leadership skills for success in the AI and tech sector.",
     duration: "Self-paced",
@@ -157,11 +157,11 @@ export const programs: Program[] = [
     detailImage: "/program-detail-image.png",
     image: "/program-1.png",
     outcomes: {
-      title: "Outcomes",
+      title: "Key Outcomes",
       items: [
-        "Build job-ready AI skills",
-        "Explore income pathways through digital entrepreneurship",
-        "Build leadership and career readiness skills",
+        "Build professional-grade AI applications",
+        "Master full-stack development and cloud deployment",
+        "Lead technical teams and manage complex projects",
       ],
     },
     prerequisites: {
@@ -204,7 +204,7 @@ export const programs: Program[] = [
     level: "Professional",
     headline: "AI & Tech Careers Empowerment",
     tagline:
-      "A professional programme supporting women in AI, digital skills, freelancing, and entrepreneurship careers.",
+      "Professional AI skills and career transition support for women entering or advancing in tech careers.",
     description:
       "She Ascend supports African women transitioning into AI and technology careers through free AI, digital, and life skills training. Through mentorship and industry connections, participants gain skills to succeed in the rapidly evolving tech landscape and build a professional network.",
     duration: "Self-paced",
@@ -215,9 +215,9 @@ export const programs: Program[] = [
     outcomes: {
       title: "Key Outcomes",
       items: [
-        "Master AI, digital, and freelancing skills confidently",
-        "Build a professional portfolio of industry-ready work",
-        "Access pathways to careers, leadership, and entrepreneurship",
+        "Master industry-standard AI development tools and practices",
+        "Build a professional portfolio of production-ready projects",
+        "Network with hiring managers and tech recruiters",
       ],
     },
     prerequisites: {
