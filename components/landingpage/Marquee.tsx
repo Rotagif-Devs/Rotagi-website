@@ -15,16 +15,16 @@ export default function Marquee({
 }: MarqueeProps) {
   return (
     <div
-      className="w-full overflow-hidden bg-primary py-6 md:py-10 border-y border-black/5"
+      className="w-full overflow-hidden bg-primary py-6 md:py-8 border-y border-black/5"
       style={style}
     >
       <div className="marquee-container">
         <div className="marquee-content flex animate-marquee items-center">
           <span
             className="
-              marquee-text font-cal-sans text-black lowercase 
+              marquee-text font-cal-sans text-black 
               whitespace-nowrap flex items-center gap-10 md:gap-16
-              text-5xl sm:text-7xl md:text-[128px]
+              text-5xl sm:text-7xl md:text-[80px]
              leading-none tracking-tighter uppercase
             "
             style={textStyle}
@@ -47,7 +47,7 @@ export default function Marquee({
             className="
               marquee-text font-cal-sans text-black lowercase 
               whitespace-nowrap flex items-center gap-10 md:gap-16
-              text-5xl sm:text-7xl md:text-[128px]
+              text-5xl sm:text-7xl md:text-[80px]
               leading-none tracking-tighter uppercase
             "
             style={textStyle}

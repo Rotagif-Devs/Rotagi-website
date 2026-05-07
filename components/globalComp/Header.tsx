@@ -11,8 +11,8 @@ import WaitlistModal from "./WaitlistModal";
 const navItems = [
   { label: "About Us", href: "/about" },
   { label: "Programs", href: "/programs" },
-  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
+  { label: "FAQs", href: "/faq" },
 ];
 
 export default function Header() {
@@ -44,7 +44,7 @@ export default function Header() {
 
     // Listen for storage changes (e.g., logout in another tab or manual clear)
     window.addEventListener("storage", checkAuth);
-    
+
     // Also check on focus to be sure
     window.addEventListener("focus", checkAuth);
 
@@ -55,27 +55,35 @@ export default function Header() {
   }, []);
 
   const isProgramsPage = pathname === "/programs";
-  const isProgramDetailPage = pathname.startsWith("/programs/") && pathname !== "/programs";
-  const programSlug = isProgramDetailPage ? (pathname.split("/").pop() || null) : null;
+  const isProgramDetailPage =
+    pathname.startsWith("/programs/") && pathname !== "/programs";
+  const programSlug = isProgramDetailPage
+    ? pathname.split("/").pop() || null
+    : null;
 
   const getProgramName = (slug: string | null) => {
     switch (slug) {
-      case "she-ignite": return "She Ignite";
-      case "she-blossom": return "She Blossom";
-      case "she-blaze": return "She Blaze";
-      case "she-ascend": return "She Ascend";
-      default: return "";
+      case "she-ignite":
+        return "She Ignite";
+      case "she-blossom":
+        return "She Blossom";
+      case "she-blaze":
+        return "She Blaze";
+      case "she-ascend":
+        return "She Ascend";
+      default:
+        return "";
     }
   };
 
   const programName = getProgramName(programSlug);
 
-  const getStartedText = isLoggedIn
-    ? "Dashboard"
-    : "Join Waitlist";
+  const getStartedText = isLoggedIn ? "Dashboard" : "Join Waitlist";
 
   const getStartedHref = isLoggedIn
-    ? lastProgramSlug ? `/program/${lastProgramSlug}/dashboard` : "/dashboard"
+    ? lastProgramSlug
+      ? `/program/${lastProgramSlug}/dashboard`
+      : "/dashboard"
     : undefined;
 
   const handleGetStartedClick = (e: React.MouseEvent) => {
@@ -102,7 +110,10 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden items-center gap-8 md:flex" aria-label="Desktop navigation">
+          <nav
+            className="hidden items-center gap-8 md:flex"
+            aria-label="Desktop navigation"
+          >
             {navItems.map((item) => (
               <Link
                 key={item.label}
@@ -198,9 +209,9 @@ export default function Header() {
         )}
       </header>
 
-      <WaitlistModal 
-        isOpen={isWaitlistModalOpen} 
-        onClose={() => setIsWaitlistModalOpen(false)} 
+      <WaitlistModal
+        isOpen={isWaitlistModalOpen}
+        onClose={() => setIsWaitlistModalOpen(false)}
         programName={programName}
       />
     </>

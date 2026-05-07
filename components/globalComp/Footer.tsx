@@ -52,34 +52,29 @@ export default function Footer() {
 
   return (
     <footer className="flex justify-center bg-primary">
-      <div className="bg-black text-white flex flex-col justify-between w-full lg:mx-6 mt-6 lg:rounded-4xl px-8 py-16 md:px-8 md:py-10 shadow-2xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-4 pt-4 w-full">
+      <div className="bg-black text-white flex flex-col justify-between w-full lg:mx-6 mt-6 lg:rounded-xl px-8 py-16 md:px-8 md:py-10 shadow-xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-2 pt-4 w-full">
           {/* Brand & Description */}
           <div className="lg:col-span-2">
             <Link href="/" aria-label="ROTAGI Home">
-              <h2 className="text-4xl mb-6 font-cal-sans">ROTAGI</h2>
+              <h2 className="text-5xl mb-4 font-cal-sans font-normal text-white">
+                ROTAGI
+              </h2>
             </Link>
-            <p className="text-gray-300 text-sm leading-relaxed mb-8 max-w-md">
-              Where African Girls Discover, Learn, and Lead.
+            <p className="text-gray-400 text-base font-normal font-dm-sans mb-8">
+              Where African Girls Discover, Learn, and Lead
             </p>
 
             {/* Newsletter */}
-            <form
-              onSubmit={handleSubscribe}
-              className="space-y-3 max-w-sm lg:max-w-md"
-            >
-              <div className="bg-white rounded-xl px-2 py-2 flex items-center shadow-md">
-                <label htmlFor="newsletter-email" className="sr-only">
-                  Join our newsletter
-                </label>
+            <form onSubmit={handleSubscribe} className="max-w-sm">
+              <div className="bg-white rounded-xl p-1.5 flex items-center shadow-sm border border-gray-100">
                 <input
-                  id="newsletter-email"
                   type="email"
                   placeholder="Join our newsletter"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={status === "loading"}
-                  className="bg-transparent border-none focus:outline-none focus:ring-0 px-4 py-2 text-gray-800 text-sm w-full"
+                  className="bg-transparent border-none focus:outline-none focus:ring-0 px-4 py-2 text-gray-500 text-sm w-full"
                   required
                 />
                 <Button
@@ -87,10 +82,10 @@ export default function Footer() {
                   size="sm"
                   type="submit"
                   disabled={status === "loading" || status === "success"}
-                  className="w-fit justify-center text-base rounded-md px-4 cursor-pointer disabled:opacity-70"
+                  className="bg-secondary text-white rounded-xl px-6 py-2 text-sm font-semibold hover:bg-secondary/90 transition-all"
                 >
                   {status === "loading" ? (
-                    <Loader2 className="animate-spin" size={18} />
+                    <Loader2 className="animate-spin" size={16} />
                   ) : status === "success" ? (
                     "Subscribed"
                   ) : (
@@ -100,25 +95,20 @@ export default function Footer() {
               </div>
 
               {status === "success" && (
-                <div className="flex items-center gap-2 text-green-400 text-xs font-medium animate-in fade-in slide-in-from-top-1">
-                  <CheckCircle size={14} />
-                  <span>{message}</span>
-                </div>
+                <p className="mt-2 text-green-400 text-xs">{message}</p>
               )}
-
               {status === "error" && (
-                <div className="flex items-center gap-2 text-red-400 text-xs font-medium animate-in fade-in slide-in-from-top-1">
-                  <AlertCircle size={14} />
-                  <span>{message}</span>
-                </div>
+                <p className="mt-2 text-red-400 text-xs">{message}</p>
               )}
             </form>
           </div>
 
           {/* Quick Navigation */}
           <div>
-            <h4 className="text-white mb-6">Quick Navigation</h4>
-            <ul className="space-y-4 text-gray-300 text-sm">
+            <h4 className="text-white font-cal-sans text-lg mb-6">
+              Quick Navigation
+            </h4>
+            <ul className="space-y-4 text-gray-400 text-base font-dm-sans">
               <li>
                 <Link
                   href="/programs"
@@ -129,34 +119,26 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  href="/impact"
+                  className="hover:text-white transition-colors"
+                >
+                  Impact
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/events"
                   className="hover:text-white transition-colors"
                 >
-                  SHE Empower Conference
+                  Events
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/blog"
+                  href="/resources"
                   className="hover:text-white transition-colors"
                 >
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/code-of-conduct"
-                  className="hover:text-white transition-colors"
-                >
-                  Code of Conduct
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/child-protection"
-                  className="hover:text-white transition-colors"
-                >
-                  Child Protection Policy
+                  Resources
                 </Link>
               </li>
             </ul>
@@ -164,8 +146,10 @@ export default function Footer() {
 
           {/* Get Involved */}
           <div>
-            <h4 className="text-white mb-6">Get Involved</h4>
-            <ul className="space-y-4 text-gray-300 text-sm">
+            <h4 className="text-white font-cal-sans text-lg mb-6">
+              Get Involved
+            </h4>
+            <ul className="space-y-4 text-gray-400 text-base font-dm-sans">
               <li>
                 <Link
                   href="/donate"
@@ -176,7 +160,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/mentors/apply"
+                  href="/mentors"
                   className="hover:text-white transition-colors"
                 >
                   Become A Mentor
@@ -203,7 +187,7 @@ export default function Footer() {
                   href="/blog"
                   className="hover:text-white transition-colors"
                 >
-                  Media & Press
+                  Blog
                 </Link>
               </li>
             </ul>
@@ -211,67 +195,50 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-white mb-6">Contact</h4>
+            <h4 className="text-white font-cal-sans text-lg mb-6">Contact</h4>
 
             {/* Social Icons */}
-            <div className="flex gap-4 mb-8">
+            <div className="flex gap-4 mb-8 text-white">
               <Link
                 href="https://www.facebook.com/officialrotagi"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:opacity-80 transition-opacity"
-                aria-label="Follow us on Facebook"
+                className="hover:text-secondary transition-colors"
               >
-                <Facebook size={24} />
+                <Facebook size={22} />
               </Link>
               <Link
                 href="https://x.com/officialrotagi"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:opacity-80 transition-opacity"
-                aria-label="Follow us on X (Twitter)"
+                className="hover:text-secondary transition-colors"
               >
-                <svg
-                  className="w-6 h-6 fill-current"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
               </Link>
               <Link
                 href="https://www.instagram.com/officialrotagi/"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:opacity-80 transition-opacity"
-                aria-label="Follow us on Instagram"
+                className="hover:text-secondary transition-colors"
               >
-                <Instagram size={24} />
+                <Instagram size={22} />
               </Link>
               <Link
                 href="https://www.linkedin.com/company/officialrotagi"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:opacity-80 transition-opacity"
-                aria-label="Follow us on LinkedIn"
+                className="hover:text-secondary transition-colors"
               >
-                <Linkedin size={24} />
-              </Link>
-              <Link
-                href="https://www.youtube.com/channel/UCq1Y6zDnFVdMrLClgyiz4AQ/reachinouttoafricangirlsinitiatve"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:opacity-80 transition-opacity"
-                aria-label="Follow us on YouTube"
-              >
-                <Youtube size={24} />
+                <Linkedin size={22} />
               </Link>
             </div>
 
             {/* Contact Details */}
-            <div className="space-y-4 text-gray-300 text-sm">
+            <div className="space-y-4 text-gray-400 text-sm font-dm-sans">
               <div className="flex items-center gap-3">
-                <Mail size={20} className="shrink-0" />
+                <MapPin size={20} className="text-white" />
+                <span>Abuja, Nigeria</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail size={20} className="text-white" />
                 <Link
                   href="mailto:info@rotagif.com"
                   className="hover:text-white transition-colors"
@@ -279,47 +246,34 @@ export default function Footer() {
                   info@rotagif.com
                 </Link>
               </div>
-              <div className="flex items-start gap-3">
-                <Phone size={20} className="shrink-0" />
-                <span>
-                  Phone (WhatsApp Only):{" "}
-                  <Link
-                    href="https://wa.me/2348032368560"
-                    target="_blank"
-                    className="hover:text-white transition-colors inline-block"
-                  >
-                    +234 803 236 8560
-                  </Link>
-                </span>
-                <span>
-                  <Link
-                    href="https://wa.me/447624403102"
-                    target="_blank"
-                    className="hover:text-white transition-colors inline-block"
-                  >
-                    +447624403102
-                  </Link>
-                </span>
+              <div className="flex items-center gap-3">
+                <Phone size={20} className="text-white" />
+                <Link
+                  href="https://wa.me/2348032368560"
+                  target="_blank"
+                  className="hover:text-white transition-colors"
+                >
+                  Phone (WhatsApp) +234 803 236 8560
+                </Link>
               </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row lg:mx-auto lg:w-fit items-center gap-4 text-gray-300 text-sm">
-          <div className="flex flex-col items-center gap-2">
-            <p>© 2026 ROTAGI All rights reserved</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="hidden md:inline text-gray-600">|</span>
+        <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-center items-center gap-1 md:gap-4 text-gray-400 text-sm font-dm-sans">
+          <p>© 2026 ROTAGI. All rights reserved.</p>
+          <span className="hidden md:inline">|</span>
+          <div className="flex gap-4">
             <Link
               href="/privacy"
               className="hover:text-white transition-colors"
             >
               Privacy Policy
             </Link>
+            <span className="md:hidden">|</span>
             <Link href="/terms" className="hover:text-white transition-colors">
-              Terms & Conditions
+              Terms and Conditions
             </Link>
           </div>
         </div>

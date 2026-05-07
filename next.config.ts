@@ -27,6 +27,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "i.pravatar.cc",
       },
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+      },
     ],
   },
   async headers() {
@@ -39,7 +43,7 @@ const nextConfig: NextConfig = {
       "default-src 'self'",
       "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://js.paystack.co",
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' blob: data: https://paystack.com https://flagcdn.com https://i.pravatar.cc https://example.com https://rot-backend-c3a8.onrender.com",
+      "img-src 'self' blob: data: https://paystack.com https://flagcdn.com https://i.pravatar.cc https://example.com https://rot-backend-c3a8.onrender.com https://placehold.co",
       "font-src 'self' data:",
       "connect-src 'self' https://rot-backend-c3a8.onrender.com https://checkout.paystack.com https://open.er-api.com",
       "object-src 'none'",
