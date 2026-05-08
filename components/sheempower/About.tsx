@@ -1,7 +1,7 @@
 import { features } from "@/lib/sheempower";
 import Image from "next/image";
 export default function AboutPage() {
-
+  
   return (
     <section className="bg-[#F6DFEA] px-6 py-20">
       <div className="mx-auto max-w-5xl">
@@ -11,9 +11,9 @@ export default function AboutPage() {
             About SHE Empower
           </p>
 
-          <h2 className="mx-auto font-medium max-w-2xl uppercase leading-tight text-black">
+          <h3 className="mx-auto font-medium max-w-2xl uppercase leading-tight text-black">
             More Than An Event <br /> A Movement
-          </h2>
+          </h3>
 
           <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-gray-600 ">
             This conference brings ROTAG vision to life creating a space where
@@ -51,10 +51,10 @@ export default function AboutPage() {
             What Happens In One Day
           </p>
 
-          <h2 className="mx-auto font-medium mt-4 max-w-3xl text-3xl uppercase leading-tight text-black">
+          <h3 className="mx-auto font-medium mt-4 max-w-3xl uppercase leading-tight text-black">
             Empowering Every African Girl <br />
             No Matter Her Background
-          </h2>
+          </h3>
         </div>
 
         {/* Features */}

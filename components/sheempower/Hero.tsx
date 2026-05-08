@@ -1,25 +1,43 @@
-// components/Hero.tsx
 "use client";
+
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 import { motion } from "framer-motion";
+import { ArrowDown } from "lucide-react";
 
 export default function Hero() {
   return (
     <section className="relative min-h-[800px] flex flex-col items-center justify-end bg-pink-950 lg:mx-4 lg:rounded-2xl overflow-hidden mt-6 md:mt-0">
-      {/* Background Image with Overlay */}
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/Threegirls.jpg"
-          width={1920}
-          height={1080}
+          src="/hero.png"
+          fill
           alt="African Girl Innovator"
-          className="w-full h-full object-cover"
+          className="object-cover"
+          priority
         />
+
+        {/* Added subtle overlay (for readability — matches your design) */}
+        <div className="absolute inset-0 bg-black/30" />
       </div>
 
       <div className="relative z-10 flex flex-col justify-end w-full h-full pb-16 md:pb-20 overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 w-full flex flex-col justify-end h-full relative">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 w-full flex flex-col justify-end h-full relative"> */
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-6"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/30 text-white text-xs tracking-wide backdrop-blur-md bg-white/10">
+              ROTAGI Annual Conference
+              <span className="opacity-70">|</span>
+              Coming 2026
+            </div>
+          </motion.div>
+
+          {/* TITLE */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -31,6 +49,7 @@ export default function Hero() {
             </h1>
           </motion.div>
 
+          {/* DESCRIPTION + CTA */}
           <div className="flex flex-col md:flex-row md:items-end w-full gap-8">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -38,7 +57,8 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="text-white max-w-xl opacity-90 font-dm-sans font-normal text-base md:text-lg leading-[160%] m-0"
             >
-              A one day conference bringing together African girls and young women and a celebration of everything you can become.
+              A one day conference bringing together African girls and young
+              women and a celebration of everything you can become.
             </motion.p>
 
             <motion.div
@@ -50,17 +70,19 @@ export default function Hero() {
               <Button
                 variant="secondary"
                 href="/programs"
-                withArrow
                 className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-3.5 font-semibold"
               >
                 Be the First to Know
+                <span>
+                  <ArrowDown size={18} />
+                </span>
               </Button>
             </motion.div>
           </div>
         </div>
       </div>
 
-      {/* Decorative gradients from design */}
+      {/* Decorative gradients (unchanged) */}
       <div className="absolute right-0 bottom-0 flex opacity-20 pointer-events-none">
         {[...Array(7)].map((_, i) => (
           <div
