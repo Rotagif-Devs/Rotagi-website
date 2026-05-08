@@ -1,6 +1,6 @@
-declare module 'react-quill-new' {
-  import React from 'react';
+import React from 'react';
 
+declare module 'react-quill-new' {
   export interface ReactQuillProps {
     theme?: string;
     value?: string;
@@ -26,4 +26,3 @@ declare module 'react-quill-new' {
 
   export default class ReactQuill extends React.Component<ReactQuillProps> {}
 }
-

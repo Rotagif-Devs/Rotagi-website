@@ -9,6 +9,17 @@ const ensureImageUrl = (url: string | undefined): string => {
   return `${API_BASE_URL}/${url}`;
 };
 
+const fixContentImages = (html: string): string => {
+  if (!html) return "";
+  // Find all <img src="..."> and fix the src if it's relative
+  return html.replace(/<img[^>]+src="([^">]+)"/g, (match, src) => {
+    if (src.startsWith("http") || src.startsWith("data:") || src.startsWith("/")) {
+      return match;
+    }
+    return match.replace(src, `${API_BASE_URL}/${src}`);
+  });
+};
+
 const normalizeEvent = (event: any): EventType | undefined => {
   if (!event) return undefined;
   const title = event.title || event.name || event.heading;
@@ -22,11 +33,13 @@ const normalizeEvent = (event: any): EventType | undefined => {
 };
 
 const parseContent = (content: any): string => {
-  if (typeof content === 'string') return content;
-  if (content && typeof content === 'object') {
+  let html = "";
+  if (typeof content === 'string') {
+    html = content;
+  } else if (content && typeof content === 'object') {
     // Basic extraction for Tiptap style objects
     if (content.type === 'doc' && Array.isArray(content.content)) {
-      return content.content
+      html = content.content
         .map((node: any) => {
           if (node.type === 'paragraph' && node.content) {
             return `<p>${node.content.map((c: any) => c.text).join('')}</p>`;
@@ -38,14 +51,15 @@ const parseContent = (content: any): string => {
           return '';
         })
         .join('');
-    }
-    try {
-      return JSON.stringify(content);
-    } catch {
-      return "";
+    } else {
+      try {
+        html = JSON.stringify(content);
+      } catch {
+        html = "";
+      }
     }
   }
-  return "";
+  return fixContentImages(html);
 };
 
 const formatDate = (dateStr: string) => {

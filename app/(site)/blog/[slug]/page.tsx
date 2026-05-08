@@ -44,22 +44,9 @@ export default async function BlogPostPage({
         </div>
 
         {/* Main Content Area */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20 w-full">
-            {/* Image Container */}
-            <div className="lg:col-span-12 xl:col-span-5 w-full">
-                <div className="relative aspect-[4/5] md:aspect-[16/9] lg:aspect-[4/5] w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl bg-gray-100">
-                    <Image
-                        src={post.image || "/wh.jpg"}
-                        alt={post.title}
-                        fill
-                        className="object-cover"
-                        priority
-                    />
-                </div>
-            </div>
-
+        <div className="max-w-4xl mx-auto mb-20 w-full">
             {/* Content Container */}
-            <div className="lg:col-span-12 xl:col-span-7 flex flex-col gap-6 text-[#121212] w-full">
+            <div className="flex flex-col gap-6 text-[#121212] w-full">
                 <div 
                     className="prose prose-pink prose-lg lg:prose-xl max-w-none w-full break-words
                       prose-headings:font-cal-sans prose-headings:text-[#121212]

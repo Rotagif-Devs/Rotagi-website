@@ -12,7 +12,6 @@ import {
   Sparkles,
 } from "lucide-react";
 import Button from "@/components/ui/Button";
-import Footer from "@/components/globalComp/Footer";
 
 export default function SheEmpowerPage() {
   return (
@@ -97,7 +96,7 @@ export default function SheEmpowerPage() {
         <section className="max-w-[1260px] mx-auto px-5 md:px-10 mb-32">
           <div className="relative aspect-[21/9] rounded-[40px] md:rounded-[60px] overflow-hidden border-[12px] border-white shadow-[0_20px_50px_rgba(255,182,193,0.2)]">
             <Image
-              src="/she-empower-hero.jpg"
+              src="/Threegirls.jpg"
               alt="SHE Empower Conference Highlights"
               fill
               className="object-cover"
@@ -168,20 +167,27 @@ export default function SheEmpowerPage() {
               Photo Archive
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+              {[
+                "/img-1.png",
+                "/img-2.png",
+                "/img-3.png",
+                "/img-4.png",
+                "/img-5.png",
+                "/r1.png",
+                "/r2.png",
+                "/r3.png",
+              ].map((img, i) => (
                 <div
                   key={i}
-                  className="aspect-square rounded-2xl md:rounded-3xl bg-white overflow-hidden shadow-sm group"
+                  className="relative aspect-square rounded-2xl md:rounded-3xl bg-white overflow-hidden shadow-sm group"
                 >
-                  <div className="w-full h-full bg-pink-100 flex items-center justify-center text-pink-300 group-hover:scale-110 transition-transform duration-500">
-                    {/* In a real app, this would be actual photos */}
+                  <div className="w-full h-full bg-pink-100 flex items-center justify-center text-pink-300 transition-transform duration-500 group-hover:scale-110">
                     <Image
-                      src={`/archive-${i}.jpg`}
-                      alt={`Archive ${i}`}
+                      src={img}
+                      alt={`Archive ${i + 1}`}
                       fill
-                      className="object-cover opacity-0"
+                      className="object-cover"
                     />
-                    <Sparkles className="w-8 h-8 opacity-20" />
                   </div>
                 </div>
               ))}
@@ -194,8 +200,6 @@ export default function SheEmpowerPage() {
           </div>
         </section>
 
-        {/* Footer */}
-        <Footer />
       </div>
     </div>
   );

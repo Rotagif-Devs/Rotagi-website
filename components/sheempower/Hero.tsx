@@ -10,7 +10,7 @@ export default function Hero() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/home-hero.png"
+          src="/Threegirls.jpg"
           width={1920}
           height={1080}
           alt="African Girl Innovator"
@@ -27,7 +27,7 @@ export default function Hero() {
             className="w-full mb-8 relative"
           >
             <h1 className="text-white max-w-4xl font-cal-sans font-normal text-4xl sm:text-5xl md:text-[72px] leading-[1.05] tracking-[-0.02em] mb-2 md:mb-4">
-              Empowering the Next Generation of African Girl Innovators
+              Where African Girls Rise Together
             </h1>
           </motion.div>
 
@@ -38,9 +38,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="text-white max-w-xl opacity-90 font-dm-sans font-normal text-base md:text-lg leading-[160%] m-0"
             >
-              The next breakthrough could come from her. We are making sure
-              she's ready with AI literacy, digital skills, and leadership
-              confidence
+              A one day conference bringing together African girls and young women and a celebration of everything you can become.
             </motion.p>
 
             <motion.div
@@ -55,7 +53,7 @@ export default function Hero() {
                 withArrow
                 className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-3.5 font-semibold"
               >
-                Explore Programs
+                Be the First to Know
               </Button>
             </motion.div>
           </div>

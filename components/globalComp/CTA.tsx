@@ -1,7 +1,5 @@
 "use client"; // ← Required because we're using state + event handlers
 
-import { useState, useRef } from "react";
-import { Play, Pause } from "lucide-react"; // ← Import both icons from lucide-react
 import Button from "../ui/Button";
 import VideoPlayer from "./Videoplayer";
 
@@ -26,7 +24,11 @@ export default function CTA() {
               <Button href="/donate" variant="primary" className="">
                 Donate Now
               </Button>
-              <Button href="/programs" variant="secondary" className="">
+              <Button
+                href="/programs"
+                variant="secondary"
+                className="px-9 py-3.5 bg-white border border-gray-300 rounded-full text-black text-center"
+              >
                 Explore Programs
               </Button>
             </div>
