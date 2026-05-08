@@ -33,9 +33,9 @@ export const Programselection = () => {
         </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {filterAgeRange().map((program, index) => {
+            {filterAgeRange().map((program) => {
                 return(
-                    <ProgramCard key={program.id} program={program} index={index}/>
+                    <ProgramCard key={program.id} program={program} />
                 )
             })}
 

@@ -23,8 +23,7 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 flex flex-col justify-end w-full h-full pb-16 md:pb-20 overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 w-full flex flex-col justify-end h-full relative">
-          {/* ✅ ADDED: TOP BADGE (missing in your UI) */}
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 w-full flex flex-col justify-end h-full relative"> */
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}

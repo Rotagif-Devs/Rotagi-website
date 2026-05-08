@@ -9,6 +9,7 @@ export interface Program {
   description: string;
   duration: string;
   format: string;
+  // index?: number;
   schedule: string;
   detailImage: string;
   image: string;
