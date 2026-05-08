@@ -49,15 +49,11 @@ export default function ContactMessage() {
        email: "",
       subject: "",
       message: "",
-    
-
     },
   });
-
   const onSubmit = async (data: ContactFormValues) => {
     setFormStatus("submitting");
     setSubmittedData({ name: data.fullName, email: data.email });
-
     try {
       await submitContactMessage(data);
       setFormStatus("success");
@@ -67,12 +63,10 @@ export default function ContactMessage() {
       setFormStatus("error");
     }
   };
-
   const handleReset = () => {
     setFormStatus("idle");
     setSubmittedData(null);
   };
-
   if (formStatus === "success" && submittedData) {
     return (
       <SuccessState
@@ -82,15 +76,12 @@ export default function ContactMessage() {
       />
     );
   }
-
   if (formStatus === "error") {
     return <ErrorState onReset={handleReset} />;
   }
-
   return (
     <section className="w-full rounded-[20px] bg-white py-8 px-4 sm:rounded-[24px]  md:px-8 lg:rounded-[28px] lg:px-16 lg:py-14 relative">
       {formStatus === "submitting" && <SubmittingState />}
-
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14 leading-relaxed">
         {/* Left */}
         <div className="">
@@ -101,7 +92,6 @@ export default function ContactMessage() {
             For enquiries, partnerships, or programme information, please complete
             the form and our team will respond as soon as possible.
           </p>
-
           <div className="mt-6 space-y-4 sm:mt-8 sm:space-y-5 lg:mt-10">
             {contactItems.map((item) => {
               const Icon = item.icon;
@@ -113,7 +103,6 @@ export default function ContactMessage() {
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#fdeaf3] sm:h-14 sm:w-14 lg:h-16 lg:w-16">
                     <Icon className="h-5 w-5 text-[#e63b93] sm:h-6 sm:w-6 lg:h-7 lg:w-7" />
                   </div>
-
                   <div className="min-w-0">
                     <p className="font-medium text-[#6B7280] sm:text-lg">
                       {item.title}
@@ -127,7 +116,6 @@ export default function ContactMessage() {
             })}
           </div>
         </div>
-
         {/* Right */}
         <div className="rounded-[20px] bg-[#fdf0f7] p-4 sm:rounded-[24px] sm:p-6 md:p-8 lg:rounded-[28px] lg:p-10">
           <form

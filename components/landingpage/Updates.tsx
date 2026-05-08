@@ -1,191 +1,132 @@
-"use client";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import { ChevronLeft, ChevronRight, Link } from "lucide-react";
 import Image from "next/image";
-import Button from "../ui/Button";
+import Link from "next/link";
+import { publicService } from "@/lib/services/public.service";
+import { ArrowRight } from "lucide-react";
 
-const updates = [
-  // ... (omitting for brevity in this chunk, but this is a replacement starting from line 3)
-  {
-    category: "SUCCESS STORY",
-    title: "How AI Changed My Career Path",
-    desc: "Meet Amina, a She Ascend graduate who transitioned from teaching to AI product management.",
-    image: "/img-5.png",
-    linkText: "Read Story",
-    href: "/blog",
-  },
-  {
-    category: "COMMUNITY IMPACT",
-    title: "Beginner's Guide To AI Literacy",
-    desc: "A comprehensive guide for educators introducing AI concepts to parents and young learners.",
-    image: "/img-5.png",
-    linkText: "Download Guide",
-    href: "/blog",
-  },
-  {
-    category: "EVENT RECAP",
-    title: "SHE Empower 2026 Highlights",
-    desc: "Recap of our annual conference featuring workshops, mentorship sessions, and inspiring talks.",
-    image: "/img-5.png",
-    linkText: "Watch Recap",
-    href: "/events",
-  },
-];
+const extractText = (html: string) => {
+  if (!html) return "";
+  const text = html.replace(/<[^>]*>?/gm, "");
+  return text.length > 120 ? text.substring(0, 120) + "..." : text;
+};
 
-export default function Updates() {
+export default async function Updates() {
+  let latestBlog = null;
+  let latestEvent = null;
+
+  try {
+    const latestBlogs = await publicService.getBlogPosts({ limit: 1 });
+    latestBlog = latestBlogs?.[0] || null;
+  } catch (err) {
+    console.error("Failed to fetch latest blog", err);
+  }
+
+  try {
+    const latestEvents = await publicService.getEvents({ limit: 1 });
+    latestEvent = latestEvents?.[0] || null;
+  } catch (err) {
+    console.error("Failed to fetch latest event", err);
+  }
+
+  const blogDesc =
+    latestBlog?.description ||
+    extractText(latestBlog?.content || "") ||
+    "Read the latest updates and insights from our team.";
+  const blogImage =
+    latestBlog?.image && latestBlog.image !== "/wh.jpg"
+      ? latestBlog.image
+      : "/img-5.png";
+
+  const eventDesc =
+    latestEvent?.description ||
+    "Join us for our upcoming events and workshops designed to empower and inspire.";
+  const eventImage =
+    latestEvent?.image && latestEvent.image !== "/wh.jpg"
+      ? latestEvent.image
+      : "/img-5.png";
+
+  const updates = [
+    {
+      category: latestBlog?.category?.toUpperCase() || "SUCCESS STORY",
+      title: latestBlog?.title || "Latest Blog",
+      desc: blogDesc,
+      image: blogImage,
+      linkText: "Read Story",
+      href: `/blog/${latestBlog?.slug || ""}`,
+    },
+    {
+      category: "EVENT",
+      title: latestEvent?.title || "Latest Event",
+      desc: eventDesc,
+      image: eventImage,
+      linkText: "View Event",
+      href: "/events",
+    },
+    {
+      category: "EVENT",
+      title: "SHE Empower 2026 Highlights",
+      desc: "Recap of our annual conference featuring workshops, mentorship sessions, and inspiring talks.",
+      image: "/img-5.png",
+      linkText: "View Event",
+      href: "/events/she-empower",
+    },
+  ];
   return (
     <section
-      className="bg-primary pt-16 lg:py-24 px-4 lg:px-8 flex justify-center border-t border-black/5"
+      className="py-16 lg:py-24 px-6 lg:px-8 flex justify-center"
       id="updates"
     >
-      <div className="flex w-full max-w-7xl flex-col gap-12 md:gap-20">
-        {/* Title + description + button area */}
-        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-          <h2 className="text-black max-w-lg lg:w-[45%] font-cal-sans font-normal text-3xl md:text-[46px] leading-[100%] tracking-normal">
-            Updates from Our Work & Impact
+      <div className="flex w-full max-w-7xl flex-col gap-14">
+        {/* Title + description area */}
+        <div className="flex flex-col gap-6 items-start">
+          <h2 className="text-black font-cal-sans font-normal text-4xl md:text-5xl leading-tight">
+            Updates from the Work That Matters
           </h2>
-
-          <div className="flex flex-col items-start gap-8 max-w-2xl">
-            <p className="text-gray-700 font-dm-sans font-normal text-[16px] leading-[133%] tracking-normal text-justify md:text-left lg:text-justify lg:pr-8 w-full md:w-11/12 lg:w-full">
-              Explore our latest programs, events, and stories, including
-              highlights, impact, and milestones.
-            </p>
-
-            <div className="hidden md:block">
-              <Button href="/events" variant="primary" className="px-10 py-4">
-                View All
-              </Button>
-            </div>
-          </div>
+          <p className="text-gray-600 font-dm-sans font-normal text-base leading-relaxed max-w-[572px]">
+            From program highlights to impact milestones, see how we’re
+            advancing opportunity and digital empowerment.
+          </p>
         </div>
 
-        {/* Cards / Slider section */}
-        <div className="relative">
-          {/* Desktop layout – 3 cards side by side */}
-          <div className="hidden md:flex md:gap-8 md:justify-between">
-            {updates.map((update) => (
-              <div
-                key={update.title}
-                className="group flex w-full max-w-[414px] flex-col overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm hover:shadow-md transition-shadow px-6 pb-6"
-              >
-                <div className="h-[200px] aspect-video w-full overflow-hidden mb-4">
-                  <Image
-                    width={414}
-                    height={240}
-                    src={update.image}
-                    alt={update.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
+        {/* Cards section */}
+        <div className="grid md:grid-cols-3 gap-4">
+          {updates.map((update) => (
+            <div
+              key={update.title}
+              className="group flex flex-col overflow-hidden rounded-xl border border-gray-100 bg-white"
+            >
+              <div className="relative  overflow-hidden">
+                <Image
+                  width={400}
+                  height={220}
+                  src={update.image}
+                  alt={update.title}
+                  className=" m-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
 
-                <div className="flex flex-1 flex-col gap-4">
-                  <span className="text-xs font-bold uppercase tracking-[0.1em] text-orange">
+              <div className="flex flex-col p-6 gap-4">
+                <div className="flex flex-col gap-1.5">
+                  <span className="text-red-500 text-xs font-semibold font-dm-sans tracking-wider uppercase">
                     {update.category}
                   </span>
-
-                  <h3 className="text-black font-cal-sans text-2xl lowercase leading-snug group-hover:text-secondary transition-colors">
+                  <h3 className="text-black font-cal-sans text-xl capitalize leading-8">
                     {update.title}
                   </h3>
-
-                  <p className="line-clamp-3 text-gray-600 font-dm-sans leading-relaxed">
+                  <p className="text-gray-600 font-dm-sans text-base leading-relaxed line-clamp-2">
                     {update.desc}
                   </p>
-
-                  <div className="mt-auto pt-4">
-                    <span className="flex items-center gap-2 text-base font-bold text-secondary group-hover:gap-4 transition-all">
-                      <Button
-                        withArrow
-                        size="none"
-                        className="py-2"
-                        variant="ghost"
-                        href={update.href ?? "/blog"}
-                      >
-                        {update.linkText}
-                      </Button>
-                    </span>
-                  </div>
                 </div>
+
+                <Link
+                  href={update.href}
+                  className="flex items-center gap-4 text-secondary font-semibold font-dm-sans group-hover:gap-6 transition-all"
+                >
+                  {update.linkText}
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
               </div>
-            ))}
-          </div>
-
-          {/* Mobile Swiper with partial peek */}
-          <div className="md:hidden">
-            <Swiper
-              modules={[Navigation]}
-              slidesPerView={1.1}
-              spaceBetween={16}
-              grabCursor={true}
-              className="pb-10"
-              navigation={{
-                prevEl: ".upd-prev",
-                nextEl: ".upd-next",
-              }}
-            >
-              {updates.map((update) => (
-                <SwiperSlide key={update.title}>
-                  <div className="overflow-hidden rounded-2xl bg-white shadow-sm h-120 flex flex-col  px-4 pb-2">
-                    <div className="h-[200px] w-full overflow-hidden mb-4">
-                      <Image
-                        width={400}
-                        height={220}
-                        src={update.image}
-                        alt={update.title}
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-
-                    <div className="flex flex-1 flex-col gap-3">
-                      <span className="text-xs font-bold uppercase tracking-wider text-orange">
-                        {update.category}
-                      </span>
-
-                      <h3 className="font-cal-sans text-xl lowercase leading-snug lg:w-full w-11/12">
-                        {update.title}
-                      </h3>
-
-                      <p className="line-clamp-3 text-gray-600 font-dm-sans text-sm leading-relaxed">
-                        {update.desc}
-                      </p>
-
-                      <div className="mt-auto">
-                        <span className="flex items-center gap-2 text-base font-bold text-secondary mb-3">
-                          <Button
-                            withArrow
-                            size="none"
-                            className="py-2"
-                            variant="ghost"
-                            href={update.href ?? "/blog"}
-                          >
-                            {update.linkText}
-                          </Button>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-
-            <div className="mt-8 flex justify-end gap-3">
-              <button className="upd-prev flex h-14 w-14 items-center justify-center rounded-full bg-secondary/30 border-2 border-white text-black transition hover:bg-black/90 border border-black/10">
-                <ChevronLeft className="h-8 w-8 text-white" />
-              </button>
-              <button className="upd-next flex h-14 w-14 items-center justify-center rounded-full bg-secondary/30 border-2 border-white text-black transition hover:bg-black/90 border border-black/10">
-                <ChevronRight className="h-8 w-8 text-white" />
-              </button>
             </div>
-          </div>
-
-          {/* Button below on mobile */}
-          <div className="mt-10 flex justify-center md:hidden">
-            <Button href="/blog" variant="primary" className="px-10 py-4">
-              View All
-            </Button>
-          </div>
+          ))}
         </div>
       </div>
     </section>

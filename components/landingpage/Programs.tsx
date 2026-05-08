@@ -36,7 +36,7 @@ export default function Programs() {
           </p>
         </div>
 
-        <div className="mx-auto rounded-tl-2xl rounded-bl-2xl lg:rounded-2xl bg-white p-8 md:p-12 lg:p-8 xl:p-12">
+        <div className="mx-auto rounded-tl-2xl rounded-bl-2xl lg:rounded-2xl bg-white p-8 md:p-8 lg:p-8 xl:p-8">
           {/* Desktop grid */}
           <div className="hidden lg:grid lg:grid-cols-4 lg:gap-4">
             {programs.map((prog, i) => (
@@ -56,22 +56,24 @@ export default function Programs() {
                     alt={prog.name}
                     className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-110 lg:mt-6"
                   />
-                  <span className="absolute right-3 top-5 inline-flex h-8 items-center justify-center rounded-tl-2xl rounded-br-2xl rounded-tr-sm rounded-bl-sm bg-[#FCE8F3] font-['Inter'] font-bold text-[12px] leading-[20px] tracking-normal text-black px-5 py-1">
+                  <span className="absolute right-3 top-5 inline-flex items-center justify-center rounded-tl-xl rounded-br-xl rounded-tr-none rounded-bl-none bg-primary font-['Inter'] font-bold text-[12px] leading-[20px] tracking-normal text-black px-4 py-1">
                     {prog.ageRange}
                   </span>
                 </div>
 
                 <div className="flex flex-1 flex-col items-center text-center">
-                  <h3 className="mb-4 text-black font-cal-sans font-normal text-[22px] leading-[18px] tracking-[-0.2px] capitalize">
+                  <h3 className="mb-3.5 text-black font-cal-sans font-normal text-xl capitalize leading-4">
                     {prog.name}
                   </h3>
-                  <p className="mb-8 text-black/70 font-dm-sans font-normal text-[15px] leading-[25px] tracking-[-0.2px] text-center">
-                    {prog.tagline}
+                  <p className="mb-5 text-gray-600 font-dm-sans font-normal text-[15px] leading-6">
+                    {prog.description.split(".")[0]}.
                   </p>
-                  <Link href={`/programs/${prog.slug}`} className="mt-auto">
-                    <Button variant="ghost" withArrow className="">
-                      Learn More
-                    </Button>
+                  <Link
+                    href={`/programs/${prog.slug}`}
+                    className="mt-auto inline-flex items-center gap-4 text-secondary font-semibold font-inter hover:gap-6 transition-all"
+                  >
+                    Learn More
+                    <ArrowRight className="w-5 h-5" />
                   </Link>
                 </div>
               </div>
@@ -113,17 +115,15 @@ export default function Programs() {
                       <h3 className="mb-4 text-black font-cal-sans font-normal text-[22px] leading-[18px] tracking-[-0.2px] capitalize">
                         {prog.name}
                       </h3>
-                      <p className="mb-2 text-black/70 font-dm-sans font-normal text-[15px] leading-[25px] tracking-[-0.2px] text-center">
-                        {prog.tagline}
+                      <p className="mb-4 text-gray-600 font-dm-sans font-normal text-[15px] leading-6">
+                        {prog.description.split(".")[0]}.
                       </p>
-                      <Link href={`/programs/${prog.slug}`} className="mt-auto">
-                        <Button
-                          variant="ghost"
-                          withArrow
-                          className="inline-flex items-center gap-2 text-xl font-bold text-secondary transition-all px-8 py-3 rounded-full border-none hover:bg-secondary/10"
-                        >
-                          Learn More
-                        </Button>
+                      <Link
+                        href={`/programs/${prog.slug}`}
+                        className="mt-auto inline-flex items-center gap-4 text-pink-400 font-semibold font-inter"
+                      >
+                        Learn More
+                        <ArrowRight className="w-5 h-5" />
                       </Link>
                     </div>
                   </div>
