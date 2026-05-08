@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useEffect, useState } from "react";
 import { Plus, Search, MapPin, Calendar as CalendarIcon } from "lucide-react";
@@ -50,67 +50,85 @@ export default function EventListPage() {
         </Link>
       </div>
 
-      <div className="bg-white rounded-[3rem] border border-gray-50 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.03)] overflow-hidden">
-        <div className="p-10 border-b border-gray-50">
-          <div className="relative w-full">
-            <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-300 font-bold" size={24} />
-            <input 
-              type="text" 
+      <div className="bg-[#F8F9FA] p-6 min-h-screen">
+      <div className="max-w-7xl mx-auto bg-white rounded-xl border border-gray-100 shadow-sm">
+        
+        {/* Search Bar Section */}
+        <div className="p-6 border-b border-gray-50">
+          <div className="relative">
+            <input
+              type="text"
               placeholder="Search by title or location..."
-              className="w-full pl-14 pr-8 py-5 bg-gray-50/50 border border-gray-100 rounded-[2rem] focus:ring-8 focus:ring-secondary/5 focus:border-secondary/20 focus:bg-white transition-all font-medium text-gray-700 outline-none text-lg"
+              className="w-full pl-5 pr-12 py-3 bg-white border border-gray-200 rounded-xl text-gray-600 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-100 transition-all"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
+            <Search className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
           </div>
         </div>
 
-        <div className="overflow-x-auto">
+        {/* Table Section */}
+        <div className="overflow-x-auto min-h-[450px]">
           <table className="w-full text-left">
             <thead>
-              <tr className="border-b border-gray-50 text-[11px] font-black text-gray-400 uppercase tracking-[0.15em]">
-                <th className="px-8 py-6 font-black">EVENT</th>
-                <th className="px-8 py-6 font-black">DATE</th>
-                <th className="px-8 py-6 font-black">TIME</th>
-                <th className="px-8 py-6 font-black">LOCATION</th>
-                <th className="px-8 py-6 font-black text-right">ACTIONS</th>
+              <tr className="bg-gray-50/50 text-[11px] font-bold text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-4">Event</th>
+                <th className="px-6 py-4">Tag/Slug</th>
+                <th className="px-6 py-4">Time</th>
+                <th className="px-6 py-4">Date</th>
+                <th className="px-6 py-4">Location</th>
+                <th className="px-6 py-4 text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
               {isLoading ? (
+                // Loading Skeleton
                 Array(3).fill(0).map((_, i) => (
                   <tr key={i} className="animate-pulse">
-                    <td className="px-6 py-8"><div className="h-4 bg-gray-100 rounded w-48"></div></td>
-                    <td className="px-6 py-8"><div className="h-4 bg-gray-100 rounded w-32"></div></td>
-                    <td className="px-6 py-8"><div className="h-4 bg-gray-100 rounded w-24"></div></td>
-                    <td className="px-6 py-8"></td>
+                    <td colSpan={6} className="px-6 py-10 bg-gray-50/20" />
                   </tr>
                 ))
               ) : filteredEvents.length > 0 ? (
                 filteredEvents.map((event) => (
                   <tr key={event.slug} className="hover:bg-gray-50/50 transition-colors group">
-                    <td className="px-10 py-8">
-                      <div className="flex items-center gap-5">
-                        <div className="w-12 h-12 rounded-full bg-gray-100 flex-shrink-0 overflow-hidden border-4 border-white shadow-xl shadow-black/5 group-hover:scale-110 transition-transform">
-                          <img src={event.image} alt="" className="w-full h-full object-cover" />
-                        </div>
-                        <p className="font-bold text-gray-900 tracking-tight text-[15px]">{event.title}</p>
+                    {/* Event with Image */}
+                    <td className="px-6 py-5">
+                      <div className="flex items-center gap-3">
+                        <span className="font-semibold text-gray-700 text-sm">{event.title}</span>
                       </div>
                     </td>
-                    <td className="px-10 py-8">
-                      <span className="text-sm font-semibold text-gray-600 font-outfit">
+
+                    {/* Tag/Slug Column */}
+                    <td className="px-6 py-5">
+                      <span className="text-gray-500 text-sm font-medium">
+                        {event.slug}
+                      </span>
+                    </td>
+
+                    {/* Time Column */}
+                    <td className="px-6 py-5">
+                      <span className="text-sm font-bold text-gray-700 uppercase">{event.time}</span>
+                    </td>
+
+                    {/* Date Column */}
+                    <td className="px-6 py-5">
+                      <span className="text-sm text-gray-600 font-medium">
                         {event.date}
                       </span>
                     </td>
-                    <td className="px-10 py-8 text-sm font-semibold text-gray-600 font-outfit uppercase">
-                      {event.time}
-                    </td>
-                    <td className="px-10 py-8">
-                       <div className="flex items-center gap-2 bg-gray-100/50 w-fit px-4 py-1.5 rounded-full border border-gray-200/50">
-                        <div className="w-1.5 h-1.5 rounded-full bg-gray-400" />
-                        <span className="text-[11px] font-black text-gray-500 uppercase tracking-widest">{event.location}</span>
+
+                    {/* Location Column */}
+                    <td className="px-6 py-5">
+                      <div className="inline-flex items-center gap-2 bg-[#F1F3F5] px-3 py-1 rounded-full border border-gray-200/50">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#7B8A9E]" />
+                        <span className="text-[11px] font-bold text-gray-600 uppercase tracking-widest">
+                          {event.location}
+                        </span>
                       </div>
                     </td>
-                    <td className="px-10 py-8 text-right">
+
+                    {/* Actions Column */}
+                    <td className="px-6 py-5 text-right">
                        <ActionMenu 
                           editUrl={`/admin/dashboard/events/${event.id ?? event.slug}/edit`}
                           onDelete={() => handleDelete(event.id ?? event.slug)}
@@ -120,15 +138,10 @@ export default function EventListPage() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={4} className="px-6 py-20 text-center">
-                    <div className="max-w-xs mx-auto space-y-3">
-                      <CalendarIcon className="mx-auto text-gray-200" size={48} />
-                      <p className="text-gray-500 font-medium">No events found.</p>
-                      <Link href="/admin/dashboard/events/new">
-                        <Button variant="outline" className="mt-4 border-gray-200 bg-white">
-                          Create your first event
-                        </Button>
-                      </Link>
+                  <td colSpan={6} className="px-6 py-20 text-center">
+                    <div className="flex flex-col items-center text-gray-400">
+                      <CalendarIcon size={40} strokeWidth={1.5} />
+                      <p className="mt-2 text-sm font-medium">No events found</p>
                     </div>
                   </td>
                 </tr>
@@ -137,6 +150,7 @@ export default function EventListPage() {
           </table>
         </div>
       </div>
+    </div>
     </div>
   );
 }

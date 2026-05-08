@@ -34,18 +34,20 @@ export default function EventForm({ initialData, onSubmit, onCancel, isLoading }
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file || !formData.id) {
-       if(!formData.id) alert("Please save the event first before uploading an image.");
-       return;
-    }
-    
-    try {
-      const updatedEvent = await adminService.uploadEventImage(formData.id, file);
-      setFormData(updatedEvent);
-      alert("Image uploaded successfully");
-    } catch (err) {
-      console.error("Upload failed", err);
-      alert("Failed to upload image");
+    if (!file) return;
+
+    // Show local preview immediately
+    const localPreviewUrl = URL.createObjectURL(file);
+    setFormData((prev) => ({ ...prev, image: localPreviewUrl }));
+
+    // If we have an ID, we can upload immediately
+    if (formData.id) {
+      try {
+        const updatedEvent = await adminService.uploadEventImage(formData.id, file);
+        setFormData(updatedEvent);
+      } catch (err) {
+        console.error("Upload failed", err);
+      }
     }
   };
 
@@ -182,7 +184,13 @@ export default function EventForm({ initialData, onSubmit, onCancel, isLoading }
                 className="relative aspect-video w-full rounded-2xl bg-gray-50 overflow-hidden border-2 border-dashed border-gray-100 flex items-center justify-center cursor-pointer transition-all hover:bg-gray-100 group shadow-inner"
               >
                 {formData.image ? (
-                  <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />
+                  <div className="relative w-full h-full">
+                    <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center">
+                      <ImageIcon className="text-white mb-1" size={24} />
+                      <p className="text-white text-[10px] font-bold uppercase">Change Image</p>
+                    </div>
+                  </div>
                 ) : (
                   <div className="text-center p-6">
                     <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">

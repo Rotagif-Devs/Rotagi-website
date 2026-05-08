@@ -1,25 +1,28 @@
-import { Component } from 'react';
+import React from 'react';
 
 declare module 'react-quill-new' {
   export interface ReactQuillProps {
+    theme?: string;
     value?: string;
     defaultValue?: string;
     readOnly?: boolean;
-    placeholder?: string;
-    modules?: any;
-    formats?: string[];
-    theme?: string;
-    onChange?: (content: string, delta: any, source: any, editor: any) => void;
-    onChangeSelection?: (selection: any, source: any, editor: any) => void;
-    onFocus?: (selection: any, source: any, editor: any) => void;
-    onBlur?: (previousSelection: any, source: any, editor: any) => void;
+    onChange?: (content: string, delta: any, source: string, editor: any) => void;
+    onChangeSelection?: (range: any, source: string, editor: any) => void;
+    onFocus?: (range: any, source: string, editor: any) => void;
+    onBlur?: (previousRange: any, source: string, editor: any) => void;
     onKeyPress?: (event: any) => void;
     onKeyDown?: (event: any) => void;
     onKeyUp?: (event: any) => void;
+    modules?: any;
+    formats?: string[];
+    children?: React.ReactNode;
+    placeholder?: string;
     className?: string;
     style?: React.CSSProperties;
-    children?: React.ReactNode;
+    scrollingContainer?: string | HTMLElement;
+    tabIndex?: number;
+    bounds?: string | HTMLElement;
   }
 
-  export default class ReactQuill extends Component<ReactQuillProps> {}
+  export default class ReactQuill extends React.Component<ReactQuillProps> {}
 }
