@@ -2,17 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import { 
-  FileText, 
-  Calendar, 
-  Users, 
-  ArrowUpRight, 
-  TrendingUp, 
-  Clock, 
-  Edit2, 
-  Eye,
-  Plus,
-  Activity,
-  Zap,
   Folder,
   ArrowRight
 } from "lucide-react";
@@ -21,7 +10,7 @@ import { adminService } from "@/lib/services/admin.service";
 import { BlogPost } from "@/types/blog";
 import { events as EventType } from "@/types/event";
 import Button from "@/components/ui/Button";
-
+import { ChevronRight } from 'lucide-react';
 export default function AdminDashboardPage() {
   const [analytics, setAnalytics] = useState<{
     contentVelocity: { count: number; deltaWeek: number };
@@ -73,6 +62,33 @@ export default function AdminDashboardPage() {
     },
   ];
 
+
+
+
+
+  const transmissions = [
+  {
+    title: "How AI Changed My Career Path",
+    date: "01/03/2026",
+    category: "Success Story",
+    status: "Published",
+    image: "/avatar.png", // Replace with your actual image path
+  },
+  {
+    title: "Beginner's Guide To AI Literacy",
+    date: "01/03/2026",
+    category: "Resource",
+    status: "Published",
+    image: "/avatar.png",
+  },
+  {
+    title: "SHE Empower 2026 Highlights",
+    date: "01/03/2026",
+    category: "Event",
+    status: "Published",
+    image: "/avatar.png",
+  },
+];
   return (
     <div className="space-y-6 sm:space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700 pb-10">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -82,12 +98,12 @@ export default function AdminDashboardPage() {
         </div>
         <div className="flex flex-wrap gap-4">
           <Link href="/admin/dashboard/blog/new" className="flex-1 sm:flex-none">
-            <Button variant="outline" className="w-full sm:w-auto rounded-xl border-gray-200 bg-white text-gray-700 hover:bg-gray-50 px-6 py-6 font-bold text-sm shadow-sm transition-all active:scale-95">
+            <Button variant="outline" className="w-full sm:w-auto rounded-xl border-gray-200 bg-white text-gray-700 hover:bg-gray-50 px-6  font-bold text-sm shadow-sm transition-all active:scale-95">
               + Add New Blog
             </Button>
           </Link>
           <Link href="/admin/dashboard/events/new" className="flex-1 sm:flex-none">
-            <Button variant="primary" className="w-full sm:w-auto rounded-xl bg-secondary text-white hover:bg-secondary/90 border-none px-6 py-6 font-bold text-sm shadow-xl shadow-secondary/20 transition-all active:scale-95">
+            <Button variant="primary" className="w-full sm:w-auto rounded-xl bg-secondary text-white hover:bg-secondary/90 border-none px-6  font-bold text-sm shadow-xl shadow-secondary/20 transition-all active:scale-95">
               + New Event
             </Button>
           </Link>
@@ -124,100 +140,64 @@ export default function AdminDashboardPage() {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-        <div className="lg:col-span-2 space-y-6">
-          <div className="flex items-center justify-between px-4 mb-4">
-            <h2 className="text-2xl font-black text-black font-outfit">Recent Transmissions</h2>
-            <Link href="/admin/dashboard/blog" className="text-xs font-black text-secondary uppercase tracking-widest flex items-center gap-2 group">
+      <div className="max-w-5xl mx-auto p-6 bg-gray-50 min-h-screen">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+        {/* Header Section */}
+        <div className="flex items-center justify-between px-8 py-6">
+          <h2 className="text-xl font-bold text-gray-900">Recent Transmissions</h2>
+          <Link href="/admin/dashboard/blog" className="text-xs font-black text-secondary uppercase tracking-widest flex items-center gap-2 group">
               View All <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </Link>
-          </div>
-          
-          <div className="bg-white rounded-[3rem] border border-gray-50 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.03)] overflow-hidden p-6 md:p-8">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left">
-                <thead>
-                  <tr className="border-b border-gray-50 text-[11px] font-black text-gray-400 uppercase tracking-[0.2em] bg-gray-50/30">
-                    <th className="px-8 py-7">TITLE</th>
-                    <th className="px-8 py-7">DATE</th>
-                    <th className="px-8 py-7">CATEGORY</th>
-                    <th className="px-8 py-7">STATUS</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-50">
-                  {recentBlogs.map((blog) => (
-                    <tr key={blog.id} className="hover:bg-gray-50/50 transition-colors group">
-                      <td className="px-8 py-7">
-                        <div className="flex items-center gap-5">
-                          <div className="w-11 h-11 rounded-full bg-gray-100 overflow-hidden shrink-0 border-4 border-white shadow-xl shadow-black/5 transition-transform group-hover:scale-110">
-                            <img src={blog.image} alt="" className="w-full h-full object-cover" />
-                          </div>
-                          <p className="font-bold text-gray-900 truncate text-[15px] tracking-tight">{blog.title}</p>
-                        </div>
-                      </td>
-                      <td className="px-8 py-7 text-xs font-semibold text-gray-500 font-outfit">
-                        {new Date(blog.date).toLocaleDateString('en-GB')}
-                      </td>
-                      <td className="px-8 py-7">
-                        <div className="flex items-center gap-2 bg-gray-100/50 w-fit px-4 py-1.5 rounded-full border border-gray-200/50">
-                          <div className="w-1.5 h-1.5 rounded-full bg-gray-400" />
-                          <span className="text-[11px] font-black text-gray-600 uppercase tracking-widest">
-                            {blog.category}
-                          </span>
-                        </div>
-                      </td>
-                      <td className="px-8 py-7">
-                        <div className="flex items-center gap-2 bg-[#E8F5E9]/50 w-fit px-4 py-1.5 rounded-full border border-green-100">
-                          <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
-                          <span className="text-[11px] font-black text-green-700 uppercase tracking-widest">Published</span>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
         </div>
 
-        <div className="space-y-6">
-          <div className="flex items-center justify-between px-2">
-            <h2 className="text-xl font-cal-sans text-black">Pulse</h2>
-            <Activity size={18} className="text-secondary animate-pulse" />
-          </div>
-
-          <div className="bg-black rounded-[2.5rem] p-8 text-white relative overflow-hidden shadow-2xl shadow-secondary/10">
-
-             <div className="relative z-10">
-                <p className="text-[10px] font-black text-secondary uppercase tracking-[0.3em] mb-1">Service Health</p>
-                <h3 className="text-2xl font-bold mb-6">Operations Nominal</h3>
-                
-                <div className="space-y-5">
-                  {[
-                    { label: "Content Delivery Network", status: "Optimal", active: true },
-                    { label: "Database Persistence", status: "Connected", active: true },
-                    { label: "Media Optimization", status: "Processing", active: true },
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center justify-between bg-white/[0.05] p-4 rounded-2xl border border-white/5">
-                      <span className="text-xs font-medium text-gray-400">{item.label}</span>
-                      <span className="text-[10px] font-bold text-secondary uppercase tracking-widest">{item.status}</span>
+        {/* Table Section */}
+        <div className="overflow-x-auto px-4 pb-4">
+          <table className="w-full text-left border-separate border-spacing-y-0">
+            <thead>
+              <tr className="bg-gray-50/50">
+                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider rounded-l-lg">Title</th>
+                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Date</th>
+                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Category</th>
+                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider rounded-r-lg">Status</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {transmissions.map((item, index) => (
+                <tr key={index} className="group hover:bg-gray-50/50 transition-colors">
+                  <td className="px-6 py-5">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full overflow-hidden bg-purple-100 flex-shrink-0">
+                        <img 
+                          src={item.image} 
+                          alt="Author" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <span className="font-medium text-gray-700">{item.title}</span>
                     </div>
-                  ))}
-                </div>
-
-                <div className="mt-8 pt-8 border-t border-white/10">
-                   <div className="flex items-center justify-between mb-4">
-                      <span className="text-xs text-gray-400">Memory Allocation</span>
-                      <span className="text-xs font-bold">42%</span>
-                   </div>
-                   <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full bg-secondary w-[42%] rounded-full shadow-[0_0_12px_rgba(255,107,0,0.5)]" />
-                   </div>
-                </div>
-             </div>
-          </div>
+                  </td>
+                  <td className="px-6 py-5 text-sm text-gray-600">
+                    {item.date}
+                  </td>
+                  <td className="px-6 py-5">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-medium">
+                      <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mr-2"></span>
+                      {item.category}
+                    </span>
+                  </td>
+                  <td className="px-6 py-5">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs font-bold">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-2"></span>
+                      {item.status}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
+    </div>
     </div>
   );
 }

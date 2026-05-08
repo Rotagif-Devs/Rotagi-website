@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Plus, Search, FileText } from "lucide-react";
+import { Plus, Search, FileText, MoreHorizontal } from "lucide-react";
 import ActionMenu from "@/components/admin/ActionMenu";
 import Link from "next/link";
 import { adminService } from "@/lib/services/admin.service";
@@ -44,91 +44,108 @@ export default function BlogListPage() {
           <p className="text-gray-500 mt-2 font-medium">Create, edit, and manage your blog articles.</p>
         </div>
         <Link href="/admin/dashboard/blog/new">
-          <Button variant="primary" className="bg-secondary text-white hover:bg-secondary/90 px-8 py-7 rounded-xl font-bold shadow-xl shadow-secondary/20 transition-all active:scale-95">
+          <Button variant="primary" className="bg-secondary text-white hover:bg-secondary/90 px-8  rounded-xl font-bold shadow-xl shadow-secondary/20 transition-all active:scale-95">
             + New Post
           </Button>
         </Link>
       </div>
-
-      <div className="bg-white rounded-[3rem] border border-gray-50 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.03)] overflow-hidden">
-        <div className="p-10 border-b border-gray-50 flex items-center gap-4">
-          <div className="relative flex-1">
-            <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-300 font-bold" size={24} />
-            <input 
-              type="text" 
+<div className="bg-[#F8F9FA] p-6 min-h-screen">
+      <div className="max-w-7xl mx-auto bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+        
+        {/* Search Bar Section */}
+        <div className="p-6 border-b border-gray-50">
+          <div className="relative">
+            <input
+              type="text"
               placeholder="Search by title or category..."
-              className="w-full pl-14 pr-8 py-5 bg-gray-50/50 border border-gray-100 rounded-[2rem] focus:ring-8 focus:ring-secondary/5 focus:border-secondary/20 focus:bg-white transition-all font-medium text-gray-700 outline-none text-lg"
+              className="w-full pl-5 pr-12 py-3 bg-white border border-gray-200 rounded-xl text-gray-600 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-100 transition-all"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
+            <Search className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
           </div>
         </div>
 
+        {/* Table Section */}
         <div className="overflow-x-auto">
           <table className="w-full text-left">
             <thead>
-              <tr className="border-b border-gray-50 text-[11px] font-black text-gray-400 uppercase tracking-[0.15em]">
-                <th className="px-8 py-6">POST DETAILS</th>
-                <th className="px-8 py-6">CATEGORY</th>
-                <th className="px-8 py-6">AUTHOR</th>
-                <th className="px-8 py-6">DATE</th>
-                <th className="px-8 py-6 text-right">ACTIONS</th>
+              <tr className="bg-gray-50/50 text-[11px] font-bold text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-4">Title</th>
+                <th className="px-6 py-4">Tag</th>
+                <th className="px-6 py-4">Author</th>
+                <th className="px-6 py-4">Date</th>
+                <th className="px-6 py-4">Category</th>
+                <th className="px-6 py-4 text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
               {isLoading ? (
+                // Loading Skeleton
                 Array(3).fill(0).map((_, i) => (
                   <tr key={i} className="animate-pulse">
-                    <td className="px-6 py-8"><div className="h-4 bg-gray-100 rounded w-48"></div></td>
-                    <td className="px-6 py-8"><div className="h-4 bg-gray-100 rounded w-24"></div></td>
-                    <td className="px-6 py-8"><div className="h-4 bg-gray-100 rounded w-32"></div></td>
-                    <td className="px-6 py-8"><div className="h-4 bg-gray-100 rounded w-20"></div></td>
-                    <td className="px-6 py-8"></td>
+                    <td colSpan={6} className="px-6 py-10 bg-gray-50/20" />
                   </tr>
                 ))
               ) : filteredBlogs.length > 0 ? (
                 filteredBlogs.map((blog) => (
-                  <tr key={blog.id} className="hover:bg-gray-50/50 transition-colors group text-sm font-medium text-gray-700">
-                    <td className="px-10 py-8">
-                      <div className="flex items-center gap-5">
-                        <div className="w-12 h-12 rounded-full bg-gray-100 flex-shrink-0 overflow-hidden border-4 border-white shadow-xl shadow-black/5 group-hover:scale-110 transition-transform">
+                  <tr key={blog.id} className="hover:bg-gray-50/50 transition-colors group">
+                    {/* Title with Thumbnail */}
+                    <td className="px-6 py-5">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-gray-100">
                           <img src={blog.image} alt="" className="w-full h-full object-cover" />
                         </div>
-                        <p className="font-bold text-gray-900 tracking-tight text-[15px]">{blog.title}</p>
+                        <span className="font-semibold text-gray-700 text-sm">{blog.title}</span>
                       </div>
                     </td>
-                    <td className="px-10 py-8">
-                      <div className="flex items-center gap-2 bg-gray-100/50 w-fit px-4 py-1.5 rounded-full border border-gray-200/50">
-                        <div className="w-1.5 h-1.5 rounded-full bg-gray-400" />
-                        <span className="text-[11px] font-black text-gray-500 uppercase tracking-widest">{blog.category}</span>
+
+                    {/* Tag Column */}
+                    <td className="px-6 py-5">
+                      <span className="text-gray-500 text-sm font-medium">
+                        {blog.slug || `/how-ai-changed...`}
+                      </span>
+                    </td>
+
+                    {/* Author Column */}
+                    <td className="px-6 py-5">
+                      <div className="flex flex-col">
+                        <span className="text-sm font-bold text-gray-700">{blog.author.name}</span>
+                        <span className="text-[11px] text-gray-400">{blog.author.role}</span>
                       </div>
                     </td>
-                    <td className="px-10 py-8">
-                      <p className="font-bold text-black text-xs uppercase">{blog.author.name}</p>
-                      <p className="text-[10px] text-gray-400 uppercase mt-0.5 tracking-tighter">{blog.author.role}</p>
+
+                    {/* Date Column */}
+                    <td className="px-6 py-5">
+                      <span className="text-sm text-gray-600 font-medium">
+                        {new Date(blog.date).toLocaleDateString('en-GB')}
+                      </span>
                     </td>
-                    <td className="px-10 py-8 text-sm font-semibold text-gray-500 font-outfit uppercase">
-                      {new Date(blog.date).toLocaleDateString('en-GB')}
+
+                    {/* Category Column */}
+                    <td className="px-6 py-5">
+                      <div className="inline-flex items-center gap-2 bg-[#F1F3F5] px-3 py-1 rounded-full border border-gray-200/50">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#7B8A9E]" />
+                        <span className="text-[11px] font-bold text-gray-600">
+                          {blog.category}
+                        </span>
+                      </div>
                     </td>
-                    <td className="px-10 py-8 text-right">
-                       <ActionMenu 
-                          editUrl={`/admin/dashboard/blog/${blog.id}/edit`}
-                          onDelete={() => handleDelete(blog.id)}
-                       />
+
+                    {/* Actions Column */}
+                    <td className="px-6 py-5 text-right">
+                      <button className="text-gray-400 hover:text-gray-600 transition-colors">
+                        <MoreHorizontal size={20} />
+                      </button>
                     </td>
                   </tr>
                 ))
               ) : (
                 <tr>
-                  <td colSpan={5} className="px-6 py-20 text-center">
-                    <div className="max-w-xs mx-auto space-y-3">
-                      <FileText className="mx-auto text-gray-200" size={48} />
-                      <p className="text-gray-500 font-medium">No blog posts found.</p>
-                      <Link href="/admin/dashboard/blog/new">
-                        <Button variant="outline" className="mt-4 border-gray-200 bg-white">
-                          Create your first post
-                        </Button>
-                      </Link>
+                  <td colSpan={6} className="px-6 py-20 text-center">
+                    <div className="flex flex-col items-center text-gray-400">
+                      <FileText size={40} strokeWidth={1.5} />
+                      <p className="mt-2 text-sm font-medium">No posts found</p>
                     </div>
                   </td>
                 </tr>
@@ -137,6 +154,7 @@ export default function BlogListPage() {
           </table>
         </div>
       </div>
+    </div>
     </div>
   );
 }
