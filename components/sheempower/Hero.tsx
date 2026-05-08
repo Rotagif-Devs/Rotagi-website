@@ -10,7 +10,7 @@ export default function Hero() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/hero.png"
+          src="/Threegirls.jpg"
           width={1920}
           height={1080}
           alt="African Girl Innovator"
