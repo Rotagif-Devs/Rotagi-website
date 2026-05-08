@@ -4,9 +4,10 @@ import Button from "../ui/Button";
 
 interface Props {
   program: Program;
+  index?: number;
 }
 
-export default function ProgramCard({ program, }: Props) {
+export default function ProgramCard({ program }: Props) {
   return (
     <div className="flex h-full flex-col rounded-2xl bg-white p-5">
       {/* Image */}
