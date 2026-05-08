@@ -1,134 +1,114 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
+import React from 'react';
+import Image from 'next/image';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+// IMPORTANT: These imports are required for Swiper to function
 import "swiper/css";
 import "swiper/css/navigation";
 
-const OurValue = () => {
-  const valuesData = [
-    {
-      title: "Equitable Access",
-      description:
-        "Breaking down barriers to ensure high quality tech education reaches even the most remote communities",
-      icon: "/Team.svg",
-    },
-    {
-      title: "Gender Equality",
-      description:
-        "Actively working to close the digital divide and elevate female voices in male dominated tech sectors",
-      icon: "/Gender-equal.svg",
-    },
-    {
-      title: "Responsible Innovation",
-      description:
-        "Teaching ethical AI development that considers cultural context and social responsibility",
-      icon: "/innovation.svg",
-    },
-    {
-      title: "Social Impact",
-      description:
-        "Measuring our success by the growth employment and local influence of our graduates",
-      icon: "/social-impact.svg",
-    },
-  ];
+const coreValues = [
+  {
+    iconSrc: "/Measurable.png",
+    title: "Measurable Social Impact",
+    description: "Delivering programmes with measurable outcomes across education, employment, entrepreneurship, and leadership for our graduates.",
+  },
+  {
+    iconSrc: "/Equitable.png",
+    title: "Equitable Access & Inclusion",
+    description: "Removing barriers to ensure inclusive digital, AI, and life-skills education reaches every African girl.",
+  },
+  {
+    iconSrc: "/Responsible.png",
+    title: "Responsible Innovation",
+    description: "Equipping girls with practical AI skills while promoting safe, responsible technology use.",
+  },
+  {
+    iconSrc: "/Gender.png",
+    title: "Gender Equality & Confident Leadership",
+    description: "Strengthening leadership and empowerment to enable African girls and young women to lead in digital spaces.",
+  },
+];
 
+const CoreValues = () => {
   return (
-    <section className="bg-[#fcebf5] py-20 px-4">
-      <div className="max-w-7xl mx-auto">
-       
-        <div className="text-center mb-16">
-          <h2 className="text-2xl text-black mb-2">Our Values</h2>
-          <div className="h-1.5 w-24 bg-[#d6448d] mx-auto rounded-full" />
+    <section className="bg-[#fce4ec] py-16 px-6 md:py-20">
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
+            Our Core Values: The <br className="hidden md:block" /> MERG Framework
+          </h2>
+          <div className="w-24 h-1.5 bg-[#D62D88] mx-auto rounded-full"></div>
         </div>
 
-        <div className="lg:hidden">
+        {/* Desktop View: Grid */}
+        <div className="hidden md:grid grid-cols-2 gap-6">
+          {coreValues.map((value, index) => (
+            <ValueCard key={index} value={value} />
+          ))}
+        </div>
+
+        {/* Mobile View: Swiper */}
+        <div className="md:hidden">
           <Swiper
             modules={[Navigation]}
-            navigation={{
-              prevEl: ".values-swiper-prev",
-              nextEl: ".values-swiper-next",
-            }}
-            slidesPerView={1}
+            slidesPerView={1.1}
             spaceBetween={16}
-            className="pb-12"
+            centeredSlides={false}
+            grabCursor={true}
+            // Ensure classes match the buttons exactly
+            navigation={{
+              prevEl: ".merg-prev",
+              nextEl: ".merg-next",
+            }}
+            className="!pb-12"
           >
-            {valuesData.map((item) => (
-              <SwiperSlide key={item.title}>
-                <div className="group flex flex-col">
-                  <div className="bg-white rounded-3xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-start h-full">
-                    <div className="w-30 h-16 flex items-center justify-center mb-6">
-                      <Image
-                        src={item.icon}
-                        alt={item.title}
-                        width={32}
-                        height={32}
-                        className="w-150 h-150 -ml-10"
-                      />
-                    </div>
-
-                    <h3 className="text-lg  text-gray-900 mb-3">
-                      {item.title}
-                    </h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
+            {coreValues.map((value, index) => (
+              <SwiperSlide key={index}>
+                <ValueCard value={value} />
               </SwiperSlide>
             ))}
           </Swiper>
 
-       
-          <div className="mt-6 flex justify-end gap-6">
-            <button
-              className="values-swiper-prev rounded-full bg-[#D62D882E] p-3 text-[#ffff] transition hover:bg-white hover:text-[#a52f68] backdrop-blur-sm border-2 border-white"
-              aria-label="Previous value"
-            >
+          {/* Navigation Buttons for Mobile */}
+          <div className="mt-4 flex justify-center gap-4">
+            <button className="merg-prev flex h-12 w-12 items-center justify-center rounded-full bg-white border border-pink-200 shadow-sm text-[#D62D88] disabled:opacity-30">
               <ChevronLeft className="h-6 w-6" />
             </button>
-            <button
-              className="values-swiper-next rounded-full bg-[#D62D882E] p-3 text-[#ffff] transition hover:bg-white hover:text-[#a52f68] backdrop-blur-sm border-2 border-white"
-              aria-label="Next value"
-            >
+            <button className="merg-next flex h-12 w-12 items-center justify-center rounded-full bg-white border border-pink-200 shadow-sm text-[#D62D88] disabled:opacity-30">
               <ChevronRight className="h-6 w-6" />
             </button>
           </div>
-        </div>
-
-        
-        <div className="hidden lg:grid grid-cols-4 gap-6">
-          {valuesData.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-3xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-start"
-            >
-              <div className="w-30 h-16 rounded-full flex items-center justify-center mb-6">
-                <Image
-                  src={item.icon}
-                  alt={item.title}
-                  width={32}
-                  height={32}
-                  className="w-100 h-100 -ml-10"
-                />
-              </div>
-
-              <h3 className="text-lg  text-gray-900 mb-3">
-                {item.title}
-              </h3>
-              <p className="text-gray-500 text-sm leading-relaxed">
-                {item.description}
-              </p>
-            </div>
-          ))}
         </div>
       </div>
     </section>
   );
 };
 
-export default OurValue;
+const ValueCard = ({ value }: { value: typeof coreValues[0] }) => (
+  <div className="bg-white p-8 rounded-[2.5rem] shadow-sm flex flex-col relative min-h-[320px] overflow-hidden">
+    <div className="relative z-10 max-w-[85%]">
+      <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight">
+        {value.title}
+      </h3>
+      <p className="text-gray-500 leading-relaxed text-sm">
+        {value.description}
+      </p>
+    </div>
+    <div className="absolute bottom-4 right-6">
+      <Image
+        src={value.iconSrc}
+        alt={value.title}
+        width={100}
+        height={100}
+        className="object-contain w-20 h-20 opacity-90"
+      />
+    </div>
+  </div>
+);
+
+export default CoreValues;
