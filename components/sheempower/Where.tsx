@@ -130,7 +130,7 @@ export default function HistorySection() {
 
           {/* Play Button */}
          {/* Play Button */}
-<button className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-black/20 backdrop-blur-sm transition duration-300 hover:scale-110">
+{/* <button className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-black/20 backdrop-blur-sm transition duration-300 hover:scale-110">
   <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10">
     <Play
       size={18}
@@ -138,7 +138,7 @@ export default function HistorySection() {
       fill="white"
     />
   </div>
-</button>
+</button> */}
         </motion.div>
       </div>
     </section>
