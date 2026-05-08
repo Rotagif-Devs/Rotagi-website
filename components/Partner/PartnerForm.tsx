@@ -23,21 +23,13 @@ const PartnerForm = ({
     organizationName: "",
     website: "",
     goals: "",
+    partnershipType: "", // Updated to single select based on image
   });
-  const [interestAreas, setInterestAreas] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleCheckboxChange = (interest: string) => {
-    setInterestAreas((prev) =>
-      prev.includes(interest)
-        ? prev.filter((i) => i !== interest)
-        : [...prev, interest]
-    );
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -54,7 +46,7 @@ const PartnerForm = ({
         email: formData.email,
         phone: formData.phone,
         website: formData.website,
-        interestAreas: interestAreas,
+        interestAreas: [formData.partnershipType],
         message: formData.goals,
       };
 
@@ -63,191 +55,161 @@ const PartnerForm = ({
       if (response.success) {
         onSubmitSuccess();
       } else {
-        console.error("Partnership submission failed:", response.message);
         onSubmitError();
       }
     } catch (error) {
-      console.error("Error submitting partnership inquiry:", error);
       onSubmitError();
     } finally {
       setLoading(false);
     }
   };
 
-  const interests = [
-    "Financial Sponsorship",
-    "Mentorship & Internships",
-    "Technical Training",
-    "Events Partnership",
-    "Other",
-  ];
-
   return (
-    <div className="bg-white p-8 md:p-14 rounded-3xl w-full max-w-3xl mx-auto shadow-sm">
-      <div className="text-center mb-10">
-        <h2 className="text-2xl md:text-3xl font-normal font-cal-sans text-black mb-3 text-[1.6rem]">
-          Partnership Inquiry Form
-        </h2>
-        <p className="text-gray-800 mb-10 max-w-xl mx-auto text-[0.95rem] leading-relaxed font-normal">
-          {" "}
-          fill out our enquiry form to get started
-        </p>
-      </div>
-
-      <form onSubmit={handleSubmit} className="space-y-8">
-        {/* Contact Information */}
-        <div>
-          <h3 className="font-normal font-cal-sans text-black text-lg mb-4">
-            Contact Information
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-xs font-normal mb-2 text-black">
-                First Name *
-              </label>
-              <input
-                required
-                type="text"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleInputChange}
-                placeholder="e.g. Jane"
-                className="w-full text-sm outline-none border border-[#E5E7EB] rounded-lg px-4 py-3 placeholder-[#9CA3AF] text-black"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-normal mb-2 text-black">
-                Last Name *
-              </label>
-              <input
-                required
-                type="text"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleInputChange}
-                placeholder="e.g. Doe"
-                className="w-full text-sm outline-none border border-[#E5E7EB] rounded-lg px-4 py-3 placeholder-[#9CA3AF] text-black"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-normal mb-2 text-black">
-                Email Address *
-              </label>
-              <input
-                required
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                placeholder="youremail@example.com"
-                className="w-full text-sm outline-none border border-[#E5E7EB] rounded-lg px-4 py-3 placeholder-[#9CA3AF] text-black"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-normal mb-2 text-black">
-                Phone Number *
-              </label>
-              <input
-                required
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleInputChange}
-                placeholder="+234 809 387 6868"
-                className="w-full text-sm outline-none border border-[#E5E7EB] rounded-lg px-4 py-3 placeholder-[#9CA3AF] text-black"
-              />
-            </div>
-          </div>
+    <div className=" min-h-screen w-300 py-12 px-4">
+      <div className="bg-white p-8 md:p-14 rounded-[2.5rem] w-full  mx-auto shadow-sm">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+            Partnership Inquiry Form
+          </h2>
+          <p className="text-gray-600 font-medium">
+            Tell us about your organization and goals.
+          </p>
         </div>
 
-        {/* Organization Details */}
-        <div>
-          <h3 className="font-normal font-cal-sans text-black text-lg mb-4">
-            Organization Details
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-xs font-normal mb-2 text-black">
-                Organization/Company Name *
-              </label>
-              <input
-                required
-                type="text"
-                name="organizationName"
-                value={formData.organizationName}
-                onChange={handleInputChange}
-                placeholder="e.g. Acme Corp"
-                className="w-full text-sm outline-none border border-[#E5E7EB] rounded-lg px-4 py-3 placeholder-[#9CA3AF] text-black"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-normal mb-2 text-black">
-                Website URL
-              </label>
-              <input
-                type="url"
-                name="website"
-                value={formData.website}
-                onChange={handleInputChange}
-                placeholder="www.yourcompany.com"
-                className="w-full text-sm outline-none border border-[#E5E7EB] rounded-lg px-4 py-3 placeholder-[#9CA3AF] text-black"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Partnership Interest */}
-        <div>
-          <h3 className="font-normal font-cal-sans text-black text-lg mb-4">
-            Partnership Interest
-          </h3>
-          <label className="block text-xs font-medium mb-4 text-black">
-            How would you like to partner? *
-          </label>
-
-          <div className="space-y-3 mb-6">
-            {interests.map((interest) => (
-              <label
-                key={interest}
-                className="flex items-center gap-3 cursor-pointer"
-              >
+        <form onSubmit={handleSubmit} className="space-y-10">
+          {/* Contact Information */}
+          <div className="space-y-6">
+            <h3 className="text-xl font-bold text-black">Contact Information</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-black">First Name <span className="text-pink-500">*</span></label>
                 <input
-                  type="checkbox"
-                  checked={interestAreas.includes(interest)}
-                  onChange={() => handleCheckboxChange(interest)}
-                  className="w-5 h-5 accent-[#D62D88] border-[#E5E7EB] rounded"
+                  required
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                  placeholder="Enter your first name"
+                  className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-1 focus:ring-pink-500 outline-none transition-all placeholder:text-gray-300"
                 />
-                <span className="text-xs font-normal text-black">
-                  {interest}
-                </span>
-              </label>
-            ))}
+              </div>
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-black">Last Name <span className="text-pink-500">*</span></label>
+                <input
+                  required
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  placeholder="Enter your last name"
+                  className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-1 focus:ring-pink-500 outline-none transition-all placeholder:text-gray-300"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-black">Email Address <span className="text-pink-500">*</span></label>
+                <input
+                  required
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="Enter your email address"
+                  className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-1 focus:ring-pink-500 outline-none transition-all placeholder:text-gray-300"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-black">Phone Number <span className="text-pink-500">*</span></label>
+                <input
+                  required
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  placeholder="Enter your phone number"
+                  className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-1 focus:ring-pink-500 outline-none transition-all placeholder:text-gray-300"
+                />
+              </div>
+            </div>
           </div>
 
-          <div>
-            <label className="block text-xs font-medium mb-2 text-black">
-              Tell us about your goals *
-            </label>
-            <textarea
-              required
-              rows={4}
-              name="goals"
-              value={formData.goals}
-              onChange={handleInputChange}
-              placeholder="Tell us how we can build the future together..."
-              className="w-full text-sm outline-none border border-[#E5E7EB] rounded-lg px-4 py-3 placeholder-[#9CA3AF] resize-none text-black"
-            ></textarea>
+          {/* Organization Details */}
+          <div className="space-y-6">
+            <h3 className="text-xl font-bold text-black">Organization Details</h3>
+            <div className="space-y-6">
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-black">Company/Organization Name <span className="text-pink-500">*</span></label>
+                <input
+                  required
+                  name="organizationName"
+                  value={formData.organizationName}
+                  onChange={handleInputChange}
+                  placeholder="Enter your organization name"
+                  className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-1 focus:ring-pink-500 outline-none transition-all placeholder:text-gray-300"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-black">Company Website</label>
+                <input
+                  type="url"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleInputChange}
+                  placeholder="https://"
+                  className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-1 focus:ring-pink-500 outline-none transition-all placeholder:text-gray-300"
+                />
+              </div>
+            </div>
           </div>
-        </div>
 
-        <Button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-[#D62D88] hover:bg-pink-700 text-white rounded-full py-4 text-sm font-bold disabled:opacity-50"
-        >
-          {loading ? "Submitting..." : "Submit Inquiry"}
-        </Button>
-      </form>
+          {/* Partnership Interest */}
+          <div className="space-y-6">
+            <h3 className="text-xl font-bold text-black">Partnership Interest</h3>
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-black">How would you like to partner?</label>
+              <select
+                name="partnershipType"
+                value={formData.partnershipType}
+                onChange={handleInputChange}
+                className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-1 focus:ring-pink-500 outline-none appearance-none bg-white text-gray-400"
+              >
+                <option value="">Financial Sponsorship</option>
+                <option value="Mentorship">Mentorship & Internships</option>
+                <option value="Technical">Technical Training</option>
+                <option value="Events">Events Partnership</option>
+              </select>
+            </div>
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-black">Tell us about your goals</label>
+              <textarea
+                required
+                rows={5}
+                name="goals"
+                value={formData.goals}
+                onChange={handleInputChange}
+                placeholder="What would you achieve through this partnership? How does it align with your organization?"
+                className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-1 focus:ring-pink-500 outline-none resize-none placeholder:text-gray-300"
+              ></textarea>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center gap-6 pt-4">
+            <Button
+              type="submit"
+              disabled={loading}
+              className="bg-[#D62D88] hover:bg-[#b52271] text-white rounded-full px-12 py-4 text-sm font-semibold transition-colors min-w-[240px]"
+            >
+              {loading ? "Submitting..." : "Submit Inquiry"}
+            </Button>
+            
+            <div className="text-center space-y-1">
+              <p className="text-[10px] md:text-xs text-gray-500">
+                By submitting this form, you agree to our Privacy Policy and Terms & Conditions.
+              </p>
+              <p className="text-[10px] md:text-xs text-gray-500">
+                Submission does not guarantee a formal partnership.
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
