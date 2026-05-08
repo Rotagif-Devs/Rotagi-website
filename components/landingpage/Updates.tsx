@@ -67,7 +67,7 @@ export default async function Updates() {
       desc: "Recap of our annual conference featuring workshops, mentorship sessions, and inspiring talks.",
       image: "/img-5.png",
       linkText: "View Event",
-      href: "/events/she-empower",
+      href: "/sheempower",
     },
   ];
   return (
