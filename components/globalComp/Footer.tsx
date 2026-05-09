@@ -141,6 +141,22 @@ export default function Footer() {
                   Resources
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/child-protection"
+                  className="hover:text-white transition-colors"
+                >
+                  Child Protection
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/code-of-conduct"
+                  className="hover:text-white transition-colors"
+                >
+                  Code of Conduct
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -267,12 +283,15 @@ export default function Footer() {
           <div className="flex gap-4">
             <Link
               href="/privacy"
-              className="hover:text-white transition-colors"
+              className="text-sm font-dm-sans hover:text-white transition-colors"
             >
               Privacy Policy
             </Link>
             <span className="md:hidden">|</span>
-            <Link href="/terms" className="hover:text-white transition-colors">
+            <Link
+              href="/terms"
+              className="text-sm font-dm-sans hover:text-white transition-colors"
+            >
               Terms and Conditions
             </Link>
           </div>
