@@ -17,10 +17,26 @@ import "swiper/css/navigation";
 
 const About = () => {
   const teamData = [
-    { name: "Amara K.", role: "Founder", image: "/Amara.png" },
-    { name: "Fatima D.", role: "Co. Founder", image: "/Fatima.png" },
-    { name: "Lola Jay", role: "Outreach", image: "/Lola.png" },
-    { name: "Zara David", role: "Outreach", image: "/zara.png" },
+    {
+      name: "Arokoyo Olayemi.",
+      role: "Executive Director",
+      image: "/Amara.png",
+    },
+    {
+      name: "Arokoyo Olayemi.",
+      role: "Executive Director",
+      image: "/Amara.png",
+    },
+    {
+      name: "Arokoyo Olayemi.",
+      role: "Executive Director",
+      image: "/Amara.png",
+    },
+    {
+      name: "Arokoyo Olayemi.",
+      role: "Executive Director",
+      image: "/Amara.png",
+    },
   ];
 
   return (
@@ -89,7 +105,6 @@ const About = () => {
             </div>
           </div>
 
-        
           <div className="hidden md:block">
             <div className="bg-white rounded-3xl py-10 px-6 shadow-xl">
               <div className="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-pink-300">
@@ -113,9 +128,8 @@ const About = () => {
             </div>
           </div>
         </div>
-        </div>
-      </section>
-      
+      </div>
+    </section>
   );
 };
 
