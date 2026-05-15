@@ -24,9 +24,9 @@ const pillars = [
 export default function Mission() {
   return (
     <section className="py-24 px-6 lg:px-8">
-      <div className="mx-auto flex flex-col items-center text-center lg:max-w-6xl">
+      <div className="mx-auto flex flex-col items-center text-center lg:max-w-11/12">
         <div className="flex flex-col justify-center items-center gap-4 mb-16">
-          <h2 className="text-black font-cal-sans font-normal text-4xl md:text-5xl">
+          <h2 className="text-black font-cal-sans font-normal text-4xl md:text-5xl uppercase">
             Our Integrated Mission
           </h2>
           <p className="max-w-2xl text-gray-600 font-dm-sans font-normal text-lg md:text-xl leading-relaxed">
@@ -52,9 +52,12 @@ export default function Mission() {
               </div>
               <div className="flex flex-col items-center gap-2 mb-4">
                 <div className="flex flex-col">
-                  <span className="text-secondary text-xl font-normal font-cal-sans">
-                    {item.title}
-                  </span>
+                  <div className="flex items-center gap-2 p-2 px-8 w-fit mx-auto mb-2 bg-secondary/20 rounded-full">
+                    <span className="text-secondary font-normal font-cal-sans">
+                      {item.title}
+                    </span>
+                  </div>
+
                   <span className="text-black text-xl font-normal font-cal-sans">
                     {item.subtitle}
                   </span>

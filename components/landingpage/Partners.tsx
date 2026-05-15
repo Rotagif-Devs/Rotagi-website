@@ -1,37 +1,36 @@
 "use client";
 
 import Button from "@/components/ui/Button";
+import Image from "next/image";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
+import "swiper/css/autoplay";
 
 const partnerLogos = [
-  { name: "Skrill", url: "/Skrill.svg", color: "bg-green-600" },
-  { name: "PayPass", url: "/PayPass.svg", color: "bg-amber-500" },
-  { name: "Apple Pay", url: "/ApplePay.svg", color: "bg-blue-600" },
-  { name: "Skrill", url: "/Skrill.svg", color: "bg-teal-500" },
-  { name: "PayPass", url: "/PayPass.svg", color: "bg-pink-500" },
-  { name: "Apple Pay", url: "/ApplePay.svg", color: "bg-red-600" },
-  { name: "Skrill", url: "/Skrill.svg", color: "bg-purple-600" },
-  { name: "PayPass", url: "/PayPass.svg", color: "bg-orange-500" },
+  { name: "Selex Engineering", url: "/partner-1.png" },
+  { name: "Ed Tech", url: "/partner-2.png" },
+  { name: "CICN", url: "/partner-3.png" },
+  { name: "Daptem Engineering", url: "/partner-4.png" },
 ];
 
 export default function Partners() {
   return (
     <section
       id="partners"
-      className="py-16 lg:py-24 px-6 lg:px-8 flex justify-center"
+      className="py-16 lg:py-24 px-6 lg:px-8 flex justify-center overflow-hidden"
     >
-      <div className="flex w-full max-w-7xl flex-col gap-24">
+      <div className="flex w-full max-w-11/12 flex-col gap-12 md:gap-24">
         {/* Title + description + button area */}
-        <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
-          <h2 className="text-black max-w-[486px] font-cal-sans font-normal text-4xl md:text-5xl leading-tight">
-            Trusted by Purpose Driven Organizations
+        <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <h2 className="text-black max-w-4xl font-cal-sans font-normal text-4xl md:text-5xl leading-tight uppercase">
+            Organizations & Platforms Supporting Our Mission
           </h2>
 
-          <div className="flex flex-col items-start gap-8 max-w-[580px]">
+          <div className="flex flex-col items-start gap-8 max-w-[500px]">
             <p className="text-gray-600 font-dm-sans font-normal text-base leading-relaxed text-justify md:text-left">
-              We collaborate with partners who believe in measurable impact,
+              Join our network of partners who believe in measurable impact,
               inclusive growth, and empowering the next generation of African
               women.
             </p>
@@ -39,50 +38,69 @@ export default function Partners() {
             <Button
               variant="primary"
               href="/partner"
-              className="px-9 py-3.5 rounded-full"
+              className="hidden md:flex px-9 py-3.5 rounded-full uppercase text-sm md:text-base"
             >
               Partner with Us
             </Button>
           </div>
         </div>
 
-        <div className="w-full">
+        {/* Desktop Grid */}
+        <div className="hidden md:flex w-full flex-wrap justify-center items-center gap-8 lg:gap-20">
+          {partnerLogos.map((partner, index) => (
+            <div
+              key={index}
+              className="flex items-center transition-all duration-300"
+            >
+              <Image
+                src={partner.url}
+                alt={partner.name}
+                width={200}
+                height={300}
+                className="object-contain h-20 md:h-24 lg:h-26 w-full"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Mobile Slider */}
+        <div className="md:hidden -mx-6 px-6">
           <Swiper
             modules={[Autoplay]}
-            spaceBetween={15}
-            slidesPerView={2}
-            loop={true}
             autoplay={{
-              delay: 2500,
+              delay: 2000,
               disableOnInteraction: false,
             }}
-            breakpoints={{
-              640: { slidesPerView: 4 },
-              1024: { slidesPerView: 6 },
-            }}
-            className="w-full"
+            loop={true}
+            spaceBetween={30}
+            slidesPerView={2}
+            className="pb-4"
           >
             {partnerLogos.map((partner, index) => (
               <SwiperSlide key={index}>
-                <div className="w-full h-16 flex items-center justify-center transition-all duration-300">
-                  <div
-                    className={`w-40 h-16 sm:w-48 sm:h-20 ${partner.color}`}
-                    style={{
-                      WebkitMaskImage: `url('${partner.url}')`,
-                      WebkitMaskSize: "contain",
-                      WebkitMaskPosition: "center",
-                      WebkitMaskRepeat: "no-repeat",
-                      maskImage: `url('${partner.url}')`,
-                      maskSize: "contain",
-                      maskPosition: "center",
-                      maskRepeat: "no-repeat",
-                    }}
-                    title={partner.name}
+                <div className="flex items-center justify-center h-24">
+                  <Image
+                    src={partner.url}
+                    alt={partner.name}
+                    width={150}
+                    height={150}
+                    className="object-contain h-16 w-full"
                   />
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
+        </div>
+
+        {/* Mobile Button */}
+        <div className="flex justify-center md:hidden mt-2">
+          <Button
+            variant="primary"
+            href="/partner"
+            className="px-9 py-3.5 rounded-full uppercase text-sm w-full text-center flex justify-center"
+          >
+            Partner with Us
+          </Button>
         </div>
       </div>
     </section>

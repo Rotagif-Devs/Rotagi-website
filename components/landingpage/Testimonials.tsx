@@ -45,8 +45,8 @@ export default function Testimonials() {
   return (
     <section className="bg-white py-16 md:py-24 px-6 lg:px-8 overflow-hidden">
       <div className="mx-auto max-w-full">
-        <h2 className="mb-16 text-center text-gray-950 font-cal-sans font-normal text-3xl md:text-[46px] leading-[100%] tracking-normal">
-          Testimonials
+        <h2 className="mb-16 text-center text-gray-950 font-cal-sans font-normal text-3xl md:text-[46px] leading-[100%] tracking-normal uppercase max-w-4xl mx-auto">
+          Partners And Beneficiaries
         </h2>
 
         <div className="relative">
@@ -99,16 +99,16 @@ export default function Testimonials() {
           {/* Mobile Navigation Arrows */}
           <div className="mt-8 flex md:hidden justify-end gap-3 px-6">
             <button
-              className="test-prev flex h-14 w-14 items-center justify-center rounded-full bg-white border-2 text-black transition hover:bg-gray-100 border-gray-200"
+              className="test-prev flex h-14 w-14 items-center justify-center rounded-full bg-secondary/20 transition hover:bg-secondary/30"
               aria-label="Previous slide"
             >
-              <ChevronLeft className="h-8 w-8 text-black" />
+              <ChevronLeft className="h-8 w-8 text-secondary" />
             </button>
             <button
-              className="test-next flex h-14 w-14 items-center justify-center rounded-full bg-white border-2 text-black transition hover:bg-gray-100 border-gray-200"
+              className="test-next flex h-14 w-14 items-center justify-center rounded-full bg-secondary/20 transition hover:bg-secondary/30"
               aria-label="Next slide"
             >
-              <ChevronRight className="h-8 w-8 text-black" />
+              <ChevronRight className="h-8 w-8 text-secondary" />
             </button>
           </div>
         </div>
