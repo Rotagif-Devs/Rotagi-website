@@ -31,7 +31,7 @@ export default function Impact() {
             <Button
               variant="primary"
               href="/about"
-              className="hidden md:flex px-9 py-3.5 rounded-full uppercase text-sm md:text-base"
+              className="hidden md:flex px-9 py-3.5 rounded-full text-sm md:text-base"
             >
               Learn More
             </Button>
@@ -48,22 +48,22 @@ export default function Impact() {
               <div className="text-secondary text-5xl md:text-7xl font-normal font-cal-sans">
                 {stat.num}
               </div>
-              <div className="opacity-80 text-secondary text-sm md:text-lg font-normal font-inter uppercase">
+              <div className="opacity-80 text-secondary text-sm md:text-lg font-normal font-inter">
                 {stat.label}
               </div>
             </div>
           ))}
         </div>
-        
+
         {/* Mobile Button */}
         <div className="flex justify-center md:hidden mt-4">
-            <Button
-              variant="primary"
-              href="/about"
-              className="px-9 py-3.5 rounded-full uppercase text-sm w-full text-center flex justify-center"
-            >
-              Learn More
-            </Button>
+          <Button
+            variant="primary"
+            href="/about"
+            className="px-9 py-3.5 rounded-full text-sm w-fit mx-auto text-center flex justify-center"
+          >
+            Learn More
+          </Button>
         </div>
       </div>
     </section>

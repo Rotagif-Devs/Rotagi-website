@@ -87,9 +87,6 @@ export default function FAQPage() {
                 Frequently asked <span>Questions</span>
               </h3>
             </div>
-            <p className="mt-4 text-sm md:text-base text-gray-200">
-              Everything you need to know about ROTAGI.
-            </p>
           </motion.div>
         </div>
       </section>

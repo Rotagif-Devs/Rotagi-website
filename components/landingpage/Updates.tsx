@@ -3,6 +3,7 @@ import Link from "next/link";
 import { publicService } from "@/lib/services/public.service";
 import { ArrowRight } from "lucide-react";
 import UpdatesClient from "./UpdatesClient";
+import Button from "../ui/Button";
 
 const extractText = (html: string) => {
   if (!html) return "";
@@ -73,10 +74,10 @@ export default async function Updates() {
   ];
   return (
     <section
-      className="py-16 lg:py-24 px-6 lg:px-8 flex justify-center"
+      className="py-8 lg:py-16 px-6 lg:px-8 flex justify-center"
       id="updates"
     >
-      <div className="flex w-full max-w-11/12 flex-col gap-14">
+      <div className="flex w-full max-w-11/12 flex-col gap-6">
         {/* Title + description area */}
         <div className="flex flex-col gap-6 items-start">
           <h2 className="text-black font-cal-sans font-normal text-4xl md:text-5xl leading-tight uppercase">
@@ -90,6 +91,12 @@ export default async function Updates() {
 
         {/* Cards section (Desktop Grid + Mobile Slider) */}
         <UpdatesClient updates={updates} />
+
+        <div className="flex justify-center md:justify-start lg:hidden mt-1">
+          <Button href="/blog" variant="primary" className="">
+            View All
+          </Button>
+        </div>
       </div>
     </section>
   );

@@ -46,7 +46,7 @@ export default function Testimonials() {
     <section className="bg-white py-16 md:py-24 px-6 lg:px-8 overflow-hidden">
       <div className="mx-auto max-w-full">
         <h2 className="mb-16 text-center text-gray-950 font-cal-sans font-normal text-3xl md:text-[46px] leading-[100%] tracking-normal uppercase max-w-4xl mx-auto">
-          Partners And Beneficiaries
+          Testimonials{" "}
         </h2>
 
         <div className="relative">
@@ -84,10 +84,10 @@ export default function Testimonials() {
                     />
                   </div>
                   <div className="flex flex-col gap-5">
-                    <p className="text-gray-950 text-lg font-medium font-dm-sans leading-7">
+                    <p className="text-gray-950 text-base md:text-lg font-medium font-dm-sans leading-7">
                       {item.text}
                     </p>
-                    <div className="text-gray-950 text-base font-normal font-cal-sans leading-7">
+                    <div className="text-gray-950 text-sm md:text-base font-semibold uppercase font-dm-sans leading-7">
                       {item.author}
                     </div>
                   </div>
@@ -97,18 +97,18 @@ export default function Testimonials() {
           </Swiper>
 
           {/* Mobile Navigation Arrows */}
-          <div className="mt-8 flex md:hidden justify-end gap-3 px-6">
+          <div className="mt-8 lg:mt-12 flex justify-end gap-3 lg:gap-6 lg:px-8 px-6">
             <button
               className="test-prev flex h-14 w-14 items-center justify-center rounded-full bg-secondary/20 transition hover:bg-secondary/30"
               aria-label="Previous slide"
             >
-              <ChevronLeft className="h-8 w-8 text-secondary" />
+              <ChevronLeft className="h-8 w-8 text-white" />
             </button>
             <button
               className="test-next flex h-14 w-14 items-center justify-center rounded-full bg-secondary/20 transition hover:bg-secondary/30"
               aria-label="Next slide"
             >
-              <ChevronRight className="h-8 w-8 text-secondary" />
+              <ChevronRight className="h-8 w-8 text-white" />
             </button>
           </div>
         </div>

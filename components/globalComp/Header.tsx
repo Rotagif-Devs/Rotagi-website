@@ -12,7 +12,7 @@ import WaitlistModal from "./WaitlistModal";
 const navItems = [
   { label: "About Us", href: "/about" },
   { label: "Programs", href: "/programs" },
-  { label: "Blogs", href: "/blog" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -97,8 +97,8 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-white/90 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-10">
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-white backdrop-blur-md">
+        <div className="mx-auto flex max-w-11/12 items-center justify-between px-4 py-3 md:px-10">
           {/* Logo */}
           <div className="shrink-0">
             <Link
@@ -139,7 +139,7 @@ export default function Header() {
               size="md"
               href={getStartedHref}
               onClick={handleGetStartedClick}
-              className="mr-2 border-2 uppercase border-gray-300 rounded-full font-medium cursor-pointer"
+              className="mr-2 border-2 text-sm uppercase border-gray-300 rounded-full font-medium cursor-pointer"
             >
               {getStartedText}
             </Button>
@@ -147,7 +147,7 @@ export default function Header() {
               variant="primary"
               size="md"
               href="/donate"
-              className="uppercase cursor-pointer"
+              className="uppercase text-sm cursor-pointer"
             >
               Donate Now
             </Button>
@@ -190,19 +190,19 @@ export default function Header() {
 
             <Button
               variant="secondary"
-              size="md"
+              size="sm"
               href={getStartedHref}
               onClick={(e) => {
                 handleGetStartedClick(e);
                 closeMenu();
               }}
-              className="mr-2 border border-gray-400 uppercase text-sm"
+              className="mr-2 border border-gray-300 uppercase text-sm"
             >
               {getStartedText}
             </Button>
             <Button
               variant="primary"
-              size="lg"
+              size="sm"
               onClick={closeMenu}
               href="/donate"
               className="w-full justify-center text-sm uppercase"

@@ -19,7 +19,7 @@ export default function Partners() {
   return (
     <section
       id="partners"
-      className="py-16 lg:py-24 px-6 lg:px-8 flex justify-center overflow-hidden"
+      className="py-8 lg:py-16 px-6 lg:px-8 flex justify-center overflow-hidden"
     >
       <div className="flex w-full max-w-11/12 flex-col gap-12 md:gap-24">
         {/* Title + description + button area */}
@@ -38,7 +38,7 @@ export default function Partners() {
             <Button
               variant="primary"
               href="/partner"
-              className="hidden md:flex px-9 py-3.5 rounded-full uppercase text-sm md:text-base"
+              className="hidden md:flex px-9 py-3.5 rounded-full text-sm md:text-base"
             >
               Partner with Us
             </Button>
@@ -46,7 +46,7 @@ export default function Partners() {
         </div>
 
         {/* Desktop Grid */}
-        <div className="hidden md:flex w-full flex-wrap justify-center items-center gap-8 lg:gap-20">
+        <div className="hidden md:flex w-full flex-wrap justify-center items-center gap-8 lg:gap-4">
           {partnerLogos.map((partner, index) => (
             <div
               key={index}
@@ -97,7 +97,7 @@ export default function Partners() {
           <Button
             variant="primary"
             href="/partner"
-            className="px-9 py-3.5 rounded-full uppercase text-sm w-full text-center flex justify-center"
+            className="px-9 py-3.5 rounded-full text-sm w-fit mx-auto text-center flex justify-center"
           >
             Partner with Us
           </Button>

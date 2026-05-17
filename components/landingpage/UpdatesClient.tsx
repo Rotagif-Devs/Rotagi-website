@@ -112,20 +112,20 @@ export default function UpdatesClient({ updates }: { updates: UpdateItem[] }) {
             </SwiperSlide>
           ))}
         </Swiper>
-        
+
         {/* Navigation Buttons for Mobile */}
-        <div className="mt-6 flex justify-end gap-3 px-2">
+        <div className="mt-6 lg:mt-12 flex justify-end gap-3 lg:gap-6 lg:px-8 px-6">
           <button
-            className="updates-prev flex h-12 w-12 items-center justify-center rounded-full bg-secondary/20 transition hover:bg-secondary/30"
+            className="updates-prev flex h-14 w-14 items-center justify-center rounded-full border-2 border-white bg-secondary/20 transition hover:bg-secondary/20"
             aria-label="Previous update"
           >
-            <ChevronLeft className="h-6 w-6 text-secondary" />
+            <ChevronLeft className="h-8 w-8 text-white" />
           </button>
           <button
-            className="updates-next flex h-12 w-12 items-center justify-center rounded-full bg-secondary/20 transition hover:bg-secondary/30"
+            className="updates-next flex h-14 w-14 items-center justify-center rounded-full border-2 border-white bg-secondary/20 transition hover:bg-secondary/20"
             aria-label="Next update"
           >
-            <ChevronRight className="h-6 w-6 text-secondary" />
+            <ChevronRight className="h-8 w-8 text-white" />
           </button>
         </div>
       </div>
