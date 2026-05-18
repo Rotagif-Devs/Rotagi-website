@@ -5,7 +5,12 @@ import { ApiResponse } from "./auth.service";
 
 const ensureImageUrl = (url: string | undefined): string => {
   if (!url) return "/wh.jpg";
-  if (url.startsWith("http") || url.startsWith("data:") || url.startsWith("/")) return url;
+  if (url.startsWith("http") || url.startsWith("data:")) return url;
+  if (url.startsWith("/uploads/") || url.startsWith("uploads/")) {
+    const cleanUrl = url.startsWith("/") ? url.slice(1) : url;
+    return `${API_BASE_URL}/${cleanUrl}`;
+  }
+  if (url.startsWith("/")) return url;
   return `${API_BASE_URL}/${url}`;
 };
 
