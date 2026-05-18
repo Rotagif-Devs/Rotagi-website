@@ -77,15 +77,13 @@ export default function HistorySection() {
                 {item.value}
               </h3>
 
-              <p className="mt-2 text-sm text-[#5D677C]">
-                {item.label}
-              </p>
+              <p className="mt-2 text-sm text-[#5D677C]">{item.label}</p>
             </motion.div>
           ))}
         </div>
 
         {/* Image Grid */}
-        <div className="mt-4 grid grid-cols-1 gap-2 md:grid-cols-3">
+        <div className=" grid grid-cols-1 gap-3 md:grid-cols-3">
           {galleryImages.map((image, index) => (
             <motion.div
               key={index}
@@ -96,14 +94,13 @@ export default function HistorySection() {
                 delay: index * 0.05,
               }}
               viewport={{ once: true }}
-              className="overflow-hidden rounded-[14px]"
+              className="relative w-full h-[25rem] overflow-hidden rounded-[14px]"
             >
               <Image
                 src={image}
                 alt={`Gallery ${index + 1}`}
-                width={700}
-                height={500}
-                className="h-[190px] w-full object-cover transition duration-500 hover:scale-105"
+                fill
+                className="h-full w-full object-cover transition duration-500 hover:scale-105"
               />
             </motion.div>
           ))}
@@ -129,8 +126,8 @@ export default function HistorySection() {
           <div className="absolute inset-0 bg-black/10" />
 
           {/* Play Button */}
-         {/* Play Button */}
-{/* <button className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-black/20 backdrop-blur-sm transition duration-300 hover:scale-110">
+          {/* Play Button */}
+          {/* <button className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-black/20 backdrop-blur-sm transition duration-300 hover:scale-110">
   <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10">
     <Play
       size={18}
