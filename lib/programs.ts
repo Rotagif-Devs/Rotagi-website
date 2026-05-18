@@ -37,7 +37,7 @@ export const programs: Program[] = [
     name: "She Ignite",
     slug: "she-ignite",
     level: "Beginner",
-    ageRange: "10-12 years",
+    ageRange: "Ages 10-12",
     tagline:
       " Sparking curiosity in technology and AI fundamentals for young girls through fun, interactive activities.",
     headline: "Where Curiosity Begins",
@@ -90,7 +90,7 @@ export const programs: Program[] = [
     id: "she-blossom",
     name: "She Blossom",
     slug: "she-blossom",
-    ageRange: "13-15 years",
+    ageRange: "Ages 13-15",
     level: "Intermediate",
     tagline:
       "Developing intermediate AI skills and digital creativity to build real projects and explore tech careers.",
@@ -145,7 +145,7 @@ export const programs: Program[] = [
     id: "she-blaze",
     name: "She Blaze",
     slug: "she-blaze",
-    ageRange: "16-18 years",
+    ageRange: "Ages 16-18",
     level: "Advanced",
     headline: "From Skills to Independence",
     tagline:
@@ -201,7 +201,7 @@ export const programs: Program[] = [
     id: "she-ascend",
     name: "She Ascend",
     slug: "she-ascend",
-    ageRange: "18-40 years",
+    ageRange: "Ages 18-40",
     level: "Professional",
     headline: "AI & Tech Careers Empowerment",
     tagline:

@@ -12,9 +12,9 @@ const PartnerHero = () => {
         src="/partner-hero.jpg"
         alt="Partner with ROTAGI"
         width={1800}
-        height={1800}
+        height={1800} 
         priority
-        className="object-cover h-[400px] lg:h-[700px]"
+        className="object-cover h-100 lg:h-175"
       />
       <div className="absolute inset-0 bg-[#35022e]/70" />
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-5">

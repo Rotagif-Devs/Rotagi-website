@@ -17,10 +17,26 @@ import "swiper/css/navigation";
 
 const About = () => {
   const teamData = [
-    { name: "Amara K.", role: "Founder", image: "/Amara.png" },
-    { name: "Fatima D.", role: "Co. Founder", image: "/Fatima.png" },
-    { name: "Lola Jay", role: "Outreach", image: "/Lola.png" },
-    { name: "Zara David", role: "Outreach", image: "/zara.png" },
+    {
+      name: "Arokoyo Olayemi.",
+      role: "Executive Director",
+      image: "/Arokoyo.png",
+    },
+    {
+      name: "Dr. Tolulope Oko-Igare.",
+      role: "Advisory Board",
+      image: "/Tolulope.png",
+    },
+    {
+      name: "Adetoro Okide.",
+      role: "Advisory Board",
+      image: "/Adetoro.png",
+    },
+    {
+      name: "Abisayo Busari Akinnadeju.",
+      role: "Advisory Board",
+      image: "/busari.png",
+    },
   ];
 
   return (
@@ -35,7 +51,7 @@ const About = () => {
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-12">
             <h2 className="text-white">The Visionaries</h2>
-            <div className="h-1.5 w-24 bg-white mx-auto rounded-full"></div>
+            
           </div>
 
           <div className="md:hidden">
@@ -51,7 +67,7 @@ const About = () => {
             >
               {teamData.map((member) => (
                 <SwiperSlide key={member.name}>
-                  <div className="mx-auto max-w-xs rounded-3xl bg-[#2a0036] px-6 py-8">
+                  <div className="mx-auto max-w-xs rounded-3xl bg-white px-6 py-8">
                     <div className="flex items-center justify-center">
                       <div className="relative w-50 h-50">
                         <Image
@@ -64,7 +80,7 @@ const About = () => {
                       </div>
                     </div>
 
-                    <div className="mt-6 text-center text-white">
+                    <div className="mt-6 text-center ">
                       <h4>{member.name}</h4>
                       <p className="mt-1">{member.role}</p>
                     </div>
@@ -89,7 +105,6 @@ const About = () => {
             </div>
           </div>
 
-        
           <div className="hidden md:block">
             <div className="bg-white rounded-3xl py-10 px-6 shadow-xl">
               <div className="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-pink-300">
@@ -113,9 +128,8 @@ const About = () => {
             </div>
           </div>
         </div>
-        </div>
-      </section>
-      
+      </div>
+    </section>
   );
 };
 

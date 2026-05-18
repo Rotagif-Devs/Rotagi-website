@@ -6,7 +6,7 @@ import { BlogPost } from "@/types/blog";
 import Button from "@/components/ui/Button";
 import { Save, X, Tag, Upload, User, Link as LinkIcon } from "lucide-react";
 import { adminService } from "@/lib/services/admin.service";
-const ReactQuill = dynamic(() => import("react-quill"), {
+const ReactQuill = dynamic(() => import("react-quill-new"), {
   ssr: false,
 }) as any;
 

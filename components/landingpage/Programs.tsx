@@ -16,12 +16,12 @@ export default function Programs() {
   return (
     <section
       id="programs"
-      className="py-14 lg:rounded-2xl lg:mx-6 lg:mb-20 bg-secondary flex justify-center pl-6 lg:px-8"
+      className="py-14 lg:rounded-2xl lg:mx-6 lg:mb-12 bg-secondary flex justify-center pl-6 lg:px-8"
     >
       <div className="relative w-full max-w-8xl">
-        <div className="hidden md:block mx-auto my-10 lg:mb-20 max-w-3xl text-center">
-          <h2 className="text-white font-cal-sans capitalize">Our Programs</h2>
-          <p className="mx-auto mt-6 max-w-2xl text-white/70 text-lg md:text-xl font-dm-sans leading-relaxed">
+        <div className="hidden md:block mx-auto my-6 lg:mb-20 max-w-3xl text-center">
+          <h2 className="text-white font-cal-sans uppercase">Our Programs</h2>
+          <p className="mx-auto mt-6 max-w-2xl text-white/80 text-lg md:text-xl font-dm-sans leading-loose lg:leading-relaxed">
             Age appropriate learning pathways designed to build skills,
             confidence, and leadership at every stage.
           </p>
@@ -29,7 +29,9 @@ export default function Programs() {
 
         {/* mobile header */}
         <div className="md:hidden flex flex-col text-center justify-center items-center mb-6 mr-6">
-          <h2 className="text-white font-cal-sans lowercase">Our Programs</h2>
+          <h2 className="text-white font-cal-sans uppercase text-4xl">
+            Our Programs
+          </h2>
           <p className="mx-auto mt-6 max-w-2xl text-white/90 text-lg md:text-xl font-dm-sans leading-loose text-center">
             Age appropriate learning pathways designed to build skills,
             confidence, and leadership at every stage.
@@ -56,13 +58,13 @@ export default function Programs() {
                     alt={prog.name}
                     className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-110 lg:mt-6"
                   />
-                  <span className="absolute right-3 top-5 inline-flex items-center justify-center rounded-tl-xl rounded-br-xl rounded-tr-none rounded-bl-none bg-primary font-['Inter'] font-bold text-[12px] leading-[20px] tracking-normal text-black px-4 py-1">
+                  <span className="absolute right-3 top-5 inline-flex items-center justify-center rounded-tl-xl rounded-br-xl rounded-tr-none rounded-bl-none bg-secondary/30 font-['Inter'] font-bold text-[12px] leading-[20px] tracking-normal text-black px-4 py-1">
                     {prog.ageRange}
                   </span>
                 </div>
 
                 <div className="flex flex-1 flex-col items-center text-center">
-                  <h3 className="mb-3.5 text-black font-cal-sans font-normal text-xl capitalize leading-4">
+                  <h3 className="mb-3.5 text-black font-cal-sans font-normal text-xl uppercase leading-4">
                     {prog.name}
                   </h3>
                   <p className="mb-5 text-gray-600 font-dm-sans font-normal text-[15px] leading-6">
@@ -106,13 +108,13 @@ export default function Programs() {
                         alt={prog.name}
                         className="h-full w-full object-cover object-top"
                       />
-                      <span className="absolute right-3 top-4 inline-flex h-8 items-center justify-center rounded-tl-2xl rounded-br-2xl rounded-tr-sm rounded-bl-sm bg-[#FCE8F3] font-['Inter'] font-bold text-[12px] leading-[20px] tracking-normal text-black px-5 py-1">
+                      <span className="absolute right-3 top-4 inline-flex h-8 items-center justify-center rounded-tl-2xl rounded-br-2xl rounded-tr-sm rounded-bl-sm bg-secondary/30 font-['Inter'] font-bold text-[12px] leading-[20px] tracking-normal text-black px-5 py-1">
                         {prog.ageRange}
                       </span>
                     </div>
 
                     <div className="flex flex-1 flex-col items-center text-center">
-                      <h3 className="mb-4 text-black font-cal-sans font-normal text-[22px] leading-[18px] tracking-[-0.2px] capitalize">
+                      <h3 className="mb-4 text-black font-cal-sans font-normal text-[22px] leading-[18px] tracking-[-0.2px] uppercase">
                         {prog.name}
                       </h3>
                       <p className="mb-4 text-gray-600 font-dm-sans font-normal text-[15px] leading-6">
@@ -132,15 +134,15 @@ export default function Programs() {
             </Swiper>
           </div>
         </div>
-        <div className="mt-8 flex md:hidden justify-end gap-3 px-6">
+        <div className="mt-8 flex md:hidden justify-end gap-3 lg:gap-6 lg:px-8 px-6">
           <button
-            className="prog-prev flex h-14 w-14 items-center justify-center rounded-full bg-white/20 border-2 border-white text-black transition hover:bg-black/10 border border-black/10"
+            className="prog-prev flex h-14 w-14 items-center justify-center border-2 border-white rounded-full bg-primary/50 transition hover:bg-secondary/20"
             aria-label="Previous slide"
           >
             <ChevronLeft className="h-8 w-8 text-white" />
           </button>
           <button
-            className="prog-next flex h-14 w-14 items-center justify-center rounded-full bg-white/20 border-2 border-white text-black transition hover:bg-black/10 border border-black/10"
+            className="prog-next flex h-14 w-14 items-center justify-center border-2 border-white  rounded-full bg-primary/50 transition hover:bg-secondary/20"
             aria-label="Next slide"
           >
             <ChevronRight className="h-8 w-8 text-white" />
