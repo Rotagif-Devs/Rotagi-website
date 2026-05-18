@@ -42,7 +42,7 @@ export const programs: Program[] = [
       " Sparking curiosity in technology and AI fundamentals for young girls through fun, interactive activities.",
     headline: "Where Curiosity Begins",
     description:
-      "She Ignite introduces young African girls to the exciting world of AI, digital, and life skills through free courses. Participants discover how AI works in everyday life, develop digital confidence, and build life skills that will serve them throughout their educational journey.",
+      "Building foundational AI awareness, digital literacy, and life skills for young girls through interactive, hands-on projects.",
     duration: "Self-paced",
     format: "Virtual",
     schedule: "Available when the ROTAGI learning platform launches",
@@ -96,7 +96,7 @@ export const programs: Program[] = [
       "Developing intermediate AI skills and digital creativity to build real projects and explore tech careers.",
     headline: "Growing into Responsibility",
     description:
-      "She Blossom builds on foundational knowledge to help teenage girls grow through practical AI, digital, and life skills courses. Through free, hands-on projects, participants explore responsible technology use, design digital solutions, and develop the confidence to lead.",
+      "Developing deeper technical skills, life skills, and critical thinking through AI applications and problem solving.",
     duration: "Self-paced",
     format: "Virtual",
     schedule: "Available when the ROTAGI learning platform launches",
@@ -151,7 +151,7 @@ export const programs: Program[] = [
     tagline:
       "Advanced AI development and leadership training to prepare for tech careers and university STEM programs.",
     description:
-      "She Blaze prepares young women for technology and AI careers through free, advanced training in AI, digital, and life skills. Participants build job ready solutions, explore income pathways, and develop leadership skills for success in the AI and tech sector.",
+      "Advanced AI learning, leadership and life skills, and career preparation for young women ready to lead in technology.",
     duration: "Self-paced",
     format: "Virtual",
     schedule: "Available when the ROTAGI learning platform launches",
@@ -207,7 +207,7 @@ export const programs: Program[] = [
     tagline:
       "Professional AI skills and career transition support for women entering or advancing in tech careers.",
     description:
-      "She Ascend supports African women transitioning into AI and technology careers through free AI, digital, and life skills training. Through mentorship and industry connections, participants gain skills to succeed in the rapidly evolving tech landscape and build a professional network.",
+      "Professional AI skills training, entrepreneurship support, and career advancement for African women in tech.",
     duration: "Self-paced",
     format: "Virtual",
     schedule: "Available when the ROTAGI learning platform launches",

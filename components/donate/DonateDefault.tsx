@@ -9,25 +9,25 @@ type Props = {
 
 const DonateDefault = ({ onNext }: Props) => {
   const donateTransformData = [
-  {
-    title: "AI & Digital Skills Training",
-    description:
-      "Your support funds both on-site and virtual hands-on training that equips girls with practical AI and digital skills for real-world problem solving.",
-    img: "/icons2.png",
-  },
-  {
-    title: "Mentorship & Leadership Development",
-    description:
-      "Connects African girls and women with mentors and role models who support their personal growth, career direction, and leadership confidence.",
-    img: "/icons4.png",
-  },
-  {
-    title: "Access to Tools & Resources",
-    description:
-      "Provides learning resources such as laptops, internet access, and digital tools needed to participate and succeed.",
-    img: "/icons3.png",
-  },
-];
+    {
+      title: "AI & Digital Skills Training",
+      description:
+        "Your support funds both on-site and virtual hands-on training that equips girls with practical AI and digital skills for real world problem solving.",
+      img: "/icons2.png",
+    },
+    {
+      title: "Mentorship & Leadership Development",
+      description:
+        "Connects African girls and women with mentors and role models who support their personal growth, career direction, and leadership confidence.",
+      img: "/icons4.png",
+    },
+    {
+      title: "Access to Tools & Resources",
+      description:
+        "Provides learning resources such as laptops, internet access, and digital tools needed to participate and succeed.",
+      img: "/icons3.png",
+    },
+  ];
 
   return (
     <div className="mb-20">

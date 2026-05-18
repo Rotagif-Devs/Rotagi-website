@@ -71,12 +71,12 @@ export default function FAQ() {
           ))}
         </div>
       </div>
-      <div className="max-w-10/12 mt-12 m-auto bg-primary rounded-2xl p-8 md:p-16 flex flex-col items-center gap-8">
+      <div className="lg:max-w-10/12 max-w-11/12 mt-12 m-auto bg-primary rounded-2xl p-8 py-16 md:p-16 flex flex-col items-center gap-8">
         <div className="text-center flex flex-col gap-3.5 max-w-3xl">
-          <h3 className="text-black text-3xl uppercase font-cal-sans leading-8">
+          <h3 className="text-black lg:text-3xl text-2xl uppercase font-cal-sans leading-8">
             Building a Just and Inclusive Digital Future for African Girls
           </h3>
-          <p className="text-gray-600 text-base font-normal font-dm-sans leading-6">
+          <p className="text-gray-600 lg:text-base text-sm font-normal font-dm-sans leading-6">
             We believe technology education is a right, not a privilege. ROTAGI
             removes barriers that keep girls out of AI and tech, and replaces
             them with skills, mentorship and community.

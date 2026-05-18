@@ -30,9 +30,9 @@ export default function Partners() {
 
           <div className="flex flex-col items-start gap-8 max-w-[500px]">
             <p className="text-gray-600 font-dm-sans font-normal text-base leading-relaxed text-justify md:text-left">
-              Join our network of partners who believe in measurable impact,
-              inclusive growth, and empowering the next generation of African
-              women.
+              Through collaboration with organisations and trusted technology
+              platforms, we are advancing AI education and digital inclusion for
+              African girls expanding access, opportunity, and innovation.
             </p>
 
             <Button
