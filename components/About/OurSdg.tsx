@@ -6,29 +6,23 @@ const OurSdg = () => {
   const sdgData = [
     {
       title: "Quality Education",
-      description:
-        "Ensuring inclusive and equitable quality education and promoting lifelong learning opportunities",
       icon: "/Qualityeducation.png",
       ringColor: "border-pink-200",
     },
     {
       title: "Gender Equality",
-      description:
-        "Achieving gender equality and empowering all women and girls in the technology sector",
+ 
       icon: "/Genderquality.png",
       ringColor: "border-orange-200",
     },
     {
       title: "Decent Work & Economic Growth",
-      description:
-        "Promoting sustained inclusive economic growth and productive employment for young women",
+    
       icon: "/Decentwork.png",
       ringColor: "border-gray-200",
     },
     {
       title: "Partnerships for the Goals",
-      description:
-        "Building strategic alliances with organisations and institutions to advance digital inclusion and expand ROTAGI's reach across Africa.",
       icon: "/Partnership.png",
       ringColor: "border-gray-200",
     },
@@ -38,12 +32,11 @@ const OurSdg = () => {
     <section className="bg-white py-20 px-4">
     <div className="max-w-6xl mx-auto">
       <div className="text-center mb-16">
-        <h2>Our SDG Impact</h2>
-        <div className="h-1.5 w-24 bg-[#d6448d] mx-auto rounded-full"></div>
+        <h2>OUR SDG IMPACT</h2>
+
       </div>
   
-      {/* Changed from grid to flex with wrap and centering */}
-      <div className="flex flex-wrap justify-center gap-10">
+      <div className="flex flex-col md:flex-row justify-center gap-10">
         {sdgData.map((item, index) => (
           <div 
             key={index} 
@@ -60,11 +53,9 @@ const OurSdg = () => {
               </div>
             </div>
   
-            <h3 className="text-lg">{item.title}</h3>
+            <h3 className="text-sm">{item.title}</h3>
   
-            <p className="leading-relaxed max-w-xs">
-              {item.description}
-            </p>
+            
           </div>
         ))}
       </div>
