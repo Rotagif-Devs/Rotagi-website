@@ -15,7 +15,7 @@ const OurMission = () => {
                 <div className="flex gap-3">
                   <span className="mt-1 lg:w-20 w-30">
                     <Image
-                      src="/mission.svg"
+                      src="/power.svg"
                       alt="icon"
                       width={60}
                       height={30}
@@ -23,26 +23,21 @@ const OurMission = () => {
                   </span>
 
                   <div>
-                    <h3>Our Mission</h3>
+                    <h3>OUR MISSION</h3>
                     <p className="mt-2 leading-6 text-gray-600">
-                      We prioritize AI literacy digital fluency and leadership
-                      for girls and women across Africa Our goal is to bridge
-                      the tech gap through sustainable community driven
-                      innovation
+                      We develop digital fluency, ethical understanding, and leadership confidence for girls and women across Africa. Our goal is to empower African girls through accessible, inclusive education and community driven digital opportunity.
                     </p>
                   </div>
                 </div>
                 <div className="flex gap-3">
                   <span className="lg:mt-1 lg:w-20 w-30">
-                    <Image src="/eye.svg" alt="icon" width={60} height={30} />
+                    <Image src="/bulb-hand.svg" alt="icon" width={60} height={30} />
                   </span>
 
                   <div>
-                    <h3>Vision</h3>
+                    <h3>VISION</h3>
                     <p className="mt-2 leading-6 text-gray-600">
-                      To foster a future where every African girl and woman
-                      possesses the skills and confidence to lead the next
-                      frontier of technological and social advancement
+                     We envision a future where every African girl has the knowledge, confidence, and opportunity to lead the digital economy and shape a just, equitable digital future.
                     </p>
                   </div>
                 </div>
