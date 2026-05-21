@@ -24,7 +24,7 @@ export default function Home() {
           style={{
             backgroundColor: "#18181b",
             border: "none",
-            padding: "20px 0",
+            padding: "32px 0",
           }}
           textStyle={{ color: "white" }}
         />
@@ -41,16 +41,6 @@ export default function Home() {
         </div>
 
         <Updates />
-
-        <Marquee
-          text="trusted partners"
-          style={{
-            backgroundColor: "#18181b",
-            border: "none",
-            padding: "20px 0",
-          }}
-          textStyle={{ color: "white" }}
-        />
 
         <Partners />
 

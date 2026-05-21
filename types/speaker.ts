@@ -31,7 +31,7 @@ export const speakers: Speaker[] = [
     name: "Dr. Linda Cole",
     role: "Data Scientist, OpenAI Research",
     description:
-      "Focused on AI interpretability and human-centered machine learning for real-world applications.",
+      "Focused on AI interpretability and human-centered machine learning for real world applications.",
     image: "/speaker3.png",
     topics: ["AI Research Lead", "TechBridge Africa"],
   },

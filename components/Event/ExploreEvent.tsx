@@ -12,7 +12,7 @@ const ExploreEvent = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const data = await publicService.getEvents({ upcoming: true });
+        const data = await publicService.getEvents();
         setEvents(data);
       } catch (error) {
         console.error("Failed to fetch events:", error);

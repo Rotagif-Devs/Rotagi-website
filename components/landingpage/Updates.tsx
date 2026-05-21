@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { publicService } from "@/lib/services/public.service";
 import { ArrowRight } from "lucide-react";
+import UpdatesClient from "./UpdatesClient";
+import Button from "../ui/Button";
 
 const extractText = (html: string) => {
   if (!html) return "";
@@ -62,7 +64,7 @@ export default async function Updates() {
       href: "/events",
     },
     {
-      category: "EVENT",
+      category: "CONFERENCE",
       title: "SHE Empower 2026 Highlights",
       desc: "Recap of our annual conference featuring workshops, mentorship sessions, and inspiring talks.",
       image: "/img-5.png",
@@ -72,13 +74,13 @@ export default async function Updates() {
   ];
   return (
     <section
-      className="py-16 lg:py-24 px-6 lg:px-8 flex justify-center"
+      className="py-8 lg:py-16 px-6 lg:px-8 flex justify-center"
       id="updates"
     >
-      <div className="flex w-full max-w-7xl flex-col gap-14">
+      <div className="flex w-full max-w-11/12 flex-col gap-6">
         {/* Title + description area */}
         <div className="flex flex-col gap-6 items-start">
-          <h2 className="text-black font-cal-sans font-normal text-4xl md:text-5xl leading-tight">
+          <h2 className="text-black font-cal-sans font-normal text-4xl md:text-5xl leading-tight uppercase">
             Updates from the Work That Matters
           </h2>
           <p className="text-gray-600 font-dm-sans font-normal text-base leading-relaxed max-w-[572px]">
@@ -87,46 +89,13 @@ export default async function Updates() {
           </p>
         </div>
 
-        {/* Cards section */}
-        <div className="grid md:grid-cols-3 gap-4">
-          {updates.map((update) => (
-            <div
-              key={update.title}
-              className="group flex flex-col overflow-hidden rounded-xl border border-gray-100 bg-white"
-            >
-              <div className="relative  overflow-hidden">
-                <Image
-                  width={400}
-                  height={220}
-                  src={update.image}
-                  alt={update.title}
-                  className=" m-auto object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
+        {/* Cards section (Desktop Grid + Mobile Slider) */}
+        <UpdatesClient updates={updates} />
 
-              <div className="flex flex-col p-6 gap-4">
-                <div className="flex flex-col gap-1.5">
-                  <span className="text-red-500 text-xs font-semibold font-dm-sans tracking-wider uppercase">
-                    {update.category}
-                  </span>
-                  <h3 className="text-black font-cal-sans text-xl capitalize leading-8">
-                    {update.title}
-                  </h3>
-                  <p className="text-gray-600 font-dm-sans text-base leading-relaxed line-clamp-2">
-                    {update.desc}
-                  </p>
-                </div>
-
-                <Link
-                  href={update.href}
-                  className="flex items-center gap-4 text-secondary font-semibold font-dm-sans group-hover:gap-6 transition-all"
-                >
-                  {update.linkText}
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </div>
-            </div>
-          ))}
+        <div className="flex justify-center md:justify-start lg:hidden mt-1">
+          <Button href="/blog" variant="primary" className="">
+            View All
+          </Button>
         </div>
       </div>
     </section>

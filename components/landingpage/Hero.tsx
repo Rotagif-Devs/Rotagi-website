@@ -19,14 +19,14 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 flex flex-col justify-end w-full h-full pb-16 md:pb-20 overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 w-full flex flex-col justify-end h-full relative">
+        <div className="mx-auto max-w-11/12 w-full flex flex-col justify-end h-full relative">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full mb-8 relative"
+            className="w-full mb-4 relative"
           >
-            <h1 className="text-white max-w-4xl font-cal-sans font-normal text-4xl sm:text-5xl md:text-[72px] leading-[1.05] tracking-[-0.02em] mb-2 md:mb-4">
+            <h1 className="text-white max-w-4xl font-cal-sans text-6xl sm:text-5xl md:text-[72px] leading-[1.05] tracking-[-0.02em] mb-0 md:mb-0 uppercase">
               Empowering the Next Generation of African Girl Innovators
             </h1>
           </motion.div>
@@ -36,7 +36,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="text-white max-w-xl opacity-90 font-dm-sans font-normal text-base md:text-lg leading-[160%] m-0"
+              className="text-white/80 max-w-2xl  font-dm-sans font-normal text-base md:text-lg leading-[160%] m-0"
             >
               The next breakthrough could come from her. We are making sure
               she's ready with AI literacy, digital skills, and leadership

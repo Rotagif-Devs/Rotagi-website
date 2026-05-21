@@ -37,12 +37,12 @@ export const programs: Program[] = [
     name: "SHE IGNITE",
     slug: "she-ignite",
     level: "Beginner",
-    ageRange: "10-12 years",
+    ageRange: "Ages 10-12",
     tagline:
       " Building foundational AI awareness, digital literacy, and life skills for African girls through free, hands on projects. ",
     headline: "Where Curiosity Begins",
     description:
-      "SHE Ignite introduces young African girls to the exciting world of AI, digital, and life skills through free courses. Participants discover how AI works in everyday life and develop digital confidence throughout their educational journey.",
+      "Building foundational AI awareness, digital literacy, and life skills for young girls through interactive, hands-on projects.",
     duration: "Self-paced",
 
     schedule: "Available when the ROTAGI learning platform launches",
@@ -90,13 +90,13 @@ export const programs: Program[] = [
     id: "she-blossom",
     name: "SHE BLOSSOM",
     slug: "she-blossom",
-    ageRange: "13-15 years",
+    ageRange: "Ages 13-15",
     level: "Intermediate",
     tagline:
       "Developing digital, AI, and life skills through critical thinking, responsible technology use, and problem solving.",
     headline: "Growing into Responsibility",
     description:
-      "SHE Blossom builds on foundational knowledge to help teenage girls grow through practical artificial intelligence, digital, and life skills courses. Through free, hands on projects, participants explore responsible technology use, design digital solutions, and develop the confidence to lead.",
+      "Developing deeper technical skills, life skills, and critical thinking through AI applications and problem solving.",
     duration: "Self-paced",
 
     schedule: "Available when the ROTAGI learning platform launches",
@@ -145,13 +145,13 @@ export const programs: Program[] = [
     id: "she-blaze",
     name: "SHE BLAZE",
     slug: "she-blaze",
-    ageRange: "16-18 years",
+    ageRange: "Ages 16-18",
     level: "Advanced",
     headline: "From Skills to Independence",
     tagline:
       "Advanced AI learning, digital skills, and life skills for young women ready to lead in technology.",
     description:
-      "SHE Blaze prepares young women for technology and artificial intelligence careers through free, advanced training in artificial intelligence, digital, and life skills. Participants build job ready solutions, explore income pathways, and develop leadership skills for success in the AI and tech sector.",
+      "Advanced AI learning, leadership and life skills, and career preparation for young women ready to lead in technology.",
     duration: "Self-paced",
 
     schedule: "Available when the ROTAGI learning platform launches",
@@ -200,13 +200,13 @@ export const programs: Program[] = [
     id: "she-ascend",
     name: "SHE ASCEND",
     slug: "she-ascend",
-    ageRange: "18-40 years",
-    level: "Advanced",
+    ageRange: "Ages 18-40",
+    level: "Professional",
     headline: "AI & Tech Careers Empowerment",
     tagline:
       "A professional programme supporting women in AI, digital skills, freelancing, and entrepreneurship careers.",
     description:
-      "SHE Ascend supports african women transitioning into artificial intelligence and technology careers through free AI, digital, and life skills training. Through mentorship and industry connections, participants gain skills to succeed in the rapidly evolving tech landscape and build a professional network.",
+      "Professional AI skills training, entrepreneurship support, and career advancement for African women in tech.",
     duration: "Self-paced",
 
     schedule: "Available when the ROTAGI learning platform launches",

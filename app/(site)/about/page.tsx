@@ -35,7 +35,7 @@ const About = () => {
     {
       name: "Abisayo Busari Akinnadeju.",
       role: "Advisory Board",
-      image: "/busari.png",
+      image: "/Busari.png",
     },
   ];
 

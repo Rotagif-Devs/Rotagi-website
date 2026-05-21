@@ -1,4 +1,4 @@
-import { apiFetch } from "../api";
+import { apiFetch, API_BASE_URL } from "../api";
 import { BlogPost } from "@/types/blog";
 import { events as EventType } from "@/types/event";
 import { ApiResponse } from "./auth.service";
@@ -9,10 +9,21 @@ export type AdminStats = {
   uniqueReach: { count: number; growthPct: number | null };
 };
 
+const ensureImageUrl = (url: string | undefined): string => {
+  if (!url) return "/wh.jpg";
+  if (url.startsWith("http") || url.startsWith("data:")) return url;
+  if (url.startsWith("/uploads/") || url.startsWith("uploads/")) {
+    const cleanUrl = url.startsWith("/") ? url.slice(1) : url;
+    return `${API_BASE_URL}/${cleanUrl}`;
+  }
+  if (url.startsWith("/")) return url;
+  return `${API_BASE_URL}/${url}`;
+};
+
 const normalizeBlog = (post: any): BlogPost => ({
   ...post,
   id: post._id || post.id,
-  image: post.coverImageUrl || post.imageUrl || post.image || post.thumbnail || post.cover || "/logo.png",
+  image: ensureImageUrl(post.coverImageUrl || post.imageUrl || post.image || post.thumbnail || post.cover),
   description: post.excerpt || post.description || "",
   status: post.status || "draft",
 });
@@ -20,7 +31,7 @@ const normalizeBlog = (post: any): BlogPost => ({
 const normalizeEvent = (event: any): EventType => ({
   ...event,
   id: event._id || event.id,
-  image: event.imageUrl || event.image,
+  image: ensureImageUrl(event.imageUrl || event.image),
 });
 
 export type MentorApplication = {
