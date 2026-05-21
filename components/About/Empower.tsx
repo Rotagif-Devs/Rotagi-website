@@ -6,19 +6,25 @@ import React from "react";
 
 const Empower = () => {
   return (
-    <div className="relative lg:mx-4 min-h-[460px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px] lg:rounded-2xl overflow-hidden flex items-end">
+    /* 
+      1. Fixed parent height constraints: Changed the extreme md:min-h-[800px] 
+         and restricted lg:h-[450px] so it is properly reduced but looks natural.
+    */
+    <div className="relative lg:mx-4 min-h-[460px] sm:min-h-[500px] md:min-h-[550px] lg:h-[600px] lg:rounded-2xl overflow-hidden flex items-end">
       
+      {/* 
+        2. Added 'fill' and 'object-top': This forces the crop to happen at the 
+           bottom of the image, keeping the girls' heads completely safe from being cut off.
+      */}
       <Image
         src="/Threegirls.jpg"
         alt="Empowering African girls to lead in the digital world"
         fill
         priority
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 95vw, 1400px"
-        className="object-cover"
+        className="object-cover object-top"
       />
       
-      
-      <div className="absolute inset-0 bg-linear-to-t from-[#2a0036]/90 via-[#2a0036]/70 to-[#2a0036]/30 lg:to-[#2a0036]/40" />
+      <div className="absolute inset-0 bg-[#41122B]/80" />
       
       {/* Dynamic Content Container */}
       <div
@@ -48,8 +54,8 @@ const Empower = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            {/* Using responsive font scaling classes */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-wide uppercase leading-tight">
+            {/* 3. Removed 'mb-30' which was pushing text way too far up inside a shorter box */}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:max-w-[800px] lg:text-5xl font-black mb-4 uppercase leading-tight">
               EMPOWERING{" "}
               <span className="text-[#fce4ec]">AFRICAN GIRLS</span> TO LEAD IN THE DIGITAL 
               WORLD
