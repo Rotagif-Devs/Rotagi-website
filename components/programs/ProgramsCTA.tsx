@@ -24,17 +24,17 @@ export default function ProgramsCTA() {
         {/* Title + description + buttons area */}
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-12">
           <h2 className="font-cal-sans text-dark text-4xl leading-tight tracking-tight md:max-w-[600px] md:text-[46px] md:leading-[110%]">
-            Looking for Flexible Learning?
+            LOOKING FOR FLEXIBLE LEARNING?
           </h2>
 
           <div className="flex flex-col items-start gap-6 md:max-w-[580px]">
             <p className="font-dm-sans text-darkgray text-left text-base leading-relaxed md:text-[16px] md:leading-[160%]">
-              The SHE Empower Experience offers workshops, bootcamps, and community events for continuous learning at all ages.
+     ROTAGI self paced courses in Artificial Intelligence, Digital Skills, and Life Skills are coming soon. 
             </p>
 
             <div className="hidden md:flex gap-4">
-              <Button href="/events" variant="primary" className="">
-                Explore Events & Workshops
+              <Button href="" variant="primary" className="">
+                Join the Waitlist
               </Button>
             </div>
           </div>

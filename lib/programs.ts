@@ -93,7 +93,7 @@ export const programs: Program[] = [
     ageRange: "13-15 years",
     level: "Intermediate",
     tagline:
-      "Developing digital, artificial intelligence, and life skills through critical thinking, responsible technology use, and problem solving.",
+      "Developing digital, AI, and life skills through critical thinking, responsible technology use, and problem solving.",
     headline: "Growing into Responsibility",
     description:
       "SHE Blossom builds on foundational knowledge to help teenage girls grow through practical artificial intelligence, digital, and life skills courses. Through free, hands on projects, participants explore responsible technology use, design digital solutions, and develop the confidence to lead.",
@@ -189,7 +189,6 @@ export const programs: Program[] = [
       items: [
         "Professional certificate recognized by tech companies",
         "Industry standard portfolio with 5+ advanced projects",
-        "One on one mentorship from senior engineers",
         "Letter of recommendation for university applications",
         "Access to scholarship opportunities",
         "Job shadowing and internship connections",
@@ -242,7 +241,7 @@ export const programs: Program[] = [
     benefits: {
       title: "What You'll Get",
       items: [
-        "Professional certificate in AI Development",
+        "Professional certificate ",
         "Portfolio of 7+ production ready projects",
         "Personal career coach and technical mentor",
         "Access to job placement support",

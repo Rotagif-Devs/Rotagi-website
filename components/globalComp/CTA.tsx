@@ -10,8 +10,8 @@ export default function CTA() {
         {/* Title + description + buttons area */}
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-12">
           <h2 className="font-cal-sans text-dark text-3xl leading-tight tracking-tight md:max-w-[600px] md:text-[38px] md:leading-[110%]">
-            Join Us in Empowering the <br className="hidden md:block" /> African
-            girls today
+          JOIN US IN EMPOWRING THE<br className="hidden md:block" /> AFRICAN GIRL CHILD TODAY
+            
           </h2>
 
           <div className="flex flex-col items-start gap-6 md:max-w-[580px]">
