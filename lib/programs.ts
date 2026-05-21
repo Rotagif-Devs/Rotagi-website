@@ -8,7 +8,7 @@ export interface Program {
   tagline: string;
   description: string;
   duration: string;
-  format: string;
+
   // index?: number;
   schedule: string;
   detailImage: string;
@@ -34,26 +34,26 @@ export interface Program {
 export const programs: Program[] = [
   {
     id: "she-ignite",
-    name: "She Ignite",
+    name: "SHE IGNITE",
     slug: "she-ignite",
     level: "Beginner",
     ageRange: "Ages 10-12",
     tagline:
-      " Sparking curiosity in technology and AI fundamentals for young girls through fun, interactive activities.",
+      " Building foundational AI awareness, digital literacy, and life skills for African girls through free, hands on projects. ",
     headline: "Where Curiosity Begins",
     description:
       "Building foundational AI awareness, digital literacy, and life skills for young girls through interactive, hands-on projects.",
     duration: "Self-paced",
-    format: "Virtual",
+
     schedule: "Available when the ROTAGI learning platform launches",
-    detailImage: "/program-detail-image.png",
+    detailImage: "/sheignite.png",
     image: "/program-3.png",
     outcomes: {
       title: "Key Outcomes",
       items: [
-        "Understand basic coding concepts and computational thinking",
-        "Recognize AI in everyday life and how it works",
-        "Develop confidence using digital tools safely",
+        "Discover AI awareness, digital safety, and confidence",
+        "Explore how AI shows up in everyday digital life",
+        "Build life skills and digital confidence ",
       ],
     },
     prerequisites: {
@@ -88,32 +88,32 @@ export const programs: Program[] = [
   },
   {
     id: "she-blossom",
-    name: "She Blossom",
+    name: "SHE BLOSSOM",
     slug: "she-blossom",
     ageRange: "Ages 13-15",
     level: "Intermediate",
     tagline:
-      "Developing intermediate AI skills and digital creativity to build real projects and explore tech careers.",
+      "Developing digital, artificial intelligence, and life skills through critical thinking, responsible technology use, and problem solving.",
     headline: "Growing into Responsibility",
     description:
       "Developing deeper technical skills, life skills, and critical thinking through AI applications and problem solving.",
     duration: "Self-paced",
-    format: "Virtual",
+
     schedule: "Available when the ROTAGI learning platform launches",
-    detailImage: "/program-detail-image.png",
+    detailImage: "/sheblossom.png",
     image: "/program-2.png",
     outcomes: {
       title: "Key Outcomes",
       items: [
-        "Build AI-powered applications and web projects",
-        "Understand machine learning fundamentals",
-        "Design user-friendly digital solutions",
+        "Build digital and AI skills confidently",
+        "Develop responsible digital habits",
+        "Build life skills and confidence",
       ],
     },
     prerequisites: {
       title: "Prerequisites",
       items: [
-        "Completion of She Ignite and African girls aged 13–15 enrol directly",
+        "Completion of She Ignite courses",
         "No prior computer skills required",
         "Age 13-15 years",
         "Commitment to attend all sessions",
@@ -143,34 +143,34 @@ export const programs: Program[] = [
   },
   {
     id: "she-blaze",
-    name: "She Blaze",
+    name: "SHE BLAZE",
     slug: "she-blaze",
     ageRange: "Ages 16-18",
     level: "Advanced",
     headline: "From Skills to Independence",
     tagline:
-      "Advanced AI development and leadership training to prepare for tech careers and university STEM programs.",
+      "Advanced AI learning, digital skills, and life skills for young women ready to lead in technology.",
     description:
       "Advanced AI learning, leadership and life skills, and career preparation for young women ready to lead in technology.",
     duration: "Self-paced",
-    format: "Virtual",
+
     schedule: "Available when the ROTAGI learning platform launches",
-    detailImage: "/program-detail-image.png",
+    detailImage: "/sheblaze.png",
     image: "/program-1.png",
     outcomes: {
       title: "Key Outcomes",
       items: [
-        "Build professional-grade AI applications",
-        "Master full-stack development and cloud deployment",
-        "Lead technical teams and manage complex projects",
+        "Build job ready AI skills ",
+        "Explore income pathways through digital entrepreneurship",
+        "Build leadership, life skills, and career readiness",
       ],
     },
     prerequisites: {
       title: "Prerequisites",
       items: [
-        "Completion of She Blossom or demonstrated intermediate programming skills",
+        "Completion of SHE Blossom course",
         "Portfolio of previous tech projects",
-        "16 to 18 years",
+        "Age 16-18 years enrol directly",
         "Strong commitment (15-20 hours per week)",
       ],
     },
@@ -199,26 +199,26 @@ export const programs: Program[] = [
   },
   {
     id: "she-ascend",
-    name: "She Ascend",
+    name: "SHE ASCEND",
     slug: "she-ascend",
     ageRange: "Ages 18-40",
     level: "Professional",
     headline: "AI & Tech Careers Empowerment",
     tagline:
-      "Professional AI skills and career transition support for women entering or advancing in tech careers.",
+      "A professional programme supporting women in AI, digital skills, freelancing, and entrepreneurship careers.",
     description:
       "Professional AI skills training, entrepreneurship support, and career advancement for African women in tech.",
     duration: "Self-paced",
-    format: "Virtual",
+
     schedule: "Available when the ROTAGI learning platform launches",
-    detailImage: "/program-detail-image.png",
+    detailImage: "/sheacend.png",
     image: "/program-4.png",
     outcomes: {
       title: "Key Outcomes",
       items: [
-        "Master industry-standard AI development tools and practices",
-        "Build a professional portfolio of production-ready projects",
-        "Network with hiring managers and tech recruiters",
+        "Master AI, digital, and freelancing skills confidently",
+        "Build a professional portfolio of industry-ready work",
+        "Access pathways to careers, leadership, and entrepreneurship",
       ],
     },
     prerequisites: {
@@ -236,7 +236,6 @@ export const programs: Program[] = [
         "Master AI, digital, and freelancing skills confidently",
         "Build a professional portfolio of industry-ready work",
         "Access pathways to careers, leadership, and entrepreneurship",
-        "Develop life skills, confidence, and entrepreneurship readiness",
         "Join a supportive community of women in AI and Tech",
       ],
     },
