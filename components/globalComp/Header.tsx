@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import React from "react";
 import WaitlistModal from "./WaitlistModal";
@@ -11,8 +12,8 @@ import WaitlistModal from "./WaitlistModal";
 const navItems = [
   { label: "About Us", href: "/about" },
   { label: "Programs", href: "/programs" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
-  { label: "FAQs", href: "/faq" },
 ];
 
 export default function Header() {
@@ -96,16 +97,22 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-white/90 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-10">
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-white backdrop-blur-md">
+        <div className="mx-auto flex max-w-11/12 items-center justify-between px-4 py-3 md:px-10">
           {/* Logo */}
           <div className="shrink-0">
             <Link
               href="/"
               aria-label="ROTAGI Home"
-              className="text-2xl uppercase tracking-wider text-secondary transition-opacity hover:opacity-80 font-cal-sans"
+              className="transition-opacity hover:opacity-80"
             >
-              ROTAGI
+              <Image
+                src="/logo.png"
+                alt="ROTAGI Logo"
+                width={120}
+                height={50}
+                className="h-12 w-auto object-contain"
+              />
             </Link>
           </div>
 
@@ -118,7 +125,7 @@ export default function Header() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-sm font-medium text-gray-700 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-secondary focus-visible:outline-offset-4 rounded-sm"
+                className="text-sm font-medium text-gray-700 uppercase transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-secondary focus-visible:outline-offset-4 rounded-sm"
               >
                 {item.label}
               </Link>
@@ -132,11 +139,16 @@ export default function Header() {
               size="md"
               href={getStartedHref}
               onClick={handleGetStartedClick}
-              className="mr-2 border-2 border-gray-400 rounded-full font-medium"
+              className="mr-2 border-2 text-sm uppercase border-gray-300 rounded-full font-medium cursor-pointer"
             >
               {getStartedText}
             </Button>
-            <Button variant="primary" size="md" href="/donate">
+            <Button
+              variant="primary"
+              size="md"
+              href="/donate"
+              className="uppercase text-sm cursor-pointer"
+            >
               Donate Now
             </Button>
           </div>
@@ -168,7 +180,7 @@ export default function Header() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="text-lg font-medium text-gray-900 transition-colors hover:text-secondary"
+                  className="text-lg font-medium text-gray-900 uppercase transition-colors hover:text-secondary"
                   onClick={closeMenu}
                 >
                   {item.label}
@@ -178,22 +190,22 @@ export default function Header() {
 
             <Button
               variant="secondary"
-              size="md"
+              size="sm"
               href={getStartedHref}
               onClick={(e) => {
                 handleGetStartedClick(e);
                 closeMenu();
               }}
-              className="mr-2 border border-gray-400"
+              className="mr-2 border border-gray-300 uppercase text-sm"
             >
               {getStartedText}
             </Button>
             <Button
               variant="primary"
-              size="lg"
+              size="sm"
               onClick={closeMenu}
               href="/donate"
-              className="w-full justify-center text-base"
+              className="w-full justify-center text-sm uppercase"
             >
               Donate Now
             </Button>

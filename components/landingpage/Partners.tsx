@@ -1,88 +1,108 @@
 "use client";
 
 import Button from "@/components/ui/Button";
+import Image from "next/image";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
+import "swiper/css/autoplay";
 
 const partnerLogos = [
-  { name: "Skrill", url: "/Skrill.svg", color: "bg-green-600" },
-  { name: "PayPass", url: "/PayPass.svg", color: "bg-amber-500" },
-  { name: "Apple Pay", url: "/ApplePay.svg", color: "bg-blue-600" },
-  { name: "Skrill", url: "/Skrill.svg", color: "bg-teal-500" },
-  { name: "PayPass", url: "/PayPass.svg", color: "bg-pink-500" },
-  { name: "Apple Pay", url: "/ApplePay.svg", color: "bg-red-600" },
-  { name: "Skrill", url: "/Skrill.svg", color: "bg-purple-600" },
-  { name: "PayPass", url: "/PayPass.svg", color: "bg-orange-500" },
+  { name: "Selex Engineering", url: "/partner-1.png" },
+  { name: "Ed Tech", url: "/partner-2.png" },
+  { name: "CICN", url: "/partner-3.png" },
+  { name: "Daptem Engineering", url: "/partner-4.png" },
+  { name: "Canva", url: "/partner-canva.jpg" },
+  { name: "Tushiyah", url: "/partner-tushiyah.jpg" },
+  { name: "Microsoft", url: "/partner-microsoft.jpg" },
+  { name: "Three Lions Group", url: "/partner-threelions.jpg" },
+  { name: "Slack", url: "/partner-slack.jpg" },
+  { name: "Infinityfield", url: "/partner-infinityfield.jpg" },
+  { name: "monday.com", url: "/partner-monday.jpg" },
 ];
 
 export default function Partners() {
   return (
     <section
       id="partners"
-      className="py-16 lg:py-24 px-6 lg:px-8 flex justify-center"
+      className="py-8 lg:py-16 px-6 lg:px-8 flex justify-center overflow-hidden"
     >
-      <div className="flex w-full max-w-7xl flex-col gap-24">
+      <div className="flex w-full max-w-11/12 flex-col gap-12 md:gap-24">
         {/* Title + description + button area */}
-        <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
-          <h2 className="text-black max-w-[486px] font-cal-sans font-normal text-4xl md:text-5xl leading-tight">
-            Trusted by Purpose Driven Organizations
+        <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <h2 className="text-black max-w-4xl font-cal-sans font-normal text-4xl md:text-5xl leading-tight uppercase">
+            Organizations & Platforms Supporting Our Mission
           </h2>
 
-          <div className="flex flex-col items-start gap-8 max-w-[580px]">
+          <div className="flex flex-col items-start gap-8 max-w-[500px]">
             <p className="text-gray-600 font-dm-sans font-normal text-base leading-relaxed text-justify md:text-left">
-              We collaborate with partners who believe in measurable impact,
-              inclusive growth, and empowering the next generation of African
-              women.
+              Through collaboration with organisations and trusted technology
+              platforms, we are advancing AI education and digital inclusion for
+              African girls expanding access, opportunity, and innovation.
             </p>
 
             <Button
               variant="primary"
               href="/partner"
-              className="px-9 py-3.5 rounded-full"
+              className="hidden md:flex px-9 py-3.5 rounded-full text-sm md:text-base"
             >
               Partner with Us
             </Button>
           </div>
         </div>
 
-        <div className="w-full">
+        {/* Partners Slider (Desktop + Mobile Responsive) */}
+        <div className="-mx-6 px-6">
           <Swiper
             modules={[Autoplay]}
-            spaceBetween={15}
-            slidesPerView={2}
-            loop={true}
             autoplay={{
-              delay: 2500,
+              delay: 3000,
               disableOnInteraction: false,
             }}
+            loop={true}
+            spaceBetween={20}
             breakpoints={{
-              640: { slidesPerView: 4 },
-              1024: { slidesPerView: 6 },
+              320: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              640: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+              1024: {
+                slidesPerView: 5,
+                spaceBetween: 40,
+              },
             }}
-            className="w-full"
+            className="pb-4"
           >
             {partnerLogos.map((partner, index) => (
               <SwiperSlide key={index}>
-                <div className="w-full h-16 flex items-center justify-center transition-all duration-300">
-                  <div
-                    className={`w-40 h-16 sm:w-48 sm:h-20 ${partner.color}`}
-                    style={{
-                      WebkitMaskImage: `url('${partner.url}')`,
-                      WebkitMaskSize: "contain",
-                      WebkitMaskPosition: "center",
-                      WebkitMaskRepeat: "no-repeat",
-                      maskImage: `url('${partner.url}')`,
-                      maskSize: "contain",
-                      maskPosition: "center",
-                      maskRepeat: "no-repeat",
-                    }}
-                    title={partner.name}
+                <div className="flex items-center justify-center h-24 rounded-xl">
+                  <Image
+                    src={partner.url}
+                    alt={partner.name}
+                    width={150}
+                    height={150}
+                    className="object-cover h-24 rounded-4xl w-full transition-all duration-300"
                   />
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
+        </div>
+
+        {/* Mobile Button */}
+        <div className="flex justify-center md:hidden mt-2">
+          <Button
+            variant="primary"
+            href="/partner"
+            className="px-9 py-3.5 rounded-full text-sm w-fit mx-auto text-center flex justify-center"
+          >
+            Partner with Us
+          </Button>
         </div>
       </div>
     </section>
