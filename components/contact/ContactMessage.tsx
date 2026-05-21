@@ -12,18 +12,14 @@ const contactItems = [
   {
     icon: Mail,
     title: "Email",
-    content: "info@rotagif.com",
+    content: "info@rotagif.org",
   },
   {
     icon: Headphones,
     title: "Phone (WhatsApp)",
     content: "+234 803 236 8560",
   },
-  {
-    icon: MapPin,
-    title: "Address",
-    content: "No. 1 Magazar Close, Eagle Billed Estate Off Vio Mabuschi.Federal Capital Territory (Abuja).Nigeria.",
-  },
+
 ];
 
 export default function ContactMessage() {
@@ -187,7 +183,7 @@ export default function ContactMessage() {
                 htmlFor="subject"
                 className="mb-2 block text-base font-medium text-slate-500 sm:mb-3 sm:text-lg"
               >
-                Subject
+                Subject(optional)
               </label>
               <input
                 id="subject"

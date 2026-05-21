@@ -4,12 +4,12 @@ import ProgramsList from "@/components/programs/ProgramsList";
 import ProgramsCTA from "@/components/programs/ProgramsCTA";
 
 const HERO_DATA = {
-  title: "Program Pathways",
+  title: "PROGRAMME PATHWAYS",
   description:
-    "Discover your free learning pathway from your first spark of curiosity to confident leadership in Artificial Intelligence, Digital Skills, and Life Skills.",
+    "Discover your free learning pathway from your first spark of curiosity to confident leadership in AI, Digital Skills, and Life Skills. Every programme is built around you, at every stage of life. ",
 };
 const FILTERS = [
-  { label: "All Ages", value: "All" },
+  { label: "All Ages(4)", value: "All" },
   { label: "10-12 years", value: "10-12 years" },
   { label: "13-15 years", value: "13-15 years" },
   { label: "16-18 years", value: "16-18 years" },
