@@ -48,7 +48,7 @@ export default function ContactHero({ title, subtitle,  }: Props) {
   transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
   className="text-white  
              text-base sm:text-lg md:text-xl lg:text-md 
-             max-w-2xl 
+            lg:w-[510px]
              mt-4 text-center"
 >
   {subtitle}
