@@ -6,84 +6,77 @@ import React from "react";
 
 const Empower = () => {
   return (
-    /* 
-      1. Fixed parent height constraints: Changed the extreme md:min-h-[800px] 
-         and restricted lg:h-[450px] so it is properly reduced but looks natural.
-    */
-    <div className="relative lg:mx-4 min-h-[460px] sm:min-h-[500px] md:min-h-[550px] lg:h-[600px] lg:rounded-2xl overflow-hidden flex items-end">
-      
-      {/* 
-        2. Added 'fill' and 'object-top': This forces the crop to happen at the 
-           bottom of the image, keeping the girls' heads completely safe from being cut off.
-      */}
-      <Image
-        src="/Threegirls.jpg"
-        alt="Empowering African girls to lead in the digital world"
-        fill
-        priority
-        className="object-cover object-top"
-      />
-      
-      <div className="absolute inset-0 bg-[#41122B]/80" />
-      
-      {/* Dynamic Content Container */}
-      <div
-        className="
-          absolute inset-x-0 bottom-0
-          flex flex-col
-          items-start          
-          justify-end          
-          gap-6                
-          px-5
-          pb-8
-          pt-20
-          text-white
-          sm:px-8
-          md:flex-row
-          md:items-end
-          md:justify-between
-          md:gap-12
-          md:px-12
-          md:pb-12
-        "
-      >
-        {/* Typography Wrapper */}
-        <div className="w-full md:max-w-xl lg:max-w-2xl xl:max-w-3xl text-left">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            {/* 3. Removed 'mb-30' which was pushing text way too far up inside a shorter box */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:max-w-[800px] lg:text-5xl font-black mb-4 uppercase leading-tight">
-              EMPOWERING{" "}
-              <span className="text-[#fce4ec]">AFRICAN GIRLS</span> TO LEAD IN THE DIGITAL 
+    <>
+    <section className="relative min-h-[800px] flex flex-col items-center justify-end bg-pink-950 lg:mx-4 lg:rounded-2xl overflow-hidden mt-6 md:mt-0">
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/Threegirls.jpg"
+              width={1920}
+              height={1080}
+              alt="African Girl Innovator"
+              className="w-full h-[1000px] object-cover"
+            />
+          </div>
+              <div className="absolute inset-0 bg-[#41122B]/70" />
+    
+          <div className="relative z-10 flex flex-col justify-end w-full h-full pb-16 md:pb-20 overflow-hidden">
+            <div className="mx-auto max-w-11/12 w-full flex flex-col justify-end h-full relative">
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="w-full mb-4 relative"
+              >
+                <h1 className="text-white max-w-5xl pr-20 font-cal-sans text-6xl sm:text-5xl md:text-[72px] leading-[1.05] tracking-[-0.02em] mb-0 md:mb-0 uppercase">
+                   EMPOWERING
+              AFRICAN GIRLS TO LEAD IN THE DIGITAL 
               WORLD
-            </h1>
-
-            <p className="mt-3 text-xs sm:text-sm md:text-base text-gray-200 max-w-md lg:max-w-max leading-relaxed font-medium">
-              Through age specific programmes, we equip African girls and young women with the confidence, knowledge, and leadership to shape a just and equitable digital future.
-            </p>
-          </motion.div>
-        </div>
-
-        {/* CTA Button Wrapper */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="shrink-0 w-full sm:w-auto mt-2 md:mt-0"
-        >
-          <Button
-            variant="secondary"
-            href="/programs"
-            className="cursor-pointer w-50 lg:full sm:w-auto text-center justify-center inline-flex"
-          >
-            Explore Our Programmes
-          </Button>
-        </motion.div>
-      </div>
-    </div>
+                </h1>
+              </motion.div>
+    
+              <div className="flex flex-col md:flex-row md:items-end w-full gap-8">
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                  className="text-white/80 max-w-2xl  font-dm-sans font-normal text-base md:text-lg leading-[160%] m-0"
+                >
+                 Through age specific programmes, we equip African girls and young women with the confidence, knowledge, and leadership to shape a just and equitable digital future.
+                </motion.p>
+    
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                  className="flex shrink-0 z-20 md:ml-auto"
+                >
+                  <Button
+                    variant="secondary"
+                    href="/programs"
+                    
+                    className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-3.5 font-semibold"
+                  >
+                    Explore Our Programmes
+                  </Button>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+    
+          {/* Decorative gradients from design */}
+          <div className="absolute right-0 bottom-0 flex opacity-20 pointer-events-none">
+            {[...Array(7)].map((_, i) => (
+              <div
+                key={i}
+                className="w-12 md:w-16 h-[300px] md:h-[500px] bg-gradient-to-b from-white/0 to-white/40 transform rotate-180"
+                style={{ marginRight: i * -10 + "px" }}
+              />
+            ))}
+          </div>
+        </section>
+    
+    </>
   );
 };
 

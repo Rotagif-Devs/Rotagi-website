@@ -8,27 +8,33 @@ const faqs = [
   {
     question: "What is ROTAGI?",
     answer:
-      "ROTAGI Reaching Out to African Girls Initiative is a registered Nigerian social impact organisation dedicated to empowering African girls and young women aged 10 to 40. We deliver free, structured programmes in Artificial Intelligence, digital skills, and life skills to help them participate and lead in the digital economy.",
+      "ROTAGI Reaching Out to African Girls Initiative is a registered Nigerian social impact organisation dedicated to empowering African girls and young women aged 10 to 40. We deliver structured program in artificial Intelligence, digital skills, and life skills to help African participate and lead in the digital economy.",
   },
   {
     question: "Where is ROTAGI based?",
     answer:
-      "ROTAGI is based in Abuja, Nigeria, but our impact reaches across various communities in Africa through our programs and digital initiatives.",
+      "ROTAGI is headquartered in Abuja, Nigeria. Our programmes are delivered both and online and on site across Africa",
   },
   {
-    question: "Who can join ROTAGI programmes?",
+    question: "Does my daughter need my permission to join?",
     answer:
-      "Our programs are designed for African girls and women aged 10 to 40, with age-appropriate learning pathways for different stages of their journey.",
+      "Yes. Participants under 18 require written parental or guardian consent before joining any ROTAGI programme.",
   },
   {
-    question: "When can I start?",
+    question: "How do I volunteer with ROTAGI?",
     answer:
-      "Applications for our various programs open at different times throughout the year. Follow our social media channels or subscribe to our newsletter for the latest updates.",
+      "You can join the ROTAGI Ambassador Program.",
   },
   {
     question: "What is the SHE Empower Conference?",
-    answer:
-      "The SHE Empower Conference is our annual flagship event featuring workshops, mentorship sessions, and inspiring talks from industry leaders to empower and connect our community.",
+    answer: (
+      <>
+        The SHE Empower Conference is ROTAGI's flagship annual one day event bringing together African girls and young women for leadership sessions, mentorship, digital skills workshops, scholarship announcements, and community celebration. The next conference is coming in 2026.
+        <br />
+        <br />
+        Register your interest at <span className="text-secondary italic">/events/she-empower.</span>
+      </>
+    ),
   },
 ];
 

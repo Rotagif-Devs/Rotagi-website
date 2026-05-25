@@ -20,9 +20,9 @@ export default function ProgramsList({ programs, filters }: Props) {
         );
 
   return (
-    <section className="max-w-6xl mx-auto">
+    <section className="max-w-full mx-auto">
       {/* Filter Section */}
-      <div className="py-8 px-4 sm:px-12">
+      <div className="py-8 px-4 sm:px-12 min-w-80">
         <div className="flex justify-start">
           <div className="bg-white inline-flex gap-2 rounded-full px-1 py-1 text-sm font-medium text-gray-600 overflow-x-auto max-w-full scrollbar-hide">
             {filters.map((filter) => (
@@ -43,7 +43,7 @@ export default function ProgramsList({ programs, filters }: Props) {
       </div>
       <section className=" sm:px-12 mb-16">
         <div className="">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:gap-12 max-w-6xl mx-auto">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:gap-12 max-w-full mx-auto">
             {filteredPrograms.map((program) => (
               <ProgramCard key={program.id} program={program} index={0} />
             ))}

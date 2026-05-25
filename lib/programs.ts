@@ -34,7 +34,7 @@ export interface Program {
 export const programs: Program[] = [
   {
     id: "she-ignite",
-    name: "SHE IGNITE",
+    name: "SHE Ignite",
     slug: "she-ignite",
     level: "Beginner",
     ageRange: "Ages 10-12",
@@ -88,7 +88,7 @@ export const programs: Program[] = [
   },
   {
     id: "she-blossom",
-    name: "SHE BLOSSOM",
+    name: "SHE Blossom",
     slug: "she-blossom",
     ageRange: "Ages 13-15",
     level: "Intermediate",
@@ -143,7 +143,7 @@ export const programs: Program[] = [
   },
   {
     id: "she-blaze",
-    name: "SHE BLAZE",
+    name: "SHE Blaze",
     slug: "she-blaze",
     ageRange: "Ages 16-18",
     level: "Advanced",
@@ -198,7 +198,7 @@ export const programs: Program[] = [
   },
   {
     id: "she-ascend",
-    name: "SHE ASCEND",
+    name: "SHE Ascend",
     slug: "she-ascend",
     ageRange: "Ages 18-40",
     level: "Professional",
