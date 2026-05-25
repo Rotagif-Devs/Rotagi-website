@@ -12,7 +12,7 @@ const contactItems = [
   {
     icon: Mail,
     title: "Email",
-    content: "info@rotagif.org",
+    content: "info@rotagif.com",
   },
   {
     icon: Headphones,
@@ -82,7 +82,7 @@ export default function ContactMessage() {
         {/* Left */}
         <div className="">
           <h2 className="text-3xl sm:text-4xl md:text-5xl !normal-case font-cal-sans font-medium text-slate-900 mb-6">
-            Send Us a Message
+            SEND US A MESSAGE
           </h2>
           <p className="my-4 max-w-xl text-base leading-relaxed text-slate-500 sm:text-lg sm:leading-8 lg:leading-9">
             For enquiries, partnerships, or programme information, please complete
