@@ -26,7 +26,7 @@ export const termsData: TermsSection[] = [
       " Organisations interested in partnering or collaborating with ROTAGI  ",
       " African girls under the age of 18 may only participate in ROTAGI programmes and submit personal information on this website with the knowledge and consent of a parent or legal guardian. By submitting a registration on behalf of a girl under 18, the parent or guardian confirms they consent to that participation and to ROTAGI processing the girl's information as described in our Privacy Policy. ROTAGI may request verification of parental consent at any time. "
     ],
-   
+
   },
   {
     id: "programs",
@@ -42,7 +42,7 @@ export const termsData: TermsSection[] = [
     title: "Donations",
     content: [
       "Donations to ROTAGI support our free programmes, community events, and organisational operations. All payments are processed securely by PayStack. ROTAGI does not store your payment card details. ",
-      "Donations are voluntary and non-refundable, except where required by Nigerian law or where ROTAGI determines a genuine error has occurred. To report a donation error, email privacy@rotagi.org within 14 days. ",
+      "Donations are voluntary and non-refundable, except where required by Nigerian law or where ROTAGI determines a genuine error has occurred. To report a donation error, email privacy@rotagi.com within 14 days. ",
     ],
     list: [
       "The information you provide is accurate and complete",
@@ -52,14 +52,14 @@ export const termsData: TermsSection[] = [
     last: [
       "ROTAGI will make reasonable efforts to ensure transparency in how donations support its mission and impact.",
     ]
- 
+
   },
   {
-      id: "mentorship",
-      title: "Mentorship",
-      content: [
-        "Individuals may apply to become ROTAGI mentors through the website. Applications are subject to review and acceptance is not guaranteed. Accepted mentors must uphold ROTAGI's values. ROTAGI reserves the right to remove any mentor whose conduct is inconsistent with these values. "
-      ]
+    id: "mentorship",
+    title: "Mentorship",
+    content: [
+      "Individuals may apply to become ROTAGI mentors through the website. Applications are subject to review and acceptance is not guaranteed. Accepted mentors must uphold ROTAGI's values. ROTAGI reserves the right to remove any mentor whose conduct is inconsistent with these values. "
+    ]
   },
 
   {
@@ -122,12 +122,12 @@ export const termsData: TermsSection[] = [
   {
     id: "contact",
     title: "Contact",
-    content: [   
-          "Organisation: Reaching Out to African Girls Initiative (ROTAGI)",
-          "General enquiries: info@rotagif.com "
-            
-      
-        ]
+    content: [
+      "Organisation: Reaching Out to African Girls Initiative (ROTAGI)",
+      "General enquiries: info@rotagif.com "
+
+
+    ]
   }
 
 ];

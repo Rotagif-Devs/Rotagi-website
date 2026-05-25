@@ -66,7 +66,7 @@ export const programs: Program[] = [
       ],
     },
     achievements: {
-      title: "What You'll Achieve",
+      title: "What You will Achieve",
       items: [
         "Discover AI awareness, digital safety, and confidence",
         "Explore how AI shows up in everyday digital life",
@@ -76,7 +76,7 @@ export const programs: Program[] = [
       ],
     },
     benefits: {
-      title: "What You'll Get",
+      title: "What You will Get",
       items: [
         "Certificate of completion",
         "Digital toolkit with learning resources",
@@ -120,7 +120,7 @@ export const programs: Program[] = [
       ],
     },
     achievements: {
-      title: "What You'll Achieve",
+      title: "What You will Achieve",
       items: [
         "Build digital and AI skills confidently",
         "Develop responsible digital habits",
@@ -130,7 +130,7 @@ export const programs: Program[] = [
       ],
     },
     benefits: {
-      title: "What You'll Get",
+      title: "What You will Get",
       items: [
         "Certificate of completion with portfolio showcase",
         "AI development toolkit and resources",
@@ -149,7 +149,7 @@ export const programs: Program[] = [
     level: "Advanced",
     headline: "From Skills to Independence",
     tagline:
-      "Advanced AI learning, digital skills, and life skills for young women ready to lead in technology.",
+      "Advanced artificial intelligence learning, digital skills, and life skills for young women ready to lead in technology.",
     description:
       "SHE Blaze prepares young women for technology and artificial intelligence careers through free, advanced training in artificial intelligence, digital, and life skills. Participants build job ready solutions, explore income pathways, and develop leadership skills for success in the AI and tech sector.",
     duration: "Self-paced",
@@ -175,7 +175,7 @@ export const programs: Program[] = [
       ],
     },
     achievements: {
-      title: "What You'll Achieve",
+      title: "What You will Achieve",
       items: [
         "Build job-ready AI skills",
         "Explore income pathways through digital entrepreneurship",
@@ -185,7 +185,7 @@ export const programs: Program[] = [
       ],
     },
     benefits: {
-      title: "What You'll Get",
+      title: "What You will Get",
       items: [
         "Professional certificate recognized by tech companies",
         "Industry standard portfolio with 5+ advanced projects",
@@ -230,7 +230,7 @@ export const programs: Program[] = [
       ],
     },
     achievements: {
-      title: "What You'll Achieve",
+      title: "What You will Achieve",
       items: [
         "Master AI, digital, and freelancing skills confidently",
         "Build a professional portfolio of industry-ready work",
@@ -239,7 +239,7 @@ export const programs: Program[] = [
       ],
     },
     benefits: {
-      title: "What You'll Get",
+      title: "What You will Get",
       items: [
         "Professional certificate ",
         "Portfolio of 7+ production ready projects",

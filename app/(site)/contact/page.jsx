@@ -14,7 +14,6 @@ export default function ContactPage() {
       <ContactHero
         title={HERO_DATA.title}
         subtitle={HERO_DATA.subtitle}
-        btn={HERO_DATA.btn}
       />
       <div className="px-6 py-10 md:px-10 md:py-10">
         <ContactMessage />
