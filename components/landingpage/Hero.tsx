@@ -17,7 +17,7 @@ export default function Hero() {
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="absolute inset-0 bg-[#41122B]/80" />
+      <div className="absolute inset-0 bg-[#41122B]/70" />
 
       <div className="relative z-10 flex flex-col justify-end w-full h-full pb-16 md:pb-20 overflow-hidden">
         <div className="mx-auto max-w-11/12 w-full flex flex-col justify-end h-full relative">
