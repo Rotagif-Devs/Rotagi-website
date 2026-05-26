@@ -20,7 +20,7 @@ export default function ProgramsList({ programs, filters }: Props) {
         );
 
   return (
-    <section className="max-w-full mx-auto">
+    <section className="max-w-full px-4 md:px-0 mx-auto">
       {/* Filter Section */}
       <div className="py-8 px-4 sm:px-12 min-w-80">
         <div className="flex justify-start">
