@@ -26,7 +26,7 @@ export default function PTA({ slug }: { slug?: string }) {
         <div className="flex w-full max-w-11/12 flex-col gap-10 px-5 md:px-0 md:gap-[76px]">
           {/* Title + description + buttons area */}
           <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-12">
-            <h2 className="max-w-lg text-dark text-4xl leading-tight tracking-tight md:max-w-[600px] md:text-[46px] md:leading-[110%]">
+            <h2 className="max-w-lg text-dark text-4xl leading-tight tracking-tight uppercase md:max-w-[600px] md:text-[46px] md:leading-[110%]">
               Be the First to Know
             </h2>
 
