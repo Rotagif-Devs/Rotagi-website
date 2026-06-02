@@ -9,9 +9,9 @@ interface Props {
 
 export default function ProgramCard({ program }: Props) {
   return (
-    <div className="flex h-full flex-col rounded-2xl bg-white p-5">
+    <div className="flex h-full flex-col rounded-2xl bg-white p-6">
       {/* Image */}
-      <div className="relative h-[240px] overflow-hidden rounded-t-2xl bg-[#2A0018]">
+      <div className="relative h-[340px] overflow-hidden rounded-t-2xl bg-[#2A0018]">
         <Image
           src={program.image || "/placeholder.svg"}
           alt={program.name}

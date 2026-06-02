@@ -19,8 +19,8 @@ export default function ProgramsCTA() {
     }
   };
   return (
-    <section className="bg-primary py-16 md:py-20 px-6 md:px-15 flex justify-center">
-      <div className="flex w-full max-w-[1260px] flex-col gap-10 px-5 md:px-0 md:gap-[76px]">
+    <section className="bg-primary py-16 flex justify-center">
+      <div className="flex w-full max-w-11/12 flex-col gap-10 md:px-0 md:gap-[76px]">
         {/* Title + description + buttons area */}
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-12">
           <h2 className="font-cal-sans text-dark text-4xl leading-tight tracking-tight md:max-w-[600px] md:text-[46px] md:leading-[110%]">
@@ -43,7 +43,7 @@ export default function ProgramsCTA() {
         {/* Video / hero preview */}
         <div className="flex w-full justify-center">
           <div
-            className="group relative w-full overflow-hidden rounded-3xl bg-white md:aspect-1256/711 md:max-w-[1256px] md:rounded-[64px] aspect-video cursor-pointer"
+            className="group relative w-full overflow-hidden rounded-3xl bg-white md:aspect-1256/711 md:rounded-[64px] aspect-video cursor-pointer"
             onClick={togglePlay}
           >
             <video

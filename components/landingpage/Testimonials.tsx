@@ -2,11 +2,10 @@
 
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/autoplay";
 
 const testimonials = [
   {
@@ -52,16 +51,12 @@ export default function Testimonials() {
         <div className="relative">
           {/* Desktop & Tablet: Grid or Slider */}
           <Swiper
-            modules={[Navigation, Autoplay]}
+            modules={[Navigation]}
             navigation={{
               prevEl: ".test-prev",
               nextEl: ".test-next",
             }}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-            }}
-            loop={true}
+            loop={false}
             spaceBetween={36}
             slidesPerView={1.2}
             breakpoints={{

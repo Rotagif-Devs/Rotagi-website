@@ -9,10 +9,10 @@ import "swiper/css";
 import "swiper/css/autoplay";
 
 const partnerLogos = [
-  { name: "Selex Engineering", url: "/partner-1.png" },
-  { name: "Ed Tech", url: "/partner-2.png" },
-  { name: "CICN", url: "/partner-3.png" },
-  { name: "Daptem Engineering", url: "/partner-4.png" },
+  { name: "Selex Engineering", url: "/partner1.jpeg" },
+  { name: "Ed Tech", url: "/partner2.jpeg" },
+  { name: "CICN", url: "/partner1.jpeg" },
+  { name: "Daptem Engineering", url: "/partner3.jpeg" },
   { name: "Canva", url: "/partner-canva.jpg" },
   { name: "Tushiyah", url: "/partner-tushiyah.jpg" },
   { name: "Microsoft", url: "/partner-microsoft.jpg" },
@@ -80,13 +80,13 @@ export default function Partners() {
           >
             {partnerLogos.map((partner, index) => (
               <SwiperSlide key={index}>
-                <div className="flex items-center justify-center h-24 rounded-xl">
+                <div className="flex items-center gap-4 justify-center">
                   <Image
                     src={partner.url}
                     alt={partner.name}
                     width={150}
                     height={150}
-                    className="object-cover h-24 rounded-4xl w-full transition-all duration-300"
+                    className="object-cover w-full transition-all md:h-32 lg:h-28 rounded-3xl duration-300"
                   />
                 </div>
               </SwiperSlide>
