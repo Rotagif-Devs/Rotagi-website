@@ -9,16 +9,29 @@ export default function PTA({ slug }: { slug?: string }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const getProgramName = (slug?: string) => {
-    switch (slug) {
-      case "she-ignite": return "She Ignite";
-      case "she-blossom": return "She Blossom";
-      case "she-blaze": return "She Blaze";
-      case "she-ascend": return "She Ascend";
-      default: return "";
+    if (!slug) return "";
+
+    const knownPrograms: Record<string, string> = {
+      "she-ignite": "She Ignite",
+      "she-blossom": "She Blossom",
+      "she-blaze": "She Blaze",
+      "she-ascend": "She Ascend",
+    };
+
+    if (knownPrograms[slug]) {
+      return knownPrograms[slug];
     }
+
+    return slug
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
   };
 
   const programName = getProgramName(slug);
+  const programMessage = programName
+    ? `${programName} course is coming soon. Sign up to be notified.`
+    : "Our courses are coming soon. Sign up to be notified.";
 
   return (
     <>
