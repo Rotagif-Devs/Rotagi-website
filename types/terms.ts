@@ -4,4 +4,11 @@ export type TermsSection = {
   content: string[];
   list?: string[];
   last?: string[];
+  contactInfo?: {
+    organisation: string;
+    generalEnquiries: string;
+    safeguarding: string;
+    partnerships: string;
+    phone: string;
+  };
 };

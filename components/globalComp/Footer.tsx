@@ -2,19 +2,11 @@
 
 import Link from "next/link";
 import React from "react";
-import {
-  MapPin,
-  Mail,
-  Phone,
-  Facebook,
-  Instagram,
-  Linkedin,
-  Youtube,
-} from "lucide-react";
+import { Mail, Phone, Facebook, Instagram, Linkedin } from "lucide-react";
 import Button from "../ui/Button";
 import { useState } from "react";
 import { subscribeNewsletter } from "@/lib/services/newsletter.service";
-import { Loader2, CheckCircle, AlertCircle } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -43,7 +35,6 @@ export default function Footer() {
       setMessage(err.message || "An error occurred. Please try again.");
     }
 
-    // Reset status after 5 seconds
     setTimeout(() => {
       setStatus("idle");
       setMessage("");
@@ -52,17 +43,18 @@ export default function Footer() {
 
   return (
     <footer className="flex justify-center bg-primary">
-      <div className="bg-black text-white flex flex-col justify-between w-full lg:mx-6 mt-6 lg:rounded-xl px-8 py-16 md:px-8 md:py-10 shadow-xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-2 pt-4 w-full">
-          {/* Brand & Description */}
+      <div className="bg-black text-white flex flex-col justify-between w-full lg:mx-6 mt-6 lg:rounded-3xl px-8 py-16 md:px-12 md:py-12 shadow-xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 pt-4 w-full">
+
+          {/* Brand & Newsletter */}
           <div className="lg:col-span-2">
             <Link href="/" aria-label="ROTAGI Home">
-              <h2 className="text-5xl mb-4 font-cal-sans font-normal text-white">
+              <h2 className="text-4xl mb-3 font-cal-sans font-normal text-white">
                 ROTAGI
               </h2>
             </Link>
-            <p className="text-gray-400 text-base font-normal font-dm-sans mb-8">
-              Where African Girls Discover, Learn, and Lead
+            <p className="text-gray-400 text-sm font-normal font-dm-sans mb-8">
+              Where African Girls Discover, Learn, and Lead.
             </p>
 
             {/* Newsletter */}
@@ -82,7 +74,7 @@ export default function Footer() {
                   size="sm"
                   type="submit"
                   disabled={status === "loading" || status === "success"}
-                  className="bg-secondary text-white rounded-xl px-6 py-2 text-sm font-semibold hover:bg-secondary/90 transition-all"
+                  className="bg-[#D81B7E] text-white rounded-xl px-5 py-2 text-sm font-semibold hover:bg-pink-700 transition-all shrink-0"
                 >
                   {status === "loading" ? (
                     <Loader2 className="animate-spin" size={16} />
@@ -93,7 +85,6 @@ export default function Footer() {
                   )}
                 </Button>
               </div>
-
               {status === "success" && (
                 <p className="mt-2 text-green-400 text-xs">{message}</p>
               )}
@@ -105,55 +96,37 @@ export default function Footer() {
 
           {/* Quick Navigation */}
           <div>
-            <h4 className="text-white font-cal-sans text-lg mb-6">
+            <h4 className="text-white font-cal-sans text-base mb-6 uppercase tracking-wide">
               Quick Navigation
             </h4>
-            <ul className="space-y-4 text-gray-400 text-base font-dm-sans">
+            <ul className="space-y-4 text-gray-400 text-sm font-dm-sans">
               <li>
-                <Link
-                  href="/programs"
-                  className="hover:text-white transition-colors"
-                >
+                <Link href="/about" className="hover:text-white transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/programs" className="hover:text-white transition-colors">
                   Programs
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/impact"
-                  className="hover:text-white transition-colors"
-                >
-                  Impact
+                <Link href="/blog" className="hover:text-white transition-colors">
+                  Blog
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/events"
-                  className="hover:text-white transition-colors"
-                >
-                  Events
+                <Link href="/events/she-empower" className="hover:text-white transition-colors">
+                  SHE Empower
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/resources"
-                  className="hover:text-white transition-colors"
-                >
-                  Resources
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/child-protection"
-                  className="hover:text-white transition-colors"
-                >
+                <Link href="/child-protection" className="hover:text-white transition-colors">
                   Child Protection
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/code-of-conduct"
-                  className="hover:text-white transition-colors"
-                >
+                <Link href="/code-of-conduct" className="hover:text-white transition-colors">
                   Code of Conduct
                 </Link>
               </li>
@@ -162,48 +135,23 @@ export default function Footer() {
 
           {/* Get Involved */}
           <div>
-            <h4 className="text-white font-cal-sans text-lg mb-6">
+            <h4 className="text-white font-cal-sans text-base mb-6 uppercase tracking-wide">
               Get Involved
             </h4>
-            <ul className="space-y-4 text-gray-400 text-base font-dm-sans">
+            <ul className="space-y-4 text-gray-400 text-sm font-dm-sans">
               <li>
-                <Link
-                  href="/donate"
-                  className="hover:text-white transition-colors"
-                >
+                <Link href="/donate" className="hover:text-white transition-colors">
                   Donate
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/mentors"
-                  className="hover:text-white transition-colors"
-                >
-                  Become A Mentor
+                <Link href="/volunteer" className="hover:text-white transition-colors">
+                  Volunteer With Us
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/partner"
-                  className="hover:text-white transition-colors"
-                >
+                <Link href="/partner" className="hover:text-white transition-colors">
                   Partner with Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="hover:text-white transition-colors"
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="hover:text-white transition-colors"
-                >
-                  Blog
                 </Link>
               </li>
             </ul>
@@ -211,20 +159,24 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-white font-cal-sans text-lg mb-6">Contact</h4>
+            <h4 className="text-white font-cal-sans text-base mb-6 uppercase tracking-wide">
+              Contact
+            </h4>
 
             {/* Social Icons */}
             <div className="flex gap-4 mb-8 text-white">
               <Link
                 href="https://www.facebook.com/officialrotagi"
                 target="_blank"
+                aria-label="Facebook"
                 className="hover:text-secondary transition-colors"
               >
-                <Facebook size={22} />
+                <Facebook size={20} />
               </Link>
               <Link
                 href="https://x.com/officialrotagi"
                 target="_blank"
+                aria-label="X (Twitter)"
                 className="hover:text-secondary transition-colors"
               >
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -234,27 +186,25 @@ export default function Footer() {
               <Link
                 href="https://www.instagram.com/officialrotagi/"
                 target="_blank"
+                aria-label="Instagram"
                 className="hover:text-secondary transition-colors"
               >
-                <Instagram size={22} />
+                <Instagram size={20} />
               </Link>
               <Link
                 href="https://www.linkedin.com/company/officialrotagi"
                 target="_blank"
+                aria-label="LinkedIn"
                 className="hover:text-secondary transition-colors"
               >
-                <Linkedin size={22} />
+                <Linkedin size={20} />
               </Link>
             </div>
 
             {/* Contact Details */}
             <div className="space-y-4 text-gray-400 text-sm font-dm-sans">
               <div className="flex items-center gap-3">
-                <MapPin size={20} className="text-white" />
-                <span>Abuja, Nigeria</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Mail size={20} className="text-white" />
+                <Mail size={18} className="text-white shrink-0" />
                 <Link
                   href="mailto:info@rotagif.com"
                   className="hover:text-white transition-colors"
@@ -263,7 +213,7 @@ export default function Footer() {
                 </Link>
               </div>
               <div className="flex items-center gap-3">
-                <Phone size={20} className="text-white" />
+                <Phone size={18} className="text-white shrink-0" />
                 <Link
                   href="https://wa.me/2348032368560"
                   target="_blank"
@@ -277,20 +227,20 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-center items-center gap-1 md:gap-4 text-gray-400 text-sm font-dm-sans">
+        <div className="mt-16 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-center items-center gap-2 md:gap-3 text-gray-400  font-dm-sans">
           <p>© 2026 ROTAGI. All rights reserved.</p>
-          <span className="hidden md:inline">|</span>
-          <div className="flex gap-4">
+          <span className="hidden md:inline text-white/20">|</span>
+          <div className="flex gap-3">
             <Link
               href="/privacy"
-              className="text-sm font-dm-sans hover:text-white transition-colors"
+              className="hover:text-white transition-colors"
             >
               Privacy Policy
             </Link>
-            <span className="md:hidden">|</span>
+            <span className="text-white/20">|</span>
             <Link
               href="/terms"
-              className="text-sm font-dm-sans hover:text-white transition-colors"
+              className="hover:text-white transition-colors"
             >
               Terms and Conditions
             </Link>
