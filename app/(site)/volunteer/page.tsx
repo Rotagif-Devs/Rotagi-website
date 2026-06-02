@@ -8,19 +8,34 @@ import { CheckCircle } from "lucide-react";
 
 const HOW_TO_CONTRIBUTE = [
   {
-    title: "Program Support",
+    title: "Program Ambassador",
     description:
-      "Assist with delivering our SHE Ignite, SHE Blossom, SHE Blaze and SHE Ascend programmes. Support facilitators, mentor participants, and help create an engaging learning environment.",
+      "Join programme delivery teams to support facilitators, run workshops, and mentor participants through hands-on sessions.",
   },
   {
-    title: "Digital Ambassador",
+    title: "Story Ambassador",
     description:
-      "Spread the word about ROTAGI on your social media platforms, in your community, and within your professional network. Help us reach more African girls and women who need our programmes.",
+      "Collect and share participant stories, case studies and impact content to amplify our work and attract new supporters.",
   },
   {
-    title: "Event Support",
+    title: "Events Ambassador",
     description:
-      "Help organise and run ROTAGI events, including the SHE Empower Conference. Support logistics, coordination, registration, and participant experience on the day.",
+      "Support planning and running events like the SHE Empower conference — logistics, registration and onsite coordination.",
+  },
+  {
+    title: "Community Ambassador",
+    description:
+      "Build local partnerships, engage community groups and help recruit participants from schools and youth hubs.",
+  },
+  {
+    title: "Skills Ambassador",
+    description:
+      "Deliver practical sessions on digital skills, AI basics, and career readiness — no prior teaching qualification required.",
+  },
+  {
+    title: "Research Ambassador",
+    description:
+      "Help monitor and evaluate our programmes, support surveys, data gathering and reporting on impact.",
   },
 ];
 
@@ -87,7 +102,7 @@ export default function VolunteerPage() {
             Volunteer With ROTAGI
           </h1>
           <p className="text-white/80 text-sm md:text-base max-w-xl leading-relaxed">
-            Give your time, skills, and passion to help African girls and women thrive in the digital economy. Every hour you give changes a life.
+            Empower African girls and young women by giving your time, skills, and voice to create lasting impact.
           </p>
           <Button
             variant="primary"
@@ -96,6 +111,34 @@ export default function VolunteerPage() {
           >
             Volunteer
           </Button>
+        </div>
+      </section>
+
+      {/* ── Who We Welcome ───────────────────────────── */}
+      <section className="py-16 px-6 bg-[#FDF2F8]">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          <div>
+            <h3 className="text-xl md:text-2xl font-cal-sans font-bold uppercase text-gray-950 mb-4">
+              Who We Welcome
+            </h3>
+            <p className="text-gray-600 mb-4">
+              We welcome anyone who wants to make a difference. You don't need a tech degree — just commitment, empathy, and a willingness to learn.
+            </p>
+            <ul className="space-y-3 text-gray-700 text-sm md:text-base">
+              <li>People of all backgrounds and experience levels.</li>
+              <li>Professionals who can donate a few hours or more.</li>
+              <li>Students, educators, and community organisers.</li>
+              <li>Anyone who can help mentor, teach or coordinate locally.</li>
+            </ul>
+
+            <div className="mt-6 bg-white border border-pink-100 rounded-2xl p-4 text-sm text-gray-700">
+              <strong className="text-[#D81B7E]">Note:</strong> We provide orientation and support for all volunteers — you'll never be left on your own.
+            </div>
+          </div>
+
+          <div className="relative h-56 md:h-80 rounded-2xl overflow-hidden shadow-md">
+            <Image src="/Workgroup.png" alt="Who we welcome" fill className="object-cover object-center" />
+          </div>
         </div>
       </section>
 
@@ -108,6 +151,11 @@ export default function VolunteerPage() {
           <p className="text-gray-600 text-sm md:text-base leading-relaxed">
             Volunteering with ROTAGI is one of the most meaningful ways to contribute to gender equity in technology across Africa. Whether you have a few hours a week or can commit to a full programme cycle, there is a role for you. You do not need to be a tech expert — you just need to care.
           </p>
+          <div className="mt-8 flex justify-center">
+            <span className="inline-block bg-pink-50 border border-pink-100 text-[#D81B7E] px-6 py-3 rounded-full font-semibold text-sm">
+              NO MATTER YOUR BACKGROUND, YOUR CONTRIBUTION MATTERS
+            </span>
+          </div>
         </div>
       </section>
 
