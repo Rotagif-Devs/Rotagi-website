@@ -2,32 +2,45 @@ import Image from "next/image";
 
 const DonateImpact = () => {
   return (
-    <section className="md:py-10 py-6">
-      <div className="grid grid-col-1 md:grid-cols-2 mx-6 md:mx-10 md:my-10 my-5 md:gap-10 gap-6 items-center">
-        <div className="flex flex-col justify-center">
+    <section className="bg-[#F9E6EE] py-12 md:py-20 lg:py-24">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-center">
+        
+        {/* Left: Text Content */}
+        <div className="flex flex-col justify-center order-2 md:order-1">
           <h2
-            className="font-light md:!text-4xl !text-3xl text-black leading-tight"
+            className="font-cal-sans  text-3xl sm:text-4xl lg:text-5xl text-[#1A1A1A] leading-[1.15] uppercase tracking-tight"
             style={{ fontFamily: "var(--font-cal-sans)" }}
           >
             Create Lasting Impact for African Girls and Young Women
           </h2>
-          <p className="text-black my-6 font-thin">
-            Too many African girls face limited access to technology, digital
-            education, and career opportunities. Your donation helps close this
-            gap by providing practical training in AI, digital skills, and
-            leadership, equipping girls to build confidence, earn income, and
-            shape their future. Every contribution creates real opportunities
-            and long-term impact.
-          </p>
+          
+          <div className="mt-6 md:mt-8 space-y-4 text-[#333333] font-dm-sans text-sm md:text-base leading-relaxed max-w-xl">
+            <p>
+              Too many African girls face limited access to technology, digital
+              education, and career opportunities.
+            </p>
+            <p>
+              Your donation helps close this gap funding training that builds
+              confidence, skills, and futures for girls and young women across Africa
+            </p>
+            <p>
+              Every contribution creates real opportunities and long term impact.
+            </p>
+          </div>
         </div>
-        <div className="relative w-full h-80 md:h-96 rounded-2xl overflow-hidden shadow-lg">
+
+        {/* Right: Image Wrapper */}
+        <div className="order-1 md:order-2 w-full aspect-[4/3] md:aspect-square relative rounded-[2rem] md:rounded-[3rem] overflow-hidden">
           <Image
-            src="/Youngwomen.png"
+            src="/successful-woman.png"
             alt="Young women learning"
             fill
             className="object-cover"
+            sizes="(max-w-768px) 100vw, 50vw"
+            priority
           />
         </div>
+
       </div>
     </section>
   );
