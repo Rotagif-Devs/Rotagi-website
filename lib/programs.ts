@@ -39,7 +39,7 @@ export const programs: Program[] = [
     level: "Beginner",
     ageRange: "Ages 10-12",
     tagline:
-      " Building foundational AI awareness, digital literacy, and life skills for young girls through interactive, hands-on projects. ",
+      " Building foundational AI awareness, digital literacy, and life skills for young girls through interactive, hands on projects. ",
     headline: "Where Curiosity Begins",
     description:
       "SHE Ignite introduces young African girls to the exciting world of AI, digital, and life skills through our courses. Participants discover how AI works in everyday life and develop digital confidence throughout their educational journey.",
@@ -177,7 +177,7 @@ export const programs: Program[] = [
     achievements: {
       title: "What You will Achieve",
       items: [
-        "Build job-ready AI skills",
+        "Build job ready AI skills",
         "Explore income pathways through digital entrepreneurship",
         "Build leadership and career readiness skills",
         "Understand AI ethics and responsible technology use",
