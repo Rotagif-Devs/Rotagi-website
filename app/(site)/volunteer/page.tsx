@@ -10,7 +10,7 @@ const HOW_TO_CONTRIBUTE = [
   {
     title: "Program Ambassador",
     description:
-      "Join programme delivery teams to support facilitators, run workshops, and mentor participants through hands-on sessions.",
+      "Join programme delivery teams to support facilitators, run workshops, and mentor participants through hands on sessions.",
   },
   {
     title: "Story Ambassador",

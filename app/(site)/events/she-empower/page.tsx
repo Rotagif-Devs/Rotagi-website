@@ -138,7 +138,7 @@ export default function SheEmpowerPage() {
                 {
                   icon: <Sparkles className="w-6 h-6" />,
                   title: "AI Workshops",
-                  desc: "Hands-on sessions covering AI, tech, and essential life skills.",
+                  desc: "Hands on sessions covering AI, tech, and essential life skills.",
                 },
               ].map((item, i) => (
                 <div
