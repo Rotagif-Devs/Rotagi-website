@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import ProgramsCTA from "@/components/programs/ProgramsCTA";
 
@@ -41,59 +43,74 @@ const partnershipOptions = [
 ];
 
 const collaborators = [
-  "Tech Industry Leaders",
-  "AI Ethics Experts",
-  "Educational Institutions",
-  "Corporate Partners",
-  "NGOs And Social Impact Organisations",
-  "Government And Development Agencies",
+  "Tech industry leaders",
+  "AI ethics experts",
+  "Educational institutions",
+  "Corporate partners",
+  "NGOs and social impact organisations",
+  "Government and development agencies",
 ];
 
 const benefits = [
-  "Build Real Digital Products And Solutions",
-  "Master AI Tools And Technology Skills",
-  "Build Confidence And Leadership",
-  "Access Career Pathways And Economic Opportunities",
-  "Create Sustainable Impact In Their Communities",
+  "Build real digital products and solutions",
+  "Master AI tools and technology skills",
+  "Build confidence and leadership",
+  "Access career pathways and economic opportunities",
+  "Create sustainable impact in their communities",
 ];
+
+const PremiumCheckIcon = () => (
+  <div className="flex items-center justify-center w-5 h-5 rounded-full bg-[#FCE7F3] shrink-0">
+    <svg 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      strokeWidth="3" 
+      className="w-3 h-3 text-[#E05397]"
+    >
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  </div>
+);
 
 const Collaboration = () => {
   return (
     <>
-      {/* Network of Collaboration */}
-      <section className="py-20 px-6 bg-[#FDF2F8] text-center">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold font-cal-sans uppercase text-gray-950 mb-4">
+      {/* Network of Collaboration Section */}
+      <section className="py-20 px-6 bg-white text-center">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-[40px] font-bold font-cal-sans tracking-tight text-gray-950 mb-6 max-w-4xl mx-auto leading-tight uppercase">
             We Are Building a Powerful Network of Collaboration
           </h2>
-          <p className="text-gray-600 max-w-3xl mx-auto mb-12 text-sm md:text-base leading-relaxed">
+          <p className="text-gray-500 max-w-2xl mx-auto mb-16 text-sm md:text-base font-normal leading-relaxed">
             ROTAGI works with a wide range of organisations, institutions, and individuals who share our commitment to digital inclusion and gender equality in technology.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-6 text-left">
+          <div className="grid md:grid-cols-2 gap-8 text-left max-w-5xl mx-auto">
             {/* Collaborators Card */}
-            <div className="p-8 border border-pink-100 rounded-2xl shadow-sm bg-white">
-              <h3 className="text-base md:text-lg font-bold text-gray-950 mb-5">We collaborate with:</h3>
-              <ul className="space-y-3 text-gray-700 text-sm md:text-base">
+            <div className="p-8 md:p-10 border border-gray-100/80 rounded-[24px] shadow-xl shadow-gray-100/60 bg-white">
+              <h3 className="text-lg md:text-xl  text-gray-950 mb-6 tracking-tight">
+                We collaborate with:
+              </h3>
+              <ul className="space-y-4 text-gray-500 text-sm md:text-base font-medium">
                 {collaborators.map((item, i) => (
-                  <li key={i} className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#D81B7E] shrink-0" />
-                    {item}
+                  <li key={i} className="flex items-center gap-3">
+                    <PremiumCheckIcon />
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Benefits Card */}
-            <div className="p-8 border border-pink-100 rounded-2xl shadow-sm bg-white">
-              <h3 className="text-base md:text-lg font-bold text-gray-950 mb-5">
+            <div className="p-8 md:p-10 border border-gray-100/80 rounded-[24px] shadow-xl shadow-gray-100/60 bg-white">
+              <h3 className="text-lg md:text-xl  text-gray-950 mb-6 tracking-tight leading-snug">
                 Through our partnerships, African girls and young women are able to:
               </h3>
-              <ul className="space-y-3 text-gray-700 text-sm md:text-base">
+              <ul className="space-y-4 text-gray-500 text-sm md:text-base font-medium">
                 {benefits.map((item, i) => (
-                  <li key={i} className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#D81B7E] shrink-0" />
-                    {item}
+                  <li key={i} className="flex items-center gap-3">
+                    <PremiumCheckIcon />
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -103,7 +120,7 @@ const Collaboration = () => {
       </section>
 
       {/* Ways We Can Work Together */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-white border-t border-gray-50">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold font-cal-sans uppercase text-gray-950 text-center mb-12">
             Ways We Can Work Together
