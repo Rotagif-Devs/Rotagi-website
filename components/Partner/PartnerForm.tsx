@@ -46,7 +46,9 @@ const PartnerForm = ({
         email: formData.email,
         phone: formData.phone,
         website: formData.website,
-        interestAreas: [formData.partnershipType],
+        interestAreas: formData.partnershipType
+          ? [formData.partnershipType]
+          : undefined,
         message: formData.goals,
       };
 
@@ -58,6 +60,7 @@ const PartnerForm = ({
         onSubmitError();
       }
     } catch (error) {
+      console.error("Partner submission failed:", error);
       onSubmitError();
     } finally {
       setLoading(false);
