@@ -7,7 +7,7 @@ import { ArrowDown } from "lucide-react";
 const VolunteerHero = () => {
   return (
     <div>
-        <section className="relative min-h-[800px] flex flex-col items-center justify-end bg-pink-950 lg:mx-4 lg:rounded-2xl overflow-hidden mt-6 md:mt-0">
+        <section className="relative min-h-[800px] flex flex-col items-center justify-end bg-pink-900 lg:mx-4 lg:rounded-2xl overflow-hidden mt-6 md:mt-0">
           {/* Background Image with Overlay */}
           <div className="absolute inset-0 z-0">
             <Image
@@ -19,7 +19,7 @@ const VolunteerHero = () => {
             
             />
           </div>
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-black/20" />
     
           <div className="relative z-10 flex flex-col justify-end w-full h-full pb-16 md:pb-20 overflow-hidden">
             <div className="mx-auto max-w-11/12 w-full flex flex-col justify-end h-full relative">
@@ -54,7 +54,7 @@ const VolunteerHero = () => {
                     variant="secondary"
                     href="/programs"
                     
-                    className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-3.5 font-semibold"
+                    className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-3.5 font-semibold "
                   >
                     Apply for a Volunteer
                     <ArrowDown className="w-4 h-4" />
