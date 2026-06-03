@@ -5,6 +5,7 @@ import Image from "next/image";
 import Button from "@/components/ui/Button";
 import ProgramsCTA from "@/components/programs/ProgramsCTA";
 import { CheckCircle } from "lucide-react";
+import VolunteerHero from "@/components/Volunteer/VolunteerHero";
 
 const HOW_TO_CONTRIBUTE = [
   {
@@ -86,33 +87,9 @@ export default function VolunteerPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FDF2F8]">
+    <div className="min-h-screen ">
       {/* ── Hero ─────────────────────────────────────────── */}
-      <section className="relative min-h-[420px] md:min-h-[500px] flex items-center justify-center overflow-hidden lg:mx-4 lg:rounded-2xl">
-        <Image
-          src="/Workgroup.png"
-          alt="Volunteer with ROTAGI"
-          fill
-          className="object-cover object-center"
-          priority
-        />
-        <div className="absolute inset-0 bg-[#1a0a14]/65" />
-        <div className="relative z-10 text-center text-white px-6 max-w-3xl mx-auto flex flex-col items-center gap-5">
-          <h1 className="text-4xl md:text-6xl font-cal-sans font-normal leading-tight uppercase">
-            Volunteer With ROTAGI
-          </h1>
-          <p className="text-white/80 text-sm md:text-base max-w-xl leading-relaxed">
-            Empower African girls and young women by giving your time, skills, and voice to create lasting impact.
-          </p>
-          <Button
-            variant="primary"
-            href="#apply"
-            className="mt-2 bg-[#D81B7E] hover:bg-pink-700 text-white rounded-full px-8 py-3.5 font-semibold transition-colors"
-          >
-            Volunteer
-          </Button>
-        </div>
-      </section>
+      <VolunteerHero />
 
       {/* ── Who We Welcome ───────────────────────────── */}
       <section className="py-16 px-6 bg-[#FDF2F8]">
