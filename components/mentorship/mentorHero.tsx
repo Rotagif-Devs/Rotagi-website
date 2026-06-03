@@ -43,14 +43,17 @@ const page = () => {
     <div className="absolute inset-0 bg-[#41122B]/70 mix-blend-multiply"></div>
     
     <div className="relative z-10 flex lg:mt-40 h-full flex-col items-center justify-center px-4 text-center text-white">
-      <h1 className="mb-4 text-5xl font-bold tracking-tight md:text-6xl">
+      <h1 className="mb-4 text-5xl md:text-6xl font-cal-sans font-bold uppercase leading-tight tracking-tight">
         Become a Mentor
       </h1>
-      <p className="mb-8 max-w-2xl text-lg font-light leading-relaxed">
-        Share your knowledge experience and passion for technology with the next generation of 
-        African women in tech Make a lasting impact through mentorship
+      <p className="mb-8 max-w-3xl text-lg md:text-xl font-light leading-relaxed text-white/90">
+        Share your knowledge, experience, and passion for technology with the next generation of
+        African women in tech. Make a lasting impact through mentorship.
       </p>
-      <Button className="rounded-full">
+      <Button
+        variant="primary"
+        className="bg-[#D81B7E] hover:bg-pink-700 text-white rounded-full px-8 py-3.5 font-semibold transition-colors"
+      >
         Apply to Mentor
       </Button>
     </div>

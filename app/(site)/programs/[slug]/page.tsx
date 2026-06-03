@@ -35,7 +35,7 @@ export default async function ProgramDetailPage({
             <span className="inline-block rounded-full bg-[#FABFD380] px-3 py-1 text-sm font-medium text-[#DB2777]">
               {program.ageRange}
             </span>
-            <h1 className="text-black font-medium my-6">{program.name}</h1>
+            <h1 className="text-black font-medium uppercase my-6">{program.name}</h1>
             <p className="tagline text-[#121212] font-medium text-center">
               {program.tagline}
             </p>

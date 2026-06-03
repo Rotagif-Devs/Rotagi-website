@@ -13,30 +13,30 @@ const DonateDefault = ({ onNext }: Props) => {
       title: "AI & Digital Skills Training",
       description:
         "Your support funds both on-site and virtual hands-on training that equips girls with practical AI and digital skills for real world problem solving.",
-      img: "/icons2.png",
+      img: "/Video.png",
     },
     {
       title: "Mentorship & Leadership Development",
       description:
         "Connects African girls and women with mentors and role models who support their personal growth, career direction, and leadership confidence.",
-      img: "/icons4.png",
+      img: "/Community.png",
     },
     {
       title: "Access to Tools & Resources",
       description:
         "Provides learning resources such as laptops, internet access, and digital tools needed to participate and succeed.",
-      img: "/icons3.png",
+      img: "/Workshop.png",
     },
   ];
 
   return (
     <div className="mb-20">
-      <div className="flex flex-col justify-center items-center text-center bg-white py-15">
-        <h2 className="text-3xl font-medium">
+      <div className="flex flex-col justify-center items-center text-center bg-white py-16 lg:py-20 rounded-2xl">
+        <h2 className="text-4xl md:text-5xl font-cal-sans font-bold">
           How Your Donation Transforms Lives
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 m-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 m-8 md:m-12 w-full">
           {donateTransformData.map((data) => (
             <div
               className="flex flex-col items-center text-center space-y-4"
@@ -57,12 +57,12 @@ const DonateDefault = ({ onNext }: Props) => {
           ))}
         </div>
 
-        <div className="mb-8 max-w-lg text-center font-dm-sans text-gray-700">
-          Unlocking opportunities for African girls through AI and innovation.
+        <div className="mb-8 max-w-2xl text-center font-dm-sans text-gray-700 px-6">
+          Unlock opportunities for African girls through AI literacy, digital skills, and mentorship. Your gift creates long-term change.
         </div>
 
         <button
-          className="w-[50%] px-6 py-3 mb-10 bg-[#D62D88] text-white rounded-full hover:bg-pink-600 transition cursor-pointer"
+          className="w-full md:w-[320px] px-6 py-3 mb-10 bg-[#D81B7E] text-white rounded-full hover:bg-pink-700 transition cursor-pointer"
           onClick={onNext}
         >
           Donate Now
@@ -70,14 +70,7 @@ const DonateDefault = ({ onNext }: Props) => {
 
         <div className="mb-5 flex flex-col md:flex-row items-center text-base gap-2">
           Looking to partner or sponsor at scale?
-          <span className="text-[#D62D88] text-base flex items-center">
-            <Image
-              src="/fwdArrow.png"
-              alt="forward-arrow"
-              width={25}
-              height={25}
-              className="object-contain"
-            />
+          <span className="text-[#D81B7E] text-base flex items-center">
             <Link href="/partner">Partner with us</Link>
           </span>
         </div>
