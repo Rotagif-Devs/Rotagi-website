@@ -6,19 +6,19 @@ const OurSdg = () => {
   const sdgData = [
     {
       title: "Quality Education",
-      icon: "/Qualityeducation.png",
+      icon: "/QualityEducation.png",
       ringColor: "border-pink-200",
     },
     {
       title: "Gender Equality",
  
-      icon: "/Genderquality.png",
+      icon: "/GenderEquality.png",
       ringColor: "border-orange-200",
     },
     {
       title: "Decent Work & Economic Growth",
     
-      icon: "/Decentwork.png",
+      icon: "/DecentWork.png",
       ringColor: "border-gray-200",
     },
     {
