@@ -33,7 +33,7 @@ export default function UpdatesClient({ updates }: { updates: UpdateItem[] }) {
                 height={220}
                 src={update.image}
                 alt={update.title}
-                className="m-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                className="m-auto object-cover transition-transform duration-700"
               />
             </div>
 

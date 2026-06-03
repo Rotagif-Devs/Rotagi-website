@@ -19,22 +19,22 @@ export default function ProgramsCTA() {
     }
   };
   return (
-    <section className="bg-primary py-16 md:py-20 px-6 md:px-15 flex justify-center">
-      <div className="flex w-full max-w-[1260px] flex-col gap-10 px-5 md:px-0 md:gap-[76px]">
+    <section className="bg-primary py-16 flex justify-center">
+      <div className="flex w-full max-w-11/12 flex-col gap-10 md:px-0 md:gap-[76px]">
         {/* Title + description + buttons area */}
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-12">
           <h2 className="font-cal-sans text-dark text-4xl leading-tight tracking-tight md:max-w-[600px] md:text-[46px] md:leading-[110%]">
-            Looking for Flexible Learning?
+            LOOKING FOR FLEXIBLE LEARNING?
           </h2>
 
           <div className="flex flex-col items-start gap-6 md:max-w-[580px]">
             <p className="font-dm-sans text-darkgray text-left text-base leading-relaxed md:text-[16px] md:leading-[160%]">
-              The SHE Empower Experience offers workshops, bootcamps, and community events for continuous learning at all ages.
+     ROTAGI self paced courses in Artificial Intelligence, Digital Skills, and Life Skills are coming soon. 
             </p>
 
             <div className="hidden md:flex gap-4">
-              <Button href="/events" variant="primary" className="">
-                Explore Events & Workshops
+              <Button href="" variant="primary" className="">
+                Join the Waitlist
               </Button>
             </div>
           </div>
@@ -43,7 +43,7 @@ export default function ProgramsCTA() {
         {/* Video / hero preview */}
         <div className="flex w-full justify-center">
           <div
-            className="group relative w-full overflow-hidden rounded-3xl bg-white md:aspect-1256/711 md:max-w-[1256px] md:rounded-[64px] aspect-video cursor-pointer"
+            className="group relative w-full overflow-hidden rounded-3xl bg-white md:aspect-1256/711 md:rounded-[64px] aspect-video cursor-pointer"
             onClick={togglePlay}
           >
             <video

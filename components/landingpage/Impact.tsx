@@ -23,8 +23,8 @@ export default function Impact() {
 
           <div className="flex flex-col items-start gap-8 max-w-[580px]">
             <p className="text-gray-600 font-dm-sans font-normal text-base leading-relaxed text-justify md:text-left">
-              Since 2020, ROTAGI has equipped thousands of girls and women with
-              skills that translate into confidence, careers, and community
+              Through transformative skills development, ROTAGI empowers girls
+              and women to build confidence, pursue careers, and drive community
               transformation across Africa.
             </p>
 

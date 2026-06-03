@@ -7,8 +7,8 @@ const mergData = [
   {
     title: 'Measurable Social Impact',
     description: 'Delivering programmes with measurable outcomes across education, employment, entrepreneurship, and leadership for our graduates.',
-    imageSrc: '/measurable.png',        // Desktop image
-    mobileImageSrc: '/measurable.png', // Your smaller mobile image asset
+    imageSrc: '/Measurable.png',        // Desktop image
+    mobileImageSrc: '/Measurable.png', // Your smaller mobile image asset
     altText: 'Letter M graphic',
   },
   {

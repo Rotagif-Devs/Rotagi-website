@@ -67,15 +67,15 @@ export default function WhoCanApply() {
             ))}
           </div>
 
-          <div className="relative h-[500px] ">
+          <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-md">
             <Image
-                     src="/head-phone.png"
-                     alt="Empowering African girls to lead in the digital world"
-                     fill
-                     priority
-                     sizes=" 100vw, 1400px"
-                     className=""
-                   />
+              src="/head-phone.png"
+              alt="Empowering African girls to lead in the digital world"
+              fill
+              priority
+              sizes="100vw, 1400px"
+              className="object-cover object-center"
+            />
           </div>
 
         
@@ -101,7 +101,10 @@ export default function WhoCanApply() {
             <p className="text-gray-600  md:w-[670px]">
               Join our community of mentors and help shape the future of African women in technology.
             </p>
-            <Button className=" mt-3 text-white px-8 md:mr-[480px] py-3 rounded-full ">
+            <Button
+              variant="primary"
+              className="mt-3 bg-[#D81B7E] hover:bg-pink-700 text-white px-8 py-3 rounded-full"
+            >
               Apply to Mentor
             </Button>
           </div>

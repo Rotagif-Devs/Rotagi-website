@@ -35,7 +35,7 @@ export default async function ProgramDetailPage({
             <span className="inline-block rounded-full bg-[#FABFD380] px-3 py-1 text-sm font-medium text-[#DB2777]">
               {program.ageRange}
             </span>
-            <h1 className="text-black font-medium my-6">{program.name}</h1>
+            <h1 className="text-black font-medium uppercase my-6">{program.name}</h1>
             <p className="tagline text-[#121212] font-medium text-center">
               {program.tagline}
             </p>
@@ -55,10 +55,11 @@ export default async function ProgramDetailPage({
             </div>
             <div className="flex flex-col md:flex-row md:gap-6 md:my-4 my-0 text-[#49594C] text-sm lg:text-base">
               {program.duration === "Self-paced" ? (
-                <div className="flex items-center gap-2 md:py-0 py-2 italic font-medium text-pink-600">
-                  <Clock width={20} height={20} />
-                  Self-paced available when the ROTAGI learning platform launches.
-                </div>
+                <div className="inline-flex items-center justify-center gap-2 py-2 px-5  font-medium border-0 rounded-full text-[#373737] bg-white min-h-[40px]">
+  <span>Virtual</span> 
+  <span className="mx-1">|</span> 
+  <span>Self paced available when the ROTAGI learning platform launches.</span>
+</div>
               ) : (
                 <>
                   <div className="flex items-center gap-2 md:py-0 py-2">
@@ -72,8 +73,8 @@ export default async function ProgramDetailPage({
                 </>
               )}
               <div className="flex items-center gap-2 md:py-0 py-2">
-                <User width={20} height={20} />
-                {program.format}
+              
+               
               </div>
             </div>
           </div>

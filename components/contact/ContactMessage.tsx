@@ -19,11 +19,7 @@ const contactItems = [
     title: "Phone (WhatsApp)",
     content: "+234 803 236 8560",
   },
-  {
-    icon: MapPin,
-    title: "Address",
-    content: "No. 1 Magazar Close, Eagle Billed Estate Off Vio Mabuschi.Federal Capital Territory (Abuja).Nigeria.",
-  },
+
 ];
 
 export default function ContactMessage() {
@@ -85,8 +81,8 @@ export default function ContactMessage() {
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14 leading-relaxed">
         {/* Left */}
         <div className="">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl !normal-case font-cal-sans font-medium text-slate-900 mb-6">
-            Send Us a Message
+          <h2 className="text-3xl sm:text-4xl md:text-5xl normal-case! font-cal-sans font-medium text-slate-900 mb-6">
+            SEND US A MESSAGE
           </h2>
           <p className="my-4 max-w-xl text-base leading-relaxed text-slate-500 sm:text-lg sm:leading-8 lg:leading-9">
             For enquiries, partnerships, or programme information, please complete
@@ -107,7 +103,7 @@ export default function ContactMessage() {
                     <p className="font-medium text-[#6B7280] sm:text-lg">
                       {item.title}
                     </p>
-                    <p className="mt-1 break-words font-medium leading-7 text-[#46455F] sm:mt-2 sm:text-lg sm:leading-8 lg:text-xl lg:leading-9">
+                    <p className="mt-1 wrap-break-word font-medium leading-7 text-[#46455F] sm:mt-2 sm:text-lg sm:leading-8 lg:text-xl lg:leading-9">
                       {item.content}
                     </p>
                   </div>
@@ -187,7 +183,7 @@ export default function ContactMessage() {
                 htmlFor="subject"
                 className="mb-2 block text-base font-medium text-slate-500 sm:mb-3 sm:text-lg"
               >
-                Subject
+                Subject(optional)
               </label>
               <input
                 id="subject"

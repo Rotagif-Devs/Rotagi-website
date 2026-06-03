@@ -56,7 +56,7 @@ export default function Programs() {
                     height={500}
                     src={prog.image}
                     alt={prog.name}
-                    className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-110 lg:mt-6"
+                    className="h-full w-full object-cover object-top transition-transform duration-700 lg:mt-6"
                   />
                   <span className="absolute right-3 top-5 inline-flex items-center justify-center rounded-tl-xl rounded-br-xl rounded-tr-none rounded-bl-none bg-secondary/30 font-['Inter'] font-bold text-[12px] leading-[20px] tracking-normal text-black px-4 py-1">
                     {prog.ageRange}

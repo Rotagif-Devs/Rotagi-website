@@ -9,10 +9,17 @@ import "swiper/css";
 import "swiper/css/autoplay";
 
 const partnerLogos = [
-  { name: "Selex Engineering", url: "/partner-1.png" },
-  { name: "Ed Tech", url: "/partner-2.png" },
-  { name: "CICN", url: "/partner-3.png" },
-  { name: "Daptem Engineering", url: "/partner-4.png" },
+  { name: "Selex Engineering", url: "/partner1.jpeg" },
+  { name: "Ed Tech", url: "/partner2.jpeg" },
+  { name: "CICN", url: "/partner1.jpeg" },
+  { name: "Daptem Engineering", url: "/partner3.jpeg" },
+  { name: "Canva", url: "/partner-canva.jpg" },
+  { name: "Tushiyah", url: "/partner-tushiyah.jpg" },
+  { name: "Microsoft", url: "/partner-microsoft.jpg" },
+  { name: "Three Lions Group", url: "/partner-threelions.jpg" },
+  { name: "Slack", url: "/partner-slack.jpg" },
+  { name: "Infinityfield", url: "/partner-infinityfield.jpg" },
+  { name: "monday.com", url: "/partner-monday.jpg" },
 ];
 
 export default function Partners() {
@@ -30,9 +37,9 @@ export default function Partners() {
 
           <div className="flex flex-col items-start gap-8 max-w-[500px]">
             <p className="text-gray-600 font-dm-sans font-normal text-base leading-relaxed text-justify md:text-left">
-              Join our network of partners who believe in measurable impact,
-              inclusive growth, and empowering the next generation of African
-              women.
+              Through collaboration with organisations and trusted technology
+              platforms, we are advancing AI education and digital inclusion for
+              African girls expanding access, opportunity, and innovation.
             </p>
 
             <Button
@@ -45,46 +52,41 @@ export default function Partners() {
           </div>
         </div>
 
-        {/* Desktop Grid */}
-        <div className="hidden md:flex w-full flex-wrap justify-center items-center gap-8 lg:gap-4">
-          {partnerLogos.map((partner, index) => (
-            <div
-              key={index}
-              className="flex items-center transition-all duration-300"
-            >
-              <Image
-                src={partner.url}
-                alt={partner.name}
-                width={200}
-                height={300}
-                className="object-contain h-20 md:h-24 lg:h-26 w-full"
-              />
-            </div>
-          ))}
-        </div>
-
-        {/* Mobile Slider */}
-        <div className="md:hidden -mx-6 px-6">
+        {/* Partners Slider (Desktop + Mobile Responsive) */}
+        <div className="-mx-6 px-6">
           <Swiper
             modules={[Autoplay]}
             autoplay={{
-              delay: 2000,
+              delay: 3000,
               disableOnInteraction: false,
             }}
             loop={true}
-            spaceBetween={30}
-            slidesPerView={2}
+            spaceBetween={20}
+            breakpoints={{
+              320: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              640: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+              1024: {
+                slidesPerView: 5,
+                spaceBetween: 40,
+              },
+            }}
             className="pb-4"
           >
             {partnerLogos.map((partner, index) => (
               <SwiperSlide key={index}>
-                <div className="flex items-center justify-center h-24">
+                <div className="flex items-center gap-4 justify-center">
                   <Image
                     src={partner.url}
                     alt={partner.name}
                     width={150}
                     height={150}
-                    className="object-contain h-16 w-full"
+                    className="object-cover w-full transition-all md:h-32 lg:h-28 rounded-3xl duration-300"
                   />
                 </div>
               </SwiperSlide>
