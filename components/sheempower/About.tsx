@@ -38,7 +38,7 @@ export default function AboutPage() {
             </h3>
 
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600 md:text-base">
-              From inspiring speakers and hands-on sessions to games, wellness,
+              From inspiring speakers and hands on sessions to games, wellness,
               and community moments, SHE Empower is a full experience where
               every African girl feels seen, supported, and inspired.
             </p>

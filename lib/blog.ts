@@ -54,7 +54,7 @@ export const blogPosts: BlogPost[] = [
     },
     content: `
       <p>SHE Empower 2026 was a celebration of innovation, resilience, and community. Over three days, we brought together hundreds of young women, tech leaders, and educators to explore the future of AI in Africa.</p>
-      <p>The event featured hands-on workshops on machine learning, panel discussions on ethics in AI, and one-on-one mentorship sessions that sparked new career paths. Seeing the energy and passion of our participants was a reminder of why we do what we do.</p>
+      <p>The event featured hands on workshops on machine learning, panel discussions on ethics in AI, and one-on-one mentorship sessions that sparked new career paths. Seeing the energy and passion of our participants was a reminder of why we do what we do.</p>
       <p>Relive the magic with our highlight video and check out the key takeaways from our keynote speakers.</p>
     `
   },
