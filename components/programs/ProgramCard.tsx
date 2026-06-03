@@ -1,6 +1,7 @@
 import type { Program } from "@/lib/programs";
 import Image from "next/image";
 import Button from "../ui/Button";
+import { ArrowRightIcon } from "lucide-react";
 
 interface Props {
   program: Program;
@@ -69,13 +70,7 @@ export default function ProgramCard({ program }: Props) {
             className="p-0 text-[#E52B87] hover:bg-transparent flex gap-2 justify-start items-center"
           >
             Learn More
-            <Image
-              src="/v9.png"
-              alt="learn more"
-              width={15}
-              height={15}
-              className=" object-contain"
-            />
+            <ArrowRightIcon className="h-4 w-4" />
           </Button>
         </div>
       </div>

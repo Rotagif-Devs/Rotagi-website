@@ -12,7 +12,7 @@ const DonateDefault = ({ onNext }: Props) => {
     {
       title: "AI & Digital Skills Training",
       description:
-        "Your support funds both on-site and virtual hands-on training that equips girls with practical AI and digital skills for real world problem solving.",
+        "Your support funds both on-site and virtual hands on training that equips girls with practical AI and digital skills for real world problem solving.",
       img: "/Video.png",
     },
     {
