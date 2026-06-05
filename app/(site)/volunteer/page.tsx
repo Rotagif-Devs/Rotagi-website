@@ -8,7 +8,7 @@ import AmbassadorRoles from "@/components/Volunteer/AmbassadorRole";
 import WhoWeWelcome from "@/components/Volunteer/Whowewelcome";
 import WhatWeOffer from "@/components/Volunteer/Whatweoffer";
 import VolunteerCTA from "@/components/globalComp/VolunteerCTA";
-// import Apply from "@/components/Volunteer/Apply";
+import Apply from "@/components/Volunteer/Apply";
 
 export default function VolunteerPage() {
   return (
@@ -19,7 +19,7 @@ export default function VolunteerPage() {
       <AmbassadorRoles />
       <WhoWeWelcome />
       <WhatWeOffer/>
-      {/* <Apply /> */}
+      <Apply />
       <VolunteerCTA />
      
     </div>

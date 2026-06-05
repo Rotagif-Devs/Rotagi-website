@@ -1,112 +1,102 @@
+"use client";
 
-// import { useState } from "react";
-// import { CheckCircle } from "lucide-react";
-// import Button from "@/components/ui/Button";
+import { useForm } from "react-hook-form";
+import { UploadCloud, Plus } from "lucide-react";
+import { useState } from "react";
 
-// const Apply = () => {
-//      const [formData, setFormData] = useState({
-//     fullName: "",
-//     email: "",
-//     role: "",
-//   });
-//   const [submitted, setSubmitted] = useState(false);
-//   const [loading, setLoading] = useState(false);
+type FormData = {
+  experience: string;
+  cv: FileList;
+};
 
-//   const handleChange = (
-//     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-//   ) => {
-//     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-//   };
+export default function VolunteerForm() {
+  const { register, handleSubmit, setValue, watch } = useForm<FormData>();
+  const [fileName, setFileName] = useState<string>("");
 
-//   const handleSubmit = async (e: React.FormEvent) => {
-//     e.preventDefault();
-//     setLoading(true);
-//     // Simulate submission
-//     await new Promise((r) => setTimeout(r, 1200));
-//     setLoading(false);
-//     setSubmitted(true);
-//   };
+  const onSubmit = (data: FormData) => {
+    console.log(data);
+  };
 
-//   return (
-//      <section id="apply" className="py-20 px-6 bg-white">
-//         <div className="max-w-2xl mx-auto">
-//           <h2 className="text-2xl md:text-3xl font-cal-sans font-bold uppercase text-gray-950 text-center mb-3">
-//             Apply to Volunteer
-//           </h2>
-//           <p className="text-gray-500 text-sm text-center mb-10">
-//             Fill in the form below and a member of our team will be in touch.
-//           </p>
+  const cvFile = watch("cv");
 
-//           {submitted ? (
-//             <div className="bg-green-50 border border-green-100 rounded-2xl p-10 text-center flex flex-col items-center gap-4">
-//               <CheckCircle size={48} className="text-green-500" />
-//               <h3 className="text-xl font-bold text-gray-900">
-//                 Application Received!
-//               </h3>
-//               <p className="text-gray-600 text-sm">
-//                 Thank you for wanting to volunteer with ROTAGI. We will review your application and be in touch shortly.
-//               </p>
-//             </div>
-//           ) : (
-//             <form onSubmit={handleSubmit} className="space-y-5">
-//               <div className="space-y-1">
-//                 <label className="text-sm font-medium text-gray-700">
-//                   Full Name
-//                 </label>
-//                 <input
-//                   required
-//                   name="fullName"
-//                   value={formData.fullName}
-//                   onChange={handleChange}
-//                   placeholder="Your full name"
-//                   className="w-full px-5 py-4 bg-gray-50 border border-transparent focus:border-pink-300 focus:bg-white outline-none rounded-xl transition-all text-sm"
-//                 />
-//               </div>
-//               <div className="space-y-1">
-//                 <label className="text-sm font-medium text-gray-700">
-//                   Email Address
-//                 </label>
-//                 <input
-//                   required
-//                   type="email"
-//                   name="email"
-//                   value={formData.email}
-//                   onChange={handleChange}
-//                   placeholder="your@email.com"
-//                   className="w-full px-5 py-4 bg-gray-50 border border-transparent focus:border-pink-300 focus:bg-white outline-none rounded-xl transition-all text-sm"
-//                 />
-//               </div>
-//               <div className="space-y-1">
-//                 <label className="text-sm font-medium text-gray-700">
-//                   Volunteer Role
-//                 </label>
-//                 {/* <select
-//                   required
-//                   name="role"
-//                   value={formData.role}
-//                   onChange={handleChange}
-//                   className="w-full px-5 py-4 bg-gray-50 border border-transparent focus:border-pink-300 focus:bg-white outline-none rounded-xl transition-all text-sm text-gray-700"
-//                 >
-//                   <option value="">Select a role</option>
-//                   {ROLES.map((r) => (
-//                     <option key={r} value={r}>
-//                       {r}
-//                     </option>
-//                   ))}
-//                 </select> */}
-//               </div>
-//               <Button
-//                 type="submit"
-//                 disabled={loading}
-//                 className="w-full bg-[#D81B7E] hover:bg-pink-700 text-white rounded-full py-4 text-base font-bold shadow-lg shadow-pink-200 transition-all disabled:opacity-50"
-//               >
-//                 {loading ? "Submitting..." : "Submit Application"}
-//               </Button>
-//             </form>
-//           )}
-//         </div>
-//       </section>
-//   )
-// }
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setFileName(file.name);
+      setValue("cv", e.target.files as FileList);
+    }
+  };
 
-// export default Apply
+  return (
+    <div className="w-full flex justify-center bg-white">
+      <div className="w-full max-w-3xl rounded-2xl py-20">
+        {/* Header */}
+        
+        <h3 className="text-center font-medium uppercase">
+          Apply to Volunteer
+        </h3>
+        <div className="flex items-center w-full justify-center my-2">
+        <p className="text-center text-[0.9rem] font-medium justify-content item-center text-gray-500 w-[70%]">
+          Complete the form below and our team will be in touch within 14 days
+          to discuss how you can get involved.
+        </p>
+        </div>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6 bg-[#fff6fb] p-10">
+          {/* Experience */}
+          <div>
+            <label className="block text-sm font-medium text-gray-500 mb-2">
+              Years of Experience
+            </label>
+            <select
+              {...register("experience")}
+              className="w-full text-gray-500 border-none outline-none rounded-lg p-3 bg-white focus:ring-2 focus:ring-pink-400"
+            >
+              <option value="0">0 Years</option>
+              <option value="1">1 Year</option>
+              <option value="2">2 Years</option>
+              <option value="3+">3+ Years</option>
+            </select>
+          </div>
+
+          {/* CV Upload */}
+          <div>
+            <label className="block text-sm font-medium text-gray-500 mb-2">
+              CV Upload
+            </label>
+
+            <label className="w-full flex flex-col items-center justify-center border-none rounded-lg p-8 cursor-pointer bg-white hover:bg-pink-50 transition">
+              <UploadCloud className="w-8 h-8 text-gray-500 mb-2" />
+
+              <p className="text-sm text-gray-500 text-center">
+                {fileName
+                  ? fileName
+                  : "Browse and choose the file you want to upload from your computer"}
+              </p>
+
+              <div className="mt-3 bg-pink-500 text-white p-2 rounded-full">
+                <Plus size={18} />
+              </div>
+
+              <input
+                type="file"
+                className="hidden"
+                {...register("cv")}
+                onChange={handleFileChange}
+              />
+            </label>
+          </div>
+
+          {/* Button */}
+          <button
+            type="submit"
+            className="w-full bg-pink-600 hover:bg-pink-700 text-white py-3 rounded-xl font-semibold transition"
+          >
+            Apply Now
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}
