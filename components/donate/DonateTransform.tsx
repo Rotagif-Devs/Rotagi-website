@@ -45,6 +45,9 @@ const DonateTransform = () => {
     try {
       // Parse amount string to number, removing commas if present
       const amountValue = parseFloat(formData.amount.replace(/,/g, ""));
+      if (Number.isNaN(amountValue) || amountValue <= 0) {
+        throw new Error("Please enter a valid donation amount.");
+      }
 
       // Initialize donation with backend
       const initResponse = await initDonation({

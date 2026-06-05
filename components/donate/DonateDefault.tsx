@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 
 type Props = {
   onNext: () => void;
@@ -10,72 +9,80 @@ type Props = {
 const DonateDefault = ({ onNext }: Props) => {
   const donateTransformData = [
     {
-      title: "AI & Digital Skills Training",
+      title: "Skills for the Future",
       description:
-        "Your support funds both on-site and virtual hands on training that equips girls with practical AI and digital skills for real world problem solving.",
-      img: "/Video.png",
+        "Funds both on site and virtual hands on training in Artificial Intelligence and digital tools equipping girls with practical skills for real world problem solving.",
+      img: "/future.svg", // Ensure this references your pink round icon
     },
     {
-      title: "Mentorship & Leadership Development",
+      title: "Mentorship & Leadership",
       description:
-        "Connects African girls and women with mentors and role models who support their personal growth, career direction, and leadership confidence.",
-      img: "/Community.png",
+        "Connects African girls and young women with mentors who support their growth, career direction, and the confidence to lead.",
+      img: "/mentorship.svg", // Ensure this references your pink round icon
     },
     {
       title: "Access to Tools & Resources",
       description:
-        "Provides learning resources such as laptops, internet access, and digital tools needed to participate and succeed.",
-      img: "/Workshop.png",
+        "Provides resources from laptops and internet access to Artificial Intelligence subscriptions and digital tools so that cost is never a barrier to learning.",
+      img: "/resources.svg", // Ensure this references your pink round icon
     },
   ];
 
   return (
-    <div className="mb-20">
-      <div className="flex flex-col justify-center items-center text-center bg-white py-16 lg:py-20 rounded-2xl">
-        <h2 className="text-4xl md:text-5xl font-cal-sans font-bold">
+    <section className="bg-white py-16 md:py-24">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center text-center">
+        
+        {/* Main Section Header */}
+        <h2 className="text-3xl sm:text-4xl md:text-5xl  uppercase tracking-tight text-[#1A1A1A] mb-16 md:mb-20 font-cal-sans">
           How Your Donation Transforms Lives
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 m-8 md:m-12 w-full">
+        {/* Feature Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 w-full max-w-6xl mb-16">
           {donateTransformData.map((data) => (
             <div
-              className="flex flex-col items-center text-center space-y-4"
+              className="flex flex-col items-center text-center px-4"
               key={data.title}
             >
-              <Image
-                src={data.img}
-                alt={data.title}
-                width={90}
-                height={90}
-                className="object-contain"
-              />
+              {/* Rounded White Icon Container with Subtle Shadow */}
+              <div className="w-30 h-30 rounded-full bg-white  flex items-center justify-center mb-6 ">
+                <Image
+                  src={data.img}
+                  alt={data.title}
+                  width={300}
+                  height={300}
+                  className="object-contain"
+                />
+              </div>
 
-              <h4 className="!font-medium">{data.title}</h4>
+              {/* Title */}
+              <h3 className="font-bold text-lg md:text-xl text-[#1A1A1A] mb-4 font-cal-sans">
+                {data.title}
+              </h3>
 
-              <p className="text-gray-600 max-w-sm">{data.description}</p>
+              {/* Description */}
+              <p className="text-gray-500 font-dm-sans text-sm md:text-base leading-relaxed max-w-sm">
+                {data.description}
+              </p>
             </div>
           ))}
         </div>
 
-        <div className="mb-8 max-w-2xl text-center font-dm-sans text-gray-700 px-6">
-          Unlock opportunities for African girls through AI literacy, digital skills, and mentorship. Your gift creates long-term change.
-        </div>
+        {/* Mid-text Footer Quote */}
+        <p className="text-gray-500 font-dm-sans text-sm md:text-base mb-8">
+          Back the African girl who will build the future.
+        </p>
 
+        {/* Action Button */}
         <button
-          className="w-full md:w-[320px] px-6 py-3 mb-10 bg-[#D81B7E] text-white rounded-full hover:bg-pink-700 transition cursor-pointer"
+          className="w-full sm:w-[280px] px-8 py-4 bg-[#D12B83] hover:bg-[#b82170] text-white font-semibold rounded-full transition-all shadow-md cursor-pointer text-sm md:text-base"
           onClick={onNext}
         >
           Donate Now
         </button>
 
-        <div className="mb-5 flex flex-col md:flex-row items-center text-base gap-2">
-          Looking to partner or sponsor at scale?
-          <span className="text-[#D81B7E] text-base flex items-center">
-            <Link href="/partner">Partner with us</Link>
-          </span>
-        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
