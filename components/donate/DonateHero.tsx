@@ -9,77 +9,65 @@ interface Props {
 
 export default function DonateHero({ description }: Props) {
   return (
-    <section className="relative min-h-[480px] md:min-h-[550px] flex items-center overflow-hidden bg-pink-950 lg:mx-4 lg:rounded-2xl px-6 md:px-12 lg:px-16 py-12 md:py-16">
-      {/* Background Image with Overlay */}
+    <section className="relative min-h-[500px] md:min-h-[600px] flex overflow-hidden bg-[#2D0F21] lg:mx-4 lg:rounded-2xl">
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/GroupOfStudent.png"
-          width={1920}
-          height={1080}
-          alt="Empower Her Future"
-          className="w-full h-full object-cover"
+          src="/programs-hero.jpg"
+          fill
+          alt="African Girls Empowerment"
+          className="object-cover object-center"
           priority
+          sizes="100vw"
         />
+        <div className="absolute inset-0 bg-[#2D0F21]/70" />
       </div>
-      <div className="absolute inset-0 bg-[#41122B]/5 mix-blend-multiply" />
-      <div className="absolute inset-0  via-transparent to-transparent" />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col justify-end h-full min-h-[350px] md:min-h-[400px]">
-        
-        {/* Heading Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-full mb-6"
-        >
-          <h1 className="text-white max-w-4xl font-cal-sans text-4xl sm:text-5xl md:text-6xl lg:text-6xl  leading-[1.1] tracking-tight uppercase">
-            Empower Her Future
-            <br /> Through Artificial Intelligence
-          </h1>
-        </motion.div>
-
-        {/* Description & CTA Row */}
-        <div className="flex flex-col md:flex-row md:items-end w-full gap-6 md:gap-12">
-          <motion.p
+      {/* Bottom-aligned content like home hero */}
+      <div className="relative z-10 flex items-end w-full px-6 sm:px-8 md:px-12 lg:px-16 pb-10 md:pb-14">
+        <div className="w-full">
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-white/90 max-w-2xl font-dm-sans text-sm md:text-base lg:text-lg leading-relaxed"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-white font-cal-sans font-normal uppercase text-4xl sm:text-5xl md:text-[64px] lg:text-[72px] leading-[1.05] tracking-[-0.02em] mb-6 max-w-4xl"
           >
-            {description}
-          </motion.p>
+            Empower <span className="text-pink-400">Her</span> Future Through{" "}
+            <span className="text-pink-400">Artificial Intelligence</span>
+          </motion.h1>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="flex shrink-0 md:ml-auto"
-          >
-            <Button
-              variant="secondary"
-              onClick={(e) => {
-                e.preventDefault();
-                document.dispatchEvent(new CustomEvent("openDonateStepper"));
-                document.getElementById("donate-section")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="bg-white text-black hover:bg-gray-100 transition-colors rounded-full px-8 py-3.5 font-bold shadow-lg text-sm md:text-base"
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 w-full">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-gray-200 text-sm md:text-base leading-relaxed max-w-xl"
             >
-              Donate Now
-            </Button>
-          </motion.div>
-        </div>
-      </div>
+              {description}
+            </motion.p>
 
-      {/* Decorative gradients */}
-      <div className="absolute right-0 bottom-0 flex opacity-15 pointer-events-none">
-        {[...Array(6)].map((_, i) => (
-          <div
-            key={i}
-            className="w-12 md:w-16 h-[220px] md:h-[360px] bg-gradient-to-b from-white/0 to-white/40 transform rotate-180"
-            style={{ marginRight: i * -10 + "px" }}
-          />
-        ))}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="shrink-0"
+            >
+              <Button
+                variant="primary"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.dispatchEvent(new CustomEvent("openDonateStepper"));
+                  document
+                    .getElementById("donate-section")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="cursor-pointer px-8 py-3.5 bg-[#D81B7E] hover:bg-pink-700 text-white rounded-full font-semibold whitespace-nowrap transition-colors"
+              >
+                Donate Now
+              </Button>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

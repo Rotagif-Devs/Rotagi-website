@@ -1,11 +1,11 @@
 import React from "react";
-import { X } from "lucide-react";
+import { Check } from "lucide-react";
 
 export default function CodeOfConduct() {
   return (
-    <div className="min-h-screen bg-[#FDF2F8]">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-[#2D0F21] py-20 px-4 text-center text-white lg:mx-4 min-h-[400px] md:min-h-[300px] lg:rounded-b-2xl flex flex-col justify-center overflow-hidden">
+      <section className="relative bg-[#2D0F21] py-20 px-4 text-center text-white lg:mx-4 min-h-[400px] md:min-h-[300px] lg:rounded-2xl flex flex-col justify-center overflow-hidden mt-6">
         <div
           className="absolute inset-0 opacity-10 pointer-events-none"
           style={{
@@ -27,14 +27,14 @@ export default function CodeOfConduct() {
 
       {/* Content Section */}
       <section className="max-w-4xl mx-auto py-16 px-6">
-        <p className="text-[#D81B7E] font-bold text-sm mb-12">
+        <p className="text-[#D81B7E]   text-sm mb-12">
           Effective Date: April 2026
         </p>
 
         <div className="space-y-16">
           {/* Section 1 */}
           <div>
-            <h2 className="text-xl md:text-2xl font-cal-sans font-bold text-gray-950 mb-6 uppercase">
+            <h2 className="text-xl md:text-2xl font-cal-sans   text-gray-950 mb-6 uppercase">
               1. Our Commitment
             </h2>
             <div className="space-y-4 text-gray-700 text-sm md:text-base leading-relaxed">
@@ -51,16 +51,16 @@ export default function CodeOfConduct() {
               <p>ROTAGI operates in accordance with:</p>
               <ul className="space-y-2 ml-4">
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> The Child Rights Act (Nigeria, 2003)
+                  <span className="text-black   mt-1">-</span> The Child Rights Act (Nigeria, 2003)
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> The Nigeria Data Protection Act (NDPA, 2023)
+                  <span className="text-black   mt-1">-</span> The Nigeria Data Protection Act (NDPA, 2023)
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> The Companies and Allied Matters Act (CAMA)
+                  <span className="text-black   mt-1">-</span> The Companies and Allied Matters Act (CAMA)
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> International safeguarding and child protection standards
+                  <span className="text-black   mt-1">-</span> International safeguarding and child protection standards
                 </li>
               </ul>
             </div>
@@ -68,32 +68,32 @@ export default function CodeOfConduct() {
 
           {/* Section 2 */}
           <div>
-            <h2 className="text-xl md:text-2xl font-cal-sans font-bold text-gray-950 mb-6 uppercase">
+            <h2 className="text-xl md:text-2xl font-cal-sans   text-gray-950 mb-6 uppercase">
               2. Scope
             </h2>
             <div className="space-y-4 text-gray-700 text-sm md:text-base">
               <p>This Code applies to:</p>
               <ul className="space-y-2 ml-4">
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> All programme participants: She Ignite, She Blossom, She Blaze, She Ascend
+                  <span className="text-black   mt-1">-</span> All programme participants: She Ignite, She Blossom, She Blaze, She Ascend
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Mentors, facilitators, and instructors
+                  <span className="text-black   mt-1">-</span> Mentors, facilitators, and instructors
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> ROTAGI staff and volunteers
+                  <span className="text-black   mt-1">-</span> ROTAGI staff and volunteers
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Board of Trustees
+                  <span className="text-black   mt-1">-</span> Board of Trustees
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Partners and sponsors
+                  <span className="text-black   mt-1">-</span> Partners and sponsors
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Event attendees and guests
+                  <span className="text-black   mt-1">-</span> Event attendees and guests
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> All users of the ROTAGI website and learning platform
+                  <span className="text-black   mt-1">-</span> All users of the ROTAGI website and learning platform
                 </li>
               </ul>
             </div>
@@ -101,7 +101,7 @@ export default function CodeOfConduct() {
 
           {/* Section 3 */}
           <div>
-            <h2 className="text-xl md:text-2xl font-cal-sans font-bold text-gray-950 mb-6 uppercase">
+            <h2 className="text-xl md:text-2xl font-cal-sans   text-gray-950 mb-6 uppercase">
               3. Our Core Values
             </h2>
             <p className="text-gray-700 mb-8 text-sm md:text-base">
@@ -112,10 +112,10 @@ export default function CodeOfConduct() {
               {/* M */}
               <div className="flex bg-white rounded-r-2xl rounded-l-2xl overflow-hidden shadow-sm border border-pink-100 items-stretch">
                 <div className="bg-[#0052CC] w-16 md:w-24 shrink-0 flex items-center justify-center">
-                  <span className="text-white text-3xl md:text-4xl font-bold font-cal-sans">M</span>
+                  <span className="text-white text-3xl md:text-4xl   font-cal-sans">M</span>
                 </div>
                 <div className="p-4 md:p-6 flex flex-col justify-center">
-                  <h4 className="text-gray-950 font-bold mb-1 text-base md:text-lg">Measurable Impact</h4>
+                  <h4 className="text-gray-950   mb-1 text-base md:text-lg">Measurable Impact</h4>
                   <p className="text-gray-600 text-sm">
                     We act with purpose and contribute meaningfully to learning
                     and development.
@@ -125,10 +125,10 @@ export default function CodeOfConduct() {
               {/* E */}
               <div className="flex bg-white rounded-r-2xl rounded-l-2xl overflow-hidden shadow-sm border border-pink-100 items-stretch">
                 <div className="bg-[#1C7A3E] w-16 md:w-24 shrink-0 flex items-center justify-center">
-                  <span className="text-white text-3xl md:text-4xl font-bold font-cal-sans">E</span>
+                  <span className="text-white text-3xl md:text-4xl   font-cal-sans">E</span>
                 </div>
                 <div className="p-4 md:p-6 flex flex-col justify-center">
-                  <h4 className="text-gray-950 font-bold mb-1 text-base md:text-lg">Equitable Access</h4>
+                  <h4 className="text-gray-950   mb-1 text-base md:text-lg">Equitable Access</h4>
                   <p className="text-gray-600 text-sm">
                     We promote inclusion and remove barriers to participation.
                   </p>
@@ -137,10 +137,10 @@ export default function CodeOfConduct() {
               {/* R */}
               <div className="flex bg-white rounded-r-2xl rounded-l-2xl overflow-hidden shadow-sm border border-pink-100 items-stretch">
                 <div className="bg-[#592683] w-16 md:w-24 shrink-0 flex items-center justify-center">
-                  <span className="text-white text-3xl md:text-4xl font-bold font-cal-sans">R</span>
+                  <span className="text-white text-3xl md:text-4xl   font-cal-sans">R</span>
                 </div>
                 <div className="p-4 md:p-6 flex flex-col justify-center">
-                  <h4 className="text-gray-950 font-bold mb-1 text-base md:text-lg">Responsible Innovation</h4>
+                  <h4 className="text-gray-950   mb-1 text-base md:text-lg">Responsible Innovation</h4>
                   <p className="text-gray-600 text-sm">
                     We use technology, including AI, ethically and safely.
                   </p>
@@ -149,10 +149,10 @@ export default function CodeOfConduct() {
               {/* G */}
               <div className="flex bg-white rounded-r-2xl rounded-l-2xl overflow-hidden shadow-sm border border-pink-100 items-stretch">
                 <div className="bg-[#D81B7E] w-16 md:w-24 shrink-0 flex items-center justify-center">
-                  <span className="text-white text-3xl md:text-4xl font-bold font-cal-sans">G</span>
+                  <span className="text-white text-3xl md:text-4xl   font-cal-sans">G</span>
                 </div>
                 <div className="p-4 md:p-6 flex flex-col justify-center">
-                  <h4 className="text-gray-950 font-bold mb-1 text-base md:text-lg">Gender Leadership</h4>
+                  <h4 className="text-gray-950   mb-1 text-base md:text-lg">Gender Leadership</h4>
                   <p className="text-gray-600 text-sm">
                     We actively support the growth, voice, and leadership of
                     African girls and women.
@@ -164,35 +164,35 @@ export default function CodeOfConduct() {
 
           {/* Section 4 */}
           <div>
-            <h2 className="text-xl md:text-2xl font-cal-sans font-bold text-gray-950 mb-6 uppercase">
+            <h2 className="text-xl md:text-2xl font-cal-sans   text-gray-950 mb-6 uppercase">
               4. Expected Behaviour
             </h2>
             <div className="space-y-4 text-gray-700 text-sm md:text-base">
               <p>All individuals must:</p>
               <ul className="space-y-2 ml-4">
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Treat others with dignity, respect, and fairness.
+                  <span className="text-black   mt-1">-</span> Treat others with dignity, respect, and fairness.
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Use inclusive, non-discriminatory language.
+                  <span className="text-black   mt-1">-</span> Use inclusive, non-discriminatory language.
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Maintain professionalism in all interactions.
+                  <span className="text-black   mt-1">-</span> Maintain professionalism in all interactions.
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Respect privacy, boundaries, and personal data.
+                  <span className="text-black   mt-1">-</span> Respect privacy, boundaries, and personal data.
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Provide constructive and respectful feedback.
+                  <span className="text-black   mt-1">-</span> Provide constructive and respectful feedback.
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Give proper credit and respect intellectual property.
+                  <span className="text-black   mt-1">-</span> Give proper credit and respect intellectual property.
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Act in a way that reflects ROTAGI's mission and values.
+                  <span className="text-black   mt-1">-</span> Act in a way that reflects ROTAGI's mission and values.
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Comply with all safeguarding and child protection requirements.
+                  <span className="text-black   mt-1">-</span> Comply with all safeguarding and child protection requirements.
                 </li>
               </ul>
             </div>
@@ -200,30 +200,30 @@ export default function CodeOfConduct() {
 
           {/* Section 5 */}
           <div>
-            <h2 className="text-xl md:text-2xl font-cal-sans font-bold text-gray-950 mb-6 uppercase">
+            <h2 className="text-xl md:text-2xl font-cal-sans   text-gray-950 mb-6 uppercase">
               5. Unacceptable Behaviour
             </h2>
             <p className="text-gray-700 mb-6 text-sm md:text-base">ROTAGI has zero tolerance for:</p>
             <div className="flex flex-col gap-4">
               {/* Full width cards */}
               <div className="bg-white p-6 rounded-2xl border border-pink-100 shadow-sm">
-                <h4 className="font-bold text-gray-950 mb-4 text-base md:text-lg">Harassment and abuse</h4>
+                <h4 className="  text-gray-950 mb-4 text-base md:text-lg">Harassment and abuse</h4>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3 text-gray-600 text-sm md:text-base">
                     <div className="mt-0.5 bg-[#FFD6E8] rounded-full p-0.5 text-[#D81B7E] shrink-0">
-                      <X size={14} strokeWidth={3} />
+                      <Check size={14} strokeWidth={3} />
                     </div>
                     Bullying, intimidation, or hostile behaviour.
                   </li>
                   <li className="flex items-start gap-3 text-gray-600 text-sm md:text-base">
                     <div className="mt-0.5 bg-[#FFD6E8] rounded-full p-0.5 text-[#D81B7E] shrink-0">
-                      <X size={14} strokeWidth={3} />
+                      <Check size={14} strokeWidth={3} />
                     </div>
                     Verbal, emotional, physical, or sexual abuse.
                   </li>
                   <li className="flex items-start gap-3 text-gray-600 text-sm md:text-base">
                     <div className="mt-0.5 bg-[#FFD6E8] rounded-full p-0.5 text-[#D81B7E] shrink-0">
-                      <X size={14} strokeWidth={3} />
+                      <Check size={14} strokeWidth={3} />
                     </div>
                     Any inappropriate or unwanted advances.
                   </li>
@@ -231,17 +231,17 @@ export default function CodeOfConduct() {
               </div>
 
               <div className="bg-white p-6 rounded-2xl border border-pink-100 shadow-sm">
-                <h4 className="font-bold text-gray-950 mb-4 text-base md:text-lg">Discrimination</h4>
+                <h4 className="  text-gray-950 mb-4 text-base md:text-lg">Discrimination</h4>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3 text-gray-600 text-sm md:text-base">
                     <div className="mt-0.5 bg-[#FFD6E8] rounded-full p-0.5 text-[#D81B7E] shrink-0">
-                      <X size={14} strokeWidth={3} />
+                      <Check size={14} strokeWidth={3} />
                     </div>
                     Discrimination based on gender, age, religion, ethnicity, or background.
                   </li>
                   <li className="flex items-start gap-3 text-gray-600 text-sm md:text-base">
                     <div className="mt-0.5 bg-[#FFD6E8] rounded-full p-0.5 text-[#D81B7E] shrink-0">
-                      <X size={14} strokeWidth={3} />
+                      <Check size={14} strokeWidth={3} />
                     </div>
                     Exclusion or marginalisation of participants.
                   </li>
@@ -249,18 +249,18 @@ export default function CodeOfConduct() {
               </div>
 
               <div className="bg-white p-6 rounded-2xl border border-pink-100 shadow-sm">
-                <h4 className="font-bold text-gray-950 mb-4 text-base md:text-lg">Privacy violations</h4>
+                <h4 className="  text-gray-950 mb-4 text-base md:text-lg">Privacy violations</h4>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3 text-gray-600 text-sm md:text-base">
-                    <div className="mt-0.5 bg-[#FFD6E8] rounded-full p-0.5 text-[#D81B7E] shrink-0">
-                      <X size={14} strokeWidth={3} />
-                    </div>
+                        <div className="mt-0.5 bg-[#FFD6E8] rounded-full p-0.5 text-[#D81B7E] shrink-0">
+                          <Check size={14} strokeWidth={3} />
+                        </div>
                     Sharing personal information without consent.
                   </li>
                   <li className="flex items-start gap-3 text-gray-600 text-sm md:text-base">
-                    <div className="mt-0.5 bg-[#FFD6E8] rounded-full p-0.5 text-[#D81B7E] shrink-0">
-                      <X size={14} strokeWidth={3} />
-                    </div>
+                        <div className="mt-0.5 bg-[#FFD6E8] rounded-full p-0.5 text-[#D81B7E] shrink-0">
+                          <Check size={14} strokeWidth={3} />
+                        </div>
                     Recording or distributing content without permission.
                   </li>
                 </ul>
@@ -269,46 +269,46 @@ export default function CodeOfConduct() {
               {/* Side by side cards */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-white p-6 rounded-2xl border border-pink-100 shadow-sm">
-                  <h4 className="font-bold text-gray-950 mb-4 text-base md:text-lg">Misuse of Technology</h4>
+                  <h4 className=" text-gray-950 mb-4 text-base md:text-lg">Misuse of Technology</h4>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3 text-gray-600 text-sm md:text-base">
-                      <div className="mt-0.5 bg-[#FFD6E8] rounded-full p-0.5 text-[#D81B7E] shrink-0">
-                        <X size={14} strokeWidth={3} />
-                      </div>
+                        <div className="mt-0.5 bg-[#FFD6E8] rounded-full p-0.5 text-[#D81B7E] shrink-0">
+                          <Check size={14} strokeWidth={3} />
+                        </div>
                       Using AI tools to harm, deceive, or manipulate.
                     </li>
                     <li className="flex items-start gap-3 text-gray-600 text-sm md:text-base">
                       <div className="mt-0.5 bg-[#FFD6E8] rounded-full p-0.5 text-[#D81B7E] shrink-0">
-                        <X size={14} strokeWidth={3} />
+                        <Check size={14} strokeWidth={3} />
                       </div>
                       Plagiarism or misrepresentation of work.
                     </li>
                     <li className="flex items-start gap-3 text-gray-600 text-sm md:text-base">
                       <div className="mt-0.5 bg-[#FFD6E8] rounded-full p-0.5 text-[#D81B7E] shrink-0">
-                        <X size={14} strokeWidth={3} />
+                        <Check size={14} strokeWidth={3} />
                       </div>
                       Attempting to hack or disrupt ROTAGI systems.
                     </li>
                   </ul>
                 </div>
                 <div className="bg-white p-6 rounded-2xl border border-pink-100 shadow-sm">
-                  <h4 className="font-bold text-gray-950 mb-4 text-base md:text-lg">Misuse of Position</h4>
+                  <h4 className="  text-gray-950 mb-4 text-base md:text-lg">Misuse of Position</h4>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3 text-gray-600 text-sm md:text-base">
                       <div className="mt-0.5 bg-[#FFD6E8] rounded-full p-0.5 text-[#D81B7E] shrink-0">
-                        <X size={14} strokeWidth={3} />
+                        <Check size={14} strokeWidth={3} />
                       </div>
                       Abuse of authority or influence.
                     </li>
                     <li className="flex items-start gap-3 text-gray-600 text-sm md:text-base">
                       <div className="mt-0.5 bg-[#FFD6E8] rounded-full p-0.5 text-[#D81B7E] shrink-0">
-                        <X size={14} strokeWidth={3} />
+                        <Check size={14} strokeWidth={3} />
                       </div>
                       Misrepresentation of identity or affiliation.
                     </li>
                     <li className="flex items-start gap-3 text-gray-600 text-sm md:text-base">
                       <div className="mt-0.5 bg-[#FFD6E8] rounded-full p-0.5 text-[#D81B7E] shrink-0">
-                        <X size={14} strokeWidth={3} />
+                        <Check size={14} strokeWidth={3} />
                       </div>
                       Actions that damage ROTAGI's reputation.
                     </li>
@@ -320,7 +320,7 @@ export default function CodeOfConduct() {
 
           {/* Section 6 */}
           <div>
-            <h2 className="text-xl md:text-2xl font-cal-sans font-bold text-gray-950 mb-6 uppercase">
+            <h2 className="text-xl md:text-2xl font-cal-sans   text-gray-950 mb-6 uppercase">
               6. Safeguarding and Protection of Children
             </h2>
             <div className="space-y-6 text-gray-700 text-sm md:text-base leading-relaxed">
@@ -332,19 +332,19 @@ export default function CodeOfConduct() {
                 <p>All adults must:</p>
                 <ul className="space-y-2 ml-4">
                   <li className="flex items-start gap-2">
-                    <span className="text-black font-bold mt-1">-</span> Maintain strict professional boundaries with minors.
+                    <span className="text-black   mt-1">-</span> Maintain strict professional boundaries with minors.
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-black font-bold mt-1">-</span> Communicate only through official ROTAGI platforms.
+                    <span className="text-black   mt-1">-</span> Communicate only through official ROTAGI platforms.
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-black font-bold mt-1">-</span> Avoid one-to-one private interactions with minors.
+                    <span className="text-black   mt-1">-</span> Avoid one-to-one private interactions with minors.
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-black font-bold mt-1">-</span> Never request personal contact details from minors.
+                    <span className="text-black   mt-1">-</span> Never request personal contact details from minors.
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-black font-bold mt-1">-</span> Report any safeguarding concern immediately.
+                    <span className="text-black   mt-1">-</span> Report any safeguarding concern immediately.
                   </li>
                 </ul>
               </div>
@@ -356,7 +356,7 @@ export default function CodeOfConduct() {
 
           {/* Section 7 */}
           <div>
-            <h2 className="text-xl md:text-2xl font-cal-sans font-bold text-gray-950 mb-6 uppercase">
+            <h2 className="text-xl md:text-2xl font-cal-sans   text-gray-950 mb-6 uppercase">
               7. Safeguarding Contacts
             </h2>
             <p className="text-gray-700 mb-8 text-sm md:text-base">
@@ -367,10 +367,10 @@ export default function CodeOfConduct() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-pink-100 flex flex-col justify-between">
                 <div>
-                  <h4 className="text-gray-950 font-bold mb-4 text-base md:text-lg border-b border-pink-100 pb-2">
+                  <h4 className="text-gray-950   mb-4 text-base md:text-lg border-b border-pink-100 pb-2">
                     Designated Safeguarding Lead
                   </h4>
-                  <p className="font-bold text-gray-900 text-base md:text-lg mb-1">Olayemi Arokoyo</p>
+                  <p className="  text-gray-900 text-base md:text-lg mb-1">Olayemi Arokoyo</p>
                   <p className="text-gray-500 text-sm mb-6">Executive Director, ROTAGI</p>
                 </div>
                 <div className="bg-[#FDF2F8] p-4 rounded-xl space-y-1">
@@ -380,10 +380,10 @@ export default function CodeOfConduct() {
               </div>
               <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-pink-100 flex flex-col justify-between">
                 <div>
-                  <h4 className="text-gray-950 font-bold mb-4 text-base md:text-lg border-b border-pink-100 pb-2">
+                  <h4 className="text-gray-950   mb-4 text-base md:text-lg border-b border-pink-100 pb-2">
                     Deputy Designated Safeguarding Lead
                   </h4>
-                  <p className="font-bold text-gray-900 text-base md:text-lg mb-1">
+                  <p className="  text-gray-900 text-base md:text-lg mb-1">
                     Lola Inès Raïssa Agondogo
                   </p>
                   <p className="text-gray-500 text-sm mb-6">Safeguarding Lead, ROTAGI</p>
@@ -398,26 +398,26 @@ export default function CodeOfConduct() {
 
           {/* Section 8 */}
           <div>
-            <h2 className="text-xl md:text-2xl font-cal-sans font-bold text-gray-950 mb-6 uppercase">
+            <h2 className="text-xl md:text-2xl font-cal-sans   text-gray-950 mb-6 uppercase">
               8. Digital and Platform Conduct
             </h2>
             <div className="space-y-4 text-gray-700 text-sm md:text-base">
               <p>When using ROTAGI platforms:</p>
               <ul className="space-y-2 ml-4">
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Do not share harmful, offensive, or misleading content.
+                  <span className="text-black   mt-1">-</span> Do not share harmful, offensive, or misleading content.
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Do not spam or disrupt community spaces.
+                  <span className="text-black   mt-1">-</span> Do not spam or disrupt community spaces.
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Respect the confidentiality of discussions and materials.
+                  <span className="text-black   mt-1">-</span> Respect the confidentiality of discussions and materials.
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Do not attempt unauthorised access to systems.
+                  <span className="text-black   mt-1">-</span> Do not attempt unauthorised access to systems.
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Use your real identity when required.
+                  <span className="text-black   mt-1">-</span> Use your real identity when required.
                 </li>
               </ul>
             </div>
@@ -425,23 +425,23 @@ export default function CodeOfConduct() {
 
           {/* Section 9 */}
           <div>
-            <h2 className="text-xl md:text-2xl font-cal-sans font-bold text-gray-950 mb-6 uppercase">
+            <h2 className="text-xl md:text-2xl font-cal-sans   text-gray-950 mb-6 uppercase">
               9. Responsible Use of AI
             </h2>
             <div className="space-y-4 text-gray-700 text-sm md:text-base">
               <p>All participants must:</p>
               <ul className="space-y-2 ml-4">
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Use AI tools responsibly and ethically.
+                  <span className="text-black   mt-1">-</span> Use AI tools responsibly and ethically.
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Disclose the use of AI in submitted work.
+                  <span className="text-black   mt-1">-</span> Disclose the use of AI in submitted work.
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Avoid generating harmful, biased, or misleading content.
+                  <span className="text-black   mt-1">-</span> Avoid generating harmful, biased, or misleading content.
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black font-bold mt-1">-</span> Respect intellectual property when using AI generated outputs.
+                  <span className="text-black   mt-1">-</span> Respect intellectual property when using AI generated outputs.
                 </li>
               </ul>
             </div>
@@ -449,7 +449,7 @@ export default function CodeOfConduct() {
 
           {/* Section 10 */}
           <div>
-            <h2 className="text-xl md:text-2xl font-cal-sans font-bold text-gray-950 mb-6 uppercase">
+            <h2 className="text-xl md:text-2xl font-cal-sans   text-gray-950 mb-6 uppercase">
               10. Reporting Violations
             </h2>
             <div className="space-y-4 text-gray-700 text-sm md:text-base leading-relaxed">
@@ -467,7 +467,7 @@ export default function CodeOfConduct() {
               </p>
               
               <div className="bg-[#FF66B2] text-white p-6 rounded-2xl mt-8">
-                <p className="font-bold mb-3 text-base md:text-lg">How to report</p>
+                <p className="  mb-3 text-base md:text-lg">How to report</p>
                 <p className="mb-2">Email: <a href="mailto:privacy@rotagif.com" className="underline font-medium">privacy@rotagif.com</a></p>
                 <p>Or contact the safeguarding leads directly (see section 7)</p>
               </div>
@@ -476,7 +476,7 @@ export default function CodeOfConduct() {
 
           {/* Section 11 */}
           <div>
-            <h2 className="text-xl md:text-2xl font-cal-sans font-bold text-gray-950 mb-6 uppercase">
+            <h2 className="text-xl md:text-2xl font-cal-sans   text-gray-950 mb-6 uppercase">
               11. Appeals and Grievance Process
             </h2>
             <div className="space-y-4 text-gray-700 text-sm md:text-base leading-relaxed">
@@ -491,7 +491,7 @@ export default function CodeOfConduct() {
 
           {/* Section 12 */}
           <div>
-            <h2 className="text-xl md:text-2xl font-cal-sans font-bold text-gray-950 mb-6 uppercase">
+            <h2 className="text-xl md:text-2xl font-cal-sans   text-gray-950 mb-6 uppercase">
               12. Consequences of Violations
             </h2>
             <p className="text-gray-700 mb-6 text-sm md:text-base">
@@ -501,8 +501,8 @@ export default function CodeOfConduct() {
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr>
-                    <th className="p-4 font-bold text-gray-950 border-b border-pink-100 text-sm md:text-base">Severity</th>
-                    <th className="p-4 font-bold text-gray-950 border-b border-pink-100 text-sm md:text-base">Consequence</th>
+                    <th className="p-4   text-gray-950 border-b border-pink-100 text-sm md:text-base">Severity</th>
+                    <th className="p-4   text-gray-950 border-b border-pink-100 text-sm md:text-base">Consequence</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-pink-50 text-sm md:text-base text-gray-700">
@@ -557,7 +557,7 @@ export default function CodeOfConduct() {
 
           {/* Section 13 */}
           <div>
-            <h2 className="text-xl md:text-2xl font-cal-sans font-bold text-gray-950 mb-6 uppercase">
+            <h2 className="text-xl md:text-2xl font-cal-sans   text-gray-950 mb-6 uppercase">
               13. Updates and Agreement
             </h2>
             <div className="space-y-4 text-gray-700 text-sm md:text-base leading-relaxed">

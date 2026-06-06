@@ -36,7 +36,7 @@ const testimonials = [
   {
     text: "“I joined the coding class with zero knowledge. In just a few weeks, I gained real experience and confidence in building projects.”",
     author: "Aisha Mohammed Nasir (VIBE CODING)",
-    image: "/BG (4).png",
+    image: "/BG.png",
   },
 ];
 

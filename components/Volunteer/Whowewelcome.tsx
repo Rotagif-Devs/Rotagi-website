@@ -10,7 +10,7 @@ const WhoWeWelcome = () => {
             Who can Volunteer
           </p>
 
-          <h2 className=" font-medium text-black mb-8">WHO WE WELCOME</h2>
+          <h2 className="text-2xl md:text-3xl font-cal-sans font-bold uppercase text-gray-950 mb-8">WHO WE WELCOME</h2>
 
           <div className="space-y-4 text-gray-700 leading-8">
             <p>
@@ -47,12 +47,12 @@ const WhoWeWelcome = () => {
         <div className="flex justify-center lg:justify-end">
           <div className="overflow-hidden rounded-2xl">
             <Image
-              src="/img2.png"
+              src="/img-2.png"
               alt="Volunteers"
               width={700}
               height={700}
-              className="object-cover"
-              //   priority
+              className="object-cover rounded-2xl"
+              priority
             />
           </div>
         </div>

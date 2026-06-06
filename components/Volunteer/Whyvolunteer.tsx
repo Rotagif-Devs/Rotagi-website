@@ -10,7 +10,7 @@ const Whyvolunteer = () => {
     <p className="text-[#D62D88] text-sm font-medium mb-3">
       Why Volunteer with ROTAGI
     </p>
-    <h2 className=" font-medium uppercase text-gray-950 mb-6">
+    <h2 className="text-2xl md:text-4xl font-cal-sans font-bold uppercase text-gray-950 mb-6">
       Your Time Can Change Her Future
     </h2>
 

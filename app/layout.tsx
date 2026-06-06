@@ -29,6 +29,7 @@ const calSans = Cal_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://rotagif.org"),
   title: "ROTAGIF Empowering African Girl Innovators",
   description:
     "Equipping African girls and women with AI literacy, digital skills, and leadership confidence.",

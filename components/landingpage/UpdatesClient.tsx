@@ -27,14 +27,14 @@ export default function UpdatesClient({ updates }: { updates: UpdateItem[] }) {
             key={update.title}
             className="group flex flex-col overflow-hidden rounded-xl border border-gray-100 bg-white"
           >
-            <div className="relative overflow-hidden">
-              <Image
-                width={400}
-                height={220}
-                src={update.image}
-                alt={update.title}
-                className="m-auto object-cover transition-transform duration-700"
-              />
+            <div className="relative overflow-hidden h-[220px]">
+                <Image
+                  fill
+                  sizes=""
+                  src={update.image}
+                  alt={update.title}
+                  className="transition-transform duration-700"
+                />
             </div>
 
             <div className="flex flex-col p-6 gap-4">
@@ -42,7 +42,7 @@ export default function UpdatesClient({ updates }: { updates: UpdateItem[] }) {
                 <span className="text-red-500 text-xs font-semibold font-dm-sans tracking-wider uppercase">
                   {update.category}
                 </span>
-                <h3 className="text-black font-cal-sans text-xl capitalize leading-8">
+                <h3 className="text-black font-cal-sans text-xl capitalize leading-8 truncate overflow-hidden whitespace-nowrap">
                   {update.title}
                 </h3>
                 <p className="text-gray-600 font-dm-sans text-base leading-relaxed line-clamp-2">
@@ -77,14 +77,16 @@ export default function UpdatesClient({ updates }: { updates: UpdateItem[] }) {
           {updates.map((update) => (
             <SwiperSlide key={update.title}>
               <div className="group flex flex-col overflow-hidden rounded-xl border border-gray-100 bg-white h-full">
-                <div className="relative overflow-hidden">
-                  <Image
-                    width={400}
-                    height={220}
-                    src={update.image}
-                    alt={update.title}
-                    className="m-auto object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+                <div className="relative overflow-hidden h-[220px] w-full p-4">
+                  <div className="absolute inset-0 overflow-hidden bg-slate-100">
+                    <Image
+                      fill
+                      sizes="(max-width: 768px) 100vw, 400px"
+                      src={update.image}
+                      alt={update.title}
+                      className="transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
                 </div>
 
                 <div className="flex flex-col p-6 gap-4 flex-1">
@@ -92,7 +94,7 @@ export default function UpdatesClient({ updates }: { updates: UpdateItem[] }) {
                     <span className="text-red-500 text-xs font-semibold font-dm-sans tracking-wider uppercase">
                       {update.category}
                     </span>
-                    <h3 className="text-black font-cal-sans text-xl capitalize leading-8">
+                    <h3 className="text-black font-cal-sans text-xl capitalize leading-8 truncate overflow-hidden whitespace-nowrap">
                       {update.title}
                     </h3>
                     <p className="text-gray-600 font-dm-sans text-base leading-relaxed line-clamp-2">

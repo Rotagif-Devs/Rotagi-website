@@ -17,13 +17,10 @@ export default function Hero() {
           className="object-cover"
           priority
         />
-
-        {/* Added subtle overlay (for readability — matches your design) */}
-        <div className="absolute inset-0 bg-black/30" />
-      </div>
+</div>
 
       <div className="relative z-10 flex flex-col justify-end w-full h-full pb-16 md:pb-20 overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 w-full flex flex-col justify-end h-full relative"> */
+        <div className="mx-auto max-w-11/12 px-6 lg:px-8 w-full flex flex-col justify-end h-full relative"> */
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -44,7 +41,7 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="w-full mb-8 relative"
           >
-            <h1 className="text-white max-w-4xl font-cal-sans font-normal text-4xl sm:text-5xl md:text-[72px] leading-[1.05] tracking-[-0.02em] mb-2 md:mb-4">
+            <h1 className="text-white max-w-4xl font-cal-sans font-normal text-4xl sm:text-5xl md:text-[72px] leading-[1.05] tracking-[-0.02em] uppercase">
               Where African Girls Rise Together
             </h1>
           </motion.div>
@@ -70,12 +67,12 @@ export default function Hero() {
               <Button
                 variant="secondary"
                 href="/programs"
-                className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-3.5 font-semibold"
+                className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-3.5 gap-1.5 font-semibold"
               >
-                Be the First to Know
                 <span>
-                  <ArrowDown size={18} />
+                Be the First to Know
                 </span>
+                  <ArrowDown size={18} />
               </Button>
             </motion.div>
           </div>
