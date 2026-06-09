@@ -116,7 +116,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/events/she-empower" className="hover:text-white transition-colors">
+                <Link href="/sheempower" className="hover:text-white transition-colors">
                   SHE Empower
                 </Link>
               </li>

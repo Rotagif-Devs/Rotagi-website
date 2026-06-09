@@ -13,8 +13,8 @@ const WhatWeOffer = () => {
               alt="Volunteers"
               width={700}
               height={700}
-              className="object-cover"
-              //   priority
+              className="object-cover rounded-2xl"
+              priority
             />
           </div>
         </div>
@@ -23,7 +23,7 @@ const WhatWeOffer = () => {
             What Rotagi Offers Volunteer
           </p>
 
-          <h2 className="font-medium ">What You Can Expect from Us</h2>
+          <h2 className="text-2xl md:text-3xl font-cal-sans font-bold uppercase text-gray-950 mb-6">What You Can Expect from Us</h2>
 
           <div className="mt-8">
             <p className="text-gray-700">

@@ -1,12 +1,15 @@
-"use client"; // ← Required because we're using state + event handlers
+"use client";
 
 import { useState, useRef } from "react";
-import { Play, Pause } from "lucide-react"; // ← Import both icons from lucide-react
+import { Play, Pause } from "lucide-react";
 import Button from "../ui/Button";
+import WaitlistModal from "../globalComp/WaitlistModal";
 
 export default function ProgramsCTA() {
-  const [isPlaying, setIsPlaying] = useState(true); // Start with autoPlay → playing
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+
   const togglePlay = () => {
     if (videoRef.current) {
       if (videoRef.current.paused) {
@@ -18,6 +21,7 @@ export default function ProgramsCTA() {
       }
     }
   };
+
   return (
     <section className="bg-primary py-16 flex justify-center">
       <div className="flex w-full max-w-11/12 flex-col gap-10 md:px-0 md:gap-[76px]">
@@ -33,7 +37,10 @@ export default function ProgramsCTA() {
             </p>
 
             <div className="hidden md:flex gap-4">
-              <Button href="" variant="primary" className="">
+              <Button 
+                variant="primary" 
+                onClick={(e) => { e.preventDefault(); setIsModalOpen(true); }}
+              >
                 Join the Waitlist
               </Button>
             </div>
@@ -54,7 +61,6 @@ export default function ProgramsCTA() {
               muted
               playsInline
               preload="metadata"
-              // poster="/poster.jpg" // optional
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}
             >
@@ -85,14 +91,18 @@ export default function ProgramsCTA() {
         {/* Mobile buttons */}
         <div className="flex gap-4 justify-center md:hidden sm:flex-row">
           <Button
-            href="/donate"
             variant="primary"
             className="text-center text-sm"
+            onClick={(e) => { e.preventDefault(); setIsModalOpen(true); }}
           >
-            Donate Now
+            Join Waitlist
           </Button>
         </div>
       </div>
+      <WaitlistModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </section>
   );
 }

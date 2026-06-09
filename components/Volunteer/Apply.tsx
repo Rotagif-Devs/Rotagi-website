@@ -28,11 +28,11 @@ export default function VolunteerForm() {
   };
 
   return (
-    <div className="w-full flex justify-center bg-white">
+    <div id="apply" className="w-full flex justify-center bg-white scroll-mt-24">
       <div className="w-full max-w-3xl rounded-2xl py-20">
         {/* Header */}
         
-        <h3 className="text-center font-medium uppercase">
+        <h3 className="text-center text-2xl md:text-3xl font-cal-sans font-bold uppercase text-gray-950">
           Apply to Volunteer
         </h3>
         <div className="flex items-center w-full justify-center my-2">
@@ -91,7 +91,7 @@ export default function VolunteerForm() {
           {/* Button */}
           <button
             type="submit"
-            className="w-full bg-pink-600 hover:bg-pink-700 text-white py-3 rounded-xl font-semibold transition"
+            className="w-full bg-[#D62D88] text-white py-3 rounded-xl font-semibold transition"
           >
             Apply Now
           </button>

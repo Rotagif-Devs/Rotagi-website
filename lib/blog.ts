@@ -73,7 +73,7 @@ export const blogPosts: BlogPost[] = [
     },
     content: `
       <p>The landscape of education is undergoing a radical shift. Digital tools are not just supplements to learning; they are becoming the foundation of how knowledge is shared and acquired.</p>
-      <p>In this article, we look at the various ways inclusive technology is helping to bridge the gap in educational access. From mobile learning platforms to AI-driven personalized tutoring, the potential for impact is enormous.</p>
+      <p>In this article, we look at the various ways inclusive technology is helping to bridge the gap in educational access. From mobile learning platforms to AI driven personalized tutoring, the potential for impact is enormous.</p>
       <p>Join us as we interview experts and educators who are at the forefront of this digital revolution.</p>
     `
   }

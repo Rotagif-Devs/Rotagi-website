@@ -126,7 +126,7 @@ export const programs: Program[] = [
         "Develop responsible digital habits",
         "Build life skills and confidence",
         "Apply life skills and digital thinking",
-        "Lead collaborative AI-driven projects",
+        "Lead collaborative AI driven projects",
       ],
     },
     benefits: {
@@ -216,7 +216,7 @@ export const programs: Program[] = [
       title: "Key Outcomes",
       items: [
         "Master AI, digital, and freelancing skills confidently",
-        "Build a professional portfolio of industry-ready work",
+        "Build a professional portfolio of industry ready work",
         "Access pathways to careers, leadership, and entrepreneurship",
       ],
     },
@@ -224,7 +224,7 @@ export const programs: Program[] = [
       title: "Prerequisites",
       items: [
         "Basic computer literacy and digital skills",
-        "No formal qualifications needed — just eagerness to learn and grow.",
+        "No formal qualifications needed just eagerness to learn and grow.",
         "Commitment to career transition or advancement",
         "Age 18-40 years",
       ],
@@ -233,7 +233,7 @@ export const programs: Program[] = [
       title: "What You will Achieve",
       items: [
         "Master AI, digital, and freelancing skills confidently",
-        "Build a professional portfolio of industry-ready work",
+        "Build a professional portfolio of industry ready work",
         "Access pathways to careers, leadership, and entrepreneurship",
         "Join a supportive community of women in AI and Tech",
       ],

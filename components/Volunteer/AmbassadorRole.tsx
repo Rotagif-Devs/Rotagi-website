@@ -7,7 +7,7 @@ const AmbassadorRoles = () => {
         <p className="text-[#D62D88] text-sm font-medium mb-3 text-center justify-center">
        Join the ROTAGI Ambassador Program
         </p>
-        <h3 className="text-center font-medium uppercase text-black mb-12">
+        <h3 className="text-center text-2xl md:text-3xl font-cal-sans font-bold uppercase text-gray-950 mb-12">
           How You Can Contribute
         </h3>
 
