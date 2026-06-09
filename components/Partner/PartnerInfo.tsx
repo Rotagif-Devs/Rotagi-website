@@ -26,7 +26,7 @@ const PartnerInfo = () => {
       
           <div className="relative w-[180px] sm:w-[220px] aspect-3/4 rounded-3xl translate-y-6 shrink-0">
             <Image
-              src="/fourPeople.png" 
+              src="/FourPeople.png" 
               alt="ROTAGI field operations"
               fill
               sizes="(max-w-640px) 180px, 220px"

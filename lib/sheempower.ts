@@ -19,17 +19,17 @@ export interface SheEmpowerFeature {
   export const features: SheEmpowerFeature[] = [
     {
       title: "Build Confidence",
-      desc: "Discover your inner strength and learn to believe in yourself through inspiring stories, empowering activities, and a community that lifts you up every step of the way.",
+      desc: "Discover your inner strength and learn to believe in yourself through inspiring talks, empowering activities, and a community who are on the same journey with you.",
       img: "/so1.png",
     },
     {
       title: "Connect & Belong",
-      desc: "Meet African girls and young women from across communities, share stories, build friendships, and realize you are not alone on this journey.",
+      desc: "Meet African girls and young women from across communities, share stories, build friendships, and realise you are not alone on this journey. ",
       img: "/so4.png",
     },
     {
       title: "Learn & Explore",
-      desc: "Get a taste of technology, Artificial Intelligence, and digital opportunities through fun, interactive sessions that spark curiosity and open doors you didn’t know existed.",
+      desc: "Get a taste of technology, Artificial Intelligence, and digital opportunities through fun, interactive sessions that spark curiosity and open doors you did not know existed.",
       img: "/so2.png",
     },
     {

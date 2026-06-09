@@ -16,9 +16,8 @@ export default function AboutPage() {
           </h3>
 
           <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-gray-600 ">
-            This conference brings ROTAG vision to life creating a space where
-            learning meets inspiration, and every African girl leaves knowing
-            she belongs in the room.
+            The SHE Empower Conference is more than just an event.<br />
+It is a transformative experience designed to inspire, equip, and connect African girls and young women . This conference brings ROTAGI vision to life creating a space where learning meets inspiration, and every African girl leaves knowing she belongs in the room.
           </p>
         </div>
 
@@ -26,8 +25,8 @@ export default function AboutPage() {
         <div className="mx-auto mt-14 max-w-3xl space-y-4">
           {/* Pink Card */}
           <div className="rounded-3xl bg-gradient-to-r bg-[#D62D88] px-4 py-8 text-center text-white shadow-lg">
-            <h3 className="font-medium uppercase">
-              One Day Every Girl Limitless Possibility
+            <h3 className="font-medium uppercase items-center">
+              One Day | Every Girl | Limitless Possibility
             </h3>
           </div>
 
