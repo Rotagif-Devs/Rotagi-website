@@ -9,7 +9,7 @@ const WhatWeOffer = () => {
         <div className="flex justify-center lg:justify-end">
           <div className="overflow-hidden rounded-2xl">
             <Image
-              src="/img-3.png"
+              src="/img3.png"
               alt="Volunteers"
               width={700}
               height={700}

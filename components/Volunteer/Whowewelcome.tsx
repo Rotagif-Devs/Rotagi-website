@@ -47,7 +47,7 @@ const WhoWeWelcome = () => {
         <div className="flex justify-center lg:justify-end">
           <div className="overflow-hidden rounded-2xl">
             <Image
-              src="/img-2.png"
+              src="/img2.png"
               alt="Volunteers"
               width={700}
               height={700}

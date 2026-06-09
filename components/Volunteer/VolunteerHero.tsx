@@ -3,13 +3,14 @@ import React from "react";
 import Button from "@/components/ui/Button";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { ArrowDown } from "lucide-react";
 
 const VolunteerHero = () => {
   return (
     <section className="relative min-h-[500px] md:min-h-[600px] flex flex-col items-end justify-end bg-pink-900 lg:mx-4 lg:rounded-2xl overflow-hidden mt-6 md:mt-0">
       {/* Background Image */}
       <Image
-        src="/img-1.png"
+        src="/img1.png"
         fill
         alt="Volunteer"
         className="object-cover object-center"
@@ -50,9 +51,10 @@ const VolunteerHero = () => {
             <Button
               variant="secondary"
               href="#apply"
-              className="bg-[#D81B7E] hover:bg-pink-700 text-white rounded-full px-8 py-3.5 font-semibold transition-colors"
+              className="group bg-white text-black hover:bg-[#D62D88] hover:text-white rounded-full px-8 py-3.5 font-semibold transition-colors flex items-center"
             >
               Apply to Volunteer
+              <ArrowDown className="ml-2 h-4 w-4 text-black group-hover:text-white" />
             </Button>
           </motion.div>
         </div>

@@ -91,7 +91,7 @@ export default function VolunteerForm() {
           {/* Button */}
           <button
             type="submit"
-            className="w-full bg-pink-600 hover:bg-pink-700 text-white py-3 rounded-xl font-semibold transition"
+            className="w-full bg-[#D62D88] text-white py-3 rounded-xl font-semibold transition"
           >
             Apply Now
           </button>
