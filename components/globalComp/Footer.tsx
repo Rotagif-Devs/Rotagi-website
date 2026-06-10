@@ -227,20 +227,62 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-center items-center gap-2 md:gap-3 text-gray-400  font-dm-sans">
-          <p>© 2026 ROTAGI. All rights reserved.</p>
-          <span className="hidden md:inline text-white/20">|</span>
-          <div className="flex gap-3">
+        <div className="mt-16 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-center items-center gap-2 md:gap-3 text-gray-400">
+          <p style={{
+            fontFamily: "var(--font-epilogue), sans-serif",
+            fontWeight: 400,
+            fontStyle: "normal",
+            fontSize: "15px",
+            lineHeight: "31px",
+            letterSpacing: "-0.02em",
+            verticalAlign: "middle"
+          }}>© 2026 ROTAGI. All rights reserved.</p>
+          <span className="hidden md:inline text-white/20" style={{
+            fontFamily: "var(--font-epilogue), sans-serif",
+            fontWeight: 400,
+            fontStyle: "normal",
+            fontSize: "15px",
+            lineHeight: "31px",
+            letterSpacing: "-0.02em",
+            verticalAlign: "middle"
+          }}>|</span>
+          <div className="flex gap-3 items-center">
             <Link
               href="/privacy"
               className="hover:text-white transition-colors"
+              style={{
+                fontFamily: "var(--font-epilogue), sans-serif",
+                fontWeight: 400,
+                fontStyle: "normal",
+                fontSize: "15px",
+                lineHeight: "31px",
+                letterSpacing: "-0.02em",
+                verticalAlign: "middle"
+              }}
             >
               Privacy Policy
             </Link>
-            <span className="text-white/20">|</span>
+            <span className="text-white/20" style={{
+              fontFamily: "var(--font-epilogue), sans-serif",
+              fontWeight: 400,
+              fontStyle: "normal",
+              fontSize: "15px",
+              lineHeight: "31px",
+              letterSpacing: "-0.02em",
+              verticalAlign: "middle"
+            }}>|</span>
             <Link
               href="/terms"
               className="hover:text-white transition-colors"
+              style={{
+                fontFamily: "var(--font-epilogue), sans-serif",
+                fontWeight: 400,
+                fontStyle: "normal",
+                fontSize: "15px",
+                lineHeight: "31px",
+                letterSpacing: "-0.02em",
+                verticalAlign: "middle"
+              }}
             >
               Terms and Conditions
             </Link>

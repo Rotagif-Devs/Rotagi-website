@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Cal_Sans, Inter } from "next/font/google";
+import { DM_Sans, Cal_Sans, Inter, Epilogue } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/globalComp/Header";
 import Footer from "@/components/globalComp/Footer";
@@ -9,6 +9,13 @@ import CookieConsent from "@/components/globalComp/CookieConsent";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const epilogue = Epilogue({
+  subsets: ["latin"],
+  variable: "--font-epilogue",
+  weight: ["400"],
   display: "swap",
 });
 
@@ -69,7 +76,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${dmSans.variable} ${calSans.variable} antialiased bg-primary text-gray-900`}
+        className={`${inter.variable} ${dmSans.variable} ${calSans.variable} ${epilogue.variable} antialiased bg-primary text-gray-900`}
       >
         <Providers>
           {children}

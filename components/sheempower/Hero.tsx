@@ -20,7 +20,7 @@ export default function Hero() {
 </div>
 
       <div className="relative z-10 flex flex-col justify-end w-full h-full pb-16 md:pb-20 overflow-hidden">
-        <div className="mx-auto max-w-11/12 px-6 lg:px-8 w-full flex flex-col justify-end h-full relative"> */
+        <div className="mx-auto max-w-6xl px-6 lg:px-8 w-full flex flex-col justify-end h-full relative">
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -28,10 +28,7 @@ export default function Hero() {
             className="mb-6"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/30 text-white text-xs tracking-wide backdrop-blur-md bg-white/10">
-              ROTAGI Annual Conference
-              <span className="opacity-70">|</span>
-              Coming 2026
-            </div>
+ROTAGI Annual Conference  |  Coming 2026             </div>
           </motion.div>
 
           {/* TITLE */}
@@ -54,8 +51,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="text-white max-w-xl opacity-90 font-dm-sans font-normal text-base md:text-lg leading-[160%] m-0"
             >
-              A one day conference bringing together African girls and young
-              women and a celebration of everything you can become.
+              A one day conference bringing together African girls and young women and a celebration of everything you can become.
             </motion.p>
 
             <motion.div
@@ -66,13 +62,11 @@ export default function Hero() {
             >
               <Button
                 variant="secondary"
-                href="/programs"
-                className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-3.5 gap-1.5 font-semibold"
+                href="#register"
+                className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-3.5 font-semibold"
               >
-                <span>
                 Be the First to Know
-                </span>
-                  <ArrowDown size={18} />
+                <ArrowDown className="w-4 h-4 ml-2" />
               </Button>
             </motion.div>
           </div>

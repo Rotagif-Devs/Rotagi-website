@@ -2,20 +2,19 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Play } from "lucide-react";
 
 const stats = [
   {
     value: "30+",
-    label: "African Girls & Women Attended",
+    label: "African girls & Women Attended",
   },
   {
     value: "1",
-    label: "Day of Inspiration",
+    label: "Day of Inspiration ",
   },
   {
-    value: "Abuja",
-    label: "Nigeria",
+    value: "1",
+    label: "City | Abuja, Nigeria",
   },
 ];
 
@@ -30,8 +29,8 @@ const galleryImages = [
 
 export default function HistorySection() {
   return (
-    <section className="bg-[#f6dfe8] px-6 py-20 md:px-10 lg:px-16">
-      <div className="mx-auto max-w-6xl">
+    <section className="bg-primary px-6 py-20 md:px-10 lg:px-16">
+      <div className="mx-auto max-w-6xl space-y-12 mt-6">
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -39,27 +38,27 @@ export default function HistorySection() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <p className="mb-3 text-sm font-medium text-pink-500">
-            2021 | Our First Chapter
-          </p>
+          <p className="mb-3 text-sm font-semibold tracking-wider uppercase text-[#D62D88]">
+2021 | Our First Chapter           </p>
 
-          <h3 className="text-3xl font-semibold uppercase leading-tight text-black md:text-5xl">
+          <h2 className="text-3xl uppercase leading-[1.1] text-black md:text-5xl">
             Where It All Began
-          </h3>
+          </h2>
 
-          <p className="mt-6 leading-7 text-[#373737]">
-            In 2021, we brought together 30+ incredible African girls and young
-            women in Abuja for the very first SHE Empower Conference. It was a
-            day filled with learning, laughter, and connection where dreams were
-            shared and friendships were born. This first gathering showed us the
-            power of creating space for African girls to rise together. Now, we
-            are building on that foundation to create something even more
-            transformative in 2026.
-          </p>
+          <div className="mt-6 space-y-4 text-base leading-relaxed text-[#373737]">
+            <p className="my-8">
+             In 2021, ROTAGI hosted the first SHE Empower Conference in Abuja, bringing together 30 young African girls and women for a powerful day of learning, connection, and inspiration. </p>
+            <p className="my-8">
+From inspiring talks to hands-on learning and unforgettable moments, our first conference showcased what happens when girls are given the tools, confidence, and community to thrive. In a room of 30 young African women in Abuja, Nigeria, something changed  and the ROTAGI movement took its first bold step forward.
+</p>
+            <p className="my-8">
+We have seen the impact these moments create  and we are only just getting started.</p>
+        
+          </div>
         </motion.div>
 
         {/* Stats */}
-        <div className="mt-8 grid gap-3 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-3">
           {stats.map((item, index) => (
             <motion.div
               key={item.value}
@@ -71,9 +70,9 @@ export default function HistorySection() {
               }}
               viewport={{ once: true }}
               whileHover={{ y: -4 }}
-              className="rounded-[14px] bg-white px-6 py-7 text-center shadow-sm"
+              className="rounded-[14px] bg-white border border-gray-100 px-6 py-8 text-center"
             >
-              <h3 className="text-4xl font-semibold text-gray-900">
+              <h3 className="text-5xl text-black">
                 {item.value}
               </h3>
 
@@ -83,7 +82,7 @@ export default function HistorySection() {
         </div>
 
         {/* Image Grid */}
-        <div className=" grid grid-cols-1 gap-3 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
           {galleryImages.map((image, index) => (
             <motion.div
               key={index}
@@ -94,7 +93,7 @@ export default function HistorySection() {
                 delay: index * 0.05,
               }}
               viewport={{ once: true }}
-              className="relative w-full h-[25rem] overflow-hidden rounded-[14px]"
+              className="relative w-full h-[18rem] overflow-hidden rounded-[14px] shadow-sm"
             >
               <Image
                 src={image}
@@ -106,36 +105,21 @@ export default function HistorySection() {
           ))}
         </div>
 
-        {/* Featured Video */}
+        {/* Featured Video / Main Banner image */}
         <motion.div
           initial={{ opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="relative mt-3 overflow-hidden rounded-[18px]"
+          className="relative overflow-hidden rounded-[18px] shadow-md"
         >
           <Image
             src="/video.png"
             alt="Featured Event"
             width={1400}
             height={700}
-            className="h-[260px] w-full object-cover md:h-[520px]"
+            className="h-[260px] w-full object-cover md:h-[500px]"
           />
-
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-black/10" />
-
-          {/* Play Button */}
-          {/* Play Button */}
-          {/* <button className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-black/20 backdrop-blur-sm transition duration-300 hover:scale-110">
-  <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10">
-    <Play
-      size={18}
-      className="ml-0.5 text-white"
-      fill="white"
-    />
-  </div>
-</button> */}
         </motion.div>
       </div>
     </section>

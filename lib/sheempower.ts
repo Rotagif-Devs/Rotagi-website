@@ -1,62 +1,62 @@
 
 export interface SheEmpowerFeature {
-    title: string;
-    desc: string;
-    img: string;
-  }
+  title: string;
+  desc: string;
+  img: string;
+}
 
-  export interface audienceFeatures {
-    title: string;
-    subtitle: string;
-    items: string[];
-  }
-  export interface expectationFeatures {
-    title: string;
-    desc: string;
-    bg: string;
-  }
+export interface audienceFeatures {
+  title: string;
+  subtitle: string;
+  items: string[];
+}
 
-  export const features: SheEmpowerFeature[] = [
-    {
-      title: "Build Confidence",
-      desc: "Discover your inner strength and learn to believe in yourself through inspiring talks, empowering activities, and a community who are on the same journey with you.",
-      img: "/so1.png",
-    },
-    {
-      title: "Connect & Belong",
-      desc: "Meet African girls and young women from across communities, share stories, build friendships, and realise you are not alone on this journey. ",
-      img: "/so4.png",
-    },
-    {
-      title: "Learn & Explore",
-      desc: "Get a taste of technology, Artificial Intelligence, and digital opportunities through fun, interactive sessions that spark curiosity and open doors you did not know existed.",
-      img: "/so2.png",
-    },
-    {
-      title: "Be Inspired",
-      desc: "Hear from African women who have overcome challenges and are making their mark and see yourself in their stories.",
-      img: "/so3.png",
-    },
-  ];
+export interface expectationFeatures {
+  title: string;
+  desc: string;
+  bg: string;
+}
 
-  
+export const features: SheEmpowerFeature[] = [
+  {
+    title: "Build Confidence",
+    desc: "Discover your inner strength and learn to believe in yourself through inspiring talks, empowering activities, and a community who are on the same journey with you. ",
+    img: "/so1.png",
+  },
+  {
+    title: "Connect & Belong",
+    desc: "Meet African girls and young women from across communities, share stories, build friendships, and realise you are not alone on this journey. ",
+    img: "/so4.png",
+  },
+  {
+    title: "Learn & Explore",
+    desc:"Get a taste of technology, Artificial Intelligence, and digital opportunities through fun, interactive sessions that spark curiosity and open doors you did not know existed.",
+    img: "/so2.png",
+  },
+  {
+    title: "Be Inspired",
+    desc: "Hear from African women who have overcome challenges and are making their mark and see yourself in their stories.",
+    img: "/so3.png",
+  },
+];
+
 export const audience: audienceFeatures[] = [
   {
     title: "Ages 10–18",
     subtitle: "Young Innovators",
     items: [
-      "Exploring Artificial Intelligence and Technology",
-      "Building Confidence & Leadership",
-      "Discovering Creativity And Life Skills",
+      "Students and young African girls",
+      "Future leaders building confidence and digital awarenes",
+      "Girls curious about AI, creativity, and life skills ",
     ],
   },
   {
-    title: "Ages 18–40",
+    title: "Ages 19–40",
     subtitle: "Emerging & Professional Women",
     items: [
-      "Students Looking For Career Motivation",
-      "Women Transitioning Into Tech",
-      "Entrepreneurs And Changemakers",
+      "University students and early career professionals ",
+      "Women transitioning into tech or growing their careers",
+      "Entrepreneurs, freelancers, and changemakers ",
     ],
   },
 ];
@@ -64,55 +64,55 @@ export const audience: audienceFeatures[] = [
 export const expectations: expectationFeatures[] = [
   {
     title: "Inspiring Speakers",
-    desc: "Hear from African women leaders, innovators, and changemakers sharing their journeys.",
+    desc: "Hear from powerful women in tech, business, and leadership sharing real stories, and life changing opportunities.",
     bg: "bg-[#FFD6E7]",
   },
   {
     title: "Hands On Workshops",
-    desc: "Practical sessions on AI, digital literacy, and life skills.",
-    bg: "bg-[#E5E1FF]",
+    desc: "Artificial Intelligence and digital skills sessions, career and entrepreneurship workshops, and leadership and confidence building activities practical and interactive.",
+    bg: "bg-[#FFD8DC]",
   },
   {
     title: "Scholarship Announcements",
-    desc: "Opportunities and resources designed to support growth.",
-    bg: "bg-[#DDEBFF]",
+    desc: "One of the most celebrated moments of the day. ROTAGI announces scholarship recipients and celebrates their courage and commitment.",
+    bg: "bg-[#ECD9FF]",
   },
   {
     title: "Games & Challenges",
-    desc: "Interactive activities that encourage teamwork and creativity.",
-    bg: "bg-[#DDF8DF]",
+    desc: "Tech challenges, creative competitions, and team activities that make learning fun and build connections that last beyond the room.",
+    bg: "bg-[#C1DDFF]",
   },
   {
     title: "Food & Wellness",
-    desc: "Nutritious meals, wellness activities, and moments to connect authentically.",
-    bg: "bg-[#FFF1CC]",
+    desc: "Yoga and wellness sessions, great food, and real community. Empowerment should be holistic we take care of the whole person. ",
+    bg: "bg-[#BDF8D2]",
   },
   {
     title: "Recognition & Celebration",
-    desc: "Celebrating participation, growth, and the brilliance of every African girl.",
-    bg: "bg-[#F9D7E8]",
+    desc: "Every African girl and young woman is seen, celebrated, and recognised for her progress. Certificates, prizes, photos, and moments she will carry with her.",
+    bg: "bg-[#FCD1E9]",
   },
 ];
 
 export const values: SheEmpowerFeature[] = [
   {
     title: "Inclusive",
-    desc: "Welcoming girls of all backgrounds, abilities, and communities.",
+    desc: "Open to African girls and young women at all stages  no matter their background, experience, or location. ",
     img: "/so8.png",
   },
   {
     title: "Accessible",
-    desc: "Designed to be barrier-free, with scholarships, support, and safe spaces.",
+    desc: "Low-cost tickets with scholarship opportunities so that cost is never a barrier to attending.",
     img: "/so10.png",
   },
   {
     title: "Community Driven",
-    desc: "Built with local changemakers, mentors, and meaningful partnerships.",
+    desc: "Focused on genuine connection, confidence, and long-term growth within a supportive sisterhood. ",
     img: "/so7.png",
   },
   {
-    title: "Not For Profit",
-    desc: "Every resource goes back into empowering more African girls and creating lasting impact.",
+    title: "Not for Profit",
+    desc: "Proceeds directly support African girls' education, scholarships, and future ROTAGI program. ",
     img: "/so6.png",
   },
 ];
