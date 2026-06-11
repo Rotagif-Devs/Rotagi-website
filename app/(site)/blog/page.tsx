@@ -19,7 +19,7 @@ export default async function BlogPage() {
   if (posts.length === 0) {
     return (
       <main className="min-h-screen bg-[#FFF1F5]">
-        <BlogHero title="ROTAGIF Blog" category="ROTAGI BLOGS" />
+        <BlogHero title="ROTAGI Blog" category="ROTAGI BLOGS" />
         <section className="py-20 px-6 md:px-15 text-center">
           <p className="text-gray-500">No blog posts found yet. Check back soon!</p>
         </section>
