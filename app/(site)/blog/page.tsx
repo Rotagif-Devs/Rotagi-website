@@ -31,7 +31,7 @@ export default async function BlogPage() {
   return (
     <main className="min-h-screen bg-[#FFF1F5]">
       <BlogHero 
-        title="ROTAGIF Blog" 
+        title="ROTAGI Blog" 
         category="ROTAGI BLOGS" 
       />
       
