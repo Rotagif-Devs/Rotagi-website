@@ -77,9 +77,12 @@ What Happens in One Day          </p>
               className="flex items-start gap-4 p-6 rounded-2xl border border-pink-100/20 backdrop-blur-sm"
             >
               {/* Icon Container */}
-              <div className="flex bg-white items-center justify-center p-4 rounded-xl shrink-0">
-                {getIcon(index)}
-              </div>
+             
+                {item.img ? (
+                  <img src={item.img} alt={item.title} className="h-14   w-14" />
+                ) : (
+                  getIcon(index)
+                )}
 
               {/* Text */}
               <div>

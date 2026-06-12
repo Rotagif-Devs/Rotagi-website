@@ -24,7 +24,7 @@ const OurStory = () => {
   ];
 
   return (
-    <div id="OurStory" className="mt-20 text-center px-4">
+    <div id="OurStory" className="my-20 text-center px-4">
       <h2>OUR STORY</h2>
       <p>From Awesome Girls Club to ROTAGI</p>
       <div className="flex justify-center mb-8">
@@ -43,18 +43,18 @@ const OurStory = () => {
         >
           {items.map(({ titleTop, titleMid, body, Icon }, idx) => (
             <article key={idx} className="flex-1 text-center">
-              <div className="relative lg:bottom-10 bottom-10 z-10 mx-auto -mt-3  md:-mt-5 grid h-14 w-36 place-items-center rounded-full ">
+              <div className="relative z-10 mx-auto -mt-3  md:-mt-5 grid w-16 h-16 place-items-center rounded-full bg-white shadow-md ">
                 <Image
                   src={Icon}
                   alt={titleMid}
-                  width={1000}
-                  height={1000}
+                  width={40}
+                  height={30}
                   className="object-contain"
                 />
               </div>
 
-              <h4 className="mt-6 text-sm">{titleTop}</h4>
-              <h3 className="mt-2 text-lg text-pink-600">{titleMid}</h3>
+              <h4 className="my-4 text-sm">{titleTop}</h4>
+              <h3 className="text-lg text-pink-600">{titleMid}</h3>
               <p className="mx-auto mt-2 text-[#667085] max-w-sm leading-7 px-2 md:px-0">
                 {body}
               </p>

@@ -21,22 +21,22 @@ export const features: SheEmpowerFeature[] = [
   {
     title: "Build Confidence",
     desc: "Discover your inner strength and learn to believe in yourself through inspiring talks, empowering activities, and a community who are on the same journey with you. ",
-    img: "/so1.png",
+    img: "/build.png",
   },
   {
     title: "Connect & Belong",
     desc: "Meet African girls and young women from across communities, share stories, build friendships, and realise you are not alone on this journey. ",
-    img: "/so4.png",
+    img: "/connect.png",
   },
   {
     title: "Learn & Explore",
     desc:"Get a taste of technology, Artificial Intelligence, and digital opportunities through fun, interactive sessions that spark curiosity and open doors you did not know existed.",
-    img: "/so2.png",
+    img: "/learn.png",
   },
   {
     title: "Be Inspired",
     desc: "Hear from African women who have overcome challenges and are making their mark and see yourself in their stories.",
-    img: "/so3.png",
+    img: "/inspired.png",
   },
 ];
 
@@ -98,21 +98,21 @@ export const values: SheEmpowerFeature[] = [
   {
     title: "Inclusive",
     desc: "Open to African girls and young women at all stages  no matter their background, experience, or location. ",
-    img: "/so8.png",
+    img: "/inclusive.png",
   },
   {
     title: "Accessible",
     desc: "Low-cost tickets with scholarship opportunities so that cost is never a barrier to attending.",
-    img: "/so10.png",
+    img: "/accessible.png",
   },
   {
     title: "Community Driven",
     desc: "Focused on genuine connection, confidence, and long-term growth within a supportive sisterhood. ",
-    img: "/so7.png",
+    img: "/community1.png",
   },
   {
     title: "Not for Profit",
     desc: "Proceeds directly support African girls' education, scholarships, and future ROTAGI program. ",
-    img: "/so6.png",
+    img: "/nonProfit.png",
   },
 ];

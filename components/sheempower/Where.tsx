@@ -19,12 +19,12 @@ const stats = [
 ];
 
 const galleryImages = [
-  "/gl1.png",
-  "/gl2.png",
-  "/gl3.png",
-  "/gl4.png",
-  "/gl5.png",
-  "/gl6.png",
+  "/sheone.png",
+  "/shetwo.png",
+  "/shethree.png",
+  "/shefour.png",
+  "/shefive.png",
+  "/shesix.png",
 ];
 
 export default function HistorySection() {
@@ -86,20 +86,14 @@ We have seen the impact these moments create  and we are only just getting start
           {galleryImages.map((image, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: 0.4,
-                delay: index * 0.05,
-              }}
               viewport={{ once: true }}
-              className="relative w-full h-[18rem] overflow-hidden rounded-[14px] shadow-sm"
+              className="relative w-full h-[18rem] overflow-hidden rounded-2xl "
             >
               <Image
                 src={image}
                 alt={`Gallery ${index + 1}`}
                 fill
-                className="h-full w-full object-cover transition duration-500 hover:scale-105"
+                className="h-full w-full object-cover"
               />
             </motion.div>
           ))}
@@ -111,10 +105,10 @@ We have seen the impact these moments create  and we are only just getting start
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="relative overflow-hidden rounded-[18px] shadow-md"
+          className="relative overflow-hidden rounded-2xl shadow-sm"
         >
           <Image
-            src="/video.png"
+            src="/Video.png"
             alt="Featured Event"
             width={1400}
             height={700}

@@ -107,9 +107,12 @@ ROTAGI supports African girls and women aged 10 to 40. <br />SHE Empower welcome
             {values.map((item, index) => (
               <div key={item.title} className="flex items-start gap-4">
                 {/* ICON */}
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[#D62D88] text-white shadow-sm mt-1">
-                  {getValueIcon(index)}
-                </div>
+               
+                 {item.img ? (
+                  <img src={item.img} alt={item.title} className="h-14 w-14" />
+                ) : (
+                  getValueIcon(index)
+                )}
 
                 {/* TEXT */}
                 <div className="flex flex-col gap-3">
