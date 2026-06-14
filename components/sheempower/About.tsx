@@ -24,8 +24,8 @@ export default function AboutPage() {
       <div className="mx-auto max-w-5xl">
         {/* Top Text */}
         <div className="text-center">
-          <p className="mb-3 text-sm font-semibold tracking-wider uppercase text-[#D62D88]">
-            About SheEmpower
+          <p className="mb-3 text-sm font-semibold tracking-wider text-[#D62D88]">
+            ABOUT SHE Empower
           </p>
 
           <h2 className="mx-auto font-black max-w-2xl uppercase leading-[1.1] text-black text-3xl md:text-5xl">
@@ -60,7 +60,7 @@ More Than a Conference            </h3>
 
         {/* Bottom Section / Targeted Focus */}
         <div className="mt-28 text-center">
-          <p className="text-sm font-semibold tracking-wider uppercase text-[#D62D88]">
+          <p className="text-sm font-semibold tracking-wider text-[#D62D88]">
 What Happens in One Day          </p>
 
           <h2 className="mx-auto mt-4 max-w-3xl uppercase leading-[1.1] text-black text-3xl md:text-5xl">

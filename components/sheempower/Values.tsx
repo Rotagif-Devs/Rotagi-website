@@ -99,7 +99,7 @@ ROTAGI supports African girls and women aged 10 to 40. <br />SHE Empower welcome
         <div className="pt-5">
           <div className="text-center mb-4">
             <h2 className="uppercase tracking-tight text-black text-3xl md:text-5xl">
-              WHAT MAKES SHEEMPOWER DIFFERENT
+              WHAT MAKES SHE EMPOWER DIFFERENT
             </h2>
           </div>
 

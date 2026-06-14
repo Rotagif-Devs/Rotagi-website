@@ -40,7 +40,7 @@ export default function ComingSoonSection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <p className="mb-2 font-semibold tracking-wider uppercase text-[#D62D88]">SHE Empower 2026</p>
+          <p className="mb-2 font-semibold tracking-wider text-[#D62D88]">SHE Empower 2026</p>
 
           <h2 className="uppercase tracking-tight text-black text-3xl md:text-5xl">
             Coming Soon
@@ -86,7 +86,7 @@ Sign up below and we will notify you the moment details go live  before anyone e
 
           <Button
             href="#register"
-            className="bg-[#D62D88] text-white hover:bg-[#D62D88]/90 rounded-full px-10 py-4 font-bold text-sm tracking-wide uppercase transition-all duration-300 shadow-md"
+            className="bg-[#D62D88] text-white hover:bg-[#D62D88]/90 rounded-full px-10 py-4 font-bold text-sm tracking-wide transition-all duration-300 shadow-md"
           >
             <span className="">Register your interest</span>
             <ArrowDown className="w-4 h-4 ml-2" />
@@ -116,7 +116,7 @@ Sign up below and we will notify you the moment details go live  before anyone e
           <div className="mt-10 flex justify-center">
             <Button
               href="/partner"
-              className="bg-[#D62D88] text-white hover:bg-[#D62D88]/90 rounded-full px-10 py-4 font-bold text-sm tracking-wide uppercase transition-all duration-300 shadow-md"
+              className="bg-[#D62D88] text-white hover:bg-[#D62D88]/90 rounded-full px-10 py-4 font-bold text-sm tracking-wide transition-all duration-300 shadow-md"
             >
 Explore Sponsorship Opportunities → Coming Soon            </Button>
           </div>
