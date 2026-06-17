@@ -36,7 +36,7 @@ export default function Home() {
             src="/update.jpg"
             alt="Rotagif Impact"
             fill
-            className=""
+            className="object-cover"
           />
         </div>
 

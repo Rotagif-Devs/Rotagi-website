@@ -32,8 +32,7 @@ export default function DonateHero({ description }: Props) {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-white font-cal-sans font-normal uppercase text-4xl sm:text-5xl md:text-[64px] lg:text-[72px] leading-[1.05] tracking-[-0.02em] mb-6 max-w-4xl"
           >
-            Empower <span className="text-pink-400">Her</span> Future Through{" "}
-            <span className="text-pink-400">Artificial Intelligence</span>
+            Empower Future Through Artificial Intelligence
           </motion.h1>
 
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 w-full">
@@ -54,6 +53,7 @@ export default function DonateHero({ description }: Props) {
             >
               <Button
                 variant="primary"
+                size="md"
                 onClick={(e) => {
                   e.preventDefault();
                   document.dispatchEvent(new CustomEvent("openDonateStepper"));
@@ -61,7 +61,7 @@ export default function DonateHero({ description }: Props) {
                     .getElementById("donate-section")
                     ?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="cursor-pointer px-8 py-3.5 bg-[#D81B7E] hover:bg-pink-700 text-white rounded-full font-semibold whitespace-nowrap transition-colors"
+                className="cursor-pointer px-8 py-3.5 bg-white hover:bg-white/70 text-black rounded-full font-semibold whitespace-nowrap transition-colors"
               >
                 Donate Now
               </Button>

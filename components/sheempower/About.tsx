@@ -28,7 +28,7 @@ export default function AboutPage() {
             ABOUT SHE Empower
           </p>
 
-          <h2 className="mx-auto font-black max-w-2xl uppercase leading-[1.1] text-black text-3xl md:text-5xl">
+          <h2 className="mx-auto max-w-2xl uppercase leading-[1.1] text-black text-3xl md:text-5xl">
             MORE THAN AN EVENT <br /> A MOVEMENT
           </h2>
 

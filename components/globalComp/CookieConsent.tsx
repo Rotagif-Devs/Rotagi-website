@@ -41,7 +41,7 @@ const CookieConsent = () => {
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
           className="fixed bottom-6 left-6 z-[9999] w-full max-w-[340px] md:max-w-[400px]"
         >
-          <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-2xl rounded-2xl p-6 relative overflow-hidden group">
+          <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-2xl rounded-xl p-6 relative overflow-hidden group">
             {/* Background Decorative Gradient */}
             <div className="absolute -top-12 -right-12 w-24 h-24 bg-secondary/10 rounded-full blur-3xl group-hover:bg-secondary/20 transition-colors duration-500" />
             
@@ -52,7 +52,7 @@ const CookieConsent = () => {
               
               <div className="flex-1">
                 <div className="flex justify-between items-center mb-2">
-                  <h3 className="text-lg font-bold text-zinc-900 dark:text-white font-cal-sans">
+                  <h3 className="text-lg text-zinc-900 dark:text-white font-cal-sans">
                     Cookie Policy
                   </h3>
                   <button 
@@ -82,7 +82,7 @@ const CookieConsent = () => {
                     onClick={handleDecline}
                     variant="secondary"
                     size="sm"
-                    className="flex-1 !bg-transparent dark:!text-zinc-400 !text-zinc-600 hover:!bg-zinc-100 dark:hover:!bg-zinc-800 border-none"
+                    className="flex-1 dark:!text-zinc-400 !text-zinc-600 hover:!bg-zinc-100 dark:hover:!bg-zinc-800 border-none"
                   >
                     Decline
                   </Button>

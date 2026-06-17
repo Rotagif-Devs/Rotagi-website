@@ -3,14 +3,14 @@ import Image from "next/image";
 const WhoWeWelcome = () => {
   return (
     <section className="bg-white py-20 px-6 lg:px-16">
-      <div className="mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Left Content */}
         <div>
-          <p className="text-[#E63B87] text-sm font-medium mb-4">
+          <p className="text-[#E63B87] font-medium mb-4">
             Who can Volunteer
           </p>
 
-          <h2 className="text-2xl md:text-3xl font-cal-sans font-bold uppercase text-gray-950 mb-8">WHO WE WELCOME</h2>
+          <h2 className="text-2xl md:text-3xl font-cal-sans uppercase text-gray-950 mb-8">WHO WE WELCOME</h2>
 
           <div className="space-y-4 text-gray-700 leading-8">
             <p>

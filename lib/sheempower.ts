@@ -102,12 +102,12 @@ export const values: SheEmpowerFeature[] = [
   },
   {
     title: "Accessible",
-    desc: "Low-cost tickets with scholarship opportunities so that cost is never a barrier to attending.",
+    desc: "Low cost tickets with scholarship opportunities so that cost is never a barrier to attending.",
     img: "/accessible.png",
   },
   {
     title: "Community Driven",
-    desc: "Focused on genuine connection, confidence, and long-term growth within a supportive sisterhood. ",
+    desc: "Focused on genuine connection, confidence, and long term growth within a supportive sisterhood. ",
     img: "/community1.png",
   },
   {

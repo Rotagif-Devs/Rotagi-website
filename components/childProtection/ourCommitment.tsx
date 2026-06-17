@@ -1,5 +1,7 @@
 "use client";
 
+import { Link } from "lucide-react";
+
 const SafeguardingPolicy = () => {
   return (
     <div className="bg-[#fae8f0] min-h-screen text-gray-800 font-sans">
@@ -70,12 +72,14 @@ const SafeguardingPolicy = () => {
   <div className="grid md:grid-cols-2 gap-6">
     {/* Lead 1 */}
     <div className="bg-white p-6 rounded-2xl shadow-sm border border-[#D62D881F]">
-      <h3 className="text-xl font-bold text-gray-900 mb-4">Designated Safeguarding Lead</h3>
+      <h3 className="text-xl  text-gray-900 mb-4">Designated Safeguarding Lead</h3>
       <div className="font-semibold text-gray-800">Olayemi Arokayo</div>
       <div className="text-sm text-gray-500 mb-4 flex items-center gap-2">
-        <span>Oarokayo@rotagilf.com</span>
+        <a href="mailto:olayemi@rotagif.com" className=" hover:underline">
+          olayemi@rotagif.com
+        </a>
         <button 
-          onClick={() => navigator.clipboard.writeText('Oarokayo@rotagilf.com')}
+          onClick={() => navigator.clipboard.writeText('olayemi@rotagif.com')}
           className="text-gray-400 hover:text-gray-600 transition-colors duration-150 focus:outline-none"
           title="Copy email"
         >
@@ -93,12 +97,14 @@ const SafeguardingPolicy = () => {
 
     {/* Lead 2 */}
     <div className="bg-white p-6 rounded-2xl shadow-sm border border-[#D62D881F]">
-      <h3 className="text-xl font-bold text-gray-900 mb-4">Deputy Designated Safeguarding Lead</h3>
+      <h3 className="text-xl text-gray-900 mb-4">Deputy Designated Safeguarding Lead</h3>
       <div className="font-semibold text-gray-800">Lola Inès Raïssa Agondogo</div>
       <div className="text-sm text-gray-500 mb-4 flex items-center gap-2">
-        <span>lagondogo@rotagilf.com</span>
+        <a href="mailto:lagondogo@rotagif.com" className=" hover:underline">
+          lagondogo@rotagif.com
+        </a>
         <button 
-          onClick={() => navigator.clipboard.writeText('lagondogo@rotagilf.com')}
+          onClick={() => navigator.clipboard.writeText('lagondogo@rotagif.com')}
           className="text-gray-400 hover:text-gray-600 transition-colors duration-150 focus:outline-none"
           title="Copy email"
         >

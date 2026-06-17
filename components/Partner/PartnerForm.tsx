@@ -71,7 +71,7 @@ const PartnerForm = ({
     <div className=" min-h-screen w-300 py-12 px-4">
       <div className="bg-white p-8 md:p-14 rounded-[2.5rem] w-full  mx-auto shadow-sm">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+          <h2 className="text-3xl md:text-4xl text-black mb-4">
             Partnership Inquiry Form
           </h2>
           <p className="text-gray-600 font-medium">
@@ -82,7 +82,7 @@ const PartnerForm = ({
         <form onSubmit={handleSubmit} className="space-y-10">
           {/* Contact Information */}
           <div className="space-y-6">
-            <h3 className="text-xl font-bold text-black">Contact Information</h3>
+            <h3 className="text-xl text-black">Contact Information</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-black">First Name <span className="text-pink-500">*</span></label>
@@ -135,7 +135,7 @@ const PartnerForm = ({
 
           {/* Organization Details */}
           <div className="space-y-6">
-            <h3 className="text-xl font-bold text-black">Organization Details</h3>
+            <h3 className="text-xl text-black">Organization Details</h3>
             <div className="space-y-6">
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-black">Company/Organization Name <span className="text-pink-500">*</span></label>
@@ -164,7 +164,7 @@ const PartnerForm = ({
 
           {/* Partnership Interest */}
           <div className="space-y-6">
-            <h3 className="text-xl font-bold text-black">Partnership Interest</h3>
+            <h3 className="text-xl text-black">Partnership Interest</h3>
             <div className="space-y-2">
               <label className="block text-sm font-medium text-black">How would you like to partner?</label>
               <select

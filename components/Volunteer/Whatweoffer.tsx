@@ -20,7 +20,7 @@ const WhatWeOffer = () => {
         </div>
         <div>
           <p className="text-[#E63B87] text-sm font-medium mb-4">
-            What Rotagi Offers Volunteer
+            What ROTAGI Offers Volunteer
           </p>
 
           <h2 className="text-2xl md:text-3xl font-cal-sans font-bold uppercase text-gray-950 mb-6">What You Can Expect from Us</h2>

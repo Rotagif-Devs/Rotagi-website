@@ -11,7 +11,7 @@ const DonateDefault = ({ onNext }: Props) => {
     {
       title: "Skills for the Future",
       description:
-        "Funds both on site and virtual hands on training in Artificial Intelligence and digital tools equipping girls with practical skills for real world problem solving.",
+        "Funds both on site and virtual hands on training in artificial intelligence and digital tools equipping girls with practical skills for real world problem solving.",
       img: "/future.svg", // Ensure this references your pink round icon
     },
     {
@@ -23,7 +23,7 @@ const DonateDefault = ({ onNext }: Props) => {
     {
       title: "Access to Tools & Resources",
       description:
-        "Provides resources from laptops and internet access to Artificial Intelligence subscriptions and digital tools so that cost is never a barrier to learning.",
+        "Provides resources from laptops and internet access to artificial intelligence subscriptions and digital tools so that cost is never a barrier to learning.",
       img: "/resources.svg", // Ensure this references your pink round icon
     },
   ];
@@ -56,7 +56,7 @@ const DonateDefault = ({ onNext }: Props) => {
               </div>
 
               {/* Title */}
-              <h3 className="font-bold text-lg md:text-xl text-[#1A1A1A] mb-4 font-cal-sans">
+              <h3 className="text-lg md:text-xl text-[#1A1A1A] mb-4 font-cal-sans">
                 {data.title}
               </h3>
 

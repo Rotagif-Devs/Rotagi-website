@@ -1,12 +1,15 @@
-"use client"; // ← Required because we're using state + event handlers
+"use client";
 
 import { useState, useRef } from "react";
-import { Play, Pause } from "lucide-react"; // ← Import both icons from lucide-react
+import { Play, Pause } from "lucide-react";
 import Button from "../ui/Button";
+import WaitlistModal from "../globalComp/WaitlistModal";
 
-export default function VolunteerCTA() {
-  const [isPlaying, setIsPlaying] = useState(true); // Start with autoPlay → playing
+export default function PartnerCTA() {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+
   const togglePlay = () => {
     if (videoRef.current) {
       if (videoRef.current.paused) {
@@ -18,31 +21,34 @@ export default function VolunteerCTA() {
       }
     }
   };
+
   return (
     <section className="bg-primary py-16 flex justify-center">
       <div className="flex w-full max-w-11/12 flex-col gap-10 md:px-0 md:gap-[76px]">
         {/* Title + description + buttons area */}
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-12">
-          <h2 className="font-cal-sans text-dark leading-tight tracking-tight md:max-w-[600px] md:text-[46px] md:leading-[110%]">
-            OTHER WAYS TO <br></br> SUPPORT ROTAGI
+          <h2 className="font-cal-sans text-dark text-4xl leading-tight tracking-tight md:max-w-[600px] md:text-[46px] md:leading-[110%] uppercase">
+            Let's Build the Future Together 
           </h2>
 
           <div className="flex flex-col items-start gap-6 md:max-w-[580px]">
             <p className="font-dm-sans text-darkgray text-left text-base leading-relaxed md:text-[16px] md:leading-[160%]">
-              If volunteering is not right for you right now, there are other
-              ways to make a difference for African girls and young women.
+    Partner with us to scale our impact and reach more African girls across Africa.
             </p>
 
             <div className="hidden md:flex gap-4">
-              <Button href="/donate" variant="primary" className="">
-                Donate Now
-              </Button>
-              <Button
-                href="/partner"
-                variant="secondary"
-                className="text-center text-sm capitalize"
+              <Button 
+                variant="primary" 
+                           href="/partner/inquiry"
+
               >
-                partner with us
+                Partner with Us
+              </Button>
+                <Button 
+                variant="secondary" 
+               
+              >
+              Contact Us
               </Button>
             </div>
           </div>
@@ -62,7 +68,6 @@ export default function VolunteerCTA() {
               muted
               playsInline
               preload="metadata"
-              // poster="/poster.jpg" // optional
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}
             >
@@ -93,17 +98,18 @@ export default function VolunteerCTA() {
         {/* Mobile buttons */}
         <div className="flex gap-4 justify-center md:hidden sm:flex-row">
           <Button
-            href="/donate"
             variant="primary"
             className="text-center text-sm"
+            onClick={(e) => { e.preventDefault(); setIsModalOpen(true); }}
           >
-            Donate Now
-          </Button>
-          <Button href="/partner" variant="secondary" className="text-center text-sm capitalize">
-            partner with us
+            Join Waitlist
           </Button>
         </div>
       </div>
+      <WaitlistModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </section>
   );
 }

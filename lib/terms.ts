@@ -14,7 +14,7 @@ export const termsData: TermsSection[] = [
     title: "About ROTAGI",
     content: [
       "Reaching Out to African Girls Initiative (ROTAGI) (RC: 68666) is a registered Nigerian nonprofit organisation dedicated to equipping African girls and women with AI literacy, digital skills, life skills, and leadership confidence to lead in the digital economy.",
-      "ROTAGI delivers Programs both online and in-person (hybrid), as well as community events, mentorship, and partnerships.",
+      "ROTAGI delivers Programs both online and in person (hybrid), as well as community events, mentorship, and partnerships.",
       "ROTAGI is also registered in the United Kingdom as a Community Interest Company (ROTAGI CIC).",
     ],
   },
@@ -68,11 +68,11 @@ export const termsData: TermsSection[] = [
     ],
     list: [
       "The information you provide is accurate and complete.",
-      "Payments are processed through a secure third-party payment provider (Paystack).",
-      "Donations are voluntary and generally non-refundable unless otherwise required by law.",
+      "Payments are processed through a secure third party payment provider (Paystack).",
+      "Donations are voluntary and generally non refundable unless otherwise required by law.",
     ],
     last: [
-      "Donations are non-refundable, except where required by Nigerian law or where ROTAGI determines a genuine error has occurred. To report a donation error, email privacy@rotagif.com within 14 days.",
+      "Donations are non refundable, except where required by Nigerian law or where ROTAGI determines a genuine error has occurred. To report a donation error, email privacy@rotagif.com within 14 days.",
     ],
   },
   {
@@ -96,15 +96,15 @@ export const termsData: TermsSection[] = [
     title: "Intellectual Property",
     content: [
       "All ROTAGI content — including text, graphics, logos, images, course materials, and video — is the property of ROTAGI and protected under Nigerian and international intellectual property law.",
-      "ROTAGI content may not be copied, sold, redistributed, or used commercially without prior written permission. You may share ROTAGI content for educational or non-commercial purposes with proper attribution to ROTAGI.",
+      "ROTAGI content may not be copied, sold, redistributed, or used commercially without prior written permission. You may share ROTAGI content for educational or non commercial purposes with proper attribution to ROTAGI.",
     ],
   },
   {
     id: "external-links",
     title: "External Links",
     content: [
-      "This website may contain links to third-party websites for information purposes only. ROTAGI is not responsible for the content, accuracy, or practices of those external sites.",
-      "ROTAGI recommends that users review the terms and privacy policies of any third-party websites they visit.",
+      "This website may contain links to third party websites for information purposes only. ROTAGI is not responsible for the content, accuracy, or practices of those external sites.",
+      "ROTAGI recommends that users review the terms and privacy policies of any third party websites they visit.",
     ],
   },
   {
@@ -148,7 +148,7 @@ export const termsData: TermsSection[] = [
       generalEnquiries: "info@rotagif.com",
       safeguarding: "privacy@rotagif.com",
       partnerships: "partnerships@rotagif.com",
-      phone: "+234 000 0000 000",
+      phone: "+234 323 686 60",
     },
   },
 ];

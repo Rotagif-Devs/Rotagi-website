@@ -54,8 +54,8 @@ export default function WaitlistModal({ isOpen, onClose, programName }: Waitlist
     >
       <div className="flex flex-col gap-6">
         <div className="space-y-2">
-          <p className="text-gray-600">
-            Be the first to know when {programName ? <span className="font-bold text-secondary">{programName}</span> : "our programs"} launch. 
+          <p className="text-gray-900">
+            Be the first to know when {programName ? <span className="font-bold text-secondary">{programName}</span> : "our programs"} launches. 
             Sign up with your email below.
           </p>
         </div>
@@ -69,7 +69,7 @@ export default function WaitlistModal({ isOpen, onClose, programName }: Waitlist
               onChange={(e) => setEmail(e.target.value)}
               disabled={status === "loading" || status === "success"}
               required
-              className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all disabled:opacity-70"
+              className="w-full px-6 py-4 bg-gray-50 border border-secondary rounded-2xl focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all disabled:opacity-70"
             />
           </div>
 

@@ -149,7 +149,7 @@ export const programs: Program[] = [
     level: "Advanced",
     headline: "From Skills to Independence",
     tagline:
-      "Advancing AI learning, digital skills, and life skills for young African women ready to lead in technology.",
+      "Advancing Artificial Intelligence learning, digital skills, and life skills for young African women ready to lead in technology.",
     description:
       "SHE Blaze prepares young women for technology and artificial intelligence careers through advanced training in artificial intelligence, digital, and life skills. Participants build job ready solutions, explore income pathways, and develop leadership skills for success in the AI and tech sector.",
     duration: "Self-paced",
@@ -187,7 +187,7 @@ export const programs: Program[] = [
     benefits: {
       title: "What You will Get",
       items: [
-        "Professional certificate recognized by tech companies",
+        "Professional certificate recognised by tech companies",
         "Industry standard portfolio with 5+ advanced projects",
         "Letter of recommendation for university applications",
         "Access to scholarship opportunities",

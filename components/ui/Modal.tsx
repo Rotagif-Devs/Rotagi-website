@@ -39,7 +39,7 @@ export default function Modal({
         onClick={onClose}
       />
       
-      <div className={`relative bg-white w-full ${maxWidth} max-h-[90vh] rounded-[32px] shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200`}>
+      <div className={`relative bg-white w-full ${maxWidth} max-h-[90vh] rounded-lg shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200`}>
         <div className="flex items-center justify-between p-6 md:p-8 border-b border-gray-100">
           <h3 className="text-2xl font-cal-sans font-medium text-gray-900">{title}</h3>
           <button 
@@ -58,7 +58,7 @@ export default function Modal({
           <div className="p-6 md:p-8 border-t border-gray-100 flex justify-end">
             <button 
               onClick={onClose}
-              className="px-8 py-3 bg-[#e61e8a] text-white font-semibold rounded-full hover:opacity-95 transition-all shadow-lg shadow-pink-100"
+              className="px-8 py-3 bg-[#e61e8a] text-white font-semibold rounded-lg hover:opacity-95 transition-all shadow-sm shadow-pink-100"
             >
               Close
             </button>

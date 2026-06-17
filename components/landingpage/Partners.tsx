@@ -20,6 +20,8 @@ const partnerLogos = [
   { name: "Slack", url: "/slack.png" },
   { name: "Infinityfield", url: "/Infinityfield.png" },
   { name: "monday.com", url: "/monday.png" },
+  { name: "little", url: "/little.jpg" },
+
 ];
 
 export default function Partners() {

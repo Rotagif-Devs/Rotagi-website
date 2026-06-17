@@ -49,7 +49,7 @@ export default function HistorySection() {
             <p className="my-8">
              In 2021, ROTAGI hosted the first SHE Empower Conference in Abuja, bringing together 30 young African girls and women for a powerful day of learning, connection, and inspiration. </p>
             <p className="my-8">
-From inspiring talks to hands-on learning and unforgettable moments, our first conference showcased what happens when girls are given the tools, confidence, and community to thrive. In a room of 30 young African women in Abuja, Nigeria, something changed  and the ROTAGI movement took its first bold step forward.
+From inspiring talks to hands on learning and unforgettable moments, our first conference showcased what happens when girls are given the tools, confidence, and community to thrive. In a room of 30 young African women in Abuja, Nigeria, something changed  and the ROTAGI movement took its first bold step forward.
 </p>
             <p className="my-8">
 We have seen the impact these moments create  and we are only just getting started.</p>

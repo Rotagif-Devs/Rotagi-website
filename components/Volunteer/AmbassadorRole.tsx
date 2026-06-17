@@ -4,10 +4,10 @@ const AmbassadorRoles = () => {
   return (
     <section className=" px-6 pb-10">
       <div className="max-w-7xl mx-auto">
-        <p className="text-[#D62D88] text-sm font-medium mb-3 text-center justify-center">
+        <p className="text-[#D62D88] font-medium mb-3 text-center justify-center">
        Join the ROTAGI Ambassador Program
         </p>
-        <h3 className="text-center text-2xl md:text-3xl font-cal-sans font-bold uppercase text-gray-950 mb-12">
+        <h3 className="text-center text-3xl md:text-5xl font-cal-sans uppercase text-gray-950 mb-12">
           How You Can Contribute
         </h3>
 
@@ -18,17 +18,17 @@ const AmbassadorRoles = () => {
               className="overflow-hidden rounded-2xl bg-white"
             >
               <div className="bg-[#D62D88] px-6 py-4">
-                <h3 className="text-white font-medium !text-2xl">
+                <h3 className="text-white text-xl">
                   {role.title}
                 </h3>
               </div>
 
-              <div className="p-6 min-h-[180px] flex flex-col">
+              <div className="p-6 py-4 min-h-[160px] flex flex-col">
                 <p className="text-gray-600 leading-relaxed text-base">
                   {role.description}
                 </p>
 
-                <span className="mt-auto pt-4 text-[#D62D88] italic text-sm">
+                <span className="mt-auto pt-2 text-[#D62D88] italic">
                   {role.tag}
                 </span>
               </div>

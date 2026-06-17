@@ -2,11 +2,11 @@ import Image from "next/image";
 
 const DonateImpact = () => {
   return (
-    <section className="bg-[#F9E6EE] py-12 md:py-20 lg:py-24">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-center">
+    <section className="bg-[#F9E6EE] py-4 md:py-20 lg:py-24">
+      <div className="max-w-11/12 mx-auto px-6 md:px-6 lg:px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:gap-24">
         
         {/* Left: Text Content */}
-        <div className="flex flex-col justify-center order-2 md:order-1">
+        <div className="flex flex-col justify-center order-1 md:order-2">
           <h2
             className="font-cal-sans  text-3xl sm:text-4xl lg:text-5xl text-[#1A1A1A] leading-[1.15] uppercase tracking-tight"
             style={{ fontFamily: "var(--font-cal-sans)" }}
@@ -30,7 +30,7 @@ const DonateImpact = () => {
         </div>
 
         {/* Right: Image Wrapper */}
-        <div className="order-1 md:order-2 w-full aspect-[4/3] md:aspect-square relative rounded-[2rem] md:rounded-[3rem] overflow-hidden">
+        <div className="order-2 md:order-1 w-full aspect-[4/3] md:aspect-square relative rounded-[2rem] md:rounded-[3rem] overflow-hidden">
           <Image
             src="/successful-woman.png"
             alt="Young women learning"

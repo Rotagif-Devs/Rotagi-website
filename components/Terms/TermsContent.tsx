@@ -57,7 +57,7 @@ export default function TermsContent() {
   }, [sectionIds]);
 
   return (
-    <section className="w-full bg-white">
+    <section className="w-full">
       <div className="mx-auto max-w-7xl px-4 py-10 md:px-8">
 
         {/* Mobile Contents Toggle */}
@@ -142,7 +142,7 @@ export default function TermsContent() {
                   ref={registerSection(section.id)}
                   className="scroll-mt-4"
                 >
-                  <h2 className="mb-4 text-base md:text-lg font-bold uppercase tracking-wide text-gray-950 font-cal-sans">
+                  <h2 className="mb-4 text-base md:text-lg uppercase tracking-wide text-gray-950 font-cal-sans">
                     {section.title}
                   </h2>
 

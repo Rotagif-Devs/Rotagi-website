@@ -2,6 +2,7 @@
 
 import React from "react";
 import ProgramsCTA from "@/components/programs/ProgramsCTA";
+import PartnerCTA from "./PartnerCTA";
 
 const partnershipOptions = [
   {
@@ -78,17 +79,17 @@ const Collaboration = () => {
     <>
       {/* Network of Collaboration Section */}
       <section className="py-20 px-6 bg-white text-center">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-[40px] font-bold font-cal-sans tracking-tight text-gray-950 mb-6 max-w-4xl mx-auto leading-tight uppercase">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-cal-sans tracking-tight text-gray-950 mb-6 max-w-4xl mx-auto leading-tight uppercase">
             We Are Building a Powerful Network of Collaboration
           </h2>
-          <p className="text-gray-500 max-w-2xl mx-auto mb-16 text-sm md:text-base font-normal leading-relaxed">
+          <p className="text-gray-800 max-w-3xl mx-auto mb-16 font-normal leading-relaxed">
             ROTAGI works with a wide range of organisations, institutions, and individuals who share our commitment to digital inclusion and gender equality in technology.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8 text-left max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 text-left max-w-full mx-auto">
             {/* Collaborators Card */}
-            <div className="p-8 md:p-10 border border-gray-100/80 rounded-[24px] shadow-xl shadow-gray-100/60 bg-white">
+            <div className="p-8 md:p-10 border border-gray-100/80 rounded-[24px] shadow-md shadow-gray-100/60 bg-white">
               <h3 className="text-lg md:text-xl  text-gray-950 mb-6 tracking-tight">
                 We collaborate with:
               </h3>
@@ -121,16 +122,16 @@ const Collaboration = () => {
 
       {/* Ways We Can Work Together */}
       <section className="py-20 px-6 bg-white border-t border-gray-50">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold font-cal-sans uppercase text-gray-950 text-center mb-12">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-cal-sans uppercase text-gray-950 text-center mb-12">
             Ways We Can Work Together
           </h2>
 
           <div className="space-y-4">
             {partnershipOptions.map((item, idx) => (
-              <div key={idx} className="rounded-xl overflow-hidden border border-pink-100 shadow-sm">
+              <div key={idx} className="rounded-xl overflow-hidden border border-gray-50">
                 {/* Pink header bar */}
-                <div className="bg-[#D81B7E] text-white px-6 py-4 font-bold text-sm md:text-base font-cal-sans uppercase">
+                <div className="bg-[#D81B7E] text-white px-6 py-4  text-lg md:text-xl  font-cal-sans">
                   {item.title}
                 </div>
                 {/* Body */}
@@ -159,7 +160,7 @@ const Collaboration = () => {
       </section>
 
       {/* Reuse the existing CTA with video */}
-      <ProgramsCTA />
+      <PartnerCTA />
     </>
   );
 };

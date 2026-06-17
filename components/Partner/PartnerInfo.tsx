@@ -5,15 +5,15 @@ import Image from "next/image";
 const PartnerInfo = () => {
   return (
     <section className="bg-[#FCE7F1] py-16 md:py-24 px-6 md:px-12 overflow-hidden">
-      <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
+      <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
         
 
-        <h2 className="text-3xl md:text-4xl lg:text-[42px] font-bold text-black mb-6 font-cal-sans uppercase tracking-tight leading-tight">
+        <h2 className="text-3xl md:text-6xl text-black mb-6 font-cal-sans uppercase tracking-tight leading-tight">
           Why Partner with ROTAGI?
         </h2>
         
        
-        <p className="text-gray-800 font-dm-sans leading-relaxed text-sm md:text-base max-w-2xl mx-auto mb-16 md:mb-24">
+        <p className="text-gray-800 font-dm-sans leading-relaxed max-w-2xl mx-auto mb-16 md:mb-24">
           ROTAGI is on a mission to ensure that African girls and young women are not left 
           behind as technology and AI reshape the global economy. A partnership with ROTAGI 
           means investing directly in that mission — and in the next generation of African women 

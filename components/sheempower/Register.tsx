@@ -44,7 +44,7 @@ export default function RegisterInterestSection() {
       <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-2 lg:items-center">
         {/* LEFT */}
         <div>
-          <p className="mb-4 font-semibold tracking-wider uppercase text-[#D62D88]">
+          <p className="mb-4 font-semibold tracking-wider text-[#D62D88]">
 Waitlist Form          </p>
 
           <h2 className="uppercase leading-[1.1] text-black text-3xl md:text-4xl">
