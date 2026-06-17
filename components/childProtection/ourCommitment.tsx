@@ -20,7 +20,7 @@ const SafeguardingPolicy = () => {
               ROTAGI is committed to protecting the safety, dignity, and wellbeing of every child in our community.
             </p>
             <p>
-              We work with African girls from the age of 10. Every child who participates in our programmes online or in person has the right to be safe, respected, and free from harm, abuse, and exploitation.
+              We work with African girls from the age of 10. Every child who participates in our Programs online or in person has the right to be safe, respected, and free from harm, abuse, and exploitation.
             </p>
             <p>
               This policy follows a "do no harm" approach and is aligned with:
@@ -42,7 +42,7 @@ const SafeguardingPolicy = () => {
           <div className="space-y-4 text-gray-700 leading-relaxed">
             <p>This policy applies to everyone involved with ROTAGI:</p>
             <ul className="list-disc ml-6 space-y-2">
-              <li>Participants across all programmes</li>
+              <li>Participants across all Programs</li>
               <li>Staff and volunteers</li>
               <li>Mentors and facilitators</li>
               <li>Board of Trustees</li>
@@ -173,9 +173,9 @@ const SafeguardingPolicy = () => {
         </ul>
       </div>
 
-      {/* Card 2: Safe Programme Delivery - 252px */}
+      {/* Card 2: Safe Program Delivery - 252px */}
       <div className="bg-white lg:mb-5 p-8 rounded-[24px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] h-[220px] flex flex-col justify-start">
-        <h3 className="text-base font-bold text-gray-900 mb-4">Safe Programme Delivery</h3>
+        <h3 className="text-base font-bold text-gray-900 mb-4">Safe Program Delivery</h3>
         <ul className="space-y-3 text-xs text-slate-500 font-normal tracking-wide">
           <li className="flex items-center gap-3">
             <span className="shrink-0 w-5 h-5 rounded-full bg-[#fbcfe8] text-[#db2777] font-semibold text-[11px] flex items-center justify-center">
@@ -347,7 +347,7 @@ const SafeguardingPolicy = () => {
             <ul className="list-disc ml-6 space-y-2">
               <li>Changes to Nigerian child protection law</li>
               <li>A safeguarding incident</li>
-              <li>Changes to ROTAGI's programmes or platforms</li>
+              <li>Changes to ROTAGI's Programs or platforms</li>
             </ul>
             <p className="pt-6 text-sm  text-gray-600">
               This version is effective from May 2026 and will be reviewed by May 2027.

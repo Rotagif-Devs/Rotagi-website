@@ -18,7 +18,7 @@ const Hero = () => {
             CHILD PROTECTION POLICY
           </h1>
           <p className="text-pink-200 font-light text-sm">
-            Safeguarding African girls and young women across all ROTAGI programmes and platforms
+            Safeguarding African girls and young women across all ROTAGI Programs and platforms
           </p>
        
         </div>

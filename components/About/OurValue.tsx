@@ -6,7 +6,7 @@ import Image from 'next/image';
 const mergData = [
   {
     title: 'Measurable Social Impact',
-    description: 'Delivering programmes with measurable outcomes across education, employment, entrepreneurship, and leadership for our graduates.',
+    description: 'Delivering Programs with measurable outcomes across education, employment, entrepreneurship, and leadership for our graduates.',
     imageSrc: '/Measurable.png',        // Desktop image
     mobileImageSrc: '/Measurable.png', // Your smaller mobile image asset
     altText: 'Letter M graphic',
@@ -20,7 +20,7 @@ const mergData = [
   },
   {
     title: 'Responsible Innovation',
-    description: 'Equipping girls with practical AI skills while promoting safe, responsible technology use.',
+    description: 'Equipping African girls with practical AI skills while promoting safe, responsible technology use.',
     imageSrc: '/Responsible.png',
     mobileImageSrc: '/Responsible.png',
     altText: 'Letter R graphic',
@@ -65,7 +65,7 @@ const CoreValues = () => {
               </div>
               
               <div className="p-6 flex flex-col justify-center flex-1">
-                <h3 className="text-[20px] font-bold text-black mb-1.5">
+                <h3 className="text-[20px] text-black mb-1.5">
                   {item.title}
                 </h3>
                 <p className="text-[14px] text-[#555555] leading-relaxed">

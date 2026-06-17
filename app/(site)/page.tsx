@@ -31,12 +31,12 @@ export default function Home() {
 
         <Impact />
 
-        <div className="w-full h-[300px] sm:h-[400px] md:h-[500px] relative">
+        <div className="w-full h-[300px] sm:h-[400px] md:h-[650px] relative">
           <Image
-            src="/Rectangle 41963.png"
+            src="/update.jpg"
             alt="Rotagif Impact"
             fill
-            className="object-cover"
+            className=""
           />
         </div>
 

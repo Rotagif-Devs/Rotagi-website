@@ -22,7 +22,7 @@ export default function ProgramCard({ program }: Props) {
 
         {/* Level Badge */}
         <div className="absolute left-4 top-5">
-          <span className="rounded-full bg-[#D8CBD3] px-5 py-2 text-sm font-medium text-black">
+          <span className="rounded-full bg-white/50 px-5 py-2 text-sm font-bold text-black">
             {program.level}
           </span>
         </div>

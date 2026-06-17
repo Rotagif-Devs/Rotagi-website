@@ -10,7 +10,7 @@ const faqs = [
   {
     question: "What is ROTAGI?",
     answer:
-      "ROTAGI Reaching Out to African Girls Initiative is a registered Nigerian social impact organisation dedicated to empowering African girls and young women aged 10 to 40. We deliver free, structured programmes in Artificial Intelligence, digital skills, and life skills to help them participate and lead in the digital economy.",
+      "ROTAGI Reaching Out to African Girls Initiative is a registered Nigerian social impact organisation dedicated to empowering African girls and young women aged 10 to 40. We deliver free, structured Programs in Artificial Intelligence, digital skills, and life skills to help them participate and lead in the digital economy.",
   },
   {
     question: "Where is ROTAGI based?",
@@ -18,7 +18,7 @@ const faqs = [
       "ROTAGI is based in Abuja, Nigeria, but our impact reaches across various communities in Africa through our programs and digital initiatives.",
   },
   {
-    question: "Who can join ROTAGI programmes?",
+    question: "Who can join ROTAGI Programs?",
     answer:
       "Our programs are designed for African girls and women aged 10 to 40, with age-appropriate learning pathways for different stages of their journey.",
   },
@@ -53,7 +53,7 @@ const faqs = [
       "Donations go directly towards providing free training materials, venue costs, internet access, and supporting the logistics of our empowerment programs.",
   },
   {
-    question: "Can I sponsor a specific programme or event?",
+    question: "Can I sponsor a specific Program or event?",
     answer:
       "Yes, we welcome corporate and individual sponsorships for specific programs or events. Please reach out to our partnership team for more details.",
   },

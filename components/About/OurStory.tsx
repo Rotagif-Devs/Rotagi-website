@@ -12,13 +12,13 @@ const OurStory = () => {
     {
       titleTop: "The Growth",
       titleMid: "Expanding Our Reach",
-      body: "As the movement grew, we have reached 1,000 girls and young women, working with organisations across communities to deliver transformative programmes focused on confidence, life skills, and personal development.",
+      body: "As the movement grew, we have reached 1,000 girls and young women, working with organisations across communities to deliver transformative Programs focused on confidence, life skills, and personal development.",
       Icon: "/growth.png",
     },
     {
       titleTop: "The Evolution",
       titleMid: "ROTAGI",
-      body: "In 2025, ROTAGI evolved to respond to the growing realities of the digital age. We expanded our programmes to include Artificial Intelligence education, digital skills, and essential life skills, equipping African girls and young women not just to succeed, but to lead.",
+      body: "In 2025, ROTAGI evolved to respond to the growing realities of the digital age. We expanded our Programs to include Artificial Intelligence education, digital skills, and life skills, equipping African girls and young women not just to succeed, but to lead.",
       Icon: "/bulb.png",
     },
   ];

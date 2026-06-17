@@ -39,7 +39,7 @@ export const programs: Program[] = [
     level: "Beginner",
     ageRange: "Ages 10-12",
     tagline:
-      " Building foundational AI awareness, digital literacy, and life skills for young girls through interactive, hands on projects. ",
+      "Building foundational AI awareness, digital literacy, and life skills for young African girls through interactive, hands on projects.",
     headline: "Where Curiosity Begins",
     description:
       "SHE Ignite introduces young African girls to the exciting world of AI, digital, and life skills through our courses. Participants discover how AI works in everyday life and develop digital confidence throughout their educational journey.",
@@ -81,7 +81,7 @@ export const programs: Program[] = [
         "Certificate of completion",
         "Digital toolkit with learning resources",
         "Access to She Ignite community",
-        "Pathway to She Blossom programme",
+        "Pathway to She Blossom Program",
         "Mentorship from AI tech role models",
       ],
     },
@@ -93,7 +93,7 @@ export const programs: Program[] = [
     ageRange: "Ages 13-15",
     level: "Intermediate",
     tagline:
-      "Developing digital, AI, and life skills through critical thinking, responsible technology use, and problem solving.",
+      "Developing digital skills, AI understanding, and life skills through critical thinking, responsible technology use, and problem solving.",
     headline: "Growing into Responsibility",
     description:
       "SHE Blossom builds on foundational knowledge to help teenage girls grow through practical artificial intelligence, digital, and life skills courses. Through hands on projects, participants explore responsible technology use, design digital solutions, and develop the confidence to lead.",
@@ -136,7 +136,7 @@ export const programs: Program[] = [
         "AI development toolkit and resources",
         "Personal mentorship from and ROTAGI AI and Tech community",
 
-        "Pathway to the Blaze advanced programme",
+        "Pathway to the Blaze advanced Program",
         "Access to alumni network and events",
       ],
     },
@@ -149,7 +149,7 @@ export const programs: Program[] = [
     level: "Advanced",
     headline: "From Skills to Independence",
     tagline:
-      "Advanced artificial intelligence learning, digital skills, and life skills for young women ready to lead in technology.",
+      "Advancing AI learning, digital skills, and life skills for young African women ready to lead in technology.",
     description:
       "SHE Blaze prepares young women for technology and artificial intelligence careers through advanced training in artificial intelligence, digital, and life skills. Participants build job ready solutions, explore income pathways, and develop leadership skills for success in the AI and tech sector.",
     duration: "Self-paced",
@@ -204,7 +204,7 @@ export const programs: Program[] = [
     level: "Professional",
     headline: "AI & Tech Careers Empowerment",
     tagline:
-      "A professional programme supporting women in artificial intelligence, digital skills, freelancing, and entrepreneurship careers.",
+      "A professional program supporting women in artificial intelligence, digital skills, freelancing, and entrepreneurship.",
     description:
       "SHE Ascend supports african women transitioning into artificial intelligence and technology careers through AI, digital, and life skills training. Through mentorship and industry connections, participants gain skills to succeed in the rapidly evolving tech landscape and build a professional network.",
     duration: "Self-paced",

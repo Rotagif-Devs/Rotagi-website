@@ -7,7 +7,7 @@ const partnershipOptions = [
   {
     title: "Strategic Sponsorship",
     description:
-      "Support our programmes through financial contributions and receive meaningful recognition across our platforms.",
+      "Support our Programs through financial contributions and receive meaningful recognition across our platforms.",
     bullets: [
       "Brand visibility at the SHE Empower Conference and ROTAGI events",
       "Recognition in our annual impact reports",
@@ -17,7 +17,7 @@ const partnershipOptions = [
   {
     title: "Technology Partnerships",
     description:
-      "Provide technology resources, tools, and platforms that enhance our programme delivery and participant experience.",
+      "Provide technology resources, tools, and platforms that enhance our Program delivery and participant experience.",
     bullets: [
       "Learning platform access and integrations",
       "Hardware, equipment, and device donations",
@@ -30,12 +30,12 @@ const partnershipOptions = [
       "Connect your organisation with our trained, motivated graduates for internships, employment, and career development.",
     bullets: [
       "Early access to talented, trained candidates",
-      "Custom training programmes aligned to your hiring needs",
+      "Custom training Programs aligned to your hiring needs",
       "Participation in ROTAGI recruitment and careers events",
     ],
   },
   {
-    title: "Programme Co-Development",
+    title: "Program Co-Development",
     description:
       "Work with ROTAGI to design and deliver training content, workshops, or bootcamps that reflect your industry's needs and our community's goals.",
     bullets: [],

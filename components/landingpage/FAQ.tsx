@@ -13,12 +13,12 @@ const faqs = [
   {
     question: "Where is ROTAGI based?",
     answer:
-      "ROTAGI is headquartered in Abuja, Nigeria. Our programmes are delivered both and online and on site across Africa",
+      "ROTAGI is headquartered in Abuja, Nigeria. Our Programs are delivered both and online and on site across Africa",
   },
   {
     question: "Does my daughter need my permission to join?",
     answer:
-      "Yes. Participants under 18 require written parental or guardian consent before joining any ROTAGI programme.",
+      "Yes. Participants under 18 require written parental or guardian consent before joining any ROTAGI Program.",
   },
   {
     question: "How do I volunteer with ROTAGI?",

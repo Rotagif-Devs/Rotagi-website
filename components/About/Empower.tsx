@@ -42,7 +42,7 @@ const Empower = () => {
                   transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                   className="text-white/80 max-w-4xl  font-dm-sans font-normal text-base md:text-lg leading-[160%] m-0"
                 >
-                Through age specific programmes, we equip African girls and young women with the confidence, knowledge, and leadership to shape a just and equitable digital future.
+                Through age specific Programs, we equip African girls and young women with the confidence, knowledge, and leadership to shape a just and equitable digital future.
                 </motion.p>
     
                 <motion.div
@@ -57,7 +57,7 @@ const Empower = () => {
                     
                     className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-3.5 font-semibold"
                   >
-                    Explore Our Programmes
+                    Explore Our Programs
                   </Button>
                 </motion.div>
               </div>

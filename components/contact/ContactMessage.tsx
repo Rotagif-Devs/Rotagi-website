@@ -85,7 +85,7 @@ export default function ContactMessage() {
             SEND US A MESSAGE
           </h2>
           <p className="my-4 max-w-xl text-base leading-relaxed text-slate-500 sm:text-lg sm:leading-8 lg:leading-9">
-            For enquiries, partnerships, or programme information, please complete
+            For enquiries, partnerships, or Program information, please complete
             the form and our team will respond as soon as possible.
           </p>
           <div className="mt-6 space-y-4 sm:mt-8 sm:space-y-5 lg:mt-10">

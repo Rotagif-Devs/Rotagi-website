@@ -5,7 +5,7 @@ export const termsData: TermsSection[] = [
     id: "introduction",
     title: "Introduction",
     content: [
-      "Welcome to ROTAGI. These Terms and Conditions govern your use of the ROTAGI website and all services, programmes, and resources provided through it. By using this website, you agree to these terms. If you do not agree, please do not use this website.",
+      "Welcome to ROTAGI. These Terms and Conditions govern your use of the ROTAGI website and all services, Programs, and resources provided through it. By using this website, you agree to these terms. If you do not agree, please do not use this website.",
       "ROTAGI may update these terms at any time. Updated terms will be posted on this page. Continued use of the website means you accept any changes.",
     ],
   },
@@ -14,7 +14,7 @@ export const termsData: TermsSection[] = [
     title: "About ROTAGI",
     content: [
       "Reaching Out to African Girls Initiative (ROTAGI) (RC: 68666) is a registered Nigerian nonprofit organisation dedicated to equipping African girls and women with AI literacy, digital skills, life skills, and leadership confidence to lead in the digital economy.",
-      "ROTAGI delivers programmes both online and in-person (hybrid), as well as community events, mentorship, and partnerships.",
+      "ROTAGI delivers Programs both online and in-person (hybrid), as well as community events, mentorship, and partnerships.",
       "ROTAGI is also registered in the United Kingdom as a Community Interest Company (ROTAGI CIC).",
     ],
   },
@@ -25,13 +25,13 @@ export const termsData: TermsSection[] = [
       "This website may be used by:",
     ],
     list: [
-      "African girls and young women aged 10 and above who wish to learn about or join ROTAGI programmes.",
+      "African girls and young women aged 10 and above who wish to learn about or join ROTAGI Programs.",
       "Parents and guardians acting on behalf of African girls under 18 years of age.",
       "Adults aged 18 and above seeking to join, partner with, donate to, or support ROTAGI.",
       "Organisations interested in partnering or collaborating with ROTAGI.",
     ],
     last: [
-      "African girls under the age of 18 may only participate in ROTAGI programmes and submit personal information on this website with the knowledge and consent of a parent or legal guardian. By submitting a registration on behalf of a girl under 18, the parent or guardian confirms they consent to that participation and to ROTAGI processing the girl's information as described in our Privacy Policy. ROTAGI may request verification of parental consent at any time.",
+      "African girls under the age of 18 may only participate in ROTAGI Programs and submit personal information on this website with the knowledge and consent of a parent or legal guardian. By submitting a registration on behalf of a girl under 18, the parent or guardian confirms they consent to that participation and to ROTAGI processing the girl's information as described in our Privacy Policy. ROTAGI may request verification of parental consent at any time.",
     ],
   },
   {
@@ -44,26 +44,26 @@ export const termsData: TermsSection[] = [
   },
   {
     id: "programs",
-    title: "Programme Participation",
+    title: "Program Participation",
     content: [
-      "ROTAGI offers various educational and empowerment programmes designed for African girls and women across different age groups. All programmes are currently provided free of charge.",
-      "Participation may require registration, eligibility verification, and adherence to programme guidelines. ROTAGI reserves the right to review applications and determine participation eligibility based on programme requirements.",
-      "Participation in programmes does not guarantee certification, employment, or any other specific outcome unless explicitly stated.",
+      "ROTAGI offers various educational and empowerment Programs designed for African girls and women across different age groups. All Programs are currently provided free of charge.",
+      "Participation may require registration, eligibility verification, and adherence to Program guidelines. ROTAGI reserves the right to review applications and determine participation eligibility based on Program requirements.",
+      "Participation in Programs does not guarantee certification, employment, or any other specific outcome unless explicitly stated.",
     ],
   },
   {
     id: "purpose",
-    title: "Programme Purpose",
+    title: "Program Purpose",
     content: [
-      "ROTAGI's programmes are designed solely for educational and personal development purposes.",
-      "Participants must not use ROTAGI programme content, platforms, or resources for commercial purposes without prior written permission from ROTAGI.",
+      "ROTAGI's Programs are designed solely for educational and personal development purposes.",
+      "Participants must not use ROTAGI Program content, platforms, or resources for commercial purposes without prior written permission from ROTAGI.",
     ],
   },
   {
     id: "donations",
     title: "Donations",
     content: [
-      "Donations to ROTAGI support our free programmes, community events, and organisational operations. All payments are processed securely by Paystack. ROTAGI does not store your payment card details.",
+      "Donations to ROTAGI support our free Programs, community events, and organisational operations. All payments are processed securely by Paystack. ROTAGI does not store your payment card details.",
       "By making a donation, you confirm that:",
     ],
     list: [
@@ -77,7 +77,7 @@ export const termsData: TermsSection[] = [
   },
   {
     id: "ambassadors",
-    title: "Programme Ambassadors",
+    title: "Program Ambassadors",
     content: [
       "Individuals may apply to become ROTAGI Ambassadors through the website. Applications are subject to review, and acceptance is not guaranteed.",
       "Accepted Ambassadors must uphold ROTAGI's values, Code of Conduct, and Safeguarding Policy at all times. ROTAGI reserves the right to remove any Ambassador whose conduct is inconsistent with these standards.",

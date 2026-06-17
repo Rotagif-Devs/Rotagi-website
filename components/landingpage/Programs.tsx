@@ -68,7 +68,7 @@ export default function Programs() {
                     {prog.name}
                   </h3>
                   <p className="mb-5 text-gray-600 font-dm-sans font-normal text-[15px] leading-6">
-                    {prog.description.split(".")[0]}.
+                    {prog.tagline}
                   </p>
                   <Link
                     href={`/programs/${prog.slug}`}

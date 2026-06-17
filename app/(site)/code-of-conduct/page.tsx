@@ -20,7 +20,7 @@ export default function CodeOfConduct() {
           </h1>
           <p className="text-pink-100 font-light text-sm md:text-base">
             Safe, Inclusive, and Responsible Engagement Across All ROTAGI
-            Platforms and Programmes
+            Platforms and Programs
           </p>
         </div>
       </section>
@@ -41,7 +41,7 @@ export default function CodeOfConduct() {
               <p>
                 ROTAGI is committed to creating safe, inclusive, respectful, and
                 empowering environments for African girls and young women across
-                all our programmes, platforms, and events.
+                all our Programs, platforms, and events.
               </p>
               <p>
                 This Code of Conduct sets out the standards of behaviour
@@ -75,7 +75,7 @@ export default function CodeOfConduct() {
               <p>This Code applies to:</p>
               <ul className="space-y-2 ml-4">
                 <li className="flex items-start gap-2">
-                  <span className="text-black   mt-1">-</span> All programme participants: She Ignite, She Blossom, She Blaze, She Ascend
+                  <span className="text-black   mt-1">-</span> All Program participants: She Ignite, She Blossom, She Blaze, She Ascend
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-black   mt-1">-</span> Mentors, facilitators, and instructors
@@ -519,7 +519,7 @@ export default function CodeOfConduct() {
                       Repeated or moderate
                     </td>
                     <td className="p-4">
-                      Formal warning. Temporary suspension from programmes or
+                      Formal warning. Temporary suspension from Programs or
                       platforms.
                     </td>
                   </tr>
@@ -563,7 +563,7 @@ export default function CodeOfConduct() {
             <div className="space-y-4 text-gray-700 text-sm md:text-base leading-relaxed">
               <p>
                 ROTAGI may update this Code of Conduct periodically to reflect
-                changes in our programmes, platforms, or community standards.
+                changes in our Programs, platforms, or community standards.
                 Updated versions will be published on our website at{" "}
                 <a
                   href="https://www.rotagif.com"

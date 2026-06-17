@@ -21,7 +21,7 @@ export default function PrivacyPolicy() {
          
           <div className="space-y-4 text-gray-700 leading-relaxed">
             <p>
-              This Privacy Policy applies to everyone who interacts with ROTAGI: programme participants, event attendees, newsletter subscribers, donors, mentors, partners, and website visitors.
+              This Privacy Policy applies to everyone who interacts with ROTAGI: Program participants, event attendees, newsletter subscribers, donors, mentors, partners, and website visitors.
             </p>
             <p>
               We comply with the <strong>Nigeria Data Protection Act 2023 (NDPA)</strong>, which governs how we handle personal data.
@@ -49,10 +49,10 @@ export default function PrivacyPolicy() {
               <li>Name, age or date of birth, gender</li>
               <li>Email address and phone number</li>
               <li>Location (city or country)</li>
-              <li>Age group (for programme registration)</li>
+              <li>Age group (for Program registration)</li>
               <li>Educational and professional background</li>
               <li>Name and contact details of a parent or guardian (for participants under 18)</li>
-              <li>Event and programme feedback</li>
+              <li>Event and Program feedback</li>
             </ul>
 
             <p className="text-gray-700 font-medium mb-3">Information we collect automatically:</p>
@@ -82,7 +82,7 @@ export default function PrivacyPolicy() {
               <li>Record and verify parental consent for participants under 18</li>
               <li>Measure our impact, track growth, and report anonymised data to funders</li>
               <li>Promote stories of impact from our community (with your explicit consent only)</li>
-              <li>Improve our website, platform, and programmes</li>
+              <li>Improve our website, platform, and Programs</li>
               <li>Meet our obligations under Nigerian law, including NDPA 2023</li>
             </ul>
           </div>
@@ -108,7 +108,7 @@ export default function PrivacyPolicy() {
             <ul className="list-disc ml-6 space-y-2 text-gray-700">
               <li>Stored securely with restricted access - only authorised ROTAGI staff can view it</li>
               <li>Never shared with third parties for marketing or commercial purposes</li>
-              <li>Used only for programme delivery, safeguarding, and communicating with parents or guardians</li>
+              <li>Used only for Program delivery, safeguarding, and communicating with parents or guardians</li>
               <li>Deleted in accordance with our retention policy</li>
             </ul>
           </div>
