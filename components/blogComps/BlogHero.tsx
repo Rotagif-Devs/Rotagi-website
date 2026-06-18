@@ -25,14 +25,7 @@ export default function BlogHero({ title, category }: Props) {
 
       <div className="absolute inset-0 flex flex-col justify-center items-center text-white w-full">
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center flex flex-col items-center">
-            <motion.span
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="bg-[#DB2777] text-white text-[10px] md:text-xs font-semibold px-3 py-1 rounded mb-4 uppercase tracking-wider"
-            >
-                {category}
-          </motion.span>
+           
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}

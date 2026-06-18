@@ -17,8 +17,6 @@ const VolunteerHero = () => {
         priority
         sizes="100vw"
       />
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-[#1a0a14]/65 z-0" />
 
       {/* Content bottom-aligned */}
       <div className="relative z-10 w-full px-6 sm:px-8 md:px-12 lg:px-16 pb-10 md:pb-14">
@@ -26,7 +24,7 @@ const VolunteerHero = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-white font-cal-sans font-normal uppercase text-7xl sm:text-5xl md:text-[64px] leading-[1.05] tracking-[-0.02em] mb-6 max-w-3xl"
+          className="text-white font-cal-sans font-normal uppercase text-4xl sm:text-7xl md:text-[64px] leading-[1.05] tracking-[-0.02em] mb-6 max-w-3xl"
         >
           Volunteer with ROTAGI
         </motion.h1>
