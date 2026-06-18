@@ -26,7 +26,7 @@ const VolunteerHero = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-white font-cal-sans font-normal uppercase text-4xl sm:text-5xl md:text-[64px] leading-[1.05] tracking-[-0.02em] mb-6 max-w-3xl"
+          className="text-white font-cal-sans font-normal uppercase text-7xl sm:text-5xl md:text-[64px] leading-[1.05] tracking-[-0.02em] mb-6 max-w-3xl"
         >
           Volunteer with ROTAGI
         </motion.h1>
