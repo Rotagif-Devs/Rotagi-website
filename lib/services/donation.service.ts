@@ -46,6 +46,7 @@ export async function initDonation(payload: DonationInitPayload) {
   return apiFetch<DonationInitResponse>("/donations/init", {
     method: "POST",
     body: payload,
+    credentials: "omit",
   });
 }
 

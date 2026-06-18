@@ -33,6 +33,8 @@ export async function apiFetch<T = unknown>(
     accessToken?: string;
     credentials?: RequestCredentials;
     cache?: RequestCache;
+    /** Timeout in ms. Defaults to 3000 for GET (SSR), 30000 for POST/PATCH/DELETE */
+    timeout?: number;
   },
 ): Promise<T> {
   const url = `${API_BASE_URL}${path.startsWith('/') ? '' : '/'}${path}`;
@@ -59,13 +61,32 @@ export async function apiFetch<T = unknown>(
     }
   }
 
-  const res = await fetch(url, {
-    method: options?.method || (options?.body !== undefined ? 'POST' : 'GET'),
-    headers,
-    body,
-    credentials: options?.credentials ?? 'include',
-    cache: options?.cache ?? 'no-store',
-  });
+  const method = options?.method || (options?.body !== undefined ? 'POST' : 'GET');
+  const isMutation = ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method.toUpperCase());
+  // Short timeout for background SSR fetches; long timeout for user-triggered actions
+  const timeoutMs = options?.timeout ?? (isMutation ? 30_000 : 3_000);
+
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
+  let res: Response;
+  try {
+    res = await fetch(url, {
+      method,
+      headers,
+      body,
+      credentials: options?.credentials ?? 'include',
+      cache: options?.cache ?? 'no-store',
+      signal: controller.signal,
+    });
+  } catch (error: any) {
+    if (error.name === 'AbortError') {
+      throw new Error(`Request timeout to ${path}`);
+    }
+    throw error;
+  } finally {
+    clearTimeout(timeoutId);
+  }
 
   const data = await parseJsonSafe(res);
 

@@ -25,5 +25,6 @@ export async function submitPartnershipInterest(
   return apiFetch<PartnershipInterestResponse>("/partnerships/interest", {
     method: "POST",
     body: payload,
+    credentials: "omit",
   });
 }

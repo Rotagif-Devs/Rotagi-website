@@ -13,5 +13,6 @@ export async function submitContactMessage(
   return apiFetch<ContactMessageResponse>("/contact", {
     method: "POST",
     body: payload,
+    credentials: "omit",  // public endpoint — no auth cookies needed, avoids CORS preflight hang
   });
 }

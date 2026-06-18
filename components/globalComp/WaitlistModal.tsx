@@ -55,7 +55,7 @@ export default function WaitlistModal({ isOpen, onClose, programName }: Waitlist
       <div className="flex flex-col gap-6">
         <div className="space-y-2">
           <p className="text-gray-900">
-            Be the first to know when {programName ? <span className="font-bold text-secondary">{programName}</span> : "our programs"} launches. 
+            Be the first to know when {programName ? <span className="font-bold text-secondary">{programName}</span> : "our programs"} lunches. 
             Sign up with your email below.
           </p>
         </div>

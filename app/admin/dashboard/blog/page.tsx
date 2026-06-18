@@ -93,6 +93,9 @@ export default function BlogListPage() {
                     {/* Title with Thumbnail */}
                     <td className="px-6 py-5">
                       <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100 border border-gray-200">
+                          <img src={blog.image} alt={blog.title} className="w-full h-full object-cover" />
+                        </div>
                         <span className="font-semibold text-gray-700 text-sm">{blog.title}</span>
                       </div>
                     </td>

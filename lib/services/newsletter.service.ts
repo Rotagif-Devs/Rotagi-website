@@ -10,5 +10,6 @@ export async function subscribeNewsletter(email: string): Promise<NewsletterResp
   return apiFetch<NewsletterResponse>("/newsletter/subscribe", {
     method: "POST",
     body: { email },
+    credentials: "omit",
   });
 }

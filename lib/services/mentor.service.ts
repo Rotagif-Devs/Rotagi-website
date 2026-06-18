@@ -29,5 +29,6 @@ export async function submitMentorApplication(payload: MentorApplicationPayload)
   return apiFetch<ApiResponse>("/mentors/applications", {
     method: "POST",
     body: formData,
+    credentials: "omit",
   });
 }

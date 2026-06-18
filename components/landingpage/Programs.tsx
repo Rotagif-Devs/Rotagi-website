@@ -38,7 +38,7 @@ export default function Programs() {
           </p>
         </div>
 
-        <div className="mx-auto rounded-tl-2xl rounded-bl-2xl lg:rounded-2xl bg-white p-8 md:p-8 lg:p-8 xl:p-8">
+        <div className="mx-auto rounded-tl-2xl rounded-bl-2xl lg:rounded-2xl bg-white p-8 pr-0 md:p-8 lg:p-8 xl:p-8">
           {/* Desktop grid */}
           <div className="hidden lg:grid lg:grid-cols-4 lg:gap-4">
             {programs.map((prog, i) => (
@@ -106,9 +106,9 @@ export default function Programs() {
                         height={500}
                         src={prog.image}
                         alt={prog.name}
-                        className="h-full w-full object-cover object-top"
+                        className="h-full w-full object-cover mt-4 object-top"
                       />
-                      <span className="absolute right-3 top-4 inline-flex h-8 items-center justify-center rounded-tl-2xl rounded-br-2xl rounded-tr-sm rounded-bl-sm bg-secondary/30 font-['Inter'] font-bold text-[12px] leading-[20px] tracking-normal text-black px-5 py-1">
+                      <span className="absolute right-2 top-0 inline-flex h-8 items-center justify-center rounded-tl-2xl rounded-br-2xl rounded-tr-sm rounded-bl-sm bg-secondary/30 font-['Inter'] font-bold text-[12px] leading-[20px] tracking-normal text-black px-5 py-1">
                         {prog.ageRange}
                       </span>
                     </div>

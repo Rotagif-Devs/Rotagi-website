@@ -27,7 +27,7 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="w-full mb-4 relative"
           >
-            <h1 className="text-white max-w-4xl font-cal-sans text-6xl sm:text-5xl md:text-[72px] leading-[1.05] tracking-[-0.02em] mb-0 md:mb-0 uppercase">
+            <h1 className="text-white max-w-4xl font-cal-sans text-4xl sm:text-5xl md:text-[72px] leading-[1.05] tracking-[-0.02em] mb-0 md:mb-0 uppercase">
               Empowering the Next Generation of African Girl Innovators
             </h1>
           </motion.div>

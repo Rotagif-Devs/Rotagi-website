@@ -19,14 +19,14 @@ export default async function Updates() {
     const latestBlogs = await publicService.getBlogPosts({ limit: 1 });
     latestBlog = latestBlogs?.[0] || null;
   } catch (err) {
-    console.error("Failed to fetch latest blog", err);
+    console.warn("Failed to fetch latest blog", err);
   }
 
   try {
     const latestEvents = await publicService.getEvents({ limit: 1 });
     latestEvent = latestEvents?.[0] || null;
   } catch (err) {
-    console.error("Failed to fetch latest event", err);
+    console.warn("Failed to fetch latest event", err);
   }
 
   const blogDesc =

@@ -81,13 +81,14 @@ export const adminService = {
     if (id) {
       const res = await apiFetch<ApiResponse<any>>(`/admin/blog/posts/${id}`, {
         method: "PATCH",
-        body: blog,
+        body: { ...blog, coverImageUrl: blog.image },
       });
       return normalizeBlog(res.data!);
     } else {
+      const { id, ...newBlog } = blog;
       const res = await apiFetch<ApiResponse<any>>("/admin/blog/posts", {
         method: "POST",
-        body: blog,
+        body: { ...newBlog, coverImageUrl: blog.image },
       });
       return normalizeBlog(res.data!);
     }
