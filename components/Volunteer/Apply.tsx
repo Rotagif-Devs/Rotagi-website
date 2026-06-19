@@ -72,7 +72,7 @@ export default function VolunteerForm() {
               <p className="text-sm text-gray-500 text-center">
                 {fileName
                   ? fileName
-                  : "Browse and choose the file you want to upload from your computer"}
+                  : "Browse and choose the file you want to upload from your computer."}
               </p>
 
               <div className="mt-3 bg-pink-500 text-white p-2 rounded-full">
