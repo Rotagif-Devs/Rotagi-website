@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Calendar, MapPin, Clock, ChevronLeft } from "lucide-react";
 import CTA from "@/components/globalComp/CTA";
-import Footer from "@/components/globalComp/Footer";
 import { publicService } from "@/lib/services/public.service";
 import { notFound } from "next/navigation";
 
@@ -24,32 +23,7 @@ const fallbackAgenda = [
   { time: "4:30 - 6:00 PM", title: "Networking Lunch" },
 ];
 
-const fallbackSpeakers = [
-  {
-    name: "Dr. Amina Okoye",
-    role: "AI Ethics Specialist",
-    bio: "Leading research on natural language processing for African languages with 10+ years of experience in AI ethics.",
-    image: "/speaker1.png",
-  },
-  {
-    name: "Dr. Amina Okoye",
-    role: "AI Ethics Specialist",
-    bio: "Leading research on natural language processing for African languages with 10+ years of experience in AI ethics.",
-    image: "/speaker2.png",
-  },
-  {
-    name: "Dr. Amina Okoye",
-    role: "AI Ethics Specialist",
-    bio: "Leading research on natural language processing for African languages with 10+ years of experience in AI ethics.",
-    image: "/speaker3.png",
-  },
-  {
-    name: "Dr. Amina Okoye",
-    role: "AI Ethics Specialist",
-    bio: "Leading research on natural language processing for African languages with 10+ years of experience in AI ethics.",
-    image: "/speaker4.png",
-  },
-];
+
 
 export const dynamic = "force-dynamic";
 
@@ -155,49 +129,12 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
           </div>
         </section>
 
-        {/* Featured Speakers Section */}
-        <section className="py-24 md:py-32 px-5 md:px-10 bg-[#FDF2F8]">
-          <div className="max-w-[1260px] mx-auto">
-            <h2 className="text-4xl md:text-5xl font-normal text-[#1A1A1A] mb-16 font-cal-sans">
-              Featured Speakers
-            </h2>
-            <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-              {fallbackSpeakers.map((speaker, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-[32px] overflow-hidden flex flex-col transition-all hover:shadow-xl hover:shadow-pink-200/30"
-                >
-                  <div className="relative aspect-square md:aspect-[4/3] lg:aspect-square">
-                    <Image
-                      src={speaker.image}
-                      alt={speaker.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="p-8 md:p-10">
-                    <h3 className="text-3xl font-normal text-[#1A1A1A] mb-4 font-cal-sans">
-                      {speaker.name}
-                    </h3>
-                    <p className="text-[#3D1A2A] text-lg leading-relaxed mb-8 opacity-70">
-                      {speaker.bio}
-                    </p>
-                    <div className="flex items-center gap-2 text-pink-600 font-bold text-xs uppercase tracking-widest bg-pink-50 w-fit px-4 py-2 rounded-full">
-                      <MapPin size={12} />
-                      <span>{speaker.role}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+
 
         {/* Global CTA Section */}
         <CTA />
 
-        {/* Footer */}
-        <Footer />
+
       </div>
     </div>
   );
