@@ -36,18 +36,20 @@ export default function EventForm({ initialData, onSubmit, onCancel, isLoading }
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Show local preview immediately
-    const localPreviewUrl = URL.createObjectURL(file);
-    setFormData((prev) => ({ ...prev, image: localPreviewUrl }));
+    if (!file.type.startsWith('image/')) {
+      alert("Please upload a valid image file");
+      return;
+    }
 
-    // If we have an ID, we can upload immediately
-    if (formData.id) {
-      try {
-        const updatedEvent = await adminService.uploadEventImage(formData.id, file);
-        setFormData(updatedEvent);
-      } catch (err) {
-        console.error("Upload failed", err);
-      }
+    try {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData((prev) => ({ ...prev, image: reader.result as string }));
+      };
+      reader.readAsDataURL(file);
+    } catch (err) {
+      console.error("Failed to read image", err);
+      alert("Failed to process image");
     }
   };
 
