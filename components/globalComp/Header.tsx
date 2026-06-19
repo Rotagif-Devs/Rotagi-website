@@ -23,6 +23,8 @@ export default function Header() {
   const [lastProgramSlug, setLastProgramSlug] = useState<string | null>(null);
   const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false);
 
+  const [isAdmin, setIsAdmin] = useState(false);
+
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
@@ -33,6 +35,12 @@ export default function Header() {
           ? localStorage.getItem("accessToken")
           : null;
       setIsLoggedIn(Boolean(token));
+
+      const adminUser =
+        typeof window !== "undefined"
+          ? localStorage.getItem("adminUser")
+          : null;
+      setIsAdmin(Boolean(adminUser));
 
       const slug =
         typeof window !== "undefined"
@@ -82,9 +90,11 @@ export default function Header() {
   const getStartedText = isLoggedIn ? "Dashboard" : "Join Waitlist";
 
   const getStartedHref = isLoggedIn
-    ? lastProgramSlug
-      ? `/program/${lastProgramSlug}/dashboard`
-      : "/dashboard"
+    ? isAdmin
+      ? "/admin/dashboard"
+      : lastProgramSlug
+        ? `/program/${lastProgramSlug}/dashboard`
+        : "/dashboard"
     : undefined;
 
   const handleGetStartedClick = (e: React.MouseEvent) => {
