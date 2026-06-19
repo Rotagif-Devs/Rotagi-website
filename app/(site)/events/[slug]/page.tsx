@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, Clock, ChevronLeft } from "lucide-react";
+import { Calendar, Clock, ChevronLeft, MapPin } from "lucide-react";
 import CTA from "@/components/globalComp/CTA";
 import { publicService } from "@/lib/services/public.service";
 import { notFound } from "next/navigation";
