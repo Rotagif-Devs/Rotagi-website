@@ -4,7 +4,7 @@ import { events as EventType } from "@/types/event";
 import { ApiResponse } from "./auth.service";
 
 const ensureImageUrl = (url: string | undefined): string => {
-  if (!url) return "/wh.jpg";
+  if (!url) return "";
   if (url.startsWith("http") || url.startsWith("data:")) return url;
   if (url.startsWith("/uploads/") || url.startsWith("uploads/")) {
     const cleanUrl = url.startsWith("/") ? url.slice(1) : url;

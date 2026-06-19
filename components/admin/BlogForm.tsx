@@ -56,18 +56,22 @@ export default function BlogForm({ initialData, onSubmit, onCancel, isLoading }:
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file || !formData.id) {
-       if(!formData.id) alert("Please save the blog first before uploading an image.");
-       return;
-    }
+    if (!file) return;
     
+    if (!file.type.startsWith('image/')) {
+      alert("Please upload a valid image file");
+      return;
+    }
+
     try {
-      const updatedPost = await adminService.uploadBlogImage(formData.id, file);
-      setFormData(updatedPost);
-      alert("Image uploaded successfully");
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData((prev) => ({ ...prev, image: reader.result as string }));
+      };
+      reader.readAsDataURL(file);
     } catch (err) {
-      console.error("Upload failed", err);
-      alert("Failed to upload image");
+      console.error("Failed to read image", err);
+      alert("Failed to process image");
     }
   };
 
