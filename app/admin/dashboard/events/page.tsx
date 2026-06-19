@@ -41,7 +41,7 @@ export default function EventListPage() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
           <h1 className="text-4xl font-black text-black font-outfit tracking-tight">Manage Events</h1>
-          <p className="text-gray-500 mt-2 font-medium">Schedule and manage your organization's events.</p>
+          <p className="text-gray-500 mt-2 font-medium">Schedule and manage your organization's events</p>
         </div>
         <Link href="/admin/dashboard/events/new">
           <Button variant="primary" className="bg-secondary text-white hover:bg-secondary/90 px-8 py-7 rounded-2xl font-bold shadow-2xl shadow-secondary/30 transition-all active:scale-95">
