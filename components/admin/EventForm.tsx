@@ -132,12 +132,11 @@ export default function EventForm({ initialData, onSubmit, onCancel, isLoading }
             <div className="relative">
               <Calendar size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
               <input
-                type="text"
+                type="date"
                 name="date"
                 value={formData.date}
                 onChange={handleChange}
-                placeholder="March 15, 2026"
-                className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black/5 focus:border-black transition-all"
+                className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black/5 focus:border-black transition-all appearance-none"
                 required
               />
             </div>
@@ -148,12 +147,11 @@ export default function EventForm({ initialData, onSubmit, onCancel, isLoading }
             <div className="relative">
               <Clock size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
               <input
-                type="text"
+                type="time"
                 name="time"
                 value={formData.time}
                 onChange={handleChange}
-                placeholder="9:00 AM - 5:00 PM"
-                className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black/5 focus:border-black transition-all"
+                className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black/5 focus:border-black transition-all appearance-none"
                 required
               />
             </div>
