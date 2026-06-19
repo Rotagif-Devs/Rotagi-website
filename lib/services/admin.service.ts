@@ -77,18 +77,27 @@ export const adminService = {
   },
 
   saveBlog: async (blog: Partial<BlogPost> & { id?: string }): Promise<BlogPost> => {
-    const id = blog.id;
+    const { id, image, ...rest } = blog;
+    const payload: any = { ...rest };
+
+    if (image && image.startsWith("http")) {
+      payload.coverImageUrl = image;
+    }
+    
+    if (payload.title) payload.title = payload.title.trim();
+    if (payload.slug) payload.slug = payload.slug.trim();
+    if (payload.description) payload.excerpt = payload.description.trim();
+
     if (id) {
       const res = await apiFetch<ApiResponse<any>>(`/admin/blog/posts/${id}`, {
         method: "PATCH",
-        body: { ...blog, coverImageUrl: blog.image },
+        body: payload,
       });
       return normalizeBlog(res.data!);
     } else {
-      const { id, ...newBlog } = blog;
       const res = await apiFetch<ApiResponse<any>>("/admin/blog/posts", {
         method: "POST",
-        body: { ...newBlog, coverImageUrl: blog.image },
+        body: payload,
       });
       return normalizeBlog(res.data!);
     }

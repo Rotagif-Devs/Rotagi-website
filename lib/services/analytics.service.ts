@@ -31,6 +31,7 @@ export async function trackPageView(payload: PageViewPayload): Promise<void> {
         ...payload,
         visitorId,
       },
+      credentials: "omit",
     });
   } catch (error) {
     console.error("Failed to track page view:", error);

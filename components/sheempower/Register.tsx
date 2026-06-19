@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 type FormValues = {
@@ -35,8 +36,42 @@ export default function RegisterInterestSection() {
     formState: { errors },
   } = useForm<FormValues>();
 
-  const onSubmit = (data: FormValues) => {
-    console.log(data);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const onSubmit = async (data: FormValues) => {
+    setStatus("submitting");
+    setErrorMessage("");
+
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || process.env.NEXT_PUBLIC_API_URL || ""}/waitlist`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: data.firstName.trim(),
+          lastName: data.lastName.trim(),
+          email: data.email.trim(),
+          country: data.country,
+          role: "Attendee" // Hardcoded role since the form doesn't have an "I am..." role selector in this specific design yet
+        }),
+      });
+
+      const result = await res.json();
+
+      if (res.ok) {
+        setStatus("success");
+      } else {
+        setStatus("error");
+        setErrorMessage(
+          result.errors?.[0]?.message || 
+          result.message || 
+          "Something went wrong. Please try again."
+        );
+      }
+    } catch (err) {
+      setStatus("error");
+      setErrorMessage("Network error. Please check your connection and try again.");
+    }
   };
 
   return (
@@ -191,12 +226,30 @@ Waitlist Form          </p>
               )}
             </div>
 
+            {/* STATUS MESSAGES */}
+            {status === "success" && (
+              <div className="rounded-md bg-green-50 p-4 border border-green-100">
+                <p className="text-sm text-green-800 font-medium text-center">
+                  You're on the waitlist! We'll notify you soon.
+                </p>
+              </div>
+            )}
+
+            {status === "error" && (
+              <div className="rounded-md bg-red-50 p-4 border border-red-100">
+                <p className="text-sm text-red-800 font-medium text-center">
+                  {errorMessage}
+                </p>
+              </div>
+            )}
+
             {/* BUTTON */}
             <button
               type="submit"
-              className="h-12 w-full rounded-md bg-[#D62D88]  tracking-wide cursor-pointer text-white transition hover:opacity-90 shadow-sm"
+              disabled={status === "submitting" || status === "success"}
+              className="h-12 w-full rounded-md bg-[#D62D88] tracking-wide cursor-pointer text-white transition hover:opacity-90 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Register Interest
+              {status === "submitting" ? "Registering..." : "Register Interest"}
             </button>
           </form>
         </div>

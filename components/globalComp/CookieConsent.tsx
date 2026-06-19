@@ -39,7 +39,7 @@ const CookieConsent = () => {
           animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 50, x: -20 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="fixed bottom-6 left-6 z-[9999] w-full max-w-[340px] md:max-w-[400px]"
+          className="fixed bottom-4 left-4 right-4 z-[9999] md:bottom-6 md:left-6 md:right-auto md:w-full md:max-w-[400px]"
         >
           <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-2xl rounded-xl p-6 relative overflow-hidden group">
             {/* Background Decorative Gradient */}

@@ -219,7 +219,7 @@ export default function Footer() {
                   target="_blank"
                   className="hover:text-white transition-colors"
                 >
-                  Phone (WhatsApp) +234 803 236 8560
+                  +234 803 236 8560
                 </Link>
               </div>
             </div>
