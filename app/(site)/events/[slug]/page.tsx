@@ -2,26 +2,12 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, MapPin, Clock, ChevronLeft } from "lucide-react";
+import { Calendar, Clock, ChevronLeft } from "lucide-react";
 import CTA from "@/components/globalComp/CTA";
 import { publicService } from "@/lib/services/public.service";
 import { notFound } from "next/navigation";
 
-const fallbackAgenda = [
-  { time: "9:00 - 10:00 AM", title: "Registration & Welcome Coffee" },
-  { time: "10:00 - 11:30 AM", title: "Interactive Workshop: AI for Social Impact" },
-  { time: "11:30 - 1:00 PM", title: "Keynote: The Future of AI in Africa" },
-  { time: "1:00 - 2:00 PM", title: "Lightning Talks and Demos" },
-  {
-    time: "2:00 - 3:30 PM",
-    title: "Panel Discussion: Women Leading AI Innovation",
-  },
-  {
-    time: "3:30 - 4:30 PM",
-    title: "Closing Remarks and Community Celebration",
-  },
-  { time: "4:30 - 6:00 PM", title: "Networking Lunch" },
-];
+
 
 
 
@@ -105,29 +91,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
           </div>
         </section>
 
-        {/* Agenda Section */}
-        <section className="py-24 md:py-32 px-5 md:px-10 bg-white">
-          <div className="max-w-[1260px] mx-auto">
-            <h2 className="text-4xl md:text-5xl font-normal text-[#1A1A1A] mb-16 font-cal-sans">
-              Agenda
-            </h2>
-            <div className="grid md:grid-cols-2 gap-x-8 gap-y-6">
-              {fallbackAgenda.map((item, index) => (
-                <div
-                  key={index}
-                  className="bg-[#FDF2F8] p-8 md:p-10 rounded-[32px] flex items-center justify-between transition-all hover:shadow-lg hover:shadow-pink-100/50"
-                >
-                  <h3 className="text-xl md:text-2xl font-normal text-[#1A1A1A] leading-tight font-cal-sans max-w-[70%]">
-                    {item.title}
-                  </h3>
-                  <div className="bg-white text-pink-600 px-6 py-2.5 rounded-full text-sm font-bold shrink-0 shadow-sm">
-                    {item.time}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+
 
 
 
