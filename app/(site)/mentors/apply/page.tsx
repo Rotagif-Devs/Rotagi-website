@@ -74,7 +74,7 @@ export default function MentorApplyPage() {
           </div>
           <h1 className="text-3xl font-cal-sans text-[#1A1A1A] mb-4">Application Submitted!</h1>
           <p className="text-gray-600 mb-10 leading-relaxed">
-            Thank you for applying to be a mentor at ROTAGIF. Our team will review your profile and get back to you shortly.
+            Thank you for applying to be a mentor at ROTAGI. Our team will review your profile and get back to you shortly.
           </p>
           <Link href="/">
             <Button className="bg-[#D62D88] hover:bg-pink-700 text-white rounded-full px-10 py-4">

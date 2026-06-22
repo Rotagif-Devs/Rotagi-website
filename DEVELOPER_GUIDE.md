@@ -1,6 +1,6 @@
-# ROTAGIF Frontend Developer Guide
+# ROTAGI Frontend Developer Guide
 
-Welcome to the ROTAGIF development team! This guide is designed to help you hit the ground running and ensure consistency across our codebase.
+Welcome to the ROTAGI development team! This guide is designed to help you hit the ground running and ensure consistency across our codebase.
 
 ## 🎨 Design System & Styling
 

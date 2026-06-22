@@ -147,7 +147,7 @@ export const termsData: TermsSection[] = [
       organisation: "Reaching Out to African Girls Initiative (ROTAGI)",
       generalEnquiries: "info@rotagif.com",
       safeguarding: "privacy@rotagif.com",
-      partnerships: "partnerships@rotagif.com",
+      partnerships: "communication@rotagif.com",
       phone: "+234 323 686 60",
     },
   },

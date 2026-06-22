@@ -73,7 +73,7 @@ export default function VolunteerForm() {
             Application Received!
           </h3>
           <p className="text-gray-500 text-base max-w-md mx-auto mb-8">
-            Thank you for applying to volunteer with ROTAGIF. Our team will review your application and be in touch within 14 days.
+            Thank you for applying to volunteer with ROTAGI. Our team will review your application and be in touch within 14 days.
           </p>
           <button
             onClick={() => setStatus("idle")}

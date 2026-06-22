@@ -37,20 +37,20 @@ const calSans = Cal_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://rotagif.org"),
-  title: "ROTAGIF Empowering African Girl Innovators",
+  title: "ROTAGI Empowering African Girl Innovators",
   description:
     "Equipping African girls and women with AI literacy, digital skills, and leadership confidence.",
   openGraph: {
-    title: "ROTAGIF Empowering African Girl Innovators",
+    title: "ROTAGI Empowering African Girl Innovators",
     description: "Equipping African girls and women with AI literacy, digital skills, and leadership confidence.",
-    url: "https://rotagif.org",
-    siteName: "ROTAGIF",
+    url: "https://rotagi.org",
+    siteName: "ROTAGI",
     images: [
       {
         url: "/hero-new.jpg",
         width: 1200,
         height: 630,
-        alt: "ROTAGIF Empowering African Girl Innovators",
+        alt: "ROTAGI Empowering African Girl Innovators",
       },
     ],
     locale: "en_US",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ROTAGIF Empowering African Girl Innovators",
+    title: "ROTAGI Empowering African Girl Innovators",
     description: "Equipping African girls and women with AI literacy, digital skills, and leadership confidence.",
     images: ["/hero-new.jpg"],
   },
