@@ -27,7 +27,7 @@ export default function PTA({ slug }: { slug?: string }) {
   const programName = getProgramName(slug);
   const Programssage = programName
     ? `${programName} course is coming soon. Sign up to be notified.`
-    : "Our courses are coming soon. Sign up to be notified.";
+    : "stay updated on new programs,event, and opportunities.";
 
   return (
     <>
