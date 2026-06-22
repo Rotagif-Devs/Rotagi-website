@@ -67,7 +67,7 @@ export default async function Updates() {
       category: "CONFERENCE",
       title: "SHE Empower 2026 Highlights",
       desc: "Recap of our annual conference featuring workshops, mentorship sessions, and inspiring talks.",
-      image: "/img-5.png",
+      image: "/sheempower.png",
       linkText: "View Event",
       href: "/sheempower",
     },
