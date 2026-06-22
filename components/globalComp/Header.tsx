@@ -7,8 +7,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import React from "react";
-import WaitlistModal from "./WaitlistModal";
-
 const navItems = [
   { label: "About Us", href: "/about" },
   { label: "Programs", href: "/programs" },
@@ -21,8 +19,6 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [lastProgramSlug, setLastProgramSlug] = useState<string | null>(null);
-  const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false);
-
   const [isAdmin, setIsAdmin] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -95,15 +91,7 @@ export default function Header() {
       : lastProgramSlug
         ? `/program/${lastProgramSlug}/dashboard`
         : "/dashboard"
-    : undefined;
-
-  const handleGetStartedClick = (e: React.MouseEvent) => {
-    if (!isLoggedIn) {
-      e.preventDefault();
-      setIsWaitlistModalOpen(true);
-      closeMenu();
-    }
-  };
+    : "https://forms.office.com/r/EEBttdeyFE?origin=lprLink";
 
   return (
     <>
@@ -148,7 +136,6 @@ export default function Header() {
               variant="secondary"
               size="md"
               href={getStartedHref}
-              onClick={handleGetStartedClick}
               className="mr-2 border-2 text-sm uppercase border-gray-300 rounded-full font-medium cursor-pointer"
             >
               {getStartedText}
@@ -202,10 +189,7 @@ export default function Header() {
               variant="secondary"
               size="sm"
               href={getStartedHref}
-              onClick={(e) => {
-                handleGetStartedClick(e);
-                closeMenu();
-              }}
+              onClick={() => closeMenu()}
               className="mr-2 border border-gray-300 uppercase text-sm"
             >
               {getStartedText}
@@ -231,11 +215,6 @@ export default function Header() {
         )}
       </header>
 
-      <WaitlistModal
-        isOpen={isWaitlistModalOpen}
-        onClose={() => setIsWaitlistModalOpen(false)}
-        programName={programName}
-      />
     </>
   );
 }

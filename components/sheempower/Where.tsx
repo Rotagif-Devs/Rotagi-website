@@ -108,7 +108,7 @@ We have seen the impact these moments create  and we are only just getting start
           className="relative overflow-hidden rounded-2xl shadow-sm"
         >
           <Image
-            src="/Video.png"
+            src="/update.jpg"
             alt="Featured Event"
             width={1400}
             height={700}

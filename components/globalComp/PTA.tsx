@@ -3,11 +3,7 @@
 import { useState } from "react";
 import Button from "../ui/Button";
 import VideoPlayer from "./Videoplayer";
-import WaitlistModal from "./WaitlistModal";
-
 export default function PTA({ slug }: { slug?: string }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   const getProgramName = (slug?: string) => {
     if (!slug) return "";
 
@@ -52,7 +48,8 @@ export default function PTA({ slug }: { slug?: string }) {
                 <Button 
                   variant="primary" 
                   className=""
-                  onClick={() => setIsModalOpen(true)}
+                  href="https://forms.office.com/r/EEBttdeyFE?origin=lprLink"
+                  target="_blank"
                 >
                   Join the Waitlist
                 </Button>
@@ -66,12 +63,6 @@ export default function PTA({ slug }: { slug?: string }) {
           </div>
         </div>
       </section>
-
-      <WaitlistModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        programName={programName}
-      />
     </>
   );
 }

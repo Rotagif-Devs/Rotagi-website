@@ -9,6 +9,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   fullWidth?: boolean;
   withArrow?: boolean;
   href?: string;
+  target?: string;
 }
 
 const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
@@ -57,6 +58,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
           href={href}
           className={combinedClassName}
           ref={ref as React.Ref<HTMLAnchorElement>}
+          target={props.target}
         >
           {children}
           {withArrow && (

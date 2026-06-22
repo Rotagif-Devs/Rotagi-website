@@ -3,11 +3,8 @@
 import { useState, useRef } from "react";
 import { Play, Pause } from "lucide-react";
 import Button from "../ui/Button";
-import WaitlistModal from "../globalComp/WaitlistModal";
-
 export default function ProgramsCTA() {
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const togglePlay = () => {
@@ -39,7 +36,8 @@ export default function ProgramsCTA() {
             <div className="hidden md:flex gap-4">
               <Button 
                 variant="primary" 
-                onClick={(e) => { e.preventDefault(); setIsModalOpen(true); }}
+                href="https://forms.office.com/r/EEBttdeyFE?origin=lprLink"
+                target="_blank"
               >
                 Join the Waitlist
               </Button>
@@ -93,16 +91,13 @@ export default function ProgramsCTA() {
           <Button
             variant="primary"
             className="text-center text-sm"
-            onClick={(e) => { e.preventDefault(); setIsModalOpen(true); }}
+            href="https://forms.office.com/r/EEBttdeyFE?origin=lprLink"
+            target="_blank"
           >
             Join Waitlist
           </Button>
         </div>
       </div>
-      <WaitlistModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
     </section>
   );
 }

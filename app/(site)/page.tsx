@@ -10,6 +10,9 @@ import Testimonials from "@/components/landingpage/Testimonials";
 import FAQ from "@/components/landingpage/FAQ";
 import CTA from "@/components/globalComp/CTA";
 
+export const dynamic = "force-dynamic";
+
+
 export default function Home() {
   return (
     <div className="min-h-screen  antialiased bg-primary overflow-hidden">
