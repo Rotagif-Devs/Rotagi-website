@@ -41,7 +41,7 @@ export default function PTA({ slug }: { slug?: string }) {
 
             <div className="flex flex-col items-start gap-6 md:max-w-[580px]">
               <p className="font-dm-sans text-darkgray text-left text-base leading-relaxed md:text-[16px] md:leading-[160%]">
-                {programName || ""} our courses are coming soon. Sign up to be notified.
+                {programName ? `${programName} course is` : "Our courses are"} coming soon. Sign up to be notified.
               </p>
 
               <div className="hidden md:flex gap-4">

@@ -64,30 +64,22 @@ export default function RegisterInterestSection() {
           </div>
         </div>
 
-        {/* RIGHT (Form via iframe + fallback) */}
-        <div className="rounded-2xl bg-[#FFF6FB] border border-gray-100 p-6 shadow-[0_4px_20px_rgba(0,0,0,0.02)] md:p-8 flex flex-col items-center">
-          <div className="w-full h-[600px] md:h-[700px] mb-4 bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
-            <iframe
-              src={formUrl}
-              width="100%"
-              height="100%"
-              style={{ border: "none", minHeight: "600px" }}
-              allowFullScreen
-              title="SHE Empower 2026 Registration Form"
-            />
-          </div>
-          
-          <div className="text-center mt-4 w-full">
-            <p className="text-sm text-[#5D677C] mb-3">
-              Having trouble viewing the form?
+        {/* RIGHT (Form Link) */}
+        <div className="rounded-2xl bg-[#FFF6FB] border border-gray-100 p-8 shadow-[0_4px_20px_rgba(0,0,0,0.02)] md:p-12 flex flex-col items-center justify-center text-center h-full min-h-[400px]">
+          <div className="max-w-md">
+            <h3 className="text-2xl md:text-3xl font-cal-sans text-gray-900 mb-4">
+              Secure Your Spot
+            </h3>
+            <p className="text-base md:text-lg text-[#5D677C] mb-8 leading-relaxed">
+              Click the button below to access the SHE Empower 2026 waitlist registration form. It only takes a few minutes to join!
             </p>
             <a
               href={formUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-8 py-3 rounded-md bg-[#D62D88] tracking-wide text-white transition hover:opacity-90 shadow-sm"
+              className="inline-block px-8 py-4 rounded-full bg-[#D62D88] font-semibold tracking-wide text-white transition hover:opacity-90 hover:-translate-y-1 shadow-md"
             >
-              Open Form in New Tab
+              Open Registration Form
             </a>
           </div>
         </div>
