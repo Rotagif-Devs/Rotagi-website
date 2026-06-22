@@ -148,7 +148,7 @@ export const termsData: TermsSection[] = [
       generalEnquiries: "info@rotagif.com",
       safeguarding: "privacy@rotagif.com",
       partnerships: "communication@rotagif.com",
-      phone: "+234 323 686 60",
+      phone: "+234 323 685 60",
     },
   },
 ];
