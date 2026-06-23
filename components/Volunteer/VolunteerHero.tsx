@@ -7,7 +7,7 @@ import { ArrowDown } from "lucide-react";
 
 const VolunteerHero = () => {
   return (
-    <section className="relative min-h-[500px] md:min-h-[600px] flex flex-col items-end justify-end bg-pink-950 lg:mx-4 lg:rounded-2xl overflow-hidden mt-6 md:mt-0">
+    <section className="relative min-h-[500px] md:min-h-[600px] flex flex-col items-end justify-end bg-pink-950/80 lg:mx-4 lg:rounded-2xl overflow-hidden mt-6 md:mt-0">
       {/* Background Image */}
       <Image
         src="/img1.png"
