@@ -11,8 +11,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/home-hero.jpg"
-          width={1920}
-          height={1080}
+         fill
           alt="African Girl Innovator"
           className="w-full h-full object-cover"
         />
@@ -63,16 +62,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Decorative gradients from design */}
-      <div className="absolute right-0 bottom-0 flex opacity-20 pointer-events-none">
-        {[...Array(7)].map((_, i) => (
-          <div
-            key={i}
-            className="w-12 md:w-16 h-[300px] md:h-[500px] bg-gradient-to-b from-white/0 to-white/40 transform rotate-180"
-            style={{ marginRight: i * -10 + "px" }}
-          />
-        ))}
-      </div>
+      
     </section>
   );
 }
