@@ -17,25 +17,11 @@ export type VolunteerResponse = {
 };
 
 export async function submitVolunteerApplication(
-  payload: VolunteerPayload
+  formData: FormData
 ): Promise<VolunteerResponse> {
-  // Map volunteer fields into the contact endpoint since there is no
-  // dedicated /volunteer backend route yet.
-  const contactPayload = {
-    fullName: `${payload.firstName} ${payload.lastName}`.trim(),
-    email: payload.email,
-    subject: "Volunteer Application",
-    message: [
-      `Phone: ${payload.phone || "N/A"}`,
-      `Experience: ${payload.experience || "N/A"}`,
-      `Skills: ${payload.skills || "N/A"}`,
-      `Motivation: ${payload.motivation || "N/A"}`,
-    ].join("\n"),
-  };
-
-  return apiFetch<VolunteerResponse>("/contact", {
+  return apiFetch<VolunteerResponse>("/volunteer", {
     method: "POST",
-    body: contactPayload,
+    body: formData,
     credentials: "omit",
   });
 }

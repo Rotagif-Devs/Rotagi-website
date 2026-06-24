@@ -31,7 +31,9 @@ const normalizeBlog = (post: any): BlogPost => ({
 const normalizeEvent = (event: any): EventType => ({
   ...event,
   id: event._id || event.id,
-  image: ensureImageUrl(event.imageUrl || event.image),
+  image: ensureImageUrl(event.coverImageUrl || event.imageUrl || event.image),
+  link: event.externalLink || event.link || "",
+  date: event.date ? event.date.slice(0, 10) : "",
 });
 
 export type MentorApplication = {
@@ -128,7 +130,7 @@ export const adminService = {
   getEventBySlug: async (slug: string): Promise<EventType | undefined> => {
     try {
       const res = await apiFetch<ApiResponse<any>>(`/admin/events/${slug}`);
-      const event = res.data || res;
+      const event = res.data?.event || res.data || res;
       return event ? normalizeEvent(event) : undefined;
     } catch (error) {
       const events = await adminService.getEvents();
@@ -139,19 +141,29 @@ export const adminService = {
   },
 
   saveEvent: async (event: Partial<EventType> & { id?: string }): Promise<EventType> => {
-    const id = event.id;
+    const { id, image, link, ...rest } = event;
+    const payload: any = { ...rest };
+    
+    if (image && (image.startsWith("http") || image.startsWith("data:"))) {
+      payload.imageUrl = image;
+      payload.coverImageUrl = image;
+    }
+    if (link !== undefined) {
+      payload.externalLink = link;
+    }
+
     if (id) {
       const res = await apiFetch<ApiResponse<any>>(`/admin/events/${id}`, {
         method: "PATCH",
-        body: event,
+        body: payload,
       });
-      return normalizeEvent(res.data!);
+      return normalizeEvent(res.data?.event || res.data!);
     } else {
       const res = await apiFetch<ApiResponse<any>>("/admin/events", {
         method: "POST",
-        body: event,
+        body: payload,
       });
-      return normalizeEvent(res.data!);
+      return normalizeEvent(res.data?.event || res.data!);
     }
   },
 
