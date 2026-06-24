@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useForm } from "react-hook-form";
 import { UploadCloud, Plus, Loader2, CheckCircle, AlertCircle } from "lucide-react";
@@ -281,7 +281,7 @@ export default function VolunteerForm() {
             {status === "loading" ? (
               <>
                 <Loader2 className="w-5 h-5 animate-spin" />
-                Submitting...
+                Submitting....
               </>
             ) : (
               "Apply Now"
