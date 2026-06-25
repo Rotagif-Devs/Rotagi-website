@@ -19,7 +19,7 @@ export type VolunteerResponse = {
 export async function submitVolunteerApplication(
   formData: FormData
 ): Promise<VolunteerResponse> {
-  return apiFetch<VolunteerResponse>("/volunteers/apply", {
+  return apiFetch<VolunteerResponse>("/volunteer", {
     method: "POST",
     body: formData,
     credentials: "omit",
