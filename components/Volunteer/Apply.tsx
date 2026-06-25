@@ -24,6 +24,11 @@ export default function VolunteerForm() {
     idDocument: "",
     cv: "",
   });
+  const [selectedFiles, setSelectedFiles] = useState<{
+    photo?: File;
+    idDocument?: File;
+    cv?: File;
+  }>({});
   const [filePreviews, setFilePreviews] = useState({
     photo: "",
   });
@@ -32,7 +37,7 @@ export default function VolunteerForm() {
 
   const onSubmit = async (data: FormData) => {
     // Manual validation for files because hidden inputs cannot use HTML validation
-    if (!data.photo?.[0] || !data.idDocument?.[0] || !data.cv?.[0]) {
+    if (!selectedFiles.photo || !selectedFiles.idDocument || !selectedFiles.cv) {
       setStatus("error");
       setErrorMsg("Please upload your Photo, ID Document, and CV.");
       return;
@@ -50,9 +55,9 @@ export default function VolunteerForm() {
       formPayload.append("experience", data.experience);
       formPayload.append("motivation", data.motivation);
       
-      formPayload.append("photo", data.photo[0]);
-      formPayload.append("idDocument", data.idDocument[0]);
-      formPayload.append("cv", data.cv[0]);
+      formPayload.append("photo", selectedFiles.photo);
+      formPayload.append("idDocument", selectedFiles.idDocument);
+      formPayload.append("cv", selectedFiles.cv);
 
       const res = await submitVolunteerApplication(formPayload);
       if (res.success) {
@@ -60,6 +65,7 @@ export default function VolunteerForm() {
         reset();
         setFileNames({ photo: "", idDocument: "", cv: "" });
         setFilePreviews({ photo: "" });
+        setSelectedFiles({});
       } else {
         setStatus("error");
         setErrorMsg("Failed to submit application. Please check the fields and try again.");
@@ -74,6 +80,7 @@ export default function VolunteerForm() {
         reset();
         setFileNames({ photo: "", idDocument: "", cv: "" });
         setFilePreviews({ photo: "" });
+        setSelectedFiles({});
       } else {
         setStatus("error");
         setErrorMsg("Something went wrong. Please try again.");
@@ -85,6 +92,7 @@ export default function VolunteerForm() {
     const file = e.target.files?.[0];
     if (file) {
       setFileNames((prev) => ({ ...prev, [fieldName]: file.name }));
+      setSelectedFiles((prev) => ({ ...prev, [fieldName]: file }));
       setValue(fieldName, e.target.files as FileList);
 
       if (fieldName === "photo" && file.type.startsWith("image/")) {
