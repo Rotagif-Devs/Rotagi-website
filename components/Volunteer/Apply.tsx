@@ -1,7 +1,7 @@
-﻿"use client";
+"use client";
 
 import { useForm } from "react-hook-form";
-import { UploadCloud, Plus, Loader2, CheckCircle, AlertCircle } from "lucide-react";
+import { UploadCloud, Plus, Loader2, CheckCircle, AlertCircle, FileText } from "lucide-react";
 import { useState } from "react";
 import { submitVolunteerApplication } from "@/lib/services/volunteer.service";
 
@@ -24,10 +24,20 @@ export default function VolunteerForm() {
     idDocument: "",
     cv: "",
   });
+  const [filePreviews, setFilePreviews] = useState({
+    photo: "",
+  });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
   const onSubmit = async (data: FormData) => {
+    // Manual validation for files because hidden inputs cannot use HTML validation
+    if (!data.photo?.[0] || !data.idDocument?.[0] || !data.cv?.[0]) {
+      setStatus("error");
+      setErrorMsg("Please upload your Photo, ID Document, and CV.");
+      return;
+    }
+
     setStatus("loading");
     setErrorMsg("");
 
@@ -40,15 +50,16 @@ export default function VolunteerForm() {
       formPayload.append("experience", data.experience);
       formPayload.append("motivation", data.motivation);
       
-      if (data.photo?.[0]) formPayload.append("photo", data.photo[0]);
-      if (data.idDocument?.[0]) formPayload.append("idDocument", data.idDocument[0]);
-      if (data.cv?.[0]) formPayload.append("cv", data.cv[0]);
+      formPayload.append("photo", data.photo[0]);
+      formPayload.append("idDocument", data.idDocument[0]);
+      formPayload.append("cv", data.cv[0]);
 
       const res = await submitVolunteerApplication(formPayload);
       if (res.success) {
         setStatus("success");
         reset();
         setFileNames({ photo: "", idDocument: "", cv: "" });
+        setFilePreviews({ photo: "" });
       } else {
         setStatus("error");
         setErrorMsg("Failed to submit application. Please check the fields and try again.");
@@ -62,6 +73,7 @@ export default function VolunteerForm() {
         setStatus("success");
         reset();
         setFileNames({ photo: "", idDocument: "", cv: "" });
+        setFilePreviews({ photo: "" });
       } else {
         setStatus("error");
         setErrorMsg("Something went wrong. Please try again.");
@@ -74,6 +86,11 @@ export default function VolunteerForm() {
     if (file) {
       setFileNames((prev) => ({ ...prev, [fieldName]: file.name }));
       setValue(fieldName, e.target.files as FileList);
+
+      if (fieldName === "photo" && file.type.startsWith("image/")) {
+        const url = URL.createObjectURL(file);
+        setFilePreviews((prev) => ({ ...prev, photo: url }));
+      }
     }
   };
 
@@ -207,19 +224,30 @@ export default function VolunteerForm() {
               <label className="block text-sm font-medium text-gray-500 mb-2">
                 Photo (JPG/PNG) *
               </label>
-              <label className="w-full h-40 flex flex-col items-center justify-center border-none rounded-lg p-4 cursor-pointer bg-white hover:bg-pink-50 transition">
-                <UploadCloud className="w-6 h-6 text-gray-500 mb-2" />
-                <p className="text-xs text-gray-500 text-center break-all px-2">
-                  {fileNames.photo || "Upload Photo"}
-                </p>
-                <div className="mt-2 bg-pink-500 text-white p-1.5 rounded-full">
-                  <Plus size={14} />
-                </div>
+              <label className="relative w-full h-40 flex flex-col items-center justify-center border-none rounded-lg p-4 cursor-pointer bg-white hover:bg-pink-50 transition overflow-hidden group">
+                {filePreviews.photo ? (
+                  <>
+                    <img src={filePreviews.photo} alt="Preview" className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
+                      <p className="text-white text-xs font-bold uppercase">Change</p>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <UploadCloud className="w-6 h-6 text-gray-500 mb-2" />
+                    <p className="text-xs text-gray-500 text-center break-all px-2">
+                      Upload Photo
+                    </p>
+                    <div className="mt-2 bg-pink-500 text-white p-1.5 rounded-full">
+                      <Plus size={14} />
+                    </div>
+                  </>
+                )}
                 <input
                   type="file"
                   accept=".jpg,.jpeg,.png,.webp"
                   className="hidden"
-                  {...register("photo", { required: true })}
+                  {...register("photo")}
                   onChange={(e) => handleFileChange(e, "photo")}
                 />
               </label>
@@ -230,19 +258,31 @@ export default function VolunteerForm() {
               <label className="block text-sm font-medium text-gray-500 mb-2">
                 ID Document *
               </label>
-              <label className="w-full h-40 flex flex-col items-center justify-center border-none rounded-lg p-4 cursor-pointer bg-white hover:bg-pink-50 transition">
-                <UploadCloud className="w-6 h-6 text-gray-500 mb-2" />
-                <p className="text-xs text-gray-500 text-center break-all px-2">
-                  {fileNames.idDocument || "Upload ID (PDF/JPG)"}
-                </p>
-                <div className="mt-2 bg-pink-500 text-white p-1.5 rounded-full">
-                  <Plus size={14} />
-                </div>
+              <label className="w-full h-40 flex flex-col items-center justify-center border-none rounded-lg p-4 cursor-pointer bg-white hover:bg-pink-50 transition text-center">
+                {fileNames.idDocument ? (
+                  <>
+                    <FileText className="w-8 h-8 text-pink-500 mb-2" />
+                    <p className="text-xs text-gray-700 font-semibold break-all px-2 line-clamp-2">
+                      {fileNames.idDocument}
+                    </p>
+                    <p className="text-[10px] text-gray-400 mt-2">Click to change</p>
+                  </>
+                ) : (
+                  <>
+                    <UploadCloud className="w-6 h-6 text-gray-500 mb-2" />
+                    <p className="text-xs text-gray-500 text-center break-all px-2">
+                      Upload ID (PDF/JPG)
+                    </p>
+                    <div className="mt-2 bg-pink-500 text-white p-1.5 rounded-full">
+                      <Plus size={14} />
+                    </div>
+                  </>
+                )}
                 <input
                   type="file"
                   accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.webp"
                   className="hidden"
-                  {...register("idDocument", { required: true })}
+                  {...register("idDocument")}
                   onChange={(e) => handleFileChange(e, "idDocument")}
                 />
               </label>
@@ -253,19 +293,31 @@ export default function VolunteerForm() {
               <label className="block text-sm font-medium text-gray-500 mb-2">
                 CV Upload *
               </label>
-              <label className="w-full h-40 flex flex-col items-center justify-center border-none rounded-lg p-4 cursor-pointer bg-white hover:bg-pink-50 transition">
-                <UploadCloud className="w-6 h-6 text-gray-500 mb-2" />
-                <p className="text-xs text-gray-500 text-center break-all px-2">
-                  {fileNames.cv || "Upload CV (PDF/DOC)"}
-                </p>
-                <div className="mt-2 bg-pink-500 text-white p-1.5 rounded-full">
-                  <Plus size={14} />
-                </div>
+              <label className="w-full h-40 flex flex-col items-center justify-center border-none rounded-lg p-4 cursor-pointer bg-white hover:bg-pink-50 transition text-center">
+                {fileNames.cv ? (
+                  <>
+                    <FileText className="w-8 h-8 text-pink-500 mb-2" />
+                    <p className="text-xs text-gray-700 font-semibold break-all px-2 line-clamp-2">
+                      {fileNames.cv}
+                    </p>
+                    <p className="text-[10px] text-gray-400 mt-2">Click to change</p>
+                  </>
+                ) : (
+                  <>
+                    <UploadCloud className="w-6 h-6 text-gray-500 mb-2" />
+                    <p className="text-xs text-gray-500 text-center break-all px-2">
+                      Upload CV (PDF/DOC)
+                    </p>
+                    <div className="mt-2 bg-pink-500 text-white p-1.5 rounded-full">
+                      <Plus size={14} />
+                    </div>
+                  </>
+                )}
                 <input
                   type="file"
                   accept=".pdf,.doc,.docx"
                   className="hidden"
-                  {...register("cv", { required: true })}
+                  {...register("cv")}
                   onChange={(e) => handleFileChange(e, "cv")}
                 />
               </label>
@@ -281,7 +333,7 @@ export default function VolunteerForm() {
             {status === "loading" ? (
               <>
                 <Loader2 className="w-5 h-5 animate-spin" />
-                Submitting....
+                Submitting...
               </>
             ) : (
               "Apply Now"
