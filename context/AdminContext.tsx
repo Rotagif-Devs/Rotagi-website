@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { adminLogin as authServiceLogin } from "@/lib/services/auth.service";
 
@@ -26,6 +26,13 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
+  const logout = useCallback(() => {
+    setUser(null);
+    localStorage.removeItem("adminUser");
+    localStorage.removeItem("accessToken");
+    router.push("/admin/login");
+  }, [router]);
+
   useEffect(() => {
     // Check local storage for session
     const checkAuth = async () => {
@@ -35,11 +42,27 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
         
         if (savedUser && token) {
           const parsedUser = JSON.parse(savedUser);
+          
+          // Enforce 1-hour expiration
+          if (parsedUser.lastLogin) {
+            const loginTime = new Date(parsedUser.lastLogin).getTime();
+            const currentTime = new Date().getTime();
+            const oneHour = 60 * 60 * 1000; // 1 hour in ms
+            
+            if (currentTime - loginTime > oneHour) {
+              // Token expired
+              localStorage.removeItem("adminUser");
+              localStorage.removeItem("accessToken");
+              setUser(null);
+              return;
+            }
+          }
+          
           // Sync user state with stored token just in case
           setUser({ ...parsedUser, token });
         } else if (token && !savedUser) {
           // Fallback if token exists but user object is missing
-          setUser({ email: "Admin", role: "admin", token });
+          setUser({ email: "Admin", role: "admin", token, lastLogin: new Date().toISOString() });
         }
       } catch (error) {
         console.error("Failed to parse admin session:", error);
@@ -52,6 +75,25 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
     
     checkAuth();
   }, []);
+
+  // Active timer to log user out after 1 hour if they stay on the page
+  useEffect(() => {
+    if (user?.lastLogin) {
+      const loginTime = new Date(user.lastLogin).getTime();
+      const currentTime = new Date().getTime();
+      const oneHour = 60 * 60 * 1000;
+      const timeLeft = oneHour - (currentTime - loginTime);
+
+      if (timeLeft <= 0) {
+        logout();
+      } else {
+        const timer = setTimeout(() => {
+          logout();
+        }, timeLeft);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [user?.lastLogin, logout]);
 
   const login = async (email: string, password: string, programSlug: string): Promise<boolean> => {
     try {
@@ -76,13 +118,6 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
       console.error("Login failed:", error);
       return false;
     }
-  };
-
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem("adminUser");
-    localStorage.removeItem("accessToken");
-    router.push("/admin/login");
   };
 
   return (
