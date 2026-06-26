@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, ChevronLeft, MapPin } from "lucide-react";
-import CTA from "@/components/globalComp/CTA";
+import PTA from "@/components/globalComp/PTA";
 import { publicService } from "@/lib/services/public.service";
 import { notFound } from "next/navigation";
 
@@ -96,7 +96,9 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
 
 
         {/* Global CTA Section */}
-        <CTA />
+        <div className="bg-white border-t border-gray-100">
+          <PTA />
+        </div>
 
 
       </div>

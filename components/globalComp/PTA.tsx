@@ -44,7 +44,7 @@ export default function PTA({ slug }: { slug?: string }) {
                {Programssage}
               </p>
 
-              <div className="hidden md:flex gap-4">
+              <div className="flex gap-4">
                 <Button 
                   variant="primary" 
                   className=""
