@@ -128,7 +128,7 @@ function AdminLoginForm() {
 
         <div className="mt-16 pt-8 border-t border-gray-100 text-center">
           <p className="text-gray-400 text-[10px] font-bold uppercase tracking-[0.2em]">
-            Restricted Area &bull; Rotagif Organization &bull; Internal Use Only
+            Restricted Area &bull; Rotagi Organization &bull; Internal Use Only
           </p>
         </div>
       </div>

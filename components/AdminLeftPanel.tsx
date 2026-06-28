@@ -18,7 +18,7 @@ export default function AdminLeftPanel() {
       <div className="relative z-10 shrink-0">
         <Link href="/" className="inline-block hover:opacity-80">
           <h3 className="text-white tracking-widest uppercase text-2xl font-bold">
-            ROTAGIF <span className="text-white/80 text-sm align-top">CMS</span>
+            ROTAGI <span className="text-white/80 text-sm align-top">CMS</span>
           </h3>
         </Link>
       </div>

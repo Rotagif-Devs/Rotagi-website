@@ -15,7 +15,7 @@ const VolunteerHero = () => {
         alt="Volunteer"
         className="object-cover"
       />
-            <div className="absolute inset-0 bg-secondary/10" />
+            <div className="absolute inset-0 bg-[#41122B]/70" />
 
       {/* Content bottom-aligned */}
       <div className="relative z-10 w-full px-6 sm:px-8 md:px-12 lg:px-16 pb-10 md:pb-14">
