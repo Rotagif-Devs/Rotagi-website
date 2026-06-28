@@ -77,24 +77,18 @@ export default async function BlogPostPage({
           )}
         </div>
 
-        {/* Two-column layout: image left, content right */}
-        <div
-          className={`grid grid-cols-1 ${
-            post.image
-              ? "md:grid-cols-[360px_minmax(0,1fr)]"
-              : ""
-          } gap-8 lg:gap-12 mb-20 items-start`}
-        >
+        {/* Layout: Cover image top, content below */}
+        <div className="flex flex-col gap-12 mb-20">
           {/* Featured Image */}
           {post.image && (
             <div className="w-full">
-              <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-md md:sticky md:top-28">
+              <div className="relative w-full aspect-video md:aspect-[21/9] rounded-2xl overflow-hidden shadow-sm bg-white">
                 <Image
                   src={post.image}
                   alt={post.title}
                   fill
-                  sizes="(max-width: 768px) 100vw, 360px"
-                  className="object-cover object-top"
+                  sizes="100vw"
+                  className="object-contain"
                   priority
                 />
               </div>

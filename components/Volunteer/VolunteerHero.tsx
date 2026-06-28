@@ -9,13 +9,16 @@ const VolunteerHero = () => {
   return (
     <section className="relative min-h-[500px] md:min-h-[600px] flex flex-col items-end justify-end lg:mx-4 lg:rounded-2xl overflow-hidden mt-6 md:mt-0 bg-[#41122B]/80">
       {/* Background Image */}
-      <Image
-        src="/img1.png"
-        fill
-        alt="Volunteer"
-        className="object-cover"
-      />
-            <div className="absolute inset-0 bg-[#41122B]/70" />
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/img1.png"
+          fill
+          alt="Volunteer"
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-[#41122B]/70" />
+      </div>
 
       {/* Content bottom-aligned */}
       <div className="relative z-10 w-full px-6 sm:px-8 md:px-12 lg:px-16 pb-10 md:pb-14">
