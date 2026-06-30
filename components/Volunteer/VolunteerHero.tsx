@@ -7,19 +7,18 @@ import { ArrowDown } from "lucide-react";
 
 const VolunteerHero = () => {
   return (
-    <section className="relative min-h-[500px] md:min-h-[600px] flex flex-col items-end justify-end lg:mx-4 lg:rounded-2xl overflow-hidden mt-6 md:mt-0 bg-[#41122B]/80">
-      {/* Background Image */}
+   
+  <section className="relative min-h-[600px] flex flex-col items-center justify-end bg-pink-950 lg:mx-4 lg:rounded-2xl overflow-hidden mt-6 md:mt-0">
+      {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/img1.png"
-          fill
-          alt="Volunteer"
-          className="object-cover"
-          priority
+          src="/volunteer-hero.jpg"
+         fill
+          alt="African Girl Innovator"
+          className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-[#41122B]/70" />
       </div>
-
+      <div className="absolute inset-0 bg-[#41122B]/60" />
       {/* Content bottom-aligned */}
       <div className="relative z-10 w-full px-6 sm:px-8 md:px-12 lg:px-16 pb-10 md:pb-14">
         <motion.h1

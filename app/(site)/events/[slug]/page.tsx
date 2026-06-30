@@ -63,40 +63,51 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
 
         {/* Hero Header Section */}
         <section className="max-w-[1260px] mx-auto px-5 md:px-10 pb-16">
-          <div className="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-24 items-start">
+          <div className="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-16 items-start">
             <div className="max-w-3xl">
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-normal text-[#1A1A1A] mb-8 font-cal-sans leading-[1.05] tracking-tight">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#1A1A1A] mb-8 font-cal-sans leading-[1.1] tracking-tight">
                 {event.title}
               </h1>
-              <p className="text-[#3D1A2A] text-lg md:text-xl leading-relaxed opacity-80 max-w-2xl">
-                {event.description}
-              </p>
+              <div className="bg-white/40 border-l-4 border-pink-600 p-6 rounded-r-2xl shadow-sm">
+                <p className="text-[#3D1A2A] text-lg md:text-xl leading-relaxed font-medium">
+                  {event.description}
+                </p>
+              </div>
             </div>
             
-            {/* Event Meta Details */}
-            <div className="flex flex-col gap-6 pt-2">
-              <div className="flex items-center gap-4 text-[#1A1A1A]">
-                <div className="w-12 h-12 flex items-center justify-center bg-white rounded-full text-pink-600 shadow-[0_4px_20px_rgba(255,182,193,0.3)]">
-                  <Calendar size={20} />
+            {/* Event Meta Details Card */}
+            <div className="flex flex-col gap-8 bg-white border border-pink-100 p-8 rounded-[32px] shadow-[0_8px_30px_rgba(255,182,193,0.2)] lg:w-[360px] w-full">
+              <div className="flex items-start gap-5 text-[#1A1A1A]">
+                <div className="w-14 h-14 shrink-0 flex items-center justify-center bg-pink-50 rounded-2xl text-pink-600 shadow-inner border border-pink-100">
+                  <Calendar size={24} strokeWidth={1.5} />
                 </div>
-                <div>
-                  <p className="font-bold text-base">{formatDate(event.date)}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4 text-[#1A1A1A]">
-                <div className="w-12 h-12 flex items-center justify-center bg-white rounded-full text-pink-600 shadow-[0_4px_20px_rgba(255,182,193,0.3)]">
-                  <MapPin size={20} />
-                </div>
-                <div>
-                  <p className="font-bold text-base">{event.location || "Location TBA"}</p>
+                <div className="flex flex-col gap-1 pt-1">
+                  <span className="text-xs font-bold tracking-wider text-pink-600 uppercase">Date</span>
+                  <p className="font-semibold text-lg text-gray-900">{formatDate(event.date)}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4 text-[#1A1A1A]">
-                <div className="w-12 h-12 flex items-center justify-center bg-white rounded-full text-pink-600 shadow-[0_4px_20px_rgba(255,182,193,0.3)]">
-                  <Clock size={20} />
+
+              <div className="w-full h-px bg-pink-50 rounded-full" />
+
+              <div className="flex items-start gap-5 text-[#1A1A1A]">
+                <div className="w-14 h-14 shrink-0 flex items-center justify-center bg-pink-50 rounded-2xl text-pink-600 shadow-inner border border-pink-100">
+                  <MapPin size={24} strokeWidth={1.5} />
                 </div>
-                <div>
-                  <p className="font-bold text-base">{formatTime(event.time)}</p>
+                <div className="flex flex-col gap-1 pt-1">
+                  <span className="text-xs font-bold tracking-wider text-pink-600 uppercase">Location</span>
+                  <p className="font-semibold text-lg text-gray-900 leading-tight">{event.location || "Location TBA"}</p>
+                </div>
+              </div>
+
+              <div className="w-full h-px bg-pink-50 rounded-full" />
+
+              <div className="flex items-start gap-5 text-[#1A1A1A]">
+                <div className="w-14 h-14 shrink-0 flex items-center justify-center bg-pink-50 rounded-2xl text-pink-600 shadow-inner border border-pink-100">
+                  <Clock size={24} strokeWidth={1.5} />
+                </div>
+                <div className="flex flex-col gap-1 pt-1">
+                  <span className="text-xs font-bold tracking-wider text-pink-600 uppercase">Time</span>
+                  <p className="font-semibold text-lg text-gray-900">{formatTime(event.time)}</p>
                 </div>
               </div>
             </div>

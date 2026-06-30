@@ -7,20 +7,20 @@ import { ArrowDown } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[800px] flex flex-col items-center justify-end bg-pink-950 lg:mx-4 lg:rounded-2xl overflow-hidden mt-6 md:mt-0">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/hero.png"
-          fill
-          alt="African Girl Innovator"
-          className="object-cover"
-          priority
-        />
-</div>
+     <section className="relative min-h-[600px] flex flex-col items-center justify-end bg-pink-950 lg:mx-4 lg:rounded-2xl overflow-hidden mt-6 md:mt-0">
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/she-hero.jpg"
+             fill
+              alt="African Girl Innovator"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="absolute inset-0 bg-[#41122B]/60" />
 
       <div className="relative z-10 flex flex-col justify-end w-full h-full pb-16 md:pb-20 overflow-hidden">
-        <div className="mx-auto max-w-6xl px-6 lg:px-8 w-full flex flex-col justify-end h-full relative">
+        <div className="mx-auto max-w-11/12 px-6 lg:px-8 w-full flex flex-col justify-end h-full relative">
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -73,16 +73,7 @@ ROTAGI Annual Conference  |  Coming 2026             </div>
         </div>
       </div>
 
-      {/* Decorative gradients (unchanged) */}
-      <div className="absolute right-0 bottom-0 flex opacity-20 pointer-events-none">
-        {[...Array(7)].map((_, i) => (
-          <div
-            key={i}
-            className="w-12 md:w-16 h-[300px] md:h-[500px] bg-gradient-to-b from-white/0 to-white/40 transform rotate-180"
-            style={{ marginRight: i * -10 + "px" }}
-          />
-        ))}
-      </div>
+ 
     </section>
   );
 }
