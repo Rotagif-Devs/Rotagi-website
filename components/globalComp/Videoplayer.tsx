@@ -40,12 +40,16 @@ const VideoPlayer = () => {
         </video>
 
         {/* Overlay – becomes semi-transparent on hover, clickable to toggle */}
-        <div className="absolute inset-0 flex items-center justify-center bg-black/20 transition-all duration-300 group-hover:bg-black/10">
-          <div className="flex h-20 w-20 items-center justify-center rounded-full border border-white/60 bg-white/25 backdrop-blur-md transition-all duration-300 group-hover:scale-110 md:h-32 md:w-32 shadow-2xl">
+        <div 
+          className={`absolute inset-0 flex items-center justify-center bg-black/20 transition-all duration-300 group-hover:bg-black/10 ${
+            isPlaying ? "md:opacity-0 md:group-hover:opacity-100" : "opacity-100"
+          }`}
+        >
+          <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/60 bg-white/25 backdrop-blur-md transition-all duration-300 group-hover:scale-110 md:h-24 md:w-24 shadow-2xl">
             {isPlaying ? (
-              <Pause className="h-10 w-10 text-white md:h-14 md:w-14" />
+              <Pause className="h-5 w-5 text-white md:h-10 md:w-10" />
             ) : (
-              <Play className="h-10 w-10 text-white md:h-14 md:w-14 ml-1" />
+              <Play className="h-5 w-5 text-white md:h-10 md:w-10 ml-1" />
             )}
           </div>
         </div>
