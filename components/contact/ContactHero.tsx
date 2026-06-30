@@ -16,7 +16,7 @@ export default function ContactHero({ title, subtitle,  }: Props) {
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/programs-hero.jpg"
+          src="/contact.jpg"
           width={1080}
           height={1080}
           alt="African Girl Innovator"
