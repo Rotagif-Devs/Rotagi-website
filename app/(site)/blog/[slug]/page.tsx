@@ -38,7 +38,7 @@ export default async function BlogPostPage({
     <main className="min-h-screen bg-[#FFF1F5] overflow-x-hidden">
       <article className="px-6 md:px-10 lg:px-16 py-10 pt-24 lg:pt-32 max-w-7xl mx-auto w-full">
         {/* Back Link */}
-        <div className="mb-8">
+        <div className="mb-12">
           <Link
             href="/blog"
             className="inline-flex items-center gap-2 text-[#D81B7E] font-semibold text-sm group w-fit hover:opacity-80 transition-opacity"
@@ -49,40 +49,53 @@ export default async function BlogPostPage({
         </div>
 
         {/* Post Header */}
-        <div className="mb-8 max-w-4xl">
-          <h1 className="text-[#121212] mb-4 text-3xl md:text-5xl lg:text-6xl font-bold font-cal-sans leading-tight">
+        <div className="mb-12 max-w-4xl mx-auto text-center flex flex-col items-center">
+          {post.category && (
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-pink-50 border border-pink-100 text-pink-600 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
+              {post.category}
+            </div>
+          )}
+          
+          <h1 className="text-[#1A1A1A] mb-8 text-4xl md:text-5xl lg:text-[56px] font-bold font-cal-sans leading-[1.1] tracking-tight">
             {post.title}
           </h1>
 
           {/* Author + Date row */}
-          <div className="flex flex-wrap items-center gap-4 text-gray-500 text-sm mb-4">
+          <div className="flex flex-wrap items-center justify-center gap-6 text-gray-600 text-sm mb-8 font-medium">
             {authorName && (
-              <span className="flex items-center gap-1.5">
-                <User size={14} className="text-[#D81B7E]" />
-                {authorName}
+              <span className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-pink-100 border border-pink-200 flex items-center justify-center text-pink-700 shadow-sm">
+                  <User size={18} />
+                </div>
+                <span className="text-base text-gray-900">{authorName}</span>
               </span>
             )}
+            
+            {authorName && formattedDate && (
+              <div className="w-1.5 h-1.5 rounded-full bg-gray-300 hidden md:block" />
+            )}
+
             {formattedDate && (
-              <span className="flex items-center gap-1.5">
-                <Calendar size={14} className="text-[#D81B7E]" />
+              <span className="flex items-center gap-2 text-base">
+                <Calendar size={18} className="text-[#D81B7E]" />
                 {formattedDate}
               </span>
             )}
           </div>
 
           {post.description && (
-            <p className="text-[#4B5563] text-base md:text-lg leading-relaxed border-l-4 border-[#D81B7E] pl-4 italic">
-              {post.description}
+            <p className="text-gray-600 text-xl leading-relaxed md:text-2xl font-light italic max-w-3xl mx-auto">
+              "{post.description}"
             </p>
           )}
         </div>
 
         {/* Layout: Cover image top, content below */}
-        <div className="flex flex-col gap-12 mb-20">
+        <div className="flex flex-col gap-16 mb-24">
           {/* Featured Image */}
           {post.image && (
-            <div className="w-full">
-              <div className="relative w-full aspect-video md:aspect-[21/9] rounded-2xl overflow-hidden shadow-sm bg-white">
+            <div className="w-full max-w-5xl mx-auto">
+              <div className="relative w-full aspect-video md:aspect-[21/9] rounded-[32px] overflow-hidden border-[8px] border-white shadow-[0_20px_50px_rgba(216,27,126,0.15)] bg-white">
                 <Image
                   src={post.image}
                   alt={post.title}
@@ -96,16 +109,16 @@ export default async function BlogPostPage({
           )}
 
           {/* Prose Content */}
-          <div>
+          <div className="max-w-3xl mx-auto w-full">
             <div
               className="prose prose-pink prose-base lg:prose-lg max-w-none w-full break-words
-                prose-headings:font-cal-sans prose-headings:text-[#121212]
-                prose-p:mb-5 prose-p:text-gray-700 prose-p:leading-relaxed
+                prose-headings:font-cal-sans prose-headings:text-[#1A1A1A]
+                prose-p:mb-6 prose-p:text-gray-700 prose-p:leading-[1.8]
                 prose-strong:text-[#D81B7E]
-                prose-img:rounded-2xl prose-img:shadow-md
+                prose-img:rounded-3xl prose-img:shadow-xl prose-img:border prose-img:border-gray-100
                 prose-a:text-[#D81B7E] prose-a:font-semibold prose-a:no-underline hover:prose-a:underline
                 prose-ul:list-disc prose-ol:list-decimal
-                prose-li:text-gray-700"
+                prose-li:text-gray-700 prose-blockquote:border-[#D81B7E] prose-blockquote:bg-pink-50 prose-blockquote:px-6 prose-blockquote:py-2 prose-blockquote:rounded-r-2xl prose-blockquote:italic"
               dangerouslySetInnerHTML={{ __html: post.content || "" }}
             />
           </div>

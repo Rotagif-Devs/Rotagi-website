@@ -45,13 +45,13 @@ const WhoWeWelcome = () => {
 
         {/* Right Image */}
         <div className="flex justify-center lg:justify-end">
-          <div className="overflow-hidden rounded-2xl">
+          <div className="overflow-hidden rounded-2xl w-full">
             <Image
-              src="/img2.png"
+              src="/volunteer-welcome.jpg"
               alt="Volunteers"
               width={700}
               height={700}
-              className="object-cover rounded-2xl"
+              className="object-cover rounded-2xl w-full"
               priority
             />
           </div>
