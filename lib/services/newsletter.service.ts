@@ -6,10 +6,10 @@ export type NewsletterResponse = {
   data?: any;
 };
 
-export async function subscribeNewsletter(email: string): Promise<NewsletterResponse> {
+export async function subscribeNewsletter(email: string, _hp: string, captchaToken: string): Promise<NewsletterResponse> {
   return apiFetch<NewsletterResponse>("/newsletter/subscribe", {
     method: "POST",
-    body: { email },
+    body: { email, _hp, captchaToken },
     credentials: "omit",
   });
 }

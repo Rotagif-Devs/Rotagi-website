@@ -7,6 +7,7 @@ import Button from "../ui/Button";
 import { useState } from "react";
 import { subscribeNewsletter } from "@/lib/services/newsletter.service";
 import { Loader2 } from "lucide-react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -14,6 +15,8 @@ export default function Footer() {
     "idle" | "loading" | "success" | "error"
   >("idle");
   const [message, setMessage] = useState("");
+  const [hp, setHp] = useState("");
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,7 +24,11 @@ export default function Footer() {
 
     setStatus("loading");
     try {
-      const res = await subscribeNewsletter(email);
+      let captchaToken = "";
+      if (executeRecaptcha) {
+        captchaToken = await executeRecaptcha('newsletter_form');
+      }
+      const res = await subscribeNewsletter(email, hp, captchaToken);
       if (res.success) {
         setStatus("success");
         setMessage(res.data?.message || "Successfully subscribed!");
@@ -59,6 +66,15 @@ export default function Footer() {
 
             {/* Newsletter */}
             <form onSubmit={handleSubscribe} className="max-w-sm">
+              <input
+                type="text"
+                name="_hp"
+                value={hp}
+                onChange={(e) => setHp(e.target.value)}
+                style={{ display: "none" }}
+                tabIndex={-1}
+                autoComplete="off"
+              />
               <div className="bg-white rounded-xl p-1.5 flex items-center shadow-sm border border-gray-100">
                 <input
                   type="email"

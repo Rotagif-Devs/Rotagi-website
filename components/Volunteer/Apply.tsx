@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { UploadCloud, Plus, Loader2, CheckCircle, AlertCircle, FileText } from "lucide-react";
 import { useState } from "react";
 import { submitVolunteerApplication } from "@/lib/services/volunteer.service";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 type FormData = {
   firstName: string;
@@ -15,9 +16,11 @@ type FormData = {
   photo: FileList;
   idDocument: FileList;
   cv: FileList;
+  _hp: string;
 };
 
 export default function VolunteerForm() {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const { register, handleSubmit, setValue, watch, reset } = useForm<FormData>();
   const [fileNames, setFileNames] = useState({
     photo: "",
@@ -43,10 +46,21 @@ export default function VolunteerForm() {
       return;
     }
 
+    if (!data.motivation || data.motivation.trim().length < 20) {
+      setStatus("error");
+      setErrorMsg("Please provide a longer motivation message (at least 20 characters).");
+      return;
+    }
+
     setStatus("loading");
     setErrorMsg("");
 
     try {
+      let captchaToken = "";
+      if (executeRecaptcha) {
+        captchaToken = await executeRecaptcha('volunteer_form');
+      }
+
       const formPayload = new FormData();
       formPayload.append("firstName", data.firstName);
       formPayload.append("lastName", data.lastName);
@@ -58,6 +72,8 @@ export default function VolunteerForm() {
       formPayload.append("photo", selectedFiles.photo);
       formPayload.append("idDocument", selectedFiles.idDocument);
       formPayload.append("cv", selectedFiles.cv);
+      formPayload.append("_hp", data._hp || "");
+      formPayload.append("captchaToken", captchaToken);
 
       const res = await submitVolunteerApplication(formPayload);
       if (res.success) {
@@ -149,7 +165,13 @@ export default function VolunteerForm() {
 
         {/* Form */}
         <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6 bg-[#fff6fb] p-10">
-          
+          <input
+            type="text"
+            {...register("_hp")}
+            style={{ display: "none" }}
+            tabIndex={-1}
+            autoComplete="off"
+          />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-500 mb-2">

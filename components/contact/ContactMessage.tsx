@@ -7,6 +7,7 @@ import { Mail, Headphones, MapPin, ArrowRight } from "lucide-react";
 import { ContactFormValues } from "@/types/contact";
 import { submitContactMessage } from "@/lib/services/contact.service";
 import { SubmittingState, SuccessState, ErrorState } from "./ContactStates";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 const contactItems = [
   {
@@ -23,6 +24,7 @@ const contactItems = [
 ];
 
 export default function ContactMessage() {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [formStatus, setFormStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
@@ -47,11 +49,15 @@ export default function ContactMessage() {
       message: "",
     },
   });
-  const onSubmit = async (data: ContactFormValues) => {
+  const onSubmit = async (data: any) => {
     setFormStatus("submitting");
     setSubmittedData({ name: data.fullName, email: data.email });
     try {
-      await submitContactMessage(data);
+      let captchaToken = "";
+      if (executeRecaptcha) {
+        captchaToken = await executeRecaptcha('contact_form');
+      }
+      await submitContactMessage({ ...data, _hp: data._hp || "", captchaToken });
       setFormStatus("success");
       reset();
     } catch (error: any) {
@@ -126,6 +132,13 @@ export default function ContactMessage() {
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-5 sm:space-y-6"
           >
+            <input
+              type="text"
+              {...register("_hp" as any)}
+              style={{ display: "none" }}
+              tabIndex={-1}
+              autoComplete="off"
+            />
             <div>
               <label
                 htmlFor="fullName"
@@ -225,8 +238,8 @@ export default function ContactMessage() {
                 {...register("message", {
                   required: "Message is required",
                   minLength: {
-                    value: 10,
-                    message: "Message must be at least 10 characters",
+                    value: 20,
+                    message: "Message must be at least 20 characters",
                   },
                 })}
                 className={`w-full rounded-xl bg-white px-4 py-4 text-sm text-slate-700 outline-none placeholder:text-[#c6bfd0] sm:rounded-2xl sm:px-6 sm:py-5 sm:text-base ${

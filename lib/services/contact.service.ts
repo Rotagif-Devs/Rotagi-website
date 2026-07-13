@@ -8,12 +8,14 @@ export type ContactMessageResponse = {
 };
 
 export async function submitContactMessage(
-  payload: ContactFormValues
+  payload: ContactFormValues & { _hp: string; captchaToken: string }
 ): Promise<ContactMessageResponse> {
   const backendPayload = {
     fullName: payload.fullName,
     email: payload.email,
     message: payload.subject ? `[Subject: ${payload.subject}]\n\n${payload.message}` : payload.message,
+    _hp: payload._hp,
+    captchaToken: payload.captchaToken,
   };
 
   return apiFetch<ContactMessageResponse>("/contact", {
