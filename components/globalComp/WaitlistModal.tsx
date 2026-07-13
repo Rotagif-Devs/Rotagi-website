@@ -5,6 +5,7 @@ import Modal from "../ui/Modal";
 import Button from "../ui/Button";
 import { subscribeNewsletter } from "@/lib/services/newsletter.service";
 import { Loader2, CheckCircle, AlertCircle } from "lucide-react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 interface WaitlistModalProps {
   isOpen: boolean;
@@ -16,6 +17,8 @@ export default function WaitlistModal({ isOpen, onClose, programName }: Waitlist
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+  const [hp, setHp] = useState("");
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,7 +26,11 @@ export default function WaitlistModal({ isOpen, onClose, programName }: Waitlist
 
     setStatus("loading");
     try {
-      const res = await subscribeNewsletter(email);
+      let captchaToken = "";
+      if (executeRecaptcha) {
+        captchaToken = await executeRecaptcha('waitlist_form');
+      }
+      const res = await subscribeNewsletter(email, hp, captchaToken);
       if (res.success) {
         setStatus("success");
         setMessage(res.data?.message || `Successfully joined the ${programName || ""} waitlist!`);
@@ -61,6 +68,15 @@ export default function WaitlistModal({ isOpen, onClose, programName }: Waitlist
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="text"
+            name="_hp"
+            value={hp}
+            onChange={(e) => setHp(e.target.value)}
+            style={{ display: "none" }}
+            tabIndex={-1}
+            autoComplete="off"
+          />
           <div className="relative">
             <input
               type="email"
