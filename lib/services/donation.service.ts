@@ -7,6 +7,7 @@ export type DonationInitPayload = {
   name?: string;
   metadata?: Record<string, unknown>;
   callback_url?: string;
+  provider?: "paystack" | "paypal" | "flutterwave";
 };
 
 export type DonationInitResponse = {
@@ -14,7 +15,11 @@ export type DonationInitResponse = {
   message?: string;
   data?: {
     reference: string;
-    authorizationUrl: string;
+    authorizationUrl?: string;
+    approvalUrl?: string;
+    paypalOrderId?: string;
+    flutterwaveTransactionId?: string;
+    provider: string;
     currency: string;
   };
 };
@@ -52,4 +57,12 @@ export async function initDonation(payload: DonationInitPayload) {
 
 export async function verifyDonation(reference: string) {
   return apiFetch<DonationVerifyResponse>(`/donations/verify/${reference}`);
+}
+
+export async function capturePayPalOrder(reference: string) {
+  return apiFetch<DonationVerifyResponse>("/donations/paypal/capture", {
+    method: "POST",
+    body: { reference },
+    credentials: "omit",
+  });
 }

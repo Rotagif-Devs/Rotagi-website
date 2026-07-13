@@ -49,13 +49,17 @@ const DonateTransform = () => {
         throw new Error("Please enter a valid donation amount.");
       }
 
+      const provider = formData.provider || "paystack";
+      const callbackUrl = `${window.location.origin}/donate/success?provider=${provider}`;
+
       // Initialize donation with backend
       const initResponse = await initDonation({
         email: formData.email,
         amount: amountValue,
         currency: formData.currency || "NGN",
         name: formData.fullName,
-        callback_url: `${window.location.origin}/donate/success`,
+        callback_url: callbackUrl,
+        provider: provider,
       });
 
       if (!initResponse.success || !initResponse.data) {
@@ -64,14 +68,21 @@ const DonateTransform = () => {
         );
       }
 
-      const { authorizationUrl } = initResponse.data;
+      const { reference, authorizationUrl, approvalUrl } = initResponse.data;
 
-      if (!authorizationUrl) {
-        throw new Error("No authorization URL returned from payment gateway");
+      // Store reference for PayPal capture or general fallback
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem("donation_reference", reference);
+      }
+
+      const redirectUrl = authorizationUrl || approvalUrl;
+
+      if (!redirectUrl) {
+        throw new Error("No redirect URL returned from payment gateway");
       }
 
       // Use location.assign for a more standard redirect
-      window.location.assign(authorizationUrl);
+      window.location.assign(redirectUrl);
     } catch (error) {
       console.error("Payment error:", error);
       const errorMsg =

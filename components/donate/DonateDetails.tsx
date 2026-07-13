@@ -30,6 +30,7 @@ const DonateDetails = ({ onNext }: Props) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [exchangeRate, setExchangeRate] = useState<number | null>(null);
   const [isLoadingRate, setIsLoadingRate] = useState(false);
+  const [provider, setProvider] = useState<"paystack" | "paypal" | "flutterwave">("paypal");
 
   // Filtered countries based on search
   const filteredCountries = useMemo(() => {
@@ -70,6 +71,15 @@ const DonateDetails = ({ onNext }: Props) => {
     fetchRate();
   }, [selectedCountry.currency]);
 
+  // Update provider automatically if NGN
+  useEffect(() => {
+    if (selectedCountry.currency === "NGN") {
+      setProvider("paystack");
+    } else {
+      setProvider("paypal");
+    }
+  }, [selectedCountry.currency]);
+
   const {
     handleSubmit,
     register,
@@ -89,6 +99,7 @@ const DonateDetails = ({ onNext }: Props) => {
       ...data,
       currency: selectedCountry.currency,
       currencySymbol: selectedCountry.symbol,
+      provider: selectedCountry.currency === "NGN" ? "paystack" : provider,
     });
   };
 
@@ -327,6 +338,39 @@ const DonateDetails = ({ onNext }: Props) => {
             <p className="text-red-500 text-sm mt-1">{errors.amount.message}</p>
           )}
         </div>
+
+        {/* Payment Provider Selection (for non-NGN) */}
+        {selectedCountry.currency !== "NGN" && (
+          <div className="mb-8 relative">
+            <label htmlFor="provider" className="block mb-2 font-medium">
+              Select Payment Method <span className="text-pink-500">*</span>
+            </label>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <label className={`flex-1 flex items-center justify-center gap-3 p-4 border-2 rounded-xl cursor-pointer transition-colors ${provider === 'paypal' ? 'border-secondary bg-pink-50' : 'border-[#D3D3D3] hover:border-pink-300'}`}>
+                <input 
+                  type="radio" 
+                  name="provider" 
+                  value="paypal" 
+                  checked={provider === 'paypal'} 
+                  onChange={() => setProvider('paypal')}
+                  className="hidden" 
+                />
+                <span className="font-semibold text-gray-800">PayPal</span>
+              </label>
+              <label className={`flex-1 flex items-center justify-center gap-3 p-4 border-2 rounded-xl cursor-pointer transition-colors ${provider === 'flutterwave' ? 'border-secondary bg-pink-50' : 'border-[#D3D3D3] hover:border-pink-300'}`}>
+                <input 
+                  type="radio" 
+                  name="provider" 
+                  value="flutterwave" 
+                  checked={provider === 'flutterwave'} 
+                  onChange={() => setProvider('flutterwave')}
+                  className="hidden" 
+                />
+                <span className="font-semibold text-gray-800">Card (Flutterwave)</span>
+              </label>
+            </div>
+          </div>
+        )}
 
         <Button
           type="submit"

@@ -5,7 +5,8 @@ export type DonationData = {
   message?: string;
   amount: string;
   currency?: string;
-    currencySymbol?: string;
+  currencySymbol?: string;
+  provider?: "paystack" | "paypal" | "flutterwave";
   cardNumber?: string;
   cardholderName?: string;
   CVV?: string;

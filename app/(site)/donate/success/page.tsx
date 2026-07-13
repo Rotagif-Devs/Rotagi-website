@@ -5,8 +5,9 @@ import { Suspense } from "react";
 import DonateSuccessful from "@/components/donate/DonateSuccessful";
 
 import { useState, useEffect, useRef } from "react";
-import { verifyDonation } from "@/lib/services/donation.service";
+import { verifyDonation, capturePayPalOrder } from "@/lib/services/donation.service";
 import Loader from "@/components/globalComp/Loader";
+import { Loader2 } from "lucide-react";
 
 function SuccessContent() {
   const router = useRouter();
@@ -16,17 +17,20 @@ function SuccessContent() {
   const [verifiedData, setVerifiedData] = useState<{ amount: string; email: string } | null>(null);
   const verificationStarted = useRef(false);
 
-  // Paystack appends 'reference' or 'trxref' to the URL
-  // Using a getter to ensure we have the value even if params object behaves unexpectedly
-  const reference = params.get("reference") || params.get("trxref");
+  const provider = params.get("provider") || "paystack";
+  const urlReference = params.get("reference") || params.get("trxref") || params.get("tx_ref");
+  
+  // For PayPal, reference might only be in sessionStorage since PayPal doesn't append it to returnUrl by default
+  const reference = urlReference || (typeof window !== 'undefined' ? sessionStorage.getItem("donation_reference") : null);
   
   const initialAmount = params.get("amount") || "0";
   const initialEmail = params.get("email") || "";
 
   useEffect(() => {
-    // If no reference in URL, wait a bit or check if we already verified
     if (!reference) {
-      setVerifying(false);
+      if (provider !== "flutterwave") {
+        setVerifying(false);
+      }
       return;
     }
 
@@ -35,10 +39,22 @@ function SuccessContent() {
       verificationStarted.current = true;
 
       try {
-        const response = await verifyDonation(reference);
+        let response;
+        
+        if (provider === "paypal") {
+          response = await capturePayPalOrder(reference);
+        } else if (provider === "flutterwave") {
+          // We don't verify flutterwave on the frontend yet. Webhooks will handle it.
+          // We just stop verifying and let it show the processing screen.
+          setVerifying(false);
+          return;
+        } else {
+          // Default Paystack
+          response = await verifyDonation(reference);
+        }
         
         if (response.success && response.data) {
-          if (response.data.status !== "success") {
+          if (response.data.status !== "success" && response.data.status !== "COMPLETED") {
             const amountParam = response.data.donation?.amount || initialAmount;
             const emailParam = response.data.donation?.email || initialEmail;
             router.push(`/donate/failed?amount=${amountParam}&email=${emailParam}`);
@@ -46,8 +62,8 @@ function SuccessContent() {
           }
 
           setVerifiedData({
-            amount: response.data.donation.amount.toString(),
-            email: response.data.donation.email
+            amount: response.data.donation?.amount?.toString() || initialAmount,
+            email: response.data.donation?.email || initialEmail
           });
         } else {
           throw new Error(response.message || "Payment verification failed");
@@ -61,7 +77,7 @@ function SuccessContent() {
     };
 
     performVerification();
-  }, [reference]);
+  }, [reference, provider]);
 
   const handleReturn = () => {
     router.push("/donate");
@@ -96,6 +112,25 @@ function SuccessContent() {
               Return to Donation Page
             </button>
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (provider === "flutterwave") {
+    return (
+      <div className="min-h-[60vh] flex flex-col items-center justify-center p-6 text-center bg-primary">
+        <div className="bg-white p-8 rounded-3xl shadow-sm border border-pink-100 max-w-md">
+          <div className="w-16 h-16 bg-pink-50 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Loader2 className="w-8 h-8 animate-spin text-[#D62D88]" />
+          </div>
+          <h3 className="text-xl font-semibold text-gray-900 mb-2 font-cal-sans">Payment Processing</h3>
+          <p className="text-gray-600 mb-6 leading-relaxed">
+            Your payment is securely processing! You will receive an email receipt shortly once it completely settles.
+          </p>
+          <button onClick={handleReturn} className="w-full bg-[#D62D88] text-white px-8 py-3 rounded-full text-sm font-bold hover:bg-pink-700 transition-colors">
+            Return to Home
+          </button>
         </div>
       </div>
     );
