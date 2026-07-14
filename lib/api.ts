@@ -1,8 +1,9 @@
 import { getAccessToken } from './token.service';
 
 
-// Temporarily hardcoded to force the new backend that supports PayPal/Flutterwave
-export const API_BASE_URL = 'https://rot-backend-c3a8.onrender.com';
+export const API_BASE_URL = (
+  process.env.NEXT_PUBLIC_API_BASE_URL || process.env.NEXT_PUBLIC_API_URL || ''
+).replace(/\/+$/, '');
 
 type Json = Record<string, unknown>;
 
