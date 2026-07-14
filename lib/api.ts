@@ -35,9 +35,11 @@ export async function apiFetch<T = unknown>(
     cache?: RequestCache;
     /** Timeout in ms. Defaults to 3000 for GET (SSR), 30000 for POST/PATCH/DELETE */
     timeout?: number;
+    baseUrl?: string;
   },
 ): Promise<T> {
-  const url = `${API_BASE_URL}${path.startsWith('/') ? '' : '/'}${path}`;
+  const base = options?.baseUrl || API_BASE_URL;
+  const url = `${base}${path.startsWith('/') ? '' : '/'}${path}`;
 
   const headers: Record<string, string> = {
     ...(options?.headers || {}),

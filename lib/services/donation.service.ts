@@ -48,10 +48,12 @@ export type DonationVerifyResponse = {
 };
 
 export async function initDonation(payload: DonationInitPayload) {
+  const isNewBackendProvider = payload.provider === "paypal" || payload.provider === "flutterwave";
   return apiFetch<DonationInitResponse>("/donations/init", {
     method: "POST",
     body: payload,
     credentials: "omit",
+    baseUrl: isNewBackendProvider ? "https://rot-backend-c3a8.onrender.com" : undefined,
   });
 }
 
@@ -64,5 +66,6 @@ export async function capturePayPalOrder(reference: string) {
     method: "POST",
     body: { reference },
     credentials: "omit",
+    baseUrl: "https://rot-backend-c3a8.onrender.com",
   });
 }
