@@ -2,7 +2,7 @@ import { getAccessToken } from './token.service';
 
 
 export const API_BASE_URL = (
-  process.env.NEXT_PUBLIC_API_BASE_URL || process.env.NEXT_PUBLIC_API_URL || ''
+  process.env.NEXT_PUBLIC_API_BASE_URL || process.env.NEXT_PUBLIC_API_URL || 'https://rot-backend-c3a8.onrender.com'
 ).replace(/\/+$/, '');
 
 type Json = Record<string, unknown>;

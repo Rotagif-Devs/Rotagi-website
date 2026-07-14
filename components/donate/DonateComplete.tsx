@@ -59,9 +59,11 @@ const DonateComplete = ({ data, onBack, onNext }: Props) => {
           <div className="border border-[#D3D3D3] rounded-lg p-4 flex flex-col gap-3">
               <Image src="/creditcard.png" width={24} height={24} alt="Secure Lock Icon" />
             <div className="flex flex-col gap-1">
-              <p className="text-base! !font-medium text-black">Paystack Checkout</p>
+              <p className="text-base! !font-medium text-black">
+                {data.provider === "paypal" ? "PayPal Checkout" : data.provider === "flutterwave" ? "Flutterwave Checkout" : "Paystack Checkout"}
+              </p>
               <p className="text-sm! text-black">
-                Securely pay with Card, Bank Transfer, or USSD
+                {data.provider === "paypal" ? "Securely pay with your PayPal account or Credit Card" : data.provider === "flutterwave" ? "Securely pay with Credit Card, Apple Pay, or Google Pay" : "Securely pay with Card, Bank Transfer, or USSD"}
               </p>
             </div>
           </div>
