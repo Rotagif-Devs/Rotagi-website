@@ -73,9 +73,6 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-cal-sans leading-[1.1] tracking-tight drop-shadow-lg">
               {event.title}
             </h1>
-            <p className="text-lg md:text-2xl text-white/90 font-light max-w-2xl leading-relaxed drop-shadow-md">
-              {event.description}
-            </p>
           </div>
         </div>
       </div>
@@ -86,14 +83,9 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
           
           {/* Left Column: Rich Text Content */}
           <div className="flex-1 min-w-0 w-full">
-            {((event as any).content || (event as any).body) ? (
-              <div
-                className="prose prose-lg md:prose-xl max-w-none prose-headings:font-cal-sans prose-headings:text-gray-900 prose-headings:font-bold prose-p:text-gray-600 prose-p:leading-[1.8] prose-a:text-pink-600 hover:prose-a:text-pink-700 prose-img:rounded-3xl prose-img:shadow-2xl prose-strong:text-gray-900 prose-li:text-gray-600"
-                dangerouslySetInnerHTML={{ __html: (event as any).content || (event as any).body }}
-              />
-            ) : (
-              <div className="text-gray-500 italic text-lg">No additional details provided.</div>
-            )}
+            <div className="prose prose-lg md:prose-xl max-w-none prose-headings:font-cal-sans prose-headings:text-gray-900 prose-headings:font-bold prose-p:text-gray-600 prose-p:leading-[1.8] prose-a:text-pink-600 hover:prose-a:text-pink-700 prose-img:rounded-3xl prose-img:shadow-2xl prose-strong:text-gray-900 prose-li:text-gray-600">
+              <p className="whitespace-pre-wrap">{event.description || "No additional details provided."}</p>
+            </div>
           </div>
 
           {/* Right Column: Sticky Details Card */}
