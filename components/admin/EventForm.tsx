@@ -197,7 +197,7 @@ export default function EventForm({ initialData, onSubmit, onCancel, isLoading }
                       <Upload size={24} className="text-secondary" />
                     </div>
                     <p className="text-sm font-bold text-gray-900">Click to upload image</p>
-                    <p className="text-xs text-gray-500 mt-1">PNG, JPG, or SVG up to 10MB</p>
+                    <p className="text-xs text-gray-500 mt-1">PNG, JPG (Recommended: 1920x1080px, 16:9) up to 10MB</p>
                   </div>
                 )}
               </div>
