@@ -41,15 +41,15 @@ const nextConfig: NextConfig = {
     // We are temporarily always including 'unsafe-eval' to resolve the immediate block.
     const csp = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://js.paystack.co https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/",
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://js.paystack.co https://www.google.com https://www.gstatic.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' data: https://fonts.gstatic.com",
       "img-src 'self' blob: data: https://paystack.com https://flagcdn.com https://i.pravatar.cc https://example.com https://rotagif-backend-codebase-1.onrender.com https://rot-backend-c3a8.onrender.com https://placehold.co https://res.cloudinary.com",
-      "connect-src 'self' https://rotagif-backend-codebase-1.onrender.com https://rot-backend-c3a8.onrender.com https://checkout.paystack.com https://v6.exchangerate-api.com https://open.er-api.com https://www.google.com/recaptcha/",
+      "connect-src 'self' https://rotagif-backend-codebase-1.onrender.com https://rot-backend-c3a8.onrender.com https://checkout.paystack.com https://v6.exchangerate-api.com https://open.er-api.com https://www.google.com",
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",
-      "frame-src 'self' https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/",
+      "frame-src 'self' https://www.google.com https://recaptcha.google.com",
       "frame-ancestors 'none'",
       "block-all-mixed-content",
       "upgrade-insecure-requests",

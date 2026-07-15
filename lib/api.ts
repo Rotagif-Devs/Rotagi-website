@@ -104,6 +104,9 @@ export async function apiFetch<T = unknown>(
     } else if (res.status === 404) {
       console.warn(`[apiFetch] 404 Not Found for ${path}`);
     }
+    if (data && typeof data === 'object' && 'details' in data) {
+      console.error(`[apiFetch] API Error Details for ${path}:`, (data as any).details);
+    }
     
     throw new Error(msg);
   }
