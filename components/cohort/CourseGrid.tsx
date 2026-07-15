@@ -14,7 +14,7 @@ const COURSES = [
     icon: Code,
     color: "bg-blue-50 text-blue-600",
     btnColor: "bg-blue-600 hover:bg-blue-700 text-white border-transparent",
-    image: "/wh.jpg",
+    image: "/cohort-images/vibe-code.png",
   },
   {
     id: "graphics-design",
@@ -23,7 +23,7 @@ const COURSES = [
     icon: PenTool,
     color: "bg-pink-50 text-pink-600",
     btnColor: "bg-pink-600 hover:bg-pink-700 text-white border-transparent",
-    image: "/wh.jpg",
+    image: "/cohort-images/graphics-design.png",
   },
   {
     id: "web-development",
@@ -32,7 +32,7 @@ const COURSES = [
     icon: Globe,
     color: "bg-green-50 text-green-600",
     btnColor: "bg-green-600 hover:bg-green-700 text-white border-transparent",
-    image: "/wh.jpg",
+    image: "/cohort-images/web-development.png",
   },
   {
     id: "data-analysis",
@@ -41,7 +41,7 @@ const COURSES = [
     icon: Database,
     color: "bg-purple-50 text-purple-600",
     btnColor: "bg-purple-600 hover:bg-purple-700 text-white border-transparent",
-    image: "/wh.jpg",
+    image: "/cohort-images/data-analysis.png",
   },
   {
     id: "digital-marketing",
@@ -50,7 +50,7 @@ const COURSES = [
     icon: TrendingUp,
     color: "bg-orange-50 text-orange-600",
     btnColor: "bg-orange-600 hover:bg-orange-700 text-white border-transparent",
-    image: "/wh.jpg",
+    image: "/cohort-images/digital-marketing.png",
   },
   {
     id: "ui-ux-design",
@@ -59,7 +59,7 @@ const COURSES = [
     icon: Layout,
     color: "bg-teal-50 text-teal-600",
     btnColor: "bg-teal-600 hover:bg-teal-700 text-white border-transparent",
-    image: "/wh.jpg",
+    image: "/cohort-images/ui-ux-design.png",
   },
 ];
 
