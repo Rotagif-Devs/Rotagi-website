@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function CohortPage() {
   return (
-    <main className="min-h-screen bg-white pt-24 lg:pt-32 font-dm-sans overflow-x-hidden">
+    <main className="min-h-screen bg-white font-dm-sans overflow-x-hidden">
       {/* Hero Section */}
       <ProgramsHero
         title="TECH COHORTS"

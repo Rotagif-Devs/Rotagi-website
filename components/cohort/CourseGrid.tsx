@@ -13,6 +13,8 @@ const COURSES = [
     description: "Learn programming fundamentals and advanced topics in a fun, interactive way. Master Python, JavaScript, and more.",
     icon: Code,
     color: "bg-blue-50 text-blue-600",
+    btnColor: "bg-blue-600 hover:bg-blue-700 text-white border-transparent",
+    image: "/wh.jpg",
   },
   {
     id: "graphics-design",
@@ -20,6 +22,8 @@ const COURSES = [
     description: "Master industry-standard tools like Adobe Creative Cloud. Learn layout, typography, and visual communication.",
     icon: PenTool,
     color: "bg-pink-50 text-pink-600",
+    btnColor: "bg-pink-600 hover:bg-pink-700 text-white border-transparent",
+    image: "/wh.jpg",
   },
   {
     id: "web-development",
@@ -27,6 +31,8 @@ const COURSES = [
     description: "Build responsive, modern websites using HTML, CSS, React, and Next.js. Become a full-stack developer.",
     icon: Globe,
     color: "bg-green-50 text-green-600",
+    btnColor: "bg-green-600 hover:bg-green-700 text-white border-transparent",
+    image: "/wh.jpg",
   },
   {
     id: "data-analysis",
@@ -34,6 +40,8 @@ const COURSES = [
     description: "Unlock insights from complex datasets using Excel, SQL, and Python. Learn to make data-driven decisions.",
     icon: Database,
     color: "bg-purple-50 text-purple-600",
+    btnColor: "bg-purple-600 hover:bg-purple-700 text-white border-transparent",
+    image: "/wh.jpg",
   },
   {
     id: "digital-marketing",
@@ -41,6 +49,8 @@ const COURSES = [
     description: "Grow brands online using SEO, social media strategies, and targeted advertising campaigns.",
     icon: TrendingUp,
     color: "bg-orange-50 text-orange-600",
+    btnColor: "bg-orange-600 hover:bg-orange-700 text-white border-transparent",
+    image: "/wh.jpg",
   },
   {
     id: "ui-ux-design",
@@ -48,6 +58,8 @@ const COURSES = [
     description: "Design intuitive user experiences and beautiful interfaces. Master Figma and user research methodologies.",
     icon: Layout,
     color: "bg-teal-50 text-teal-600",
+    btnColor: "bg-teal-600 hover:bg-teal-700 text-white border-transparent",
+    image: "/wh.jpg",
   },
 ];
 
@@ -81,21 +93,31 @@ export default function CourseGrid() {
           return (
             <div 
               key={course.id}
-              className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col items-start group"
+              className="bg-white border border-gray-100 rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
             >
-              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${course.color} transition-transform group-hover:scale-110`}>
-                <IconComponent size={28} strokeWidth={1.5} />
+              <div className="relative w-full aspect-[4/3] overflow-hidden">
+                <Image 
+                  src={course.image} 
+                  alt={course.title} 
+                  fill 
+                  className="object-cover transition-transform duration-500 group-hover:scale-105" 
+                />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 font-cal-sans">{course.title}</h3>
-              <p className="text-gray-600 mb-8 flex-grow leading-relaxed">
-                {course.description}
-              </p>
-              <button
-                onClick={() => handleEnrollClick(course.id)}
-                className="w-full py-3.5 bg-gray-50 hover:bg-pink-600 text-gray-900 hover:text-white rounded-xl font-semibold transition-colors duration-300 border border-gray-200 hover:border-pink-600"
-              >
-                Enroll Now
-              </button>
+              <div className="p-8 flex flex-col flex-grow items-start">
+                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-6 ${course.color} transition-transform group-hover:-translate-y-1`}>
+                  <IconComponent size={24} strokeWidth={1.5} />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3 font-cal-sans">{course.title}</h3>
+                <p className="text-gray-600 mb-8 flex-grow leading-relaxed">
+                  {course.description}
+                </p>
+                <button
+                  onClick={() => handleEnrollClick(course.id)}
+                  className={`w-full py-3.5 rounded-xl font-semibold transition-all duration-300 border shadow-md hover:shadow-lg hover:-translate-y-0.5 ${course.btnColor}`}
+                >
+                  Enroll Now
+                </button>
+              </div>
             </div>
           );
         })}
