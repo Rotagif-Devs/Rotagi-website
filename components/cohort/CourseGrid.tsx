@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Lock, Brain, PenTool, Globe, Layout, Video, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, Lock, Brain, PenTool, Layout, Video, Code, Briefcase, CheckSquare, Headset, Search, Star, DollarSign, Share2, ChevronLeft, ChevronRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
@@ -13,8 +13,8 @@ import Button from "@/components/ui/Button";
 const COURSES = [
   {
     id: "artificial-intelligence",
-    title: "Artificial Intelligence",
-    description: "Learn how to use AI tools to boost productivity, automate tasks, create content, and solve real-world problems responsibly",
+    title: "Artificial Intelligence Skills Training",
+    description: "Learn how to use AI tools to work faster and solve real problems.",
     icon: Brain,
     color: "bg-purple-50 text-purple-600",
     btnColor: "bg-purple-600 hover:bg-purple-700 text-white border-transparent",
@@ -23,7 +23,7 @@ const COURSES = [
   {
     id: "canva-training",
     title: "Canva Training",
-    description: "Learn how to design eye-catching graphics, presentations, social media content, and marketing materials using Canva.",
+    description: "Learn how to design eye catching graphics and marketing materials using simple tools.",
     icon: PenTool,
     color: "bg-pink-50 text-pink-600",
     btnColor: "bg-pink-600 hover:bg-pink-700 text-white border-transparent",
@@ -32,30 +32,93 @@ const COURSES = [
   {
     id: "product-design",
     title: "Product Design (UI/UX)",
-    description: "Learn how to design intuitive digital experiences, create wireframes, prototypes, and user-friendly websites and mobile apps.",
+    description: "Learn how to design user friendly digital products, create wireframes, and build clean app and website interfaces.",
     icon: Layout,
     color: "bg-teal-50 text-teal-600",
     btnColor: "bg-teal-600 hover:bg-teal-700 text-white border-transparent",
     image: "/cohort-images/ui-ux-design.png",
   },
   {
-    id: "web-development",
-    title: "Web Development",
-    description: "Learn how to build responsive websites faster using AI-powered tools, modern web technologies, and no-code or low-code solutions.",
-    icon: Globe,
-    color: "bg-blue-50 text-blue-600",
-    btnColor: "bg-blue-600 hover:bg-blue-700 text-white border-transparent",
-    image: "/cohort-images/web-development.png",
-  },
-  {
     id: "ai-video-creation",
     title: "AI Video Creation",
-    description: "Learn how to create engaging videos with AI-powered tools for storytelling, marketing, education, and social media.",
+    description: "Learn how to create professional AI powered videos using modern tools and creative workflows.",
     icon: Video,
     color: "bg-indigo-50 text-indigo-600",
     btnColor: "bg-indigo-600 hover:bg-indigo-700 text-white border-transparent",
     image: "/cohort-images/ai-video-creation.png",
   },
+  {
+    id: "vibe-coding",
+    title: "VIBE Coding",
+    description: "Learn how to develop websites using modern AI and no code tools.",
+    icon: Code,
+    color: "bg-blue-50 text-blue-600",
+    btnColor: "bg-blue-600 hover:bg-blue-700 text-white border-transparent",
+    image: "/cohort-images/web-development.png",
+  },
+  {
+    id: "product-management",
+    title: "Product Management",
+    description: "Learn how to manage products from idea to launch using practical tools.",
+    icon: Briefcase,
+    color: "bg-orange-50 text-orange-600",
+    btnColor: "bg-orange-600 hover:bg-orange-700 text-white border-transparent",
+    image: "/cohort-images/product-management.png",
+  },
+  {
+    id: "project-management",
+    title: "Project Management",
+    description: "Learn how to plan and deliver projects using effective methods.",
+    icon: CheckSquare,
+    color: "bg-green-50 text-green-600",
+    btnColor: "bg-green-600 hover:bg-green-700 text-white border-transparent",
+    image: "/cohort-images/project-management.png",
+  },
+  {
+    id: "virtual-assistance",
+    title: "Virtual Assistance",
+    description: "Learn the tools and skills to support businesses remotely.",
+    icon: Headset,
+    color: "bg-pink-50 text-pink-600",
+    btnColor: "bg-pink-600 hover:bg-pink-700 text-white border-transparent",
+    image: "/cohort-images/virtual-assistance.png",
+  },
+  {
+    id: "content-marketing-seo",
+    title: "Content Marketing & SEO",
+    description: "Learn how to create content that attracts, ranks, and converts.",
+    icon: Search,
+    color: "bg-yellow-50 text-yellow-600",
+    btnColor: "bg-yellow-600 hover:bg-yellow-700 text-white border-transparent",
+    image: "/cohort-images/content-marketing.png",
+  },
+  {
+    id: "lead-with-confidence",
+    title: "Lead with Confidence",
+    description: "Learn how to lead with confidence, make clear decisions, and motivate others.",
+    icon: Star,
+    color: "bg-purple-50 text-purple-600",
+    btnColor: "bg-purple-600 hover:bg-purple-700 text-white border-transparent",
+    image: "/cohort-images/lead-with-confidence.png",
+  },
+  {
+    id: "price-for-profit",
+    title: "Price for Profit",
+    description: "Learn how to price your products for profit using practical business strategies.",
+    icon: DollarSign,
+    color: "bg-emerald-50 text-emerald-600",
+    btnColor: "bg-emerald-600 hover:bg-emerald-700 text-white border-transparent",
+    image: "/cohort-images/price-for-profit.png",
+  },
+  {
+    id: "social-media-management",
+    title: "Social Media Management/Marketing",
+    description: "Learn how to create content, manage pages, grow audiences, and promote brands online.",
+    icon: Share2,
+    color: "bg-sky-50 text-sky-600",
+    btnColor: "bg-sky-600 hover:bg-sky-700 text-white border-transparent",
+    image: "/cohort-images/social-media.png",
+  }
 ];
 
 export default function CourseGrid() {
@@ -78,7 +141,7 @@ export default function CourseGrid() {
           Explore Our Courses
         </h2>
         <p className="text-lg text-gray-600">
-          Join our intensive tech cohorts to jumpstart your career. Select a course below to enroll.
+          Choose a course below and apply for your place in the next cohort.
         </p>
       </div>
 
@@ -111,7 +174,7 @@ export default function CourseGrid() {
                   onClick={() => handleEnrollClick(course.id)}
                   className={`w-full py-3.5 rounded-xl font-semibold transition-all duration-300 border shadow-md hover:shadow-lg hover:-translate-y-0.5 ${course.btnColor}`}
                 >
-                  Enroll Now
+                  Apply Now
                 </button>
               </div>
             </div>
@@ -159,7 +222,7 @@ export default function CourseGrid() {
                       onClick={() => handleEnrollClick(course.id)}
                       className={`w-full py-3.5 rounded-xl font-semibold transition-all duration-300 border shadow-md hover:shadow-lg hover:-translate-y-0.5 ${course.btnColor}`}
                     >
-                      Enroll Now
+                      Apply Now
                     </button>
                   </div>
                 </div>
