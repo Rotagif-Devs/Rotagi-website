@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ProgramsHero from "@/components/programs/ProgramsHero";
 import PTA from "@/components/globalComp/PTA";
 import CourseGrid from "@/components/cohort/CourseGrid";
@@ -52,11 +53,44 @@ const BENEFITS = [
 export default function CohortPage() {
   return (
     <main className="min-h-screen bg-white font-dm-sans overflow-x-hidden">
-      {/* Hero Section */}
-      <ProgramsHero
-        title="Gain In-Demand Digital Skills with ROTAGI Scholarship Support"
-        description="The ROTAGI Digital Skills Scholarship provides aspiring young women and girls with the opportunity to learn high-demand digital and technology skills through a practical, beginner-friendly training program designed to prepare them for academic, career, and entrepreneurial success."
-      />
+      {/* Custom Hero Section matching Home Page */}
+      <section className="relative min-h-[500px] md:min-h-[600px] flex flex-col items-center justify-end bg-pink-950 lg:mx-4 lg:rounded-2xl overflow-hidden mt-6 md:mt-0">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/programs-hero.jpg"
+            fill
+            alt="ROTAGI Cohort"
+            className="w-full h-full object-cover"
+            priority
+          />
+        </div>
+        <div className="absolute inset-0 bg-[#41122B]/70" />
+
+        <div className="relative z-10 flex flex-col justify-end w-full h-full pb-16 md:pb-20 overflow-hidden">
+          <div className="mx-auto max-w-[1260px] px-5 md:px-10 w-full flex flex-col justify-end h-full relative">
+            <div className="w-full mb-6 relative">
+              <h1 className="text-white max-w-4xl font-cal-sans text-4xl sm:text-5xl lg:text-6xl uppercase leading-[1.05] tracking-[-0.02em] mb-0 md:mb-0">
+                Gain In-Demand Digital Skills with ROTAGI Scholarship Support
+              </h1>
+            </div>
+
+            <div className="flex flex-col md:flex-row md:items-end w-full gap-8">
+              <p className="text-white/80 max-w-2xl font-dm-sans font-normal text-base md:text-lg leading-[160%] m-0">
+                The ROTAGI Digital Skills Scholarship provides aspiring young women and girls with the opportunity to learn high-demand digital and technology skills through a practical, beginner-friendly training program designed to prepare them for academic, career, and entrepreneurial success.
+              </p>
+
+              <div className="flex shrink-0 z-20 md:ml-auto">
+                <Link
+                  href="#courses"
+                  className="bg-white text-pink-600 hover:bg-gray-100 rounded-full px-8 py-4 font-bold uppercase tracking-wide transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1"
+                >
+                  Apply for Scholarship
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Courses Grid with Closed Modal */}
       <CourseGrid />
