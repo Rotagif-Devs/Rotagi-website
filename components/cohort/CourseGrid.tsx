@@ -3,63 +3,54 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Lock, Code, PenTool, Globe, Database, TrendingUp, Layout } from "lucide-react";
+import { X, Lock, Brain, PenTool, Globe, Layout, Video } from "lucide-react";
 import Button from "@/components/ui/Button";
 
 const COURSES = [
   {
-    id: "vibe-code",
-    title: "Vibe Code",
-    description: "Learn programming fundamentals and advanced topics in a fun, interactive way. Master Python, JavaScript, and more.",
-    icon: Code,
-    color: "bg-blue-50 text-blue-600",
-    btnColor: "bg-blue-600 hover:bg-blue-700 text-white border-transparent",
-    image: "/cohort-images/vibe-code.png",
+    id: "artificial-intelligence",
+    title: "Artificial Intelligence",
+    description: "Learn how to use AI tools to boost productivity, automate tasks, create content, and solve real-world problems responsibly",
+    icon: Brain,
+    color: "bg-purple-50 text-purple-600",
+    btnColor: "bg-purple-600 hover:bg-purple-700 text-white border-transparent",
+    image: "/cohort-images/artificial-intelligence.png",
   },
   {
-    id: "graphics-design",
-    title: "Graphics Design",
-    description: "Master industry-standard tools like Adobe Creative Cloud. Learn layout, typography, and visual communication.",
+    id: "canva-training",
+    title: "Canva Training",
+    description: "Learn how to design eye-catching graphics, presentations, social media content, and marketing materials using Canva.",
     icon: PenTool,
     color: "bg-pink-50 text-pink-600",
     btnColor: "bg-pink-600 hover:bg-pink-700 text-white border-transparent",
     image: "/cohort-images/graphics-design.png",
   },
   {
-    id: "web-development",
-    title: "Web Development",
-    description: "Build responsive, modern websites using HTML, CSS, React, and Next.js. Become a full-stack developer.",
-    icon: Globe,
-    color: "bg-green-50 text-green-600",
-    btnColor: "bg-green-600 hover:bg-green-700 text-white border-transparent",
-    image: "/cohort-images/web-development.png",
-  },
-  {
-    id: "data-analysis",
-    title: "Data Analysis",
-    description: "Unlock insights from complex datasets using Excel, SQL, and Python. Learn to make data-driven decisions.",
-    icon: Database,
-    color: "bg-purple-50 text-purple-600",
-    btnColor: "bg-purple-600 hover:bg-purple-700 text-white border-transparent",
-    image: "/cohort-images/data-analysis.png",
-  },
-  {
-    id: "digital-marketing",
-    title: "Digital Marketing",
-    description: "Grow brands online using SEO, social media strategies, and targeted advertising campaigns.",
-    icon: TrendingUp,
-    color: "bg-orange-50 text-orange-600",
-    btnColor: "bg-orange-600 hover:bg-orange-700 text-white border-transparent",
-    image: "/cohort-images/digital-marketing.png",
-  },
-  {
-    id: "ui-ux-design",
-    title: "UI/UX Design",
-    description: "Design intuitive user experiences and beautiful interfaces. Master Figma and user research methodologies.",
+    id: "product-design",
+    title: "Product Design (UI/UX)",
+    description: "Learn how to design intuitive digital experiences, create wireframes, prototypes, and user-friendly websites and mobile apps.",
     icon: Layout,
     color: "bg-teal-50 text-teal-600",
     btnColor: "bg-teal-600 hover:bg-teal-700 text-white border-transparent",
     image: "/cohort-images/ui-ux-design.png",
+  },
+  {
+    id: "web-development",
+    title: "Web Development",
+    description: "Learn how to build responsive websites faster using AI-powered tools, modern web technologies, and no-code or low-code solutions.",
+    icon: Globe,
+    color: "bg-blue-50 text-blue-600",
+    btnColor: "bg-blue-600 hover:bg-blue-700 text-white border-transparent",
+    image: "/cohort-images/web-development.png",
+  },
+  {
+    id: "ai-video-creation",
+    title: "AI Video Creation",
+    description: "Learn how to create engaging videos with AI-powered tools for storytelling, marketing, education, and social media.",
+    icon: Video,
+    color: "bg-indigo-50 text-indigo-600",
+    btnColor: "bg-indigo-600 hover:bg-indigo-700 text-white border-transparent",
+    image: "/cohort-images/ai-video-creation.png",
   },
 ];
 
@@ -77,7 +68,7 @@ export default function CourseGrid() {
   const selectedCourseData = COURSES.find(c => c.id === selectedCourse);
 
   return (
-    <section className="py-20 px-5 md:px-10 max-w-[1260px] mx-auto w-full font-dm-sans bg-white">
+    <section id="courses" className="py-20 px-5 md:px-10 max-w-[1260px] mx-auto w-full font-dm-sans bg-white">
       <div className="text-center max-w-3xl mx-auto mb-16">
         <h2 className="text-3xl md:text-5xl font-bold font-cal-sans text-gray-900 mb-6">
           Explore Our Courses
