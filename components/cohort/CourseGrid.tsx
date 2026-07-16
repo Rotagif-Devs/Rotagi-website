@@ -3,7 +3,11 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Lock, Brain, PenTool, Globe, Layout, Video } from "lucide-react";
+import { X, Lock, Brain, PenTool, Globe, Layout, Video, ChevronLeft, ChevronRight } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 import Button from "@/components/ui/Button";
 
 const COURSES = [
@@ -78,7 +82,8 @@ export default function CourseGrid() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Desktop Grid */}
+      <div className="hidden lg:grid lg:grid-cols-3 gap-8">
         {COURSES.map((course) => {
           const IconComponent = course.icon;
           return (
@@ -112,6 +117,72 @@ export default function CourseGrid() {
             </div>
           );
         })}
+      </div>
+
+      {/* Mobile/Tablet Slider */}
+      <div className="lg:hidden relative">
+        <Swiper
+          modules={[Navigation]}
+          navigation={{
+            prevEl: ".course-prev",
+            nextEl: ".course-next",
+          }}
+          slidesPerView={1.1}
+          breakpoints={{
+            640: { slidesPerView: 2.1, spaceBetween: 24 },
+          }}
+          spaceBetween={16}
+          className="pb-12 px-1"
+        >
+          {COURSES.map((course) => {
+            const IconComponent = course.icon;
+            return (
+              <SwiperSlide key={course.id} className="h-auto">
+                <div className="bg-white border border-gray-100 rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full group">
+                  <div className="relative w-full aspect-[4/3] overflow-hidden">
+                    <Image 
+                      src={course.image} 
+                      alt={course.title} 
+                      fill 
+                      className="object-cover transition-transform duration-500 group-hover:scale-105" 
+                    />
+                  </div>
+                  <div className="p-6 sm:p-8 flex flex-col flex-grow items-start">
+                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-6 ${course.color} transition-transform group-hover:-translate-y-1`}>
+                      <IconComponent size={24} strokeWidth={1.5} />
+                    </div>
+                    <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3 font-cal-sans">{course.title}</h3>
+                    <p className="text-sm sm:text-base text-gray-600 mb-8 flex-grow leading-relaxed">
+                      {course.description}
+                    </p>
+                    <button
+                      onClick={() => handleEnrollClick(course.id)}
+                      className={`w-full py-3.5 rounded-xl font-semibold transition-all duration-300 border shadow-md hover:shadow-lg hover:-translate-y-0.5 ${course.btnColor}`}
+                    >
+                      Enroll Now
+                    </button>
+                  </div>
+                </div>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+        
+        {/* Navigation Buttons */}
+        <div className="mt-4 flex justify-center gap-4">
+          <button
+            className="course-prev flex h-14 w-14 items-center justify-center border-2 border-gray-200 rounded-full bg-white transition hover:bg-pink-50 hover:border-pink-200 text-gray-600 hover:text-pink-600"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="h-7 w-7" />
+          </button>
+          <button
+            className="course-next flex h-14 w-14 items-center justify-center border-2 border-gray-200 rounded-full bg-white transition hover:bg-pink-50 hover:border-pink-200 text-gray-600 hover:text-pink-600"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="h-7 w-7" />
+          </button>
+        </div>
       </div>
 
       {/* Registration Closed Modal */}

@@ -68,21 +68,21 @@ export default function CohortPage() {
 
         <div className="relative z-10 flex flex-col justify-end w-full h-full pb-16 md:pb-20 overflow-hidden">
           <div className="mx-auto max-w-[1260px] px-5 md:px-10 w-full flex flex-col justify-end h-full relative">
-            <div className="w-full mb-6 relative">
-              <h1 className="text-white max-w-4xl font-cal-sans text-4xl sm:text-5xl lg:text-6xl uppercase leading-[1.05] tracking-[-0.02em] mb-0 md:mb-0">
+            <div className="w-full mb-4 md:mb-6 relative">
+              <h1 className="text-white max-w-4xl font-cal-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase leading-[1.1] tracking-[-0.02em] mb-0 md:mb-0">
                 Gain In-Demand Digital Skills with ROTAGI Scholarship Support
               </h1>
             </div>
 
-            <div className="flex flex-col md:flex-row md:items-end w-full gap-8">
-              <p className="text-white/80 max-w-2xl font-dm-sans font-normal text-base md:text-lg leading-[160%] m-0">
+            <div className="flex flex-col md:flex-row md:items-end w-full gap-6 md:gap-8 mt-2 md:mt-0">
+              <p className="text-white/80 max-w-2xl font-dm-sans font-normal text-sm sm:text-base md:text-lg leading-[160%] m-0">
                 The ROTAGI Digital Skills Scholarship provides aspiring young women and girls with the opportunity to learn high-demand digital and technology skills through a practical, beginner-friendly training program designed to prepare them for academic, career, and entrepreneurial success.
               </p>
 
-              <div className="flex shrink-0 z-20 md:ml-auto">
+              <div className="flex shrink-0 z-20 md:ml-auto w-full md:w-auto mt-2 md:mt-0">
                 <Link
                   href="#courses"
-                  className="bg-white text-pink-600 hover:bg-gray-100 rounded-full px-8 py-4 font-semibold uppercase tracking-wide transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1"
+                  className="bg-white text-pink-600 hover:bg-gray-100 rounded-full px-6 md:px-8 py-3.5 md:py-4 font-semibold uppercase tracking-wide transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 text-center w-full md:w-auto text-sm md:text-base"
                 >
                   Apply for Scholarship
                 </Link>
