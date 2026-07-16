@@ -70,7 +70,7 @@ export default function CourseGrid() {
   return (
     <section id="courses" className="py-20 px-5 md:px-10 max-w-[1260px] mx-auto w-full font-dm-sans bg-white">
       <div className="text-center max-w-3xl mx-auto mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold font-cal-sans text-gray-900 mb-6">
+        <h2 className="text-3xl md:text-5xl font-semibold font-cal-sans text-gray-900 mb-6">
           Explore Our Courses
         </h2>
         <p className="text-lg text-gray-600">
@@ -98,7 +98,7 @@ export default function CourseGrid() {
                 <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-6 ${course.color} transition-transform group-hover:-translate-y-1`}>
                   <IconComponent size={24} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3 font-cal-sans">{course.title}</h3>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-3 font-cal-sans">{course.title}</h3>
                 <p className="text-gray-600 mb-8 flex-grow leading-relaxed">
                   {course.description}
                 </p>
@@ -146,7 +146,7 @@ export default function CourseGrid() {
                   <Lock size={32} strokeWidth={1.5} />
                 </div>
                 
-                <h3 className="text-2xl font-bold font-cal-sans text-gray-900 mb-3">
+                <h3 className="text-2xl font-semibold font-cal-sans text-gray-900 mb-3">
                   Registration Closed
                 </h3>
                 

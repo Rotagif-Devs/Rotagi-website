@@ -82,7 +82,7 @@ export default function CohortPage() {
               <div className="flex shrink-0 z-20 md:ml-auto">
                 <Link
                   href="#courses"
-                  className="bg-white text-pink-600 hover:bg-gray-100 rounded-full px-8 py-4 font-bold uppercase tracking-wide transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1"
+                  className="bg-white text-pink-600 hover:bg-gray-100 rounded-full px-8 py-4 font-semibold uppercase tracking-wide transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1"
                 >
                   Apply for Scholarship
                 </Link>
@@ -100,7 +100,7 @@ export default function CohortPage() {
         <div className="absolute inset-0 bg-[url('/pattern.png')] opacity-10" />
         <div className="max-w-[1260px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
           <div className="max-w-2xl text-white">
-            <h2 className="text-3xl md:text-4xl font-bold font-cal-sans mb-4">
+            <h2 className="text-3xl md:text-4xl font-semibold font-cal-sans mb-4">
               APPLY FOR SCHOLARSHIP
             </h2>
             <p className="text-pink-100 text-lg">
@@ -110,7 +110,7 @@ export default function CohortPage() {
           {/* This button will scroll them back up to click a course, or we can just link it to `#courses` */}
           <Link 
             href="#courses"
-            className="px-8 py-4 bg-white text-pink-600 font-bold rounded-xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 shrink-0"
+            className="px-8 py-4 bg-white text-pink-600 font-semibold rounded-xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 shrink-0"
           >
             Apply for Scholarship
           </Link>
@@ -120,7 +120,7 @@ export default function CohortPage() {
       {/* What You'll Gain Section */}
       <section className="py-24 px-5 md:px-10 max-w-[1260px] mx-auto w-full">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold font-cal-sans text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-5xl font-semibold font-cal-sans text-gray-900 mb-6">
             What You'll Gain as a ROTAGI Scholar
           </h2>
           <p className="text-lg text-gray-600">
@@ -139,7 +139,7 @@ export default function CohortPage() {
                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 border transition-transform group-hover:scale-110 ${benefit.color}`}>
                   <Icon size={28} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 font-cal-sans">{benefit.title}</h3>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-4 font-cal-sans">{benefit.title}</h3>
                 <p className="text-gray-600 leading-relaxed">
                   {benefit.description}
                 </p>
@@ -152,7 +152,7 @@ export default function CohortPage() {
       {/* Final Bottom CTA */}
       <section className="py-20 px-5 md:px-10 bg-gray-50 border-t border-gray-100 text-center">
         <div className="max-w-3xl mx-auto flex flex-col items-center">
-          <h2 className="text-3xl md:text-4xl font-bold font-cal-sans text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl font-semibold font-cal-sans text-gray-900 mb-6">
             Start building the skills you need for a successful career in technology.
           </h2>
           <p className="text-lg text-gray-600 mb-10">
@@ -160,7 +160,7 @@ export default function CohortPage() {
           </p>
           <Link 
             href="#courses"
-            className="px-10 py-5 bg-pink-600 hover:bg-pink-700 text-white font-bold rounded-2xl shadow-xl shadow-pink-600/20 hover:shadow-pink-600/40 hover:-translate-y-1 transition-all duration-300"
+            className="px-10 py-5 bg-pink-600 hover:bg-pink-700 text-white font-semibold rounded-2xl shadow-xl shadow-pink-600/20 hover:shadow-pink-600/40 hover:-translate-y-1 transition-all duration-300"
           >
             Explore Courses & Apply
           </Link>
