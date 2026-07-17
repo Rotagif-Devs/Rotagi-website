@@ -133,34 +133,39 @@ export default function CohortPage() {
       </section>
 
       {/* What You'll Gain Section */}
-      <section className="py-24 px-5 md:px-10 max-w-[1260px] mx-auto w-full">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-semibold font-cal-sans text-gray-900 mb-6">
-            What You will Gain as a ROTAGI Scholar
-          </h2>
-          <p className="text-lg text-gray-600">
-            Join 500+ African girls and young women gaining in demand skills for work, life, and business.
-          </p>
-        </div>
+      <section className="bg-primary px-5 md:px-10 py-24 w-full">
+        <div className="max-w-[1260px] mx-auto">
+          <div className="text-center">
+            <p className="text-sm font-semibold tracking-wider text-[#D62D88] uppercase">
+              What You will Gain as a ROTAGI Scholar
+            </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {BENEFITS.map((benefit, idx) => {
-            const Icon = benefit.icon;
-            return (
-              <div 
-                key={idx}
-                className="bg-white border border-gray-100 rounded-[32px] p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
-              >
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 border transition-transform group-hover:scale-110 ${benefit.color}`}>
-                  <Icon size={28} strokeWidth={1.5} />
+            <h2 className="mx-auto mt-4 max-w-4xl uppercase leading-[1.1] text-black text-3xl md:text-5xl font-cal-sans">
+              JOIN 500+ AFRICAN GIRLS AND YOUNG WOMEN GAINING IN DEMAND SKILLS FOR WORK, LIFE, AND BUSINESS.
+            </h2>
+          </div>
+
+          <div className="mt-16 grid gap-8 md:grid-cols-2">
+            {BENEFITS.map((benefit, idx) => {
+              const Icon = benefit.icon;
+              return (
+                <div 
+                  key={idx}
+                  className="flex items-start gap-4 p-6 rounded-2xl border border-pink-100/20 backdrop-blur-sm"
+                >
+                  <div className={`w-14 h-14 shrink-0 rounded-2xl flex items-center justify-center border ${benefit.color}`}>
+                    <Icon size={24} strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg text-black tracking-wide font-cal-sans">{benefit.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[#5D677C]">
+                      {benefit.description}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4 font-cal-sans">{benefit.title}</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {benefit.description}
-                </p>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </section>
 
