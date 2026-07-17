@@ -19,6 +19,7 @@ const COURSES = [
     color: "bg-purple-50 text-purple-600",
     btnColor: "bg-purple-600 hover:bg-purple-700 text-white border-transparent",
     image: "/cohort-images/artificial-intelligence.png",
+    available: false,
   },
   {
     id: "canva-training",
@@ -28,6 +29,7 @@ const COURSES = [
     color: "bg-pink-50 text-pink-600",
     btnColor: "bg-pink-600 hover:bg-pink-700 text-white border-transparent",
     image: "/cohort-images/graphics-design.png",
+    available: false,
   },
   {
     id: "product-design",
@@ -37,6 +39,7 @@ const COURSES = [
     color: "bg-teal-50 text-teal-600",
     btnColor: "bg-teal-600 hover:bg-teal-700 text-white border-transparent",
     image: "/cohort-images/ui-ux-design.png",
+    available: true,
   },
   {
     id: "ai-video-creation",
@@ -46,6 +49,7 @@ const COURSES = [
     color: "bg-indigo-50 text-indigo-600",
     btnColor: "bg-indigo-600 hover:bg-indigo-700 text-white border-transparent",
     image: "/cohort-images/ai-video-creation.png",
+    available: true,
   },
   {
     id: "vibe-coding",
@@ -55,6 +59,7 @@ const COURSES = [
     color: "bg-blue-50 text-blue-600",
     btnColor: "bg-blue-600 hover:bg-blue-700 text-white border-transparent",
     image: "/cohort-images/web-development.png",
+    available: true,
   },
   {
     id: "product-management",
@@ -64,6 +69,7 @@ const COURSES = [
     color: "bg-orange-50 text-orange-600",
     btnColor: "bg-orange-600 hover:bg-orange-700 text-white border-transparent",
     image: "/cohort-images/product-management.png",
+    available: false,
   },
   {
     id: "project-management",
@@ -73,6 +79,7 @@ const COURSES = [
     color: "bg-green-50 text-green-600",
     btnColor: "bg-green-600 hover:bg-green-700 text-white border-transparent",
     image: "/cohort-images/project-management.png",
+    available: false,
   },
   {
     id: "virtual-assistance",
@@ -82,6 +89,7 @@ const COURSES = [
     color: "bg-pink-50 text-pink-600",
     btnColor: "bg-pink-600 hover:bg-pink-700 text-white border-transparent",
     image: "/cohort-images/virtual-assistance.png",
+    available: false,
   },
   {
     id: "content-marketing-seo",
@@ -91,6 +99,7 @@ const COURSES = [
     color: "bg-yellow-50 text-yellow-600",
     btnColor: "bg-yellow-600 hover:bg-yellow-700 text-white border-transparent",
     image: "/cohort-images/content-marketing.png",
+    available: false,
   },
   {
     id: "lead-with-confidence",
@@ -100,6 +109,7 @@ const COURSES = [
     color: "bg-purple-50 text-purple-600",
     btnColor: "bg-purple-600 hover:bg-purple-700 text-white border-transparent",
     image: "/cohort-images/lead-with-confidence.png",
+    available: false,
   },
   {
     id: "price-for-profit",
@@ -109,6 +119,7 @@ const COURSES = [
     color: "bg-emerald-50 text-emerald-600",
     btnColor: "bg-emerald-600 hover:bg-emerald-700 text-white border-transparent",
     image: "/cohort-images/price-for-profit.png",
+    available: false,
   },
   {
     id: "social-media-management",
@@ -118,6 +129,7 @@ const COURSES = [
     color: "bg-sky-50 text-sky-600",
     btnColor: "bg-sky-600 hover:bg-sky-700 text-white border-transparent",
     image: "/cohort-images/social-media.png",
+    available: false,
   }
 ];
 
@@ -161,20 +173,32 @@ export default function CourseGrid() {
                   fill 
                   className="object-cover transition-transform duration-500 group-hover:scale-105" 
                 />
+                <span className={`absolute right-3 top-5 inline-flex items-center justify-center rounded-tl-xl rounded-br-xl bg-opacity-90 font-bold text-[12px] px-4 py-1 z-10 ${course.available ? 'bg-pink-100 text-pink-700' : 'bg-gray-100 text-gray-500'}`}>
+                  {course.available ? "Ongoing" : "Unavailable"}
+                </span>
               </div>
               <div className="p-8 flex flex-col flex-grow items-start">
                 <h3 className="text-2xl text-gray-900 mb-3 font-cal-sans">{course.title}</h3>
                 <p className="text-gray-600 mb-8 flex-grow leading-relaxed">
                   {course.description}
                 </p>
-                <a
-                  href="https://forms.office.com/pages/responsepage.aspx?id=RVNyegZvkUS5ZdDKnKhkcKG0LwzxGBFOpKARi6tkYdhUN0lFU0w0V1o1UVkyQjRCRTdYNFY0M0dQTCQlQCN0PWcu&origin=lprLink&route=shorturl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`w-full text-center block py-3.5 rounded-xl font-semibold transition-all duration-300 border shadow-md hover:shadow-lg hover:-translate-y-0.5 ${course.btnColor}`}
-                >
-                  Apply Now
-                </a>
+                {course.available ? (
+                  <a
+                    href="https://forms.office.com/pages/responsepage.aspx?id=RVNyegZvkUS5ZdDKnKhkcKG0LwzxGBFOpKARi6tkYdhUN0lFU0w0V1o1UVkyQjRCRTdYNFY0M0dQTCQlQCN0PWcu&origin=lprLink&route=shorturl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-full text-center block py-3.5 rounded-xl font-semibold transition-all duration-300 border shadow-md hover:shadow-lg hover:-translate-y-0.5 ${course.btnColor}`}
+                  >
+                    Apply Now
+                  </a>
+                ) : (
+                  <button
+                    disabled
+                    className="w-full text-center block py-3.5 rounded-xl font-semibold transition-all duration-300 border bg-gray-100 text-gray-400 cursor-not-allowed"
+                  >
+                    Unavailable
+                  </button>
+                )}
               </div>
             </div>
           );
@@ -208,20 +232,32 @@ export default function CourseGrid() {
                       fill 
                       className="object-cover transition-transform duration-500 group-hover:scale-105" 
                     />
+                    <span className={`absolute right-3 top-5 inline-flex items-center justify-center rounded-tl-xl rounded-br-xl bg-opacity-90 font-bold text-[12px] px-4 py-1 z-10 ${course.available ? 'bg-pink-100 text-pink-700' : 'bg-gray-100 text-gray-500'}`}>
+                      {course.available ? "Ongoing" : "Unavailable"}
+                    </span>
                   </div>
                   <div className="p-6 sm:p-8 flex flex-col flex-grow items-start">
                     <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3 font-cal-sans">{course.title}</h3>
                     <p className="text-sm sm:text-base text-gray-600 mb-8 flex-grow leading-relaxed">
                       {course.description}
                     </p>
-                    <a
-                      href="https://forms.office.com/pages/responsepage.aspx?id=RVNyegZvkUS5ZdDKnKhkcKG0LwzxGBFOpKARi6tkYdhUN0lFU0w0V1o1UVkyQjRCRTdYNFY0M0dQTCQlQCN0PWcu&origin=lprLink&route=shorturl"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`w-full text-center block py-3.5 rounded-xl font-semibold transition-all duration-300 border shadow-md hover:shadow-lg hover:-translate-y-0.5 ${course.btnColor}`}
-                    >
-                      Apply Now
-                    </a>
+                    {course.available ? (
+                      <a
+                        href="https://forms.office.com/pages/responsepage.aspx?id=RVNyegZvkUS5ZdDKnKhkcKG0LwzxGBFOpKARi6tkYdhUN0lFU0w0V1o1UVkyQjRCRTdYNFY0M0dQTCQlQCN0PWcu&origin=lprLink&route=shorturl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`w-full text-center block py-3.5 rounded-xl font-semibold transition-all duration-300 border shadow-md hover:shadow-lg hover:-translate-y-0.5 ${course.btnColor}`}
+                      >
+                        Apply Now
+                      </a>
+                    ) : (
+                      <button
+                        disabled
+                        className="w-full text-center block py-3.5 rounded-xl font-semibold transition-all duration-300 border bg-gray-100 text-gray-400 cursor-not-allowed"
+                      >
+                        Unavailable
+                      </button>
+                    )}
                   </div>
                 </div>
               </SwiperSlide>
