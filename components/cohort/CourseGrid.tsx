@@ -170,12 +170,14 @@ export default function CourseGrid() {
                 <p className="text-gray-600 mb-8 flex-grow leading-relaxed">
                   {course.description}
                 </p>
-                <button
-                  onClick={() => handleEnrollClick(course.id)}
-                  className={`w-full py-3.5 rounded-xl font-semibold transition-all duration-300 border shadow-md hover:shadow-lg hover:-translate-y-0.5 ${course.btnColor}`}
+                <a
+                  href="https://forms.office.com/pages/responsepage.aspx?id=RVNyegZvkUS5ZdDKnKhkcKG0LwzxGBFOpKARi6tkYdhUN0lFU0w0V1o1UVkyQjRCRTdYNFY0M0dQTCQlQCN0PWcu&origin=lprLink&route=shorturl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-full text-center block py-3.5 rounded-xl font-semibold transition-all duration-300 border shadow-md hover:shadow-lg hover:-translate-y-0.5 ${course.btnColor}`}
                 >
                   Apply Now
-                </button>
+                </a>
               </div>
             </div>
           );
@@ -218,12 +220,14 @@ export default function CourseGrid() {
                     <p className="text-sm sm:text-base text-gray-600 mb-8 flex-grow leading-relaxed">
                       {course.description}
                     </p>
-                    <button
-                      onClick={() => handleEnrollClick(course.id)}
-                      className={`w-full py-3.5 rounded-xl font-semibold transition-all duration-300 border shadow-md hover:shadow-lg hover:-translate-y-0.5 ${course.btnColor}`}
+                    <a
+                      href="https://forms.office.com/pages/responsepage.aspx?id=RVNyegZvkUS5ZdDKnKhkcKG0LwzxGBFOpKARi6tkYdhUN0lFU0w0V1o1UVkyQjRCRTdYNFY0M0dQTCQlQCN0PWcu&origin=lprLink&route=shorturl"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`w-full text-center block py-3.5 rounded-xl font-semibold transition-all duration-300 border shadow-md hover:shadow-lg hover:-translate-y-0.5 ${course.btnColor}`}
                     >
                       Apply Now
-                    </button>
+                    </a>
                   </div>
                 </div>
               </SwiperSlide>
