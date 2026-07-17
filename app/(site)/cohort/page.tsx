@@ -116,7 +116,7 @@ export default function CohortPage() {
         <div className="absolute inset-0 bg-[url('/pattern.png')] opacity-10" />
         <div className="max-w-[1260px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
           <div className="max-w-2xl text-white">
-            <h2 className="text-3xl md:text-4xl font-semibold font-cal-sans mb-4">
+            <h2 className="text-3xl md:text-4xl font-cal-sans mb-4">
               Apply for a Scholarship
             </h2>
             <p className="text-pink-100 text-lg">
@@ -140,7 +140,7 @@ export default function CohortPage() {
               What You will Gain as a ROTAGI Scholar
             </p>
 
-            <h2 className="mx-auto mt-4 max-w-4xl uppercase leading-[1.1] text-black text-3xl md:text-5xl font-cal-sans">
+            <h2 className="mx-auto mt-4 max-w-4xl uppercase leading-[1.1]  text-3xl md:text-5xl font-cal-sans">
               JOIN 500+ AFRICAN GIRLS AND YOUNG WOMEN GAINING IN DEMAND SKILLS FOR WORK, LIFE, AND BUSINESS.
             </h2>
           </div>
@@ -157,7 +157,7 @@ export default function CohortPage() {
                     <Icon size={24} strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h3 className="text-lg text-black tracking-wide font-cal-sans">{benefit.title}</h3>
+                    <h3 className="text-lg  tracking-wide font-cal-sans">{benefit.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-[#5D677C]">
                       {benefit.description}
                     </p>
@@ -172,7 +172,7 @@ export default function CohortPage() {
       {/* Final Bottom CTA */}
       <section className="py-20 px-5 md:px-10 bg-gray-50 border-t border-gray-100 text-center">
         <div className="max-w-3xl mx-auto flex flex-col items-center">
-          <h2 className="text-3xl md:text-4xl font-semibold font-cal-sans text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl font-cal-sans text-gray-900 mb-6">
             Start building the skills that shape your future.
           </h2>
           <p className="text-lg text-gray-600 mb-10">
