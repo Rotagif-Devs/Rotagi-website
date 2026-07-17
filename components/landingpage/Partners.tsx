@@ -21,7 +21,7 @@ const partnerLogos = [
   { name: "Infinityfield", url: "/Infinityfield.png" },
   { name: "monday.com", url: "/monday.png" },
   { name: "little", url: "/little.jpg" },
-
+  { name: "Make", url: "/partners/make.jpg" },
 ];
 
 export default function Partners() {

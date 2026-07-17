@@ -152,7 +152,7 @@ export default function CourseGrid() {
           return (
             <div 
               key={course.id}
-              className="bg-white border border-gray-100 rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+              className="bg-white border border-gray-100 rounded-sm overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group"
             >
               <div className="relative w-full aspect-[4/3] overflow-hidden">
                 <Image 
@@ -163,9 +163,6 @@ export default function CourseGrid() {
                 />
               </div>
               <div className="p-8 flex flex-col flex-grow items-start">
-                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-6 ${course.color} transition-transform group-hover:-translate-y-1`}>
-                  <IconComponent size={24} strokeWidth={1.5} />
-                </div>
                 <h3 className="text-2xl font-semibold text-gray-900 mb-3 font-cal-sans">{course.title}</h3>
                 <p className="text-gray-600 mb-8 flex-grow leading-relaxed">
                   {course.description}
@@ -203,7 +200,7 @@ export default function CourseGrid() {
             const IconComponent = course.icon;
             return (
               <SwiperSlide key={course.id} className="h-auto">
-                <div className="bg-white border border-gray-100 rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full group">
+                <div className="bg-white border border-gray-100 rounded-sm overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full group">
                   <div className="relative w-full aspect-[4/3] overflow-hidden">
                     <Image 
                       src={course.image} 
@@ -213,9 +210,6 @@ export default function CourseGrid() {
                     />
                   </div>
                   <div className="p-6 sm:p-8 flex flex-col flex-grow items-start">
-                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-6 ${course.color} transition-transform group-hover:-translate-y-1`}>
-                      <IconComponent size={24} strokeWidth={1.5} />
-                    </div>
                     <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3 font-cal-sans">{course.title}</h3>
                     <p className="text-sm sm:text-base text-gray-600 mb-8 flex-grow leading-relaxed">
                       {course.description}
