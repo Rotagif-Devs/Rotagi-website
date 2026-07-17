@@ -98,7 +98,7 @@ export default function CohortPage() {
               <div className="flex shrink-0 z-20 md:ml-auto w-full md:w-auto mt-2 md:mt-0">
                 <Link
                   href="#courses"
-                  className="bg-white text-primary hover:bg-gray-100 rounded-full px-6 md:px-8 py-3.5 md:py-4 font-semibold transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 text-center w-full md:w-auto text-sm md:text-base"
+                  className="bg-white text-secondary hover:bg-gray-100 rounded-full px-6 md:px-8 py-3.5 md:py-4 font-semibold transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 text-center w-full md:w-auto text-sm md:text-base"
                 >
                   Apply for a Scholarship
                 </Link>
@@ -112,7 +112,7 @@ export default function CohortPage() {
       <CourseGrid />
 
       {/* Mid-Page CTA */}
-      <section className="bg-primary py-16 px-5 md:px-10 mt-12 relative overflow-hidden">
+      <section className="bg-secondary py-16 px-5 md:px-10 mt-12 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/pattern.png')] opacity-10" />
         <div className="max-w-[1260px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
           <div className="max-w-2xl text-white">
@@ -125,7 +125,7 @@ export default function CohortPage() {
           </div>
           <Link 
             href="#courses"
-            className="px-8 py-4 bg-white text-primary font-semibold rounded-xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 shrink-0"
+            className="px-8 py-4 bg-white text-secondary font-semibold rounded-xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 shrink-0"
           >
             Apply for a Scholarship
           </Link>
@@ -180,17 +180,14 @@ export default function CohortPage() {
           </p>
           <Link 
             href="#courses"
-            className="px-10 py-5 bg-primary hover:bg-primary/90 text-white font-semibold rounded-2xl shadow-xl shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-1 transition-all duration-300"
+            className="px-10 py-5 bg-secondary hover:bg-primary/90 text-white font-semibold rounded-2xl shadow-xl shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-1 transition-all duration-300"
           >
             Apply for a Scholarship
           </Link>
         </div>
       </section>
 
-      {/* Global Call to Action (Waitlist Section) */}
-      <div className="bg-white border-t border-gray-100">
-        <PTA />
-      </div>
+ 
     </main>
   );
 }
