@@ -18,7 +18,7 @@ const COURSES = [
     icon: Brain,
     color: "bg-purple-50 text-purple-600",
     btnColor: "bg-purple-600 hover:bg-purple-700 text-white border-transparent",
-    image: "/cohort-images/artificial-intelligence.png",
+    image: "/cohort-images/artificial-intelligence.jpg",
     available: false,
   },
   {
