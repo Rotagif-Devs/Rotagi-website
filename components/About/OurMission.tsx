@@ -59,7 +59,7 @@ const OurMission = () => {
           <div className="flex md:justify-end">
             <div className="relative h-64 w-full lg:block hidden sm:h-80 sm:w-80 md:h-100 md:w-100 overflow-hidden rounded-[28px] bg-gray-100 shadow-lg ring-1 ring-gray-200 mx-auto md:mx-0">
               <Image
-                src="/Team-member.png"
+                src="/about-mission.jpg"
                 alt="Women collaborating on a laptop"
                 fill
                 priority
