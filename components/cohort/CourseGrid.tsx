@@ -28,7 +28,7 @@ const COURSES = [
     icon: PenTool,
     color: "bg-pink-50 text-pink-600",
     btnColor: "bg-pink-600 hover:bg-pink-700 text-white border-transparent",
-    image: "/cohort-images/graphics-design.png",
+    image: "/cohort-images/canva-training.jpg",
     available: false,
   },
   {
@@ -48,7 +48,7 @@ const COURSES = [
     icon: Video,
     color: "bg-indigo-50 text-indigo-600",
     btnColor: "bg-indigo-600 hover:bg-indigo-700 text-white border-transparent",
-    image: "/cohort-images/ai-video-creation.png",
+    image: "/cohort-images/ai-video-creation.jpg",
     available: true,
   },
   {
@@ -118,7 +118,7 @@ const COURSES = [
     icon: DollarSign,
     color: "bg-emerald-50 text-emerald-600",
     btnColor: "bg-emerald-600 hover:bg-emerald-700 text-white border-transparent",
-    image: "/cohort-images/price-for-profit.png",
+    image: "/cohort-images/price-for-profit.jpg",
     available: false,
   },
   {
@@ -128,7 +128,7 @@ const COURSES = [
     icon: Share2,
     color: "bg-sky-50 text-sky-600",
     btnColor: "bg-sky-600 hover:bg-sky-700 text-white border-transparent",
-    image: "/cohort-images/social-media.png",
+    image: "/cohort-images/social-media.jpg",
     available: false,
   }
 ];
