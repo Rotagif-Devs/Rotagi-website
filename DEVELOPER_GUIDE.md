@@ -19,6 +19,7 @@ We use Next.js Route Groups to isolate layouts:
 - `(site)`: Public pages (includes Header/Footer).
 - `(lms)`: Private dashboard pages (minimal layout).
 - `(auth)`: Login and registration flows.
+password: aoEOBFe9CEhWWLIg
 
 ### 2. Component Structure
 Each feature in `components/` should follow this pattern:

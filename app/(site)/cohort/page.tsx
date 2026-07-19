@@ -31,37 +31,37 @@ const BENEFITS = [
   {
     title: "Guided Curriculum",
     description: "Move from beginner to advanced through a well designed pathway, one step at a time.",
-    icon: BookOpen,
+    image: "/cohort-images/guided-curriculum.png",
     color: "bg-blue-50 text-blue-600 border-blue-100",
   },
   {
     title: "Hands on Projects",
     description: "Apply your skills to real briefs and build a portfolio that opens doors.",
-    icon: Zap,
+    image: "/cohort-images/hands-on-projects.png",
     color: "bg-orange-50 text-orange-600 border-orange-100",
   },
   {
     title: "Mentorship & Support",
     description: "Get guidance from experienced mentors and facilitators at every stage.",
-    icon: HandHeart,
+    image: "/cohort-images/mentorship-support.jpg",
     color: "bg-pink-50 text-pink-600 border-pink-100",
   },
   {
     title: "Career Readiness",
     description: "Sharpen your workplace skills, polish your CV, and prepare for internships, freelancing, or employment.",
-    icon: Briefcase,
+    image: "/cohort-images/career-readiness.jpg",
     color: "bg-teal-50 text-teal-600 border-teal-100",
   },
   {
     title: "Community & Networking",
     description: "Join a vibrant community of ROTAGI scholars, mentors, and industry professionals.",
-    icon: Users,
+    image: "/cohort-images/community-networking.jpg",
     color: "bg-purple-50 text-purple-600 border-purple-100",
   },
   {
     title: "Certificate of Completion",
     description: "Earn your ROTAGI certificate once you have met the program requirements.",
-    icon: Award,
+    image: "/cohort-images/certificate-of-completion.jpg",
     color: "bg-yellow-50 text-yellow-600 border-yellow-100",
   },
 ];
@@ -147,14 +147,13 @@ export default function CohortPage() {
 
           <div className="mt-16 grid gap-8 md:grid-cols-2">
             {BENEFITS.map((benefit, idx) => {
-              const Icon = benefit.icon;
               return (
                 <div 
                   key={idx}
                   className="flex items-start gap-4 p-6 rounded-2xl border border-pink-100/20 backdrop-blur-sm"
                 >
-                  <div className={`w-14 h-14 shrink-0 rounded-2xl flex items-center justify-center border ${benefit.color}`}>
-                    <Icon size={24} strokeWidth={1.5} />
+                  <div className={`w-14 h-14 shrink-0 rounded-2xl flex items-center justify-center overflow-hidden`}>
+                    <Image src={benefit.image} alt={benefit.title} width={56} height={56} className="object-cover" />
                   </div>
                   <div>
                     <h3 className="text-lg  tracking-wide font-cal-sans">{benefit.title}</h3>
