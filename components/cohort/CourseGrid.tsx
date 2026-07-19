@@ -98,7 +98,7 @@ const COURSES = [
     icon: Search,
     color: "bg-yellow-50 text-yellow-600",
     btnColor: "bg-yellow-600 hover:bg-yellow-700 text-white border-transparent",
-    image: "/cohort-images/content-marketing.png",
+    image: "/cohort-images/content-marketing.jpg",
     available: false,
   },
   {
