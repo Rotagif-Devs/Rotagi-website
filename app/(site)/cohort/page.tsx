@@ -73,7 +73,7 @@ export default function CohortPage() {
       <section className="relative min-h-[500px] md:min-h-[600px] flex flex-col items-center justify-end bg-pink-950 lg:mx-4 lg:rounded-2xl overflow-hidden mt-6 md:mt-0">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/cohort-hero-meet.jpg"
+            src="/cohort-hero.png"
             fill
             alt="Young African women taking part in a ROTAGI digital skills session"
             className="w-full h-full object-cover"
