@@ -174,7 +174,7 @@ export default function CourseGrid() {
                   className="object-cover transition-transform duration-500 group-hover:scale-105" 
                 />
                 <span className={`absolute right-3 top-5 inline-flex items-center justify-center rounded-tl-xl rounded-br-xl bg-opacity-90 font-bold text-[12px] px-4 py-1 z-10 ${course.available ? 'bg-pink-100 text-pink-700' : 'bg-gray-100 text-gray-500'}`}>
-                  {course.available ? "Ongoing" : "Unavailable"}
+                  {course.available ? "Available" : "Unavailable"}
                 </span>
               </div>
               <div className="p-8 flex flex-col flex-grow items-start">
@@ -233,7 +233,7 @@ export default function CourseGrid() {
                       className="object-cover transition-transform duration-500 group-hover:scale-105" 
                     />
                     <span className={`absolute right-3 top-5 inline-flex items-center justify-center rounded-tl-xl rounded-br-xl bg-opacity-90 font-bold text-[12px] px-4 py-1 z-10 ${course.available ? 'bg-pink-100 text-pink-700' : 'bg-gray-100 text-gray-500'}`}>
-                      {course.available ? "Ongoing" : "Unavailable"}
+                      {course.available ? "Available" : "Unavailable"}
                     </span>
                   </div>
                   <div className="p-6 sm:p-8 flex flex-col flex-grow items-start">
