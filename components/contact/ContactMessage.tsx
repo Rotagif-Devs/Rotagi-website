@@ -20,7 +20,11 @@ const contactItems = [
     title: "Phone (WhatsApp)",
     content: "+234 803 236 8560",
   },
-
+  {
+    icon: MapPin,
+    title: "Address",
+    content: "No. 1 Magazar Close Eagles Ville Estate, Off VIO, Mabushi, Abuja, FCT 900231, Nigeria.",
+  },
 ];
 
 export default function ContactMessage() {
