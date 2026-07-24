@@ -23,7 +23,7 @@ const contactItems = [
   {
     icon: MapPin,
     title: "Address",
-    content: "No. 1 Magazar Close Eagles Ville Estate, Off VIO, Mabushi, Abuja, FCT 900231, Nigeria.",
+    content: "Plot 184 Zone A, Apo Resettlement Abuja FCT Nigeria 900104",
   },
 ];
 
