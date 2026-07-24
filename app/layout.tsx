@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { DM_Sans, Cal_Sans, Inter, Epilogue } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/globalComp/Header";
@@ -82,6 +83,10 @@ export default function RootLayout({
           {children}
           <CookieConsent />
         </Providers>
+        <Script 
+          src="https://cdn.jsdelivr.net/npm/sienna-accessibility/dist/sienna-accessibility.umd.js" 
+          strategy="afterInteractive" 
+        />
       </body>
     </html>
   );
