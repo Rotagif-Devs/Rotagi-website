@@ -120,7 +120,7 @@ export default function CohortPage() {
               Apply for a Scholarship
             </h2>
             <p className="text-pink-100 text-lg">
-              Our next cohort starts 3 August 2026. Limited places available.
+              Our next cohort starts Aug 17, 2026. Limited places available.
             </p>
           </div>
           <Link 
