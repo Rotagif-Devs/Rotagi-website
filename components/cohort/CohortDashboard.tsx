@@ -8,48 +8,41 @@ const dashboardLinks = [
     title: "Learning Materials & Resources",
     description: "Access the cohort's Google Drive repository for all course materials and recorded sessions.",
     icon: BookOpen,
-    href: "#", // Placeholder
+    href: "/cohort/portal/materials",
     color: "bg-blue-50 text-blue-600 border-blue-100",
   },
   {
     title: "Attendance & Progress Tracker",
     description: "Sign in for classes and monitor your learning journey progress.",
     icon: Calendar,
-    href: "#", // Placeholder
+    href: "/cohort/portal/attendance",
     color: "bg-orange-50 text-orange-600 border-orange-100",
   },
   {
     title: "Missed Classes",
     description: "Catch up on any missed sessions and access supplementary notes.",
     icon: CheckCircle,
-    href: "#", // Placeholder
+    href: "/cohort/portal/missed-classes",
     color: "bg-pink-50 text-pink-600 border-pink-100",
   },
   {
     title: "Certificates & Achievements",
     description: "View and download your earned certificates and badges.",
     icon: FileText,
-    href: "#", // Placeholder
+    href: "/cohort/portal/certificates",
     color: "bg-yellow-50 text-yellow-600 border-yellow-100",
-  },
-  {
-    title: "Facilitator Upload Portal",
-    description: "Secure upload portal for facilitators to share new materials.",
-    icon: Upload,
-    href: "#", // Placeholder
-    color: "bg-purple-50 text-purple-600 border-purple-100",
   }
 ];
 
 export default function CohortDashboard() {
   return (
-    <main className="min-h-screen bg-gray-50 font-dm-sans p-6 md:p-12 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-64 bg-primary -z-10" />
+    <main className="min-h-screen bg-white font-dm-sans p-6 md:p-12 relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-[400px] bg-pink-950/5 -skew-y-6 transform origin-top-left -z-10" />
 
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-5xl mx-auto pt-8">
         <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-cal-sans text-white mb-4">Cohort Dashboard</h1>
-          <p className="text-white/80 text-lg">
+          <h1 className="text-4xl md:text-5xl font-cal-sans text-gray-900 mb-4">Cohort Dashboard</h1>
+          <p className="text-gray-600 text-lg">
             Welcome back! Access your learning materials, track your progress, and stay updated.
           </p>
         </div>
