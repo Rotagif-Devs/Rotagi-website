@@ -40,7 +40,7 @@ export default function CohortPortalPage() {
   }
 
   return (
-    <main className="min-h-screen bg-white font-dm-sans flex items-center justify-center p-6 relative overflow-hidden">
+    <main className="min-h-screen bg-secondary font-dm-sans flex items-center justify-center p-6 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-[400px] bg-pink-950/5 -skew-y-6 transform origin-top-left -z-10" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10" />
