@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CohortDashboard from "@/components/cohort/CohortDashboard";
 import { Lock, ArrowRight, Loader2 } from "lucide-react";
 
@@ -9,6 +9,14 @@ export default function CohortPortalPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Check if user previously authenticated in this session
+    const auth = sessionStorage.getItem("cohort_auth");
+    if (auth === "true") {
+      setIsAuthenticated(true);
+    }
+  }, []);
 
   const handleAccess = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,6 +27,7 @@ export default function CohortPortalPage() {
     setTimeout(() => {
       if (pin === "1234") {
         setIsAuthenticated(true);
+        sessionStorage.setItem("cohort_auth", "true");
       } else {
         setError("Invalid Access PIN. Please check your PIN and try again.");
       }

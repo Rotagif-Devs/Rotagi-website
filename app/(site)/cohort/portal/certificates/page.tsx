@@ -29,8 +29,8 @@ export default function CertificatesPage() {
         </Link>
         
         <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100 min-h-[500px]">
-          <div className="flex items-center gap-4 mb-8 border-b border-gray-100 pb-8">
-            <div className="w-16 h-16 bg-yellow-50 text-yellow-600 rounded-2xl flex items-center justify-center">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-8 border-b border-gray-100 pb-8 text-center sm:text-left">
+            <div className="w-16 h-16 shrink-0 bg-yellow-50 text-yellow-600 rounded-2xl flex items-center justify-center">
               <FileText className="w-8 h-8" />
             </div>
             <div>
@@ -96,7 +96,7 @@ export default function CertificatesPage() {
                 Congratulations, {formData.fullName}! Your certificate for the {formData.track.replace("-", " ")} track is ready.
               </p>
               
-              <div className="flex gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button variant="secondary" onClick={() => setCertificateReady(false)}>
                   Search Again
                 </Button>

@@ -47,8 +47,8 @@ export default function AttendancePage() {
           
           {/* Mark Attendance Form */}
           <div className="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-gray-100">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-8 text-center sm:text-left">
+              <div className="w-12 h-12 shrink-0 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center">
                 <CalendarIcon className="w-6 h-6" />
               </div>
               <div>

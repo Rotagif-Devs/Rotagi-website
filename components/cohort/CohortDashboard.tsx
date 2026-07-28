@@ -57,7 +57,7 @@ export default function CohortDashboard() {
               <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${item.color}`}>
                 <item.icon className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-cal-sans text-gray-900 mb-2 group-hover:text-primary transition-colors">
+              <h3 className="text-xl font-cal-sans text-gray-900 mb-2">
                 {item.title}
               </h3>
               <p className="text-gray-500 text-sm leading-relaxed">
