@@ -1,7 +1,8 @@
 "use client";
 
-import { BookOpen, Calendar, CheckCircle, FileText, Upload } from "lucide-react";
+import { BookOpen, Calendar, CheckCircle, FileText, Lock } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const MOCK_ANNOUNCEMENTS = [
   { id: "1", title: "Welcome to the new Cohort Portal!", content: "Please make sure you track your attendance daily.", date: "2026-07-28" }
@@ -39,16 +40,33 @@ const dashboardLinks = [
 ];
 
 export default function CohortDashboard() {
+  const router = useRouter();
+
+  const handleLock = () => {
+    sessionStorage.removeItem("cohort_auth");
+    localStorage.removeItem("cohort_auth");
+    window.location.reload();
+  };
+
   return (
     <main className="min-h-screen bg-white font-dm-sans p-6 md:p-12 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-[400px] bg-pink-950/5 -skew-y-6 transform origin-top-left -z-10" />
 
       <div className="max-w-5xl mx-auto pt-16 md:pt-8">
-        <div className="mb-8">
-          <h1 className="text-4xl md:text-5xl font-cal-sans text-gray-900 mb-4">Cohort Dashboard</h1>
-          <p className="text-gray-600 text-lg">
-            Welcome back! Access your learning materials, track your progress, and stay updated.
-          </p>
+        <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h1 className="text-4xl md:text-5xl font-cal-sans text-gray-900 mb-4">Cohort Dashboard</h1>
+            <p className="text-gray-600 text-lg">
+              Welcome back! Access your learning materials, track your progress, and stay updated.
+            </p>
+          </div>
+          <button 
+            onClick={handleLock}
+            className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl font-medium transition-colors text-sm w-fit"
+          >
+            <Lock className="w-4 h-4" />
+            Lock Portal
+          </button>
         </div>
 
         {/* Announcements Section */}
