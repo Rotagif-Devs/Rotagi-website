@@ -13,6 +13,7 @@ import {
   User,
   Menu,
   X,
+  Users,
 } from "lucide-react";
 import Button from "@/components/ui/Button";
 
@@ -66,6 +67,7 @@ export default function AdminDashboardLayout({
     { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
     { name: "Blogs", href: "/admin/dashboard/blog", icon: FileText },
     { name: "Events", href: "/admin/dashboard/events", icon: Calendar },
+    { name: "Cohort", href: "/admin/dashboard/cohort", icon: Users },
   ];
 
   return (
