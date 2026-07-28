@@ -43,7 +43,7 @@ export default function CohortDashboard() {
     <main className="min-h-screen bg-white font-dm-sans p-6 md:p-12 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-[400px] bg-pink-950/5 -skew-y-6 transform origin-top-left -z-10" />
 
-      <div className="max-w-5xl mx-auto pt-8">
+      <div className="max-w-5xl mx-auto pt-16 md:pt-8">
         <div className="mb-8">
           <h1 className="text-4xl md:text-5xl font-cal-sans text-gray-900 mb-4">Cohort Dashboard</h1>
           <p className="text-gray-600 text-lg">
