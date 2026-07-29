@@ -97,10 +97,10 @@ export default function CohortPage() {
 
               <div className="flex shrink-0 z-20 md:ml-auto w-full md:w-auto mt-2 md:mt-0">
                 <Link
-                  href="/cohort/portal"
+                  href="#courses"
                   className="bg-white text-secondary hover:bg-gray-100 rounded-full px-6 md:px-8 py-3.5 md:py-4 font-semibold transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 text-center w-full md:w-auto text-sm md:text-base"
                 >
-                  Access Cohort Portal
+                  Apply for a Scholarship
                 </Link>
               </div>
             </div>
