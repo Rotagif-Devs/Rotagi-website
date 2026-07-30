@@ -83,13 +83,13 @@ export default function Partners() {
           >
             {partnerLogos.map((partner, index) => (
               <SwiperSlide key={index}>
-                <div className="flex items-center gap-4 justify-center">
+                <div className="flex items-center justify-center h-24 sm:h-28 md:h-32 lg:h-28">
                   <Image
                     src={partner.url}
                     alt={partner.name}
-                    width={150}
-                    height={150}
-                    className="object-contain w-full h-24 sm:h-28 md:h-32 lg:h-28 transition-all duration-300"
+                    width={200}
+                    height={100}
+                    className="object-contain w-auto h-auto max-h-full max-w-[80%] md:max-w-[150px] transition-all duration-300"
                   />
                 </div>
               </SwiperSlide>
