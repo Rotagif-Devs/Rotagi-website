@@ -89,7 +89,7 @@ export default function Partners() {
                     alt={partner.name}
                     width={150}
                     height={150}
-                    className="object-contain w-full h-24 sm:h-28 md:h-32 lg:h-28 transition-all rounded-3xl duration-300"
+                    className="object-contain w-full h-24 sm:h-28 md:h-32 lg:h-28 transition-all duration-300"
                   />
                 </div>
               </SwiperSlide>
