@@ -30,20 +30,20 @@ export default function CohortDashboard() {
   return (
     <main className="min-h-screen bg-gray-50 font-dm-sans relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-[400px] bg-primary transition-all duration-500 rounded-b-[3rem] -z-10" />
+      <div className="absolute top-0 left-0 w-full h-[400px] bg-pink-950/5 -skew-y-6 transform origin-top-left -z-10" />
 
-      <div className="max-w-6xl mx-auto pt-10 md:pt-16 px-6">
+      <div className="max-w-6xl mx-auto pt-16 md:pt-20 px-6">
         {/* Header */}
-        <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6 text-white">
+        <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6 text-gray-900">
           <div>
-            <h1 className="text-4xl md:text-5xl font-cal-sans mb-3">Cohort Portal</h1>
-            <p className="text-pink-100 text-lg max-w-xl">
+            <h1 className="text-4xl md:text-5xl font-cal-sans mb-3 text-black">Cohort Portal</h1>
+            <p className="text-gray-600 text-lg max-w-xl">
               Welcome back! Access your learning materials, recordings, certificates, and attendance tracking here.
             </p>
           </div>
           <button 
             onClick={handleLock}
-            className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl font-medium transition-colors text-sm w-fit backdrop-blur-sm border border-white/20"
+            className="flex items-center gap-2 px-5 py-2.5 bg-white hover:bg-gray-50 text-gray-900 rounded-xl font-medium transition-colors text-sm w-fit shadow-sm border border-gray-200"
           >
             <Lock className="w-4 h-4" />
             Lock Portal
