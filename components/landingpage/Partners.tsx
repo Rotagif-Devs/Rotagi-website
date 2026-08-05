@@ -11,17 +11,16 @@ import "swiper/css/autoplay";
 const partnerLogos = [
   { name: "Selex Engineering", url: "/partner1.png" },
   { name: "Ed Tech", url: "/partner2.png" },
-  { name: "CICN", url: "/partner1.png" },
-  { name: "Daptem Engineering", url: "/Daptem.png" },
-  { name: "Canva", url: "/canva.png" },
-  { name: "Tushiyah", url: "/Tushiyah.png" },
-  { name: "Three Lions Group", url: "/royal.png" },
-  { name: "Slack", url: "/slack.png" },
-  { name: "Infinityfield", url: "/Infinityfield.png" },
-  { name: "monday.com", url: "/monday.png" },
-  { name: "little", url: "/little.jpg" },
-  { name: "Make", url: "/partners/make.jpg" },
-  { name: "FCT UBEB", url: "/fct-ubeb.jpg" },
+  { name: "CICN", url: "/partner3.jpg" },
+  { name: "Daptem Engineering", url: "/partner4.jpg" },
+  { name: "Canva", url: "/partner5.jpg" },
+  { name: "Tushiyah", url: "/partner6.jpg" },
+  { name: "Three Lions Group", url: "/partner7.jpg" },
+  { name: "Slack", url: "/partner8.jpg" },
+  { name: "Infinityfield", url: "/partner9.jpg" },
+  { name: "monday.com", url: "/partner10.jpg" },
+  { name: "little", url: "/partner11.jpg" },
+  { name: "Make", url: "/partners/partner12.jpg" },
 ];
 
 export default function Partners() {
