@@ -82,9 +82,10 @@ const ExploreEvent = () => {
                 <Image
                   src={event.image}
                   alt={event.title}
-                  fill
+                  width={474}
+                  height={593}
                   sizes="(max-width: 768px) 100vw, 400px"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               )}
             </div>

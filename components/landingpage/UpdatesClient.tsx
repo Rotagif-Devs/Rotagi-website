@@ -29,11 +29,12 @@ export default function UpdatesClient({ updates }: { updates: UpdateItem[] }) {
           >
             <div className="relative overflow-hidden h-[220px]">
                 <Image
-                  fill
+                  width={474}
+                  height={593}
                   sizes=""
                   src={update.image}
                   alt={update.title}
-                  className="transition-transform duration-700"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700"
                 />
             </div>
 
@@ -80,11 +81,12 @@ export default function UpdatesClient({ updates }: { updates: UpdateItem[] }) {
                 <div className="relative overflow-hidden h-[220px] w-full p-4">
                   <div className="absolute inset-0 overflow-hidden bg-slate-100">
                     <Image
-                      fill
+                      width={474}
+                      height={593}
                       sizes="(max-width: 768px) 100vw, 400px"
                       src={update.image}
                       alt={update.title}
-                      className="transition-transform duration-700 group-hover:scale-105"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
                 </div>

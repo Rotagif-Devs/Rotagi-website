@@ -16,8 +16,9 @@ export default function BlogCard({ post }: Props) {
         <Image
           src={post.image?.startsWith('http') ? post.image : (post.image ? post.image : "/logo.png")}
           alt={post.title}
-          fill
-          className="object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
+          width={474}
+          height={593}
+          className="absolute inset-0 h-full w-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, 50vw"
         />
       </div>
