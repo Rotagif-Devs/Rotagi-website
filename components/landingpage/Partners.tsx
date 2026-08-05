@@ -9,16 +9,11 @@ import "swiper/css";
 import "swiper/css/autoplay";
 
 const partnerLogos = [
-  { name: "Selex Engineering", url: "/partners/selex.jpg" },
-  { name: "monday.com", url: "/partners/monday.jpg" },
-  { name: "Infinityfield", url: "/partners/infinityfield.jpg" },
-  { name: "Partner", url: "/partners/partner4.jpg" },
-  { name: "FCT UBEB", url: "/partners/fct-ubeb.jpg" },
-  { name: "Three Lions Group", url: "/partners/three-lions.jpg" },
-  { name: "Tushiyah", url: "/partners/tushiyah.jpg" },
   { name: "EV World Africa", url: "/partners/ev-world.jpg" },
   { name: "Canva", url: "/partners/canva.png" },
   { name: "Daptem Engineering", url: "/partners/daptem.jpg" },
+  { name: "Slack", url: "/partners/slack.jpg" },
+  { name: "Make", url: "/partners/make.jpg" },
 ];
 
 export default function Partners() {
