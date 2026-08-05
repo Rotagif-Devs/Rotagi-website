@@ -11,18 +11,16 @@ import "swiper/css/autoplay";
 const partnerLogos = [
   { name: "Selex Engineering", url: "/partner1.png" },
   { name: "Ed Tech", url: "/partner2.png" },
-  { name: "CICN", url: "/partner1.png" },
-  { name: "Daptem Engineering", url: "/Daptem.png" },
-  { name: "Canva", url: "/canva.png" },
-  { name: "Tushiyah", url: "/Tushiyah.png" },
-  { name: "Microsoft", url: "/microsoft.png" },
-  { name: "Three Lions Group", url: "/royal.png" },
-  { name: "Slack", url: "/slack.png" },
-  { name: "Infinityfield", url: "/Infinityfield.png" },
-  { name: "monday.com", url: "/monday.png" },
-  { name: "little", url: "/little.jpg" },
-  { name: "Make", url: "/partners/make.jpg" },
-  { name: "FCT UBEB", url: "/fct-ubeb.jpg" },
+  { name: "CICN", url: "/partner3.jpg" },
+  { name: "Daptem Engineering", url: "/partner4.jpg" },
+  { name: "Canva", url: "/partner5.jpg" },
+  { name: "Tushiyah", url: "/partner6.jpg" },
+  { name: "Three Lions Group", url: "/partner7.jpg" },
+  { name: "Slack", url: "/partner8.jpg" },
+  { name: "Infinityfield", url: "/partner9.jpg" },
+  { name: "monday.com", url: "/partner10.jpg" },
+  { name: "little", url: "/partner11.jpg" },
+  { name: "Make", url: "/partner12.jpg" },
 ];
 
 export default function Partners() {
@@ -64,32 +62,32 @@ export default function Partners() {
               disableOnInteraction: false,
             }}
             loop={true}
-            spaceBetween={20}
+            spaceBetween={10}
             breakpoints={{
               320: {
                 slidesPerView: 2,
-                spaceBetween: 20,
+                spaceBetween: 10,
               },
               640: {
                 slidesPerView: 3,
-                spaceBetween: 30,
+                spaceBetween: 15,
               },
               1024: {
-                slidesPerView: 5,
-                spaceBetween: 40,
+                slidesPerView: 4,
+                spaceBetween: 20,
               },
             }}
             className="pb-4"
           >
             {partnerLogos.map((partner, index) => (
               <SwiperSlide key={index}>
-                <div className="flex items-center justify-center h-24 sm:h-28 md:h-32 lg:h-28">
+                <div className="flex items-center justify-center h-32 sm:h-36 md:h-40 lg:h-40">
                   <Image
                     src={partner.url}
                     alt={partner.name}
-                    width={200}
-                    height={100}
-                    className="object-contain w-auto h-auto max-h-full max-w-[80%] md:max-w-[150px] transition-all duration-300"
+                    width={250}
+                    height={150}
+                    className="object-contain w-auto h-auto max-h-full max-w-[90%] md:max-w-[220px] transition-all duration-300"
                   />
                 </div>
               </SwiperSlide>
