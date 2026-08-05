@@ -20,7 +20,7 @@ const partnerLogos = [
   { name: "Infinityfield", url: "/partner9.jpg" },
   { name: "monday.com", url: "/partner10.jpg" },
   { name: "little", url: "/partner11.jpg" },
-  { name: "Make", url: "/partners/partner12.jpg" },
+  { name: "Make", url: "/partner12.jpg" },
 ];
 
 export default function Partners() {
@@ -62,32 +62,32 @@ export default function Partners() {
               disableOnInteraction: false,
             }}
             loop={true}
-            spaceBetween={20}
+            spaceBetween={10}
             breakpoints={{
               320: {
                 slidesPerView: 2,
-                spaceBetween: 20,
+                spaceBetween: 10,
               },
               640: {
                 slidesPerView: 3,
-                spaceBetween: 30,
+                spaceBetween: 15,
               },
               1024: {
-                slidesPerView: 5,
-                spaceBetween: 40,
+                slidesPerView: 4,
+                spaceBetween: 20,
               },
             }}
             className="pb-4"
           >
             {partnerLogos.map((partner, index) => (
               <SwiperSlide key={index}>
-                <div className="flex items-center justify-center h-24 sm:h-28 md:h-32 lg:h-28">
+                <div className="flex items-center justify-center h-32 sm:h-36 md:h-40 lg:h-40">
                   <Image
                     src={partner.url}
                     alt={partner.name}
-                    width={200}
-                    height={100}
-                    className="object-contain w-auto h-auto max-h-full max-w-[80%] md:max-w-[150px] transition-all duration-300"
+                    width={250}
+                    height={150}
+                    className="object-contain w-auto h-auto max-h-full max-w-[90%] md:max-w-[220px] transition-all duration-300"
                   />
                 </div>
               </SwiperSlide>
