@@ -46,7 +46,7 @@ export default function ProgramsCTA() {
         </div>
 
         {/* Video / hero preview */}
-        <div className="flex w-full justify-center">
+        <div className="hidden w-full justify-center">
           <div
             className="group relative w-full overflow-hidden rounded-3xl bg-white md:aspect-1256/711 md:rounded-[64px] aspect-video cursor-pointer"
             onClick={togglePlay}

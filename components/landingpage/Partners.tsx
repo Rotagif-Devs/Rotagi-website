@@ -21,7 +21,7 @@ const partnerLogos = [
   { name: "monday.com", url: "/partner10.jpg" },
   { name: "little", url: "/partner11.jpg" },
   { name: "Make", url: "/partner12.jpg" },
-  { name: "DC Donates", url: "/partner13.png" },
+  { name: "DC Donates", url: "/partner13.png", dark: true },
 ];
 
 export default function Partners() {
@@ -83,13 +83,25 @@ export default function Partners() {
             {partnerLogos.map((partner, index) => (
               <SwiperSlide key={index}>
                 <div className="flex items-center justify-center h-32 sm:h-36 md:h-40 lg:h-40">
-                  <Image
-                    src={partner.url}
-                    alt={partner.name}
-                    width={250}
-                    height={150}
-                    className="object-contain w-auto h-auto max-h-full max-w-[90%] md:max-w-[220px] transition-all duration-300"
-                  />
+                  {partner.dark ? (
+                    <div className="flex items-center justify-center w-full h-full max-w-[90%] md:max-w-[220px] rounded-md bg-black p-4">
+                      <Image
+                        src={partner.url}
+                        alt={partner.name}
+                        width={250}
+                        height={150}
+                        className="object-contain w-auto h-auto max-h-full max-w-full transition-all duration-300"
+                      />
+                    </div>
+                  ) : (
+                    <Image
+                      src={partner.url}
+                      alt={partner.name}
+                      width={250}
+                      height={150}
+                      className="object-contain w-auto h-auto max-h-full max-w-[90%] md:max-w-[220px] transition-all duration-300"
+                    />
+                  )}
                 </div>
               </SwiperSlide>
             ))}

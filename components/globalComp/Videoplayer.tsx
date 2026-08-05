@@ -18,7 +18,7 @@ const VideoPlayer = () => {
     }
   };
   return (
-    <div className="flex w-full justify-center">
+    <div className="hidden w-full justify-center">
       <div
         className="group relative w-full overflow-hidden rounded-3xl bg-white md:aspect-[1256/711] md:max-w-full md:rounded-[64px] aspect-[16/9] cursor-pointer"
         onClick={togglePlay}
