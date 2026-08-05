@@ -21,6 +21,7 @@ const partnerLogos = [
   { name: "monday.com", url: "/partner10.jpg" },
   { name: "little", url: "/partner11.jpg" },
   { name: "Make", url: "/partner12.jpg" },
+  { name: "DC Donates", url: "/partner13.png" },
 ];
 
 export default function Partners() {
