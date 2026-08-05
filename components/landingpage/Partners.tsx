@@ -15,7 +15,6 @@ const partnerLogos = [
   { name: "Daptem Engineering", url: "/Daptem.png" },
   { name: "Canva", url: "/canva.png" },
   { name: "Tushiyah", url: "/Tushiyah.png" },
-  { name: "Microsoft", url: "/microsoft.png" },
   { name: "Three Lions Group", url: "/royal.png" },
   { name: "Slack", url: "/slack.png" },
   { name: "Infinityfield", url: "/Infinityfield.png" },
