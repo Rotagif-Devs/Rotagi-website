@@ -3,6 +3,8 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { adminLogin as authServiceLogin } from "@/lib/services/auth.service";
+import { SESSION_EXPIRED_EVENT, SESSION_REFRESHED_EVENT } from "@/lib/api";
+import { setRefreshToken, clearTokens } from "@/lib/token.service";
 
 interface AdminUser {
   email: string;
@@ -29,9 +31,31 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
   const logout = useCallback(() => {
     setUser(null);
     localStorage.removeItem("adminUser");
-    localStorage.removeItem("accessToken");
+    clearTokens();
     router.push("/admin/login");
   }, [router]);
+
+  // A successful silent refresh means the admin is actively working — slide the local
+  // 1h idle window forward instead of logging them out mid-task purely on a wall-clock timer.
+  const handleSessionRefreshed = useCallback(() => {
+    setUser((prev) => {
+      if (!prev) return prev;
+      const updated = { ...prev, lastLogin: new Date().toISOString() };
+      localStorage.setItem("adminUser", JSON.stringify(updated));
+      return updated;
+    });
+  }, []);
+
+  // Fired by apiFetch when a silent token refresh fails (refresh token expired/reused) —
+  // the session is genuinely over, so tear it down instead of leaving the user stuck on 401s.
+  useEffect(() => {
+    window.addEventListener(SESSION_EXPIRED_EVENT, logout);
+    window.addEventListener(SESSION_REFRESHED_EVENT, handleSessionRefreshed);
+    return () => {
+      window.removeEventListener(SESSION_EXPIRED_EVENT, logout);
+      window.removeEventListener(SESSION_REFRESHED_EVENT, handleSessionRefreshed);
+    };
+  }, [logout, handleSessionRefreshed]);
 
   useEffect(() => {
     // Check local storage for session
@@ -100,10 +124,11 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
       const response = await authServiceLogin({ email, password, programSlug });
       
       const accessToken = response.data?.accessToken || (response as any).accessToken;
-      
+      const refreshToken = response.data?.refreshToken || (response as any).refreshToken;
+
       if (accessToken) {
-        const adminUser: AdminUser = { 
-          email, 
+        const adminUser: AdminUser = {
+          email,
           role: "admin",
           lastLogin: new Date().toISOString(),
           token: accessToken
@@ -111,6 +136,7 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
         setUser(adminUser);
         localStorage.setItem("adminUser", JSON.stringify(adminUser));
         localStorage.setItem("accessToken", accessToken);
+        if (refreshToken) setRefreshToken(refreshToken);
         return true;
       }
       return false;
