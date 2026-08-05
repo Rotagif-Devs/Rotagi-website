@@ -76,7 +76,6 @@ export const cohortService = {
   getSettings: async (): Promise<CohortSettings> => {
     const res = await apiFetch<ApiResponse<CohortSettings>>("/api/cohort/settings", {
       accessToken: getCohortToken() ?? undefined,
-      timeout: 15000,
     });
     return (
       res.data ?? { materialsLink: "", missedClassesLink: "", certificatesLink: "" }
@@ -88,7 +87,7 @@ export const cohortService = {
     const query = limit ? `?limit=${limit}` : "";
     const res = await apiFetch<ApiResponse<CohortAnnouncement[]>>(
       `/api/cohort/announcements${query}`,
-      { accessToken: getCohortToken() ?? undefined, timeout: 15000 },
+      { accessToken: getCohortToken() ?? undefined },
     );
     return res.data ?? [];
   },
@@ -101,7 +100,7 @@ export const cohortService = {
     try {
       const res = await apiFetch<ApiResponse<AttendanceSummary>>(
         `/api/cohort/attendance/record?email=${encodeURIComponent(email)}`,
-        { accessToken: getCohortToken() ?? undefined, timeout: 15000 },
+        { accessToken: getCohortToken() ?? undefined },
       );
       return res.data ?? null;
     } catch (err: any) {

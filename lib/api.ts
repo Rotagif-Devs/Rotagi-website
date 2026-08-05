@@ -119,8 +119,11 @@ export async function apiFetch<T = unknown>(
 
   const method = options?.method || (options?.body !== undefined ? 'POST' : 'GET');
   const isMutation = ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method.toUpperCase());
-  // Short timeout for background SSR fetches; long timeout for user-triggered actions
-  const timeoutMs = options?.timeout ?? (isMutation ? 30_000 : 3_000);
+  const isBrowser = typeof window !== 'undefined';
+  // SSR GETs should fail fast so they don't block page render. Browser GETs (e.g. the
+  // admin dashboard's initial load) need real headroom against a cold Render instance,
+  // which can take 20-50s to wake from idle — 3s there was killing legitimate requests.
+  const timeoutMs = options?.timeout ?? (isMutation ? 30_000 : (isBrowser ? 15_000 : 3_000));
 
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
