@@ -41,11 +41,11 @@ const nextConfig: NextConfig = {
     // We are temporarily always including 'unsafe-eval' to resolve the immediate block.
     const csp = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://js.paystack.co https://www.google.com https://www.gstatic.com",
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      "font-src 'self' data: https://fonts.gstatic.com",
-      "img-src 'self' blob: data: https://paystack.com https://flagcdn.com https://i.pravatar.cc https://example.com https://rotagif-backend-codebase-1.onrender.com https://rot-backend-c3a8.onrender.com https://placehold.co https://res.cloudinary.com",
-      "connect-src 'self' https://rotagif-backend-codebase-1.onrender.com https://rot-backend-c3a8.onrender.com https://checkout.paystack.com https://v6.exchangerate-api.com https://open.er-api.com https://www.google.com",
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://js.paystack.co https://www.google.com https://www.gstatic.com https://cdn.jsdelivr.net",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net",
+      "font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net",
+      "img-src 'self' blob: data: https://paystack.com https://flagcdn.com https://i.pravatar.cc https://example.com https://rotagif-backend-codebase-1.onrender.com https://rot-backend-c3a8.onrender.com https://placehold.co https://res.cloudinary.com https://cdn.jsdelivr.net",
+      "connect-src 'self' https://rotagif-backend-codebase-1.onrender.com https://rot-backend-c3a8.onrender.com https://checkout.paystack.com https://v6.exchangerate-api.com https://open.er-api.com https://www.google.com https://cdn.jsdelivr.net",
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",
