@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import CohortDashboard from "@/components/cohort/CohortDashboard";
 import { Lock, AlertCircle, Loader2 } from "lucide-react";
 import AdminLeftPanel from "@/components/AdminLeftPanel";
+import { cohortService, getCohortToken } from "@/lib/services/cohort.service";
 
 export default function CohortPortalPage() {
   const [pin, setPin] = useState("");
@@ -12,9 +13,8 @@ export default function CohortPortalPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    // Check if user previously authenticated in this session
-    const auth = sessionStorage.getItem("cohort_auth");
-    if (auth === "true") {
+    // Restore access if a valid cohort token is still present in this tab.
+    if (getCohortToken()) {
       setIsAuthenticated(true);
     }
   }, []);
@@ -24,16 +24,17 @@ export default function CohortPortalPage() {
     setError("");
     setLoading(true);
 
-    // Simulate API call for PIN validation
-    setTimeout(() => {
-      if (pin === "1234") {
-        setIsAuthenticated(true);
-        sessionStorage.setItem("cohort_auth", "true");
-      } else {
-        setError("Invalid Access PIN. Please check your PIN and try again.");
-      }
+    try {
+      await cohortService.validateAccessPin(pin.trim());
+      setIsAuthenticated(true);
+    } catch (err: any) {
+      setError(
+        err?.message?.replace(/^Unauthorized:.*?-\s*/, "") ||
+          "Invalid Access PIN. Please check your PIN and try again.",
+      );
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   if (isAuthenticated) {
