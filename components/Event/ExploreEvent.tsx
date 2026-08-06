@@ -77,7 +77,7 @@ const ExploreEvent = () => {
             key={event.slug}
             className="group flex flex-col overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
           >
-            <div className="relative overflow-hidden h-[220px]">
+            <div className="relative overflow-hidden aspect-[474/593]">
               {event.image && (
                 <Image
                   src={event.image}

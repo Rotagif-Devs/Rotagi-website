@@ -27,7 +27,7 @@ export default function UpdatesClient({ updates }: { updates: UpdateItem[] }) {
             key={update.title}
             className="group flex flex-col overflow-hidden rounded-xl border border-gray-100 bg-white"
           >
-            <div className="relative overflow-hidden h-[220px]">
+            <div className="relative overflow-hidden aspect-[474/593]">
                 <Image
                   width={474}
                   height={593}
@@ -78,7 +78,7 @@ export default function UpdatesClient({ updates }: { updates: UpdateItem[] }) {
           {updates.map((update) => (
             <SwiperSlide key={update.title}>
               <div className="group flex flex-col overflow-hidden rounded-xl border border-gray-100 bg-white h-full">
-                <div className="relative overflow-hidden h-[220px] w-full p-4">
+                <div className="relative overflow-hidden aspect-[474/593] w-full p-4">
                   <div className="absolute inset-0 overflow-hidden bg-slate-100">
                     <Image
                       width={474}
