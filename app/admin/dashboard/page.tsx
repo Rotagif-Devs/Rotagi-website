@@ -3,18 +3,14 @@
 import React, { useEffect, useState } from "react";
 import { Folder, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { adminService } from "@/lib/services/admin.service";
+import { adminService, AdminStats } from "@/lib/services/admin.service";
 import { BlogPost } from "@/types/blog";
 import { events as EventType } from "@/types/event";
 import Button from "@/components/ui/Button";
 import { ChevronRight } from "lucide-react";
 import ActionMenu from "@/components/admin/ActionMenu";
 export default function AdminDashboardPage() {
-  const [analytics, setAnalytics] = useState<{
-    contentVelocity: { count: number; deltaWeek: number };
-    activeEngagement: { upcomingCount: number };
-    uniqueReach: { count: number; growthPct: number | null };
-  } | null>(null);
+  const [analytics, setAnalytics] = useState<AdminStats | null>(null);
   const [recentBlogs, setRecentBlogs] = useState<BlogPost[]>([]);
   const [recentEvents, setRecentEvents] = useState<EventType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -92,16 +88,16 @@ export default function AdminDashboardPage() {
   const cards = [
     {
       name: "My Blogs",
-      value: analytics?.contentVelocity.count ?? 0,
-      subValue: `+${analytics?.contentVelocity.deltaWeek ?? 0} this week`,
+      value: analytics?.myBlogs.count ?? 0,
+      subValue: `+${analytics?.myBlogs.deltaWeek ?? 0} this week`,
       icon: Folder,
       color: "text-secondary bg-secondary/5",
       href: "/admin/dashboard/blog",
     },
     {
       name: "My Events",
-      value: analytics?.activeEngagement.upcomingCount ?? 0,
-      subValue: `+2 this week`,
+      value: analytics?.myEvents.count ?? 0,
+      subValue: `+${analytics?.myEvents.deltaWeek ?? 0} this week`,
       icon: Folder,
       color: "text-secondary bg-secondary/5",
       href: "/admin/dashboard/events",

@@ -4,8 +4,8 @@ import { events as EventType } from "@/types/event";
 import { ApiResponse } from "./auth.service";
 
 export type AdminStats = {
-  contentVelocity: { count: number; deltaWeek: number };
-  activeEngagement: { upcomingCount: number };
+  myBlogs: { count: number; deltaWeek: number };
+  myEvents: { count: number; deltaWeek: number; upcomingCount: number };
   uniqueReach: { count: number; growthPct: number | null };
 };
 
