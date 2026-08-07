@@ -116,7 +116,7 @@ export default function CohortPage() {
         <div className="absolute inset-0 bg-[url('/pattern.png')] opacity-10" />
         <div className="max-w-[1260px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
           <div className="max-w-2xl text-white">
-            <h2 className="text-3xl md:text-4xl font-cal-sans mb-4">
+            <h2 className="text-3xl md:text-4xl font-cal-sans mb-4 uppercase">
               Apply for a Scholarship
             </h2>
             <p className="text-pink-100 text-lg">
