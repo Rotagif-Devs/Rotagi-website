@@ -51,6 +51,7 @@ export default function CertificateTemplateEditor() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [toggling, setToggling] = useState(false);
+  const [removing, setRemoving] = useState(false);
   const [status, setStatus] = useState<{ type: "success" | "error"; msg: string } | null>(null);
 
   useEffect(() => {
@@ -120,6 +121,31 @@ export default function CertificateTemplateEditor() {
     }
   };
 
+  const handleRemove = async () => {
+    if (!confirm("Remove the current certificate template? Certificates will be turned off for learners until a new one is uploaded.")) {
+      return;
+    }
+    setRemoving(true);
+    setStatus(null);
+    try {
+      await cohortService.deleteCertificateTemplate();
+      setPreviewSrc(null);
+      setImageFile(null);
+      setHasSavedTemplate(false);
+      setCertificatesEnabled(false);
+      setNameX(50);
+      setNameY(55);
+      setFontSize(48);
+      setFontColor("#1a1a1a");
+      setFontFamily("sans-serif");
+      setStatus({ type: "success", msg: "Certificate template removed." });
+    } catch (err: any) {
+      setStatus({ type: "error", msg: err?.message || "Failed to remove the certificate template." });
+    } finally {
+      setRemoving(false);
+    }
+  };
+
   const handleToggle = async () => {
     setToggling(true);
     setStatus(null);
@@ -171,9 +197,21 @@ export default function CertificateTemplateEditor() {
         </Button>
       </div>
 
-      <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700 mb-2">Certificate Image (.png / .jpg)</label>
-        <input type="file" accept="image/png,image/jpeg,image/webp" onChange={handleFileChange} />
+      <div className="mb-4 flex items-end justify-between gap-4 flex-wrap">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Certificate Image (.png / .jpg)</label>
+          <input type="file" accept="image/png,image/jpeg,image/webp" onChange={handleFileChange} />
+        </div>
+        {hasSavedTemplate && (
+          <button
+            type="button"
+            onClick={handleRemove}
+            disabled={removing}
+            className="text-sm font-bold text-red-600 hover:underline disabled:opacity-50"
+          >
+            {removing ? "Removing…" : "Remove Template"}
+          </button>
+        )}
       </div>
 
       {previewSrc && (

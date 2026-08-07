@@ -21,11 +21,15 @@ export default function CertificateLookup() {
   // distinct from a real failure (network error, 500), which stays an "error".
   const [isNotice, setIsNotice] = useState(false);
   const [certificateImage, setCertificateImage] = useState<string | null>(null);
+  const [certificatePdf, setCertificatePdf] = useState<string | null>(null);
+  const [downloadFormat, setDownloadFormat] = useState<"image" | "pdf">("image");
   const [notFound, setNotFound] = useState(false);
   const [searchedName, setSearchedName] = useState("");
 
   const reset = () => {
     setCertificateImage(null);
+    setCertificatePdf(null);
+    setDownloadFormat("image");
     setNotFound(false);
     setError("");
     setIsNotice(false);
@@ -42,6 +46,7 @@ export default function CertificateLookup() {
       const data = await cohortService.getCertificateRecord(email.trim(), fullName.trim());
       if (data) {
         setCertificateImage(data.certificateImage);
+        setCertificatePdf(data.certificatePdf);
       } else {
         setNotFound(true);
       }
@@ -131,13 +136,29 @@ export default function CertificateLookup() {
             alt={`Certificate for ${searchedName}`}
             className="w-full rounded-lg border border-green-100 shadow-sm mb-6"
           />
-          <a
-            href={certificateImage}
-            download={`${searchedName.replace(/\s+/g, "_")}_certificate.png`}
-            className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-full shadow-lg shadow-green-600/30 transition-transform hover:-translate-y-1"
-          >
-            <Download className="w-5 h-5" /> Download Certificate
-          </a>
+          <div className="inline-flex items-center gap-1 bg-white border border-green-200 rounded-full p-1 mb-4">
+            {(["image", "pdf"] as const).map((f) => (
+              <button
+                key={f}
+                type="button"
+                onClick={() => setDownloadFormat(f)}
+                className={`px-4 py-2 rounded-full text-sm font-bold transition-colors ${
+                  downloadFormat === f ? "bg-green-600 text-white" : "text-green-700 hover:bg-green-50"
+                }`}
+              >
+                {f === "image" ? "Image" : "PDF"}
+              </button>
+            ))}
+          </div>
+          <div>
+            <a
+              href={downloadFormat === "pdf" ? certificatePdf! : certificateImage}
+              download={`${searchedName.replace(/\s+/g, "_")}_certificate.${downloadFormat === "pdf" ? "pdf" : "png"}`}
+              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-full shadow-lg shadow-green-600/30 transition-transform hover:-translate-y-1"
+            >
+              <Download className="w-5 h-5" /> Download {downloadFormat === "pdf" ? "PDF" : "Image"}
+            </a>
+          </div>
           <div className="mt-6">
             <button onClick={reset} className="text-sm font-bold text-primary hover:underline">
               Check another

@@ -60,6 +60,8 @@ export type CertificateRecord = {
   fullName: string;
   /** A `data:image/png;base64,...` data URL — the composited certificate, rendered on demand. */
   certificateImage: string;
+  /** A `data:application/pdf;base64,...` data URL of the same certificate, for learners who want a PDF. */
+  certificatePdf: string;
 };
 
 export type CertificateTemplateConfig = {
@@ -233,6 +235,11 @@ export const cohortService = {
       { method: "POST", body: formData },
     );
     return res.data!;
+  },
+
+  /** Also turns certificates off for learners — a dangling "ON" with no template would just 404. */
+  deleteCertificateTemplate: async (): Promise<void> => {
+    await apiFetch("/api/admin/cohort/certificates/template", { method: "DELETE" });
   },
 
   toggleCertificates: async (enabled: boolean): Promise<void> => {

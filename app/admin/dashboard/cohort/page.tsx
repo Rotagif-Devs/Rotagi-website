@@ -235,6 +235,19 @@ function CertificatesTab() {
   const [uploading, setUploading] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<{ type: "success" | "error"; msg: string } | null>(null);
+  // The template editor only makes sense once there's someone to generate a
+  // certificate for — hidden until an upload succeeds here, or (on reload)
+  // there's already an eligibility list from a previous session.
+  const [showTemplateSection, setShowTemplateSection] = useState(false);
+
+  useEffect(() => {
+    cohortService
+      .getCertificateTemplate()
+      .then((data) => {
+        if (data.eligibleLearnerCount > 0) setShowTemplateSection(true);
+      })
+      .catch(() => {});
+  }, []);
 
   const handleUpload = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -246,6 +259,7 @@ function CertificatesTab() {
       const msg = await cohortService.uploadCertificates(file);
       setStatus({ type: "success", msg });
       setFile(null);
+      setShowTemplateSection(true);
     } catch (err: any) {
       setStatus({ type: "error", msg: err?.message || "Upload failed. Please check the file and try again." });
     } finally {
@@ -292,9 +306,12 @@ function CertificatesTab() {
         </Button>
       </form>
 
-      <hr className="my-10 border-gray-100" />
-
-      <CertificateTemplateEditor />
+      {showTemplateSection && (
+        <>
+          <hr className="my-10 border-gray-100" />
+          <CertificateTemplateEditor />
+        </>
+      )}
     </div>
   );
 }

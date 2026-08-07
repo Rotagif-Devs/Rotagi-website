@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import CohortDashboard from "@/components/cohort/CohortDashboard";
 import { Lock, AlertCircle, Loader2 } from "lucide-react";
-import AdminLeftPanel from "@/components/AdminLeftPanel";
+import CohortLeftPanel from "@/components/cohort/CohortLeftPanel";
 import { cohortService, getCohortToken } from "@/lib/services/cohort.service";
 
 export default function CohortPortalPage() {
@@ -43,7 +43,7 @@ export default function CohortPortalPage() {
 
   return (
     <div className="min-h-screen w-full lg:flex-row flex flex-col overflow-hidden bg-white">
-      <AdminLeftPanel />
+      <CohortLeftPanel />
       
       <div className="flex-1 flex items-center justify-center p-5 lg:p-12 h-screen overflow-y-auto bg-primary">
         <div className="w-full max-w-[554px]">
