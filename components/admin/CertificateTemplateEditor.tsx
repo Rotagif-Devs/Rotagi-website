@@ -188,7 +188,8 @@ export default function CertificateTemplateEditor() {
         </div>
         <Button
           type="button"
-          variant={certificatesEnabled ? "outline" : "primary"}
+          variant={certificatesEnabled ? undefined : "primary"}
+          className={certificatesEnabled ? "border-2 border-gray-300 bg-white text-gray-700 hover:bg-gray-50" : undefined}
           onClick={handleToggle}
           disabled={toggling || !hasSavedTemplate}
           title={!hasSavedTemplate ? "Save a template before turning certificates on" : undefined}

@@ -115,7 +115,13 @@ export default function AttendanceWindowControl() {
             {open ? `${tickedCount} learner${tickedCount === 1 ? "" : "s"} marked present so far` : "Learners can't mark attendance right now."}
           </p>
         </div>
-        <Button type="button" variant={open ? "outline" : "primary"} onClick={handleToggle} disabled={toggling}>
+        <Button
+          type="button"
+          variant={open ? undefined : "primary"}
+          className={open ? "border-2 border-gray-300 bg-white text-gray-700 hover:bg-gray-50" : undefined}
+          onClick={handleToggle}
+          disabled={toggling}
+        >
           {toggling ? "Updating…" : open ? "Close Attendance Window" : "Open Attendance Window"}
         </Button>
       </div>
@@ -124,7 +130,7 @@ export default function AttendanceWindowControl() {
         type="button"
         onClick={handleExport}
         disabled={exporting}
-        className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline disabled:opacity-50"
+        className="inline-flex items-center gap-2 text-sm font-bold text-secondary hover:underline disabled:opacity-50"
       >
         <Download className="w-4 h-4" />
         {exporting ? "Preparing file…" : "Export Attendance to Excel"}

@@ -160,7 +160,7 @@ export default function CertificateLookup() {
             </a>
           </div>
           <div className="mt-6">
-            <button onClick={reset} className="text-sm font-bold text-primary hover:underline">
+            <button onClick={reset} className="text-sm font-bold text-secondary hover:underline">
               Check another
             </button>
           </div>

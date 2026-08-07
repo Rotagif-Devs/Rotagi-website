@@ -184,7 +184,7 @@ export default function AttendanceLookup() {
           </div>
 
           <div className="text-center mt-8">
-            <button onClick={reset} className="text-sm font-bold text-primary hover:underline">
+            <button onClick={reset} className="text-sm font-bold text-secondary hover:underline">
               Check another email
             </button>
           </div>
