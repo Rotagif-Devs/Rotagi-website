@@ -42,12 +42,52 @@ export default function AdminDashboardPage() {
     loadDashboardData();
   }, []);
 
-  const handleDelete = async (id: string) => {
-    if (confirm("Are you sure you want to delete this content?")) {
+  const handleDeleteBlog = async (id: string) => {
+    if (confirm("Are you sure you want to delete this blog post?")) {
       await adminService.deleteBlog(id);
       loadDashboardData();
     }
   };
+
+  const handleDeleteEvent = async (id: string) => {
+    if (confirm("Are you sure you want to delete this event?")) {
+      await adminService.deleteEvent(id);
+      loadDashboardData();
+    }
+  };
+
+  type Transmission = {
+    id: string;
+    title: string;
+    date: string;
+    category: string;
+    status: string;
+    editUrl: string;
+    onDelete: () => void;
+  };
+
+  const recentTransmissions: Transmission[] = [
+    ...recentBlogs.map((item) => ({
+      id: item.id,
+      title: item.title,
+      date: item.date,
+      category: item.category,
+      status: item.status,
+      editUrl: `/admin/dashboard/blog/${item.id}/edit`,
+      onDelete: () => handleDeleteBlog(item.id),
+    })),
+    ...recentEvents.map((item) => ({
+      id: item.id || item.slug,
+      title: item.title,
+      date: item.date,
+      category: "Event",
+      status: "published",
+      editUrl: `/admin/dashboard/events/${item.slug}/edit`,
+      onDelete: () => handleDeleteEvent(item.id || item.slug),
+    })),
+  ]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 8);
 
   const cards = [
     {
@@ -181,8 +221,8 @@ export default function AdminDashboardPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                {recentBlogs.length > 0 ? (
-                  recentBlogs.map((item, index) => (
+                {recentTransmissions.length > 0 ? (
+                  recentTransmissions.map((item, index) => (
                     <tr
                       key={item.id || index}
                       className="group hover:bg-gray-50/50 transition-colors"
@@ -223,9 +263,9 @@ export default function AdminDashboardPage() {
                         </span>
                       </td>
                       <td className="px-6 py-5 text-right">
-                        <ActionMenu 
-                          editUrl={`/admin/dashboard/blog/${item.id}/edit`}
-                          onDelete={() => handleDelete(item.id)}
+                        <ActionMenu
+                          editUrl={item.editUrl}
+                          onDelete={item.onDelete}
                         />
                       </td>
                     </tr>
@@ -233,7 +273,7 @@ export default function AdminDashboardPage() {
                 ) : (
                   <tr>
                     <td
-                      colSpan={4}
+                      colSpan={5}
                       className="px-6 py-10 text-center text-gray-400 italic"
                     >
                       No recent transmissions found.
