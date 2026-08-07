@@ -1,4 +1,5 @@
-import { apiFetch } from "../api";
+import { apiFetch, API_BASE_URL } from "../api";
+import { getAccessToken } from "../token.service";
 import { ApiResponse } from "./auth.service";
 
 /**
@@ -79,6 +80,15 @@ export type CertificateTemplateStatus = {
   eligibleLearnerCount: number;
 };
 
+export type AttendanceWindowStatus = {
+  open: boolean;
+  date: string | null;
+};
+
+export type AttendanceWindowAdminStatus = AttendanceWindowStatus & {
+  tickedCount: number;
+};
+
 export const cohortService = {
   // --- Learner ---
 
@@ -156,6 +166,24 @@ export const cohortService = {
     }
   },
 
+  /** Whether today's self-tick attendance window is currently open. */
+  getAttendanceWindow: async (): Promise<AttendanceWindowStatus> => {
+    const res = await apiFetch<ApiResponse<AttendanceWindowStatus>>("/api/cohort/attendance/window", {
+      accessToken: getCohortToken() ?? undefined,
+    });
+    return res.data ?? { open: false, date: null };
+  },
+
+  /** Marks the learner present for today. Throws (with a real message) if the window isn't open. */
+  markAttendance: async (email: string): Promise<{ date: string }> => {
+    const res = await apiFetch<ApiResponse<{ date: string }>>("/api/cohort/attendance/mark", {
+      method: "POST",
+      body: { email },
+      accessToken: getCohortToken() ?? undefined,
+    });
+    return res.data!;
+  },
+
   // --- Admin (uses admin JWT from localStorage automatically) ---
 
   updateSettings: async (payload: {
@@ -194,6 +222,36 @@ export const cohortService = {
       { method: "POST", body: formData },
     );
     return res.message || "Attendance records processed and updated.";
+  },
+
+  getAttendanceWindowStatus: async (): Promise<AttendanceWindowAdminStatus> => {
+    const res = await apiFetch<ApiResponse<AttendanceWindowAdminStatus>>("/api/admin/cohort/attendance/window");
+    return res.data ?? { open: false, date: null, tickedCount: 0 };
+  },
+
+  toggleAttendanceWindow: async (open: boolean): Promise<void> => {
+    await apiFetch("/api/admin/cohort/attendance/window", { method: "PUT", body: { open } });
+  },
+
+  /** Downloads the full attendance workbook (one sheet per date) straight to the browser. */
+  exportAttendance: async (): Promise<void> => {
+    const token = getAccessToken();
+    const res = await fetch(`${API_BASE_URL}/api/admin/cohort/attendance/export`, {
+      headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+      credentials: "include",
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to export attendance (${res.status})`);
+    }
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "cohort-attendance.xlsx";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
   },
 
   uploadCertificates: async (file: File): Promise<string> => {

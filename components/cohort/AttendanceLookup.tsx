@@ -1,14 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Calendar, Search, CheckCircle2, XCircle } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { cohortService, AttendanceSummary } from "@/lib/services/cohort.service";
 
 /**
- * Email-based attendance lookup backed by the admin-uploaded spreadsheet
- * (GET /api/cohort/attendance/record). There is no endpoint for learners to
- * mark their own attendance — only the admin's offline upload updates records.
+ * Email-based attendance. Two independent things happen here:
+ *  - Marking today present, only possible while the admin's daily window is
+ *    open (GET/POST /api/cohort/attendance/*window|mark*).
+ *  - Looking up the full history, always available (GET /attendance/record),
+ *    backed by both self-ticks and admin spreadsheet uploads.
  */
 export default function AttendanceLookup() {
   const [email, setEmail] = useState("");
@@ -17,6 +19,38 @@ export default function AttendanceLookup() {
   const [result, setResult] = useState<AttendanceSummary | null>(null);
   const [notFound, setNotFound] = useState(false);
   const [searchedEmail, setSearchedEmail] = useState("");
+
+  const [windowOpen, setWindowOpen] = useState(false);
+  const [windowDate, setWindowDate] = useState<string | null>(null);
+  const [marking, setMarking] = useState(false);
+  const [markStatus, setMarkStatus] = useState<{ type: "success" | "error"; msg: string } | null>(null);
+
+  useEffect(() => {
+    cohortService
+      .getAttendanceWindow()
+      .then((data) => {
+        setWindowOpen(data.open);
+        setWindowDate(data.date);
+      })
+      .catch(() => {});
+  }, []);
+
+  const handleMark = async () => {
+    if (!email) {
+      setMarkStatus({ type: "error", msg: "Enter your email first." });
+      return;
+    }
+    setMarking(true);
+    setMarkStatus(null);
+    try {
+      await cohortService.markAttendance(email.trim());
+      setMarkStatus({ type: "success", msg: `You're marked present for ${windowDate}.` });
+    } catch (err: any) {
+      setMarkStatus({ type: "error", msg: err?.message || "Failed to mark attendance. Please try again." });
+    } finally {
+      setMarking(false);
+    }
+  };
 
   const reset = () => {
     setResult(null);
@@ -56,6 +90,21 @@ export default function AttendanceLookup() {
         <h2 className="text-3xl font-cal-sans text-gray-900 mb-2">Attendance Tracker</h2>
         <p className="text-gray-500">Enter your registered email to check your attendance records.</p>
       </div>
+
+      {windowOpen && (
+        <div className="max-w-lg mx-auto mb-8 bg-blue-50 border border-blue-100 rounded-2xl p-6 text-center">
+          <p className="font-bold text-blue-900 mb-1">Today&apos;s attendance is open</p>
+          <p className="text-sm text-blue-700 mb-4">Enter your email below, then tap the button to mark yourself present for {windowDate}.</p>
+          {markStatus && (
+            <p className={`text-sm font-semibold mb-4 ${markStatus.type === "success" ? "text-green-700" : "text-red-600"}`}>
+              {markStatus.msg}
+            </p>
+          )}
+          <Button type="button" variant="primary" className="px-8 py-3 rounded-xl" onClick={handleMark} disabled={marking}>
+            {marking ? "Marking…" : "Mark My Attendance"}
+          </Button>
+        </div>
+      )}
 
       {!hasSearched ? (
         <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">

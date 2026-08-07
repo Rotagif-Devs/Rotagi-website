@@ -5,6 +5,7 @@ import Button from "@/components/ui/Button";
 import { Settings, Megaphone, Upload, Link as LinkIcon, FileSpreadsheet, FileText, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { cohortService, CohortAnnouncement } from "@/lib/services/cohort.service";
 import CertificateTemplateEditor from "@/components/admin/CertificateTemplateEditor";
+import AttendanceWindowControl from "@/components/admin/AttendanceWindowControl";
 
 export default function AdminCohortPage() {
   const [activeTab, setActiveTab] = useState("settings");
@@ -194,7 +195,7 @@ function AttendanceTab() {
   };
 
   return (
-    <div className="max-w-xl">
+    <div className="max-w-3xl">
       <h3 className="text-2xl font-cal-sans text-gray-900 mb-2">Attendance Upload</h3>
       <p className="text-gray-500 mb-8">Upload the offline generated `.xlsx` or `.csv` file containing learner attendance data.</p>
 
@@ -227,6 +228,10 @@ function AttendanceTab() {
           {uploading ? "Processing Data..." : "Upload & Sync Attendance"}
         </Button>
       </form>
+
+      <hr className="my-10 border-gray-100" />
+
+      <AttendanceWindowControl />
     </div>
   );
 }
