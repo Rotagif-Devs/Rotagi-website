@@ -16,6 +16,10 @@ export default function CertificateLookup() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  // "Notice" covers expected, non-error states surfaced as thrown errors by the
+  // service layer (certificates not turned on yet, no template configured) —
+  // distinct from a real failure (network error, 500), which stays an "error".
+  const [isNotice, setIsNotice] = useState(false);
   const [certificateImage, setCertificateImage] = useState<string | null>(null);
   const [notFound, setNotFound] = useState(false);
   const [searchedName, setSearchedName] = useState("");
@@ -24,6 +28,7 @@ export default function CertificateLookup() {
     setCertificateImage(null);
     setNotFound(false);
     setError("");
+    setIsNotice(false);
   };
 
   const handleSearch = async (e: React.FormEvent) => {
@@ -41,7 +46,9 @@ export default function CertificateLookup() {
         setNotFound(true);
       }
     } catch (err: any) {
-      setError(err?.message || "Something went wrong. Please try again.");
+      const msg = err?.message || "Something went wrong. Please try again.";
+      setError(msg);
+      setIsNotice(/not been released|not been configured/i.test(msg));
     } finally {
       setLoading(false);
     }
@@ -86,11 +93,20 @@ export default function CertificateLookup() {
           </Button>
         </form>
       ) : error ? (
-        <div className="bg-red-50 border border-red-200 rounded-2xl p-8 animate-in zoom-in-95">
-          <h3 className="text-xl font-bold text-red-800 mb-2">Something went wrong</h3>
-          <p className="text-red-700 mb-6">{error}</p>
-          <button onClick={reset} className="text-sm font-bold text-red-800 hover:underline">
-            Try again
+        <div
+          className={`border rounded-2xl p-8 animate-in zoom-in-95 ${
+            isNotice ? "bg-blue-50 border-blue-200" : "bg-red-50 border-red-200"
+          }`}
+        >
+          <h3 className={`text-xl font-bold mb-2 ${isNotice ? "text-blue-800" : "text-red-800"}`}>
+            {isNotice ? "Notice!!!" : "Something went wrong"}
+          </h3>
+          <p className={`mb-6 ${isNotice ? "text-blue-700" : "text-red-700"}`}>{error}</p>
+          <button
+            onClick={reset}
+            className={`text-sm font-bold hover:underline ${isNotice ? "text-blue-800" : "text-red-800"}`}
+          >
+            {isNotice ? "Got it" : "Try again"}
           </button>
         </div>
       ) : notFound ? (
