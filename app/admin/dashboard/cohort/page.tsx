@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Button from "@/components/ui/Button";
-import { Settings, Megaphone, Upload, Link as LinkIcon, FileSpreadsheet, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { Settings, Megaphone, Upload, Link as LinkIcon, FileSpreadsheet, FileText, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { cohortService, CohortAnnouncement } from "@/lib/services/cohort.service";
+import CertificateTemplateEditor from "@/components/admin/CertificateTemplateEditor";
 
 export default function AdminCohortPage() {
   const [activeTab, setActiveTab] = useState("settings");
@@ -11,6 +12,7 @@ export default function AdminCohortPage() {
   const tabs = [
     { id: "settings", label: "Links & Settings", icon: Settings },
     { id: "attendance", label: "Attendance Upload", icon: FileSpreadsheet },
+    { id: "certificates", label: "Certificates Upload", icon: FileText },
     { id: "announcements", label: "Announcements", icon: Megaphone },
   ];
 
@@ -42,6 +44,7 @@ export default function AdminCohortPage() {
       <div className="flex-1 p-6 md:p-8 overflow-y-auto">
         {activeTab === "settings" && <SettingsTab />}
         {activeTab === "attendance" && <AttendanceTab />}
+        {activeTab === "certificates" && <CertificatesTab />}
         {activeTab === "announcements" && <AnnouncementsTab />}
       </div>
     </div>
@@ -71,7 +74,6 @@ function SettingsTab() {
   const [pin, setPin] = useState("");
   const [materialsLink, setMaterialsLink] = useState("");
   const [missedClassesLink, setMissedClassesLink] = useState("");
-  const [certificatesLink, setCertificatesLink] = useState("");
   const [saving, setSaving] = useState(false);
   const [status, setStatus] = useState<{ type: "success" | "error"; msg: string } | null>(null);
 
@@ -90,7 +92,6 @@ function SettingsTab() {
         accessPin: pin.trim(),
         materialsLink: materialsLink.trim(),
         missedClassesLink: missedClassesLink.trim(),
-        certificatesLink: certificatesLink.trim(),
       });
       setStatus({ type: "success", msg: "Configuration updated successfully." });
     } catch (err: any) {
@@ -154,17 +155,6 @@ function SettingsTab() {
                 type="url"
                 value={missedClassesLink}
                 onChange={(e) => setMissedClassesLink(e.target.value)}
-                className="w-full p-3 border border-gray-200 rounded-xl outline-none focus:border-blue-500 bg-white"
-                placeholder="https://drive.google.com/..."
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Certificates Google Drive Link</label>
-              <input
-                type="url"
-                value={certificatesLink}
-                onChange={(e) => setCertificatesLink(e.target.value)}
                 className="w-full p-3 border border-gray-200 rounded-xl outline-none focus:border-blue-500 bg-white"
                 placeholder="https://drive.google.com/..."
                 required
@@ -237,6 +227,74 @@ function AttendanceTab() {
           {uploading ? "Processing Data..." : "Upload & Sync Attendance"}
         </Button>
       </form>
+    </div>
+  );
+}
+
+function CertificatesTab() {
+  const [uploading, setUploading] = useState(false);
+  const [file, setFile] = useState<File | null>(null);
+  const [status, setStatus] = useState<{ type: "success" | "error"; msg: string } | null>(null);
+
+  const handleUpload = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!file) return;
+    setStatus(null);
+    setUploading(true);
+
+    try {
+      const msg = await cohortService.uploadCertificates(file);
+      setStatus({ type: "success", msg });
+      setFile(null);
+    } catch (err: any) {
+      setStatus({ type: "error", msg: err?.message || "Upload failed. Please check the file and try again." });
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  return (
+    <div className="max-w-3xl">
+      <h3 className="text-2xl font-cal-sans text-gray-900 mb-2">Certificate Eligibility List</h3>
+      <p className="text-gray-500 mb-8">
+        Upload a spreadsheet with an <strong>Email</strong> column and a <strong>Full Name</strong> column — this is
+        who qualifies for a certificate, and the exact name that gets composited onto it. Learners then verify with
+        both their name and email on the portal, so they can only ever get their own certificate.
+      </p>
+
+      {status && <Banner type={status.type}>{status.msg}</Banner>}
+
+      <form onSubmit={handleUpload} className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+        <div className="mb-6">
+          <label className="block text-sm font-medium text-gray-700 mb-2">Select Spreadsheet (.xlsx / .csv)</label>
+          <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xl bg-white hover:border-primary transition-colors cursor-pointer relative">
+            <div className="space-y-1 text-center">
+              <Upload className="mx-auto h-12 w-12 text-gray-400" />
+              <div className="flex text-sm text-gray-600 justify-center">
+                <span className="relative cursor-pointer bg-white rounded-md font-medium text-primary hover:text-pink-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary">
+                  <span>{file ? file.name : "Upload a file"}</span>
+                  <input
+                    type="file"
+                    accept=".xlsx, .csv"
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                    onChange={(e) => setFile(e.target.files?.[0] || null)}
+                    required
+                  />
+                </span>
+              </div>
+              <p className="text-xs text-gray-500">Excel or CSV up to 5MB</p>
+            </div>
+          </div>
+        </div>
+
+        <Button type="submit" variant="primary" disabled={uploading || !file} className="w-full">
+          {uploading ? "Processing Data..." : "Upload & Sync Eligibility List"}
+        </Button>
+      </form>
+
+      <hr className="my-10 border-gray-100" />
+
+      <CertificateTemplateEditor />
     </div>
   );
 }

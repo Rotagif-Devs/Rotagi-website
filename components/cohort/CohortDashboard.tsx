@@ -5,6 +5,7 @@ import { BookOpen, Calendar, FileText, Lock, Video, Home as HomeIcon, Loader2 } 
 import { cohortService, clearCohortToken, CohortAnnouncement } from "@/lib/services/cohort.service";
 import ResourceLinkPanel from "./ResourceLinkPanel";
 import AttendanceLookup from "./AttendanceLookup";
+import CertificateLookup from "./CertificateLookup";
 
 export default function CohortDashboard() {
   const [activeTab, setActiveTab] = useState("home");
@@ -86,16 +87,7 @@ export default function CohortDashboard() {
               linkKey="missedClassesLink"
             />
           )}
-          {activeTab === "certificates" && (
-            <ResourceLinkPanel
-              accent="green"
-              icon={<FileText className="w-12 h-12" />}
-              title="Your Certificates"
-              description="Completed your track? Access the Google Drive folder to search for and download your official certificate."
-              cta="Access Certificates Folder"
-              linkKey="certificatesLink"
-            />
-          )}
+          {activeTab === "certificates" && <CertificateLookup />}
           {activeTab === "attendance" && <AttendanceLookup />}
         </div>
       </div>

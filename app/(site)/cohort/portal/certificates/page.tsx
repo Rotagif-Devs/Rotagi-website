@@ -1,9 +1,8 @@
 "use client";
 
-import { FileText } from "lucide-react";
 import Link from "next/link";
 import CohortGuard from "@/components/cohort/CohortGuard";
-import ResourceLinkPanel from "@/components/cohort/ResourceLinkPanel";
+import CertificateLookup from "@/components/cohort/CertificateLookup";
 
 export default function CertificatesPage() {
   return (
@@ -15,14 +14,7 @@ export default function CertificatesPage() {
           </Link>
 
           <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100 min-h-[500px] flex items-center justify-center">
-            <ResourceLinkPanel
-              accent="green"
-              icon={<FileText className="w-12 h-12" />}
-              title="Your Certificates"
-              description="Completed your track? Access the Google Drive folder to search for and download your official certificate."
-              cta="Access Certificates Folder"
-              linkKey="certificatesLink"
-            />
+            <CertificateLookup />
           </div>
         </div>
       </main>

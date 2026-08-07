@@ -34,7 +34,6 @@ export const clearCohortToken = () => {
 export type CohortSettings = {
   materialsLink: string;
   missedClassesLink: string;
-  certificatesLink: string;
 };
 
 export type CohortAnnouncement = {
@@ -54,6 +53,28 @@ export type AttendanceSummary = {
   totalPresent: number;
   totalAbsent: number;
   records: AttendanceRecord[];
+};
+
+export type CertificateRecord = {
+  email: string;
+  fullName: string;
+  /** A `data:image/png;base64,...` data URL — the composited certificate, rendered on demand. */
+  certificateImage: string;
+};
+
+export type CertificateTemplateConfig = {
+  imageUrl: string;
+  nameX: number;
+  nameY: number;
+  fontSize: number;
+  fontColor: string;
+  fontFamily: string;
+};
+
+export type CertificateTemplateStatus = {
+  template: CertificateTemplateConfig | null;
+  certificatesEnabled: boolean;
+  eligibleLearnerCount: number;
 };
 
 export const cohortService = {
@@ -77,9 +98,7 @@ export const cohortService = {
     const res = await apiFetch<ApiResponse<CohortSettings>>("/api/cohort/settings", {
       accessToken: getCohortToken() ?? undefined,
     });
-    return (
-      res.data ?? { materialsLink: "", missedClassesLink: "", certificatesLink: "" }
-    );
+    return res.data ?? { materialsLink: "", missedClassesLink: "" };
   },
 
   /** Fetch announcements (learner uses the cohort token). */
@@ -113,13 +132,34 @@ export const cohortService = {
     }
   },
 
+  /**
+   * Look up + render a learner's certificate by name and email.
+   * Returns null when there's no matching eligible learner (404) — a wrong
+   * name/email combo and an email that was never uploaded look identical here
+   * on purpose. Other errors (e.g. certificates not yet turned on, no
+   * template configured) are thrown so the UI can show a real explanation.
+   */
+  getCertificateRecord: async (email: string, fullName: string): Promise<CertificateRecord | null> => {
+    try {
+      const res = await apiFetch<ApiResponse<CertificateRecord>>(
+        `/api/cohort/certificate/record?email=${encodeURIComponent(email)}&fullName=${encodeURIComponent(fullName)}`,
+        { accessToken: getCohortToken() ?? undefined },
+      );
+      return res.data ?? null;
+    } catch (err: any) {
+      if (typeof err?.message === "string" && /no certificate found/i.test(err.message)) {
+        return null;
+      }
+      throw err;
+    }
+  },
+
   // --- Admin (uses admin JWT from localStorage automatically) ---
 
   updateSettings: async (payload: {
     accessPin: string;
     materialsLink: string;
     missedClassesLink: string;
-    certificatesLink: string;
   }): Promise<void> => {
     await apiFetch("/api/admin/cohort/settings", { method: "PUT", body: payload });
   },
@@ -152,5 +192,53 @@ export const cohortService = {
       { method: "POST", body: formData },
     );
     return res.message || "Attendance records processed and updated.";
+  },
+
+  uploadCertificates: async (file: File): Promise<string> => {
+    const formData = new FormData();
+    formData.append("file", file);
+    const res = await apiFetch<{ success: boolean; message?: string }>(
+      "/api/admin/cohort/certificates/upload",
+      { method: "POST", body: formData },
+    );
+    return res.message || "Certificate records processed and updated.";
+  },
+
+  getCertificateTemplate: async (): Promise<CertificateTemplateStatus> => {
+    const res = await apiFetch<ApiResponse<CertificateTemplateStatus>>(
+      "/api/admin/cohort/certificates/template",
+    );
+    return res.data ?? { template: null, certificatesEnabled: false, eligibleLearnerCount: 0 };
+  },
+
+  /** `file` is null when only repositioning/restyling an already-saved template. */
+  saveCertificateTemplate: async (payload: {
+    file: File | null;
+    nameX: number;
+    nameY: number;
+    fontSize: number;
+    fontColor: string;
+    fontFamily: string;
+  }): Promise<CertificateTemplateConfig> => {
+    const formData = new FormData();
+    if (payload.file) formData.append("file", payload.file);
+    formData.append("nameX", String(payload.nameX));
+    formData.append("nameY", String(payload.nameY));
+    formData.append("fontSize", String(payload.fontSize));
+    formData.append("fontColor", payload.fontColor);
+    formData.append("fontFamily", payload.fontFamily);
+
+    const res = await apiFetch<ApiResponse<CertificateTemplateConfig>>(
+      "/api/admin/cohort/certificates/template",
+      { method: "POST", body: formData },
+    );
+    return res.data!;
+  },
+
+  toggleCertificates: async (enabled: boolean): Promise<void> => {
+    await apiFetch("/api/admin/cohort/certificates/toggle", {
+      method: "PUT",
+      body: { enabled },
+    });
   },
 };
