@@ -6,6 +6,7 @@ import Header from "@/components/globalComp/Header";
 import Footer from "@/components/globalComp/Footer";
 import Providers from "./Provider";
 import CookieConsent from "@/components/globalComp/CookieConsent";
+import DonatePrompt from "@/components/globalComp/DonatePrompt";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -82,8 +83,9 @@ export default function RootLayout({
         <Providers>
           {children}
           <CookieConsent />
+          <DonatePrompt />
         </Providers>
-        <Script 
+        <Script
           src="https://cdn.jsdelivr.net/npm/sienna-accessibility/dist/sienna-accessibility.umd.js" 
           strategy="afterInteractive" 
         />
