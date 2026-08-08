@@ -18,6 +18,16 @@ type Country = {
 
 const COUNTRIES = countriesData as Country[];
 
+// Flutterwave rejects any currency outside its supported list with a 502
+// ("Currency does not exist or is not supported") — countries.json covers
+// every ISO currency, so most non-NGN countries aren't actually chargeable
+// via Flutterwave. Only offer it when the selected country's currency is on
+// this list; otherwise PayPal (which supports a much broader currency set)
+// is the only option.
+const FLUTTERWAVE_SUPPORTED_CURRENCIES = new Set([
+  "NGN", "USD", "GBP", "EUR", "GHS", "KES", "UGX", "TZS", "ZAR", "XAF", "XOF", "RWF", "ZMW", "EGP",
+]);
+
 type Props = {
   onNext: (data: DonationDetailsInputs) => void;
 };
@@ -345,30 +355,39 @@ const DonateDetails = ({ onNext }: Props) => {
             <label htmlFor="provider" className="block mb-2 font-medium">
               Select Payment Method <span className="text-pink-500">*</span>
             </label>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <label className={`flex-1 flex items-center justify-center gap-3 p-4 border-2 rounded-xl cursor-pointer transition-colors ${provider === 'paypal' ? 'border-secondary bg-pink-50' : 'border-[#D3D3D3] hover:border-pink-300'}`}>
-                <input 
-                  type="radio" 
-                  name="provider" 
-                  value="paypal" 
-                  checked={provider === 'paypal'} 
-                  onChange={() => setProvider('paypal')}
-                  className="hidden" 
-                />
+            {FLUTTERWAVE_SUPPORTED_CURRENCIES.has(selectedCountry.currency) ? (
+              <div className="flex flex-col sm:flex-row gap-4">
+                <label className={`flex-1 flex items-center justify-center gap-3 p-4 border-2 rounded-xl cursor-pointer transition-colors ${provider === 'paypal' ? 'border-secondary bg-pink-50' : 'border-[#D3D3D3] hover:border-pink-300'}`}>
+                  <input
+                    type="radio"
+                    name="provider"
+                    value="paypal"
+                    checked={provider === 'paypal'}
+                    onChange={() => setProvider('paypal')}
+                    className="hidden"
+                  />
+                  <span className="font-semibold text-gray-800">PayPal</span>
+                </label>
+                <label className={`flex-1 flex items-center justify-center gap-3 p-4 border-2 rounded-xl cursor-pointer transition-colors ${provider === 'flutterwave' ? 'border-secondary bg-pink-50' : 'border-[#D3D3D3] hover:border-pink-300'}`}>
+                  <input
+                    type="radio"
+                    name="provider"
+                    value="flutterwave"
+                    checked={provider === 'flutterwave'}
+                    onChange={() => setProvider('flutterwave')}
+                    className="hidden"
+                  />
+                  <span className="font-semibold text-gray-800">Card (Flutterwave)</span>
+                </label>
+              </div>
+            ) : (
+              <div className="p-4 border-2 border-[#D3D3D3] rounded-xl bg-gray-50">
                 <span className="font-semibold text-gray-800">PayPal</span>
-              </label>
-              <label className={`flex-1 flex items-center justify-center gap-3 p-4 border-2 rounded-xl cursor-pointer transition-colors ${provider === 'flutterwave' ? 'border-secondary bg-pink-50' : 'border-[#D3D3D3] hover:border-pink-300'}`}>
-                <input 
-                  type="radio" 
-                  name="provider" 
-                  value="flutterwave" 
-                  checked={provider === 'flutterwave'} 
-                  onChange={() => setProvider('flutterwave')}
-                  className="hidden" 
-                />
-                <span className="font-semibold text-gray-800">Card (Flutterwave)</span>
-              </label>
-            </div>
+                <p className="text-sm text-gray-500 mt-1">
+                  Card payment isn&apos;t available for {selectedCountry.currency} — you&apos;ll continue with PayPal.
+                </p>
+              </div>
+            )}
           </div>
         )}
 
