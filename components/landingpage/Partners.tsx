@@ -8,20 +8,25 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 
+// Each logo image is a fully opaque file (only DC Donates is a real
+// transparent PNG) with its own baked-in background color — `bg` is that
+// color sampled from the image itself, so every tile gets a consistent
+// rounded card treatment using its own proper background instead of one
+// flat color for everyone.
 const partnerLogos = [
-  { name: "Selex Engineering", url: "/partner1.png" },
-  { name: "Ed Tech", url: "/partner2.png" },
-  { name: "CICN", url: "/partner3.jpg" },
-  { name: "Daptem Engineering", url: "/partner4.jpg" },
-  { name: "Canva", url: "/partner5.jpg" },
-  { name: "Tushiyah", url: "/partner6.jpg" },
-  { name: "Three Lions Group", url: "/partner7.jpg" },
-  { name: "Slack", url: "/partner8.jpg" },
-  { name: "Infinityfield", url: "/partner9.jpg" },
-  { name: "monday.com", url: "/partner10.jpg" },
-  { name: "little", url: "/partner11.jpg" },
-  { name: "Make", url: "/partner12.jpg" },
-  { name: "DC Donates", url: "/partner13.png", dark: true },
+  { name: "Selex Engineering", url: "/partner1.png", bg: "#E1DCED" },
+  { name: "Ed Tech", url: "/partner2.png", bg: "#DCDCCE" },
+  { name: "CICN", url: "/partner3.jpg", bg: "#F4F6F8" },
+  { name: "Daptem Engineering", url: "/partner4.jpg", bg: "#F4EFEC" },
+  { name: "Canva", url: "/partner5.jpg", bg: "#0A0440" },
+  { name: "Tushiyah", url: "/partner6.jpg", bg: "#152F47" },
+  { name: "Three Lions Group", url: "/partner7.jpg", bg: "#331436" },
+  { name: "Slack", url: "/partner8.jpg", bg: "#BE0C0D" },
+  { name: "Infinityfield", url: "/partner9.jpg", bg: "#4086DC" },
+  { name: "monday.com", url: "/partner10.jpg", bg: "#E8EDF2" },
+  { name: "little", url: "/partner11.jpg", bg: "#562556" },
+  { name: "Make", url: "/partner12.jpg", bg: "#F1EDF2" },
+  { name: "DC Donates", url: "/partner13.png", bg: "#000000" },
 ];
 
 export default function Partners() {
@@ -83,25 +88,18 @@ export default function Partners() {
             {partnerLogos.map((partner, index) => (
               <SwiperSlide key={index}>
                 <div className="flex items-center justify-center h-32 sm:h-36 md:h-40 lg:h-40">
-                  {partner.dark ? (
-                    <div className="flex items-center justify-center w-full h-full max-w-[90%] md:max-w-[220px] rounded-md bg-black p-4">
-                      <Image
-                        src={partner.url}
-                        alt={partner.name}
-                        width={250}
-                        height={150}
-                        className="object-contain w-auto h-auto max-h-full max-w-full transition-all duration-300"
-                      />
-                    </div>
-                  ) : (
+                  <div
+                    className="flex items-center justify-center w-full h-full max-w-[90%] md:max-w-[220px] rounded-2xl p-4"
+                    style={{ backgroundColor: partner.bg }}
+                  >
                     <Image
                       src={partner.url}
                       alt={partner.name}
                       width={250}
                       height={150}
-                      className="object-contain w-auto h-auto max-h-full max-w-[90%] md:max-w-[220px] transition-all duration-300"
+                      className="object-contain w-auto h-auto max-h-full max-w-full transition-all duration-300"
                     />
-                  )}
+                  </div>
                 </div>
               </SwiperSlide>
             ))}

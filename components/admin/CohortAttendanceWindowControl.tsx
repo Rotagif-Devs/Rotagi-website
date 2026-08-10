@@ -19,12 +19,7 @@ function Banner({ type, children }: { type: "success" | "error"; children: React
   );
 }
 
-/**
- * Daily self-tick attendance: open a window at class start, learners mark
- * themselves present on the portal, close it at class end. While open, the
- * ticked count here polls every few seconds so the admin can watch it fill in.
- */
-export default function AttendanceWindowControl() {
+export default function CohortAttendanceWindowControl({ program }: { program: string }) {
   const [open, setOpen] = useState(false);
   const [date, setDate] = useState<string | null>(null);
   const [tickedCount, setTickedCount] = useState(0);
@@ -36,18 +31,19 @@ export default function AttendanceWindowControl() {
 
   const refresh = async () => {
     try {
-      const data = await cohortService.getAttendanceWindowStatus();
+      const data = await cohortService.getAttendanceWindowStatus(program);
       setOpen(data.open);
       setDate(data.date);
       setTickedCount(data.tickedCount);
     } catch {
-      // Leave whatever we last had — a transient poll failure isn't worth surfacing.
+      // transient poll failure isn't worth surfacing
     }
   };
 
   useEffect(() => {
     refresh().finally(() => setLoading(false));
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [program]);
 
   useEffect(() => {
     if (open) {
@@ -56,6 +52,7 @@ export default function AttendanceWindowControl() {
     return () => {
       if (pollRef.current) clearInterval(pollRef.current);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
   const handleToggle = async () => {
@@ -63,12 +60,9 @@ export default function AttendanceWindowControl() {
     setStatus(null);
     try {
       const next = !open;
-      await cohortService.toggleAttendanceWindow(next);
+      await cohortService.toggleAttendanceWindow(program, next);
       await refresh();
-      setStatus({
-        type: "success",
-        msg: next ? "Attendance window opened for today." : "Attendance window closed.",
-      });
+      setStatus({ type: "success", msg: next ? "Attendance window opened for today." : "Attendance window closed." });
     } catch (err: any) {
       setStatus({ type: "error", msg: err?.message || "Failed to update the attendance window." });
     } finally {
@@ -80,7 +74,7 @@ export default function AttendanceWindowControl() {
     setExporting(true);
     setStatus(null);
     try {
-      await cohortService.exportAttendance();
+      await cohortService.exportAttendance(program);
     } catch (err: any) {
       setStatus({ type: "error", msg: err?.message || "Failed to export attendance." });
     } finally {
@@ -108,11 +102,11 @@ export default function AttendanceWindowControl() {
 
       <div className="p-4 bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-between gap-4 flex-wrap mb-4">
         <div>
-          <p className="font-bold text-gray-900">
-            {open ? `Open for ${date}` : "Closed"}
-          </p>
+          <p className="font-bold text-gray-900">{open ? `Open for ${date}` : "Closed"}</p>
           <p className="text-sm text-gray-500">
-            {open ? `${tickedCount} learner${tickedCount === 1 ? "" : "s"} marked present so far` : "Learners can't mark attendance right now."}
+            {open
+              ? `${tickedCount} learner${tickedCount === 1 ? "" : "s"} marked present so far`
+              : "Learners can't mark attendance right now."}
           </p>
         </div>
         <Button

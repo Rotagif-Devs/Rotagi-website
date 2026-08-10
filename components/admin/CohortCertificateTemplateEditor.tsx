@@ -25,18 +25,10 @@ const FONT_OPTIONS = [
   { value: "cursive", label: "Cursive / Script" },
 ];
 
-/**
- * Certificate design tool: upload the org's certificate canvas, click on the
- * preview to mark exactly where a learner's name should be composited, and
- * toggle whether the auto-generated certificate is live on the learner portal.
- * The position is stored as a percentage of the image's own dimensions, so
- * it stays correct no matter how large/small it's previewed here vs. rendered
- * server-side at full resolution.
- */
-export default function CertificateTemplateEditor() {
+export default function CohortCertificateTemplateEditor({ program }: { program: string }) {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [previewSrc, setPreviewSrc] = useState<string | null>(null);
-  const [imgScale, setImgScale] = useState(1); // displayed width / natural width, for an accurate preview font size
+  const [imgScale, setImgScale] = useState(1);
 
   const [nameX, setNameX] = useState(50);
   const [nameY, setNameY] = useState(55);
@@ -56,7 +48,7 @@ export default function CertificateTemplateEditor() {
 
   useEffect(() => {
     cohortService
-      .getCertificateTemplate()
+      .getCertificateTemplate(program)
       .then((data) => {
         if (data.template) {
           setPreviewSrc(data.template.imageUrl);
@@ -74,7 +66,8 @@ export default function CertificateTemplateEditor() {
         setStatus({ type: "error", msg: "Could not load the current certificate template." });
       })
       .finally(() => setLoading(false));
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [program]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0] || null;
@@ -103,7 +96,7 @@ export default function CertificateTemplateEditor() {
     setSaving(true);
     setStatus(null);
     try {
-      await cohortService.saveCertificateTemplate({
+      await cohortService.saveCertificateTemplate(program, {
         file: imageFile,
         nameX,
         nameY,
@@ -128,7 +121,7 @@ export default function CertificateTemplateEditor() {
     setRemoving(true);
     setStatus(null);
     try {
-      await cohortService.deleteCertificateTemplate();
+      await cohortService.deleteCertificateTemplate(program);
       setPreviewSrc(null);
       setImageFile(null);
       setHasSavedTemplate(false);
@@ -151,7 +144,7 @@ export default function CertificateTemplateEditor() {
     setStatus(null);
     try {
       const next = !certificatesEnabled;
-      await cohortService.toggleCertificates(next);
+      await cohortService.toggleCertificates(program, next);
       setCertificatesEnabled(next);
     } catch (err: any) {
       setStatus({ type: "error", msg: err?.message || "Failed to update certificate availability." });
@@ -172,9 +165,8 @@ export default function CertificateTemplateEditor() {
     <div className="max-w-3xl">
       <h3 className="text-2xl font-cal-sans text-gray-900 mb-2">Certificate Template</h3>
       <p className="text-gray-500 mb-6">
-        Upload the certificate design — all the org branding and writeup already on it — then click directly on it to
-        mark where each learner&apos;s name goes. Certificates are generated automatically per learner; you never
-        create one file per person.
+        Upload the certificate design, then click directly on it to mark where each learner&apos;s name goes.
+        Certificates are generated automatically per learner.
       </p>
 
       {status && <Banner type={status.type}>{status.msg}</Banner>}

@@ -3,45 +3,70 @@ import { getAccessToken } from "../token.service";
 import { ApiResponse } from "./auth.service";
 
 /**
- * Cohort portal service.
+ * Cohort portal service — every program (product-design, ai-video-creation,
+ * vibe-coding) has its own portal: own PIN, own settings, own attendance/
+ * certificate data. Every call takes a `program` slug as the first arg.
  *
- * Learner endpoints live under `/api/cohort/*` and are gated by a shared-PIN
- * "cohort access token" (separate from the admin JWT). We keep that token in
- * sessionStorage so it dies with the tab, and pass it explicitly to apiFetch so
- * it is never confused with the admin `accessToken` in localStorage.
+ * Learner endpoints live under `/api/cohort/:program/*` and are gated by a
+ * program-scoped "cohort access token" (separate from the admin JWT, and
+ * rejected if used against a different program). Kept in sessionStorage per
+ * program so it dies with the tab.
  *
- * Admin endpoints live under `/api/admin/cohort/*` and use the normal admin JWT,
- * which apiFetch attaches automatically from localStorage.
+ * Admin endpoints live under `/api/admin/cohort/:program/*` and use the
+ * normal admin JWT, which apiFetch attaches automatically from localStorage.
  */
 
-const COHORT_TOKEN_KEY = "cohort_token";
+export const COHORT_PROGRAMS = [
+  { slug: "product-design", title: "Product Design (UI/UX)" },
+  { slug: "ai-video-creation", title: "AI Video Creation" },
+  { slug: "vibe-coding", title: "VIBE Coding" },
+] as const;
 
-export const getCohortToken = (): string | null => {
+export type CohortProgramSlug = (typeof COHORT_PROGRAMS)[number]["slug"];
+
+const cohortTokenKey = (program: string) => `cohort_token_${program}`;
+
+export const getCohortToken = (program: string): string | null => {
   if (typeof window === "undefined") return null;
-  return sessionStorage.getItem(COHORT_TOKEN_KEY);
+  return sessionStorage.getItem(cohortTokenKey(program));
 };
 
-export const setCohortToken = (token: string) => {
-  sessionStorage.setItem(COHORT_TOKEN_KEY, token);
-  // Kept for backward-compat with the existing gate check.
-  sessionStorage.setItem("cohort_auth", "true");
+export const setCohortToken = (program: string, token: string) => {
+  sessionStorage.setItem(cohortTokenKey(program), token);
 };
 
-export const clearCohortToken = () => {
-  sessionStorage.removeItem(COHORT_TOKEN_KEY);
-  sessionStorage.removeItem("cohort_auth");
+export const clearCohortToken = (program: string) => {
+  sessionStorage.removeItem(cohortTokenKey(program));
 };
 
-export type CohortSettings = {
-  materialsLink: string;
-  missedClassesLink: string;
-};
+export type AssignmentStatusType = "pending" | "submitted" | "feedback";
 
-export type CohortAnnouncement = {
+export type CohortAssignment = {
   id: string;
   title: string;
-  content: string;
-  date: string;
+  statusLabel: string;
+  statusType: AssignmentStatusType;
+  actionLabel: string;
+  actionUrl: string;
+  order?: number;
+};
+
+export type CohortDashboard = {
+  program: string;
+  cohortCode: string;
+  cohortTitle: string;
+  schoolName: string;
+  pathwayLabel: string;
+  currentWeek: number;
+  weekLabels: string[];
+  liveClassLink: string;
+  liveClassSchedule: string;
+  missedClassLink: string;
+  courseMaterialsLink: string;
+  templatesLink: string;
+  communityChatLink: string;
+  certificatesEnabled: boolean;
+  assignments: CohortAssignment[];
 };
 
 export type AttendanceRecord = {
@@ -54,6 +79,15 @@ export type AttendanceSummary = {
   totalPresent: number;
   totalAbsent: number;
   records: AttendanceRecord[];
+};
+
+export type AttendanceWindowStatus = {
+  open: boolean;
+  date: string | null;
+};
+
+export type AttendanceWindowAdminStatus = AttendanceWindowStatus & {
+  tickedCount: number;
 };
 
 export type CertificateRecord = {
@@ -80,68 +114,87 @@ export type CertificateTemplateStatus = {
   eligibleLearnerCount: number;
 };
 
-export type AttendanceWindowStatus = {
-  open: boolean;
-  date: string | null;
+export type AdminCohortSettings = {
+  hasPinSet: boolean;
+  cohortCode: string;
+  cohortTitle: string;
+  schoolName: string;
+  pathwayLabel: string;
+  currentWeek: number;
+  weekLabels: string[];
+  liveClassLink: string;
+  liveClassSchedule: string;
+  missedClassLink: string;
+  courseMaterialsLink: string;
+  templatesLink: string;
+  communityChatLink: string;
 };
 
-export type AttendanceWindowAdminStatus = AttendanceWindowStatus & {
-  tickedCount: number;
+export type AdminProgramSummary = {
+  slug: string;
+  title: string;
+  configured: boolean;
 };
 
 export const cohortService = {
   // --- Learner ---
 
-  /** Validate the shared access PIN. Stores + returns the cohort access token. */
-  validateAccessPin: async (pin: string): Promise<string> => {
+  /** Validate the shared per-program access PIN. Stores + returns the cohort access token. */
+  validateAccessPin: async (program: string, pin: string): Promise<string> => {
     const res = await apiFetch<{ success: boolean; token?: string; message?: string }>(
-      "/api/cohort/access",
+      `/api/cohort/${program}/access`,
       { method: "POST", body: { pin }, accessToken: null as unknown as string },
     );
     if (!res.token) {
       throw new Error(res.message || "Invalid Access PIN");
     }
-    setCohortToken(res.token);
+    setCohortToken(program, res.token);
     return res.token;
   },
 
-  /** Fetch the Google Drive links for the learner dashboard buttons. */
-  getSettings: async (): Promise<CohortSettings> => {
-    const res = await apiFetch<ApiResponse<CohortSettings>>("/api/cohort/settings", {
-      accessToken: getCohortToken() ?? undefined,
+  /** Everything the dashboard page needs, in one call. */
+  getDashboard: async (program: string): Promise<CohortDashboard> => {
+    const res = await apiFetch<ApiResponse<CohortDashboard>>(`/api/cohort/${program}/dashboard`, {
+      accessToken: getCohortToken(program) ?? undefined,
     });
-    return res.data ?? { materialsLink: "", missedClassesLink: "" };
-  },
-
-  /** Fetch announcements (learner uses the cohort token). */
-  getAnnouncements: async (limit?: number): Promise<CohortAnnouncement[]> => {
-    const query = limit ? `?limit=${limit}` : "";
-    const res = await apiFetch<ApiResponse<CohortAnnouncement[]>>(
-      `/api/cohort/announcements${query}`,
-      { accessToken: getCohortToken() ?? undefined },
-    );
-    return res.data ?? [];
+    return res.data as CohortDashboard;
   },
 
   /**
    * Look up a learner's attendance by email.
    * Returns null when the admin hasn't uploaded records for that email (404).
    */
-  getAttendanceRecord: async (email: string): Promise<AttendanceSummary | null> => {
+  getAttendanceRecord: async (program: string, email: string): Promise<AttendanceSummary | null> => {
     try {
       const res = await apiFetch<ApiResponse<AttendanceSummary>>(
-        `/api/cohort/attendance/record?email=${encodeURIComponent(email)}`,
-        { accessToken: getCohortToken() ?? undefined },
+        `/api/cohort/${program}/attendance/record?email=${encodeURIComponent(email)}`,
+        { accessToken: getCohortToken(program) ?? undefined },
       );
       return res.data ?? null;
     } catch (err: any) {
-      // The backend returns 404 with a "have not been uploaded" message when no
-      // records exist for the email — treat that as "no records yet", not an error.
       if (typeof err?.message === "string" && /not been uploaded|not found/i.test(err.message)) {
         return null;
       }
       throw err;
     }
+  },
+
+  /** Whether today's self-tick attendance window is currently open. */
+  getAttendanceWindow: async (program: string): Promise<AttendanceWindowStatus> => {
+    const res = await apiFetch<ApiResponse<AttendanceWindowStatus>>(`/api/cohort/${program}/attendance/window`, {
+      accessToken: getCohortToken(program) ?? undefined,
+    });
+    return res.data ?? { open: false, date: null };
+  },
+
+  /** Marks the learner present for today. Throws (with a real message) if the window isn't open. */
+  markAttendance: async (program: string, email: string): Promise<{ date: string }> => {
+    const res = await apiFetch<ApiResponse<{ date: string }>>(`/api/cohort/${program}/attendance/mark`, {
+      method: "POST",
+      body: { email },
+      accessToken: getCohortToken(program) ?? undefined,
+    });
+    return res.data!;
   },
 
   /**
@@ -151,11 +204,15 @@ export const cohortService = {
    * on purpose. Other errors (e.g. certificates not yet turned on, no
    * template configured) are thrown so the UI can show a real explanation.
    */
-  getCertificateRecord: async (email: string, fullName: string): Promise<CertificateRecord | null> => {
+  getCertificateRecord: async (
+    program: string,
+    email: string,
+    fullName: string,
+  ): Promise<CertificateRecord | null> => {
     try {
       const res = await apiFetch<ApiResponse<CertificateRecord>>(
-        `/api/cohort/certificate/record?email=${encodeURIComponent(email)}&fullName=${encodeURIComponent(fullName)}`,
-        { accessToken: getCohortToken() ?? undefined },
+        `/api/cohort/${program}/certificate/record?email=${encodeURIComponent(email)}&fullName=${encodeURIComponent(fullName)}`,
+        { accessToken: getCohortToken(program) ?? undefined },
       );
       return res.data ?? null;
     } catch (err: any) {
@@ -166,77 +223,94 @@ export const cohortService = {
     }
   },
 
-  /** Whether today's self-tick attendance window is currently open. */
-  getAttendanceWindow: async (): Promise<AttendanceWindowStatus> => {
-    const res = await apiFetch<ApiResponse<AttendanceWindowStatus>>("/api/cohort/attendance/window", {
-      accessToken: getCohortToken() ?? undefined,
-    });
-    return res.data ?? { open: false, date: null };
-  },
-
-  /** Marks the learner present for today. Throws (with a real message) if the window isn't open. */
-  markAttendance: async (email: string): Promise<{ date: string }> => {
-    const res = await apiFetch<ApiResponse<{ date: string }>>("/api/cohort/attendance/mark", {
-      method: "POST",
-      body: { email },
-      accessToken: getCohortToken() ?? undefined,
-    });
-    return res.data!;
-  },
-
   // --- Admin (uses admin JWT from localStorage automatically) ---
 
-  updateSettings: async (payload: {
-    accessPin: string;
-    materialsLink: string;
-    missedClassesLink: string;
-  }): Promise<void> => {
-    await apiFetch("/api/admin/cohort/settings", { method: "PUT", body: payload });
-  },
-
-  /** Announcements are readable by an admin JWT too via the same list endpoint. */
-  getAnnouncementsAdmin: async (limit?: number): Promise<CohortAnnouncement[]> => {
-    const query = limit ? `?limit=${limit}` : "";
-    const res = await apiFetch<ApiResponse<CohortAnnouncement[]>>(
-      `/api/cohort/announcements${query}`,
-    );
+  /** The 3 programs with a portal, plus whether each has been configured (PIN set) yet. */
+  getPrograms: async (): Promise<AdminProgramSummary[]> => {
+    const res = await apiFetch<ApiResponse<AdminProgramSummary[]>>("/api/admin/cohort/programs");
     return res.data ?? [];
   },
 
-  createAnnouncement: async (payload: {
-    title: string;
-    content: string;
-  }): Promise<CohortAnnouncement> => {
-    const res = await apiFetch<ApiResponse<CohortAnnouncement>>(
-      "/api/admin/cohort/announcements",
-      { method: "POST", body: payload },
+  getSettings: async (program: string): Promise<AdminCohortSettings> => {
+    const res = await apiFetch<ApiResponse<AdminCohortSettings>>(`/api/admin/cohort/${program}/settings`);
+    return (
+      res.data ?? {
+        hasPinSet: false,
+        cohortCode: "",
+        cohortTitle: "",
+        schoolName: "",
+        pathwayLabel: "",
+        currentWeek: 1,
+        weekLabels: ["Getting started", "Core skills", "In progress", "Showcase & certificate"],
+        liveClassLink: "",
+        liveClassSchedule: "",
+        missedClassLink: "",
+        courseMaterialsLink: "",
+        templatesLink: "",
+        communityChatLink: "",
+      }
     );
+  },
+
+  /** `accessPin` omitted keeps the currently-set PIN unchanged. */
+  updateSettings: async (
+    program: string,
+    payload: Partial<AdminCohortSettings> & { accessPin?: string },
+  ): Promise<void> => {
+    await apiFetch(`/api/admin/cohort/${program}/settings`, { method: "PUT", body: payload });
+  },
+
+  getAssignments: async (program: string): Promise<CohortAssignment[]> => {
+    const res = await apiFetch<ApiResponse<CohortAssignment[]>>(`/api/admin/cohort/${program}/assignments`);
+    return res.data ?? [];
+  },
+
+  createAssignment: async (
+    program: string,
+    payload: {
+      title: string;
+      statusLabel: string;
+      statusType: AssignmentStatusType;
+      actionLabel: string;
+      actionUrl: string;
+    },
+  ): Promise<CohortAssignment> => {
+    const res = await apiFetch<ApiResponse<CohortAssignment>>(`/api/admin/cohort/${program}/assignments`, {
+      method: "POST",
+      body: payload,
+    });
     return res.data!;
   },
 
-  uploadAttendance: async (file: File): Promise<string> => {
+  deleteAssignment: async (program: string, id: string): Promise<void> => {
+    await apiFetch(`/api/admin/cohort/${program}/assignments/${id}`, { method: "DELETE" });
+  },
+
+  uploadAttendance: async (program: string, file: File): Promise<string> => {
     const formData = new FormData();
     formData.append("file", file);
     const res = await apiFetch<{ success: boolean; message?: string }>(
-      "/api/admin/cohort/attendance/upload",
+      `/api/admin/cohort/${program}/attendance/upload`,
       { method: "POST", body: formData },
     );
     return res.message || "Attendance records processed and updated.";
   },
 
-  getAttendanceWindowStatus: async (): Promise<AttendanceWindowAdminStatus> => {
-    const res = await apiFetch<ApiResponse<AttendanceWindowAdminStatus>>("/api/admin/cohort/attendance/window");
+  getAttendanceWindowStatus: async (program: string): Promise<AttendanceWindowAdminStatus> => {
+    const res = await apiFetch<ApiResponse<AttendanceWindowAdminStatus>>(
+      `/api/admin/cohort/${program}/attendance/window`,
+    );
     return res.data ?? { open: false, date: null, tickedCount: 0 };
   },
 
-  toggleAttendanceWindow: async (open: boolean): Promise<void> => {
-    await apiFetch("/api/admin/cohort/attendance/window", { method: "PUT", body: { open } });
+  toggleAttendanceWindow: async (program: string, open: boolean): Promise<void> => {
+    await apiFetch(`/api/admin/cohort/${program}/attendance/window`, { method: "PUT", body: { open } });
   },
 
   /** Downloads the full attendance workbook (one sheet per date) straight to the browser. */
-  exportAttendance: async (): Promise<void> => {
+  exportAttendance: async (program: string): Promise<void> => {
     const token = getAccessToken();
-    const res = await fetch(`${API_BASE_URL}/api/admin/cohort/attendance/export`, {
+    const res = await fetch(`${API_BASE_URL}/api/admin/cohort/${program}/attendance/export`, {
       headers: token ? { Authorization: `Bearer ${token}` } : undefined,
       credentials: "include",
     });
@@ -247,39 +321,42 @@ export const cohortService = {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "cohort-attendance.xlsx";
+    link.download = `${program}-attendance.xlsx`;
     document.body.appendChild(link);
     link.click();
     link.remove();
     URL.revokeObjectURL(url);
   },
 
-  uploadCertificates: async (file: File): Promise<string> => {
+  uploadCertificates: async (program: string, file: File): Promise<string> => {
     const formData = new FormData();
     formData.append("file", file);
     const res = await apiFetch<{ success: boolean; message?: string }>(
-      "/api/admin/cohort/certificates/upload",
+      `/api/admin/cohort/${program}/certificates/upload`,
       { method: "POST", body: formData },
     );
     return res.message || "Certificate records processed and updated.";
   },
 
-  getCertificateTemplate: async (): Promise<CertificateTemplateStatus> => {
+  getCertificateTemplate: async (program: string): Promise<CertificateTemplateStatus> => {
     const res = await apiFetch<ApiResponse<CertificateTemplateStatus>>(
-      "/api/admin/cohort/certificates/template",
+      `/api/admin/cohort/${program}/certificates/template`,
     );
     return res.data ?? { template: null, certificatesEnabled: false, eligibleLearnerCount: 0 };
   },
 
   /** `file` is null when only repositioning/restyling an already-saved template. */
-  saveCertificateTemplate: async (payload: {
-    file: File | null;
-    nameX: number;
-    nameY: number;
-    fontSize: number;
-    fontColor: string;
-    fontFamily: string;
-  }): Promise<CertificateTemplateConfig> => {
+  saveCertificateTemplate: async (
+    program: string,
+    payload: {
+      file: File | null;
+      nameX: number;
+      nameY: number;
+      fontSize: number;
+      fontColor: string;
+      fontFamily: string;
+    },
+  ): Promise<CertificateTemplateConfig> => {
     const formData = new FormData();
     if (payload.file) formData.append("file", payload.file);
     formData.append("nameX", String(payload.nameX));
@@ -289,19 +366,19 @@ export const cohortService = {
     formData.append("fontFamily", payload.fontFamily);
 
     const res = await apiFetch<ApiResponse<CertificateTemplateConfig>>(
-      "/api/admin/cohort/certificates/template",
+      `/api/admin/cohort/${program}/certificates/template`,
       { method: "POST", body: formData },
     );
     return res.data!;
   },
 
   /** Also turns certificates off for learners — a dangling "ON" with no template would just 404. */
-  deleteCertificateTemplate: async (): Promise<void> => {
-    await apiFetch("/api/admin/cohort/certificates/template", { method: "DELETE" });
+  deleteCertificateTemplate: async (program: string): Promise<void> => {
+    await apiFetch(`/api/admin/cohort/${program}/certificates/template`, { method: "DELETE" });
   },
 
-  toggleCertificates: async (enabled: boolean): Promise<void> => {
-    await apiFetch("/api/admin/cohort/certificates/toggle", {
+  toggleCertificates: async (program: string, enabled: boolean): Promise<void> => {
+    await apiFetch(`/api/admin/cohort/${program}/certificates/toggle`, {
       method: "PUT",
       body: { enabled },
     });
