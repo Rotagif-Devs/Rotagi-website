@@ -19,6 +19,7 @@ import {
 import Button from "@/components/ui/Button";
 import {
   cohortService,
+  clearCohortToken,
   CohortDashboard as CohortDashboardData,
   AssignmentStatusType,
 } from "@/lib/services/cohort.service";
@@ -304,11 +305,22 @@ export default function CohortPortalDashboard({
   const [showAttendanceForm, setShowAttendanceForm] = useState(false);
   const [showCertificateForm, setShowCertificateForm] = useState(false);
 
+  const handleLock = () => {
+    clearCohortToken(program);
+    window.location.reload();
+  };
+
   return (
     <main className="min-h-screen bg-primary pb-20">
       <div className="max-w-5xl mx-auto px-6 pt-10">
         {/* Hero */}
         <div className="bg-secondary rounded-3xl p-8 mb-6 text-white relative overflow-hidden">
+          <button
+            onClick={handleLock}
+            className="absolute top-6 right-6 flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/25 rounded-full text-xs font-bold uppercase tracking-wide transition-colors"
+          >
+            <Lock className="w-3.5 h-3.5" /> Lock Portal
+          </button>
           <h1 className="text-2xl md:text-3xl font-cal-sans mb-2 flex items-center gap-2">
             Welcome to your cohort <Sprout className="w-6 h-6" />
           </h1>
