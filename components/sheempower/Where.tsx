@@ -19,12 +19,12 @@ const stats = [
 ];
 
 const galleryImages = [
-  "/sheone.png",
-  "/shetwo.png",
-  "/shethree.png",
-  "/shefour.png",
-  "/shefive.png",
-  "/shesix.png",
+  "/sheempower-1.png",
+  "/sheempower-2.png",
+  "/sheempower-3.png",
+  "/sheempower-4.png",
+  "/sheempower-5.png",
+  "/sheempower-6.png",
 ];
 
 export default function HistorySection() {
