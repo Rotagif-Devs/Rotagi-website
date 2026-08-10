@@ -10,7 +10,6 @@ import React from "react";
 const navItems = [
   { label: "About Us", href: "/about" },
   { label: "Programs", href: "/programs" },
-  { label: "Cohort", href: "/cohort" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
