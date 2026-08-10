@@ -8,24 +8,26 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 
-// Each logo image is a fully opaque file (only DC Donates is a real
-// transparent PNG) with its own baked-in background color — `bg` is that
-// color sampled from the image itself, so every tile gets a consistent
-// rounded card treatment using its own proper background instead of one
-// flat color for everyone.
+// Only DC Donates was a real transparent PNG; every other logo was a fully
+// opaque JPG with its own baked-in rectangular background, which just hid
+// the card behind it. The `-cutout` files have that background removed
+// (chroma-keyed off the image's own true corner color, not a full-image
+// average) so only the logo mark shows — `bg` is that same corner color,
+// used as the card's own background so it reads as a clean mark on a card
+// instead of a colored photo sitting on top of one.
 const partnerLogos = [
-  { name: "Selex Engineering", url: "/partner1.png", bg: "#E1DCED" },
-  { name: "Ed Tech", url: "/partner2.png", bg: "#DCDCCE" },
-  { name: "CICN", url: "/partner3.jpg", bg: "#F4F6F8" },
-  { name: "Daptem Engineering", url: "/partner4.jpg", bg: "#F4EFEC" },
-  { name: "Canva", url: "/partner5.jpg", bg: "#0A0440" },
-  { name: "Tushiyah", url: "/partner6.jpg", bg: "#152F47" },
-  { name: "Three Lions Group", url: "/partner7.jpg", bg: "#331436" },
-  { name: "Slack", url: "/partner8.jpg", bg: "#BE0C0D" },
-  { name: "Infinityfield", url: "/partner9.jpg", bg: "#4086DC" },
-  { name: "monday.com", url: "/partner10.jpg", bg: "#E8EDF2" },
-  { name: "little", url: "/partner11.jpg", bg: "#562556" },
-  { name: "Make", url: "/partner12.jpg", bg: "#F1EDF2" },
+  { name: "Selex Engineering", url: "/partner1-cutout.png", bg: "#FFFFFF" },
+  { name: "Ed Tech", url: "/partner2-cutout.png", bg: "#FFFFFF" },
+  { name: "CICN", url: "/partner3-cutout.png", bg: "#FFFFFF" },
+  { name: "Daptem Engineering", url: "/partner4-cutout.png", bg: "#FCF8F5" },
+  { name: "Canva", url: "/partner5-cutout.png", bg: "#06003C" },
+  { name: "Tushiyah", url: "/partner6-cutout.png", bg: "#0B253E" },
+  { name: "Three Lions Group", url: "/partner7-cutout.png", bg: "#2E0D32" },
+  { name: "Slack", url: "/partner8-cutout.png", bg: "#BB0102" },
+  { name: "Infinityfield", url: "/partner9-cutout.png", bg: "#5899E8" },
+  { name: "monday.com", url: "/partner10-cutout.png", bg: "#FFFFFF" },
+  { name: "little", url: "/partner11-cutout.png", bg: "#4C174D" },
+  { name: "Make", url: "/partner12-cutout.png", bg: "#FFFFFF" },
   { name: "DC Donates", url: "/partner13.png", bg: "#000000" },
 ];
 
