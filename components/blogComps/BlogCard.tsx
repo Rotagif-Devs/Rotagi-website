@@ -11,39 +11,37 @@ interface Props {
 
 export default function BlogCard({ post }: Props) {
   return (
-    <div className="bg-white rounded-2xl p-4 overflow-hidden duration-300 flex flex-col h-full border border-[#FABFD3]/30">
-      <div className="relative aspect-[474/593] w-full mb-6 group-hover:after:opacity-20 after:absolute after:inset-0 after:bg-black after:opacity-0 after:transition-opacity">
+    <div className="group flex flex-col overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 h-full">
+      <div className="relative overflow-hidden aspect-[474/593]">
         <Image
-          src={post.image?.startsWith('http') ? post.image : (post.image ? post.image : "/logo.png")}
+          src={post.image?.startsWith("http") ? post.image : post.image ? post.image : "/logo.png"}
           alt={post.title}
           width={474}
           height={593}
-          className="absolute inset-0 h-full w-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, 50vw"
+          sizes="(max-width: 768px) 100vw, 400px"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
       </div>
-      
-      <div className=" flex flex-col grow">
-        <div className="mb-3">
-          <span className="bg-[#FABFD3]/40 text-[#DB2777] text-[10px] md:text-[11px] font-bold px-2 py-1 rounded uppercase tracking-wider">
-            {post.category}
-          </span>
-        </div>
-        
-        <h3 className="text-[#121212] mb-3">
+
+      <div className="flex flex-col p-6 gap-4 flex-1">
+        <span className="w-fit bg-[#FABFD3]/40 text-[#DB2777] text-[10px] md:text-[11px] font-bold px-2 py-1 rounded uppercase tracking-wider">
+          {post.category}
+        </span>
+
+        <h3 className="text-black font-cal-sans text-xl capitalize leading-8 line-clamp-2">
           {post.title}
         </h3>
-        
-        <p className="text-[#4B5563] mb-6 flex-grow">
+
+        <p className="text-gray-600 font-dm-sans text-sm leading-relaxed line-clamp-2">
           {post.description}
         </p>
-        
-        <Link 
-          href={`/blog/${post.slug}`} 
-          className="flex items-center gap-2 text-[#DB2777] font-semibold text-sm group"
+
+        <Link
+          href={`/blog/${post.slug}`}
+          className="mt-auto pt-4 flex items-center gap-4 text-[#D62D88] font-semibold font-dm-sans group-hover:gap-6 transition-all"
         >
-          Read Story 
-          <MoveRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          Read Story
+          <MoveRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>
     </div>

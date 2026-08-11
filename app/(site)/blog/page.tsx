@@ -10,9 +10,7 @@ export const dynamic = "force-dynamic";
 export default async function BlogPage() {
   let posts: BlogPost[] = [];
   try {
-    console.log("Fetching blog posts on server...");
     posts = await publicService.getBlogPosts({ limit: 50 });
-    console.log("Fetched blogs count:", posts.length);
   } catch (error) {
     console.error("Failed to fetch blog posts:", error);
   }
@@ -20,28 +18,24 @@ export default async function BlogPage() {
   // Handle empty state
   if (posts.length === 0) {
     return (
-      <main className="min-h-screen bg-[#FFF1F5]">
-        <BlogHero title="ROTAGI BLOG" category="ROTAGI BLOGS" />
-        <section className="py-20 px-6 md:px-15 text-center">
-          <p className="text-gray-500">No blog posts found yet. Check back soon!</p>
+      <main className="min-h-screen md:p-4 p-3">
+        <BlogHero />
+        <section className="lg:px-8 pb-10 pt-0 px-4 max-w-7xl mx-auto">
+          <h4 className="py-6 font-cal-sans text-3xl md:text-4xl text-black">Latest Articles</h4>
+          <div className="bg-white p-12 rounded-3xl text-center shadow-sm border border-pink-50">
+            <p className="text-gray-500">No blog posts found yet. Check back soon!</p>
+          </div>
         </section>
-        <div className="pb-20"><PTA /></div>
+        <PTA />
       </main>
     );
   }
 
   return (
-    <main className="min-h-screen bg-[#FFF1F5]">
-      <BlogHero 
-        title="ROTAGI BLOG" 
-        category="ROTAGI BLOGS" 
-      />
-      
+    <main className="min-h-screen md:p-4 p-3">
+      <BlogHero />
       <BlogList posts={posts} />
-      
-      <div className="pb-20">
-        <PTA />
-      </div>
+      <PTA />
     </main>
   );
 }

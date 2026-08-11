@@ -1,11 +1,22 @@
 import { publicService } from "@/lib/services/public.service";
 import { notFound } from "next/navigation";
-import Link from "next/link";
-import PTA from "@/components/globalComp/PTA";
 import Image from "next/image";
-import { MoveLeft, Calendar, User } from "lucide-react";
+import Link from "next/link";
+import { ChevronLeft, Calendar, User, Tag, Share2 } from "lucide-react";
+import PTA from "@/components/globalComp/PTA";
 
 export const dynamic = "force-dynamic";
+
+const formatDate = (dateStr: string) => {
+  if (!dateStr) return null;
+  try {
+    const d = new Date(dateStr);
+    if (isNaN(d.getTime())) return dateStr;
+    return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+  } catch {
+    return dateStr;
+  }
+};
 
 export default async function BlogPostPage({
   params,
@@ -19,116 +30,143 @@ export default async function BlogPostPage({
     notFound();
   }
 
-  const formattedDate = post.date
-    ? new Date(post.date).toLocaleDateString("en-GB", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      })
-    : null;
-
   const authorName =
     typeof post.author === "object" && post.author?.name
       ? post.author.name
       : typeof post.author === "string"
-      ? post.author
-      : null;
+        ? post.author
+        : null;
+
+  const formattedDate = formatDate(post.date);
 
   return (
-    <main className="min-h-screen bg-[#FFF1F5] overflow-x-hidden">
-      <article className="px-6 md:px-10 lg:px-16 py-10 pt-24 lg:pt-32 max-w-7xl mx-auto w-full">
-        {/* Back Link */}
-        <div className="mb-12">
+    <div className="min-h-screen bg-[#FAFAFA] font-dm-sans overflow-x-hidden selection:bg-pink-100 selection:text-pink-900">
+      {/* Cinematic Hero Section */}
+      <div className="relative w-full h-[60vh] md:h-[70vh] min-h-[500px] flex items-end pb-12 md:pb-24 pt-32">
+        <Image
+          src={post.image || "/wh.jpg"}
+          alt={post.title}
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-black/20" /> {/* Dimmer */}
+
+        <div className="relative z-10 max-w-[1260px] mx-auto w-full px-5 md:px-10">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-[#D81B7E] font-semibold text-sm group w-fit hover:opacity-80 transition-opacity"
+            className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors mb-8 group backdrop-blur-sm bg-white/10 px-4 py-2 rounded-full text-sm font-medium border border-white/20"
           >
-            <MoveLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+            <ChevronLeft size={16} className="transition-transform group-hover:-translate-x-1" />
             Back to Blog
           </Link>
-        </div>
 
-        {/* Post Header */}
-        <div className="mb-12 max-w-4xl mx-auto text-center flex flex-col items-center">
-          {post.category && (
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-pink-50 border border-pink-100 text-pink-600 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
-              {post.category}
-            </div>
-          )}
-          
-          <h1 className="text-[#1A1A1A] mb-8 text-4xl md:text-5xl lg:text-[56px] font-bold font-cal-sans leading-[1.1] tracking-tight">
-            {post.title}
-          </h1>
-
-          {/* Author + Date row */}
-          <div className="flex flex-wrap items-center justify-center gap-6 text-gray-600 text-sm mb-8 font-medium">
-            {authorName && (
-              <span className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-pink-100 border border-pink-200 flex items-center justify-center text-pink-700 shadow-sm">
-                  <User size={18} />
-                </div>
-                <span className="text-base text-gray-900">{authorName}</span>
-              </span>
-            )}
-            
-            {authorName && formattedDate && (
-              <div className="w-1.5 h-1.5 rounded-full bg-gray-300 hidden md:block" />
-            )}
-
-            {formattedDate && (
-              <span className="flex items-center gap-2 text-base">
-                <Calendar size={18} className="text-[#D81B7E]" />
-                {formattedDate}
-              </span>
-            )}
-          </div>
-
-          {post.description && (
-            <p className="text-gray-600 text-xl leading-relaxed md:text-2xl font-light italic max-w-3xl mx-auto">
-              "{post.description}"
-            </p>
-          )}
-        </div>
-
-        {/* Layout: Cover image top, content below */}
-        <div className="flex flex-col gap-16 mb-24">
-          {/* Featured Image */}
-          {post.image && (
-            <div className="w-full max-w-5xl mx-auto">
-              <div className="relative w-full aspect-video md:aspect-[21/9] rounded-[32px] overflow-hidden border-[8px] border-white shadow-[0_20px_50px_rgba(216,27,126,0.15)] bg-white">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  sizes="100vw"
-                  className="object-contain"
-                  priority
-                />
+          <div className="max-w-4xl">
+            {post.category && (
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-pink-500 text-white rounded-full text-xs font-bold uppercase tracking-widest mb-6 shadow-lg shadow-pink-500/30">
+                {post.category}
               </div>
-            </div>
-          )}
+            )}
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-cal-sans leading-[1.1] tracking-tight drop-shadow-lg">
+              {post.title}
+            </h1>
+          </div>
+        </div>
+      </div>
 
-          {/* Prose Content */}
-          <div className="max-w-3xl mx-auto w-full">
+      {/* Main Content & Sticky Sidebar */}
+      <section className="max-w-[1260px] mx-auto px-5 md:px-10 py-16 md:py-24 relative">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+          {/* Left Column: Rich Text Content */}
+          <div className="flex-1 min-w-0 w-full">
+            {post.description && (
+              <p className="text-gray-500 text-xl md:text-2xl font-light italic mb-10 leading-relaxed">
+                &ldquo;{post.description}&rdquo;
+              </p>
+            )}
             <div
-              className="prose prose-pink prose-base lg:prose-lg max-w-none w-full break-words
-                prose-headings:font-cal-sans prose-headings:text-[#1A1A1A]
-                prose-p:mb-6 prose-p:text-gray-700 prose-p:leading-[1.8]
-                prose-strong:text-[#D81B7E]
-                prose-img:rounded-3xl prose-img:shadow-xl prose-img:border prose-img:border-gray-100
-                prose-a:text-[#D81B7E] prose-a:font-semibold prose-a:no-underline hover:prose-a:underline
-                prose-ul:list-disc prose-ol:list-decimal
-                prose-li:text-gray-700 prose-blockquote:border-[#D81B7E] prose-blockquote:bg-pink-50 prose-blockquote:px-6 prose-blockquote:py-2 prose-blockquote:rounded-r-2xl prose-blockquote:italic"
+              className="prose prose-lg md:prose-xl max-w-none w-full break-words
+                prose-headings:font-cal-sans prose-headings:text-gray-900 prose-headings:font-bold
+                prose-p:text-gray-600 prose-p:leading-[1.8]
+                prose-a:text-pink-600 hover:prose-a:text-pink-700
+                prose-img:rounded-3xl prose-img:shadow-2xl
+                prose-strong:text-gray-900 prose-li:text-gray-600
+                prose-blockquote:border-pink-500 prose-blockquote:bg-pink-50 prose-blockquote:px-6 prose-blockquote:py-2 prose-blockquote:rounded-r-2xl prose-blockquote:italic"
               dangerouslySetInnerHTML={{ __html: post.content || "" }}
             />
           </div>
-        </div>
-      </article>
 
-      {/* CTA Section */}
-      <section className="mt-auto bg-white border-t border-gray-100">
-        <PTA />
+          {/* Right Column: Sticky Details Card */}
+          <div className="w-full lg:w-[400px] shrink-0 lg:sticky lg:top-32">
+            <div className="bg-white/80 backdrop-blur-xl border border-gray-200/60 p-8 rounded-[32px] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] flex flex-col gap-8 relative overflow-hidden">
+              {/* Subtle top glare */}
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-80" />
+
+              <h3 className="font-cal-sans text-2xl font-bold text-gray-900">Story Details</h3>
+
+              <div className="flex flex-col gap-6">
+                {authorName && (
+                  <div className="flex items-start gap-4 group">
+                    <div className="w-12 h-12 shrink-0 flex items-center justify-center bg-gray-50 rounded-2xl text-gray-900 border border-gray-100 transition-colors group-hover:bg-pink-50 group-hover:text-pink-600 group-hover:border-pink-100">
+                      <User size={22} strokeWidth={1.5} />
+                    </div>
+                    <div className="flex flex-col pt-1">
+                      <span className="text-xs font-bold tracking-wider text-gray-400 uppercase">Author</span>
+                      <p className="font-semibold text-lg text-gray-900">{authorName}</p>
+                    </div>
+                  </div>
+                )}
+
+                {formattedDate && (
+                  <div className="flex items-start gap-4 group">
+                    <div className="w-12 h-12 shrink-0 flex items-center justify-center bg-gray-50 rounded-2xl text-gray-900 border border-gray-100 transition-colors group-hover:bg-pink-50 group-hover:text-pink-600 group-hover:border-pink-100">
+                      <Calendar size={22} strokeWidth={1.5} />
+                    </div>
+                    <div className="flex flex-col pt-1">
+                      <span className="text-xs font-bold tracking-wider text-gray-400 uppercase">Published</span>
+                      <p className="font-semibold text-lg text-gray-900">{formattedDate}</p>
+                    </div>
+                  </div>
+                )}
+
+                {post.category && (
+                  <div className="flex items-start gap-4 group">
+                    <div className="w-12 h-12 shrink-0 flex items-center justify-center bg-gray-50 rounded-2xl text-gray-900 border border-gray-100 transition-colors group-hover:bg-pink-50 group-hover:text-pink-600 group-hover:border-pink-100">
+                      <Tag size={22} strokeWidth={1.5} />
+                    </div>
+                    <div className="flex flex-col pt-1">
+                      <span className="text-xs font-bold tracking-wider text-gray-400 uppercase">Category</span>
+                      <p className="font-semibold text-lg text-gray-900 leading-tight">{post.category}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Action Buttons */}
+              <div className="pt-2 border-t border-gray-100 flex flex-col gap-3">
+                <Link
+                  href="/donate"
+                  className="w-full py-4 bg-pink-600 hover:bg-pink-700 text-white rounded-2xl font-bold text-center transition-all shadow-lg shadow-pink-600/20 hover:shadow-pink-600/40 hover:-translate-y-0.5 flex items-center justify-center gap-2"
+                >
+                  Support our cause
+                </Link>
+
+                <button className="w-full py-4 bg-gray-50 hover:bg-gray-100 text-gray-700 rounded-2xl font-semibold text-center transition-colors border border-gray-200 flex items-center justify-center gap-2">
+                  <Share2 size={18} />
+                  Share Story
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-    </main>
+
+      {/* Global CTA Section */}
+      <div className="bg-white border-t border-gray-100">
+        <PTA />
+      </div>
+    </div>
   );
 }

@@ -1,44 +1,30 @@
-"use client";
-import { motion } from "framer-motion";
-import Image from "next/image";
-
-interface Props {
-  title: string;
-  category: string;
-}
-
-export default function BlogHero({ title, category }: Props) {
+const BlogHero = () => {
   return (
-    <section className="relative min-h-[400px] md:min-h-[500px] flex overflow-hidden bg-[#41122B] lg:mx-4 lg:rounded-2xl">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/programs-hero.jpg" // Using same placeholder for now, user can change
-          width={1080}
-          height={1080}
-          alt="Blog Hero"
-          className="w-full h-full object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-[#41122B]/70" />
-      </div>
+    <section className="w-full py-14 lg:py-12 px-0 lg:px-8 relative">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-8 items-center w-full">
+        {/* Left Content */}
+        <div className="order-2 lg:order-1 z-10 w-full">
+          <p className="text-sm text-gray-600 mb-3">
+            Home <span className="mx-2">/</span> Blog
+          </p>
+          <h3 className="font-semibold text-black py-4">
+            Stories &amp; Insights
+          </h3>
+          <p className="text-[#46455F] font-medium text-sm leading-relaxed py-4 w-full">
+            Program highlights, impact stories, and updates from the ROTAGI community.
+            Read about the girls and women we work with every day.
+          </p>
+        </div>
 
-      <div className="absolute inset-0 flex flex-col justify-center items-center text-white w-full">
-        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center flex flex-col items-center">
-           
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="max-w-4xl"
-          >
-            <h1 className="text-white">
-              {title}
-            </h1>
-          </motion.div>
+        {/* Right Huge Text */}
+        <div className="order-1 lg:order-2 flex justify-end lg:py-0 py-5 ">
+          <h1 className="text-[6rem] md:text-[10rem] lg:text-[12rem] font-extrabold text-black leading-none">
+            Blog
+          </h1>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default BlogHero;
