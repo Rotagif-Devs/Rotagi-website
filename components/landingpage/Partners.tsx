@@ -14,9 +14,9 @@ import "swiper/css/autoplay";
 // most via chroma-keying off the image's own true corner color, and the one
 // genuine gradient background (Canva) via a whiteness mask instead, since a
 // single flat color-key can't follow a gradient — so only the logo mark
-// shows. `bg` is the card's own background (null for Canva, whose gradient
-// original color would clash with a flat swatch; a solid brand color is
-// used there instead).
+// shows. `bg` is the card's own solid background; Canva instead gets `bg`
+// (gradient CSS) to actually match its real diagonal teal-to-purple brand
+// background instead of a flat swatch.
 //
 // Note: "Canva" and "Infinityfield" were swapped in the original data
 // (partner5 is actually Infinityfield, partner9 is actually Canva) — fixed
@@ -30,7 +30,7 @@ const partnerLogos = [
   { name: "Tushiyah", url: "/partner6-cutout.png", bg: "#0B253E" },
   { name: "Three Lions Group", url: "/partner7-cutout.png", bg: "#2E0D32" },
   { name: "Slack", url: "/partner8-cutout.png", bg: "#BB0102" },
-  { name: "Canva", url: "/partner9-cutout.png", bg: "#00C4CC" },
+  { name: "Canva", url: "/partner9-cutout.png", bg: "linear-gradient(135deg, #12D8B0 0%, #2E8EEA 55%, #7B2FF7 100%)" },
   { name: "monday.com", url: "/partner10-cutout.png", bg: "#FFFFFF" },
   { name: "little", url: "/partner11-cutout.png", bg: "#4C174D" },
   { name: "Make", url: "/partner12-cutout.png", bg: "#FFFFFF" },
@@ -98,7 +98,7 @@ export default function Partners() {
                 <div className="flex items-center justify-center h-32 sm:h-36 md:h-40 lg:h-40">
                   <div
                     className="flex items-center justify-center w-full h-full max-w-[90%] md:max-w-[220px] rounded-2xl p-4"
-                    style={{ backgroundColor: partner.bg }}
+                    style={{ background: partner.bg }}
                   >
                     <Image
                       src={partner.url}
