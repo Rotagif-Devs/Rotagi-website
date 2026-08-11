@@ -39,7 +39,7 @@ const COURSES = [
     color: "bg-teal-50 text-teal-600",
     btnColor: "bg-teal-600 hover:bg-teal-700 text-white border-transparent",
     image: "/cohort-images/uiux.jpg",
-    available: true,
+    available: false,
   },
   {
     id: "ai-video-creation",
@@ -49,7 +49,7 @@ const COURSES = [
     color: "bg-indigo-50 text-indigo-600",
     btnColor: "bg-indigo-600 hover:bg-indigo-700 text-white border-transparent",
     image: "/cohort-images/ai-video-creation.jpg",
-    available: true,
+    available: false,
   },
   {
     id: "vibe-coding",
@@ -59,7 +59,7 @@ const COURSES = [
     color: "bg-blue-50 text-blue-600",
     btnColor: "bg-blue-600 hover:bg-blue-700 text-white border-transparent",
     image: "/cohort-images/vibe-coding.jpg",
-    available: true,
+    available: false,
   },
   {
     id: "product-management",
