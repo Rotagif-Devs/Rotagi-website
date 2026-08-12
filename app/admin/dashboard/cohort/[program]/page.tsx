@@ -98,23 +98,19 @@ function SettingsTab({ program }: { program: string }) {
 
   const [accessPin, setAccessPin] = useState("");
   const [hasPinSet, setHasPinSet] = useState(false);
-  const [cohortCode, setCohortCode] = useState("");
-  const [cohortTitle, setCohortTitle] = useState("");
-  const [schoolName, setSchoolName] = useState("");
-  const [pathwayLabel, setPathwayLabel] = useState("");
+  const [cohortName, setCohortName] = useState("");
+  const [cohortNumber, setCohortNumber] = useState("");
+  const [trackCode, setTrackCode] = useState("");
+  const [trackName, setTrackName] = useState("");
+  const [trackMode, setTrackMode] = useState("");
   const [currentWeek, setCurrentWeek] = useState(1);
-  const [weekLabels, setWeekLabels] = useState<string[]>([
-    "Getting started",
-    "Core skills",
-    "In progress",
-    "Showcase & certificate",
-  ]);
   const [liveClassLink, setLiveClassLink] = useState("");
   const [liveClassSchedule, setLiveClassSchedule] = useState("");
   const [missedClassLink, setMissedClassLink] = useState("");
   const [courseMaterialsLink, setCourseMaterialsLink] = useState("");
-  const [templatesLink, setTemplatesLink] = useState("");
   const [communityChatLink, setCommunityChatLink] = useState("");
+  const [attendanceFormLink, setAttendanceFormLink] = useState("");
+  const [certificateFolderLink, setCertificateFolderLink] = useState("");
 
   useEffect(() => {
     setLoading(true);
@@ -122,18 +118,19 @@ function SettingsTab({ program }: { program: string }) {
       .getSettings(program)
       .then((s: AdminCohortSettings) => {
         setHasPinSet(s.hasPinSet);
-        setCohortCode(s.cohortCode);
-        setCohortTitle(s.cohortTitle);
-        setSchoolName(s.schoolName);
-        setPathwayLabel(s.pathwayLabel);
+        setCohortName(s.cohortName);
+        setCohortNumber(s.cohortNumber);
+        setTrackCode(s.trackCode);
+        setTrackName(s.trackName);
+        setTrackMode(s.trackMode);
         setCurrentWeek(s.currentWeek);
-        setWeekLabels(s.weekLabels);
         setLiveClassLink(s.liveClassLink);
         setLiveClassSchedule(s.liveClassSchedule);
         setMissedClassLink(s.missedClassLink);
         setCourseMaterialsLink(s.courseMaterialsLink);
-        setTemplatesLink(s.templatesLink);
         setCommunityChatLink(s.communityChatLink);
+        setAttendanceFormLink(s.attendanceFormLink);
+        setCertificateFolderLink(s.certificateFolderLink);
       })
       .catch(() => setStatus({ type: "error", msg: "Could not load settings." }))
       .finally(() => setLoading(false));
@@ -152,18 +149,19 @@ function SettingsTab({ program }: { program: string }) {
     try {
       await cohortService.updateSettings(program, {
         ...(accessPin.trim() ? { accessPin: accessPin.trim() } : {}),
-        cohortCode: cohortCode.trim(),
-        cohortTitle: cohortTitle.trim(),
-        schoolName: schoolName.trim(),
-        pathwayLabel: pathwayLabel.trim(),
+        cohortName: cohortName.trim(),
+        cohortNumber: cohortNumber.trim(),
+        trackCode: trackCode.trim(),
+        trackName: trackName.trim(),
+        trackMode: trackMode.trim(),
         currentWeek,
-        weekLabels,
         liveClassLink: liveClassLink.trim(),
         liveClassSchedule: liveClassSchedule.trim(),
         missedClassLink: missedClassLink.trim(),
         courseMaterialsLink: courseMaterialsLink.trim(),
-        templatesLink: templatesLink.trim(),
         communityChatLink: communityChatLink.trim(),
+        attendanceFormLink: attendanceFormLink.trim(),
+        certificateFolderLink: certificateFolderLink.trim(),
       });
       setHasPinSet(true);
       setAccessPin("");
@@ -203,26 +201,41 @@ function SettingsTab({ program }: { program: string }) {
 
         <div className="bg-blue-50/50 p-6 rounded-2xl border border-blue-100 space-y-4">
           <h4 className="font-bold text-gray-900">Cohort Header</h4>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Cohort code</label>
-            <input value={cohortCode} onChange={(e) => setCohortCode(e.target.value)} placeholder="e.g. AILIT-SEP26" className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
+          <p className="text-xs text-gray-500 -mt-2">
+            Heading shows &ldquo;Welcome to {"{Cohort name} {Cohort number}"}&rdquo;; the line under it shows
+            &ldquo;{"{Track code} - {Track name} - {Track mode}"}&rdquo;.
+          </p>
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Cohort name</label>
+              <input value={cohortName} onChange={(e) => setCohortName(e.target.value)} placeholder="e.g. ROTAGI She Tech Skills" className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Cohort number</label>
+              <input value={cohortNumber} onChange={(e) => setCohortNumber(e.target.value)} placeholder="e.g. Cohort 2" className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
+            </div>
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Cohort title</label>
-            <input value={cohortTitle} onChange={(e) => setCohortTitle(e.target.value)} placeholder="e.g. Basic Computer & AI Literacy" className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">School / venue name</label>
-            <input value={schoolName} onChange={(e) => setSchoolName(e.target.value)} placeholder="e.g. Owajoba High School, Akure" className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Pathway badge</label>
-            <input value={pathwayLabel} onChange={(e) => setPathwayLabel(e.target.value)} placeholder="e.g. SHE IGNITE PATHWAY" className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
+          <div className="grid grid-cols-3 gap-3">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Track code</label>
+              <input value={trackCode} onChange={(e) => setTrackCode(e.target.value)} placeholder="e.g. RPD-121" className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Track name</label>
+              <input value={trackName} onChange={(e) => setTrackName(e.target.value)} placeholder="e.g. Product Design / UIUX" className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Track mode</label>
+              <input value={trackMode} onChange={(e) => setTrackMode(e.target.value)} placeholder="e.g. Remote" className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
+            </div>
           </div>
         </div>
 
         <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 space-y-4">
           <h4 className="font-bold text-gray-900">Programme Journey</h4>
+          <p className="text-xs text-gray-500 -mt-2">
+            This is the overall cohort&apos;s progress, shown the same way to every learner — not per-learner tracking.
+          </p>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Current week</label>
             <select
@@ -236,22 +249,6 @@ function SettingsTab({ program }: { program: string }) {
                 </option>
               ))}
             </select>
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            {weekLabels.map((label, i) => (
-              <div key={i}>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Week {i + 1} label</label>
-                <input
-                  value={label}
-                  onChange={(e) => {
-                    const next = [...weekLabels];
-                    next[i] = e.target.value;
-                    setWeekLabels(next);
-                  }}
-                  className="w-full p-2 border border-gray-200 rounded-lg bg-white outline-none focus:border-primary text-sm"
-                />
-              </div>
-            ))}
           </div>
         </div>
 
@@ -271,15 +268,26 @@ function SettingsTab({ program }: { program: string }) {
           </div>
         </div>
 
-        <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 space-y-4">
-          <h4 className="font-bold text-gray-900">Learning Resources</h4>
+        <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+          <h4 className="font-bold text-gray-900 mb-4">Course Materials</h4>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Course materials link</label>
+          <input type="url" value={courseMaterialsLink} onChange={(e) => setCourseMaterialsLink(e.target.value)} placeholder="https://drive.google.com/..." className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
+        </div>
+
+        <div className="bg-blue-50/50 p-6 rounded-2xl border border-blue-100 space-y-4">
+          <h4 className="font-bold text-gray-900">Attendance &amp; Certificate</h4>
+          <p className="text-xs text-gray-500 -mt-2">
+            These CTAs link straight to an external Google resource for now. The built-in self-tick attendance and
+            auto-generated certificate systems (Attendance / Certificates tabs) still work, just aren&apos;t wired
+            into these cards at the moment.
+          </p>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Course materials link</label>
-            <input type="url" value={courseMaterialsLink} onChange={(e) => setCourseMaterialsLink(e.target.value)} placeholder="https://drive.google.com/..." className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
+            <label className="block text-sm font-medium text-gray-700 mb-1">Attendance form link</label>
+            <input type="url" value={attendanceFormLink} onChange={(e) => setAttendanceFormLink(e.target.value)} placeholder="https://forms.google.com/..." className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Templates & worksheets link</label>
-            <input type="url" value={templatesLink} onChange={(e) => setTemplatesLink(e.target.value)} placeholder="https://drive.google.com/..." className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
+            <label className="block text-sm font-medium text-gray-700 mb-1">Certificate folder link</label>
+            <input type="url" value={certificateFolderLink} onChange={(e) => setCertificateFolderLink(e.target.value)} placeholder="https://drive.google.com/..." className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
           </div>
         </div>
 

@@ -53,18 +53,20 @@ export type CohortAssignment = {
 
 export type CohortDashboard = {
   program: string;
-  cohortCode: string;
-  cohortTitle: string;
-  schoolName: string;
-  pathwayLabel: string;
+  cohortName: string;
+  cohortNumber: string;
+  trackCode: string;
+  trackName: string;
+  trackMode: string;
   currentWeek: number;
-  weekLabels: string[];
   liveClassLink: string;
   liveClassSchedule: string;
   missedClassLink: string;
   courseMaterialsLink: string;
-  templatesLink: string;
   communityChatLink: string;
+  attendanceFormLink: string;
+  certificateFolderLink: string;
+  /** Kept for the self-tick/auto-generated-certificate systems (currently unused by the dashboard UI). */
   certificatesEnabled: boolean;
   assignments: CohortAssignment[];
 };
@@ -116,18 +118,19 @@ export type CertificateTemplateStatus = {
 
 export type AdminCohortSettings = {
   hasPinSet: boolean;
-  cohortCode: string;
-  cohortTitle: string;
-  schoolName: string;
-  pathwayLabel: string;
+  cohortName: string;
+  cohortNumber: string;
+  trackCode: string;
+  trackName: string;
+  trackMode: string;
   currentWeek: number;
-  weekLabels: string[];
   liveClassLink: string;
   liveClassSchedule: string;
   missedClassLink: string;
   courseMaterialsLink: string;
-  templatesLink: string;
   communityChatLink: string;
+  attendanceFormLink: string;
+  certificateFolderLink: string;
 };
 
 export type AdminProgramSummary = {
@@ -236,18 +239,19 @@ export const cohortService = {
     return (
       res.data ?? {
         hasPinSet: false,
-        cohortCode: "",
-        cohortTitle: "",
-        schoolName: "",
-        pathwayLabel: "",
+        cohortName: "",
+        cohortNumber: "",
+        trackCode: "",
+        trackName: "",
+        trackMode: "",
         currentWeek: 1,
-        weekLabels: ["Getting started", "Core skills", "In progress", "Showcase & certificate"],
         liveClassLink: "",
         liveClassSchedule: "",
         missedClassLink: "",
         courseMaterialsLink: "",
-        templatesLink: "",
         communityChatLink: "",
+        attendanceFormLink: "",
+        certificateFolderLink: "",
       }
     );
   },
