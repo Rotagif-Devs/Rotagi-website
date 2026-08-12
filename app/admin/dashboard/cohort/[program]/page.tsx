@@ -48,11 +48,15 @@ export default function AdminCohortProgramPage() {
     notFound();
   }
 
+  // Assignments/Attendance/Certificates tabs are hidden (not deleted) since
+  // the org isn't using them right now — their CTAs on the learner dashboard
+  // link straight to an external Google resource instead (see
+  // CohortPortalDashboard.tsx). Add their tab entries back here to re-enable.
   const tabs = [
     { id: "settings", label: "Settings", icon: Settings },
-    { id: "assignments", label: "Assignments", icon: ClipboardList },
-    { id: "attendance", label: "Attendance", icon: FileSpreadsheet },
-    { id: "certificates", label: "Certificates", icon: FileText },
+    // { id: "assignments", label: "Assignments", icon: ClipboardList },
+    // { id: "attendance", label: "Attendance", icon: FileSpreadsheet },
+    // { id: "certificates", label: "Certificates", icon: FileText },
   ];
 
   return (

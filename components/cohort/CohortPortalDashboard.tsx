@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Lock } from "lucide-react";
+import { ArrowRight, Lock, LogOut } from "lucide-react";
 import {
   clearCohortToken,
   CohortDashboard as CohortDashboardData,
@@ -301,7 +301,7 @@ export default function CohortPortalDashboard({
             onClick={handleLock}
             className="absolute top-6 right-6 flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/25 rounded-full text-xs font-bold uppercase tracking-wide transition-colors"
           >
-            <Lock className="w-3.5 h-3.5" /> Lock Portal
+            <LogOut className="w-3.5 h-3.5" /> Log Out
           </button>
           <h1 className="text-2xl md:text-3xl font-cal-sans mb-2">
             Welcome to {[data.cohortName, data.cohortNumber].filter(Boolean).join(" ") || "your cohort"}
@@ -349,7 +349,7 @@ export default function CohortPortalDashboard({
 
         {/* Course Materials */}
         <section className="mb-8">
-          <div className="max-w-md">
+          <div className="grid sm:grid-cols-2 gap-4">
             <ActionCard
               title="Course Materials"
               subtitle="Slides, handouts & guides"
@@ -362,7 +362,7 @@ export default function CohortPortalDashboard({
         {/* Attendance — links straight to the org's Google Form; see the
             commented-out AttendanceMarker above for the self-tick version. */}
         <section className="mb-8">
-          <div className="max-w-md">
+          <div className="grid sm:grid-cols-2 gap-4">
             <ActionCard
               title="Mark Today's Attendance"
               subtitle="Takes under a minute"
@@ -375,7 +375,7 @@ export default function CohortPortalDashboard({
         {/* Certificate — links straight to the org's Google Drive folder; see
             the commented-out CertificateChecker above for the gated version. */}
         <section className="mb-8">
-          <div className="max-w-md">
+          <div className="grid sm:grid-cols-2 gap-4">
             <ActionCard
               title="Certificate"
               subtitle={data.certificatesEnabled ? "Available now" : "Not yet available"}
@@ -388,7 +388,7 @@ export default function CohortPortalDashboard({
         {/* Community & Support */}
         <section className="mb-8">
           <SectionHeader title="Community & Support" />
-          <div className="max-w-md">
+          <div className="grid sm:grid-cols-2 gap-4">
             <ActionCard
               title="Ask A Question"
               subtitle="Facilitators & cohort chat"
