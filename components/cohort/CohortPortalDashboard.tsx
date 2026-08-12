@@ -350,12 +350,14 @@ export default function CohortPortalDashboard({
         {/* Course Materials */}
         <section className="mb-8">
           <div className="grid sm:grid-cols-2 gap-4">
-            <ActionCard
-              title="Course Materials"
-              subtitle="Slides, handouts & guides"
-              actionLabel="Open folder"
-              href={data.courseMaterialsLink || undefined}
-            />
+            <div className="sm:col-span-2">
+              <ActionCard
+                title="Course Materials"
+                subtitle="Slides, handouts & guides"
+                actionLabel="Open folder"
+                href={data.courseMaterialsLink || undefined}
+              />
+            </div>
           </div>
         </section>
 
@@ -363,12 +365,14 @@ export default function CohortPortalDashboard({
             commented-out AttendanceMarker above for the self-tick version. */}
         <section className="mb-8">
           <div className="grid sm:grid-cols-2 gap-4">
-            <ActionCard
-              title="Mark Today's Attendance"
-              subtitle="Takes under a minute"
-              actionLabel="Open form"
-              href={data.attendanceFormLink || undefined}
-            />
+            <div className="sm:col-span-2">
+              <ActionCard
+                title="Mark Today's Attendance"
+                subtitle="Takes under a minute"
+                actionLabel="Open form"
+                href={data.attendanceFormLink || undefined}
+              />
+            </div>
           </div>
         </section>
 
@@ -376,12 +380,14 @@ export default function CohortPortalDashboard({
             the commented-out CertificateChecker above for the gated version. */}
         <section className="mb-8">
           <div className="grid sm:grid-cols-2 gap-4">
-            <ActionCard
-              title="Certificate"
-              subtitle={data.certificatesEnabled ? "Available now" : "Not yet available"}
-              actionLabel="Open folder"
-              href={data.certificateFolderLink || undefined}
-            />
+            <div className="sm:col-span-2">
+              <ActionCard
+                title="Certificate"
+                subtitle={data.certificatesEnabled ? "Available now" : "Not yet available"}
+                actionLabel="Open folder"
+                href={data.certificateFolderLink || undefined}
+              />
+            </div>
           </div>
         </section>
 
@@ -389,12 +395,14 @@ export default function CohortPortalDashboard({
         <section className="mb-8">
           <SectionHeader title="Community & Support" />
           <div className="grid sm:grid-cols-2 gap-4">
-            <ActionCard
-              title="Ask A Question"
-              subtitle="Facilitators & cohort chat"
-              actionLabel="Open chat"
-              href={data.communityChatLink || undefined}
-            />
+            <div className="sm:col-span-2">
+              <ActionCard
+                title="Ask A Question"
+                subtitle="Facilitators & cohort chat"
+                actionLabel="Open chat"
+                href={data.communityChatLink || undefined}
+              />
+            </div>
           </div>
         </section>
 
