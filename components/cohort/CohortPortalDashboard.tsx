@@ -308,17 +308,21 @@ export default function CohortPortalDashboard({
 
       <div className="max-w-5xl mx-auto px-6 pt-10 relative">
         {/* Hero */}
-        <div className="bg-secondary rounded-3xl p-8 mb-6 text-white relative overflow-hidden">
-          <button
-            onClick={handleLock}
-            className="absolute top-6 right-6 flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/25 rounded-full text-xs font-bold uppercase tracking-wide transition-colors"
-          >
-            <LogOut className="w-3.5 h-3.5" /> Log Out
-          </button>
-          <h1 className="text-2xl md:text-3xl font-cal-sans mb-2">
-            Welcome to {[data.cohortName, data.cohortNumber].filter(Boolean).join(" ") || "your cohort"}
-          </h1>
-          {trackLine && <p className="font-dm-sans text-white/80 text-sm md:text-base">{trackLine}</p>}
+        <div className="bg-secondary rounded-3xl p-8 mb-6 text-white overflow-hidden">
+          <div className="flex flex-col sm:flex-row-reverse sm:items-start sm:justify-between gap-4">
+            <button
+              onClick={handleLock}
+              className="self-end sm:self-start shrink-0 flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/25 rounded-full text-xs font-bold uppercase tracking-wide transition-colors"
+            >
+              <LogOut className="w-3.5 h-3.5" /> Log Out
+            </button>
+            <div>
+              <h1 className="text-2xl md:text-3xl font-cal-sans mb-2">
+                Welcome to {[data.cohortName, data.cohortNumber].filter(Boolean).join(" ") || "your cohort"}
+              </h1>
+              {trackLine && <p className="font-dm-sans text-white/80 text-sm md:text-base">{trackLine}</p>}
+            </div>
+          </div>
         </div>
 
         {/* Journey */}
