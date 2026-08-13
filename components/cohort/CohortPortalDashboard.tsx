@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import Image from "next/image";
 import { ArrowRight, LogOut, User, Search, Download, XCircle } from "lucide-react";
 import Button from "@/components/ui/Button";
@@ -62,14 +62,15 @@ function weekStatusLabel(week: number, currentWeek: number) {
   return "Upcoming";
 }
 
-// A right-pointing arrow flowing between week circles instead of a plain bar
-// — pink and animated while the cohort has reached/passed that week, gray
-// and still for weeks still ahead. A fixed-size arrowhead (not a stretched
-// SVG) so it stays crisp regardless of the column width.
+// A right-pointing arrow flowing between week circles — a real flex sibling
+// sized to the gap between them (not an absolutely-positioned overlay), so
+// it can never land underneath a neighboring circle and get hidden behind
+// it. Pink and animated while the cohort has reached/passed that week, gray
+// and still for weeks still ahead.
 function ArrowConnector({ active }: { active: boolean }) {
   return (
-    <div className="absolute top-6 right-1/2 w-full flex items-center -z-10 px-1">
-      <div className={`h-1 flex-1 rounded-full ${active ? "bg-secondary animate-pulse" : "bg-gray-300"}`} />
+    <div className="flex items-center shrink-0 px-1 mt-6">
+      <div className={`h-1 w-4 sm:w-8 rounded-full ${active ? "bg-secondary animate-pulse" : "bg-gray-300"}`} />
       <ArrowRight
         className={`w-5 h-5 -ml-1.5 shrink-0 ${active ? "text-secondary animate-pulse" : "text-gray-300"}`}
         strokeWidth={2.5}
@@ -89,28 +90,30 @@ function WeekTracker({ currentWeek }: { currentWeek: number }) {
           const done = week < currentWeek;
           const current = week === currentWeek;
           return (
-            <div key={week} className="flex-1 flex flex-col items-center relative">
+            <Fragment key={week}>
               {i > 0 && <ArrowConnector active={week <= currentWeek} />}
-              <div
-                className={`flex items-center justify-center rounded-full font-dm-sans font-bold border-2 transition-all ${
-                  current
-                    ? "w-14 h-14 bg-secondary border-secondary text-white text-base shadow-lg shadow-secondary/30 ring-4 ring-secondary/20"
-                    : done
-                      ? "w-12 h-12 bg-secondary/10 border-secondary text-secondary text-sm"
-                      : "w-12 h-12 bg-white border-gray-200 text-gray-400 text-sm"
-                }`}
-              >
-                {week}
+              <div className="flex-1 min-w-0 flex flex-col items-center">
+                <div
+                  className={`flex items-center justify-center rounded-full font-dm-sans font-bold border-2 transition-all ${
+                    current
+                      ? "w-14 h-14 bg-secondary border-secondary text-white text-base shadow-lg shadow-secondary/30 ring-4 ring-secondary/20"
+                      : done
+                        ? "w-12 h-12 bg-secondary/10 border-secondary text-secondary text-sm"
+                        : "w-12 h-12 bg-white border-gray-200 text-gray-400 text-sm"
+                  }`}
+                >
+                  {week}
+                </div>
+                <span className="mt-2 font-dm-sans text-xs font-bold text-gray-700">Week {week}</span>
+                <span
+                  className={`font-dm-sans text-xs text-center px-1 ${
+                    current ? "text-secondary font-bold" : "text-gray-500"
+                  }`}
+                >
+                  {weekStatusLabel(week, currentWeek)}
+                </span>
               </div>
-              <span className="mt-2 font-dm-sans text-xs font-bold text-gray-700">Week {week}</span>
-              <span
-                className={`font-dm-sans text-xs text-center px-1 ${
-                  current ? "text-secondary font-bold" : "text-gray-500"
-                }`}
-              >
-                {weekStatusLabel(week, currentWeek)}
-              </span>
-            </div>
+            </Fragment>
           );
         })}
       </div>
