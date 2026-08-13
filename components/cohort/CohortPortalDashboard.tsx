@@ -62,18 +62,19 @@ function weekStatusLabel(week: number, currentWeek: number) {
   return "Upcoming";
 }
 
-// A right-pointing arrow between week circles instead of a plain bar — pink
-// while the cohort has reached/passed that week, gray for weeks still ahead.
+// A right-pointing arrow flowing between week circles instead of a plain bar
+// — pink and animated while the cohort has reached/passed that week, gray
+// and still for weeks still ahead. A fixed-size arrowhead (not a stretched
+// SVG) so it stays crisp regardless of the column width.
 function ArrowConnector({ active }: { active: boolean }) {
   return (
-    <svg
-      viewBox="0 0 100 12"
-      preserveAspectRatio="none"
-      className={`absolute top-6 right-1/2 w-full h-3 -z-10 ${active ? "text-secondary" : "text-gray-300"}`}
-    >
-      <line x1="0" y1="6" x2="86" y2="6" stroke="currentColor" strokeWidth="2" />
-      <polygon points="80,1 96,6 80,11" fill="currentColor" />
-    </svg>
+    <div className="absolute top-6 right-1/2 w-full flex items-center -z-10 px-1">
+      <div className={`h-1 flex-1 rounded-full ${active ? "bg-secondary animate-pulse" : "bg-gray-300"}`} />
+      <ArrowRight
+        className={`w-5 h-5 -ml-1.5 shrink-0 ${active ? "text-secondary animate-pulse" : "text-gray-300"}`}
+        strokeWidth={2.5}
+      />
+    </div>
   );
 }
 
