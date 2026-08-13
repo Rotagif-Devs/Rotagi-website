@@ -63,10 +63,10 @@ export type CohortDashboard = {
   liveClassSchedule: string;
   missedClassLink: string;
   courseMaterialsLink: string;
+  assignmentsClassroomLink: string;
   communityChatLink: string;
   attendanceFormLink: string;
   certificateFolderLink: string;
-  /** Kept for the self-tick/auto-generated-certificate systems (currently unused by the dashboard UI). */
   certificatesEnabled: boolean;
   assignments: CohortAssignment[];
 };
@@ -128,6 +128,7 @@ export type AdminCohortSettings = {
   liveClassSchedule: string;
   missedClassLink: string;
   courseMaterialsLink: string;
+  assignmentsClassroomLink: string;
   communityChatLink: string;
   attendanceFormLink: string;
   certificateFolderLink: string;
@@ -249,6 +250,7 @@ export const cohortService = {
         liveClassSchedule: "",
         missedClassLink: "",
         courseMaterialsLink: "",
+        assignmentsClassroomLink: "",
         communityChatLink: "",
         attendanceFormLink: "",
         certificateFolderLink: "",

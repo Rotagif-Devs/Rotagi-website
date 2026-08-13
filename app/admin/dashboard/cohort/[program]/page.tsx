@@ -48,15 +48,14 @@ export default function AdminCohortProgramPage() {
     notFound();
   }
 
-  // Assignments/Attendance/Certificates tabs are hidden (not deleted) since
-  // the org isn't using them right now — their CTAs on the learner dashboard
-  // link straight to an external Google resource instead (see
-  // CohortPortalDashboard.tsx). Add their tab entries back here to re-enable.
+  // The Assignments tab (multi-assignment CRUD list) stays hidden — the
+  // learner dashboard now uses a single admin-set Google Classroom link
+  // instead (see the Course Materials/Assignments block in SettingsTab).
   const tabs = [
     { id: "settings", label: "Settings", icon: Settings },
     // { id: "assignments", label: "Assignments", icon: ClipboardList },
-    // { id: "attendance", label: "Attendance", icon: FileSpreadsheet },
-    // { id: "certificates", label: "Certificates", icon: FileText },
+    { id: "attendance", label: "Attendance", icon: FileSpreadsheet },
+    { id: "certificates", label: "Certificates", icon: FileText },
   ];
 
   return (
@@ -112,6 +111,7 @@ function SettingsTab({ program }: { program: string }) {
   const [liveClassSchedule, setLiveClassSchedule] = useState("");
   const [missedClassLink, setMissedClassLink] = useState("");
   const [courseMaterialsLink, setCourseMaterialsLink] = useState("");
+  const [assignmentsClassroomLink, setAssignmentsClassroomLink] = useState("");
   const [communityChatLink, setCommunityChatLink] = useState("");
   const [attendanceFormLink, setAttendanceFormLink] = useState("");
   const [certificateFolderLink, setCertificateFolderLink] = useState("");
@@ -132,6 +132,7 @@ function SettingsTab({ program }: { program: string }) {
         setLiveClassSchedule(s.liveClassSchedule);
         setMissedClassLink(s.missedClassLink);
         setCourseMaterialsLink(s.courseMaterialsLink);
+        setAssignmentsClassroomLink(s.assignmentsClassroomLink);
         setCommunityChatLink(s.communityChatLink);
         setAttendanceFormLink(s.attendanceFormLink);
         setCertificateFolderLink(s.certificateFolderLink);
@@ -163,6 +164,7 @@ function SettingsTab({ program }: { program: string }) {
         liveClassSchedule: liveClassSchedule.trim(),
         missedClassLink: missedClassLink.trim(),
         courseMaterialsLink: courseMaterialsLink.trim(),
+        assignmentsClassroomLink: assignmentsClassroomLink.trim(),
         communityChatLink: communityChatLink.trim(),
         attendanceFormLink: attendanceFormLink.trim(),
         certificateFolderLink: certificateFolderLink.trim(),
@@ -272,28 +274,22 @@ function SettingsTab({ program }: { program: string }) {
           </div>
         </div>
 
-        <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
-          <h4 className="font-bold text-gray-900 mb-4">Course Materials</h4>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Course materials link</label>
-          <input type="url" value={courseMaterialsLink} onChange={(e) => setCourseMaterialsLink(e.target.value)} placeholder="https://drive.google.com/..." className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
+        <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 space-y-4">
+          <div>
+            <h4 className="font-bold text-gray-900 mb-4">Course Materials</h4>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Course materials link</label>
+            <input type="url" value={courseMaterialsLink} onChange={(e) => setCourseMaterialsLink(e.target.value)} placeholder="https://drive.google.com/..." className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
+          </div>
+          <div>
+            <h4 className="font-bold text-gray-900 mb-1">Assignments</h4>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Google Classroom link</label>
+            <input type="url" value={assignmentsClassroomLink} onChange={(e) => setAssignmentsClassroomLink(e.target.value)} placeholder="https://classroom.google.com/..." className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
+          </div>
         </div>
 
-        <div className="bg-blue-50/50 p-6 rounded-2xl border border-blue-100 space-y-4">
-          <h4 className="font-bold text-gray-900">Attendance &amp; Certificate</h4>
-          <p className="text-xs text-gray-500 -mt-2">
-            These CTAs link straight to an external Google resource for now. The built-in self-tick attendance and
-            auto-generated certificate systems (Attendance / Certificates tabs) still work, just aren&apos;t wired
-            into these cards at the moment.
-          </p>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Attendance form link</label>
-            <input type="url" value={attendanceFormLink} onChange={(e) => setAttendanceFormLink(e.target.value)} placeholder="https://forms.google.com/..." className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Certificate folder link</label>
-            <input type="url" value={certificateFolderLink} onChange={(e) => setCertificateFolderLink(e.target.value)} placeholder="https://drive.google.com/..." className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
-          </div>
-        </div>
+        {/* attendanceFormLink / certificateFolderLink stay saved but unused —
+            Attendance and Certificate now use the self-tick / lookup tabs
+            below instead of an external link. Re-add inputs here to revert. */}
 
         <div className="bg-blue-50/50 p-6 rounded-2xl border border-blue-100">
           <h4 className="font-bold text-gray-900 mb-4">Community & Support</h4>
