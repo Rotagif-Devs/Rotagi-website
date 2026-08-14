@@ -26,7 +26,7 @@ export default function CohortPortalPickerPage() {
             alt="ROTAGI She Tech Skills"
             width={640}
             height={640}
-            className="object-contain w-full max-w-[400px] sm:max-w-lg md:max-w-2xl"
+            className="object-contain w-full max-w-[280px] sm:max-w-sm md:max-w-md"
             priority
           />
         </div>
