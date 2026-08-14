@@ -6,11 +6,13 @@ import { Lock, Eye, EyeOff } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { cohortService } from "@/lib/services/cohort.service";
 
-function Wordmark() {
+function Wordmark({ light }: { light?: boolean }) {
   return (
     <div className="flex items-center gap-2">
       <Image src="/logo.png" alt="ROTAGI" width={28} height={28} className="object-contain" />
-      <span className="font-cal-sans font-bold text-gray-900 tracking-wide">ROTAGI</span>
+      <span className={`font-cal-sans font-bold tracking-wide ${light ? "text-white" : "text-gray-900"}`}>
+        ROTAGI
+      </span>
     </div>
   );
 }
@@ -51,25 +53,25 @@ export default function CohortPinGate({
           <Image
             src="/cohort-portal-hero.png"
             alt="ROTAGI She Tech Skills"
-            width={520}
-            height={520}
-            className="object-contain w-full max-w-[240px] sm:max-w-xs md:max-w-md"
+            width={640}
+            height={640}
+            className="object-contain w-full max-w-[320px] sm:max-w-md md:max-w-xl"
             priority
           />
         </div>
       </div>
 
       {/* PIN form side — the brand's primary pink */}
-      <div className="flex-1 flex flex-col bg-primary px-6 sm:px-12 lg:px-20 py-8 md:py-16 text-center md:text-left">
-        <Wordmark />
+      <div className="flex-1 flex flex-col bg-secondary px-6 sm:px-12 lg:px-20 py-8 md:py-16 text-center md:text-left">
+        <Wordmark light />
         <div className="flex-1 flex flex-col justify-center">
           <div className="w-full max-w-md mx-auto md:mx-0 py-6">
-            <h1 className="text-2xl font-cal-sans text-gray-900 mb-2">Welcome to your cohort</h1>
-            <p className="font-dm-sans text-gray-500 mb-8">Enter your Access PIN to continue.</p>
+            <h1 className="text-2xl font-cal-sans text-white mb-2">Welcome to your cohort</h1>
+            <p className="font-dm-sans text-white/80 mb-8">Enter your Access PIN to continue.</p>
 
             <form onSubmit={handleSubmit} className="space-y-4 text-left">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Access PIN</label>
+                <label className="block text-sm font-medium text-white mb-2">Access PIN</label>
                 <div className="relative">
                   <Lock className="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
                   <input
