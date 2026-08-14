@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 import { COHORT_PROGRAMS } from "@/lib/services/cohort.service";
 
 function Wordmark({ light }: { light?: boolean }) {
@@ -18,7 +17,7 @@ export default function CohortPortalPickerPage() {
   return (
     <main className="min-h-screen w-full flex flex-col md:grid md:grid-cols-2">
       {/* Image side — white background, top banner on mobile, left column from md up */}
-      <div className="relative flex flex-col bg-white py-8 md:py-10 px-6 md:px-10 min-h-[42vh] md:min-h-0">
+      <div className="relative flex flex-col bg-[#EFEFEF] py-8 md:py-10 px-6 md:px-10 min-h-[42vh] md:min-h-0">
         <Wordmark />
         <div className="flex-1 flex items-center justify-center py-6">
           <Image
@@ -33,8 +32,7 @@ export default function CohortPortalPickerPage() {
       </div>
 
       {/* Program side — the brand's primary pink */}
-      <div className="flex-1 flex flex-col bg-secondary px-6 sm:px-12 lg:px-20 py-8 md:py-16">
-        <Wordmark light />
+      <div className="flex-1 flex flex-col bg-[#D6448D] px-6 sm:px-12 lg:px-20 py-8 md:py-16">
         <div className="flex-1 flex flex-col justify-center">
           <div className="w-full max-w-md mx-auto md:mx-0 py-6">
             <h1 className="text-4xl sm:text-5xl font-cal-sans font-bold leading-[1.1] text-white mb-4">
@@ -53,9 +51,6 @@ export default function CohortPortalPickerPage() {
                     <Image src="/graduation-cap.png" alt="" width={44} height={30} className="object-contain w-8 h-auto" />
                   </div>
                   <span className="font-cal-sans text-gray-900 flex-1">{p.title}</span>
-                  <div className="w-8 h-8 rounded-full bg-secondary/10 text-secondary flex items-center justify-center shrink-0 group-hover:bg-secondary group-hover:text-white transition-colors">
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                  </div>
                 </Link>
               ))}
             </div>

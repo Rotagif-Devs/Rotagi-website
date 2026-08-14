@@ -47,7 +47,7 @@ export default function CohortPinGate({
   return (
     <main className="min-h-screen w-full flex flex-col md:grid md:grid-cols-2">
       {/* Image side — white background, top banner on mobile, left column from md up */}
-      <div className="relative flex flex-col bg-white py-8 md:py-10 px-6 md:px-10 min-h-[42vh] md:min-h-0">
+      <div className="relative flex flex-col bg-[#EFEFEF] py-8 md:py-10 px-6 md:px-10 min-h-[42vh] md:min-h-0">
         <Wordmark />
         <div className="flex-1 flex items-center justify-center py-6">
           <Image
@@ -62,8 +62,7 @@ export default function CohortPinGate({
       </div>
 
       {/* PIN form side — the brand's primary pink */}
-      <div className="flex-1 flex flex-col bg-secondary px-6 sm:px-12 lg:px-20 py-8 md:py-16 text-center md:text-left">
-        <Wordmark light />
+      <div className="flex-1 flex flex-col bg-[#D6448D] px-6 sm:px-12 lg:px-20 py-8 md:py-16 text-center md:text-left">
         <div className="flex-1 flex flex-col justify-center">
           <div className="w-full max-w-md mx-auto md:mx-0 py-6">
             <h1 className="text-4xl sm:text-5xl font-cal-sans font-bold leading-[1.1] text-white mb-4">
