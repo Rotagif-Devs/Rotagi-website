@@ -98,7 +98,12 @@ export default function CohortPinGate({
 
               {error && <p className="text-sm text-red-600 font-medium">{error}</p>}
 
-              <Button type="submit" variant="primary" className="w-full py-3 rounded-xl" disabled={loading}>
+              <Button
+                type="submit"
+                variant="primary"
+                className="w-full py-3 rounded-xl border-2 border-white"
+                disabled={loading}
+              >
                 {loading ? "Checking…" : "Enter Portal"}
               </Button>
             </form>
