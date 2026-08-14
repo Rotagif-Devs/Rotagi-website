@@ -55,7 +55,7 @@ export default function CohortPinGate({
             alt="ROTAGI She Tech Skills"
             width={640}
             height={640}
-            className="object-contain w-full max-w-[280px] sm:max-w-sm md:max-w-md"
+            className="object-contain w-full max-w-[350px] sm:max-w-md md:max-w-xl"
             priority
           />
         </div>
