@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, Fragment } from "react";
-import Image from "next/image";
 import { ArrowRight, LogOut, User, Search, Download, XCircle } from "lucide-react";
 import Button from "@/components/ui/Button";
 import {
@@ -60,19 +59,14 @@ function weekStatusLabel(week: number, currentWeek: number) {
   return "Upcoming";
 }
 
-// A right-pointing arrow flowing between week circles — a real flex sibling
+// A solid bridge linking one week circle to the next — a real flex sibling
 // sized to the gap between them (not an absolutely-positioned overlay), so
-// it can never land underneath a neighboring circle and get hidden behind
-// it. Pink and animated while the cohort has reached/passed that week, gray
-// and still for weeks still ahead.
-function ArrowConnector({ active }: { active: boolean }) {
+// it can never land underneath a neighboring circle. Pink and animated while
+// the cohort has reached/passed that week, black and still for weeks ahead.
+function BridgeConnector({ active }: { active: boolean }) {
   return (
     <div className="flex items-center shrink-0 px-1 mt-6">
-      <div className={`h-1 w-4 sm:w-8 rounded-full ${active ? "bg-secondary animate-pulse" : "bg-gray-300"}`} />
-      <ArrowRight
-        className={`w-5 h-5 -ml-1.5 shrink-0 ${active ? "text-secondary animate-pulse" : "text-gray-300"}`}
-        strokeWidth={2.5}
-      />
+      <div className={`h-2 w-6 sm:w-10 rounded-full ${active ? "bg-secondary animate-pulse" : "bg-black"}`} />
     </div>
   );
 }
@@ -90,7 +84,7 @@ function WeekTracker({ currentWeek, totalWeeks }: { currentWeek: number; totalWe
           const current = week === currentWeek;
           return (
             <Fragment key={week}>
-              {i > 0 && <ArrowConnector active={week <= currentWeek} />}
+              {i > 0 && <BridgeConnector active={week <= currentWeek} />}
               <div className="flex-1 min-w-0 flex flex-col items-center">
                 <div
                   className={`flex items-center justify-center rounded-full font-dm-sans font-bold border-2 transition-all ${
@@ -98,15 +92,15 @@ function WeekTracker({ currentWeek, totalWeeks }: { currentWeek: number; totalWe
                       ? "w-14 h-14 bg-secondary border-secondary text-white text-base shadow-lg shadow-secondary/30 ring-4 ring-secondary/20"
                       : done
                         ? "w-12 h-12 bg-secondary/10 border-secondary text-secondary text-sm"
-                        : "w-12 h-12 bg-white border-gray-200 text-gray-400 text-sm"
+                        : "w-12 h-12 bg-white border-black text-black text-sm"
                   }`}
                 >
                   {week}
                 </div>
-                <span className="mt-2 font-dm-sans text-xs font-bold text-gray-700">Week {week}</span>
+                <span className="mt-2 font-dm-sans text-xs font-bold text-black">Week {week}</span>
                 <span
                   className={`font-dm-sans text-xs text-center px-1 ${
-                    current ? "text-secondary font-bold" : "text-gray-500"
+                    current ? "text-secondary font-bold" : "text-black"
                   }`}
                 >
                   {weekStatusLabel(week, currentWeek)}
@@ -293,20 +287,7 @@ export default function CohortPortalDashboard({
   const trackLine = [data.trackCode, data.trackName, data.trackMode].filter(Boolean).join(" - ");
 
   return (
-    <main className="min-h-screen bg-primary pb-20 font-dm-sans relative overflow-hidden">
-      {/* Bold, transparent hero illustration watermark behind the whole portal
-          — the same image used on the picker/login screens, carried through
-          so the branding feels continuous after signing in. */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.16]">
-        <Image
-          src="/cohort-portal-hero.png"
-          alt=""
-          width={900}
-          height={900}
-          className="object-contain w-[560px] h-[560px] md:w-[800px] md:h-[800px]"
-        />
-      </div>
-
+    <main className="min-h-screen bg-primary pb-20 font-dm-sans">
       <div className="max-w-5xl mx-auto px-6 pt-10 relative">
         {/* Hero */}
         <div className="bg-secondary rounded-3xl p-8 mb-6 text-white overflow-hidden">
@@ -340,7 +321,6 @@ export default function CohortPortalDashboard({
             />
             <ActionCard
               title="Watch Missed Class"
-              subtitle="Catch up on the recording"
               actionLabel="Watch recording"
               href={data.missedClassLink || undefined}
             />
@@ -371,13 +351,11 @@ export default function CohortPortalDashboard({
           <div className="grid sm:grid-cols-2 gap-4">
             <ActionCard
               title="Course Materials"
-              subtitle="handbook, handouts & guides"
               actionLabel="Open folder"
               href={data.courseMaterialsLink || undefined}
             />
             <ActionCard
               title="Assignments"
-              subtitle="Submit & track on Classroom"
               actionLabel="Open classroom"
               href={data.assignmentsClassroomLink || undefined}
             />
@@ -393,7 +371,6 @@ export default function CohortPortalDashboard({
               <div className="sm:col-span-2">
                 <ActionCard
                   title="Mark Today's Attendance"
-                  subtitle="Takes under a minute"
                   actionLabel="Mark attendance"
                   onAction={() => setShowAttendanceForm(true)}
                 />
@@ -411,7 +388,7 @@ export default function CohortPortalDashboard({
               <div className="sm:col-span-2">
                 <ActionCard
                   title="Certificate"
-                  subtitle={data.certificatesEnabled ? "Available now" : "Not yet available"}
+                  subtitle={data.certificatesEnabled ? "Available now" : undefined}
                   actionLabel="Check status"
                   onAction={() => setShowCertificateForm(true)}
                 />
