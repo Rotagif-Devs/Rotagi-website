@@ -54,8 +54,6 @@ function ActionCard({
   );
 }
 
-const WEEK_COUNT = 4;
-
 function weekStatusLabel(week: number, currentWeek: number) {
   if (week < currentWeek) return "Completed";
   if (week === currentWeek) return "Current Week";
@@ -79,14 +77,15 @@ function ArrowConnector({ active }: { active: boolean }) {
   );
 }
 
-// Shows the overall cohort's progress (admin-set currentWeek), not any
-// individual learner's — everyone on a program sees the same tracker.
-function WeekTracker({ currentWeek }: { currentWeek: number }) {
+// Shows the overall cohort's progress (admin-set currentWeek out of
+// admin-set totalWeeks — programs run different lengths), not any individual
+// learner's — everyone on a program sees the same tracker.
+function WeekTracker({ currentWeek, totalWeeks }: { currentWeek: number; totalWeeks: number }) {
   return (
     <div className="bg-white rounded-2xl border border-gray-100 p-6 mb-8">
       <h3 className="font-cal-sans text-lg text-gray-900 mb-8">Your ROTAGI Program Journey Start Here</h3>
       <div className="flex items-start">
-        {Array.from({ length: WEEK_COUNT }, (_, i) => i + 1).map((week, i) => {
+        {Array.from({ length: totalWeeks || 4 }, (_, i) => i + 1).map((week, i) => {
           const done = week < currentWeek;
           const current = week === currentWeek;
           return (
@@ -295,10 +294,12 @@ export default function CohortPortalDashboard({
 
   return (
     <main className="min-h-screen bg-primary pb-20 font-dm-sans relative overflow-hidden">
-      {/* Bold, transparent ROTAGI logo watermark behind the whole portal */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.06]">
+      {/* Bold, transparent hero illustration watermark behind the whole portal
+          — the same image used on the picker/login screens, carried through
+          so the branding feels continuous after signing in. */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.16]">
         <Image
-          src="/logo.png"
+          src="/cohort-portal-hero.png"
           alt=""
           width={900}
           height={900}
@@ -326,7 +327,7 @@ export default function CohortPortalDashboard({
         </div>
 
         {/* Journey */}
-        <WeekTracker currentWeek={data.currentWeek} />
+        <WeekTracker currentWeek={data.currentWeek} totalWeeks={data.totalWeeks} />
 
         {/* Classes */}
         <section className="mb-8">

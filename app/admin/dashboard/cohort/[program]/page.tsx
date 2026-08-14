@@ -65,7 +65,7 @@ export default function AdminCohortProgramPage() {
           href="/admin/dashboard/cohort"
           className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-800 mb-4 px-2"
         >
-          <ChevronLeft className="w-4 h-4" /> All programmes
+          <ChevronLeft className="w-4 h-4" /> All programs
         </Link>
         <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4 px-2">{programInfo.title}</h2>
         <nav className="space-y-1">
@@ -106,6 +106,7 @@ function SettingsTab({ program }: { program: string }) {
   const [trackCode, setTrackCode] = useState("");
   const [trackName, setTrackName] = useState("");
   const [trackMode, setTrackMode] = useState("");
+  const [totalWeeks, setTotalWeeks] = useState(4);
   const [currentWeek, setCurrentWeek] = useState(1);
   const [liveClassLink, setLiveClassLink] = useState("");
   const [liveClassSchedule, setLiveClassSchedule] = useState("");
@@ -127,6 +128,7 @@ function SettingsTab({ program }: { program: string }) {
         setTrackCode(s.trackCode);
         setTrackName(s.trackName);
         setTrackMode(s.trackMode);
+        setTotalWeeks(s.totalWeeks);
         setCurrentWeek(s.currentWeek);
         setLiveClassLink(s.liveClassLink);
         setLiveClassSchedule(s.liveClassSchedule);
@@ -159,7 +161,8 @@ function SettingsTab({ program }: { program: string }) {
         trackCode: trackCode.trim(),
         trackName: trackName.trim(),
         trackMode: trackMode.trim(),
-        currentWeek,
+        totalWeeks,
+        currentWeek: Math.min(currentWeek, totalWeeks),
         liveClassLink: liveClassLink.trim(),
         liveClassSchedule: liveClassSchedule.trim(),
         missedClassLink: missedClassLink.trim(),
@@ -184,7 +187,7 @@ function SettingsTab({ program }: { program: string }) {
   return (
     <div className="max-w-2xl">
       <h3 className="text-2xl font-cal-sans text-gray-900 mb-2">Portal Settings</h3>
-      <p className="text-gray-500 mb-8">Everything shown on this programme&apos;s learner dashboard.</p>
+      <p className="text-gray-500 mb-8">Everything shown on this program&apos;s learner dashboard.</p>
 
       {status && <Banner type={status.type}>{status.msg}</Banner>}
 
@@ -238,23 +241,40 @@ function SettingsTab({ program }: { program: string }) {
         </div>
 
         <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 space-y-4">
-          <h4 className="font-bold text-gray-900">Programme Journey</h4>
+          <h4 className="font-bold text-gray-900">Program Journey</h4>
           <p className="text-xs text-gray-500 -mt-2">
             This is the overall cohort&apos;s progress, shown the same way to every learner — not per-learner tracking.
           </p>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Current week</label>
-            <select
-              value={currentWeek}
-              onChange={(e) => setCurrentWeek(Number(e.target.value))}
-              className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary"
-            >
-              {[1, 2, 3, 4].map((w) => (
-                <option key={w} value={w}>
-                  Week {w}
-                </option>
-              ))}
-            </select>
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Total weeks</label>
+              <input
+                type="number"
+                min={1}
+                max={52}
+                value={totalWeeks}
+                onChange={(e) => {
+                  const next = Math.max(1, Math.min(52, Number(e.target.value) || 1));
+                  setTotalWeeks(next);
+                  setCurrentWeek((cw) => Math.min(cw, next));
+                }}
+                className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Current week</label>
+              <select
+                value={currentWeek}
+                onChange={(e) => setCurrentWeek(Number(e.target.value))}
+                className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary"
+              >
+                {Array.from({ length: totalWeeks }, (_, i) => i + 1).map((w) => (
+                  <option key={w} value={w}>
+                    Week {w}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
 

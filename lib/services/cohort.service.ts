@@ -58,6 +58,7 @@ export type CohortDashboard = {
   trackCode: string;
   trackName: string;
   trackMode: string;
+  totalWeeks: number;
   currentWeek: number;
   liveClassLink: string;
   liveClassSchedule: string;
@@ -123,6 +124,7 @@ export type AdminCohortSettings = {
   trackCode: string;
   trackName: string;
   trackMode: string;
+  totalWeeks: number;
   currentWeek: number;
   liveClassLink: string;
   liveClassSchedule: string;
@@ -245,6 +247,7 @@ export const cohortService = {
         trackCode: "",
         trackName: "",
         trackMode: "",
+        totalWeeks: 4,
         currentWeek: 1,
         liveClassLink: "",
         liveClassSchedule: "",
@@ -313,7 +316,7 @@ export const cohortService = {
     await apiFetch(`/api/admin/cohort/${program}/attendance/window`, { method: "PUT", body: { open } });
   },
 
-  /** Downloads the full attendance workbook (one sheet per date) straight to the browser. */
+  /** Downloads the full attendance workbook (a per-learner Summary sheet, plus one sheet per date) straight to the browser. */
   exportAttendance: async (program: string): Promise<void> => {
     const token = getAccessToken();
     const res = await fetch(`${API_BASE_URL}/api/admin/cohort/${program}/attendance/export`, {

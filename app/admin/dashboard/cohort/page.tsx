@@ -22,15 +22,15 @@ export default function AdminCohortProgramsPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-cal-sans text-black tracking-tight">Cohort Portals</h1>
-        <p className="text-gray-500 mt-1">Pick a programme to manage its cohort portal.</p>
+        <p className="text-gray-500 mt-1">Pick a program to manage its cohort portal.</p>
       </div>
 
       {loading ? (
         <div className="flex items-center gap-3 text-gray-400 py-10">
-          <Loader2 className="w-5 h-5 animate-spin" /> Loading programmes…
+          <Loader2 className="w-5 h-5 animate-spin" /> Loading programs…
         </div>
       ) : error ? (
-        <p className="text-red-500">Could not load cohort programmes.</p>
+        <p className="text-red-500">Could not load cohort programs.</p>
       ) : (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {programs.map((p) => (

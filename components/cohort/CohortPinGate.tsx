@@ -34,24 +34,24 @@ export default function CohortPinGate({
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-primary px-6 py-16">
-      <div className="w-full max-w-4xl bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden grid md:grid-cols-2">
-        {/* Image side */}
-        <div className="relative hidden md:flex items-center justify-center bg-gradient-to-br from-secondary/10 via-white to-secondary/5 p-10 overflow-hidden">
-          <div className="absolute -top-16 -left-16 w-56 h-56 rounded-full bg-secondary/10 blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-20 -right-10 w-64 h-64 rounded-full bg-secondary/10 blur-3xl pointer-events-none" />
-          <Image
-            src="/cohort-portal-hero.png"
-            alt="ROTAGI She Tech Skills"
-            width={520}
-            height={520}
-            className="relative object-contain w-full max-w-sm mix-blend-multiply"
-            priority
-          />
-        </div>
+    <main className="min-h-screen w-full grid md:grid-cols-2">
+      {/* Image side — a top banner on mobile, the left column from md up */}
+      <div className="relative flex items-center justify-center bg-gradient-to-br from-secondary/10 via-white to-secondary/5 p-6 h-48 sm:h-64 md:h-auto md:p-10 overflow-hidden">
+        <div className="absolute -top-16 -left-16 w-56 h-56 rounded-full bg-secondary/10 blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-20 -right-10 w-64 h-64 rounded-full bg-secondary/10 blur-3xl pointer-events-none" />
+        <Image
+          src="/cohort-portal-hero.png"
+          alt="ROTAGI She Tech Skills"
+          width={520}
+          height={520}
+          className="relative object-contain w-full max-w-[220px] sm:max-w-xs md:max-w-md mix-blend-multiply"
+          priority
+        />
+      </div>
 
-        {/* PIN form side */}
-        <div className="p-8 md:p-10 flex flex-col justify-center text-center md:text-left">
+      {/* PIN form side */}
+      <div className="flex flex-col justify-center px-6 sm:px-12 lg:px-20 py-10 md:py-16 text-center md:text-left">
+        <div className="w-full max-w-md mx-auto md:mx-0">
           <h1 className="text-2xl font-cal-sans text-gray-900 mb-2">Welcome to your cohort</h1>
           <p className="font-dm-sans text-gray-500 mb-8">Enter your Access PIN to continue.</p>
 

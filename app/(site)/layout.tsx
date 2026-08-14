@@ -15,7 +15,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
     <>
       {!isCohortPortal && <Header />}
       <div className={isCohortPortal ? "" : "mt-1 lg:mt-24"}>{children}</div>
-      <Footer />
+      {!isCohortPortal && <Footer />}
     </>
   );
 }
