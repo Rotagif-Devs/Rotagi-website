@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, Fragment } from "react";
-import { ArrowRight, LogOut, User, Search, Download, XCircle } from "lucide-react";
+import { LogOut, User, Search, Download, XCircle } from "lucide-react";
 import Button from "@/components/ui/Button";
 import {
   cohortService,
@@ -33,9 +33,7 @@ function ActionCard({
           {subtitle}
         </p>
       )}
-      <span className="mt-auto font-dm-sans text-sm font-bold text-secondary flex items-center gap-1.5">
-        {actionLabel} <ArrowRight className="w-4 h-4" />
-      </span>
+      <span className="mt-auto font-dm-sans text-sm font-bold text-secondary">{actionLabel}</span>
     </div>
   );
 
