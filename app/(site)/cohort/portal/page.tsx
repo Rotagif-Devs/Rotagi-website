@@ -21,7 +21,7 @@ export default function CohortPortalPickerPage() {
         <Wordmark />
         <div className="flex-1 flex items-center justify-center py-6">
           <Image
-            src="/cohort-portal-hero.png"
+            src="/cohort-portal-hero.jpg"
             alt="ROTAGI She Tech Skills"
             width={640}
             height={640}
