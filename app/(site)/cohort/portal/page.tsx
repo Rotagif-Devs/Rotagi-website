@@ -14,26 +14,6 @@ function Wordmark({ light }: { light?: boolean }) {
   );
 }
 
-// A proper graduation cap glyph (mortarboard + tassel) instead of the
-// generic lucide outline icon — black cap, brand-pink tassel, matching the
-// reference render the org supplied.
-function GraduationCapIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 48 48" fill="none" className={className}>
-      <path d="M24 8 L45 18 L24 28 L3 18 Z" fill="currentColor" />
-      <path
-        d="M13 21.5 V29 a11 5.5 0 0 0 22 0 v-7.5"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        fill="none"
-      />
-      <path d="M42 19 V32" stroke="#d62d88" strokeWidth="2" strokeLinecap="round" />
-      <circle cx="42" cy="34" r="2.5" fill="#d62d88" />
-    </svg>
-  );
-}
-
 export default function CohortPortalPickerPage() {
   return (
     <main className="min-h-screen w-full flex flex-col md:grid md:grid-cols-2">
@@ -46,7 +26,7 @@ export default function CohortPortalPickerPage() {
             alt="ROTAGI She Tech Skills"
             width={640}
             height={640}
-            className="object-contain w-full max-w-[320px] sm:max-w-md md:max-w-xl"
+            className="object-contain w-full max-w-[400px] sm:max-w-lg md:max-w-2xl"
             priority
           />
         </div>
@@ -69,8 +49,8 @@ export default function CohortPortalPickerPage() {
                   href={`/cohort/portal/${p.slug}`}
                   className="group flex items-center gap-4 bg-white rounded-2xl border border-white/50 p-5 shadow-sm hover:shadow-md transition-all"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center shrink-0">
-                    <GraduationCapIcon className="w-6 h-6" />
+                  <div className="w-11 h-11 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0">
+                    <Image src="/graduation-cap.png" alt="" width={44} height={30} className="object-contain w-8 h-auto" />
                   </div>
                   <span className="font-cal-sans text-gray-900 flex-1">{p.title}</span>
                   <div className="w-8 h-8 rounded-full bg-secondary/10 text-secondary flex items-center justify-center shrink-0 group-hover:bg-secondary group-hover:text-white transition-colors">
