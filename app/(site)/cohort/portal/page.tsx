@@ -5,7 +5,7 @@ import { COHORT_PROGRAMS } from "@/lib/services/cohort.service";
 
 export default function CohortPortalPickerPage() {
   return (
-    <main className="min-h-screen w-full grid md:grid-cols-2">
+    <main className="min-h-screen w-full flex flex-col md:grid md:grid-cols-2">
       {/* Image side — a top banner on mobile, the left column from md up */}
       <div className="relative flex items-center justify-center bg-gradient-to-br from-secondary/10 via-white to-secondary/5 p-6 h-48 sm:h-64 md:h-auto md:p-10 overflow-hidden">
         <div className="absolute -top-16 -left-16 w-56 h-56 rounded-full bg-secondary/10 blur-3xl pointer-events-none" />
@@ -21,7 +21,7 @@ export default function CohortPortalPickerPage() {
       </div>
 
       {/* Program side */}
-      <div className="flex flex-col justify-center px-6 sm:px-12 lg:px-20 py-10 md:py-16">
+      <div className="flex flex-col justify-start md:justify-center px-6 sm:px-12 lg:px-20 pt-8 pb-10 md:py-16">
         <div className="w-full max-w-md mx-auto md:mx-0">
           <h1 className="text-2xl md:text-3xl font-cal-sans text-gray-900 mb-2">ROTAGI She Tech Skill Portal</h1>
           <p className="font-dm-sans text-gray-500 mb-8">Pick your program to sign in.</p>
