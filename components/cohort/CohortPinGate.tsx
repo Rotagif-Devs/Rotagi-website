@@ -66,7 +66,9 @@ export default function CohortPinGate({
         <Wordmark light />
         <div className="flex-1 flex flex-col justify-center">
           <div className="w-full max-w-md mx-auto md:mx-0 py-6">
-            <h1 className="text-2xl font-cal-sans text-white mb-2">Welcome to your cohort</h1>
+            <h1 className="text-4xl sm:text-5xl font-cal-sans font-bold leading-[1.1] text-white mb-4">
+              Welcome to your cohort
+            </h1>
             <p className="font-dm-sans text-white/80 mb-8">Enter your Access PIN to continue.</p>
 
             <form onSubmit={handleSubmit} className="space-y-4 text-left">

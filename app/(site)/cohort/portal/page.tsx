@@ -57,7 +57,9 @@ export default function CohortPortalPickerPage() {
         <Wordmark light />
         <div className="flex-1 flex flex-col justify-center">
           <div className="w-full max-w-md mx-auto md:mx-0 py-6">
-            <h1 className="text-2xl md:text-3xl font-cal-sans text-white mb-2">ROTAGI She Tech Skill Portal</h1>
+            <h1 className="text-4xl sm:text-5xl font-cal-sans font-bold leading-[1.1] text-white mb-4">
+              ROTAGI She Tech Skill Portal
+            </h1>
             <p className="font-dm-sans text-white/80 mb-8">Pick your program to sign in.</p>
 
             <div className="space-y-3">

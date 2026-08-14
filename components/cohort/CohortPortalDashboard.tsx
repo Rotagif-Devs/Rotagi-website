@@ -59,14 +59,15 @@ function weekStatusLabel(week: number, currentWeek: number) {
   return "Upcoming";
 }
 
-// A solid bridge linking one week circle to the next — a real flex sibling
-// sized to the gap between them (not an absolutely-positioned overlay), so
-// it can never land underneath a neighboring circle. Pink and animated while
-// the cohort has reached/passed that week, black and still for weeks ahead.
+// A solid bridge linking one week circle to the next — a flex-growing
+// sibling that fills the entire gap and touches both circles' edges (the
+// circles themselves don't grow, so this is the only thing stretching).
+// Pink and animated while the cohort has reached/passed that week, black
+// and still for weeks ahead.
 function BridgeConnector({ active }: { active: boolean }) {
   return (
-    <div className="flex items-center shrink-0 px-1 mt-6">
-      <div className={`h-2 w-6 sm:w-10 rounded-full ${active ? "bg-secondary animate-pulse" : "bg-black"}`} />
+    <div className="flex items-center flex-1 mt-6">
+      <div className={`h-2 w-full rounded-full ${active ? "bg-secondary animate-pulse" : "bg-black"}`} />
     </div>
   );
 }
@@ -85,7 +86,7 @@ function WeekTracker({ currentWeek, totalWeeks }: { currentWeek: number; totalWe
           return (
             <Fragment key={week}>
               {i > 0 && <BridgeConnector active={week <= currentWeek} />}
-              <div className="flex-1 min-w-0 flex flex-col items-center">
+              <div className={`shrink-0 flex flex-col items-center ${current ? "w-14" : "w-12"}`}>
                 <div
                   className={`flex items-center justify-center rounded-full font-dm-sans font-bold border-2 transition-all ${
                     current
@@ -97,9 +98,9 @@ function WeekTracker({ currentWeek, totalWeeks }: { currentWeek: number; totalWe
                 >
                   {week}
                 </div>
-                <span className="mt-2 font-dm-sans text-xs font-bold text-black">Week {week}</span>
+                <span className="mt-2 font-dm-sans text-xs font-bold text-black whitespace-nowrap">Week {week}</span>
                 <span
-                  className={`font-dm-sans text-xs text-center px-1 ${
+                  className={`font-dm-sans text-xs text-center whitespace-nowrap ${
                     current ? "text-secondary font-bold" : "text-black"
                   }`}
                 >
