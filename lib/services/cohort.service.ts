@@ -316,6 +316,15 @@ export const cohortService = {
     await apiFetch(`/api/admin/cohort/${program}/attendance/window`, { method: "PUT", body: { open } });
   },
 
+  /** Deletes every attendance record for the program (e.g. wiping test data before a cohort actually starts). */
+  clearAttendance: async (program: string): Promise<string> => {
+    const res = await apiFetch<{ success: boolean; message?: string }>(
+      `/api/admin/cohort/${program}/attendance/clear`,
+      { method: "DELETE" },
+    );
+    return res.message || "Attendance records cleared.";
+  },
+
   /** Downloads the full attendance workbook (a per-learner Summary sheet, plus one sheet per date) straight to the browser. */
   exportAttendance: async (program: string): Promise<void> => {
     const token = getAccessToken();
@@ -345,6 +354,15 @@ export const cohortService = {
       { method: "POST", body: formData },
     );
     return res.message || "Certificate records processed and updated.";
+  },
+
+  /** Deletes every certificate eligibility record for the program and turns certificates off. */
+  clearCertificates: async (program: string): Promise<string> => {
+    const res = await apiFetch<{ success: boolean; message?: string }>(
+      `/api/admin/cohort/${program}/certificates/clear`,
+      { method: "DELETE" },
+    );
+    return res.message || "Certificate records cleared.";
   },
 
   getCertificateTemplate: async (program: string): Promise<CertificateTemplateStatus> => {

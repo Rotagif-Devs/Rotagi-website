@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { CheckCircle2, AlertCircle, Loader2, Download } from "lucide-react";
+import { CheckCircle2, AlertCircle, Loader2, Download, Trash2 } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { cohortService } from "@/lib/services/cohort.service";
 
@@ -26,6 +26,7 @@ export default function CohortAttendanceWindowControl({ program }: { program: st
   const [loading, setLoading] = useState(true);
   const [toggling, setToggling] = useState(false);
   const [exporting, setExporting] = useState(false);
+  const [clearing, setClearing] = useState(false);
   const [status, setStatus] = useState<{ type: "success" | "error"; msg: string } | null>(null);
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -82,6 +83,27 @@ export default function CohortAttendanceWindowControl({ program }: { program: st
     }
   };
 
+  const handleClear = async () => {
+    if (
+      !confirm(
+        "Permanently delete ALL attendance records for this program? This can't be undone — export a copy first if you want to keep it.",
+      )
+    ) {
+      return;
+    }
+    setClearing(true);
+    setStatus(null);
+    try {
+      const msg = await cohortService.clearAttendance(program);
+      setStatus({ type: "success", msg });
+      await refresh();
+    } catch (err: any) {
+      setStatus({ type: "error", msg: err?.message || "Failed to clear attendance." });
+    } finally {
+      setClearing(false);
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex items-center gap-3 text-gray-400 py-6">
@@ -120,15 +142,27 @@ export default function CohortAttendanceWindowControl({ program }: { program: st
         </Button>
       </div>
 
-      <button
-        type="button"
-        onClick={handleExport}
-        disabled={exporting}
-        className="inline-flex items-center gap-2 text-sm font-bold text-secondary hover:underline disabled:opacity-50"
-      >
-        <Download className="w-4 h-4" />
-        {exporting ? "Preparing file…" : "Export Attendance to Excel"}
-      </button>
+      <div className="flex items-center gap-6 flex-wrap">
+        <button
+          type="button"
+          onClick={handleExport}
+          disabled={exporting}
+          className="inline-flex items-center gap-2 text-sm font-bold text-secondary hover:underline disabled:opacity-50"
+        >
+          <Download className="w-4 h-4" />
+          {exporting ? "Preparing file…" : "Export Attendance to Excel"}
+        </button>
+
+        <button
+          type="button"
+          onClick={handleClear}
+          disabled={clearing}
+          className="inline-flex items-center gap-2 text-sm font-bold text-red-600 hover:underline disabled:opacity-50"
+        >
+          <Trash2 className="w-4 h-4" />
+          {clearing ? "Clearing…" : "Clear All Attendance Data"}
+        </button>
+      </div>
     </div>
   );
 }

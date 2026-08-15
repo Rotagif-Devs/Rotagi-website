@@ -13,6 +13,7 @@ import {
   CheckCircle2,
   AlertCircle,
   ChevronLeft,
+  Trash2,
 } from "lucide-react";
 import Button from "@/components/ui/Button";
 import {
@@ -393,6 +394,7 @@ function CertificatesTab({ program }: { program: string }) {
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<{ type: "success" | "error"; msg: string } | null>(null);
   const [showTemplateSection, setShowTemplateSection] = useState(false);
+  const [clearing, setClearing] = useState(false);
 
   useEffect(() => {
     cohortService
@@ -417,6 +419,27 @@ function CertificatesTab({ program }: { program: string }) {
       setStatus({ type: "error", msg: err?.message || "Upload failed. Please check the file and try again." });
     } finally {
       setUploading(false);
+    }
+  };
+
+  const handleClear = async () => {
+    if (
+      !confirm(
+        "Permanently delete ALL certificate eligibility records for this program, and turn certificates off? This can't be undone.",
+      )
+    ) {
+      return;
+    }
+    setClearing(true);
+    setStatus(null);
+    try {
+      const msg = await cohortService.clearCertificates(program);
+      setStatus({ type: "success", msg });
+      setShowTemplateSection(false);
+    } catch (err: any) {
+      setStatus({ type: "error", msg: err?.message || "Failed to clear certificate records." });
+    } finally {
+      setClearing(false);
     }
   };
 
@@ -457,6 +480,18 @@ function CertificatesTab({ program }: { program: string }) {
           {uploading ? "Processing Data..." : "Upload & Sync Eligibility List"}
         </Button>
       </form>
+
+      {showTemplateSection && (
+        <button
+          type="button"
+          onClick={handleClear}
+          disabled={clearing}
+          className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-red-600 hover:underline disabled:opacity-50"
+        >
+          <Trash2 className="w-4 h-4" />
+          {clearing ? "Clearing…" : "Clear All Certificate Data"}
+        </button>
+      )}
 
       {showTemplateSection && (
         <>
