@@ -354,7 +354,7 @@ export default function CohortPortalDashboard({
               href={data.courseMaterialsLink || undefined}
             />
             <ActionCard
-              title="Assignments"
+              title="Google Classroom"
               actionLabel="Open classroom"
               href={data.assignmentsClassroomLink || undefined}
             />

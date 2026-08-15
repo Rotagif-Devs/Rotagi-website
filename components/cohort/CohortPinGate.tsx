@@ -1,19 +1,20 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
-import { Lock, Eye, EyeOff } from "lucide-react";
+import { Lock, Eye, EyeOff, ArrowLeft } from "lucide-react";
 import Button from "@/components/ui/Button";
-import { cohortService } from "@/lib/services/cohort.service";
+import { cohortService, COHORT_PROGRAMS } from "@/lib/services/cohort.service";
 
 function Wordmark({ light }: { light?: boolean }) {
   return (
-    <div className="flex items-center gap-2">
+    <Link href="/" className="flex items-center gap-2 w-fit">
       <Image src="/logo.png" alt="ROTAGI" width={28} height={28} className="object-contain" />
       <span className={`font-cal-sans font-bold tracking-wide ${light ? "text-white" : "text-gray-900"}`}>
         ROTAGI
       </span>
-    </div>
+    </Link>
   );
 }
 
@@ -28,6 +29,8 @@ export default function CohortPinGate({
   const [showPin, setShowPin] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const programTitle = COHORT_PROGRAMS.find((p) => p.slug === program)?.title || "";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,6 +52,12 @@ export default function CohortPinGate({
       {/* Image side — white background, top banner on mobile, left column from md up */}
       <div className="relative flex flex-col bg-[#EFEFEF] py-8 md:py-10 px-6 md:px-10 min-h-[42vh] md:min-h-0">
         <Wordmark />
+        <Link
+          href="/cohort/portal"
+          className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-gray-700 hover:text-gray-900 w-fit"
+        >
+          <ArrowLeft className="w-4 h-4" /> Back to programs
+        </Link>
         <div className="flex-1 flex items-center justify-center py-6">
           <Image
             src="/cohort-portal-hero.jpg"
@@ -66,7 +75,7 @@ export default function CohortPinGate({
         <div className="flex-1 flex flex-col justify-center">
           <div className="w-full max-w-md mx-auto md:mx-0 py-6">
             <h1 className="text-4xl sm:text-5xl font-cal-sans font-bold leading-[1.1] text-white mb-4">
-              Welcome to your cohort
+              Welcome To Your Cohort {programTitle && `(${programTitle})`}
             </h1>
             <p className="font-dm-sans text-white/80 mb-8">Enter your Access PIN to continue.</p>
 

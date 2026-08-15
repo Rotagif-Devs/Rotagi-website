@@ -302,7 +302,7 @@ function SettingsTab({ program }: { program: string }) {
             <input type="url" value={courseMaterialsLink} onChange={(e) => setCourseMaterialsLink(e.target.value)} placeholder="https://drive.google.com/..." className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
           </div>
           <div>
-            <h4 className="font-bold text-gray-900 mb-1">Assignments</h4>
+            <h4 className="font-bold text-gray-900 mb-1">Google Classroom</h4>
             <label className="block text-sm font-medium text-gray-700 mb-1">Google Classroom link</label>
             <input type="url" value={assignmentsClassroomLink} onChange={(e) => setAssignmentsClassroomLink(e.target.value)} placeholder="https://classroom.google.com/..." className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary" />
           </div>
