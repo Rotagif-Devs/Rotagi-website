@@ -171,25 +171,6 @@ export default function CohortCertificateTemplateEditor({ program }: { program: 
 
       {status && <Banner type={status.type}>{status.msg}</Banner>}
 
-      <div className="mb-6 p-4 bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-between gap-4 flex-wrap">
-        <div>
-          <p className="font-bold text-gray-900">
-            {eligibleCount} learner{eligibleCount === 1 ? "" : "s"} eligible
-          </p>
-          <p className="text-sm text-gray-500">From the Email + Full Name spreadsheet above.</p>
-        </div>
-        <Button
-          type="button"
-          variant={certificatesEnabled ? undefined : "primary"}
-          className={certificatesEnabled ? "border-2 border-gray-300 bg-white text-gray-700 hover:bg-gray-50" : undefined}
-          onClick={handleToggle}
-          disabled={toggling || !hasSavedTemplate}
-          title={!hasSavedTemplate ? "Save a template before turning certificates on" : undefined}
-        >
-          {toggling ? "Updating…" : certificatesEnabled ? "Certificates: ON — click to turn off" : "Send Certificates"}
-        </Button>
-      </div>
-
       <div className="mb-4 flex items-end justify-between gap-4 flex-wrap">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Certificate Image (.png / .jpg)</label>
@@ -274,6 +255,29 @@ export default function CohortCertificateTemplateEditor({ program }: { program: 
             {saving ? "Saving…" : "Save Template"}
           </Button>
         </>
+      )}
+
+      {hasSavedTemplate && (
+        <div className="mt-8 p-4 bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-between gap-4 flex-wrap">
+          <div>
+            <p className="font-bold text-gray-900">
+              {certificatesEnabled ? "Certificates are ON for learners" : "Certificates are OFF for learners"}
+            </p>
+            <p className="text-sm text-gray-500">
+              {eligibleCount} learner{eligibleCount === 1 ? "" : "s"} eligible, from the Email + Full Name
+              spreadsheet above.
+            </p>
+          </div>
+          <Button
+            type="button"
+            variant={certificatesEnabled ? undefined : "primary"}
+            className={certificatesEnabled ? "border-2 border-gray-300 bg-white text-gray-700 hover:bg-gray-50" : undefined}
+            onClick={handleToggle}
+            disabled={toggling}
+          >
+            {toggling ? "Updating…" : certificatesEnabled ? "Turn Certificates OFF" : "Turn Certificates ON"}
+          </Button>
+        </div>
       )}
     </div>
   );
