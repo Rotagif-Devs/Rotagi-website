@@ -11,7 +11,8 @@ const navItems = [
   { label: "About Us", href: "/about" },
   { label: "Programs", href: "/programs" },
   { label: "Cohort", href: "/cohort" },
-  { label: "Blog", href: "/blog" },
+  { label: "SHE EMPOWER", href: "/sheempower" },
+  // { label: "Blog", href: "/blog" }, hidden from the nav for now, per org request
   { label: "Contact", href: "/contact" },
 ];
 
