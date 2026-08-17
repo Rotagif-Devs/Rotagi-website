@@ -97,10 +97,12 @@ export default function CohortPage() {
 
               <div className="flex shrink-0 z-20 md:ml-auto w-full md:w-auto mt-2 md:mt-0">
                 <Link
-                  href="#courses"
+                  href="https://forms.office.com/r/EEBttdeyFE?origin=lprLink"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-white text-secondary hover:bg-gray-100 rounded-full px-6 md:px-8 py-3.5 md:py-4 font-semibold transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 text-center w-full md:w-auto text-sm md:text-base"
                 >
-                  Apply for a Scholarship
+                  Join waitlist
                 </Link>
               </div>
             </div>
@@ -117,17 +119,19 @@ export default function CohortPage() {
         <div className="max-w-[1260px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
           <div className="max-w-2xl text-white">
             <h2 className="text-3xl md:text-4xl font-cal-sans mb-4 uppercase">
-              Apply for a Scholarship
+              Join the Waitlist
             </h2>
             <p className="text-pink-100 text-lg">
               Our next cohort starts Aug 17, 2026. Limited places available.
             </p>
           </div>
-          <Link 
-            href="#courses"
+          <Link
+            href="https://forms.office.com/r/EEBttdeyFE?origin=lprLink"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-8 py-4 bg-white text-secondary font-semibold rounded-xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 shrink-0"
           >
-            Apply for a Scholarship
+            Join waitlist
           </Link>
         </div>
       </section>
@@ -175,13 +179,15 @@ export default function CohortPage() {
             Start building the skills that shape your future.
           </h2>
           <p className="text-lg text-gray-600 mb-10">
-            Apply for a ROTAGI scholarship today and join the community.
+            Join the ROTAGI waitlist today and be first in line for the next cohort.
           </p>
-          <Link 
-            href="#courses"
+          <Link
+            href="https://forms.office.com/r/EEBttdeyFE?origin=lprLink"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-10 py-5 bg-secondary hover:bg-primary/90 text-white font-semibold rounded-2xl shadow-xl shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-1 transition-all duration-300"
           >
-            Apply for a Scholarship
+            Join waitlist
           </Link>
         </div>
       </section>

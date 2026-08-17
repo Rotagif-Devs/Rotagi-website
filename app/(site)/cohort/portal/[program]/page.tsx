@@ -9,6 +9,7 @@ import CohortPortalDashboard from "@/components/cohort/CohortPortalDashboard";
 import {
   cohortService,
   getCohortToken,
+  clearCohortToken,
   COHORT_PROGRAMS,
   CohortDashboard,
 } from "@/lib/services/cohort.service";
@@ -34,7 +35,18 @@ export default function CohortProgramPortalPage() {
     cohortService
       .getDashboard(program)
       .then(setData)
-      .catch((err) => setLoadError(err?.message || "Failed to load your cohort dashboard."));
+      .catch((err) => {
+        const message = err?.message || "Failed to load your cohort dashboard.";
+        // An expired/invalid cohort token is a normal session timeout, not a real
+        // error — clear it and drop back to the PIN gate instead of dead-ending
+        // on a raw "Unauthorized" message with no way forward.
+        if (/unauthorized/i.test(message)) {
+          clearCohortToken(program);
+          setUnlocked(false);
+          return;
+        }
+        setLoadError(message);
+      });
   }, [unlocked, program]);
 
   if (!isValidProgram) {

@@ -99,7 +99,13 @@ export async function apiFetch<T = unknown>(
     ...(options?.headers || {}),
   };
 
-  const token = options?.accessToken !== undefined ? options.accessToken : (typeof window !== 'undefined' ? getAccessToken() : null);
+  // Distinguish "caller passed accessToken at all" from "its value happens to be
+  // undefined" — cohort calls pass accessToken: getCohortToken(program) ?? undefined,
+  // which IS undefined once a learner's token is missing/expired. Falling through to
+  // getAccessToken() there would silently attach an unrelated admin token (if any
+  // happened to be in localStorage) to a cohort request.
+  const callerSpecifiedToken = options ? 'accessToken' in options : false;
+  const token = callerSpecifiedToken ? options!.accessToken : (typeof window !== 'undefined' ? getAccessToken() : null);
 
   if (token) {
     headers.Authorization = `Bearer ${token}`;
@@ -147,12 +153,13 @@ export async function apiFetch<T = unknown>(
     clearTimeout(timeoutId);
   }
 
-  // Only the auto-attached admin token (options.accessToken left undefined) is
+  // Only the auto-attached admin token (caller never passed accessToken at all) is
   // eligible for silent refresh — cohort/PIN tokens and explicit callers manage
-  // their own lifecycle and should see the 401 as-is.
+  // their own lifecycle (including a missing/expired token) and should see the
+  // 401 as-is, not get funneled into an admin-session refresh/redirect.
   const eligibleForRefresh =
     res.status === 401 &&
-    options?.accessToken === undefined &&
+    !callerSpecifiedToken &&
     !!token &&
     !options?._isRefreshRetry &&
     !path.startsWith('/auth/');
