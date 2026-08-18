@@ -92,7 +92,7 @@ export default function CohortPage() {
 
             <div className="flex flex-col md:flex-row md:items-end w-full gap-6 md:gap-8 mt-2 md:mt-0">
               <p className="text-white/80 max-w-2xl font-dm-sans font-normal text-sm sm:text-base md:text-lg leading-[160%] m-0">
-                The ROTAGI Scholarship helps African girls and young women gain digital, life, and enterprise skills through practical, beginner friendly training.
+                ROTAGI SHE Tech Skills equips African girls and young women with practical virtual training in AI, digital skills, leadership, career readiness, and entrepreneurship.
               </p>
 
               <div className="flex shrink-0 z-20 md:ml-auto w-full md:w-auto mt-2 md:mt-0">
@@ -119,10 +119,10 @@ export default function CohortPage() {
         <div className="max-w-[1260px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
           <div className="max-w-2xl text-white">
             <h2 className="text-3xl md:text-4xl font-cal-sans mb-4 uppercase">
-              Join the Waitlist
+              Join the Next Cohort
             </h2>
             <p className="text-pink-100 text-lg">
-              Our next cohort starts Aug 17, 2026. Limited places available.
+              Limited places available.
             </p>
           </div>
           <Link
