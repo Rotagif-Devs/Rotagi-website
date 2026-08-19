@@ -7,6 +7,7 @@ import OurStory from "@/components/About/OurStory";
 import OurValue from "@/components/About/OurValue";
 
 import Image from "next/image";
+import Link from "next/link";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -51,7 +52,12 @@ const About = () => {
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-12">
             <h2 className="text-white uppercase">Leadership team</h2>
-            
+            <Link
+              href="/team"
+              className="inline-block mt-4 text-white/90 hover:text-white text-sm font-semibold underline underline-offset-4"
+            >
+              Meet the full team &amp; advisory board
+            </Link>
           </div>
 
           <div className="md:hidden">
