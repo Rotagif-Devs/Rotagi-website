@@ -35,6 +35,7 @@ const partnerLogos = [
   { name: "little", url: "/partner11-cutout.png", bg: "#4C174D" },
   { name: "Make", url: "/partner12-cutout.png", bg: "#FFFFFF" },
   { name: "DC Donates", url: "/partner13.png", bg: "#000000" },
+  { name: "SkillAddis", url: "/partner14-cutout.png", bg: "#FFFFFF" },
 ];
 
 export default function Partners() {
