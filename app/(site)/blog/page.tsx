@@ -1,5 +1,6 @@
 import { publicService } from "@/lib/services/public.service";
 import BlogHero from "@/components/blogComps/BlogHero";
+import FeaturedPost from "@/components/blogComps/FeaturedPost";
 import BlogList from "@/components/blogComps/BlogList";
 import PTA from "@/components/globalComp/PTA";
 
@@ -31,10 +32,16 @@ export default async function BlogPage() {
     );
   }
 
+  const sorted = [...posts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  );
+  const [featured, ...rest] = sorted;
+
   return (
     <main className="min-h-screen md:p-4 p-3">
       <BlogHero />
-      <BlogList posts={posts} />
+      <FeaturedPost post={featured} />
+      <BlogList posts={rest} />
       <PTA />
     </main>
   );
