@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { adminLogin as authServiceLogin } from "@/lib/services/auth.service";
 import { SESSION_EXPIRED_EVENT, SESSION_REFRESHED_EVENT } from "@/lib/api";
 import { setRefreshToken, clearTokens } from "@/lib/token.service";
@@ -27,13 +27,22 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AdminUser | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
+  const pathname = usePathname();
 
+  // This provider is mounted globally (the whole site, not just /admin), so a
+  // stale/expired admin session sitting in localStorage — e.g. from a device
+  // that was ever used to log into the admin dashboard — must never redirect
+  // someone who is currently on an unrelated page (a cohort learner, a public
+  // visitor, etc.). Only navigate to the admin login screen if that's
+  // actually where the current user already is.
   const logout = useCallback(() => {
     setUser(null);
     localStorage.removeItem("adminUser");
     clearTokens();
-    router.push("/admin/login");
-  }, [router]);
+    if (pathname?.startsWith("/admin")) {
+      router.push("/admin/login");
+    }
+  }, [router, pathname]);
 
   // A successful silent refresh means the admin is actively working — slide the local
   // 1h idle window forward instead of logging them out mid-task purely on a wall-clock timer.
