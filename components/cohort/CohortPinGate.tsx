@@ -10,7 +10,7 @@ import { cohortService, COHORT_PROGRAMS } from "@/lib/services/cohort.service";
 function Wordmark({ light }: { light?: boolean }) {
   return (
     <Link href="/" className="flex items-center gap-2 w-fit">
-      <Image src="/logo.png" alt="ROTAGI" width={28} height={28} className="object-contain" />
+      <Image src="/logo-cutout.png" alt="ROTAGI" width={28} height={28} className="object-contain" />
       <span className={`font-cal-sans font-bold tracking-wide ${light ? "text-white" : "text-gray-900"}`}>
         ROTAGI
       </span>
