@@ -23,7 +23,7 @@ const contactItems = [
   {
     icon: MapPin,
     title: "Address",
-    content: "Plot 184 Zone A, Apo Resettlement Abuja FCT Nigeria 900104",
+    content: "33 Eggon Cres, Karu, New Karu 900231, Federal Capital Territory Abuja Nigeria West Africa",
   },
 ];
 
