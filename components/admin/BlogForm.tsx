@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { BlogPost } from "@/types/blog";
 import Button from "@/components/ui/Button";
-import { Save, X, Image as ImageIcon, User, Tag, Upload, Link as LinkIcon } from "lucide-react";
+import { Save, X, Image as ImageIcon, User, Tag, Upload, Link as LinkIcon, Code } from "lucide-react";
 import { adminService } from "@/lib/services/admin.service";
 import "react-quill-new/dist/quill.snow.css";
 
@@ -22,6 +22,7 @@ interface BlogFormProps {
 }
 
 export default function BlogForm({ initialData, onSubmit, onCancel, isLoading }: BlogFormProps) {
+  const [showHtmlSource, setShowHtmlSource] = useState(false);
   const [formData, setFormData] = useState<BlogPost>(
     initialData || {
       id: "",
@@ -271,16 +272,43 @@ export default function BlogForm({ initialData, onSubmit, onCancel, isLoading }:
 
       {/* Content Editor */}
       <div className="space-y-2">
-        <label className="text-sm font-semibold text-gray-700">Article Content</label>
-        <div className="bg-white rounded-xl overflow-hidden border border-gray-200">
-          <ReactQuill
-            value={formData.content}
-            onChange={handleContentChange}
-            modules={modules}
-            className="h-96"
-            theme="snow"
-          />
+        <div className="flex items-center justify-between">
+          <label className="text-sm font-semibold text-gray-700">Article Content</label>
+          <button
+            type="button"
+            onClick={() => setShowHtmlSource((prev) => !prev)}
+            className="flex items-center gap-1.5 text-xs font-semibold text-gray-500 hover:text-black transition-colors"
+          >
+            <Code size={14} />
+            {showHtmlSource ? "Back to Visual Editor" : "Paste HTML Source"}
+          </button>
         </div>
+        {showHtmlSource ? (
+          <>
+            <textarea
+              value={formData.content}
+              onChange={(e) => handleContentChange(e.target.value)}
+              placeholder="<p>Paste raw HTML here...</p>"
+              className="w-full h-96 p-4 bg-white border border-gray-200 rounded-xl font-mono text-xs focus:ring-2 focus:ring-black/5 focus:border-black transition-all resize-none"
+              spellCheck={false}
+            />
+            <p className="text-xs text-gray-400">
+              Pasting HTML tags directly into the visual editor below will show them as literal
+              text, not formatting — paste raw HTML here instead, then switch back to Visual
+              Editor to keep editing normally.
+            </p>
+          </>
+        ) : (
+          <div className="bg-white rounded-xl overflow-hidden border border-gray-200">
+            <ReactQuill
+              value={formData.content}
+              onChange={handleContentChange}
+              modules={modules}
+              className="h-96"
+              theme="snow"
+            />
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col md:flex-row justify-end gap-4 pt-8 border-t">
