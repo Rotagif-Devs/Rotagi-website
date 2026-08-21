@@ -14,6 +14,17 @@ const ReactQuill = dynamic(() => import("react-quill-new"), {
   loading: () => <div className="h-64 bg-gray-100 animate-pulse rounded-lg" />,
 });
 
+const AUTHOR_ROLES = [
+  "Editorial",
+  "Editor",
+  "Program Lead",
+  "Education Dept",
+  "Operations",
+  "Executive Director",
+  "Advisory Board",
+  "Guest Contributor",
+];
+
 interface BlogFormProps {
   initialData?: BlogPost;
   onSubmit: (data: BlogPost) => void;
@@ -257,14 +268,22 @@ export default function BlogForm({ initialData, onSubmit, onCancel, isLoading }:
                   required
                 />
               </div>
-              <input
-                type="text"
+              <select
                 name="author.role"
                 value={formData.author.role || ""}
                 onChange={handleChange}
-                placeholder="Author Role (e.g. Editor)"
-                className="w-full px-4 py-2 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-black/5 focus:border-black transition-all"
-              />
+                className="w-full px-4 py-2 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-black/5 focus:border-black transition-all appearance-none"
+              >
+                <option value="">Select Author Role</option>
+                {AUTHOR_ROLES.map((role) => (
+                  <option key={role} value={role}>
+                    {role}
+                  </option>
+                ))}
+                {formData.author.role && !AUTHOR_ROLES.includes(formData.author.role) && (
+                  <option value={formData.author.role}>{formData.author.role}</option>
+                )}
+              </select>
             </div>
           </div>
         </div>
