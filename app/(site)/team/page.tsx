@@ -23,7 +23,8 @@ const ADVISORY_BOARD: Person[] = [
 // coming soon" rather than looking incomplete or broken. Swap these out for
 // real Person entries (with a photo) as bios/headshots come in.
 const STAFF_PLACEHOLDER_COUNT = 3;
-const ADVISORY_PLACEHOLDER_COUNT = 2;
+// Advisory board is complete at 3 members for now — no reserved slots.
+const ADVISORY_PLACEHOLDER_COUNT = 0;
 
 function PersonCard({ person }: { person: Person }) {
   return (
