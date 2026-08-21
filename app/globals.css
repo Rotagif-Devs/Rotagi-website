@@ -145,3 +145,62 @@ body {
     @apply text-xl font-black tracking-widest uppercase;
   }
 }
+
+/*
+ * Unlayered on purpose: the sitewide h1-h5 rules above (@layer base) are
+ * meant for hero/section headings, but Tailwind's cascade layers put them
+ * ahead of the "prose" plugin's own (deliberately zero-specificity) article
+ * styles, so they were bleeding into blog post content — 48px h2s, no
+ * paragraph/heading spacing, and mid-sentence words getting capitalized.
+ * Layer-less CSS always wins over @layer'd CSS regardless of specificity,
+ * so this reliably overrides both without touching the sitewide headings.
+ */
+.blog-article-content h2 {
+  font-size: 1.5rem;
+  line-height: 1.35;
+  font-weight: 700;
+  text-transform: none;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.blog-article-content h3 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  font-weight: 700;
+  text-transform: none;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .blog-article-content h2 {
+    font-size: 1.75rem;
+  }
+
+  .blog-article-content h3 {
+    font-size: 1.375rem;
+  }
+}
+
+.blog-article-content p {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.blog-article-content ul,
+.blog-article-content ol {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.blog-article-content blockquote {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.blog-article-content img {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}

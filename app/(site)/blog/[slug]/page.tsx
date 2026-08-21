@@ -95,7 +95,7 @@ export default async function BlogPostPage({
               </p>
             )}
             <div
-              className="prose prose-lg md:prose-xl max-w-none w-full break-words
+              className="blog-article-content prose prose-lg md:prose-xl max-w-none w-full break-words
                 prose-headings:font-cal-sans prose-headings:text-gray-900 prose-headings:font-bold
                 prose-p:text-gray-600 prose-p:leading-[1.8]
                 prose-a:text-pink-600 hover:prose-a:text-pink-700
