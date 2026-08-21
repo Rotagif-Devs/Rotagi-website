@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Heart, Users, HeartHandshake, Handshake } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
@@ -10,14 +10,34 @@ import { usePathname } from "next/navigation";
 import React from "react";
 
 const weAreDropdown = [
-  { label: "About Us", href: "/about" },
-  { label: "Our Team", href: "/team" },
-  { label: "Volunteer", href: "/volunteer" },
-  { label: "Partner", href: "/partner" },
+  {
+    label: "About Us",
+    href: "/about",
+    description: "Our mission, story, and why we exist",
+    icon: Heart,
+  },
+  {
+    label: "Our Team",
+    href: "/team",
+    description: "The people behind ROTAGI",
+    icon: Users,
+  },
+  {
+    label: "Volunteer",
+    href: "/volunteer",
+    description: "Give your time and skills",
+    icon: HeartHandshake,
+  },
+  {
+    label: "Partner",
+    href: "/partner",
+    description: "Collaborate with us",
+    icon: Handshake,
+  },
 ];
 
 const navItems = [
-  { label: "We Are", dropdown: weAreDropdown },
+  { label: "Who We Are", dropdown: weAreDropdown },
   { label: "Programs", href: "/programs" },
   { label: "Cohort", href: "/cohort" },
   { label: "SHE EMPOWER", href: "/sheempower" },
@@ -184,20 +204,47 @@ export default function Header() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 8, scale: 0.98 }}
                         transition={{ duration: 0.15, ease: "easeOut" }}
-                        className="absolute left-1/2 top-full z-10 mt-3 w-56 -translate-x-1/2 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl"
+                        className="absolute left-1/2 top-full z-10 mt-4 w-80 -translate-x-1/2 overflow-hidden rounded-3xl border border-gray-100 bg-white p-2 shadow-2xl shadow-black/10"
                       >
-                        {item.dropdown.map((sub) => (
-                          <Link
-                            key={sub.href}
-                            href={sub.href}
-                            onClick={() => setIsWeAreOpen(false)}
-                            className={`block px-5 py-3 text-sm font-medium uppercase transition-colors hover:bg-primary hover:text-secondary ${
-                              pathname.startsWith(sub.href) ? "text-secondary" : "text-gray-700"
-                            }`}
-                          >
-                            {sub.label}
-                          </Link>
-                        ))}
+                        {/* Beak pointing back to the trigger */}
+                        <div className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-l border-t border-gray-100 bg-white" />
+
+                        {item.dropdown.map((sub) => {
+                          const Icon = sub.icon;
+                          const active = pathname.startsWith(sub.href);
+                          return (
+                            <Link
+                              key={sub.href}
+                              href={sub.href}
+                              onClick={() => setIsWeAreOpen(false)}
+                              className={`group/item relative flex items-start gap-3.5 rounded-2xl px-3.5 py-3 transition-colors ${
+                                active ? "bg-primary" : "hover:bg-primary/60"
+                              }`}
+                            >
+                              <span
+                                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-colors ${
+                                  active
+                                    ? "bg-secondary text-white"
+                                    : "bg-primary text-secondary group-hover/item:bg-secondary group-hover/item:text-white"
+                                }`}
+                              >
+                                <Icon className="h-[18px] w-[18px]" strokeWidth={2} />
+                              </span>
+                              <span className="flex flex-col pt-0.5">
+                                <span
+                                  className={`text-sm font-semibold uppercase tracking-wide ${
+                                    active ? "text-secondary" : "text-gray-900"
+                                  }`}
+                                >
+                                  {sub.label}
+                                </span>
+                                <span className="mt-0.5 text-xs leading-snug text-gray-500">
+                                  {sub.description}
+                                </span>
+                              </span>
+                            </Link>
+                          );
+                        })}
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -282,19 +329,30 @@ export default function Header() {
                           transition={{ duration: 0.2, ease: "easeOut" }}
                           className="overflow-hidden"
                         >
-                          <div className="flex flex-col gap-3 py-3 pl-4">
-                            {item.dropdown.map((sub) => (
-                              <Link
-                                key={sub.href}
-                                href={sub.href}
-                                className={`text-base font-medium uppercase transition-colors hover:text-secondary ${
-                                  pathname.startsWith(sub.href) ? "text-secondary" : "text-gray-600"
-                                }`}
-                                onClick={closeMenu}
-                              >
-                                {sub.label}
-                              </Link>
-                            ))}
+                          <div className="flex flex-col gap-1 py-2 pl-1">
+                            {item.dropdown.map((sub) => {
+                              const Icon = sub.icon;
+                              const active = pathname.startsWith(sub.href);
+                              return (
+                                <Link
+                                  key={sub.href}
+                                  href={sub.href}
+                                  className={`flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors ${
+                                    active ? "bg-primary text-secondary" : "text-gray-600 hover:bg-primary/60"
+                                  }`}
+                                  onClick={closeMenu}
+                                >
+                                  <span
+                                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${
+                                      active ? "bg-secondary text-white" : "bg-primary text-secondary"
+                                    }`}
+                                  >
+                                    <Icon className="h-4 w-4" strokeWidth={2} />
+                                  </span>
+                                  <span className="text-base font-medium uppercase">{sub.label}</span>
+                                </Link>
+                              );
+                            })}
                           </div>
                         </motion.div>
                       )}
