@@ -100,6 +100,7 @@ const normalizeBlog = (post: any): BlogPost | undefined => {
     slug,
     image: ensureImageUrl(post.coverImageUrl || post.imageUrl || post.image || post.thumbnail || post.cover),
     description: post.excerpt || post.description || "",
+    tldr: post.tldr || undefined,
     content: parseContent(post.content),
     date: formatDate(post.publishedAt || post.createdAt || post.date),
     category: category,

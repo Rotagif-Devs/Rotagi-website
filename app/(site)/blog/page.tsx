@@ -1,6 +1,7 @@
 import { publicService } from "@/lib/services/public.service";
 import BlogHero from "@/components/blogComps/BlogHero";
 import FeaturedPost from "@/components/blogComps/FeaturedPost";
+import CuratedSection from "@/components/blogComps/CuratedSection";
 import BlogList from "@/components/blogComps/BlogList";
 import PTA from "@/components/globalComp/PTA";
 
@@ -41,6 +42,12 @@ export default async function BlogPage() {
     <main className="min-h-screen md:p-4 p-3">
       <BlogHero />
       <FeaturedPost post={featured} />
+      <CuratedSection
+        title="Success Stories"
+        description="Real journeys from the girls and women ROTAGI has worked with."
+        category="Success Story"
+        posts={sorted}
+      />
       <BlogList posts={rest} />
       <PTA />
     </main>

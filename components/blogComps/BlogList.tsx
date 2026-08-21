@@ -31,7 +31,7 @@ export default function BlogList({ posts }: Props) {
   }, [posts, activeCategory, query]);
 
   return (
-    <section className="lg:px-8 pb-10 pt-0 px-4 max-w-7xl mx-auto">
+    <section id="all-articles" className="lg:px-8 pb-10 pt-0 px-4 max-w-7xl mx-auto scroll-mt-24">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 py-6">
         <h4 className="font-cal-sans text-3xl md:text-4xl text-black">All Articles</h4>
 

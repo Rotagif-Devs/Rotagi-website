@@ -28,6 +28,7 @@ export default function BlogForm({ initialData, onSubmit, onCancel, isLoading }:
       slug: "",
       title: "",
       description: "",
+      tldr: "",
       content: "",
       image: "",
       date: new Date().toISOString().split("T")[0],
@@ -145,6 +146,20 @@ export default function BlogForm({ initialData, onSubmit, onCancel, isLoading }:
               rows={3}
               className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black/5 focus:border-black transition-all resize-none"
               required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-sm font-semibold text-gray-700">
+              TL;DR <span className="font-normal text-gray-400">(optional — a 2-3 sentence summary shown at the top of the post)</span>
+            </label>
+            <textarea
+              name="tldr"
+              value={formData.tldr || ""}
+              onChange={handleChange}
+              placeholder="e.g. Girls who get early exposure to tech are far more likely to pursue it as a career — here's what's working across Africa right now."
+              rows={2}
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black/5 focus:border-black transition-all resize-none"
             />
           </div>
 
