@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { Bell } from "lucide-react";
 import Button from "../ui/Button";
-import VideoPlayer from "./Videoplayer";
+
 export default function PTA({ slug }: { slug?: string }) {
   const getProgramName = (slug?: string) => {
     if (!slug) return "";
@@ -30,39 +30,42 @@ export default function PTA({ slug }: { slug?: string }) {
     : "Stay updated on new programs, events, and opportunities.";
 
   return (
-    <>
-      <section className="bg-primary py-16 md:py-20 px-6 flex justify-center">
-        <div className="flex w-full max-w-11/12 flex-col gap-10 px-5 md:px-0 md:gap-[76px]">
-          {/* Title + description + buttons area */}
-          <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-12">
-            <h2 className="max-w-lg text-dark text-4xl leading-tight tracking-tight uppercase md:max-w-[600px] md:text-[46px] md:leading-[110%]">
-              Be the First to Know
-            </h2>
+    <section className="relative overflow-hidden bg-primary py-20 md:py-28 px-6">
+      {/* Decorative depth — soft, blurred glows, never intercepts clicks */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-secondary/10 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-24 -right-24 h-80 w-80 rounded-full bg-tertiary/20 blur-3xl"
+      />
 
-            <div className="flex flex-col items-start gap-6 md:max-w-[580px]">
-              <p className="font-dm-sans text-darkgray text-left text-base leading-relaxed md:text-[16px] md:leading-[160%]">
-               {Programssage}
-              </p>
+      <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center gap-6 text-center md:gap-8">
+        <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-bold uppercase tracking-widest text-secondary shadow-sm">
+          <Bell size={14} />
+          Stay in the Loop
+        </span>
 
-              <div className="flex gap-4">
-                <Button 
-                  variant="primary" 
-                  className=""
-                  href="https://forms.office.com/r/EEBttdeyFE?origin=lprLink"
-                  target="_blank"
-                >
-                  Join the Waitlist
-                </Button>
-              </div>
-            </div>
-          </div>
+        <h2 className="max-w-2xl text-dark text-4xl leading-tight tracking-tight uppercase md:text-[46px] md:leading-[110%]">
+          Be the First to Know
+        </h2>
 
-          {/* Video / hero preview */}
-          <div className="w-full">
-            <VideoPlayer />
-          </div>
-        </div>
-      </section>
-    </>
+        <p className="font-dm-sans text-darkgray max-w-lg text-base leading-relaxed md:text-[16px] md:leading-[160%]">
+          {Programssage}
+        </p>
+
+        <Button
+          variant="primary"
+          size="lg"
+          withArrow
+          href="https://forms.office.com/r/EEBttdeyFE?origin=lprLink"
+          target="_blank"
+          className="group shadow-xl shadow-secondary/20"
+        >
+          Join the Waitlist
+        </Button>
+      </div>
+    </section>
   );
 }
