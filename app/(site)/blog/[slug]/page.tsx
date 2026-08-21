@@ -82,10 +82,7 @@ export default async function BlogPostPage({
           {/* Left Column: Rich Text Content */}
           <div className="flex-1 min-w-0 w-full">
             {post.tldr && (
-              <div className="flex gap-4 bg-pink-50 border border-pink-100 rounded-2xl px-6 py-5 mb-10">
-                <span className="shrink-0 text-[11px] font-black uppercase tracking-widest text-pink-600 pt-0.5">
-                  TL;DR
-                </span>
+              <div className="bg-pink-50 border border-pink-100 rounded-2xl px-6 py-5 mb-10">
                 <p className="text-gray-700 leading-relaxed">{post.tldr}</p>
               </div>
             )}
