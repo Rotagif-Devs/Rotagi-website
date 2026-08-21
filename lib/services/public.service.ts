@@ -102,7 +102,10 @@ const normalizeBlog = (post: any): BlogPost | undefined => {
     description: post.excerpt || post.description || "",
     tldr: post.tldr || undefined,
     content: parseContent(post.content),
-    date: formatDate(post.publishedAt || post.createdAt || post.date),
+    // `date` is the one field admins actually set/control in the editor —
+    // publishedAt is just whenever the "Publish Now" click happened, which
+    // can be well before the post's intended/displayed date on a scheduled post.
+    date: formatDate(post.date || post.publishedAt || post.createdAt),
     category: category,
     status: post.status || "published",
     author: {
