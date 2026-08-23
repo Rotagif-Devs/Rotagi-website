@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Menu, X, ChevronDown, Heart, Users, HeartHandshake, Handshake } from "lucide-react";
+import { Menu, X, ChevronDown, Heart, HeartHandshake, Handshake } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
@@ -16,12 +16,14 @@ const weAreDropdown = [
     description: "Our mission, story, and why we exist",
     icon: Heart,
   },
-  {
-    label: "Our Team",
-    href: "/team",
-    description: "The people behind ROTAGI",
-    icon: Users,
-  },
+  // Our Team is still a work in progress (placeholders being filled in) —
+  // hidden from the nav for now but the page itself stays reachable directly.
+  // {
+  //   label: "Our Team",
+  //   href: "/team",
+  //   description: "The people behind ROTAGI",
+  //   icon: Users,
+  // },
   {
     label: "Volunteer",
     href: "/volunteer",
