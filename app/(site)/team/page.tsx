@@ -16,10 +16,9 @@ const STAFF: Person[] = [
   { name: "Halimah Muhammad", image: "/team/halimah-muhammad.jpg" },
   { name: "Celestina Ibekwe", image: "/team/celestina-ibekwe.jpg" },
   { name: "Paul Anyebe", image: "/team/paul-anyebe.jpeg" },
-  // Photos in, names still coming — name left unset so the card shows
+  // Photo in, name still coming — name left unset so the card shows
   // "Name Coming Soon" instead of guessing.
   { image: "/team/staff-pending-name-1.jpg" },
-  { image: "/team/staff-pending-name-2.jpg" },
 ];
 
 const ADVISORY_BOARD: Person[] = [
