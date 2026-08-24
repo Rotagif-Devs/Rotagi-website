@@ -17,7 +17,6 @@ const COURSES = [
     description: "Learn how to use AI tools to work faster and solve real problems.",
     icon: Brain,
     color: "bg-purple-50 text-purple-600",
-    btnColor: "bg-purple-600 hover:bg-purple-700 text-white border-transparent",
     image: "/cohort-images/artificial-intelligence.jpg",
     available: true,
     applyUrl: "https://forms.cloud.microsoft/pages/responsepage.aspx?id=RVNyegZvkUS5ZdDKnKhkcKG0LwzxGBFOpKARi6tkYdhUNkRLWUtLQ1BRQjlNVTNLNzBUVlgySEo1TSQlQCN0PWcu&route=shorturl",
@@ -28,7 +27,6 @@ const COURSES = [
     description: "Learn how to design eye catching graphics and marketing materials using simple tools.",
     icon: PenTool,
     color: "bg-pink-50 text-pink-600",
-    btnColor: "bg-pink-600 hover:bg-pink-700 text-white border-transparent",
     image: "/cohort-images/canva-training.jpg",
     available: false,
   },
@@ -38,7 +36,6 @@ const COURSES = [
     description: "Learn how to design user friendly digital products, create wireframes, and build clean app and website interfaces.",
     icon: Layout,
     color: "bg-teal-50 text-teal-600",
-    btnColor: "bg-teal-600 hover:bg-teal-700 text-white border-transparent",
     image: "/cohort-images/uiux.jpg",
     available: false,
   },
@@ -48,7 +45,6 @@ const COURSES = [
     description: "Learn how to create professional AI powered videos using modern tools and creative workflows.",
     icon: Video,
     color: "bg-indigo-50 text-indigo-600",
-    btnColor: "bg-indigo-600 hover:bg-indigo-700 text-white border-transparent",
     image: "/cohort-images/ai-video-creation.jpg",
     available: false,
   },
@@ -58,7 +54,6 @@ const COURSES = [
     description: "Learn how to develop websites using modern AI and no code tools.",
     icon: Code,
     color: "bg-blue-50 text-blue-600",
-    btnColor: "bg-blue-600 hover:bg-blue-700 text-white border-transparent",
     image: "/cohort-images/vibe-coding.jpg",
     available: false,
   },
@@ -68,7 +63,6 @@ const COURSES = [
     description: "Learn how to manage products from idea to launch using practical tools.",
     icon: Briefcase,
     color: "bg-orange-50 text-orange-600",
-    btnColor: "bg-orange-600 hover:bg-orange-700 text-white border-transparent",
     image: "/cohort-images/product-management.jpg",
     available: false,
   },
@@ -78,7 +72,6 @@ const COURSES = [
     description: "Learn how to plan and deliver projects using effective methods.",
     icon: CheckSquare,
     color: "bg-green-50 text-green-600",
-    btnColor: "bg-green-600 hover:bg-green-700 text-white border-transparent",
     image: "/cohort-images/project-management.jpg",
     available: false,
   },
@@ -88,7 +81,6 @@ const COURSES = [
     description: "Learn the tools and skills to support businesses remotely.",
     icon: Headset,
     color: "bg-pink-50 text-pink-600",
-    btnColor: "bg-pink-600 hover:bg-pink-700 text-white border-transparent",
     image: "/cohort-images/virtual-assistance.jpg",
     available: false,
   },
@@ -98,7 +90,6 @@ const COURSES = [
     description: "Learn how to create content that attracts, ranks, and converts.",
     icon: Search,
     color: "bg-yellow-50 text-yellow-600",
-    btnColor: "bg-yellow-600 hover:bg-yellow-700 text-white border-transparent",
     image: "/cohort-images/content-marketing.jpg",
     available: false,
   },
@@ -108,7 +99,6 @@ const COURSES = [
     description: "Learn how to lead with confidence, make clear decisions, and motivate others.",
     icon: Star,
     color: "bg-purple-50 text-purple-600",
-    btnColor: "bg-purple-600 hover:bg-purple-700 text-white border-transparent",
     image: "/cohort-images/lead-with-confidence.jpg",
     available: false,
   },
@@ -118,7 +108,6 @@ const COURSES = [
     description: "Learn how to price your products for profit using practical business strategies.",
     icon: DollarSign,
     color: "bg-emerald-50 text-emerald-600",
-    btnColor: "bg-emerald-600 hover:bg-emerald-700 text-white border-transparent",
     image: "/cohort-images/price-for-profit.jpg",
     available: false,
   },
@@ -128,7 +117,6 @@ const COURSES = [
     description: "Learn how to create content, manage pages, grow audiences, and promote brands online.",
     icon: Share2,
     color: "bg-sky-50 text-sky-600",
-    btnColor: "bg-sky-600 hover:bg-sky-700 text-white border-transparent",
     image: "/cohort-images/social-media.jpg",
     available: false,
   }
@@ -188,7 +176,7 @@ export default function CourseGrid() {
                     href={course.applyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-full text-center block py-3.5 rounded-xl font-semibold transition-all duration-300 border shadow-md hover:shadow-lg hover:-translate-y-0.5 ${course.btnColor}`}
+                    className="w-full text-center block py-3.5 rounded-xl font-semibold transition-all duration-300 border border-transparent bg-secondary text-white shadow-md shadow-secondary/20 hover:bg-secondary/90 hover:shadow-lg hover:-translate-y-0.5"
                   >
                     Apply Now
                   </a>
@@ -247,7 +235,7 @@ export default function CourseGrid() {
                         href={course.applyUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`w-full text-center block py-3.5 rounded-xl font-semibold transition-all duration-300 border shadow-md hover:shadow-lg hover:-translate-y-0.5 ${course.btnColor}`}
+                        className="w-full text-center block py-3.5 rounded-xl font-semibold transition-all duration-300 border border-transparent bg-secondary text-white shadow-md shadow-secondary/20 hover:bg-secondary/90 hover:shadow-lg hover:-translate-y-0.5"
                       >
                         Apply Now
                       </a>
