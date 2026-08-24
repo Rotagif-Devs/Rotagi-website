@@ -3,7 +3,7 @@ import { User } from "lucide-react";
 
 type Person = {
   name: string;
-  role: string;
+  role?: string;
   image?: string;
 };
 
@@ -11,6 +11,21 @@ type Person = {
 // carousel) — reused here rather than duplicated with different data.
 const STAFF: Person[] = [
   { name: "Arokoyo Olayemi", role: "Executive Director", image: "/Arokoyo.png" },
+  // Photos in, roles still coming — role left unset so the card shows
+  // "Role Coming Soon" instead of a guessed/wrong title.
+  { name: "Halimah Muhammad", image: "/team/halimah-muhammad.jpg" },
+  { name: "Azeez Akorede", image: "/team/azeez-akorede.png" },
+  { name: "Tosin Adebowale", image: "/team/tosin-adebowale.jpeg" },
+  { name: "Paul Anyebe", image: "/team/paul-anyebe.jpeg" },
+  { name: "Zuliat Salako", image: "/team/zuliat-salako.jpeg" },
+  { name: "Franklin Anyaogu", image: "/team/franklin-anyaogu.jpg" },
+  { name: "Raji Kehinde", image: "/team/raji-kehinde.jpg" },
+  { name: "Patricia Usifo", image: "/team/patricia-usifo.jpeg" },
+  { name: "Celestina Ibekwe", image: "/team/celestina-ibekwe.jpg" },
+  // Ilesanmi Oyindamola, Taiwo Raji, Lasisi Ridwan Akolad, and Dise Elaweremi
+  // are pending better photos — the supplied files were a full-body shot,
+  // two selfies with social-media captions burned in, and a distant wide
+  // shot, none suitable for a professional headshot crop.
 ];
 
 const ADVISORY_BOARD: Person[] = [
@@ -22,7 +37,8 @@ const ADVISORY_BOARD: Person[] = [
 // Reserved, clearly-labeled slots so the page reads as "more team members
 // coming soon" rather than looking incomplete or broken. Swap these out for
 // real Person entries (with a photo) as bios/headshots come in.
-const STAFF_PLACEHOLDER_COUNT = 3;
+// Staff photos are in now — no more blank reserved slots needed.
+const STAFF_PLACEHOLDER_COUNT = 0;
 // Advisory board is complete at 3 members for now — no reserved slots.
 const ADVISORY_PLACEHOLDER_COUNT = 0;
 
@@ -36,7 +52,11 @@ function PersonCard({ person }: { person: Person }) {
       </div>
       <div className="p-5 text-center">
         <h3 className="font-cal-sans text-gray-900 text-lg">{person.name}</h3>
-        <p className="text-secondary text-sm font-semibold mt-1">{person.role}</p>
+        {person.role ? (
+          <p className="text-secondary text-sm font-semibold mt-1">{person.role}</p>
+        ) : (
+          <p className="text-gray-400 text-sm font-semibold italic mt-1">Role Coming Soon</p>
+        )}
       </div>
     </div>
   );
