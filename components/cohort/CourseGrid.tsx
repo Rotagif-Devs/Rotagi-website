@@ -19,7 +19,8 @@ const COURSES = [
     color: "bg-purple-50 text-purple-600",
     btnColor: "bg-purple-600 hover:bg-purple-700 text-white border-transparent",
     image: "/cohort-images/artificial-intelligence.jpg",
-    available: false,
+    available: true,
+    applyUrl: "https://forms.cloud.microsoft/pages/responsepage.aspx?id=RVNyegZvkUS5ZdDKnKhkcKG0LwzxGBFOpKARi6tkYdhUNkRLWUtLQ1BRQjlNVTNLNzBUVlgySEo1TSQlQCN0PWcu&route=shorturl",
   },
   {
     id: "canva-training",
@@ -184,7 +185,7 @@ export default function CourseGrid() {
                 </p>
                 {course.available ? (
                   <a
-                    href="https://forms.office.com/pages/responsepage.aspx?id=RVNyegZvkUS5ZdDKnKhkcKG0LwzxGBFOpKARi6tkYdhUN0lFU0w0V1o1UVkyQjRCRTdYNFY0M0dQTCQlQCN0PWcu&origin=lprLink&route=shorturl"
+                    href={course.applyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`w-full text-center block py-3.5 rounded-xl font-semibold transition-all duration-300 border shadow-md hover:shadow-lg hover:-translate-y-0.5 ${course.btnColor}`}
@@ -243,7 +244,7 @@ export default function CourseGrid() {
                     </p>
                     {course.available ? (
                       <a
-                        href="https://forms.office.com/pages/responsepage.aspx?id=RVNyegZvkUS5ZdDKnKhkcKG0LwzxGBFOpKARi6tkYdhUN0lFU0w0V1o1UVkyQjRCRTdYNFY0M0dQTCQlQCN0PWcu&origin=lprLink&route=shorturl"
+                        href={course.applyUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`w-full text-center block py-3.5 rounded-xl font-semibold transition-all duration-300 border shadow-md hover:shadow-lg hover:-translate-y-0.5 ${course.btnColor}`}
