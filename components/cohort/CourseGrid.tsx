@@ -18,7 +18,7 @@ const COURSES = [
     icon: Brain,
     color: "bg-purple-50 text-purple-600",
     image: "/cohort-images/artificial-intelligence.jpg",
-    available: true,
+    available: false,
     applyUrl: "https://forms.cloud.microsoft/pages/responsepage.aspx?id=RVNyegZvkUS5ZdDKnKhkcKG0LwzxGBFOpKARi6tkYdhUNkRLWUtLQ1BRQjlNVTNLNzBUVlgySEo1TSQlQCN0PWcu&route=shorturl",
   },
   {
