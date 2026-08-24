@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Menu, X, ChevronDown, Heart, HeartHandshake, Handshake } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
@@ -14,7 +14,7 @@ const weAreDropdown = [
     label: "About Us",
     href: "/about",
     description: "Our mission, story, and why we exist",
-    icon: Heart,
+    iconSrc: "/icons/about-us.png",
   },
   // Our Team is still a work in progress (placeholders being filled in) —
   // hidden from the nav for now but the page itself stays reachable directly.
@@ -22,19 +22,19 @@ const weAreDropdown = [
   //   label: "Our Team",
   //   href: "/team",
   //   description: "The people behind ROTAGI",
-  //   icon: Users,
+  //   iconSrc: "/icons/team.png",
   // },
   {
     label: "Volunteer",
     href: "/volunteer",
     description: "Give your time and skills",
-    icon: HeartHandshake,
+    iconSrc: "/icons/volunteer.png",
   },
   {
     label: "Partner",
     href: "/partner",
     description: "Collaborate with us",
-    icon: Handshake,
+    iconSrc: "/icons/partner.png",
   },
 ];
 
@@ -212,7 +212,6 @@ export default function Header() {
                         <div className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-l border-t border-gray-100 bg-white" />
 
                         {item.dropdown.map((sub) => {
-                          const Icon = sub.icon;
                           const active = pathname.startsWith(sub.href);
                           return (
                             <Link
@@ -224,13 +223,13 @@ export default function Header() {
                               }`}
                             >
                               <span
-                                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-colors ${
+                                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary transition-all ${
                                   active
-                                    ? "bg-secondary text-white"
-                                    : "bg-primary text-secondary group-hover/item:bg-secondary group-hover/item:text-white"
+                                    ? "ring-2 ring-secondary"
+                                    : "group-hover/item:ring-2 group-hover/item:ring-secondary group-hover/item:scale-105"
                                 }`}
                               >
-                                <Icon className="h-[18px] w-[18px]" strokeWidth={2} />
+                                <Image src={sub.iconSrc} alt="" width={20} height={20} className="h-[18px] w-[18px] object-contain" />
                               </span>
                               <span className="flex flex-col pt-0.5">
                                 <span
@@ -333,7 +332,6 @@ export default function Header() {
                         >
                           <div className="flex flex-col gap-1 py-2 pl-1">
                             {item.dropdown.map((sub) => {
-                              const Icon = sub.icon;
                               const active = pathname.startsWith(sub.href);
                               return (
                                 <Link
@@ -345,11 +343,11 @@ export default function Header() {
                                   onClick={closeMenu}
                                 >
                                   <span
-                                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${
-                                      active ? "bg-secondary text-white" : "bg-primary text-secondary"
+                                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary ${
+                                      active ? "ring-2 ring-secondary" : ""
                                     }`}
                                   >
-                                    <Icon className="h-4 w-4" strokeWidth={2} />
+                                    <Image src={sub.iconSrc} alt="" width={16} height={16} className="h-4 w-4 object-contain" />
                                   </span>
                                   <span className="text-base font-medium uppercase">{sub.label}</span>
                                 </Link>
