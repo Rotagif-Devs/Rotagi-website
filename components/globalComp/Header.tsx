@@ -223,13 +223,13 @@ export default function Header() {
                               }`}
                             >
                               <span
-                                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary transition-all ${
+                                className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white border transition-all ${
                                   active
-                                    ? "ring-2 ring-secondary"
-                                    : "group-hover/item:ring-2 group-hover/item:ring-secondary group-hover/item:scale-105"
+                                    ? "border-secondary ring-2 ring-secondary/30"
+                                    : "border-gray-100 group-hover/item:border-secondary group-hover/item:ring-2 group-hover/item:ring-secondary/30 group-hover/item:scale-105"
                                 }`}
                               >
-                                <Image src={sub.iconSrc} alt="" width={20} height={20} className="h-[18px] w-[18px] object-contain" />
+                                <Image src={sub.iconSrc} alt="" width={36} height={36} className="h-9 w-9 object-contain" />
                               </span>
                               <span className="flex flex-col pt-0.5">
                                 <span
@@ -343,11 +343,11 @@ export default function Header() {
                                   onClick={closeMenu}
                                 >
                                   <span
-                                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary ${
-                                      active ? "ring-2 ring-secondary" : ""
+                                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white border ${
+                                      active ? "border-secondary ring-2 ring-secondary/30" : "border-gray-100"
                                     }`}
                                   >
-                                    <Image src={sub.iconSrc} alt="" width={16} height={16} className="h-4 w-4 object-contain" />
+                                    <Image src={sub.iconSrc} alt="" width={28} height={28} className="h-7 w-7 object-contain" />
                                   </span>
                                   <span className="text-base font-medium uppercase">{sub.label}</span>
                                 </Link>
