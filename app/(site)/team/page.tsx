@@ -14,18 +14,10 @@ const STAFF: Person[] = [
   // Photos in, roles still coming — role left unset so the card shows
   // "Role Coming Soon" instead of a guessed/wrong title.
   { name: "Halimah Muhammad", image: "/team/halimah-muhammad.jpg" },
-  { name: "Azeez Akorede", image: "/team/azeez-akorede.png" },
-  { name: "Tosin Adebowale", image: "/team/tosin-adebowale.jpeg" },
-  { name: "Paul Anyebe", image: "/team/paul-anyebe.jpeg" },
-  { name: "Zuliat Salako", image: "/team/zuliat-salako.jpeg" },
-  { name: "Franklin Anyaogu", image: "/team/franklin-anyaogu.jpg" },
-  { name: "Raji Kehinde", image: "/team/raji-kehinde.jpg" },
-  { name: "Patricia Usifo", image: "/team/patricia-usifo.jpeg" },
   { name: "Celestina Ibekwe", image: "/team/celestina-ibekwe.jpg" },
-  // Ilesanmi Oyindamola, Taiwo Raji, Lasisi Ridwan Akolad, and Dise Elaweremi
-  // are pending better photos — the supplied files were a full-body shot,
-  // two selfies with social-media captions burned in, and a distant wide
-  // shot, none suitable for a professional headshot crop.
+  // Two more of the originally-shared photos are still pending: the woman
+  // in the African-print top needs a name, and the man in the navy suit's
+  // photo file hasn't been provided yet.
 ];
 
 const ADVISORY_BOARD: Person[] = [
