@@ -2,7 +2,7 @@ import Image from "next/image";
 import { User } from "lucide-react";
 
 type Person = {
-  name: string;
+  name?: string;
   role?: string;
   image?: string;
 };
@@ -15,9 +15,11 @@ const STAFF: Person[] = [
   // "Role Coming Soon" instead of a guessed/wrong title.
   { name: "Halimah Muhammad", image: "/team/halimah-muhammad.jpg" },
   { name: "Celestina Ibekwe", image: "/team/celestina-ibekwe.jpg" },
-  // Two more of the originally-shared photos are still pending: the woman
-  // in the African-print top needs a name, and the man in the navy suit's
-  // photo file hasn't been provided yet.
+  { name: "Paul Anyebe", image: "/team/paul-anyebe.jpeg" },
+  // Photos in, names still coming — name left unset so the card shows
+  // "Name Coming Soon" instead of guessing.
+  { image: "/team/staff-pending-name-1.jpg" },
+  { image: "/team/staff-pending-name-2.jpg" },
 ];
 
 const ADVISORY_BOARD: Person[] = [
@@ -39,11 +41,15 @@ function PersonCard({ person }: { person: Person }) {
     <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
       <div className="relative w-full aspect-square bg-primary">
         {person.image ? (
-          <Image src={person.image} alt={person.name} fill className="object-cover" />
+          <Image src={person.image} alt={person.name || "Team member"} fill className="object-cover" />
         ) : null}
       </div>
       <div className="p-5 text-center">
-        <h3 className="font-cal-sans text-gray-900 text-lg">{person.name}</h3>
+        {person.name ? (
+          <h3 className="font-cal-sans text-gray-900 text-lg">{person.name}</h3>
+        ) : (
+          <h3 className="font-cal-sans text-gray-400 text-lg italic">Name Coming Soon</h3>
+        )}
         {person.role ? (
           <p className="text-secondary text-sm font-semibold mt-1">{person.role}</p>
         ) : (
@@ -95,7 +101,7 @@ export default function TeamPage() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
             {STAFF.map((person) => (
-              <PersonCard key={person.name} person={person} />
+              <PersonCard key={person.name || person.image} person={person} />
             ))}
             {Array.from({ length: STAFF_PLACEHOLDER_COUNT }, (_, i) => (
               <PlaceholderCard key={`staff-placeholder-${i}`} role="Staff" />
