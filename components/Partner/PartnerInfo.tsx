@@ -21,39 +21,39 @@ const PartnerInfo = () => {
         </p>
 
 
-        <div className="relative w-full max-w-4xl flex justify-center items-center gap-4 md:gap-6 pt-6 pb-12">
-          
-      
-          <div className="relative w-[180px] sm:w-[220px] aspect-3/4 rounded-3xl translate-y-6 shrink-0">
+        <div className="relative w-full max-w-4xl flex justify-center items-center gap-3 sm:gap-4 md:gap-6 pt-6 pb-12 px-2">
+
+
+          <div className="relative flex-1 max-w-[110px] sm:w-[180px] sm:max-w-none md:w-[220px] aspect-[3/4] rounded-2xl sm:rounded-3xl sm:translate-y-6 shrink-0">
             <Image
-              src="/FourPeople.png" 
+              src="/FourPeople.png"
               alt="ROTAGI field operations"
               fill
-              sizes="(max-w-640px) 180px, 220px"
+              sizes="(max-width: 640px) 33vw, (max-width: 768px) 180px, 220px"
               className="object-contain"
               priority
             />
           </div>
 
-       
-          <div className="relative w-[180px] sm:w-[220px] aspect-3/4 rounded-3xl transform -translate-y-8 z-10 shrink-0">
+
+          <div className="relative flex-1 max-w-[110px] sm:w-[180px] sm:max-w-none md:w-[220px] aspect-[3/4] rounded-2xl sm:rounded-3xl transform sm:-translate-y-8 z-10 shrink-0">
             <Image
-              src="/WritingGirl.png" 
+              src="/WritingGirl.png"
               alt="Girl writing down notes"
               fill
-              sizes="(max-w-640px) 180px, 220px"
+              sizes="(max-width: 640px) 33vw, (max-width: 768px) 180px, 220px"
               className="object-contain"
               priority
             />
           </div>
 
-      
-          <div className="relative w-[180px] sm:w-[207px] aspect-3/4 rounded-3xl    translate-y-6 shrink-0">
+
+          <div className="relative flex-1 max-w-[110px] sm:w-[180px] sm:max-w-none md:w-[207px] aspect-[3/4] rounded-2xl sm:rounded-3xl sm:translate-y-6 shrink-0">
             <Image
-              src="/KeyBoardgirls.png" 
+              src="/KeyBoardgirls.png"
               alt="Students in AI computer training lab"
               fill
-              sizes="(max-w-640px) 200px, 207px"
+              sizes="(max-width: 640px) 33vw, (max-width: 768px) 200px, 207px"
               className="object-contain"
               priority
             />
