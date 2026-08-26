@@ -172,21 +172,12 @@ export const publicService = {
 
   getBlogPostBySlug: async (slug: string): Promise<BlogPost | undefined> => {
     try {
-      console.log(`[publicService] Fetching blog post by slug: ${slug}`);
       const res = await apiFetch<any>(`/blog/posts/${slug}`);
       const data = ensureObject(res);
-      
-      console.log(`[publicService] API response for ${slug}:`, JSON.stringify(data).substring(0, 200));
-      const post = data ? normalizeBlog(data) : undefined;
-      console.log(`[publicService] Normalized post:`, post ? post.title : 'undefined');
-      return post;
+      return data ? normalizeBlog(data) : undefined;
     } catch (error) {
       console.warn(`[publicService] Failed to fetch post by slug ${slug}:`, error);
-      const posts = await publicService.getBlogPosts();
-      console.log(`[publicService] Fallback: searching in ${posts.length} posts`);
-      const post = posts.find(p => p.slug === slug || (p as any).id === slug || (p as any)._id === slug);
-      console.log(`[publicService] Fallback result:`, post ? post.title : 'not found');
-      return post;
+      return undefined;
     }
   },
 };
