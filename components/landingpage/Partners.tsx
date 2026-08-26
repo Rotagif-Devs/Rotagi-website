@@ -4,38 +4,32 @@ import Button from "@/components/ui/Button";
 import Image from "next/image";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, FreeMode } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
+import "swiper/css/free-mode";
 
-// Only DC Donates was a real transparent PNG; every other logo was a fully
-// opaque JPG with its own baked-in rectangular background, which just hid
-// the card behind it. The `-cutout` files have that background removed —
-// most via chroma-keying off the image's own true corner color, and the one
-// genuine gradient background (Canva) via a whiteness mask instead, since a
-// single flat color-key can't follow a gradient — so only the logo mark
-// shows. `bg` is the card's own solid background; Canva instead gets `bg`
-// (gradient CSS) to actually match its real diagonal teal-to-purple brand
-// background instead of a flat swatch.
-//
-// Note: "Canva" and "Infinityfield" were swapped in the original data
-// (partner5 is actually Infinityfield, partner9 is actually Canva) — fixed
-// here based on the images themselves.
+// These are the partners' real logo files, used exactly as supplied — no
+// cropping, cutout, or background swap. Each is a full-bleed square image
+// with its own real background baked in, so the card just displays it,
+// full-size, with no extra padding/background layer of our own.
 const partnerLogos = [
-  { name: "Selex Engineering", url: "/partner1-cutout.png", bg: "#FFFFFF" },
-  { name: "Ed Tech", url: "/partner2-cutout.png", bg: "#FFFFFF" },
-  { name: "CICN", url: "/partner3-cutout.png", bg: "#FFFFFF" },
-  { name: "Daptem Engineering", url: "/partner4-cutout.png", bg: "#FCF8F5" },
-  { name: "Infinityfield", url: "/partner5-cutout.png", bg: "#06003C" },
-  { name: "Tushiyah", url: "/partner6-cutout.png", bg: "#0B253E" },
-  { name: "Three Lions Group", url: "/partner7-cutout.png", bg: "#2E0D32" },
-  { name: "Slack", url: "/partner8-cutout.png", bg: "#BB0102" },
-  { name: "Canva", url: "/partner9-cutout.png", bg: "linear-gradient(135deg, #12D8B0 0%, #2E8EEA 55%, #7B2FF7 100%)" },
-  { name: "monday.com", url: "/partner10-cutout.png", bg: "#FFFFFF" },
-  { name: "little", url: "/partner11-cutout.png", bg: "#4C174D" },
-  { name: "Make", url: "/partner12-cutout.png", bg: "#FFFFFF" },
-  { name: "DC Donates", url: "/partner13.png", bg: "#000000" },
-  { name: "SkillAddis", url: "/partner14-cutout.png", bg: "#FFFFFF" },
+  { name: "Selex Engineering & Construction", url: "/partner-selex-engineering.png" },
+  { name: "FCT Universal Basic Education Board", url: "/partner-fct-ubeb.png" },
+  { name: "Daptem Engineering", url: "/partner-daptem-engineering.png" },
+  { name: "Infinityfield", url: "/partner-infinityfield.png" },
+  { name: "Tushiyah", url: "/partner-tushiyah.png" },
+  { name: "Three Lions Group", url: "/partner-three-lions-group.png" },
+  { name: "Slack", url: "/partner-slack.png" },
+  { name: "Canva", url: "/partner-canva.png" },
+  { name: "monday.com", url: "/partner-monday.png" },
+  { name: "Make", url: "/partner-make.png" },
+  { name: "DataCamp Donates", url: "/partner-datacamp-donates.png" },
+  { name: "SkillAddis", url: "/partner-skilladdis.png" },
+  { name: "EV World Africa", url: "/partner-ev-world-africa.png" },
+  { name: "Microsoft", url: "/partner-microsoft.png" },
+  // Identity unconfirmed — swap this file/name once known.
+  { name: "Partner", url: "/partner-unknown-y.png" },
 ];
 
 export default function Partners() {
@@ -71,11 +65,15 @@ export default function Partners() {
         {/* Partners Slider (Desktop + Mobile Responsive) */}
         <div className="-mx-6 px-6">
           <Swiper
-            modules={[Autoplay]}
+            modules={[Autoplay, FreeMode]}
+            freeMode={{ enabled: true, momentum: false }}
             autoplay={{
-              delay: 3000,
+              delay: 1,
               disableOnInteraction: false,
+              pauseOnMouseEnter: true,
             }}
+            speed={7000}
+            allowTouchMove={false}
             loop={true}
             spaceBetween={10}
             breakpoints={{
@@ -96,19 +94,13 @@ export default function Partners() {
           >
             {partnerLogos.map((partner, index) => (
               <SwiperSlide key={index}>
-                <div className="flex items-center justify-center h-32 sm:h-36 md:h-40 lg:h-40">
-                  <div
-                    className="flex items-center justify-center w-full h-full max-w-[90%] md:max-w-[220px] rounded-2xl p-4"
-                    style={{ background: partner.bg }}
-                  >
-                    <Image
-                      src={partner.url}
-                      alt={partner.name}
-                      width={250}
-                      height={150}
-                      className="object-contain w-auto h-auto max-h-full max-w-full transition-all duration-300"
-                    />
-                  </div>
+                <div className="relative h-32 sm:h-36 md:h-40 lg:h-40 w-full max-w-[90%] md:max-w-[220px] mx-auto overflow-hidden">
+                  <Image
+                    src={partner.url}
+                    alt={partner.name}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               </SwiperSlide>
             ))}
