@@ -223,7 +223,7 @@ export default function Header() {
                               }`}
                             >
                               <span
-                                className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white border transition-all ${
+                                className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-white border transition-all ${
                                   active
                                     ? "border-secondary ring-2 ring-secondary/30"
                                     : "border-gray-100 group-hover/item:border-secondary group-hover/item:ring-2 group-hover/item:ring-secondary/30 group-hover/item:scale-105"
@@ -232,9 +232,9 @@ export default function Header() {
                                 <Image
                                   src={sub.iconSrc}
                                   alt=""
-                                  width={40}
-                                  height={40}
-                                  className="h-10 w-10 object-contain"
+                                  width={50}
+                                  height={50}
+                                  className="h-[50px] w-[50px] object-contain"
                                 />
                               </span>
                               <span className="flex flex-col pt-0.5">
@@ -349,16 +349,16 @@ export default function Header() {
                                   onClick={closeMenu}
                                 >
                                   <span
-                                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white border ${
+                                    className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-white border ${
                                       active ? "border-secondary ring-2 ring-secondary/30" : "border-gray-100"
                                     }`}
                                   >
                                     <Image
                                       src={sub.iconSrc}
                                       alt=""
-                                      width={30}
-                                      height={30}
-                                      className="h-[30px] w-[30px] object-contain"
+                                      width={40}
+                                      height={40}
+                                      className="h-10 w-10 object-contain"
                                     />
                                   </span>
                                   <span className="text-base font-medium uppercase">{sub.label}</span>
