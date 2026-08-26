@@ -44,7 +44,7 @@ export const blogPosts: BlogPost[] = [
     slug: "she-empower-2026-highlights",
     title: "SHE Empower 2026 Highlights",
     description: "Recap of our annual conference, featuring workshops, mentorship sessions, and inspiring talks.",
-    category: "Event",
+    category: "News",
     status: "published",
     date: "January 2026",
     image: "/blog-2.jpg",

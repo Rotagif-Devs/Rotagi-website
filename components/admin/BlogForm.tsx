@@ -14,16 +14,7 @@ const ReactQuill = dynamic(() => import("react-quill-new"), {
   loading: () => <div className="h-64 bg-gray-100 animate-pulse rounded-lg" />,
 });
 
-const AUTHOR_ROLES = [
-  "Editorial",
-  "Editor",
-  "Program Lead",
-  "Education Dept",
-  "Operations",
-  "Executive Director",
-  "Advisory Board",
-  "Guest Contributor",
-];
+const AUTHOR_ROLES = ["Editor", "Executive Director", "Advisory Board", "Operations"];
 
 interface BlogFormProps {
   initialData?: BlogPost;
@@ -188,7 +179,6 @@ export default function BlogForm({ initialData, onSubmit, onCancel, isLoading }:
                 >
                   <option value="Success Story">Success Story</option>
                   <option value="Resource">Resource</option>
-                  <option value="Event">Event</option>
                   <option value="News">News</option>
                 </select>
               </div>
