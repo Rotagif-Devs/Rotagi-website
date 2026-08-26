@@ -74,8 +74,8 @@ export const adminService = {
   },
 
   getBlogById: async (id: string): Promise<BlogPost | undefined> => {
-    const blogs = await adminService.getBlogs();
-    return blogs.find((b: any) => b.id === id);
+    const res = await apiFetch<ApiResponse<{ post: any }>>(`/admin/blog/posts/${id}`);
+    return res.data?.post ? normalizeBlog(res.data.post) : undefined;
   },
 
   saveBlog: async (blog: Partial<BlogPost> & { id?: string }): Promise<BlogPost> => {
