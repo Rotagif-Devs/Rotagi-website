@@ -3,12 +3,6 @@
 import Button from "@/components/ui/Button";
 import Image from "next/image";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, FreeMode } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/autoplay";
-import "swiper/css/free-mode";
-
 // These are the partners' real logo files, used exactly as supplied — no
 // cropping, cutout, or background swap. Each is a full-bleed square image
 // with its own real background baked in, so the card just displays it,
@@ -62,49 +56,28 @@ export default function Partners() {
           </div>
         </div>
 
-        {/* Partners Slider (Desktop + Mobile Responsive) */}
-        <div className="-mx-6 px-6">
-          <Swiper
-            modules={[Autoplay, FreeMode]}
-            freeMode={{ enabled: true, momentum: false }}
-            autoplay={{
-              delay: 1,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true,
-            }}
-            speed={7000}
-            allowTouchMove={false}
-            loop={true}
-            spaceBetween={10}
-            breakpoints={{
-              320: {
-                slidesPerView: 2,
-                spaceBetween: 10,
-              },
-              640: {
-                slidesPerView: 3,
-                spaceBetween: 15,
-              },
-              1024: {
-                slidesPerView: 4,
-                spaceBetween: 20,
-              },
-            }}
-            className="pb-4"
-          >
-            {partnerLogos.map((partner, index) => (
-              <SwiperSlide key={index}>
-                <div className="relative h-32 sm:h-36 md:h-40 lg:h-40 w-full max-w-[90%] md:max-w-[220px] mx-auto overflow-hidden">
-                  <Image
-                    src={partner.url}
-                    alt={partner.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </SwiperSlide>
+        {/* Partners Marquee — pure CSS animation (not Swiper autoplay) so it
+            scrolls continuously with zero pause/snap between logos. The
+            track is the logo list duplicated once and shifted by exactly
+            -50%, which is what makes the loop seamless regardless of item
+            width or screen size. */}
+        <div className="-mx-6 overflow-hidden">
+          <div className="partners-marquee-content">
+            {[...partnerLogos, ...partnerLogos].map((partner, index) => (
+              <div
+                key={index}
+                aria-hidden={index >= partnerLogos.length}
+                className="relative h-32 sm:h-36 md:h-40 w-[150px] sm:w-[190px] md:w-[220px] shrink-0 mr-[10px] sm:mr-[15px] md:mr-[20px] overflow-hidden"
+              >
+                <Image
+                  src={partner.url}
+                  alt={partner.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
             ))}
-          </Swiper>
+          </div>
         </div>
 
         {/* Mobile Button */}

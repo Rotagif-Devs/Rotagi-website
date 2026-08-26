@@ -78,6 +78,13 @@ body {
   padding-right: 2rem;
 }
 
+.partners-marquee-content {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+  will-change: transform;
+}
+
 
 @layer base {
   h1,
