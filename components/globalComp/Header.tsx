@@ -10,13 +10,40 @@ import { usePathname } from "next/navigation";
 import React from "react";
 
 const weAreDropdown = [
-  { label: "About Us", href: "/about" },
+  {
+    label: "About Us",
+    href: "/about",
+    description: "Our mission, story, and why we exist",
+    iconSrc: "/icons/about-us.png",
+  },
   // Our Team is still a work in progress (placeholders being filled in) —
   // hidden from the nav for now but the page itself stays reachable directly.
-  // { label: "Our Team", href: "/team" },
-  { label: "Volunteer", href: "/volunteer" },
-  { label: "Partner", href: "/partner" },
+  // {
+  //   label: "Our Team",
+  //   href: "/team",
+  //   description: "The people behind ROTAGI",
+  //   iconSrc: "/icons/team.png",
+  // },
+  {
+    label: "Volunteer",
+    href: "/volunteer",
+    description: "Give your time and skills",
+    iconSrc: "/icons/volunteer.png",
+  },
+  {
+    label: "Partner",
+    href: "/partner",
+    description: "Collaborate with us",
+    iconSrc: "/icons/partner.png",
+  },
 ];
+
+// These icon files are thin pink line-art PNGs, not currentColor-able SVGs,
+// so "bolder" can't come from a stroke-width utility — this stacks the same
+// silhouette as 4 drop-shadows offset in each direction, which thickens
+// every edge by ~0.75px and reads as a heavier weight.
+const boldIconFilter =
+  "drop-shadow(0.75px 0 0 #d62d88) drop-shadow(-0.75px 0 0 #d62d88) drop-shadow(0 0.75px 0 #d62d88) drop-shadow(0 -0.75px 0 #d62d88)";
 
 const navItems = [
   { label: "Who We Are", dropdown: weAreDropdown },
@@ -186,7 +213,7 @@ export default function Header() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 8, scale: 0.98 }}
                         transition={{ duration: 0.15, ease: "easeOut" }}
-                        className="absolute left-1/2 top-full z-10 mt-4 w-56 -translate-x-1/2 overflow-hidden rounded-2xl border border-gray-100 bg-white p-2 shadow-2xl shadow-black/10"
+                        className="absolute left-1/2 top-full z-10 mt-4 w-80 -translate-x-1/2 overflow-hidden rounded-3xl border border-gray-100 bg-white p-2 shadow-2xl shadow-black/10"
                       >
                         {/* Beak pointing back to the trigger */}
                         <div className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-l border-t border-gray-100 bg-white" />
@@ -198,11 +225,38 @@ export default function Header() {
                               key={sub.href}
                               href={sub.href}
                               onClick={() => setIsWeAreOpen(false)}
-                              className={`block rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-wide transition-colors ${
-                                active ? "bg-primary text-secondary" : "text-gray-900 hover:bg-primary/60"
+                              className={`group/item relative flex items-start gap-3.5 rounded-2xl px-3.5 py-3 transition-colors ${
+                                active ? "bg-primary" : "hover:bg-primary/60"
                               }`}
                             >
-                              {sub.label}
+                              <span
+                                className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white border transition-all ${
+                                  active
+                                    ? "border-secondary ring-2 ring-secondary/30"
+                                    : "border-gray-100 group-hover/item:border-secondary group-hover/item:ring-2 group-hover/item:ring-secondary/30 group-hover/item:scale-105"
+                                }`}
+                              >
+                                <Image
+                                  src={sub.iconSrc}
+                                  alt=""
+                                  width={40}
+                                  height={40}
+                                  className="h-10 w-10 object-contain"
+                                  style={{ filter: boldIconFilter }}
+                                />
+                              </span>
+                              <span className="flex flex-col pt-0.5">
+                                <span
+                                  className={`text-sm font-semibold uppercase tracking-wide ${
+                                    active ? "text-secondary" : "text-gray-900"
+                                  }`}
+                                >
+                                  {sub.label}
+                                </span>
+                                <span className="mt-0.5 text-xs leading-snug text-gray-500">
+                                  {sub.description}
+                                </span>
+                              </span>
                             </Link>
                           );
                         })}
@@ -297,12 +351,26 @@ export default function Header() {
                                 <Link
                                   key={sub.href}
                                   href={sub.href}
-                                  className={`rounded-xl px-3 py-2.5 text-base font-medium uppercase transition-colors ${
+                                  className={`flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors ${
                                     active ? "bg-primary text-secondary" : "text-gray-600 hover:bg-primary/60"
                                   }`}
                                   onClick={closeMenu}
                                 >
-                                  {sub.label}
+                                  <span
+                                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white border ${
+                                      active ? "border-secondary ring-2 ring-secondary/30" : "border-gray-100"
+                                    }`}
+                                  >
+                                    <Image
+                                      src={sub.iconSrc}
+                                      alt=""
+                                      width={30}
+                                      height={30}
+                                      className="h-[30px] w-[30px] object-contain"
+                                      style={{ filter: boldIconFilter }}
+                                    />
+                                  </span>
+                                  <span className="text-base font-medium uppercase">{sub.label}</span>
                                 </Link>
                               );
                             })}
