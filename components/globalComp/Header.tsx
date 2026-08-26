@@ -38,13 +38,6 @@ const weAreDropdown = [
   },
 ];
 
-// These icon files are thin pink line-art PNGs, not currentColor-able SVGs,
-// so "bolder" can't come from a stroke-width utility — this stacks the same
-// silhouette as 4 drop-shadows offset in each direction, which thickens
-// every edge by ~0.75px and reads as a heavier weight.
-const boldIconFilter =
-  "drop-shadow(0.75px 0 0 #d62d88) drop-shadow(-0.75px 0 0 #d62d88) drop-shadow(0 0.75px 0 #d62d88) drop-shadow(0 -0.75px 0 #d62d88)";
-
 const navItems = [
   { label: "Who We Are", dropdown: weAreDropdown },
   { label: "Programs", href: "/programs" },
@@ -242,7 +235,6 @@ export default function Header() {
                                   width={40}
                                   height={40}
                                   className="h-10 w-10 object-contain"
-                                  style={{ filter: boldIconFilter }}
                                 />
                               </span>
                               <span className="flex flex-col pt-0.5">
@@ -367,7 +359,6 @@ export default function Header() {
                                       width={30}
                                       height={30}
                                       className="h-[30px] w-[30px] object-contain"
-                                      style={{ filter: boldIconFilter }}
                                     />
                                   </span>
                                   <span className="text-base font-medium uppercase">{sub.label}</span>
