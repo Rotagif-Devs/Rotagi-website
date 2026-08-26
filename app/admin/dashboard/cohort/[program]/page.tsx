@@ -163,7 +163,9 @@ function SettingsTab({ program }: { program: string }) {
         trackName: trackName.trim(),
         trackMode: trackMode.trim(),
         totalWeeks,
-        currentWeek: Math.min(currentWeek, totalWeeks),
+        // Allowed up to totalWeeks + 1 — that extra value is the "Completed"
+        // option in the select above, not a stray week number.
+        currentWeek: Math.min(currentWeek, totalWeeks + 1),
         liveClassLink: liveClassLink.trim(),
         liveClassSchedule: liveClassSchedule.trim(),
         missedClassLink: missedClassLink.trim(),
@@ -257,6 +259,9 @@ function SettingsTab({ program }: { program: string }) {
                 onChange={(e) => {
                   const next = Math.max(1, Math.min(52, Number(e.target.value) || 1));
                   setTotalWeeks(next);
+                  // Editing total weeks is a distinct action from marking the
+                  // cohort complete, so a "Completed" selection here resets —
+                  // otherwise a longer program could load already "finished".
                   setCurrentWeek((cw) => Math.min(cw, next));
                 }}
                 className="w-full p-3 border border-gray-200 rounded-xl bg-white outline-none focus:border-primary"
@@ -274,6 +279,10 @@ function SettingsTab({ program }: { program: string }) {
                     Week {w}
                   </option>
                 ))}
+                {/* One past the last week is what makes the final week's card
+                    read "Completed" instead of being permanently stuck on
+                    "Current Week" — see weekStatusLabel() in the learner portal. */}
+                <option value={totalWeeks + 1}>Completed</option>
               </select>
             </div>
           </div>
