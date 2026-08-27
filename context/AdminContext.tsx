@@ -8,10 +8,19 @@ import { setRefreshToken, clearTokens } from "@/lib/token.service";
 
 interface AdminUser {
   email: string;
-  role: string;
+  firstName?: string;
+  lastName?: string;
+  roles: string[];
   lastLogin?: string;
   token?: string;
 }
+
+// Content Manager sees only Blog/Events (+ their own stats); Cohort Manager
+// sees only the Cohort section. Anything without 'admin' in roles is one of
+// these restricted staff accounts — see src/constants/roles.js on the
+// backend for the canonical role list this mirrors.
+export const CONTENT_MANAGER = "content_manager";
+export const COHORT_MANAGER = "cohort_manager";
 
 interface AdminContextType {
   user: AdminUser | null;
@@ -92,10 +101,10 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
           }
           
           // Sync user state with stored token just in case
-          setUser({ ...parsedUser, token });
+          setUser({ ...parsedUser, roles: parsedUser.roles || ["admin"], token });
         } else if (token && !savedUser) {
           // Fallback if token exists but user object is missing
-          setUser({ email: "Admin", role: "admin", token, lastLogin: new Date().toISOString() });
+          setUser({ email: "Admin", roles: ["admin"], token, lastLogin: new Date().toISOString() });
         }
       } catch (error) {
         console.error("Failed to parse admin session:", error);
@@ -134,11 +143,16 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
       
       const accessToken = response.data?.accessToken || (response as any).accessToken;
       const refreshToken = response.data?.refreshToken || (response as any).refreshToken;
+      const responseUser = response.data?.user || (response as any).user;
 
       if (accessToken) {
         const adminUser: AdminUser = {
           email,
-          role: "admin",
+          firstName: responseUser?.firstName,
+          lastName: responseUser?.lastName,
+          // Fall back to admin only if the backend genuinely didn't send
+          // roles — never silently downgrade a real restricted role to admin.
+          roles: responseUser?.roles?.length ? responseUser.roles : ["admin"],
           lastLogin: new Date().toISOString(),
           token: accessToken
         };

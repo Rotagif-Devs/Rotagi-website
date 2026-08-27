@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { useAdmin } from "@/context/AdminContext";
+import { useAdmin, CONTENT_MANAGER, COHORT_MANAGER } from "@/context/AdminContext";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import {
@@ -14,6 +14,7 @@ import {
   Menu,
   X,
   Users,
+  UserCog,
 } from "lucide-react";
 import Button from "@/components/ui/Button";
 
@@ -47,6 +48,43 @@ export default function AdminDashboardLayout({
     }
   }, [isAuthenticated, isLoading, router]);
 
+  // Belt-and-suspenders: the backend is the real security boundary (every
+  // restricted route 403s a role that shouldn't be there), but a Content/
+  // Cohort Manager landing on a page outside their scope — e.g. a stale
+  // bookmark, or typing the URL directly — should bounce to their own
+  // dashboard instead of sitting on a page that'll just error on every fetch.
+  useEffect(() => {
+    if (isLoading || !user) return;
+    const roles = user.roles || [];
+    if (roles.includes("admin")) return;
+
+    const contentOnlyPaths = ["/admin/dashboard/blog", "/admin/dashboard/events"];
+    const cohortOnlyPaths = ["/admin/dashboard/cohort"];
+    const adminOnlyPaths = ["/admin/dashboard/team"];
+
+    const onContentPage = contentOnlyPaths.some((p) => pathname.startsWith(p));
+    const onCohortPage = cohortOnlyPaths.some((p) => pathname.startsWith(p));
+    const onAdminOnlyPage = adminOnlyPaths.some((p) => pathname.startsWith(p));
+
+    // A Cohort Manager has nothing to see on the shared dashboard home (it's
+    // built around blog/event stats they can't fetch) — send them straight
+    // to the one section they actually have.
+    if (pathname === "/admin/dashboard" && roles.includes(COHORT_MANAGER) && !roles.includes(CONTENT_MANAGER)) {
+      router.push("/admin/dashboard/cohort");
+      return;
+    }
+
+    const allowed =
+      pathname === "/admin/dashboard" ||
+      (onContentPage && roles.includes(CONTENT_MANAGER)) ||
+      (onCohortPage && roles.includes(COHORT_MANAGER)) ||
+      (!onContentPage && !onCohortPage && !onAdminOnlyPage);
+
+    if (!allowed) {
+      router.push("/admin/dashboard");
+    }
+  }, [pathname, user, isLoading, router]);
+
   useEffect(() => {
     if (isMobile) {
       setIsSidebarOpen(false);
@@ -63,12 +101,21 @@ export default function AdminDashboardLayout({
 
   if (!isAuthenticated) return null;
 
+  const roles = user?.roles || [];
+  const isFullAdmin = roles.includes("admin");
+  const canSeeContent = isFullAdmin || roles.includes(CONTENT_MANAGER);
+  const canSeeCohort = isFullAdmin || roles.includes(COHORT_MANAGER);
+
+  // A restricted staff account only ever sees the corner of the dashboard
+  // their role covers — a full admin sees everything, including Team
+  // (creating/managing those restricted accounts in the first place).
   const navItems = [
-    { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
-    { name: "Blogs", href: "/admin/dashboard/blog", icon: FileText },
-    { name: "Events", href: "/admin/dashboard/events", icon: Calendar },
-    { name: "Cohort", href: "/admin/dashboard/cohort", icon: Users },
-  ];
+    { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard, show: true },
+    { name: "Blogs", href: "/admin/dashboard/blog", icon: FileText, show: canSeeContent },
+    { name: "Events", href: "/admin/dashboard/events", icon: Calendar, show: canSeeContent },
+    { name: "Cohort", href: "/admin/dashboard/cohort", icon: Users, show: canSeeCohort },
+    { name: "Team", href: "/admin/dashboard/team", icon: UserCog, show: isFullAdmin },
+  ].filter((item) => item.show);
 
   return (
     <div className="min-h-screen bg-[#fafafa] flex font-outfit relative">
@@ -161,7 +208,7 @@ export default function AdminDashboardLayout({
               className={`flex items-center gap-4 ${!isSidebarOpen && "justify-center"}`}
             >
               <div className="w-11 h-11 rounded-full bg-secondary/10 border border-secondary/20 flex items-center justify-center shrink-0 overflow-hidden">
-                {user?.role === "admin" ? (
+                {isFullAdmin ? (
                   <img
                     src="https://i.pravatar.cc/150?u=admin"
                     alt="Admin"
@@ -174,7 +221,7 @@ export default function AdminDashboardLayout({
               {isSidebarOpen && (
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-bold text-white truncate font-outfit">
-                    ADMIN
+                    {isFullAdmin ? "ADMIN" : roles.includes(CONTENT_MANAGER) ? "CONTENT MANAGER" : "COHORT MANAGER"}
                   </p>
                   <p className="text-[11px] text-gray-500 truncate lowercase font-medium">
                     {user?.email}

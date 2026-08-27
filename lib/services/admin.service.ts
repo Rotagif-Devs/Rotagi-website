@@ -9,6 +9,19 @@ export type AdminStats = {
   uniqueReach: { count: number; growthPct: number | null };
 };
 
+export type StaffRole = "content_manager" | "cohort_manager";
+
+export type StaffUser = {
+  _id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  roles: string[];
+  status: "active" | "disabled" | "pending";
+  createdAt: string;
+  lastLoginAt?: string;
+};
+
 const ensureImageUrl = (url: string | undefined): string => {
   if (!url) return "";
   if (url.startsWith("http") || url.startsWith("data:")) return url;
@@ -196,9 +209,51 @@ export const adminService = {
     return res.data!;
   },
 
-  // Dashboard Stats
+  // Dashboard Stats — org-wide, admin only.
   getStats: async (): Promise<AdminStats> => {
     const res = await apiFetch<ApiResponse<AdminStats>>("/admin/cms/stats");
     return res.data!;
+  },
+
+  // Same shape as getStats, but scoped to the caller's own posts/events —
+  // what a Content Manager sees instead of org-wide numbers.
+  getMyStats: async (): Promise<AdminStats> => {
+    const res = await apiFetch<ApiResponse<AdminStats>>("/admin/cms/my-stats");
+    return res.data!;
+  },
+
+  // Restricted staff accounts (Content Manager / Cohort Manager) — admin only.
+  getStaff: async (): Promise<StaffUser[]> => {
+    const res = await apiFetch<ApiResponse<{ users: StaffUser[] }>>("/admin/staff");
+    return res.data?.users || [];
+  },
+
+  createStaff: async (payload: {
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+    role: StaffRole;
+  }): Promise<StaffUser> => {
+    const res = await apiFetch<ApiResponse<{ user: StaffUser }>>("/admin/staff", {
+      method: "POST",
+      body: payload,
+    });
+    return res.data!.user;
+  },
+
+  updateStaff: async (
+    id: string,
+    payload: { role?: StaffRole; status?: "active" | "disabled" },
+  ): Promise<StaffUser> => {
+    const res = await apiFetch<ApiResponse<{ user: StaffUser }>>(`/admin/staff/${id}`, {
+      method: "PATCH",
+      body: payload,
+    });
+    return res.data!.user;
+  },
+
+  deleteStaff: async (id: string): Promise<void> => {
+    await apiFetch<ApiResponse>(`/admin/staff/${id}`, { method: "DELETE" });
   },
 };

@@ -9,7 +9,10 @@ import { events as EventType } from "@/types/event";
 import Button from "@/components/ui/Button";
 import { ChevronRight } from "lucide-react";
 import ActionMenu from "@/components/admin/ActionMenu";
+import { useAdmin } from "@/context/AdminContext";
 export default function AdminDashboardPage() {
+  const { user } = useAdmin();
+  const isFullAdmin = (user?.roles || []).includes("admin");
   const [analytics, setAnalytics] = useState<AdminStats | null>(null);
   const [recentBlogs, setRecentBlogs] = useState<BlogPost[]>([]);
   const [recentEvents, setRecentEvents] = useState<EventType[]>([]);
@@ -18,10 +21,15 @@ export default function AdminDashboardPage() {
   const loadDashboardData = async () => {
     setIsLoading(true);
     try {
+      // A Content Manager's list/edit calls already come back scoped to
+      // their own posts (the backend filters by authorId/createdBy for
+      // that role), so this table naturally shows only their work too —
+      // the only thing that needs a different endpoint is the stats card,
+      // since /admin/cms/stats is org-wide and 403s a non-admin.
       const [blogs, events, stats] = await Promise.all([
         adminService.getBlogs({ limit: 5 }),
         adminService.getEvents({ limit: 5 }),
-        adminService.getStats(),
+        isFullAdmin ? adminService.getStats() : adminService.getMyStats(),
       ]);
 
       setRecentBlogs(blogs);
@@ -36,7 +44,8 @@ export default function AdminDashboardPage() {
 
   useEffect(() => {
     loadDashboardData();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isFullAdmin]);
 
   const handleDeleteBlog = async (id: string) => {
     if (confirm("Are you sure you want to delete this blog post?")) {
@@ -109,10 +118,12 @@ export default function AdminDashboardPage() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
           <h1 className="text-3xl sm:text-4xl font-cal-sans text-black tracking-tight leading-tight">
-            Intelligence Overview
+            {isFullAdmin ? "Intelligence Overview" : "My Dashboard"}
           </h1>
           <p className="text-gray-500 mt-1 sm:mt-2 font-medium tracking-wide text-sm sm:text-base">
-            Syncing your digital ecosystem in real-time.
+            {isFullAdmin
+              ? "Syncing your digital ecosystem in real-time."
+              : "Your own posts and events, at a glance."}
           </p>
         </div>
         <div className="flex flex-wrap gap-4">
