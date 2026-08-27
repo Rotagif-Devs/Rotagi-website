@@ -69,7 +69,7 @@ export default function Partners() {
               <div
                 key={index}
                 aria-hidden={index >= partnerLogos.length}
-                className="relative h-11 sm:h-14 md:h-16 w-[64px] sm:w-[78px] md:w-[92px] shrink-0 mr-[10px] sm:mr-[15px] md:mr-[20px] overflow-hidden"
+                className="relative h-16 sm:h-20 md:h-24 w-[96px] sm:w-[116px] md:w-[136px] shrink-0 mr-[10px] sm:mr-[15px] md:mr-[20px] overflow-hidden"
               >
                 <Image
                   src={partner.url}
