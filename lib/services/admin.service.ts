@@ -6,6 +6,7 @@ import { ApiResponse } from "./auth.service";
 export type AdminStats = {
   myBlogs: { count: number; deltaWeek: number };
   myEvents: { count: number; deltaWeek: number; upcomingCount: number };
+  allPosts?: { count: number };
   uniqueReach: { count: number; growthPct: number | null };
 };
 
@@ -79,11 +80,23 @@ const ensureArray = (data: any): any[] => {
 
 export const adminService = {
   // Blog operations
-  getBlogs: async (params?: { status?: string; limit?: number; offset?: number }): Promise<BlogPost[]> => {
+  getBlogs: async (params?: { status?: string; limit?: number; offset?: number; scope?: "own" | "all" }): Promise<BlogPost[]> => {
     const query = new URLSearchParams(params as any).toString();
     const res = await apiFetch<ApiResponse<any>>(`/admin/blog/posts${query ? `?${query}` : ""}`);
     const data = ensureArray(res.data);
     return data.map(normalizeBlog);
+  },
+
+  // Same as getBlogs, but also returns the total count for pagination —
+  // used by the dashboard's team-wide "Recent Transmissions" list.
+  getBlogsPaged: async (
+    params?: { status?: string; limit?: number; offset?: number; scope?: "own" | "all" },
+  ): Promise<{ items: BlogPost[]; total: number }> => {
+    const query = new URLSearchParams(params as any).toString();
+    const res = await apiFetch<ApiResponse<any>>(`/admin/blog/posts${query ? `?${query}` : ""}`);
+    const items = ensureArray(res.data).map(normalizeBlog);
+    const total = typeof res.data?.total === "number" ? res.data.total : items.length;
+    return { items, total };
   },
 
   getBlogById: async (id: string): Promise<BlogPost | undefined> => {
@@ -133,11 +146,23 @@ export const adminService = {
   },
 
   // Event operations
-  getEvents: async (params?: { q?: string; limit?: number; offset?: number }): Promise<EventType[]> => {
+  getEvents: async (params?: { q?: string; limit?: number; offset?: number; scope?: "own" | "all" }): Promise<EventType[]> => {
     const query = new URLSearchParams(params as any).toString();
     const res = await apiFetch<ApiResponse<any>>(`/admin/events${query ? `?${query}` : ""}`);
     const data = ensureArray(res.data);
     return data.map(normalizeEvent);
+  },
+
+  // Same as getEvents, but also returns the total count for pagination —
+  // used by the dashboard's team-wide "Recent Transmissions" list.
+  getEventsPaged: async (
+    params?: { q?: string; limit?: number; offset?: number; scope?: "own" | "all" },
+  ): Promise<{ items: EventType[]; total: number }> => {
+    const query = new URLSearchParams(params as any).toString();
+    const res = await apiFetch<ApiResponse<any>>(`/admin/events${query ? `?${query}` : ""}`);
+    const items = ensureArray(res.data).map(normalizeEvent);
+    const total = typeof res.data?.total === "number" ? res.data.total : items.length;
+    return { items, total };
   },
 
   getEventBySlug: async (slug: string): Promise<EventType | undefined> => {

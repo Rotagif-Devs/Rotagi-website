@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Folder, ArrowRight } from "lucide-react";
+import { Folder, ArrowRight, Layers, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { adminService, AdminStats } from "@/lib/services/admin.service";
 import { BlogPost } from "@/types/blog";
@@ -17,18 +17,21 @@ export default function AdminDashboardPage() {
   const [recentBlogs, setRecentBlogs] = useState<BlogPost[]>([]);
   const [recentEvents, setRecentEvents] = useState<EventType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const PAGE_SIZE = 8;
 
   const loadDashboardData = async () => {
     setIsLoading(true);
     try {
-      // A Content Manager's list/edit calls already come back scoped to
-      // their own posts (the backend filters by authorId/createdBy for
-      // that role), so this table naturally shows only their work too —
-      // the only thing that needs a different endpoint is the stats card,
-      // since /admin/cms/stats is org-wide and 403s a non-admin.
+      // Recent Transmissions is meant to show everyone's posts — a Content
+      // Manager's own list/edit views stay scoped to their own work, but
+      // scope: "all" opts this one widget out of that so the whole team can
+      // see what's been posted (and what hasn't) without duplicating effort.
+      // The stats cards need a different endpoint entirely, since
+      // /admin/cms/stats is org-wide and 403s a non-admin.
       const [blogs, events, stats] = await Promise.all([
-        adminService.getBlogs({ limit: 5 }),
-        adminService.getEvents({ limit: 5 }),
+        adminService.getBlogs({ limit: 50, scope: "all" }),
+        adminService.getEvents({ limit: 50, scope: "all" }),
         isFullAdmin ? adminService.getStats() : adminService.getMyStats(),
       ]);
 
@@ -71,7 +74,7 @@ export default function AdminDashboardPage() {
     onDelete: () => void;
   };
 
-  const recentTransmissions: Transmission[] = [
+  const allTransmissions: Transmission[] = [
     ...recentBlogs.map((item) => ({
       id: item.id,
       title: item.title,
@@ -90,9 +93,14 @@ export default function AdminDashboardPage() {
       editUrl: `/admin/dashboard/events/${item.slug}/edit`,
       onDelete: () => handleDeleteEvent(item.id || item.slug),
     })),
-  ]
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 8);
+  ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  const totalPages = Math.max(1, Math.ceil(allTransmissions.length / PAGE_SIZE));
+  const currentPage = Math.min(page, totalPages);
+  const recentTransmissions = allTransmissions.slice(
+    (currentPage - 1) * PAGE_SIZE,
+    currentPage * PAGE_SIZE,
+  );
 
   const cards = [
     {
@@ -111,6 +119,21 @@ export default function AdminDashboardPage() {
       color: "text-secondary bg-secondary/5",
       href: "/admin/dashboard/events",
     },
+    // Org-wide total, so a Content Manager can tell their own output apart
+    // from the whole team's — full admins already see org totals via the
+    // two cards above, so this would just duplicate "My Blogs"/"My Events".
+    ...(!isFullAdmin && analytics?.allPosts
+      ? [
+          {
+            name: "All Posts",
+            value: analytics.allPosts.count,
+            subValue: "team-wide",
+            icon: Layers,
+            color: "text-gray-600 bg-gray-100",
+            href: "/admin/dashboard/blog",
+          },
+        ]
+      : []),
   ];
 
   return (
@@ -152,7 +175,7 @@ export default function AdminDashboardPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {cards.map((card, idx) => (
           <div
             key={card.name}
@@ -177,7 +200,13 @@ export default function AdminDashboardPage() {
                     {card.value < 10 ? `0${card.value}` : card.value}
                   </p>
                   <div className="mb-1">
-                    <span className="text-[11px] font-black text-green-600 uppercase tracking-widest bg-[#E8F5E9] px-3 py-1.5 rounded-full border border-green-100/50">
+                    <span
+                      className={
+                        card.name === "All Posts"
+                          ? "text-[11px] font-black text-gray-500 uppercase tracking-widest bg-gray-100 px-3 py-1.5 rounded-full border border-gray-200"
+                          : "text-[11px] font-black text-green-600 uppercase tracking-widest bg-[#E8F5E9] px-3 py-1.5 rounded-full border border-green-100/50"
+                      }
+                    >
                       {card.subValue}
                     </span>
                   </div>
@@ -192,7 +221,14 @@ export default function AdminDashboardPage() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
           {/* Header Section */}
           <div className="flex items-center justify-between px-8 py-6">
-            <h2 className="text-xl text-gray-900">Recent Transmissions</h2>
+            <div>
+              <h2 className="text-xl text-gray-900">Recent Transmissions</h2>
+              {!isFullAdmin && (
+                <p className="text-xs text-gray-400 mt-1">
+                  Everyone&apos;s posts and events — so you can see what&apos;s already up.
+                </p>
+              )}
+            </div>
             <Link
               href="/admin/dashboard/blog"
               className="text-xs font-black text-secondary uppercase tracking-widest flex items-center gap-2 group"
@@ -219,12 +255,16 @@ export default function AdminDashboardPage() {
                   <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">
                     Category
                   </th>
-                  <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">
+                  <th
+                    className={`px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider ${!isFullAdmin ? "rounded-r-lg" : ""}`}
+                  >
                     Status
                   </th>
-                  <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider rounded-r-lg text-right">
-                    Actions
-                  </th>
+                  {isFullAdmin && (
+                    <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider rounded-r-lg text-right">
+                      Actions
+                    </th>
+                  )}
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
@@ -269,18 +309,20 @@ export default function AdminDashboardPage() {
                             item.status.slice(1)}
                         </span>
                       </td>
-                      <td className="px-6 py-5 text-right">
-                        <ActionMenu
-                          editUrl={item.editUrl}
-                          onDelete={item.onDelete}
-                        />
-                      </td>
+                      {isFullAdmin && (
+                        <td className="px-6 py-5 text-right">
+                          <ActionMenu
+                            editUrl={item.editUrl}
+                            onDelete={item.onDelete}
+                          />
+                        </td>
+                      )}
                     </tr>
                   ))
                 ) : (
                   <tr>
                     <td
-                      colSpan={5}
+                      colSpan={isFullAdmin ? 5 : 4}
                       className="px-6 py-10 text-center text-gray-400 italic"
                     >
                       No recent transmissions found.
@@ -290,6 +332,34 @@ export default function AdminDashboardPage() {
               </tbody>
             </table>
           </div>
+
+          {totalPages > 1 && (
+            <div className="flex items-center justify-between px-8 py-5 border-t border-gray-50">
+              <p className="text-xs text-gray-400 font-medium">
+                Page {currentPage} of {totalPages}
+              </p>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setPage((p) => Math.max(1, p - 1))}
+                  disabled={currentPage === 1}
+                  className="p-2 rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                  aria-label="Previous page"
+                >
+                  <ChevronLeft size={16} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={currentPage === totalPages}
+                  className="p-2 rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                  aria-label="Next page"
+                >
+                  <ChevronRight size={16} />
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

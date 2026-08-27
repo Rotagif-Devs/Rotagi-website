@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { UserPlus, Trash2, ShieldCheck, ShieldOff } from "lucide-react";
+import { UserPlus, Trash2, ShieldCheck, ShieldOff, Eye, EyeOff } from "lucide-react";
 import { adminService, StaffUser, StaffRole } from "@/lib/services/admin.service";
 import Button from "@/components/ui/Button";
 
@@ -26,6 +26,7 @@ export default function TeamPage() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [role, setRole] = useState<StaffRole>("content_manager");
+  const [showPassword, setShowPassword] = useState(false);
 
   const loadStaff = async () => {
     setIsLoading(true);
@@ -49,6 +50,7 @@ export default function TeamPage() {
     setFirstName("");
     setLastName("");
     setRole("content_manager");
+    setShowPassword(false);
     setFormError("");
   };
 
@@ -125,15 +127,25 @@ export default function TeamPage() {
           </div>
           <div className="space-y-2">
             <label className="text-sm font-semibold text-gray-700">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              minLength={8}
-              placeholder="At least 8 characters"
-              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black/5 focus:border-black transition-all"
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                minLength={8}
+                placeholder="At least 8 characters"
+                className="w-full px-4 py-3 pr-11 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black/5 focus:border-black transition-all"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((prev) => !prev)}
+                aria-label={showPassword ? "Hide password" : "Show password"}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700 transition-colors"
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
           </div>
           <div className="space-y-2 md:col-span-2">
             <label className="text-sm font-semibold text-gray-700">Role</label>
