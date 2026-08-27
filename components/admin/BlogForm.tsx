@@ -18,13 +18,18 @@ const AUTHOR_ROLES = ["Editor", "Executive Director", "Advisory Board", "Operati
 
 interface BlogFormProps {
   initialData?: BlogPost;
-  onSubmit: (data: BlogPost) => void;
+  onSubmit: (data: BlogPost, imageFile?: File | null) => void;
   onCancel: () => void;
   isLoading?: boolean;
 }
 
 export default function BlogForm({ initialData, onSubmit, onCancel, isLoading }: BlogFormProps) {
   const [showHtmlSource, setShowHtmlSource] = useState(false);
+  // A picked file is kept separate from formData.image (which stays a plain
+  // URL) and uploaded via its own endpoint after the post is saved — see
+  // handleImageUpload for why this can't just write into formData.image.
+  const [pendingImageFile, setPendingImageFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string>("");
   const [formData, setFormData] = useState<BlogPost>(
     initialData || {
       id: "",
@@ -58,37 +63,36 @@ export default function BlogForm({ initialData, onSubmit, onCancel, isLoading }:
     setFormData((prev) => ({ ...prev, content }));
   };
 
-  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    
+
     if (!file.type.startsWith('image/')) {
       alert("Please upload a valid image file");
       return;
     }
 
-    try {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setFormData((prev) => ({ ...prev, image: reader.result as string }));
-      };
-      reader.readAsDataURL(file);
-    } catch (err) {
-      console.error("Failed to read image", err);
-      alert("Failed to process image");
-    }
+    // readAsDataURL here is only ever for this local <img> preview, never
+    // sent to the server — the real file goes to onSubmit and gets
+    // uploaded through its own endpoint once the post exists. Embedding
+    // the data: URI itself into coverImageUrl (the old behavior) was what
+    // ballooned every post to 2-3MB of base64 text.
+    const reader = new FileReader();
+    reader.onloadend = () => setImagePreview(reader.result as string);
+    reader.readAsDataURL(file);
+    setPendingImageFile(file);
   };
 
   const handleSave = (status: "draft" | "published") => {
     const updatedData = { ...formData, status };
     setFormData(updatedData);
-    onSubmit(updatedData);
+    onSubmit(updatedData, pendingImageFile);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Default to current status if triggered by Enter key
-    onSubmit(formData);
+    onSubmit(formData, pendingImageFile);
   };
 
   const modules = {
@@ -207,8 +211,8 @@ export default function BlogForm({ initialData, onSubmit, onCancel, isLoading }:
                 onClick={() => document.getElementById('blog-image-upload')?.click()}
                 className="relative aspect-video w-full rounded-2xl bg-gray-50 overflow-hidden border-2 border-dashed border-gray-100 flex items-center justify-center cursor-pointer transition-all hover:bg-gray-100 group shadow-inner"
               >
-                {formData.image ? (
-                  <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />
+                {imagePreview || formData.image ? (
+                  <img src={imagePreview || formData.image} alt="Preview" className="w-full h-full object-cover" />
                 ) : (
                   <div className="text-center p-6">
                     <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
@@ -227,7 +231,13 @@ export default function BlogForm({ initialData, onSubmit, onCancel, isLoading }:
                   type="text"
                   name="image"
                   value={formData.image}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    // Typing a URL means "use this instead of the picked
+                    // file" — clear the pending upload so it doesn't win.
+                    setPendingImageFile(null);
+                    setImagePreview("");
+                    handleChange(e);
+                  }}
                   placeholder="...or paste image URL link"
                   className="w-full pl-11 pr-4 py-4 bg-gray-50 border border-gray-100 rounded-xl focus:ring-2 focus:ring-secondary/5 focus:border-secondary transition-all text-xs font-medium"
                 />

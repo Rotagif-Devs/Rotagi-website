@@ -108,7 +108,11 @@ export const adminService = {
     const { id, image, ...rest } = blog;
     const payload: any = { ...rest };
 
-    if (image && (image.startsWith("http") || image.startsWith("data:"))) {
+    // Uploaded files go through uploadBlogImage instead (which sets
+    // coverImageUrl itself, server-side) — a data: URI must never reach
+    // here, since embedding one directly used to balloon every post to
+    // 2-3MB of base64 text and was the real cause of slow blog fetching.
+    if (image && image.startsWith("http")) {
       payload.coverImageUrl = image;
     }
     

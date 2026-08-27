@@ -12,10 +12,15 @@ export default function NewBlogPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (data: BlogPost) => {
+  const handleSubmit = async (data: BlogPost, imageFile?: File | null) => {
     setIsLoading(true);
     try {
-      await adminService.saveBlog(data);
+      const saved = await adminService.saveBlog(data);
+      // The file goes up separately, once the post has an id to attach it
+      // to — see BlogForm's comment on why this isn't embedded in `data`.
+      if (imageFile) {
+        await adminService.uploadBlogImage(saved.id, imageFile);
+      }
       router.push("/admin/dashboard/blog");
     } catch (error) {
       console.error("Failed to save blog:", error);
