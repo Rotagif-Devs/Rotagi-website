@@ -6,6 +6,7 @@ import { events as EventType } from "@/types/event";
 import Button from "@/components/ui/Button";
 import { Save, X, Calendar, MapPin, Clock, Image as ImageIcon, Link as LinkIcon, Upload, Code } from "lucide-react";
 import { adminService } from "@/lib/services/admin.service";
+import { normalizeRichTextHtml } from "@/lib/utils";
 import "react-quill-new/dist/quill.snow.css";
 
 // Dynamic import for React Quill to avoid SSR issues — same pattern as BlogForm.
@@ -57,7 +58,10 @@ export default function EventForm({ initialData, onSubmit, onCancel, isLoading }
   };
 
   const handleDescriptionChange = (description: string) => {
-    setFormData((prev) => ({ ...prev, description }));
+    // Pasting from Word/Docs/AI drafts often carries real non-breaking spaces
+    // instead of regular ones, which leaves the published prose with no valid
+    // line-wrap points and forces the browser to hard-break mid-word.
+    setFormData((prev) => ({ ...prev, description: normalizeRichTextHtml(description) }));
   };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {

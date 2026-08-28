@@ -5,6 +5,7 @@ import { Calendar, Clock, ChevronLeft, MapPin, Share2 } from "lucide-react";
 import PTA from "@/components/globalComp/PTA";
 import { publicService } from "@/lib/services/public.service";
 import { notFound } from "next/navigation";
+import { normalizeRichTextHtml } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -90,7 +91,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                   the two apart so old events don't lose their line breaks
                   and new ones don't show literal <p> tags as text. */}
               {event.description && /<[a-z][\s\S]*>/i.test(event.description) ? (
-                <div dangerouslySetInnerHTML={{ __html: event.description }} />
+                <div dangerouslySetInnerHTML={{ __html: normalizeRichTextHtml(event.description) }} />
               ) : (
                 <p className="whitespace-pre-wrap">{event.description || "No additional details provided."}</p>
               )}

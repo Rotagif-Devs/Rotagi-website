@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, Calendar, User, Tag, Share2 } from "lucide-react";
 import PTA from "@/components/globalComp/PTA";
+import { normalizeRichTextHtml } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -99,7 +100,7 @@ export default async function BlogPostPage({
                 prose-img:rounded-3xl prose-img:shadow-2xl
                 prose-strong:text-gray-900 prose-li:text-gray-600
                 prose-blockquote:border-pink-500 prose-blockquote:bg-pink-50 prose-blockquote:px-6 prose-blockquote:py-2 prose-blockquote:rounded-r-2xl prose-blockquote:italic"
-              dangerouslySetInnerHTML={{ __html: post.content || "" }}
+              dangerouslySetInnerHTML={{ __html: normalizeRichTextHtml(post.content || "") }}
             />
           </div>
 

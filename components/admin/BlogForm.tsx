@@ -6,6 +6,7 @@ import { BlogPost } from "@/types/blog";
 import Button from "@/components/ui/Button";
 import { Save, X, Image as ImageIcon, User, Tag, Upload, Link as LinkIcon, Code } from "lucide-react";
 import { adminService } from "@/lib/services/admin.service";
+import { normalizeRichTextHtml } from "@/lib/utils";
 import "react-quill-new/dist/quill.snow.css";
 
 // Dynamic import for React Quill to avoid SSR issues
@@ -60,7 +61,10 @@ export default function BlogForm({ initialData, onSubmit, onCancel, isLoading }:
   };
 
   const handleContentChange = (content: string) => {
-    setFormData((prev) => ({ ...prev, content }));
+    // Pasting from Word/Docs/AI drafts often carries real non-breaking spaces
+    // instead of regular ones, which leaves the published prose with no valid
+    // line-wrap points and forces the browser to hard-break mid-word.
+    setFormData((prev) => ({ ...prev, content: normalizeRichTextHtml(content) }));
   };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
