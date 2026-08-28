@@ -1,10 +1,28 @@
 "use client";
 
 import React, { useState } from "react";
+import dynamic from "next/dynamic";
 import { events as EventType } from "@/types/event";
 import Button from "@/components/ui/Button";
-import { Save, X, Calendar, MapPin, Clock, Image as ImageIcon, Link as LinkIcon, Upload } from "lucide-react";
+import { Save, X, Calendar, MapPin, Clock, Image as ImageIcon, Link as LinkIcon, Upload, Code } from "lucide-react";
 import { adminService } from "@/lib/services/admin.service";
+import "react-quill-new/dist/quill.snow.css";
+
+// Dynamic import for React Quill to avoid SSR issues — same pattern as BlogForm.
+const ReactQuill = dynamic(() => import("react-quill-new"), {
+  ssr: false,
+  loading: () => <div className="h-64 bg-gray-100 animate-pulse rounded-lg" />,
+});
+
+const quillModules = {
+  toolbar: [
+    [{ header: [1, 2, 3, false] }],
+    ["bold", "italic", "underline", "strike"],
+    [{ list: "ordered" }, { list: "bullet" }],
+    ["link", "image"],
+    ["clean"],
+  ],
+};
 
 interface EventFormProps {
   initialData?: EventType;
@@ -14,6 +32,7 @@ interface EventFormProps {
 }
 
 export default function EventForm({ initialData, onSubmit, onCancel, isLoading }: EventFormProps) {
+  const [showHtmlSource, setShowHtmlSource] = useState(false);
   const [formData, setFormData] = useState<EventType>(
     initialData || {
       slug: "",
@@ -30,6 +49,10 @@ export default function EventForm({ initialData, onSubmit, onCancel, isLoading }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleDescriptionChange = (description: string) => {
+    setFormData((prev) => ({ ...prev, description }));
   };
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -99,17 +122,54 @@ export default function EventForm({ initialData, onSubmit, onCancel, isLoading }
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-semibold text-gray-700">Description</label>
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              placeholder="Describe the event..."
-              rows={5}
-              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black/5 focus:border-black transition-all resize-none"
-              required
-            />
+            <div className="flex items-center justify-between">
+              <label className="text-sm font-semibold text-gray-700">Description</label>
+              <button
+                type="button"
+                onClick={() => setShowHtmlSource((prev) => !prev)}
+                className="flex items-center gap-1.5 text-xs font-semibold text-gray-500 hover:text-black transition-colors"
+              >
+                <Code size={14} />
+                {showHtmlSource ? "Back to Visual Editor" : "Paste HTML Source"}
+              </button>
+            </div>
+            {showHtmlSource ? (
+              <textarea
+                value={formData.description}
+                onChange={(e) => handleDescriptionChange(e.target.value)}
+                placeholder="<p>Paste raw HTML here...</p>"
+                rows={8}
+                className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl font-mono text-xs focus:ring-2 focus:ring-black/5 focus:border-black transition-all resize-none"
+                spellCheck={false}
+              />
+            ) : (
+              <div className="event-content-editor bg-white rounded-xl border border-gray-200">
+                <ReactQuill
+                  value={formData.description}
+                  onChange={handleDescriptionChange}
+                  modules={quillModules}
+                  className="h-64"
+                  theme="snow"
+                />
+              </div>
+            )}
           </div>
+
+          <style jsx global>{`
+            .event-content-editor .ql-toolbar.ql-snow {
+              position: sticky;
+              top: 5rem;
+              z-index: 20;
+              background: #fff;
+              border-top-left-radius: 0.75rem;
+              border-top-right-radius: 0.75rem;
+            }
+            .event-content-editor .ql-container.ql-snow {
+              border-bottom-left-radius: 0.75rem;
+              border-bottom-right-radius: 0.75rem;
+              overflow: hidden;
+            }
+          `}</style>
 
           <div className="space-y-2">
             <label className="text-sm font-semibold text-gray-700">External Link (Optional)</label>

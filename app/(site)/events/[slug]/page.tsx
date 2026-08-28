@@ -84,7 +84,16 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
           {/* Left Column: Rich Text Content */}
           <div className="flex-1 min-w-0 w-full">
             <div className="prose prose-lg md:prose-xl max-w-none prose-headings:font-cal-sans prose-headings:text-gray-900 prose-headings:font-bold prose-p:text-gray-600 prose-p:leading-[1.8] prose-a:text-pink-600 hover:prose-a:text-pink-700 prose-img:rounded-3xl prose-img:shadow-2xl prose-strong:text-gray-900 prose-li:text-gray-600">
-              <p className="whitespace-pre-wrap">{event.description || "No additional details provided."}</p>
+              {/* The admin editor now produces real HTML (Quill), but
+                  events created before that change have plain text with
+                  literal newlines instead — a raw HTML tag test tells
+                  the two apart so old events don't lose their line breaks
+                  and new ones don't show literal <p> tags as text. */}
+              {event.description && /<[a-z][\s\S]*>/i.test(event.description) ? (
+                <div dangerouslySetInnerHTML={{ __html: event.description }} />
+              ) : (
+                <p className="whitespace-pre-wrap">{event.description || "No additional details provided."}</p>
+              )}
             </div>
           </div>
 
