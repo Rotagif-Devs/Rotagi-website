@@ -318,7 +318,7 @@ export default function BlogForm({ initialData, onSubmit, onCancel, isLoading }:
             </p>
           </>
         ) : (
-          <div className="bg-white rounded-xl overflow-hidden border border-gray-200">
+          <div className="blog-content-editor bg-white rounded-xl border border-gray-200">
             <ReactQuill
               value={formData.content}
               onChange={handleContentChange}
@@ -329,6 +329,29 @@ export default function BlogForm({ initialData, onSubmit, onCancel, isLoading }:
           </div>
         )}
       </div>
+
+      {/* The toolbar used to scroll away with the rest of the page once a
+          post got long enough to need scrolling while typing — pinning it
+          just below the admin topbar (h-20, sticky z-30) keeps formatting
+          controls reachable no matter how far down the content you are. */}
+      <style jsx global>{`
+        .blog-content-editor .ql-toolbar.ql-snow {
+          position: sticky;
+          top: 5rem;
+          z-index: 20;
+          background: #fff;
+          border-top-left-radius: 0.75rem;
+          border-top-right-radius: 0.75rem;
+        }
+        /* The wrapper's overflow-hidden had to go for sticky to track page
+           scroll instead of being clipped to it, so the editor body needs
+           its own bottom rounding to still match the wrapper's rounded-xl. */
+        .blog-content-editor .ql-container.ql-snow {
+          border-bottom-left-radius: 0.75rem;
+          border-bottom-right-radius: 0.75rem;
+          overflow: hidden;
+        }
+      `}</style>
 
       <div className="flex flex-col md:flex-row justify-end gap-4 pt-8 border-t">
         <Button
