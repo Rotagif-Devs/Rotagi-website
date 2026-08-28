@@ -185,8 +185,12 @@ export const adminService = {
   saveEvent: async (event: Partial<EventType> & { id?: string }): Promise<EventType> => {
     const { id, image, link, ...rest } = event;
     const payload: any = { ...rest };
-    
-    if (image && (image.startsWith("http") || image.startsWith("data:"))) {
+
+    // Uploaded files go through uploadEventImage instead (which sets
+    // imageUrl/coverImageUrl itself, server-side) — a data: URI must never
+    // reach here, since embedding one directly used to balloon every event
+    // to megabytes of base64 text, the same bug blog had.
+    if (image && image.startsWith("http")) {
       payload.imageUrl = image;
       payload.coverImageUrl = image;
     }

@@ -26,13 +26,18 @@ const quillModules = {
 
 interface EventFormProps {
   initialData?: EventType;
-  onSubmit: (data: EventType) => void;
+  onSubmit: (data: EventType, imageFile?: File | null) => void;
   onCancel: () => void;
   isLoading?: boolean;
 }
 
 export default function EventForm({ initialData, onSubmit, onCancel, isLoading }: EventFormProps) {
   const [showHtmlSource, setShowHtmlSource] = useState(false);
+  // A picked file is kept separate from formData.image (which stays a plain
+  // URL) and uploaded via its own endpoint after the event is saved — see
+  // handleImageUpload for why this can't just write into formData.image.
+  const [pendingImageFile, setPendingImageFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string>("");
   const [formData, setFormData] = useState<EventType>(
     initialData || {
       slug: "",
@@ -55,7 +60,7 @@ export default function EventForm({ initialData, onSubmit, onCancel, isLoading }
     setFormData((prev) => ({ ...prev, description }));
   };
 
-  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
@@ -64,16 +69,15 @@ export default function EventForm({ initialData, onSubmit, onCancel, isLoading }
       return;
     }
 
-    try {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setFormData((prev) => ({ ...prev, image: reader.result as string }));
-      };
-      reader.readAsDataURL(file);
-    } catch (err) {
-      console.error("Failed to read image", err);
-      alert("Failed to process image");
-    }
+    // readAsDataURL here is only ever for this local <img> preview, never
+    // sent to the server — the real file goes to onSubmit and gets
+    // uploaded through its own endpoint once the event exists. Embedding
+    // the data: URI itself into imageUrl/coverImageUrl (the old behavior)
+    // was what ballooned every event to megabytes of base64 text.
+    const reader = new FileReader();
+    reader.onloadend = () => setImagePreview(reader.result as string);
+    reader.readAsDataURL(file);
+    setPendingImageFile(file);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -87,7 +91,7 @@ export default function EventForm({ initialData, onSubmit, onCancel, isLoading }
         { content: formData.location, image: "/location.png" },
       ]
     };
-    onSubmit(finalData);
+    onSubmit(finalData, pendingImageFile);
   };
 
   return (
@@ -243,9 +247,9 @@ export default function EventForm({ initialData, onSubmit, onCancel, isLoading }
                 onClick={() => document.getElementById('event-image-upload')?.click()}
                 className="relative aspect-video w-full rounded-2xl bg-gray-50 overflow-hidden border-2 border-dashed border-gray-100 flex items-center justify-center cursor-pointer transition-all hover:bg-gray-100 group shadow-inner"
               >
-                {formData.image ? (
+                {imagePreview || formData.image ? (
                   <div className="relative w-full h-full">
-                    <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />
+                    <img src={imagePreview || formData.image} alt="Preview" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center">
                       <ImageIcon className="text-white mb-1" size={24} />
                       <p className="text-white text-[10px] font-bold uppercase">Change Image</p>
@@ -269,7 +273,13 @@ export default function EventForm({ initialData, onSubmit, onCancel, isLoading }
                   type="text"
                   name="image"
                   value={formData.image}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    // Typing a URL means "use this instead of the picked
+                    // file" — clear the pending upload so it doesn't win.
+                    setPendingImageFile(null);
+                    setImagePreview("");
+                    handleChange(e);
+                  }}
                   placeholder="...or paste image URL link"
                   className="w-full pl-11 pr-4 py-4 bg-gray-50 border border-gray-100 rounded-xl focus:ring-2 focus:ring-secondary/5 focus:border-secondary transition-all text-xs font-medium"
                 />

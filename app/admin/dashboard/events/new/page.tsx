@@ -12,10 +12,15 @@ export default function NewEventPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (data: EventType) => {
+  const handleSubmit = async (data: EventType, imageFile?: File | null) => {
     setIsLoading(true);
     try {
-      await adminService.saveEvent(data);
+      const saved = await adminService.saveEvent(data);
+      // The file goes up separately, once the event has an id to attach it
+      // to — see EventForm's comment on why this isn't embedded in `data`.
+      if (imageFile && saved.id) {
+        await adminService.uploadEventImage(saved.id, imageFile);
+      }
       router.push("/admin/dashboard/events");
     } catch (error) {
       console.error("Failed to save event:", error);

@@ -29,10 +29,15 @@ export default function EditEventPage() {
     fetchEvent();
   }, [slug, router]);
 
-  const handleSubmit = async (data: EventType) => {
+  const handleSubmit = async (data: EventType, imageFile?: File | null) => {
     setIsSaving(true);
     try {
-      await adminService.saveEvent(data);
+      const saved = await adminService.saveEvent(data);
+      // The file goes up separately — see EventForm's comment on why this
+      // isn't embedded in `data`.
+      if (imageFile && saved.id) {
+        await adminService.uploadEventImage(saved.id, imageFile);
+      }
       router.push("/admin/dashboard/events");
     } catch (error) {
       console.error("Failed to update event:", error);
