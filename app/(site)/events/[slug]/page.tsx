@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, ChevronLeft, MapPin, Share2 } from "lucide-react";
 import PTA from "@/components/globalComp/PTA";
+import AdSenseUnit from "@/components/globalComp/AdSenseUnit";
 import { publicService } from "@/lib/services/public.service";
 import { notFound } from "next/navigation";
 import { normalizeRichTextHtml } from "@/lib/utils";
@@ -96,6 +97,8 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                 <p className="whitespace-pre-wrap">{event.description || "No additional details provided."}</p>
               )}
             </div>
+
+            <AdSenseUnit slot="0000000000" />
           </div>
 
           {/* Right Column: Sticky Details Card */}
