@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, Calendar, User, Tag, Share2 } from "lucide-react";
 import PTA from "@/components/globalComp/PTA";
+import AdSenseUnit from "@/components/globalComp/AdSenseUnit";
 import { normalizeRichTextHtml } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -102,6 +103,8 @@ export default async function BlogPostPage({
                 prose-blockquote:border-pink-500 prose-blockquote:bg-pink-50 prose-blockquote:px-6 prose-blockquote:py-2 prose-blockquote:rounded-r-2xl prose-blockquote:italic"
               dangerouslySetInnerHTML={{ __html: normalizeRichTextHtml(post.content || "") }}
             />
+
+            <AdSenseUnit slot="0000000000" />
           </div>
 
           {/* Right Column: Sticky Details Card */}
