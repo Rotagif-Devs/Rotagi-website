@@ -13,9 +13,6 @@ const STAFF: Person[] = [
   { name: "Arokoyo Olayemi", role: "Executive Director", image: "/Arokoyo.png" },
   { name: "Halimah Muhammad", role: "Junior Project Manager (Operations)", image: "/team/halimah-muhammad.jpg" },
   { name: "Paul Anyebe", role: "Full Stack Developer", image: "/team/paul-anyebe.jpeg" },
-  // Photo in, name still coming — name left unset so the card shows
-  // "Name Coming Soon" instead of guessing.
-  { image: "/team/staff-pending-name-1.jpg" },
   { name: "Barnabas Orsar", role: "Junior Project Manager - Brand Storytelling & Communications", image: "/team/barnabas-orsar.jpeg" },
   { name: "Lola Inès Raïssa Agondogo", role: "Junior Project Manager - Program Department", image: "/team/lola-agondogo.jpeg" },
   { name: "Precious Oyewole", role: "Junior Project Manager - Communication Department", image: "/team/precious-oyewole.jpeg" },
