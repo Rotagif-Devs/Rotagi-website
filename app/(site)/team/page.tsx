@@ -11,14 +11,16 @@ type Person = {
 // carousel) — reused here rather than duplicated with different data.
 const STAFF: Person[] = [
   { name: "Arokoyo Olayemi", role: "Executive Director", image: "/Arokoyo.png" },
-  // Photos in, roles still coming — role left unset so the card shows
-  // "Role Coming Soon" instead of a guessed/wrong title.
-  { name: "Halimah Muhammad", image: "/team/halimah-muhammad.jpg" },
-  { name: "Celestina Ibekwe", image: "/team/celestina-ibekwe.jpg" },
-  { name: "Paul Anyebe", image: "/team/paul-anyebe.jpeg" },
+  { name: "Halimah Muhammad", role: "Junior Project Manager (Operations)", image: "/team/halimah-muhammad.jpg" },
+  { name: "Paul Anyebe", role: "Full Stack Developer", image: "/team/paul-anyebe.jpeg" },
   // Photo in, name still coming — name left unset so the card shows
   // "Name Coming Soon" instead of guessing.
   { image: "/team/staff-pending-name-1.jpg" },
+  { name: "Barnabas Orsar", role: "Junior Project Manager - Brand Storytelling & Communications", image: "/team/barnabas-orsar.jpeg" },
+  { name: "Lola Inès Raïssa Agondogo", role: "Junior Project Manager - Program Department", image: "/team/lola-agondogo.jpeg" },
+  { name: "Precious Oyewole", role: "Junior Project Manager - Communication Department", image: "/team/precious-oyewole.jpeg" },
+  { name: "Samuel Kofoworola", role: "Junior Project Manager - Program Department", image: "/team/samuel-kofoworola.jpeg" },
+  { name: "Tosin Adebowale", role: "Onsite Ambassador", image: "/team/tosin-adebowale.jpeg" },
 ];
 
 const ADVISORY_BOARD: Person[] = [
