@@ -3,8 +3,9 @@ import Button from "../ui/Button";
 import Image from "next/image";
 type Props = {
   onReturn: () => void;
+  cancelled?: boolean;
 };
-const DonateFailed = ({ onReturn }: Props) => {
+const DonateFailed = ({ onReturn, cancelled = false }: Props) => {
   return (
     <section className="bg-[#F8E0ED] flex justify-center items-center">
       <div className="px-8 md:px-15 sm:py-10 md:py-10 py-10 md:w-[55%] w-full flex flex-col justify-center">
@@ -18,23 +19,26 @@ const DonateFailed = ({ onReturn }: Props) => {
           />
         </div>
         <h2 className="!font-medium text-center !leading-none !normal-case ">
-          We couldn’t process your payment
+          {cancelled ? "You cancelled the payment" : "We couldn’t process your payment"}
         </h2>
         <p className="!text-[1.1rem] my-8 text-center">
-          Your donation is very important to us. Please check your details or
-          try a different method.
+          {cancelled
+            ? "No worries — nothing was charged. You can pick up right where you left off whenever you're ready."
+            : "Your donation is very important to us. Please check your details or try a different method."}
         </p>
-        <div className="bg-[#FABFD3] px-6 py-6 my-8 rounded-lg">
-          <h4 className="text-black !font-medium text-lg mb-3">
-            Common Issues
-          </h4>
+        {!cancelled && (
+          <div className="bg-[#FABFD3] px-6 py-6 my-8 rounded-lg">
+            <h4 className="text-black !font-medium text-lg mb-3">
+              Common Issues
+            </h4>
 
-          <ul className="list-disc list-inside space-y-2 text-black text-sm font-thin">
-            <li>Insufficient funds</li>
-            <li>Card declined by your bank</li>
-            <li>Unstable network connection</li>
-          </ul>
-        </div>
+            <ul className="list-disc list-inside space-y-2 text-black text-sm font-thin">
+              <li>Insufficient funds</li>
+              <li>Card declined by your bank</li>
+              <li>Unstable network connection</li>
+            </ul>
+          </div>
+        )}
 
         <Button
           onClick={onReturn}

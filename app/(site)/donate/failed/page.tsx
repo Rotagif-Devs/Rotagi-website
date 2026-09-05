@@ -8,14 +8,13 @@ function FailedContent() {
   const router = useRouter();
   const params = useSearchParams();
 
-  const amount = params.get("amount");
-  const email = params.get("email");
+  const isCancelled = params.get("reason") === "cancelled";
 
   const handleReturn = () => {
     router.push("/donate");
   };
 
-  return <DonateFailed onReturn={handleReturn} />;
+  return <DonateFailed onReturn={handleReturn} cancelled={isCancelled} />;
 }
 
 export default function FailedPage() {
