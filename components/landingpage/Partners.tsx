@@ -21,7 +21,6 @@ const partnerLogos = [
   { name: "DataCamp Donates", url: "/partner-datacamp-donates.png" },
   { name: "SkillAddis", url: "/partner-skilladdis.png" },
   { name: "EV World Africa", url: "/partner-ev-world-africa.png" },
-  { name: "Microsoft", url: "/partner-microsoft.png" },
   // Identity unconfirmed — swap this file/name once known.
   { name: "Partner", url: "/partner-unknown-y.png" },
 ];
