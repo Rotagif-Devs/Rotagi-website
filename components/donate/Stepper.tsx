@@ -1,48 +1,34 @@
 "use client";
 
+import { Check } from "lucide-react";
+
 type Props = {
   currentStep: number;
   totalSteps: number;
 };
+
+const LABELS = ["Details", "Review"];
+
 const Stepper = ({ currentStep, totalSteps }: Props) => {
   return (
-    <div className="flex flex-col items-center rounded-lg mb-6">
-
-      <div className="flex items-center">
-
-        {/* Step 1 */}
-        <div
-          className={`w-12 h-12 flex items-center justify-center rounded-full font-semibold
-          ${
-            currentStep >= 1
-              ? "bg-pink-500 text-white"
-              : "border-2 border-pink-500 text-pink-500"
-          }`}
-        >
-          1
+    <div className="flex items-center justify-center gap-2 py-2 mb-6">
+      {Array.from({ length: totalSteps }, (_, i) => i + 1).map((step, i) => (
+        <div key={step} className="flex items-center gap-2">
+          <div
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
+              currentStep === step
+                ? "bg-[#D62D88] text-white"
+                : currentStep > step
+                  ? "bg-pink-50 text-[#D62D88]"
+                  : "bg-gray-100 text-gray-400"
+            }`}
+          >
+            {currentStep > step ? <Check className="w-3.5 h-3.5" /> : <span>{step}</span>}
+            {LABELS[i] || `Step ${step}`}
+          </div>
+          {i < totalSteps - 1 && <div className="w-6 h-px bg-gray-200" />}
         </div>
-
-        {/* Line */}
-        <div className="w-24 h-[2px] bg-pink-400 mx-2"></div>
-
-        {/* Step 2 */}
-        <div
-          className={`w-12 h-12 flex items-center justify-center rounded-full font-semibold
-          ${
-            currentStep >= 2
-              ? "bg-pink-500 text-white"
-              : "border-2 border-pink-500 text-pink-500"
-          }`}
-        >
-          2
-        </div>
-
-      </div>
-
-      <p className="mt-2 text-sm text-gray-600">
-        Step {currentStep} of {totalSteps}
-      </p>
-
+      ))}
     </div>
   );
 };
