@@ -32,6 +32,19 @@ interface EventFormProps {
   isLoading?: boolean;
 }
 
+// Mirrors the backend's slugify (src/routes/adminEvents.js) so the admin
+// sees the same SEO-friendly slug that would be auto-generated anyway if
+// they save with this field blank.
+function slugify(text: string) {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 80)
+    .replace(/-+$/g, "");
+}
+
 export default function EventForm({ initialData, onSubmit, onCancel, isLoading }: EventFormProps) {
   const [showHtmlSource, setShowHtmlSource] = useState(false);
   // A picked file is kept separate from formData.image (which stays a plain
@@ -51,10 +64,21 @@ export default function EventForm({ initialData, onSubmit, onCancel, isLoading }
       link: "",
     }
   );
+  // Once the admin edits the slug themselves (or we're editing an existing
+  // event that already has one), stop overwriting it as the title changes —
+  // otherwise auto-suggest one from the title so the field never has to be
+  // filled in by hand, and leaving it blank on save still works (the
+  // backend generates one from the title too if it's ever empty).
+  const [slugTouched, setSlugTouched] = useState(!!initialData?.slug);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (name === "slug") setSlugTouched(true);
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+      ...(name === "title" && !slugTouched ? { slug: slugify(value) } : {}),
+    }));
   };
 
   const handleDescriptionChange = (description: string) => {
@@ -117,7 +141,9 @@ export default function EventForm({ initialData, onSubmit, onCancel, isLoading }
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-semibold text-gray-700">Slug</label>
+            <label className="text-sm font-semibold text-gray-700">
+              Slug <span className="font-normal text-gray-400">(auto-generated from the title if left blank)</span>
+            </label>
             <input
               type="text"
               name="slug"
@@ -125,13 +151,14 @@ export default function EventForm({ initialData, onSubmit, onCancel, isLoading }
               onChange={handleChange}
               placeholder="ai-summit-2026"
               className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black/5 focus:border-black transition-all"
-              required
             />
           </div>
 
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <label className="text-sm font-semibold text-gray-700">Description</label>
+              <label className="text-sm font-semibold text-gray-700">
+                Description <span className="font-normal text-gray-400">(optional)</span>
+              </label>
               <button
                 type="button"
                 onClick={() => setShowHtmlSource((prev) => !prev)}
