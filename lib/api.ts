@@ -176,7 +176,22 @@ export async function apiFetch<T = unknown>(
   if (!res.ok) {
     const err = (data && typeof data === 'object' ? (data as ApiError) : null);
     let msg = err?.message || `Request failed (${res.status})`;
-    
+
+    // Zod validation errors (errorHandler.js) come back as message:"Validation
+    // error" plus an `errors` array of {path, message} issues — without this,
+    // every failed form submission looks identical ("Validation error") with
+    // no way to tell which field actually failed.
+    if (Array.isArray(err?.errors) && err.errors.length > 0) {
+      const fieldMessages = err.errors
+        .map((issue: any) => {
+          const field = Array.isArray(issue?.path) ? issue.path.join('.') : issue?.path;
+          return field ? `${field}: ${issue?.message || 'invalid'}` : issue?.message;
+        })
+        .filter(Boolean)
+        .join('; ');
+      if (fieldMessages) msg = `${msg} — ${fieldMessages}`;
+    }
+
     // Diagnostic info for common issues
     if (res.status === 401) {
       const hasToken = !!token;
@@ -188,7 +203,10 @@ export async function apiFetch<T = unknown>(
     if (data && typeof data === 'object' && 'details' in data) {
       console.error(`[apiFetch] API Error Details for ${path}:`, (data as any).details);
     }
-    
+    if (data && typeof data === 'object' && 'errors' in data) {
+      console.error(`[apiFetch] Validation issues for ${path}:`, (data as any).errors);
+    }
+
     throw new Error(msg);
   }
 

@@ -24,7 +24,7 @@ export default function NewBlogPage() {
       router.push("/admin/dashboard/blog");
     } catch (error) {
       console.error("Failed to save blog:", error);
-      alert("Error saving blog post");
+      alert(error instanceof Error ? error.message : "Error saving blog post");
     } finally {
       setIsLoading(false);
     }

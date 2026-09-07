@@ -41,7 +41,7 @@ export default function EditBlogPage() {
       router.push("/admin/dashboard/blog");
     } catch (error) {
       console.error("Failed to update blog:", error);
-      alert("Error updating blog post");
+      alert(error instanceof Error ? error.message : "Error updating blog post");
     } finally {
       setIsSaving(false);
     }

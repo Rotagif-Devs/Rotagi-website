@@ -41,7 +41,7 @@ export default function EditEventPage() {
       router.push("/admin/dashboard/events");
     } catch (error) {
       console.error("Failed to update event:", error);
-      alert("Error updating event");
+      alert(error instanceof Error ? error.message : "Error updating event");
     } finally {
       setIsSaving(false);
     }

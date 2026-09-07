@@ -24,7 +24,7 @@ export default function NewEventPage() {
       router.push("/admin/dashboard/events");
     } catch (error) {
       console.error("Failed to save event:", error);
-      alert("Error saving event");
+      alert(error instanceof Error ? error.message : "Error saving event");
     } finally {
       setIsLoading(false);
     }
