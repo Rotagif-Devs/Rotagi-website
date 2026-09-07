@@ -18,9 +18,11 @@ ROTAGIF is a dedicated platform designed to equip African girls and women with A
 
 ```text
 ├── app/                  # Next.js App Router (Layouts, Pages, Groups)
-│   ├── (auth)/           # Authentication routes (Login, Signup, Reset)
-│   ├── (lms)/            # Student dashboard and private routes
-│   └── (site)/           # Public marketing and info pages
+│   ├── (auth)/           # Legacy learner auth routes (Login, Signup, Reset)
+│   ├── (site)/           # Public marketing and info pages (Header/Footer)
+│   ├── admin/            # Internal CMS/admin dashboard (own layout)
+│   ├── program/[slug]/   # Legacy per-program learner dashboard (separate from the cohort portal)
+│   └── mentor/           # Standalone mentor landing page
 ├── components/           # UI Components organized by feature/domain
 │   ├── globalComp/       # Site-wide components (Header, Footer, CTA)
 │   ├── ui/               # Core atomic components (Button, Modal)
@@ -43,8 +45,8 @@ ROTAGIF is a dedicated platform designed to equip African girls and women with A
 
 ### Installation
 ```bash
-git clone https://github.com/ROTAGIF/Rotagif-Website.git
-cd Rotagif-Website
+git clone https://github.com/Rotagif-Devs/Rotagi-website.git
+cd Rotagi-website
 npm install
 ```
 
@@ -76,8 +78,6 @@ npm run start
 
 ## 📄 Documentation for Developers
 
-If you are a developer looking to contribute or understand the internals, please refer to the **[DEVELOPER_GUIDE.md](./DEVELOPER_GUIDE.md)** for:
-- Coding standards
-- API integration patterns
-- Styling guidelines
-- Component architecture
+- **[FRONTEND_DOCUMENTATION.md](./FRONTEND_DOCUMENTATION.md)** — the complete technical reference: full route map, the data/services layer, the two separate auth systems, the cohort portal system, the donation flow, styling conventions, CSP. Start here for anything beyond a quick overview.
+- **[DEVELOPER_GUIDE.md](./DEVELOPER_GUIDE.md)** — shorter day-to-day conventions (coding standards, styling, component structure, contribution checklist) for someone actively writing code.
+- **`HANDOVER.md`** in the backend repo ([ROTAGIF/ROTAGIF-Backend-codebase](https://github.com/ROTAGIF/ROTAGIF-Backend-codebase)) — organization context, both repos, hosting, third-party services, and where credentials live. Read this first if you're new to the project entirely.

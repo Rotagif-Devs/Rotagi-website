@@ -109,7 +109,8 @@ const COURSES = [
     icon: DollarSign,
     color: "bg-emerald-50 text-emerald-600",
     image: "/cohort-images/price-for-profit.jpg",
-    available: false,
+    available: true,
+    applyUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdvSvhBliU5R1z2DwG8MpNwbTJH05cb2sFRN5OawAKEjqVa2Q/viewform?usp=preview",
   },
   {
     id: "social-media-management",

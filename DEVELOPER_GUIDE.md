@@ -16,9 +16,9 @@ We use **Tailwind CSS 4** for all styling.
 
 ### 1. Route Groups
 We use Next.js Route Groups to isolate layouts:
-- `(site)`: Public pages (includes Header/Footer).
-- `(lms)`: Private dashboard pages (minimal layout).
-- `(auth)`: Login and registration flows.
+- `(site)`: Public pages (includes Header/Footer, except the full-screen cohort portal).
+- `(auth)`: Legacy learner login/registration/password-reset flows.
+- `admin/`, `program/[slug]/`, `mentor/` are separate top-level route trees, each with their own layout — not route groups. See `FRONTEND_DOCUMENTATION.md` §2–3 for the full, authoritative route map.
 
 ### 2. Component Structure
 Each feature in `components/` should follow this pattern:

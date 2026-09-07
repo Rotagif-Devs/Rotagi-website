@@ -48,7 +48,7 @@ Route groups:
 | `/blog/[slug]` | Single blog post detail |
 | `/child-protection` | Child protection policy |
 | `/code-of-conduct` | Code of conduct policy |
-| `/cohort` | Cohort/scholarship marketing landing (course grid, "Join Waitlist" CTAs to an external MS Forms link — not the learner portal) |
+| `/cohort` | Cohort/scholarship marketing landing (`CourseGrid.tsx` — not the learner portal). Each course has its own `available` flag; unavailable ones show a "Registration Closed" modal, available ones link out to that course's own external application form (Google Forms/MS Forms — set per-course via `applyUrl`, not a single shared link) |
 | `/cohort/portal` | Program picker — lists `COHORT_PROGRAMS`, links to each program's portal |
 | `/cohort/portal/[program]` | Per-program learner portal — `CohortPinGate` until unlocked, then `CohortPortalDashboard` |
 | `/contact` | Contact form |
@@ -210,7 +210,7 @@ Visible tabs: **Settings**, **Attendance**, **Certificates**. An **Assignments**
 - **`components/admin/`** — `ActionMenu.tsx`, `AdminEditButton.tsx`, `BlogForm.tsx`, `EventForm.tsx`, `CohortAssignmentsManager.tsx`, `CohortAttendanceWindowControl.tsx`, `CohortCertificateTemplateEditor.tsx`.
   - `BlogForm.tsx`/`EventForm.tsx` both use `react-quill-new` (dynamic-imported, `ssr:false`) for the rich-text body, with a sticky (`position:sticky`) toolbar so it stays visible while scrolling a long post/event. Cover image picking is decoupled from upload: `FileReader.readAsDataURL()` drives only an in-browser `<img>` preview, never the submitted value; the real `File` is held separately and uploaded via `adminService.uploadBlogImage()`/`uploadEventImage()` once the parent record is saved and has a real id (mirrors the backend's Mongo-`Buffer` image storage — see `BACKEND_DOCUMENTATION.md` §"File uploads"). `saveBlog()`/`saveEvent()` only forward `image`/`coverImageUrl` when it's a real `http(s)` URL — `data:` URIs are rejected so a base64 blob can never end up embedded in the post/event document again.
 
-Other feature-scoped component directories (one tree per public page): `About/`, `Event/`, `FeaturedSpeaker/`, `Partner/`, `SignUp/`, `Login/`, `Terms/`, `Volunteer/`, `blogComps/`, `childProtection/`, `contact/`, `dashboard/` (legacy per-program dashboard), `donate/` (§9 below), `forgotpassword/`, `landingpage/`, `mentorship/`, `otp/`, `programs/`, `resetpassword/`, `sheempower/`, `whoCanApply/`.
+Other feature-scoped component directories (one tree per public page): `About/`, `Event/`, `FeaturedSpeaker/`, `Partner/`, `SignUp/`, `Login/`, `Terms/`, `Volunteer/`, `blogComps/`, `childProtection/`, `contact/`, `dashboard/` (legacy per-program dashboard), `donate/` (§13 below — `DonateHero`, `DonateImpact`, `DonateDefault`, `DonateDetails`, `DonateComplete`, `DonateFailed`, `DonateSuccessful`, `Stepper`, `DonateTransform`), `forgotpassword/`, `landingpage/`, `mentorship/`, `otp/`, `programs/`, `resetpassword/`, `sheempower/`, `whoCanApply/`.
 
 ## 10. Styling Conventions (`app/globals.css`)
 
@@ -242,27 +242,41 @@ Fonts: `--font-sans` (DM Sans default), `--font-heading` (Outfit/Cal Sans), plus
 | `APP_BASE_URL` | `next.config.ts` | Fallback for `NEXT_PUBLIC_API_BASE_URL` at build time |
 | `NODE_ENV` | `next.config.ts` | CSP logic |
 
-No `.env*` file exists in this repo. Other hardcoded (non-env) values worth knowing about: the Google reCAPTCHA v3 site key is hardcoded directly in `app/Provider.tsx`, and the cohort/programs marketing waitlist link is a hardcoded MS Forms URL repeated across `app/(site)/cohort/page.tsx`.
+No `.env*` file exists in this repo. Other hardcoded (non-env) values worth knowing about: the Google reCAPTCHA v3 site key is hardcoded directly in `app/Provider.tsx`, and each course in `components/cohort/CourseGrid.tsx`'s `COURSES` array carries its own hardcoded `applyUrl` (a mix of Google Forms and MS Forms links, one per course) plus an `available: boolean` toggle — opening a course for applications is a matter of setting `available: true` and adding its `applyUrl`, not touching any shared config.
 
 ## 12. Content Security Policy (`next.config.ts`)
 
 A CSP header is applied to all routes. Notable allowances: `js.paystack.co` (script-src), backend hosts on `onrender.com`, `res.cloudinary.com`, `flagcdn.com` (img-src), and `checkout.paystack.com`, `open.er-api.com`, `v6.exchangerate-api.com` (connect-src). `unsafe-eval`/`unsafe-inline` are currently enabled globally per an inline comment ("temporarily always including 'unsafe-eval' to resolve the immediate block") — worth revisiting for production hardening.
 
-## 13. Payment Integrations
+## 13. Donation Flow (`/donate`)
 
-Three providers are wired into the donation flow (`components/donate/DonateDetails.tsx` → `DonateComplete.tsx` → `DonateTransform.tsx` → `lib/services/donation.service.ts`):
+`components/donate/DonateTransform.tsx` orchestrates 3 top-level steps (its own `Stepper.tsx`, labels "Details"/"Review"): `DonateImpact`+`DonateDefault` (step 0, the initial "Donate Now" CTA) → `DonateDetails.tsx` (step 1) → `DonateComplete.tsx` (step 2, review) → `handleConfirm()` calls `initDonation()`.
 
-- **Paystack** — default/auto-selected when the donor's country currency is NGN.
-- **PayPal** — default option for non-NGN donors.
-- **Flutterwave** — alternate card option for non-NGN donors ("Card (Flutterwave)").
+**`DonateDetails.tsx` is itself a 3-part guided wizard** (own internal `subStep` state 0–2, own mini progress pills — a second, nested stepper inside the outer "Details" step):
+1. **Amount** — country picker first (`countries.json`, searchable dropdown with flags), which drives both the displayed currency (converted from NGN preset tiers via a live exchange-rate fetch to `open.er-api.com`) and the phone field's dialing code later in step 2. Then the amount, either a preset tile or a custom value.
+2. **Your Details** — a prominent toggle-switch card for **"Donate anonymously"** (not a small checkbox) sits above Full Name; when on, the Full Name field is hidden entirely and the submitted name becomes the literal string `"Anonymous Donor"` (no backend schema change needed — it's just what gets stored in `Donation.metadata.donorName`). Then email, phone (prefixed with the dialing code from step 1's country), and an optional message.
+3. **Payment** — shows which gateway will be used (see below) plus a quick recap of amount/donor/email, then submits.
 
-Flow:
-1. `DonateDetails.tsx` collects donor info + auto-selects `paystack` for NGN, or lets the user pick `paypal`/`flutterwave` otherwise.
-2. `DonateTransform.tsx.handleConfirm()` calls `initDonation()` → backend `POST /donations/init`, passing `provider`, amount, currency, and a `callback_url` of `/donate/success?provider=<provider>`.
-3. The backend returns a hosted checkout link; the frontend does a full-page redirect via `window.location.assign(redirectUrl)` — a top-level navigation, not gated by CSP `connect-src`/`frame-src`.
-4. On return, `/donate/success/page.tsx` branches by `?provider=`: Paystack calls `verifyDonation(reference)` synchronously; PayPal calls `capturePayPalOrder(reference)`; **Flutterwave is not verified client-side** — shows a "Payment Processing" screen and relies entirely on the backend webhook.
+Each sub-step validates its own fields via React Hook Form's `trigger()` before advancing — you can't skip ahead with an invalid amount, for instance.
+
+### Provider routing — no donor choice anymore
+
+The backend still fully supports Paystack, PayPal, and Flutterwave (see `BACKEND_DOCUMENTATION.md` / `FRONTEND-PAYMENT-GUIDE.md`), but `DonateDetails.tsx` now derives the provider automatically from the chosen country's currency — there's no provider picker shown to the donor:
+- `currency === "NGN"` → `provider: "paystack"`
+- anything else → `provider: "flutterwave"` (Flutterwave has been enabled by the processor for international collection, so there's no currency allowlist gating this anymore)
+- `provider: "paypal"` is **never sent** — PayPal has no live credentials connected, so it's hidden rather than offered and left to fail. Re-enabling it later is a frontend-only change (the backend path already works).
+
+Flow after submission:
+1. `DonateTransform.tsx.handleConfirm()` calls `initDonation()` → backend `POST /donations/init`, passing `provider`, amount, currency, and a `callback_url` of `/donate/success?provider=<provider>`.
+2. The backend returns a hosted checkout link; the frontend does a full-page redirect via `window.location.assign(redirectUrl)` — a top-level navigation, not gated by CSP `connect-src`/`frame-src`.
+3. On return, `/donate/success/page.tsx` branches by `?provider=`: Paystack calls `verifyDonation(reference)` synchronously; PayPal calls `capturePayPalOrder(reference)` (dead code path currently, since the UI never selects PayPal); **Flutterwave is not verified client-side** — shows a "Payment Processing" screen and relies entirely on the backend webhook.
+4. **Cancelling at the gateway**: Flutterwave/PayPal cancellations are redirected by the backend to `/donate/failed?reason=cancelled`, which `DonateFailed.tsx` renders as a calm "you cancelled — nothing was charged" message (via its `cancelled` prop) instead of the generic "payment failed / common issues" copy. Paystack has no distinct cancel signal, so a cancelled Paystack attempt still lands on the generic `/donate/failed`.
 
 **Status**: fully wired into the frontend UI. Whether live transactions actually settle depends on backend credentials/webhook delivery — recommend a live end-to-end test (small real or sandbox donation) to confirm the webhook path completes.
+
+### Shared loading overlay
+
+`components/globalComp/Loader.tsx` is a full-screen `title`/`message` overlay used by the donate payment-processing state, admin login, learner login, and signup — one component, five call sites. It has no provider-specific logic; it's purely presentational.
 
 ## 14. Card Image Dimensions
 
