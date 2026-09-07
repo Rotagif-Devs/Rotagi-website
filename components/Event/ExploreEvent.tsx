@@ -95,9 +95,11 @@ const ExploreEvent = () => {
                 {event.title}
               </h3>
 
-              <p className="text-gray-600 font-dm-sans text-sm leading-relaxed line-clamp-2">
-                {event.description}
-              </p>
+              {event.description && (
+                <p className="text-gray-600 font-dm-sans text-sm leading-relaxed line-clamp-2">
+                  {event.description}
+                </p>
+              )}
 
               <div className="text-sm mt-2 space-y-3">
                 <div className="flex items-center gap-3">
@@ -114,19 +116,27 @@ const ExploreEvent = () => {
                 </div>
               </div>
 
-              <Link
-                href={`/events/${event.slug}`}
-                className="mt-auto pt-4 flex items-center gap-4 text-[#D62D88] font-semibold font-dm-sans group-hover:gap-6 transition-all"
-              >
-                View Detail
-                <Image
-                  src="/lngarrw.png"
-                  alt="arrow"
-                  width={22}
-                  height={25}
-                  className="group-hover:translate-x-1 transition-transform"
-                />
-              </Link>
+              {event.description ? (
+                <Link
+                  href={`/events/${event.slug}`}
+                  className="mt-auto pt-4 flex items-center gap-4 text-[#D62D88] font-semibold font-dm-sans group-hover:gap-6 transition-all"
+                >
+                  View Detail
+                  <Image
+                    src="/lngarrw.png"
+                    alt="arrow"
+                    width={22}
+                    height={25}
+                    className="group-hover:translate-x-1 transition-transform"
+                  />
+                </Link>
+              ) : (
+                // No description yet — nothing to show on a detail page, so
+                // the card stays informational-only until one is added.
+                <span className="mt-auto pt-4 flex items-center gap-2 text-gray-400 font-semibold font-dm-sans text-sm">
+                  Details coming soon
+                </span>
+              )}
             </div>
           </div>
         ))}

@@ -43,6 +43,13 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
     notFound();
   }
 
+  // An event with no description yet has nothing to show on this page —
+  // treat it the same as not existing until one is added, rather than
+  // rendering a mostly-empty detail page.
+  if (!event.description) {
+    notFound();
+  }
+
   return (
     <div className="min-h-screen bg-[#FAFAFA] font-dm-sans overflow-x-hidden selection:bg-pink-100 selection:text-pink-900">
       
