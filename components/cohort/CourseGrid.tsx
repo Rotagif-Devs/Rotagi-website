@@ -12,6 +12,16 @@ import Button from "@/components/ui/Button";
 
 const COURSES = [
   {
+    id: "price-for-profit",
+    title: "Price for Profit",
+    description: "Learn how to price your products for profit using practical business strategies.",
+    icon: DollarSign,
+    color: "bg-emerald-50 text-emerald-600",
+    image: "/cohort-images/price-for-profit.jpg",
+    available: true,
+    applyUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdvSvhBliU5R1z2DwG8MpNwbTJH05cb2sFRN5OawAKEjqVa2Q/viewform?usp=preview",
+  },
+  {
     id: "artificial-intelligence",
     title: "Artificial Intelligence Skills Training",
     description: "Learn how to use AI tools to work faster and solve real problems.",
@@ -101,16 +111,6 @@ const COURSES = [
     color: "bg-purple-50 text-purple-600",
     image: "/cohort-images/lead-with-confidence.jpg",
     available: false,
-  },
-  {
-    id: "price-for-profit",
-    title: "Price for Profit",
-    description: "Learn how to price your products for profit using practical business strategies.",
-    icon: DollarSign,
-    color: "bg-emerald-50 text-emerald-600",
-    image: "/cohort-images/price-for-profit.jpg",
-    available: true,
-    applyUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdvSvhBliU5R1z2DwG8MpNwbTJH05cb2sFRN5OawAKEjqVa2Q/viewform?usp=preview",
   },
   {
     id: "social-media-management",
