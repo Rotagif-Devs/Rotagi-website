@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { publicService } from "@/lib/services/public.service";
 import { events as EventType } from "@/types/event";
+import Skeleton from "@/components/ui/Skeleton";
 
 const formatTime = (timeStr: string) => {
   if (!timeStr) return "Time TBA";
@@ -50,8 +51,24 @@ const ExploreEvent = () => {
 
   if (loading) {
     return (
-      <section className="lg:px-8 pb-4 pt-0 px-4 min-h-[400px] flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#D62D88]"></div>
+      <section className="lg:px-8 pb-10 pt-0 px-4 max-w-7xl mx-auto">
+        <Skeleton className="h-9 w-56 my-6" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div
+              key={i}
+              className="flex flex-col overflow-hidden rounded-xl border border-gray-100 bg-white"
+            >
+              <Skeleton className="w-full aspect-[474/593] rounded-none" />
+              <div className="p-6 space-y-3">
+                <Skeleton className="h-5 w-3/4" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-1/2" />
+                <Skeleton className="h-4 w-2/3" />
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
     );
   }
