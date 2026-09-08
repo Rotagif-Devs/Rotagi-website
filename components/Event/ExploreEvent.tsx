@@ -116,7 +116,7 @@ const ExploreEvent = () => {
                 </div>
               </div>
 
-              {event.description ? (
+              {event.description && (
                 <Link
                   href={`/events/${event.slug}`}
                   className="mt-auto pt-4 flex items-center gap-4 text-[#D62D88] font-semibold font-dm-sans group-hover:gap-6 transition-all"
@@ -130,12 +130,6 @@ const ExploreEvent = () => {
                     className="group-hover:translate-x-1 transition-transform"
                   />
                 </Link>
-              ) : (
-                // No description yet — nothing to show on a detail page, so
-                // the card stays informational-only until one is added.
-                <span className="mt-auto pt-4 flex items-center gap-2 text-gray-400 font-semibold font-dm-sans text-sm">
-                  Details coming soon
-                </span>
               )}
             </div>
           </div>
