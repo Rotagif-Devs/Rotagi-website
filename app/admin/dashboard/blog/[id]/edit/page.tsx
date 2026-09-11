@@ -17,14 +17,24 @@ export default function EditBlogPage() {
 
   useEffect(() => {
     const fetchBlog = async () => {
-      const data = await adminService.getBlogById(id as string);
-      if (data) {
-        setBlog(data);
-      } else {
-        alert("Blog post not found");
+      try {
+        const data = await adminService.getBlogById(id as string);
+        if (data) {
+          setBlog(data);
+        } else {
+          alert("Blog post not found");
+          router.push("/admin/dashboard/blog");
+        }
+      } catch (error) {
+        // Without this, a failed fetch left the page stuck on the loading
+        // spinner forever — isLoading never got set back to false. Same fix
+        // as the event edit page.
+        console.error("Failed to load blog post:", error);
+        alert(error instanceof Error ? error.message : "Failed to load blog post");
         router.push("/admin/dashboard/blog");
+      } finally {
+        setIsLoading(false);
       }
-      setIsLoading(false);
     };
     fetchBlog();
   }, [id, router]);
