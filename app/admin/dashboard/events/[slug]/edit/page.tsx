@@ -17,14 +17,24 @@ export default function EditEventPage() {
 
   useEffect(() => {
     const fetchEvent = async () => {
-      const data = await adminService.getEventBySlug(slug as string);
-      if (data) {
-        setEvent(data);
-      } else {
-        alert("Event not found");
+      try {
+        const data = await adminService.getEventBySlug(slug as string);
+        if (data) {
+          setEvent(data);
+        } else {
+          alert("Event not found");
+          router.push("/admin/dashboard/events");
+        }
+      } catch (error) {
+        // Without this, a failed fetch (e.g. a slow response for an event
+        // with a large legacy embedded image) left the page stuck on the
+        // loading spinner forever — isLoading never got set back to false.
+        console.error("Failed to load event:", error);
+        alert(error instanceof Error ? error.message : "Failed to load event");
         router.push("/admin/dashboard/events");
+      } finally {
+        setIsLoading(false);
       }
-      setIsLoading(false);
     };
     fetchEvent();
   }, [slug, router]);
