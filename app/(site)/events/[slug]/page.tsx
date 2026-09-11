@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, ChevronLeft, MapPin, Share2 } from "lucide-react";
 import PTA from "@/components/globalComp/PTA";
@@ -53,19 +52,8 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
   return (
     <div className="min-h-screen bg-[#FAFAFA] font-dm-sans overflow-x-hidden selection:bg-pink-100 selection:text-pink-900">
       
-      {/* Cinematic Hero Section */}
-      <div className="relative w-full h-[60vh] md:h-[70vh] min-h-[500px] flex items-end pb-12 md:pb-24 pt-32">
-        <Image
-          src={event.image || "/wh.jpg"}
-          alt={event.title}
-          fill
-          className="object-cover"
-          priority
-        />
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-        <div className="absolute inset-0 bg-black/20" /> {/* Dimmer */}
-        
+      {/* Hero Section */}
+      <div className="relative w-full h-[60vh] md:h-[70vh] min-h-[500px] flex items-end pb-12 md:pb-24 pt-32 bg-gradient-to-br from-[#41122B] via-[#5C1A3E] to-[#0B0710]">
         <div className="relative z-10 max-w-[1260px] mx-auto w-full px-5 md:px-10">
           <Link
             href="/events"

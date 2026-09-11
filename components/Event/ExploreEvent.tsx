@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { ExternalLink } from "lucide-react";
 import { publicService } from "@/lib/services/public.service";
 import { events as EventType } from "@/types/event";
 import Skeleton from "@/components/ui/Skeleton";
@@ -131,6 +132,20 @@ const ExploreEvent = () => {
                   <Image src="/location.png" alt="location" width={16} height={16} />
                   <p className="font-thin text-[#777777] text-sm truncate">{event.location}</p>
                 </div>
+                {event.link && (
+                  <div className="flex items-center gap-3">
+                    <ExternalLink size={16} className="text-[#D62D88] shrink-0" />
+                    <a
+                      href={event.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="font-medium text-[#D62D88] text-sm truncate hover:underline"
+                    >
+                      {event.link}
+                    </a>
+                  </div>
+                )}
               </div>
 
               {event.description && (

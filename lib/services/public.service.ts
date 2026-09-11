@@ -34,6 +34,8 @@ const normalizeEvent = (event: any): EventType | undefined => {
     ...event,
     title,
     image: ensureImageUrl(event.imageUrl || event.image || event.coverImage || event.thumbnail || event.banner),
+    // Backend's canonical field is externalLink; the frontend type/UI uses "link".
+    link: event.link || event.externalLink || undefined,
   };
 };
 
@@ -109,7 +111,7 @@ const normalizeBlog = (post: any): BlogPost | undefined => {
     category: category,
     status: post.status || "published",
     author: {
-      name: post.author?.name || post.authorName || "ROTAGIF Team",
+      name: post.author?.name || post.authorName || "ROTAGI Team",
       role: post.author?.role || post.authorRole || "Editorial",
       image: ensureImageUrl(post.author?.image || post.authorImage)
     }
