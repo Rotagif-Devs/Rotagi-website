@@ -20,7 +20,12 @@ const quillModules = {
     [{ header: [1, 2, 3, false] }],
     ["bold", "italic", "underline", "strike"],
     [{ list: "ordered" }, { list: "bullet" }],
-    ["link", "image"],
+    // No "image" button: Quill's default handler embeds pasted images as
+    // inline base64 with no size limit, which is exactly what bloated the
+    // "Cohort Closed" event's cover image into a 320KB+ string sent on
+    // every fetch of it (see events.js/adminEvents.js's trimLegacyInlineImage).
+    // Use the cover image upload above instead.
+    ["link"],
     ["clean"],
   ],
 };
